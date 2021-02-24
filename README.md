@@ -1,3 +1,3 @@
 # np-bingo
 
-http://dev.tadjhbrooks.com/np-bingo/index.html
+http://dev.tadjhbrooks.com/np-bingo/
