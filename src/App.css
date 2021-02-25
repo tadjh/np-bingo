@@ -8,20 +8,15 @@
   --color-success: #028302;
   --color-success-dark: #005c00;
   --color-alert: #e00101;
-}
-
-.App {
-  text-align: center;
-  display: flex;
-  flex: 1;
-  height: 100vh;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
+  --color-disabled: #cccccc;
 }
 
 h2 {
   height: 30px;
+}
+
+.h5 {
+  font-size: 70%;
 }
 
 button {
@@ -33,12 +28,51 @@ button {
   text-transform: uppercase;
 }
 
-.current-draw {
+button.disabled {
+  background-color: var(--color-light-alt);
+  color: var(--color-disabled);
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.App {
+  height: 100vh;
+}
+
+.App,
+.Debug {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.App > div {
+  text-align: center;
+  display: flex;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+.Host {
+  background-color: var(--color-light-alt);
+  border-right: var(--border-width-bold) solid var(--color-dark);
+}
+
+.Debug.disabled {
+  display: none;
+}
+
+.ball-container {
   display: inline-block;
   margin: 20px 0;
 }
 
-.current-draw .ball {
+.ball-container .ball {
   font-size: 220%;
   text-transform: uppercase;
   font-family: serif;
@@ -55,11 +89,11 @@ button {
   line-height: 70px;
 }
 
-.grid-container {
+/* .grid-container {
   flex: 1 1;
   display: flex;
   align-items: center;
-}
+} */
 
 .grid {
   display: grid;
@@ -76,6 +110,7 @@ button {
 .grid-item {
   font-weight: bold;
   line-height: 50px;
+  min-height: 50px;
   text-align: center;
   vertical-align: middle;
   text-transform: uppercase;

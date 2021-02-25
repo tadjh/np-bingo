@@ -1,26 +1,39 @@
 // import { create } from 'domain';
-import React, { useReducer, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import './App.css';
-import Cell from './Components/Cell';
 import {
-  createCard,
+  INIT_GAME,
+  READY_CHECK,
+  START_ROUND,
+  END_ROUND,
+  NEW_CARD,
+  CHECK_CARD,
+  NEW_BALL,
+  UPDATE_POOL,
   BINGO,
   letters,
+  DEBUG,
+  FLUSH_DRAWS,
+} from './Constants';
+import {
+  createCard,
   getBall,
-  Ball,
-  Card,
-  Pool,
   removeBall,
   validateCard,
-  Results,
-  randomIndex,
-} from './bingo';
+  getPoolSize,
+} from './Utils/bingo';
+import { validationText } from './Utils';
+import { Ball, Card, Pool, Results, Status } from './Constants/types';
+import Host from './Views/Host';
+import Player from './Views/Player';
 
 type State = {
   card: Card;
-  ball: Ball | undefined;
+  ball: Ball;
   pool: Pool;
   draws: Pool;
+  valid: boolean | undefined;
+  status: Status;
 };
 
 type Action = {
@@ -28,70 +41,120 @@ type Action = {
   payload?: any;
 };
 
-const initialState = {
-  card: createCard(BINGO),
-  ball: undefined,
+const initialState: State = {
+  card: new Array(25),
+  ball: { key: 0, value: 0, name: '', remainder: 0 },
   pool: BINGO,
   draws: [[], [], [], [], []],
-  winner: undefined,
+  valid: undefined,
+  status: 'init',
 };
 
 function reducer(state: State, action: Action) {
   switch (action.type) {
-    case 'NEW GAME':
-      return action.payload;
-    case 'NEW CARD':
-      return { ...state, card: action.payload, winner: undefined };
-    case 'NEW BALL':
-      return { ...state, ...action.payload };
-    case 'CHECK CARD':
-      return { ...state, winner: action.payload };
+    case INIT_GAME:
+      // Forcing it. Must be mutated somewhere.
+      return { ...initialState, draws: [[], [], [], [], []] };
+    case READY_CHECK:
+      return { ...state, status: action.payload };
+    case START_ROUND:
+      return { ...state, status: action.payload };
+    case END_ROUND:
+      return { ...state, status: action.payload };
+    case NEW_CARD:
+      return { ...state, card: action.payload };
+    case CHECK_CARD:
+      return { ...state, valid: action.payload };
+    case NEW_BALL:
+      return {
+        ...state,
+        ball: action.payload.ball,
+        draws: action.payload.draws,
+        pool: action.payload.pool,
+      };
+    case UPDATE_POOL:
+      return { ...state, ball: { ...state.ball, remainder: action.payload } };
     default:
-      throw new Error();
+      throw new Error('Invalid dispatch type.');
   }
 }
 
+export const GameContext = React.createContext('init' as Status);
+export const BallContext = React.createContext({
+  key: 0,
+  value: 0,
+  name: '',
+  remainder: 0,
+} as Ball);
+
 function App() {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
+    reducer,
+    initialState
+  );
   const [crossmarks, setCrossmarks] = useState<{ [key: string]: boolean }>({});
 
+  useEffect(() => {
+    DEBUG && console.log(state);
+    // console.log(state);
+  });
+
   /**
-   * Resets Bingo game
+   * Manages Bingo game states
+   * @param status
    */
-  const newGame = () => {
-    let data = {
-      ...initialState,
-      card: createCard(BINGO),
-      draws: [[], [], [], [], []],
-    };
-    dispatch({ type: 'NEW GAME', payload: data });
-    resetCrossmarks();
+  const play = (status: Status) => {
+    switch (status) {
+      case 'init':
+        dispatch({ type: INIT_GAME, payload: 'init' });
+        break;
+      case 'ready':
+        dispatch({ type: READY_CHECK, payload: 'ready' });
+        newCard();
+        break;
+      case 'start':
+        dispatch({ type: START_ROUND, payload: 'start' });
+        checkPoolSize();
+        break;
+      case 'end':
+        resetCrossmarks();
+        dispatch({ type: INIT_GAME });
+        break;
+      default:
+        throw new Error('Invalid game state.');
+    }
   };
 
   /**
    * Creates a new card and stores it in state
-   * @param pool Pool of all possible values
    */
-  const newCard = (pool: Pool) => {
-    let data = createCard(pool);
-    dispatch({ type: 'NEW CARD', payload: data });
+  const newCard = () => {
+    let data: Card = createCard(BINGO);
+    dispatch({ type: NEW_CARD, payload: data });
     resetCrossmarks();
   };
 
+  const checkPoolSize = () => {
+    let pool: Pool = state.pool;
+    let { remainder: data } = getPoolSize(pool);
+    dispatch({ type: UPDATE_POOL, payload: data });
+  };
+
   /**
-   * Retrieves a new Bingo ball from the remaining pool of balls
+   * Retrieves a new Bingo ball from the remaining pool of balls.
+   * Returns undefined if pool is empty.
    */
   const newBall = () => {
-    let pool = state.pool;
-    let draws = state.draws;
+    let pool: Pool = state.pool;
+    let draws: Pool = state.draws;
     let ball = getBall(pool);
 
-    if (ball) {
+    if (ball.value !== 0) {
       pool = removeBall(pool, ball);
 
-      if (!draws) {
-        draws = [[], [], [], [], []];
-      }
+      // if (!draws) {
+      //   draws = [[], [], [], [], []];
+      // }
 
       draws[ball.key].push(ball.value);
     }
@@ -102,7 +165,7 @@ function App() {
       pool,
     };
 
-    dispatch({ type: 'NEW BALL', payload: data });
+    dispatch({ type: NEW_BALL, payload: data });
   };
 
   /**
@@ -118,9 +181,9 @@ function App() {
 
     if (methods.length > 0) {
       setWinningCrossmarks(methods, data);
-      dispatch({ type: 'CHECK CARD', payload: true });
+      dispatch({ type: CHECK_CARD, payload: true });
     } else {
-      dispatch({ type: 'CHECK CARD', payload: false });
+      dispatch({ type: CHECK_CARD, payload: false });
     }
   };
 
@@ -145,29 +208,6 @@ function App() {
   };
 
   /**
-   * Text to be displayed based on value of state.winner
-   * @param state
-   */
-  const winningText = (state: boolean | undefined) => {
-    let attemptText = [
-      'Not quite...',
-      'Keep trying!',
-      'You got this.',
-      'Hang in there',
-      'Hi Dean',
-    ];
-
-    switch (state) {
-      case undefined:
-        return ' ';
-      case true:
-        return 'Winner!';
-      case false:
-        return attemptText[randomIndex(attemptText)];
-    }
-  };
-
-  /**
    * Toggle current target's crossmark visibility
    * @param event Click event
    */
@@ -184,62 +224,34 @@ function App() {
   };
 
   const board = [...letters, ...state.card];
-
   return (
-    <div className="App">
-      <div className="App-buttons">
-        <button onClick={() => newGame()}>New Game</button>
-        <button onClick={() => newCard(BINGO)}>New Card</button>
-        <button onClick={() => checkCard(state.card, state.draws)}>
-          Check Card
-        </button>
-        <div className="current-draw">
-          <button onClick={() => newBall()}>New Ball</button>
-          <span className="ball">
-            {state.ball && letters[state.ball.key] + state.ball.value}
-          </span>
+    <GameContext.Provider value={state.status}>
+      <BallContext.Provider value={state.ball}>
+        <div className="App">
+          <Host
+            play={play}
+            checkCard={() => checkCard(state.card, state.draws)}
+            winningText={validationText(state.valid)}
+            newBall={newBall}
+          ></Host>
+          <Player
+            play={play}
+            newCard={newCard}
+            board={board}
+            toggleCrossmark={toggleCrossmark}
+            crossmarks={crossmarks}
+            winningText={validationText(state.valid)}
+            winner={state.valid}
+          ></Player>
         </div>
-      </div>
-
-      <div>Click a cell to mark it</div>
-      <h2>{winningText(state.winner)}</h2>
-
-      <div className="grid-container">
-        <div className={`grid ${state.winner && 'winner'}`}>
-          {board.map((value, index) => {
-            if (index < 5) {
-              return (
-                <div
-                  className={`grid-header ${state.winner && 'winner'}`}
-                  key={index}
-                >
-                  {value}
-                </div>
-              );
-            }
-            let id = `cell${index - 4}`;
-            return (
-              <Cell
-                id={id}
-                className={`grid-item-${index - 4}`}
-                key={index}
-                crossmark={crossmarks[id]}
-                onClick={toggleCrossmark}
-              >
-                {index !== 12 + 5 ? value : 'free'}
-              </Cell>
-            );
-          })}
-        </div>
-      </div>
-
-      <pre>
-        <h1>Debug</h1>
-        <h3>Current Draws</h3>
-        <p>{state.draws ? JSON.stringify(state.draws) : 'None'}</p>
-        <p>by Tadjh Brooks</p>
-      </pre>
-    </div>
+        <code className={`Debug ${!DEBUG && 'disabled'}`}>
+          <h1>Debug</h1>
+          <h3>Current Draws</h3>
+          <p>{state.draws ? JSON.stringify(state.draws) : 'None'}</p>
+          <p>by Tadjh Brooks</p>
+        </code>
+      </BallContext.Provider>
+    </GameContext.Provider>
   );
 }
 

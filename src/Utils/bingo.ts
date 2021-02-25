@@ -1,22 +1,12 @@
-export type Ball = { key: number; value: number };
-export type Card = number[];
-export type Pool = number[][];
-export type Results = {
-  [key: string]: number[] | boolean;
-};
-
-const _B = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-const _I = [16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30];
-const _N = [31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45];
-const _G = [46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60];
-const _O = [61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75];
-export const BINGO: Pool = [_B, _I, _N, _G, _O];
-export const letters = ['b', 'i', 'n', 'g', 'o'];
+import { Pool, Ball, Card, Results } from '../Constants/types';
+import { letters } from '../Constants';
+import { randomIndex } from '.';
 
 /**
  * Creates an array with 25 randomized values ordered left to right, top to bottom from a pool of values
  * @param pool multidimensional array of all possible values
  */
+
 export function createCard(pool: Pool) {
   let card = [];
   let i: number;
@@ -30,11 +20,10 @@ export function createCard(pool: Pool) {
     }
   }
 
-  // Remove 13th value and replace with a free spot
+  // Note: Remove 13th card and replace with a free spot on display
   // card[12] = 'free';
   return card;
 }
-
 /**
  * Create a randomized column array from an array of integers
  * @param array integer array
@@ -61,45 +50,40 @@ function createColumn(array: number[]) {
 
   return column;
 }
-
 /**
  * Takes the entire set of remaining balls and returns a random ball
  * @param pool
  */
-export function getBall(pool: Pool): Ball | undefined {
-  // Array of remaining columns
-  let columns = [];
 
-  let i;
-  for (i = 0; i < 5; i++) {
-    if (pool[i].length > 0) {
-      columns.push(i);
-    }
-  }
+export function getBall(pool: Pool): Ball {
+  let { columns, remainder } = getPoolSize(pool);
 
   if (columns.length > 0) {
     let columnIndex = randomIndex(columns);
     let values = pool[columns[columnIndex]];
     let valueIndex = randomIndex(values);
 
-    return { key: columns[columnIndex], value: values[valueIndex] };
+    return {
+      key: columns[columnIndex],
+      value: values[valueIndex],
+      name: letters[columns[columnIndex]] + values[valueIndex],
+      remainder: remainder - 1,
+    };
+  } else {
+    return {
+      key: 0,
+      value: 0,
+      name: '',
+      remainder: 0,
+    };
   }
-  return undefined;
 }
-
-/**
- * Takes an array and returns a random index position
- * @param array integer array
- */
-export function randomIndex(array: (number | string)[]) {
-  return Math.floor(Math.random() * array.length);
-}
-
 /**
  * Removes a single ball from the remaining set of balls and returns the updated array
  * @param pool Remaining set of all possible balls
  * @param value The ball to be removed
  */
+
 export function removeBall(pool: Pool, ball: Ball) {
   return pool.map(function (item: number[], index) {
     if (index === ball.key) {
@@ -109,6 +93,25 @@ export function removeBall(pool: Pool, ball: Ball) {
     }
     return item;
   });
+}
+/**
+ * Takes a pool of numbers and return the size of the pool and an index of valid remaining columns
+ * @param pool Set off all balls in pool
+ */
+
+export function getPoolSize(pool: Pool) {
+  let remainder = 0;
+  let columns = [];
+
+  let i;
+  for (i = 0; i < pool.length; i++) {
+    if (pool[i].length > 0) {
+      remainder += pool[i].length;
+      columns.push(i);
+    }
+  }
+
+  return { remainder, columns };
 }
 
 export function validateCard(card: Card, draws: Pool) {
@@ -126,12 +129,8 @@ export function validateCard(card: Card, draws: Pool) {
   if (diagonalResults) {
     results = { ...results, diagonal: diagonalResults };
   }
-
-  console.log(results);
-
   return results;
 }
-
 /**
  * Check all rows on card for a win
  * Returns true if winning row is found
@@ -157,7 +156,6 @@ function checkRows(card: Card, draws: Pool) {
     return false;
   }
 }
-
 /**
  * Check each cell in each row on card for a win
  * Returns true if a row contains only winning cells
@@ -198,7 +196,6 @@ function checkCellsInRow(
   }
   return result;
 }
-
 /**
  * Check all columns on card for a win
  * Returns true if winning column is found
@@ -224,7 +221,6 @@ function checkColumns(card: Card, draws: Pool) {
     return false;
   }
 }
-
 /**
  * Check each cell in each column on card for a win
  * Returns true if a column contains only winning cells
@@ -265,7 +261,6 @@ function checkCellsInColumn(
   }
   return result;
 }
-
 /**
  * Check all diagonals on card for a win
  * Returns true if winning diagonal is found
@@ -292,7 +287,6 @@ function checkDiagonals(card: Card, draws: Pool) {
     return false;
   }
 }
-
 /**
  * Check each cell on the falling diagonal on card for a win
  * Returns true if the falling diagonal contains only winning cells
@@ -324,7 +318,6 @@ function checkFallingDiagonal(card: Card, draws: Pool, flag?: boolean) {
   }
   return result;
 }
-
 /**
  * Check each cell on the rising diagonal on card for a win
  * Returns true if the rising diagonal contains only winning cells
@@ -341,7 +334,6 @@ function checkRisingDiagonal(card: Card, draws: Pool, flag?: boolean) {
   // card[5 * 2 + 2 ] draw[2]
   // card[5 * 1 + 3 ] draw[3]
   // card[5 * 0 + 4 ] draw[4]
-
   const offset = [4, 3, 2, 1, 0];
 
   for (i = 0; i < 5; i++) {
@@ -364,7 +356,6 @@ function checkRisingDiagonal(card: Card, draws: Pool, flag?: boolean) {
   }
   return result;
 }
-
 /**
  * Find if current value exists in the search pool
  * @param value Array of number to be checked

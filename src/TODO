@@ -1,0 +1,5 @@
+// TODO Fix Winner text
+// TODO crossmarks become local state in player view
+// TODO Remove unecessary boilerplate
+// TODO Write basic tests
+// TODO Remove card from set of all possible cards so two people cant have same cards
