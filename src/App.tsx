@@ -13,7 +13,6 @@ import {
   BINGO,
   letters,
   DEBUG,
-  FLUSH_DRAWS,
 } from './Constants';
 import {
   createCard,

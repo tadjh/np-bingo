@@ -13,7 +13,7 @@ type Props = {
 };
 
 function Host(props: Props) {
-  let { play, checkCard, newBall, winningText } = props;
+  let { play, checkCard, newBall } = props;
   return (
     <div className="Host">
       <h1>Host View</h1>

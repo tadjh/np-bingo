@@ -3,7 +3,6 @@ import { GameContext } from '../App';
 import { Status } from '../Constants/types';
 import Ball from '../Components/Ball';
 import Board from '../Components/Board';
-import Next from '../Components/Next';
 import StatusMessage from '../Components/Status';
 
 type Props = {
@@ -17,15 +16,7 @@ type Props = {
 };
 
 function Player(props: Props) {
-  let {
-    play,
-    newCard,
-    board,
-    toggleCrossmark,
-    crossmarks,
-    winningText,
-    winner,
-  } = props;
+  let { play, newCard, board, toggleCrossmark, crossmarks, winner } = props;
 
   return (
     <div className="Player">
