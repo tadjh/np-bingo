@@ -47,8 +47,9 @@ const initialState: State = {
 
 function reducer(state: State, action: Action) {
   switch (action.type) {
+    // Force it. Probably mutating draws state somewhere
     case INIT_GAME:
-      return { ...initialState };
+      return { ...initialState, draws: [[], [], [], [], []] };
     case READY_CHECK:
       return { ...state, status: action.payload };
     case STANDBY:
@@ -131,7 +132,6 @@ function App() {
         dispatch({ type: FAILURE, payload: 'failure' });
         break;
       case 'end':
-        // resetCrossmarks();
         dispatch({ type: END_GAME, payload: 'end' });
         break;
       default:
@@ -158,18 +158,8 @@ function App() {
     if (ball.value !== 0) {
       pool = removeBall(pool, ball);
 
-      // if (!draws) {
-      //   draws = [[], [], [], [], []];
-      // }
-
       draws[ball.key].push(ball.value);
     }
-
-    let data = {
-      ball,
-      draws,
-      pool,
-    };
 
     // These probably belong somewhere else outside of this funciton
     if (status === 'standby' || status === 'failure') {
@@ -179,7 +169,14 @@ function App() {
       });
     }
 
-    dispatch({ type: NEW_BALL, payload: data });
+    dispatch({
+      type: NEW_BALL,
+      payload: {
+        ball: ball,
+        draws: draws,
+        pool: pool,
+      },
+    });
   };
 
   /**
