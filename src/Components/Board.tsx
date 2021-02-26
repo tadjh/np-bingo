@@ -1,21 +1,28 @@
 import React from 'react';
+import { Winner } from '../Constants/types';
 import Cell from './Cell';
 type Props = {
   board: (number | string)[];
-  winner: boolean | undefined;
+  serial: string;
+  winner: Winner;
   crossmarks: { [key: string]: boolean };
   toggleCrossmark: (event: React.MouseEvent) => void;
 };
 
 function Board(props: Props) {
-  let { board, winner, crossmarks, toggleCrossmark } = props;
+  let { board, serial, winner, crossmarks, toggleCrossmark } = props;
   return (
     <div className="grid-container">
-      <div className={`grid ${winner && 'winner'}`}>
+      <div className={`grid ${winner.methods.length > 0 && 'winner'}`}>
         {board.map((value, index) => {
           if (index < 5) {
             return (
-              <div className={`grid-header ${winner && 'winner'}`} key={index}>
+              <div
+                className={`grid-header ${
+                  winner.methods.length > 0 && 'winner'
+                }`}
+                key={index}
+              >
                 {value}
               </div>
             );
@@ -34,6 +41,7 @@ function Board(props: Props) {
           );
         })}
       </div>
+      <div className="serial">{serial}</div>
     </div>
   );
 }

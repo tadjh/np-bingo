@@ -1,28 +1,22 @@
-// import { create } from 'domain';
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useReducer } from 'react';
 import './App.css';
 import {
   INIT_GAME,
   READY_CHECK,
-  START_ROUND,
-  END_ROUND,
-  NEW_CARD,
+  START_GAME,
+  END_GAME,
   CHECK_CARD,
   NEW_BALL,
   UPDATE_POOL,
   BINGO,
-  letters,
   DEBUG,
+  STANDBY,
+  VALIDATE,
+  GET_CARD,
+  FAILURE,
 } from './Constants';
-import {
-  createCard,
-  getBall,
-  removeBall,
-  validateCard,
-  getPoolSize,
-} from './Utils/bingo';
-import { validationText } from './Utils';
-import { Ball, Card, Pool, Results, Status } from './Constants/types';
+import { getBall, removeBall, validateCard, getPoolSize } from './Utils/bingo';
+import { Ball, Card, Pool, Results, Status, Winner } from './Constants/types';
 import Host from './Views/Host';
 import Player from './Views/Player';
 
@@ -33,6 +27,7 @@ type State = {
   draws: Pool;
   valid: boolean | undefined;
   status: Status;
+  winner: Winner;
 };
 
 type Action = {
@@ -47,23 +42,38 @@ const initialState: State = {
   draws: [[], [], [], [], []],
   valid: undefined,
   status: 'init',
+  winner: { methods: [], data: {} },
 };
 
 function reducer(state: State, action: Action) {
   switch (action.type) {
     case INIT_GAME:
-      // Forcing it. Must be mutated somewhere.
-      return { ...initialState, draws: [[], [], [], [], []] };
+      return { ...initialState };
     case READY_CHECK:
       return { ...state, status: action.payload };
-    case START_ROUND:
+    case STANDBY:
       return { ...state, status: action.payload };
-    case END_ROUND:
+    case START_GAME:
+      return {
+        ...state,
+        status: action.payload.status,
+        valid: action.payload.valid,
+      };
+    case VALIDATE:
       return { ...state, status: action.payload };
-    case NEW_CARD:
+    case FAILURE:
+      return { ...state, status: action.payload };
+    case END_GAME:
+      return { ...state, status: action.payload };
+    case GET_CARD:
       return { ...state, card: action.payload };
     case CHECK_CARD:
-      return { ...state, valid: action.payload };
+      return {
+        ...state,
+        status: action.payload.status,
+        valid: action.payload.valid,
+        winner: action.payload.winner,
+      };
     case NEW_BALL:
       return {
         ...state,
@@ -91,12 +101,6 @@ function App() {
     reducer,
     initialState
   );
-  const [crossmarks, setCrossmarks] = useState<{ [key: string]: boolean }>({});
-
-  useEffect(() => {
-    DEBUG && console.log(state);
-    // console.log(state);
-  });
 
   /**
    * Manages Bingo game states
@@ -109,28 +113,30 @@ function App() {
         break;
       case 'ready':
         dispatch({ type: READY_CHECK, payload: 'ready' });
-        newCard();
+        break;
+      case 'standby':
+        dispatch({ type: STANDBY, payload: 'standby' });
         break;
       case 'start':
-        dispatch({ type: START_ROUND, payload: 'start' });
+        dispatch({
+          type: START_GAME,
+          payload: { status: 'start', valid: undefined },
+        });
         checkPoolSize();
         break;
+      case 'validate':
+        dispatch({ type: VALIDATE, payload: 'validate' });
+        break;
+      case 'failure':
+        dispatch({ type: FAILURE, payload: 'failure' });
+        break;
       case 'end':
-        resetCrossmarks();
-        dispatch({ type: INIT_GAME });
+        // resetCrossmarks();
+        dispatch({ type: END_GAME, payload: 'end' });
         break;
       default:
         throw new Error('Invalid game state.');
     }
-  };
-
-  /**
-   * Creates a new card and stores it in state
-   */
-  const newCard = () => {
-    let data: Card = createCard(BINGO);
-    dispatch({ type: NEW_CARD, payload: data });
-    resetCrossmarks();
   };
 
   const checkPoolSize = () => {
@@ -144,8 +150,9 @@ function App() {
    * Returns undefined if pool is empty.
    */
   const newBall = () => {
-    let pool: Pool = state.pool;
-    let draws: Pool = state.draws;
+    let status: Status = state.status;
+    let pool: Pool = [...state.pool];
+    let draws: Pool = [...state.draws];
     let ball = getBall(pool);
 
     if (ball.value !== 0) {
@@ -164,7 +171,23 @@ function App() {
       pool,
     };
 
+    // These probably belong somewhere else outside of this funciton
+    if (status === 'standby' || status === 'failure') {
+      dispatch({
+        type: START_GAME,
+        payload: { status: 'start', valid: undefined },
+      });
+    }
+
     dispatch({ type: NEW_BALL, payload: data });
+  };
+
+  /**
+   * Get card from player
+   * @param card
+   */
+  const recieveCard = (card: Card) => {
+    dispatch({ type: GET_CARD, payload: [...card] });
   };
 
   /**
@@ -179,74 +202,48 @@ function App() {
     });
 
     if (methods.length > 0) {
-      setWinningCrossmarks(methods, data);
-      dispatch({ type: CHECK_CARD, payload: true });
-    } else {
-      dispatch({ type: CHECK_CARD, payload: false });
-    }
-  };
-
-  /**
-   * Sets Winning crossmarks after successful card validations
-   * @param methods Array of current winning methods (row, column, diagonal)
-   * @param data Results of validation check
-   */
-  const setWinningCrossmarks = (methods: string[], data: Results) => {
-    let winningCrossmarks = {};
-    let i;
-    for (i = 0; i < methods.length; i++) {
-      let marks = (data[methods[i]] as number[]).map(function (item) {
-        let id = `cell${item + 1}`;
-        return { [id]: true };
+      dispatch({
+        type: CHECK_CARD,
+        payload: {
+          valid: true,
+          status: 'end',
+          winner: { methods: methods, data: data },
+        },
       });
-      winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
+    } else {
+      dispatch({
+        type: CHECK_CARD,
+        payload: {
+          valid: false,
+          status: 'failure',
+          winner: { methods: [], data: {} },
+        },
+      });
     }
-    console.log(winningCrossmarks);
-
-    setCrossmarks({ ...crossmarks, ...winningCrossmarks });
   };
 
-  /**
-   * Toggle current target's crossmark visibility
-   * @param event Click event
-   */
-  const toggleCrossmark = (event: React.MouseEvent) => {
-    let target = event.target as HTMLDivElement;
-    setCrossmarks({ ...crossmarks, [target.id]: !crossmarks[target.id] });
-  };
+  let { status, ball, draws, card, winner } = state;
 
-  /**
-   * Resets all crossmarks
-   */
-  const resetCrossmarks = () => {
-    setCrossmarks({});
-  };
-
-  const board = [...letters, ...state.card];
   return (
-    <GameContext.Provider value={state.status}>
-      <BallContext.Provider value={state.ball}>
+    <GameContext.Provider value={status}>
+      <BallContext.Provider value={ball}>
         <div className="App">
           <Host
             play={play}
-            checkCard={() => checkCard(state.card, state.draws)}
-            winningText={validationText(state.valid)}
+            checkCard={() => checkCard(card, draws)}
             newBall={newBall}
           ></Host>
           <Player
             play={play}
-            newCard={newCard}
-            board={board}
-            toggleCrossmark={toggleCrossmark}
-            crossmarks={crossmarks}
-            winningText={validationText(state.valid)}
-            winner={state.valid}
+            winner={winner}
+            status={status}
+            recieveCard={recieveCard}
           ></Player>
         </div>
         <code className={`Debug ${!DEBUG && 'disabled'}`}>
           <h1>Debug</h1>
           <h3>Current Draws</h3>
-          <p>{state.draws ? JSON.stringify(state.draws) : 'None'}</p>
+          <p>{state.draws ? JSON.stringify(draws) : 'None'}</p>
           <p>by Tadjh Brooks</p>
         </code>
       </BallContext.Provider>

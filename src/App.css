@@ -72,7 +72,7 @@ button.disabled {
   margin: 20px 0;
 }
 
-.ball-container .ball {
+.ball {
   font-size: 220%;
   text-transform: uppercase;
   font-family: serif;
@@ -87,6 +87,12 @@ button.disabled {
   display: inline-block;
   vertical-align: middle;
   line-height: 70px;
+}
+
+.ball.disabled {
+  background-color: var(--color-light-alt);
+  color: var(--color-disabled);
+  border-color: var(--color-disabled);
 }
 
 /* .grid-container {
@@ -164,4 +170,12 @@ button.disabled {
   text-align: center;
   left: 0;
   top: 0;
+}
+
+.serial {
+  font-size: 6px;
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  height: 10px;
+  line-height: 1;
 }

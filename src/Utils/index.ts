@@ -1,38 +1,19 @@
 import { Status } from '../Constants/types';
 
 /**
- * Takes an array and returns a random index position
- * @param array integer array
+ * Takes an array and returns a random element.
+ * @param array
  */
-export function randomIndex(array: (number | string)[]) {
-  return Math.floor(Math.random() * array.length);
+export function randomElement(array: any[]) {
+  return array[randomIndex(array)];
 }
 
 /**
- * Text to be displayed based on card valdaiton results
- * @param state
+ * Takes an array and returns a random index position
+ * @param array Any array
  */
-export function validationText(state?: boolean) {
-  let text = '';
-  let attemptText = [
-    'Not quite...',
-    'Keep trying!',
-    'You got this.',
-    'Hang in there',
-    'Hi Dean',
-  ];
-
-  switch (state) {
-    case undefined:
-      break;
-    case true:
-      return 'Winner!';
-    case false:
-      return attemptText[randomIndex(attemptText)];
-    default:
-      throw new Error('Winner case invalid');
-  }
-  return text;
+export function randomIndex(array: any[]) {
+  return Math.floor(Math.random() * array.length);
 }
 
 /**
@@ -54,19 +35,42 @@ export function statusText(status: Status, host?: boolean) {
       text = 'Select a card and click ready.';
 
       if (host) {
-        text = 'Waiting for player(s) to ready up...';
+        text = 'Waiting for player to ready up...';
+      }
+      break;
+    case 'standby':
+      text = 'Waiting for a ball...';
+
+      if (host) {
+        text = 'Click to dispense a ball.';
       }
       break;
     case 'start':
-      text = 'Click a square on the Bingo card to mark it';
+      text = 'Click a square on the card to cross it out';
       if (host) {
-        text = 'Pull a new Bingo ball.';
+        let rollText = [
+          'Keep on rolling...',
+          'Fetch another ball!',
+          'Roll another!',
+          'Dispense a ball.',
+        ];
+        text = randomElement(rollText);
+      }
+      break;
+    case 'validate':
+      text = 'Sending card to host...';
+      if (host) {
+        text = 'Check card for a BINGO!';
+      }
+      break;
+    case 'failure':
+      text = 'This card was not a valid Bingo. Keep trying...';
+      if (host) {
+        text = 'This card is not a Bingo. Roll on!';
       }
       break;
     case 'end':
-      // if (winningText) {
-      //   text = winningText;
-      // }
+      text = 'BINGO!';
       break;
     default:
       throw new Error(
@@ -74,39 +78,4 @@ export function statusText(status: Status, host?: boolean) {
       );
   }
   return text;
-}
-
-/**
- * Text to be displayed in game loop buttons based on current status
- * @param status
- * @param host View
- */
-export function buttonText(status: Status, host?: boolean) {
-  let next: Status = 'init';
-  let text = '';
-  switch (status) {
-    case 'init':
-      next = 'ready';
-      text = 'New Game';
-      break;
-    case 'ready':
-      next = 'start';
-      text = 'Ready';
-      if (host) {
-        next = 'end';
-        text = 'End Round';
-      }
-      break;
-    case 'start':
-      next = 'end';
-      text = 'End Round';
-      break;
-    case 'end':
-      next = 'ready';
-      text = 'New Round';
-      break;
-    default:
-      throw new Error('Invalid value passed to Next Button.');
-  }
-  return { next, text };
 }

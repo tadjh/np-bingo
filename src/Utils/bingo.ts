@@ -1,3 +1,4 @@
+import lz from 'lz-string';
 import { Pool, Ball, Card, Results } from '../Constants/types';
 import { letters } from '../Constants';
 import { randomIndex } from '.';
@@ -50,6 +51,35 @@ function createColumn(array: number[]) {
 
   return column;
 }
+
+/**
+ * Serialized card to a unique string
+ * @param card
+ */
+export function serializeCard(card: Card): string {
+  // Remove free space from serial
+  card.splice(12, 1);
+  let serial = card.join('');
+  let compressedSerial = compressSerial(serial);
+  return compressedSerial;
+}
+
+/**
+ * Compress serial
+ * @param serial string
+ */
+function compressSerial(serial: string) {
+  return lz.compressToBase64(serial);
+}
+
+/**
+ * Decompress serial
+ * @param serial string
+ */
+export function decompressSerial(serial: string) {
+  return lz.decompressFromBase64(serial);
+}
+
 /**
  * Takes the entire set of remaining balls and returns a random ball
  * @param pool

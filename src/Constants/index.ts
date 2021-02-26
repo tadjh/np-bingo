@@ -12,12 +12,19 @@ export const letters = ['b', 'i', 'n', 'g', 'o'];
 
 export const INIT_GAME = 'INIT GAME';
 export const READY_CHECK = 'READY CHECK';
-export const START_ROUND = 'START GAME';
-export const END_ROUND = 'END GAME';
+export const STANDBY = 'STANDBY';
+export const START_GAME = 'START GAME';
+export const VALIDATE = 'VALIDATE';
+export const FAILURE = 'FAILURE';
+export const END_GAME = 'END GAME';
 
 export const NEW_CARD = 'NEW CARD';
+export const UPDATE_CROSSMARKS = 'UPDATE CROSSMARKS';
+export const INIT_CROSSMARKS = 'INIT CROSSMARKS';
+export const WINNER_CROSSMARKS = 'WINNER CROSSMARKS';
+
+export const GET_CARD = 'GET CARD';
 export const CHECK_CARD = 'CHECK CARD';
 
 export const NEW_BALL = 'NEW BALL';
 export const UPDATE_POOL = 'UPDATE POOL';
-export const FLUSH_DRAWS = 'FLUSH DRAWS';

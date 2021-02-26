@@ -9,4 +9,15 @@ export type Pool = number[][];
 export type Results = {
   [key: string]: number[] | boolean;
 };
-export type Status = 'init' | 'ready' | 'start' | 'end';
+export type Winner = {
+  methods: string[];
+  data: Results;
+};
+export type Status =
+  | 'init'
+  | 'ready'
+  | 'standby'
+  | 'start'
+  | 'validate'
+  | 'failure'
+  | 'end';
