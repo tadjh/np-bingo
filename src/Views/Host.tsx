@@ -1,17 +1,18 @@
 import React from 'react';
 import Ball from '../Components/Ball';
 import { GameContext } from '../App';
-import { Status } from '../Constants/types';
+import { Gamestate } from '../Constants/types';
 import StatusMessage from '../Components/Status';
 
 type Props = {
-  play: (action: Status) => void;
+  play: (action: Gamestate) => void;
   checkCard: () => void;
   newBall: () => void;
 };
 
 function Host(props: Props) {
   let { play, checkCard, newBall } = props;
+  let { INIT, READY, STANDBY, START, VALIDATE, FAILURE } = Gamestate;
   return (
     <div className="Host">
       <h1>Host View</h1>
@@ -21,24 +22,24 @@ function Host(props: Props) {
             <div className="App-buttons">
               <button
                 type="button"
-                onClick={() => play(value === 'init' ? 'ready' : 'init')}
+                onClick={() => play(value === INIT ? READY : INIT)}
               >
-                {value === 'init' ? 'New Game' : 'End Game'}
+                {value === INIT ? 'New Game' : 'End Game'}
               </button>
               <button
-                className={`${value !== 'validate' && 'disabled'}`}
-                disabled={value !== 'validate' && true}
+                className={`${value !== VALIDATE && 'disabled'}`}
+                disabled={value !== VALIDATE && true}
                 onClick={checkCard}
               >
                 Check Card
               </button>
             </div>
-            <StatusMessage host={true} value={value} />
+            <StatusMessage host={true} gamestate={value} />
             <Ball
               disabled={
-                value !== 'start' &&
-                value !== 'standby' &&
-                value !== 'failure' &&
+                value !== START &&
+                value !== STANDBY &&
+                value !== FAILURE &&
                 true
               }
               host={true}

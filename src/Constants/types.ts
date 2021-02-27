@@ -13,11 +13,14 @@ export type Winner = {
   methods: string[];
   data: Results;
 };
-export type Status =
-  | 'init'
-  | 'ready'
-  | 'standby'
-  | 'start'
-  | 'validate'
-  | 'failure'
-  | 'end';
+export enum Gamestate {
+  INIT,
+  READY,
+  STANDBY,
+  START,
+  VALIDATE,
+  FAILURE,
+  END,
+}
+
+export type Rules = string[];

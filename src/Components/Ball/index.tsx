@@ -1,5 +1,6 @@
 import React from 'react';
-import { BallContext } from '../App';
+import { BallContext } from '../../App';
+import './style.css';
 
 type Props = {
   newBall?: () => void;

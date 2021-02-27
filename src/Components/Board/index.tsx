@@ -1,6 +1,8 @@
 import React from 'react';
-import { Winner } from '../Constants/types';
-import Cell from './Cell';
+import { Winner } from '../../Constants/types';
+import Cell from '../Cell';
+import './style.css';
+
 type Props = {
   board: (number | string)[];
   serial: string;

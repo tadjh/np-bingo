@@ -9,14 +9,11 @@
   --color-success-dark: #005c00;
   --color-alert: #e00101;
   --color-disabled: #cccccc;
+  --font-size-small: 70%;
 }
 
 h2 {
   height: 30px;
-}
-
-.h5 {
-  font-size: 70%;
 }
 
 button {
@@ -65,117 +62,4 @@ button.disabled {
 
 .Debug.disabled {
   display: none;
-}
-
-.ball-container {
-  display: inline-block;
-  margin: 20px 0;
-}
-
-.ball {
-  font-size: 220%;
-  text-transform: uppercase;
-  font-family: serif;
-  background-color: var(--color-light-alt);
-  border-radius: 50%;
-  padding: 10px;
-  color: var(--color-dark);
-  border: 1px solid var(--color-dark);
-  margin: 0 20px;
-  width: 70px;
-  height: 70px;
-  display: inline-block;
-  vertical-align: middle;
-  line-height: 70px;
-}
-
-.ball.disabled {
-  background-color: var(--color-light-alt);
-  color: var(--color-disabled);
-  border-color: var(--color-disabled);
-}
-
-/* .grid-container {
-  flex: 1 1;
-  display: flex;
-  align-items: center;
-} */
-
-.grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  width: 300px;
-  border: var(--border-width-bold) solid var(--color-dark);
-}
-
-.grid.winner {
-  border-color: var(--color-success-dark);
-}
-
-.grid-header,
-.grid-item {
-  font-weight: bold;
-  line-height: 50px;
-  min-height: 50px;
-  text-align: center;
-  vertical-align: middle;
-  text-transform: uppercase;
-}
-
-.grid-header {
-  color: var(--color-light);
-  font-size: 200%;
-  background-color: var(--color-primary);
-  border-bottom: var(--border-width-bold) solid var(--color-dark);
-}
-
-.grid-header.winner {
-  background-color: var(--color-success);
-  border-color: var(--color-success-dark);
-}
-
-.grid-item {
-  color: var(--color-dark);
-  background-color: var(--color-light);
-  border-top: var(--border-width-light) solid var(--color-dark);
-  border-left: var(--border-width-light) solid var(--color-dark);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.grid-item-5,
-.grid-item-10,
-.grid-item-15,
-.grid-item-20,
-.grid-item-25 {
-  border-right: var(--border-width-light) solid var(--color-dark);
-}
-
-.grid-item-21,
-.grid-item-22,
-.grid-item-23,
-.grid-item-24,
-.grid-item-25 {
-  border-bottom: var(--border-width-light) solid var(--color-dark);
-}
-
-.crossmark::before {
-  content: '\274c';
-  position: absolute;
-  color: var(--color-alert);
-  font-size: 250%;
-  height: 100%;
-  width: 100%;
-  text-align: center;
-  left: 0;
-  top: 0;
-}
-
-.serial {
-  font-size: 6px;
-  color: var(--color-light);
-  background-color: var(--color-dark);
-  height: 10px;
-  line-height: 1;
 }

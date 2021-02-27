@@ -1,0 +1,21 @@
+.grid-item {
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  border-top: var(--border-width-light) solid var(--color-dark);
+  border-left: var(--border-width-light) solid var(--color-dark);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.crossmark::before {
+  content: '\274c';
+  position: absolute;
+  color: var(--color-alert);
+  font-size: 250%;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  left: 0;
+  top: 0;
+}

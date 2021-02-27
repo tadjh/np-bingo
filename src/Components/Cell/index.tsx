@@ -1,19 +1,19 @@
 import React from 'react';
+import './style.css';
 
 interface Props extends React.HTMLAttributes<HTMLDivElement> {
   crossmark: boolean;
 }
 
 const Cell = (props: Props) => {
+  let { id, crossmark, className, onClick, children } = props;
   return (
     <div
-      id={props.id}
-      className={`grid-item ${props.crossmark && 'crossmark'} ${
-        props.className
-      }`}
-      onClick={props.onClick}
+      id={id}
+      className={`grid-item ${crossmark ? 'crossmark' : ''}${className}`}
+      onClick={onClick}
     >
-      {props.children}
+      {children}
     </div>
   );
 };

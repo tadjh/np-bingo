@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react';
 import { GameContext } from '../App';
-import { Card, Results, Status, Winner } from '../Constants/types';
+import { Card, Results, Gamestate, Winner } from '../Constants/types';
 import Ball from '../Components/Ball';
 import Board from '../Components/Board';
 import StatusMessage from '../Components/Status';
@@ -11,12 +11,13 @@ import {
   letters,
   NEW_CARD,
   UPDATE_CROSSMARKS,
+  WINNER_CROSSMARKS,
 } from '../Constants';
 import { createCard, serializeCard } from '../Utils/bingo';
 
 type Props = {
-  status: string;
-  play: (action: Status) => void;
+  gamestate: Gamestate;
+  play: (action: Gamestate) => void;
   winner: Winner;
   recieveCard: (card: Card) => void;
   valid?: boolean;
@@ -56,6 +57,11 @@ function playerReducer(state: State, action: Action) {
     case UPDATE_CROSSMARKS:
       return {
         ...state,
+        crossmarks: { ...state.crossmarks, ...action.payload },
+      };
+    case WINNER_CROSSMARKS:
+      return {
+        ...state,
         crossmarks: { ...action.payload },
       };
     default:
@@ -64,7 +70,7 @@ function playerReducer(state: State, action: Action) {
 }
 
 function Player(props: Props) {
-  let { status, play, winner, recieveCard } = props;
+  let { gamestate, play, winner, recieveCard } = props;
 
   const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
     playerReducer,
@@ -72,18 +78,18 @@ function Player(props: Props) {
   );
 
   useEffect(() => {
-    if (status === 'init') {
+    // Syncing Player View with Host Game State.
+    if (gamestate === Gamestate.INIT) {
       init();
     }
-
-    if (status === 'ready') {
+    if (gamestate === Gamestate.READY) {
       newCard();
     }
 
     if (winner.methods.length > 0) {
       setWinningCrossmarks(winner.methods, winner.data);
     }
-  }, [status]);
+  }, [gamestate]);
 
   /**
    * Resets Game
@@ -138,11 +144,11 @@ function Player(props: Props) {
       winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
     }
 
-    dispatch({ type: UPDATE_CROSSMARKS, payload: winningCrossmarks });
+    dispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
   };
 
   const bingo = () => {
-    play('validate');
+    play(Gamestate.VALIDATE);
     recieveCard(state.card);
   };
 
@@ -151,37 +157,46 @@ function Player(props: Props) {
   return (
     <div className="Player">
       <h1>Player View</h1>
-      {/* <h2>{winningText}</h2> */}
       <GameContext.Consumer>
         {(value) => (
           <React.Fragment>
             <div className="App-buttons">
               <button
                 className={`${
-                  value !== 'start' && value !== 'failure' && 'disabled'
+                  value !== Gamestate.START &&
+                  value !== Gamestate.FAILURE &&
+                  'disabled'
                 }`}
-                disabled={value !== 'start' && value !== 'failure' && true}
+                disabled={
+                  value !== Gamestate.START &&
+                  value !== Gamestate.FAILURE &&
+                  true
+                }
                 onClick={() => bingo()}
               >
                 Bingo
               </button>
               <button
-                className={`${value !== 'ready' && 'disabled'}`}
-                disabled={value !== 'ready' && true}
+                className={`${value !== Gamestate.READY && 'disabled'}`}
+                disabled={value !== Gamestate.READY && true}
                 onClick={newCard}
               >
                 New Card
               </button>
               <button
-                className={`${value !== 'ready' && 'disabled'}`}
-                disabled={value !== 'ready' && true}
-                onClick={() => play('standby')}
+                className={`${value !== Gamestate.READY && 'disabled'}`}
+                disabled={value !== Gamestate.READY && true}
+                onClick={() => play(Gamestate.STANDBY)}
               >
                 Ready
               </button>
             </div>
-            <StatusMessage value={value} />
-            <Ball disabled={value !== 'start' && value !== 'failure' && true} />
+            <StatusMessage gamestate={value} />
+            <Ball
+              disabled={
+                value !== Gamestate.START && value !== Gamestate.FAILURE && true
+              }
+            />
           </React.Fragment>
         )}
       </GameContext.Consumer>

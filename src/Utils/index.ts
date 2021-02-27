@@ -1,4 +1,4 @@
-import { Status } from '../Constants/types';
+import { Gamestate } from '../Constants/types';
 
 /**
  * Takes an array and returns a random element.
@@ -18,34 +18,34 @@ export function randomIndex(array: any[]) {
 
 /**
  * Text to be displayed based for current status
- * @param status
+ * @param gamestate
  * @param host View
  */
-export function statusText(status: Status, host?: boolean) {
+export function statusText(gamestate: Gamestate, host?: boolean) {
   let text = ' ';
-  switch (status) {
-    case 'init':
+  switch (gamestate) {
+    case Gamestate.INIT:
       text = 'Waiting on host to start the game...';
 
       if (host) {
         text = 'Click to start the game.';
       }
       break;
-    case 'ready':
+    case Gamestate.READY:
       text = 'Select a card and click ready.';
 
       if (host) {
         text = 'Waiting for player to ready up...';
       }
       break;
-    case 'standby':
+    case Gamestate.STANDBY:
       text = 'Waiting for a ball...';
 
       if (host) {
         text = 'Click to dispense a ball.';
       }
       break;
-    case 'start':
+    case Gamestate.START:
       text = 'Click a square on the card to cross it out';
       if (host) {
         let rollText = [
@@ -57,24 +57,24 @@ export function statusText(status: Status, host?: boolean) {
         text = randomElement(rollText);
       }
       break;
-    case 'validate':
+    case Gamestate.VALIDATE:
       text = 'Sending card to host...';
       if (host) {
         text = 'Check card for a BINGO!';
       }
       break;
-    case 'failure':
+    case Gamestate.FAILURE:
       text = 'This card was not a valid Bingo. Keep trying...';
       if (host) {
         text = 'This card is not a Bingo. Roll on!';
       }
       break;
-    case 'end':
+    case Gamestate.END:
       text = 'BINGO!';
       break;
     default:
       throw new Error(
-        `Invalid Game state in ${host ? 'Host' : 'Player'} Status`
+        `Invalid Gamestate in ${host ? 'Host' : 'Player'} Status`
       );
   }
   return text;

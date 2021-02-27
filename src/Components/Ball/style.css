@@ -1,0 +1,31 @@
+.ball-container {
+  display: inline-block;
+  margin: 20px 0;
+}
+
+.ball {
+  font-size: 220%;
+  text-transform: uppercase;
+  font-family: serif;
+  background-color: var(--color-light-alt);
+  border-radius: 50%;
+  padding: 10px;
+  color: var(--color-dark);
+  border: 1px solid var(--color-dark);
+  margin: 0 20px;
+  width: 70px;
+  height: 70px;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 70px;
+}
+
+.ball.disabled {
+  background-color: var(--color-light-alt);
+  color: var(--color-disabled);
+  border-color: var(--color-disabled);
+}
+
+.h5 {
+  font-size: var(--font-size-small);
+}

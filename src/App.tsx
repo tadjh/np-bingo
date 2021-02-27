@@ -16,17 +16,24 @@ import {
   FAILURE,
 } from './Constants';
 import { getBall, removeBall, validateCard, getPoolSize } from './Utils/bingo';
-import { Ball, Card, Pool, Results, Status, Winner } from './Constants/types';
+import {
+  Ball,
+  Card,
+  Pool,
+  Results,
+  Gamestate,
+  Winner,
+} from './Constants/types';
 import Host from './Views/Host';
 import Player from './Views/Player';
 
 type State = {
-  card: Card;
+  gamestate: Gamestate;
   ball: Ball;
   pool: Pool;
   draws: Pool;
+  card: Card;
   valid: boolean | undefined;
-  status: Status;
   winner: Winner;
 };
 
@@ -36,13 +43,14 @@ type Action = {
 };
 
 const initialState: State = {
-  card: new Array(25),
+  gamestate: Gamestate.INIT,
   ball: { key: 0, value: 0, name: '', remainder: 0 },
   pool: BINGO,
   draws: [[], [], [], [], []],
+  card: new Array(25),
   valid: undefined,
-  status: 'init',
   winner: { methods: [], data: {} },
+  // rules: ['standard'];
 };
 
 function reducer(state: State, action: Action) {
@@ -89,7 +97,7 @@ function reducer(state: State, action: Action) {
   }
 }
 
-export const GameContext = React.createContext('init' as Status);
+export const GameContext = React.createContext(Gamestate.INIT);
 export const BallContext = React.createContext({
   key: 0,
   value: 0,
@@ -105,33 +113,33 @@ function App() {
 
   /**
    * Manages Bingo game states
-   * @param status
+   * @param gamestate
    */
-  const play = (status: Status) => {
-    switch (status) {
-      case 'init':
+  const play = (gamestate: Gamestate) => {
+    switch (gamestate) {
+      case Gamestate.INIT:
         dispatch({ type: INIT_GAME, payload: 'init' });
         break;
-      case 'ready':
+      case Gamestate.READY:
         dispatch({ type: READY_CHECK, payload: 'ready' });
         break;
-      case 'standby':
+      case Gamestate.STANDBY:
         dispatch({ type: STANDBY, payload: 'standby' });
         break;
-      case 'start':
+      case Gamestate.START:
         dispatch({
           type: START_GAME,
           payload: { status: 'start', valid: undefined },
         });
         checkPoolSize();
         break;
-      case 'validate':
+      case Gamestate.VALIDATE:
         dispatch({ type: VALIDATE, payload: 'validate' });
         break;
-      case 'failure':
+      case Gamestate.FAILURE:
         dispatch({ type: FAILURE, payload: 'failure' });
         break;
-      case 'end':
+      case Gamestate.END:
         dispatch({ type: END_GAME, payload: 'end' });
         break;
       default:
@@ -150,7 +158,7 @@ function App() {
    * Returns undefined if pool is empty.
    */
   const newBall = () => {
-    let status: Status = state.status;
+    let gamestate: Gamestate = state.gamestate;
     let pool: Pool = [...state.pool];
     let draws: Pool = [...state.draws];
     let ball = getBall(pool);
@@ -162,7 +170,7 @@ function App() {
     }
 
     // These probably belong somewhere else outside of this funciton
-    if (status === 'standby' || status === 'failure') {
+    if (gamestate === Gamestate.STANDBY || gamestate === Gamestate.FAILURE) {
       dispatch({
         type: START_GAME,
         payload: { status: 'start', valid: undefined },
@@ -219,10 +227,10 @@ function App() {
     }
   };
 
-  let { status, ball, draws, card, winner } = state;
+  let { gamestate, ball, draws, card, winner } = state;
 
   return (
-    <GameContext.Provider value={status}>
+    <GameContext.Provider value={gamestate}>
       <BallContext.Provider value={ball}>
         <div className="App">
           <Host
@@ -233,7 +241,7 @@ function App() {
           <Player
             play={play}
             winner={winner}
-            status={status}
+            gamestate={gamestate}
             recieveCard={recieveCard}
           ></Player>
         </div>
