@@ -59,27 +59,27 @@ function reducer(state: State, action: Action) {
     case INIT_GAME:
       return { ...initialState, draws: [[], [], [], [], []] };
     case READY_CHECK:
-      return { ...state, status: action.payload };
+      return { ...state, gamestate: action.payload };
     case STANDBY:
-      return { ...state, status: action.payload };
+      return { ...state, gamestate: action.payload };
     case START_GAME:
       return {
         ...state,
-        status: action.payload.status,
+        gamestate: action.payload.status,
         valid: action.payload.valid,
       };
     case VALIDATE:
-      return { ...state, status: action.payload };
+      return { ...state, gamestate: action.payload };
     case FAILURE:
-      return { ...state, status: action.payload };
+      return { ...state, gamestate: action.payload };
     case END_GAME:
-      return { ...state, status: action.payload };
+      return { ...state, gamestate: action.payload };
     case GET_CARD:
       return { ...state, card: action.payload };
     case CHECK_CARD:
       return {
         ...state,
-        status: action.payload.status,
+        gamestate: action.payload.status,
         valid: action.payload.valid,
         winner: action.payload.winner,
       };

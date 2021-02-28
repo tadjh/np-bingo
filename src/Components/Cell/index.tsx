@@ -10,7 +10,7 @@ const Cell = (props: Props) => {
   return (
     <div
       id={id}
-      className={`grid-item ${crossmark ? 'crossmark' : ''}${className}`}
+      className={`grid-item ${className}${crossmark ? ' crossmark' : ''}`}
       onClick={onClick}
     >
       {children}
