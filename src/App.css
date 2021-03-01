@@ -41,7 +41,7 @@ button.disabled {
 }
 
 .App {
-  height: 100vh;
+  height: 90vh;
 }
 
 .App > div:first-child {
@@ -51,4 +51,9 @@ button.disabled {
 
 .Debug.disabled {
   display: none;
+}
+
+.footer {
+  height: 10vh;
+  text-align: center;
 }
