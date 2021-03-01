@@ -1,6 +1,7 @@
 {
   "name": "np-bingo",
   "version": "0.1.0",
+  "homepage": "http://dev.tadjhbrooks.com/np-bingo/",
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.11.3",
