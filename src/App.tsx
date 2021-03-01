@@ -240,7 +240,7 @@ function App() {
 
   let { gamestate, ball, draws, card, winner } = state;
 
-  const [currentTab, setCurrentTabs] = useState(0);
+  const [currentTab, setCurrentTabs] = useState(1);
 
   const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
     setCurrentTabs(newValue);
@@ -279,10 +279,14 @@ function App() {
             ></Player>
           </Panel>
         </div>
-        <code className={`Debug ${!DEBUG && 'disabled'}`}>
-          <h1>Debug</h1>
-          <p>by Tadjh Brooks</p>
-        </code>
+        <div className="footer">
+          <p>Coded by Tadjh Brooks</p>
+          <p>
+            <a href="https://github.com/TadjhBrooks/np-bingo">
+              https://github.com/TadjhBrooks/np-bingo
+            </a>
+          </p>
+        </div>
       </BallContext.Provider>
     </GameContext.Provider>
   );
