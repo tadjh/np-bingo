@@ -11,29 +11,32 @@ type Props = {
 function Ball(props: Props) {
   let { newBall, host, disabled } = props;
   return (
-    <div className="ball-container">
-      {host && newBall && (
-        <button
-          disabled={disabled}
-          className={`${disabled && 'disabled'}`}
-          onClick={newBall}
-        >
-          New Ball
-        </button>
-      )}
-      <BallContext.Consumer>
-        {(value) => (
-          <React.Fragment>
-            <span className={`ball ${disabled && 'disabled'}`}>
-              {value.name}
-            </span>
+    <BallContext.Consumer>
+      {(value) => (
+        <div className="ball-container-wrapper">
+          {host && newBall && (
+            <button
+              disabled={disabled}
+              className={`${disabled && 'disabled'}`}
+              onClick={newBall}
+            >
+              New Ball
+            </button>
+          )}
+          <div className="ball-container">
+            <div className={`ball ${value.column} ${disabled && 'disabled'}`}>
+              <div className="column text blue">{value.column}</div>
+              <div className="number text blue">
+                {value.number !== 0 && value.number}
+              </div>
+            </div>
             <p
-              className={`h5 ${disabled && 'hidden'}`}
+              className={`remainder ${disabled && 'hidden'}`}
             >{`Balls Remaining: ${value.remainder}`}</p>
-          </React.Fragment>
-        )}
-      </BallContext.Consumer>
-    </div>
+          </div>
+        </div>
+      )}
+    </BallContext.Consumer>
   );
 }
 

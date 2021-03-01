@@ -10,6 +10,11 @@
   --color-alert: #e00101;
   --color-disabled: #cccccc;
   --font-size-small: 70%;
+  --bingo-blue: #1b2c98;
+  --bingo-red: #fa3934;
+  --bingo-grey: #cccccc;
+  --bingo-green: #1a5e47;
+  --bingo-orange: #fd9e28;
 }
 
 h2 {
@@ -19,15 +24,15 @@ h2 {
 button {
   margin: 7px;
   padding: 7px;
-  background-color: var(--color-primary);
-  color: var(--color-light);
+  /* background-color: var(--color-primary);
+  color: var(--color-light); */
   font-weight: bold;
   text-transform: uppercase;
 }
 
 button.disabled {
-  background-color: var(--color-light-alt);
-  color: var(--color-disabled);
+  background-color: var(--color-light-alt) !important;
+  color: var(--color-disabled) !important;
 }
 
 .hidden {

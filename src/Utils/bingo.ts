@@ -95,15 +95,15 @@ export function getBall(pool: Pool): Ball {
 
     return {
       key: columns[columnIndex],
-      value: values[valueIndex],
-      name: letters[columns[columnIndex]] + values[valueIndex],
+      number: values[valueIndex],
+      column: letters[columns[columnIndex]],
       remainder: remainder - 1,
     };
   } else {
     return {
       key: 0,
-      value: 0,
-      name: '',
+      number: 0,
+      column: '',
       remainder: 0,
     };
   }
@@ -118,7 +118,7 @@ export function removeBall(pool: Pool, ball: Ball) {
   return pool.map(function (item: number[], index) {
     if (index === ball.key) {
       return item.filter(function (element: number) {
-        return element !== ball.value;
+        return element !== ball.number;
       });
     }
     return item;

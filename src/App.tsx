@@ -44,7 +44,7 @@ type Action = {
 
 const initialState: State = {
   gamestate: Gamestate.INIT,
-  ball: { key: 0, value: 0, name: '', remainder: 0 },
+  ball: { key: 0, number: 0, column: '', remainder: 75 },
   pool: BINGO,
   draws: [[], [], [], [], []],
   card: new Array(25),
@@ -100,8 +100,8 @@ function reducer(state: State, action: Action) {
 export const GameContext = React.createContext(Gamestate.INIT);
 export const BallContext = React.createContext({
   key: 0,
-  value: 0,
-  name: '',
+  number: 0,
+  column: '',
   remainder: 0,
 } as Ball);
 
@@ -163,10 +163,10 @@ function App() {
     let draws: Pool = [...state.draws];
     let ball = getBall(pool);
 
-    if (ball.value !== 0) {
+    if (ball.number !== 0) {
       pool = removeBall(pool, ball);
 
-      draws[ball.key].push(ball.value);
+      draws[ball.key].push(ball.number);
     }
 
     // These probably belong somewhere else outside of this funciton

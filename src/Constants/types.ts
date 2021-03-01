@@ -1,7 +1,7 @@
 export type Ball = {
   key: number;
-  value: number;
-  name: string;
+  number: number;
+  column: string;
   remainder: number;
 };
 export type Card = number[];
@@ -42,10 +42,10 @@ export enum Gametype {
  * Corners - All four corners (b1, b5, o1, o5) count as a valid bingo.
  * Roving L - A 'L' shape (b1, b2, b3, b4, b5, i5, n5, g5, o5) or inverted 'L' (o1, o2, o3, o4, o5, g5, n5, i5, b5) count as a valid bingo.
  */
-enum Speical {
+enum Special {
   POSTAGE = 'postage',
   CORNERS = 'corners',
   ROVING_L = 'roving l',
 }
 
-export type Rules = Speical[];
+export type Rules = Special[];

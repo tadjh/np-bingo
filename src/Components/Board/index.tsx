@@ -20,7 +20,7 @@ function Board(props: Props) {
           if (index < 5) {
             return (
               <div
-                className={`grid-header ${
+                className={`grid-header grid-header-${index + 1} ${
                   winner.methods.length > 0 && 'winner'
                 }`}
                 key={index}

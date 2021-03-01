@@ -1,8 +1,8 @@
 import React from 'react';
-import Ball from '../Components/Ball';
-import { GameContext } from '../App';
-import { Gamestate } from '../Constants/types';
-import StatusMessage from '../Components/Status';
+import Ball from '../../Components/Ball';
+import { GameContext } from '../../App';
+import { Gamestate } from '../../Constants/types';
+import StatusMessage from '../../Components/Status';
 
 type Props = {
   play: (action: Gamestate) => void;

@@ -1,9 +1,9 @@
 import React, { useEffect, useReducer } from 'react';
-import { GameContext } from '../App';
-import { Card, Results, Gamestate, Winner } from '../Constants/types';
-import Ball from '../Components/Ball';
-import Board from '../Components/Board';
-import StatusMessage from '../Components/Status';
+import { GameContext } from '../../App';
+import { Card, Results, Gamestate, Winner } from '../../Constants/types';
+import Ball from '../../Components/Ball';
+import Board from '../../Components/Board';
+import StatusMessage from '../../Components/Status';
 import {
   BINGO,
   INIT_CROSSMARKS,
@@ -12,8 +12,8 @@ import {
   NEW_CARD,
   UPDATE_CROSSMARKS,
   WINNER_CROSSMARKS,
-} from '../Constants';
-import { createCard, serializeCard } from '../Utils/bingo';
+} from '../../Constants';
+import { createCard, serializeCard } from '../../Utils/bingo';
 
 type Props = {
   gamestate: Gamestate;
@@ -184,7 +184,7 @@ function Player(props: Props) {
                 New Card
               </button>
               <button
-                className={`${value !== Gamestate.READY && 'disabled'}`}
+                className={`ready ${value !== Gamestate.READY && 'disabled'}`}
                 disabled={value !== Gamestate.READY && true}
                 onClick={() => play(Gamestate.STANDBY)}
               >

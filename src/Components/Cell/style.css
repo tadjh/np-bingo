@@ -11,7 +11,6 @@
 .crossmark::before {
   content: '\274c';
   position: absolute;
-  color: var(--color-alert);
   font-size: 250%;
   height: 100%;
   width: 100%;
