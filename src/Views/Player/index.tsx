@@ -14,6 +14,9 @@ import {
   WINNER_CROSSMARKS,
 } from '../../Constants';
 import { createCard, serializeCard } from '../../Utils/bingo';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Button from '@material-ui/core/Button';
+import './style.css';
 
 type Props = {
   gamestate: Gamestate;
@@ -156,40 +159,45 @@ function Player(props: Props) {
   const board = [...letters, ...card];
   return (
     <div className="Player">
-      <h1>Player View</h1>
       <GameContext.Consumer>
         {(value) => (
           <React.Fragment>
             <div className="App-buttons">
-              <button
-                className={`${
-                  value !== Gamestate.START &&
-                  value !== Gamestate.FAILURE &&
-                  'disabled'
-                }`}
-                disabled={
-                  value !== Gamestate.START &&
-                  value !== Gamestate.FAILURE &&
-                  true
-                }
-                onClick={() => bingo()}
+              <ButtonGroup
+                variant="contained"
+                color="primary"
+                aria-label="contained primary button group"
               >
-                Bingo
-              </button>
-              <button
-                className={`${value !== Gamestate.READY && 'disabled'}`}
-                disabled={value !== Gamestate.READY && true}
-                onClick={newCard}
-              >
-                New Card
-              </button>
-              <button
-                className={`ready ${value !== Gamestate.READY && 'disabled'}`}
-                disabled={value !== Gamestate.READY && true}
-                onClick={() => play(Gamestate.STANDBY)}
-              >
-                Ready
-              </button>
+                <Button
+                  className={`${
+                    value !== Gamestate.START &&
+                    value !== Gamestate.FAILURE &&
+                    'disabled'
+                  }`}
+                  disabled={
+                    value !== Gamestate.START &&
+                    value !== Gamestate.FAILURE &&
+                    true
+                  }
+                  onClick={() => bingo()}
+                >
+                  Bingo
+                </Button>
+                <Button
+                  className={`${value !== Gamestate.READY && 'disabled'}`}
+                  disabled={value !== Gamestate.READY && true}
+                  onClick={newCard}
+                >
+                  New Card
+                </Button>
+                <Button
+                  className={`ready ${value !== Gamestate.READY && 'disabled'}`}
+                  disabled={value !== Gamestate.READY && true}
+                  onClick={() => play(Gamestate.STANDBY)}
+                >
+                  Ready
+                </Button>
+              </ButtonGroup>
             </div>
             <StatusMessage gamestate={value} />
             <Ball

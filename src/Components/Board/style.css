@@ -26,6 +26,26 @@
   border-bottom: var(--border-width-bold) solid var(--color-dark);
 }
 
+.grid-header-1 {
+  background-color: var(--bingo-blue);
+}
+
+.grid-header-2 {
+  background-color: var(--bingo-red);
+}
+
+.grid-header-3 {
+  background-color: var(--bingo-grey);
+}
+
+.grid-header-4 {
+  background-color: var(--bingo-green);
+}
+
+.grid-header-5 {
+  background-color: var(--bingo-orange);
+}
+
 .grid-header.winner {
   background-color: var(--color-success);
   border-color: var(--color-success-dark);

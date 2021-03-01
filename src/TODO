@@ -1,11 +1,8 @@
 // TODO Write basic tests
-// TODO Color ready button differently
-// TODO Winning Crossmarks should turn green
-// TODO Change Crossmarks color when crossmarks.length > 19 (20 marks is average bingo)
 // TODO Balls remaining color based on amount
             * Bright Green @ 75 (default)
             * Yellow-Green when 5 balls have been drawn in each column (Earliest possible bingo)
-            * Red 42
+            * Red below 42 avg bingo
 // TODO Death Bingo
 // TODO Blackout Bingo
 // TODO Postage Stamp Rule

@@ -18,14 +18,14 @@ function statusText(gamestate: Gamestate, host?: boolean) {
       }
       break;
     case Gamestate.READY:
-      text = 'Select a card and click ready.';
+      text = 'Draw a card and click ready.';
 
       if (host) {
         text = 'Waiting for player to ready up...';
       }
       break;
     case Gamestate.STANDBY:
-      text = 'Waiting for a ball...';
+      text = 'Waiting for host to dispense a ball...';
 
       if (host) {
         text = 'Click to dispense a ball.';
@@ -35,10 +35,10 @@ function statusText(gamestate: Gamestate, host?: boolean) {
       text = 'Click a square on the card to cross it out';
       if (host) {
         let rollText = [
-          'Keep on rolling...',
-          'Fetch another ball!',
-          'Roll another!',
-          'Dispense a ball.',
+          'Call the ball, then keep on rolling...',
+          'Call it out! Then fetch another ball!',
+          'Say the name of the ball, then roll again!',
+          'Call out the ball, then dispense another.',
         ];
         text = randomElement(rollText);
       }

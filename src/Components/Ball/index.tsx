@@ -1,3 +1,4 @@
+import Button from '@material-ui/core/Button';
 import React from 'react';
 import { BallContext } from '../../App';
 import './style.css';
@@ -15,13 +16,15 @@ function Ball(props: Props) {
       {(value) => (
         <div className="ball-container-wrapper">
           {host && newBall && (
-            <button
+            <Button
+              variant="contained"
+              color="primary"
               disabled={disabled}
               className={`${disabled && 'disabled'}`}
               onClick={newBall}
             >
               New Ball
-            </button>
+            </Button>
           )}
           <div className="ball-container">
             <div className={`ball ${value.column} ${disabled && 'disabled'}`}>

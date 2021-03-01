@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import './App.css';
 import {
   INIT_GAME,
@@ -26,6 +26,10 @@ import {
 } from './Constants/types';
 import Host from './Views/Host';
 import Player from './Views/Player';
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Panel from './Components/Panel';
 
 type State = {
   gamestate: Gamestate;
@@ -65,7 +69,7 @@ function reducer(state: State, action: Action) {
     case START_GAME:
       return {
         ...state,
-        gamestate: action.payload.status,
+        gamestate: action.payload.gamestate,
         valid: action.payload.valid,
       };
     case VALIDATE:
@@ -79,7 +83,7 @@ function reducer(state: State, action: Action) {
     case CHECK_CARD:
       return {
         ...state,
-        gamestate: action.payload.status,
+        gamestate: action.payload.gamestate,
         valid: action.payload.valid,
         winner: action.payload.winner,
       };
@@ -102,7 +106,7 @@ export const BallContext = React.createContext({
   key: 0,
   number: 0,
   column: '',
-  remainder: 0,
+  remainder: 75,
 } as Ball);
 
 function App() {
@@ -129,7 +133,7 @@ function App() {
       case Gamestate.START:
         dispatch({
           type: START_GAME,
-          payload: { status: 'start', valid: undefined },
+          payload: { gamestate: 'start', valid: undefined },
         });
         checkPoolSize();
         break;
@@ -173,7 +177,7 @@ function App() {
     if (gamestate === Gamestate.STANDBY || gamestate === Gamestate.FAILURE) {
       dispatch({
         type: START_GAME,
-        payload: { status: 'start', valid: undefined },
+        payload: { gamestate: 'start', valid: undefined },
       });
     }
 
@@ -185,6 +189,13 @@ function App() {
         pool: pool,
       },
     });
+
+    if (ball.remainder === 0) {
+      dispatch({
+        type: END_GAME,
+        payload: 'end',
+      });
+    }
   };
 
   /**
@@ -211,7 +222,7 @@ function App() {
         type: CHECK_CARD,
         payload: {
           valid: true,
-          status: 'end',
+          gamestate: 'end',
           winner: { methods: methods, data: data },
         },
       });
@@ -220,7 +231,7 @@ function App() {
         type: CHECK_CARD,
         payload: {
           valid: false,
-          status: 'failure',
+          gamestate: 'failure',
           winner: { methods: [], data: {} },
         },
       });
@@ -229,26 +240,47 @@ function App() {
 
   let { gamestate, ball, draws, card, winner } = state;
 
+  const [currentTab, setCurrentTabs] = useState(0);
+
+  const handleChange = (event: React.ChangeEvent<{}>, newValue: number) => {
+    setCurrentTabs(newValue);
+  };
+
   return (
     <GameContext.Provider value={gamestate}>
       <BallContext.Provider value={ball}>
         <div className="App">
-          <Host
-            play={play}
-            checkCard={() => checkCard(card, draws)}
-            newBall={newBall}
-          ></Host>
-          <Player
-            play={play}
-            winner={winner}
-            gamestate={gamestate}
-            recieveCard={recieveCard}
-          ></Player>
+          <Paper square>
+            <Tabs
+              value={currentTab}
+              indicatorColor="primary"
+              textColor="primary"
+              onChange={handleChange}
+              aria-label="Host and Player Tabs"
+            >
+              <Tab label="Host" />
+              <Tab label="Player" />
+            </Tabs>
+          </Paper>
+          <Panel value={currentTab} index={0}>
+            <Host
+              play={play}
+              checkCard={() => checkCard(card, draws)}
+              newBall={newBall}
+              draws={draws}
+            ></Host>
+          </Panel>
+          <Panel value={currentTab} index={1}>
+            <Player
+              play={play}
+              winner={winner}
+              gamestate={gamestate}
+              recieveCard={recieveCard}
+            ></Player>
+          </Panel>
         </div>
         <code className={`Debug ${!DEBUG && 'disabled'}`}>
           <h1>Debug</h1>
-          <h3>Current Draws</h3>
-          <p>{state.draws ? JSON.stringify(draws) : 'None'}</p>
           <p>by Tadjh Brooks</p>
         </code>
       </BallContext.Provider>
