@@ -1,3 +1,4 @@
+// TODO End Game -> Start Game is an extra uneccessary click
 // TODO Write basic tests
 // TODO Balls remaining color based on amount
             * Bright Green @ 75 (default)
