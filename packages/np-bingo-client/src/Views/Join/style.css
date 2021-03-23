@@ -1,0 +1,41 @@
+.room-list {
+  width: 100%;
+}
+
+input:focus {
+  outline: none;
+  color: var(--bingo-blue);
+}
+
+.code-input {
+  border: 0px;
+}
+
+.code-input > label {
+  display: block;
+}
+
+.code-input .partitioned {
+  position: relative;
+  left: calc(var(--font-size-h1) / 3);
+  width: calc(var(--font-size-h1) * 8);
+  font-family: 'Roboto Mono';
+  font-weight: 700;
+  font-size: var(--font-size-h1);
+  text-transform: uppercase;
+  letter-spacing: calc(var(--font-size-h1) * 1.4);
+  padding-left: calc(var(--font-size-h1) / 3);
+  margin-right: calc(var(--font-size-h1) / -2);
+  overflow: hidden;
+  border: 0;
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--color-dark) 0,
+    var(--color-dark) calc(var(--font-size-h1) * 1.33),
+    transparent 0,
+    transparent calc(var(--font-size-h1) * 2)
+  );
+  background-position: bottom left;
+  background-size: calc(var(--font-size-h1) * 8) var(--border-width-light);
+  background-repeat: no-repeat;
+}

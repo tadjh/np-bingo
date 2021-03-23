@@ -1,0 +1,41 @@
+Bugs
+// TODO Prevent Join room that doesn't exist
+// TODO Share link logic unfinished
+
+High Priority
+// TODO Rest api use game "_id" instead of room id
+// TODO Save Game to DB after game over
+// TODO Rest Api auth
+// TODO Max active Games
+// TODO Max room size 
+// TODO Single-player AI
+// TODO Create users
+
+Development
+// TODO Push app to new branch once stable
+// TODO Investigate checkPoolSize
+// TODO Remove as many player functions from App.tsx as possible
+// TODO MongoDB model timestamps
+// TODO Socket.io error handling?
+// TODO Create types package for type usage across packages
+// TODO Write basic tests
+
+QOL
+// TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
+// TODO Change color of ready check background
+// TODO Host has left game notification
+// TODO Show winner name on win
+
+Future Features
+// TODO Public Rooms
+// TODO Share room link
+// TODO Streamer Mode
+// TODO Balls remaining color based on amount
+            * Bright Green @ 75 (default)
+            * Yellow-Green when 5 balls have been drawn in each column (Earliest possible bingo)
+            * Red below 42 avg bingo
+// TODO Death Bingo
+// TODO Blackout Bingo
+// TODO Postage Stamp Rule
+// TODO Four Corners Rule
+// TODO Roving L Rule
