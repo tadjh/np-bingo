@@ -1,0 +1,7 @@
+.Join > .main {
+  flex: 0 1;
+}
+
+.Join > .main > * {
+  margin: var(--spacing);
+}

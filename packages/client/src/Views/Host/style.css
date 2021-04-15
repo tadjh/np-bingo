@@ -1,0 +1,3 @@
+.app-buttons .toggle-button {
+  min-width: var(--spacing-2x * 5);
+}

@@ -1,0 +1,43 @@
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  width: var(--grid);
+  border: var(--border-width-bold) solid var(--color-dark);
+  border-radius: var(--spacing);
+}
+
+.grid.winner {
+  border-color: var(--color-success-dark);
+}
+
+.grid-item.grid-item-5,
+.grid-item.grid-item-10,
+.grid-item.grid-item-15,
+.grid-item.grid-item-20,
+.grid-item.grid-item-25 {
+  border-right: var(--border-width-light) solid var(--color-dark);
+}
+
+.grid-item.grid-item-21,
+.grid-item.grid-item-22,
+.grid-item.grid-item-23,
+.grid-item.grid-item-24,
+.grid-item.grid-item-25 {
+  border-bottom: var(--border-width-light) solid var(--color-dark);
+}
+
+.grid > .serial {
+  font-size: var(--font-size-xs);
+  color: var(--color-light);
+  background-color: var(--color-dark);
+  padding-top: var(--border-width-bold);
+  height: var(--font-size-h6);
+  line-height: var(--font-size-h6);
+  font-weight: bold;
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+
+.grid.winner > .serial {
+  background-color: var(--color-success-dark);
+}
