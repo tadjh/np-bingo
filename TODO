@@ -1,24 +1,22 @@
 Bugs
 // TODO Prevent Join room that doesn't exist
-// TODO Share link logic unfinished
 
 High Priority
+// TODO Solo Card Validation
 // TODO Rest api use game "_id" instead of room id
 // TODO Save Game to DB after game over
 // TODO Rest Api auth
 // TODO Max active Games
 // TODO Max room size 
-// TODO Single-player AI
 // TODO Create users
 
 Development
 // TODO Push app to new branch once stable
-// TODO Investigate checkPoolSize
 // TODO Remove as many player functions from App.tsx as possible
 // TODO MongoDB model timestamps
 // TODO Socket.io error handling?
-// TODO Create types package for type usage across packages
 // TODO Write basic tests
+// TODO Disable socket.io when in solo
 
 QOL
 // TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
