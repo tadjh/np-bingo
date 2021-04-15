@@ -23,6 +23,7 @@ QOL
 // TODO Change color of ready check background
 // TODO Host has left game notification
 // TODO Show winner name on win
+// TODO Handle Errors non destructively
 
 Future Features
 // TODO Public Rooms

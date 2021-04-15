@@ -39,6 +39,8 @@ function Share() {
     setCopyText('Click to copy link to clipboard');
   }
 
+  // TODO Hide full URL when config set to Streamer Mode
+
   return (
     <React.Fragment>
       <IconButton onClick={handleOpen} aria-label="share">
