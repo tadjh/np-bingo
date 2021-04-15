@@ -25,7 +25,7 @@ const initialState = {
 
 function DialogCode(props: Props) {
   let { open, handleClose, join } = props;
-  const { inputs, error, handleChange, handleSubmit, handlePaste } = useForm(
+  const { inputs, errors, handleChange, handleSubmit, handlePaste } = useForm(
     initialState,
     joinCallback
   );
@@ -77,7 +77,7 @@ function DialogCode(props: Props) {
       </DialogTitle>
       <form onSubmit={handleSubmit} autoComplete="off">
         <DialogContent>
-          <DialogContentText>{error && error}</DialogContentText>
+          <DialogContentText>{errors && errors}</DialogContentText>
           <fieldset className="code-input">
             {/* <label htmlFor="code-input">Room Code</label> */}
             <input

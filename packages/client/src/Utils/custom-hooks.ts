@@ -92,7 +92,7 @@ export function useForm(
     return;
   }
 
-  return { inputs, error: errors, handleChange, handleSubmit, handlePaste };
+  return { inputs, errors, handleChange, handleSubmit, handlePaste };
 }
 
 /**
