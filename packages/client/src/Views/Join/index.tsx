@@ -83,15 +83,11 @@ function Join(props: Props) {
         >
           Join Room
         </Button>
-        <Button
-          color="primary"
-          onClick={handleSolo}
-          // component={RouterLink}
-          // to="/play?m=solo"
-          size="large"
-        >
-          Play Solo
-        </Button>
+        {features['single-player'] && (
+          <Button color="primary" onClick={handleSolo} size="large">
+            Play Solo
+          </Button>
+        )}
       </div>
       <footer>
         <Link component={RouterLink} to="/">
