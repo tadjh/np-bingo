@@ -1,5 +1,6 @@
 Bugs
 // TODO Prevent Join room that doesn't exist
+// TODO Crossmarks make random status text change especially on failure
 
 High Priority
 // TODO Solo Card Validation
@@ -24,6 +25,7 @@ QOL
 // TODO Host has left game notification
 // TODO Show winner name on win
 // TODO Handle Errors non destructively
+// TODO restart solo mode
 
 Future Features
 // TODO Public Rooms
