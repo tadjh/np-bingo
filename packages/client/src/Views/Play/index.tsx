@@ -39,7 +39,7 @@ import { initialState, reducer } from '../../Reducers/play.reducer';
 type Props = {
   gamestate: Gamestate;
   winner: Winner;
-  sendCard: (room: Room, host: Host, card: Card) => void;
+  sendCard: (mode: Gamemode, card: Card, room?: Room, host?: Host) => void;
   leaveRoom: (room: Room, host: Host) => void;
   standby: (mode: Gamemode) => void;
   kicked: boolean;
@@ -124,6 +124,19 @@ function Play(props: Props) {
     }
   }, [winner]);
 
+  const handleSendCard = (
+    mode: Gamemode,
+    card: Card,
+    room: Room,
+    host: Host
+  ) => {
+    if (mode !== 'solo') {
+      sendCard(mode, card, room, host);
+    } else {
+      sendCard(mode, card);
+    }
+  };
+
   let { card, serial, crossmarks } = state;
   const board = [...card];
   return (
@@ -138,17 +151,11 @@ function Play(props: Props) {
                 aria-label="contained primary button group"
               >
                 <Button
-                  className={`${
-                    value.gamestate !== 'start' &&
-                    value.gamestate !== 'failure' &&
-                    'disabled'
-                  }`}
-                  disabled={
-                    value.gamestate !== 'start' &&
-                    value.gamestate !== 'failure' &&
-                    true
+                  className={`${value.gamestate !== 'start' && 'disabled'}`} // TODO removed value.gamestate !== 'failure' on these??
+                  disabled={value.gamestate !== 'start' && true}
+                  onClick={() =>
+                    handleSendCard(value.mode, card, value.room, value.host)
                   }
-                  onClick={() => sendCard(value.room, value.host, card)}
                 >
                   Bingo
                 </Button>
@@ -161,12 +168,18 @@ function Play(props: Props) {
                 </Button>
                 <Button
                   className={`ready ${
-                    value.gamestate !== 'ready' && 'disabled'
+                    value.gamestate !== 'ready' &&
+                    value.gamestate !== 'failure' &&
+                    'disabled'
                   }`}
-                  disabled={value.gamestate !== 'ready' && true}
+                  disabled={
+                    value.gamestate !== 'ready' &&
+                    value.gamestate !== 'failure' &&
+                    true
+                  }
                   onClick={() => standby(value.mode)}
                 >
-                  Ready
+                  {value.gamestate === 'failure' ? 'Resume' : 'Ready'}
                 </Button>
               </ButtonGroup>
             </div>

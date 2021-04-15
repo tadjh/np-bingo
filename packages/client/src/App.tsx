@@ -59,12 +59,13 @@ import {
 import { useQuery } from './Utils/custom-hooks';
 import config from './Config/features';
 import { GameContext, BallContext } from './Utils/contexts';
+import logger from 'use-reducer-logger';
 
 function App() {
   let history = useHistory();
   let query = useQuery();
   const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
-    reducer,
+    process.env.NODE_ENV === 'development' ? logger(reducer) : reducer,
     initialState
   );
   // TODO where does this belong?
@@ -457,22 +458,27 @@ function App() {
   );
 
   /**
-   * Single Player Loop
+   * Solo mode progress bar animation
    */
   useEffect(() => {
-    if (state.loop && state.ball.remainder !== 0) {
+    if (state.loop && state.gamestate === 'start') {
       const timer = setInterval(() => {
         setProgress((prevProgress) =>
           prevProgress >= 100 ? 100 : prevProgress + 9.17
         );
       }, config['ball-delay'] / 12);
+      return () => clearInterval(timer);
+    }
+  }, [state.gamestate, state.loop, progress]);
 
+  /**
+   * Solo mode new ball delay and animation reset
+   */
+  useEffect(() => {
+    if (state.loop && state.ball.remainder !== 0) {
       const timeout = setTimeout(() => {
-        clearInterval(timer);
-
         newBall('solo', state.pool, state.draws, undefined, (ball: Ball) => {
           setProgress(0);
-
           console.log(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
           if (ball.remainder === 0) {
             dispatch({ type: LOOP_STOP });
@@ -482,14 +488,21 @@ function App() {
       }, config['ball-delay']);
       return () => clearTimeout(timeout);
     }
-  }, [newBall, state.ball.remainder, state.draws, state.loop, state.pool]);
+  }, [newBall, state.ball.remainder, state.loop, state.draws, state.pool]);
 
   /**
    * Player: Send card to host
+   * @param mode
    * @param card
+   * @param room
    * @param host
    */
-  const sendCard = (room: Room, host: RoomHost, card: Card) => {
+  const sendCard = (
+    mode: Gamemode,
+    card: Card,
+    room?: Room,
+    host?: RoomHost
+  ) => {
     // TODO This info should be set when user loads app
     let player = {
       _id: 'adaskdjsahkd',
@@ -497,17 +510,28 @@ function App() {
       name: 'Jane Doe',
       socket: socket.id,
     };
-    play('validate');
-    socket.emit('send-card', room, host.socket, player, card);
+    if (mode !== 'solo') {
+      play('validate');
+      room && host && socket.emit('send-card', room, host.socket, player, card);
+    } else {
+      dispatch({ type: GET_CARD, payload: { card: card, owner: player } });
+      solo('validate');
+    }
   };
 
   /**
    * Checks if input card is a winner
+   * @param mode Game mdoe
    * @param playerCard Input card to be checked and owner of card
    * @param draws Pool of bingo balls that have already been drawn
    * @param room Room code
    */
-  const checkCard = (playerCard: PlayerCard, draws: Pool, room: Room) => {
+  const checkCard = (
+    mode: Gamemode,
+    playerCard: PlayerCard,
+    draws: Pool,
+    room?: Room
+  ) => {
     // TODO Add rulesets
     let data: Results = validateCard(playerCard.card, draws);
 
@@ -527,28 +551,55 @@ function App() {
         type: CHECK_CARD_SUCCESS,
         payload: winner,
       });
-      socket.emit('winning-card', room, winner);
-      apiSaveRoom(room, winner);
+      if (mode !== 'solo' && room) {
+        socket.emit('winning-card', room, winner);
+        apiSaveRoom(room, winner);
+      }
     } else {
       dispatch({ type: CHECK_CARD_FAILURE });
-      socket.emit('losing-card', room);
+      mode !== 'solo' && room && socket.emit('losing-card', room);
     }
   };
 
-  const solo = (gamestate: Gamestate) => {
-    switch (gamestate) {
-      case 'init':
-        mode('solo');
-        play('ready');
-        break;
-      case 'standby':
-        play('start');
-        dispatch({ type: LOOP_START });
-        break;
-      default:
-        throw new Error('Invalid game state in solo.');
+  const solo = useCallback(
+    (gamestate: Gamestate) => {
+      switch (gamestate) {
+        case 'init':
+          mode('solo');
+          play('ready');
+          break;
+        case 'standby':
+          play('start');
+          dispatch({ type: LOOP_START });
+          break;
+        case 'validate':
+          play('validate');
+          dispatch({ type: LOOP_STOP });
+          break;
+        case 'pause':
+          play('pause');
+          // TODO Pulling directly from state feels wrong
+          checkCard(state.rules.mode, state.playerCard, state.draws);
+          break;
+        default:
+          throw new Error('Invalid game state in solo.');
+      }
+    },
+    [play, state.draws, state.playerCard, state.rules.mode]
+  );
+
+  /**
+   * Pause solo mode loop on validate
+   */
+  useEffect(() => {
+    if (!state.loop && state.gamestate === 'validate') {
+      const pauseTime = setTimeout(() => {
+        solo('pause');
+        setProgress(0);
+      }, 1000);
+      return () => clearTimeout(pauseTime);
     }
-  };
+  }, [solo, state.loop, state.gamestate]);
 
   let {
     gamestate,
@@ -583,7 +634,7 @@ function App() {
             </Route>
             <Route path="/host">
               <Host
-                checkCard={() => checkCard(playerCard, draws, room)}
+                checkCard={() => checkCard(rules.mode, playerCard, draws, room)}
                 newBall={() => newBall(rules.mode, pool, draws, room)}
                 draws={draws}
                 leaveRoom={leaveRoom}
