@@ -10,7 +10,7 @@ import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import { useDialog } from '../../Utils/custom-hooks';
-import { GameContext } from '../../App';
+import { GameContext } from '../../Utils/contexts';
 
 function Share() {
   const { open, handleOpen, handleClose } = useDialog(false, handleCopyText);

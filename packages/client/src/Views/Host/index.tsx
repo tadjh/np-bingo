@@ -1,6 +1,6 @@
 import React from 'react';
 import Ball from '../../Components/Ball';
-import { BallContext, GameContext } from '../../App';
+import { BallContext, GameContext } from '../../Utils/contexts';
 import { Gamestate, Player, Pool, Room } from '@np-bingo/types';
 import StatusMessage from '../../Components/Status';
 import ButtonGroup from '@material-ui/core/ButtonGroup';

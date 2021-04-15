@@ -58,19 +58,7 @@ import {
 } from './Api';
 import { useQuery } from './Utils/custom-hooks';
 import config from './Config/features';
-
-export const GameContext = React.createContext({
-  gamestate: initialState.gamestate,
-  room: initialState.room,
-  host: { ...initialState.host },
-  mode: initialState.rules.mode,
-});
-
-export const BallContext = React.createContext({
-  ball: { ...initialState.ball },
-  loop: initialState.loop,
-  progress: 0,
-});
+import { GameContext, BallContext } from './Utils/contexts';
 
 function App() {
   let history = useHistory();
@@ -79,6 +67,7 @@ function App() {
     reducer,
     initialState
   );
+  // TODO where does this belong?
   const [progress, setProgress] = useState(0);
 
   /**
@@ -118,13 +107,6 @@ function App() {
         throw new Error('Invalid game state.');
     }
   }, []);
-
-  /**
-   * Player: Initialize Game
-   */
-  const init = () => {
-    play('init');
-  };
 
   /**
    * Player: Set standby
@@ -392,9 +374,9 @@ function App() {
   };
 
   /**
-   * Player: Leave room by room code and tell host
+   * Leave room by room code
    * @param room Room code
-   * @param host Room host
+   * @param host Room host (required if player)
    */
   const leaveRoom = (room: string, host?: RoomHost) => {
     play('init');
@@ -413,6 +395,7 @@ function App() {
       socket.emit('leave-room', room, host.socket, player);
     } else {
       // Host
+      // TODO Tell room host left and kick players
       socket.emit('leave-room', room);
 
       apiDeleteRoom(room);
@@ -429,16 +412,7 @@ function App() {
   };
 
   /**
-   * Get size of pool
-   */
-  // const checkPoolSize = () => {
-  //   let pool: Pool = state.pool;
-  //   let { remainder } = getPoolSize(pool);
-  //   dispatch({ type: UPDATE_POOL, payload: remainder });
-  // };
-
-  /**
-   * Retrieves a new Bingo ball from the remaining pool of balls.
+   * Retrieve a new Bingo ball from the remaining pool of balls.
    * Returns undefined if pool is empty.
    * @param mode
    * @param pool
@@ -629,7 +603,7 @@ function App() {
             <Route path="/play">
               <Play
                 gamestate={gamestate}
-                init={init}
+                init={() => play('init')}
                 standby={standby}
                 leaveRoom={leaveRoom}
                 kicked={kicked}

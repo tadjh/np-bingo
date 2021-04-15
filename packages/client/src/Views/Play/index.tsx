@@ -10,7 +10,7 @@ import {
   Room,
   Gamemode,
 } from '@np-bingo/types';
-import { BallContext, GameContext } from '../../App';
+import { BallContext, GameContext } from '../../Utils/contexts';
 import {
   BINGO,
   INIT_CROSSMARKS,
