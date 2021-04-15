@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
@@ -18,12 +18,19 @@ type Props = {
 function Home(props: Props) {
   let { createRoom, joinRoom } = props;
   let history = useHistory();
+  const [privateOnly, setPrivateOnly] = useState(false);
   const { open, handleOpen, handleClose } = useDialog(false);
 
   function join(room: Room) {
     joinRoom(room);
     history.push(`/play?r=${room}`);
   }
+
+  useEffect(() => {
+    if (!features['single-player'] && !features['public-rooms']) {
+      setPrivateOnly(true);
+    }
+  }, []);
 
   return (
     <div className="Home">
@@ -43,9 +50,9 @@ function Home(props: Props) {
         <Button
           variant="contained"
           color="primary"
-          component={features['private-only'] ? 'button' : RouterLink}
-          to={features['private-only'] ? undefined : '/join'}
-          onClick={features['private-only'] ? handleOpen : undefined}
+          component={privateOnly ? 'button' : RouterLink}
+          to={privateOnly ? undefined : '/join'}
+          onClick={privateOnly ? handleOpen : undefined}
           size="large"
         >
           Play
