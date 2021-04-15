@@ -92,13 +92,13 @@ export function useForm(
         ...inputs,
         ...pastedInput,
       }));
-    } catch (err) {
-      handleError(err);
+    } catch (error) {
+      handleError(error);
     }
   }
 
   function handleError(error: Error) {
-    setErrors(() => error.message);
+    setErrors(error.message);
     // TODO removed return, test this
     // return
   }
