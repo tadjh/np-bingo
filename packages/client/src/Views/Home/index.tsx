@@ -19,7 +19,7 @@ function Home(props: Props) {
   let { createRoom, joinRoom } = props;
   let history = useHistory();
   const [privateOnly, setPrivateOnly] = useState(false);
-  const { open, handleOpen, handleClose } = useDialog(false);
+  const [open, handleOpen, handleClose] = useDialog(false);
 
   function join(room: Room) {
     joinRoom(room);

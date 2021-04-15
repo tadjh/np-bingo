@@ -13,7 +13,7 @@ import { useDialog } from '../../Utils/custom-hooks';
 import { GameContext } from '../../Utils/contexts';
 
 function Share() {
-  const { open, handleOpen, handleClose } = useDialog(false, handleCopyText);
+  const [open, handleOpen, handleClose] = useDialog(false, handleCopyText);
   const [copyText, setCopyText] = useState('Click to copy link to clipboard');
   const ref = useRef<HTMLInputElement>(null);
 

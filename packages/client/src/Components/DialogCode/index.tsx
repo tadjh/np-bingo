@@ -25,7 +25,7 @@ const initialState = {
 
 function DialogCode(props: Props) {
   let { open, handleClose, join } = props;
-  const { inputs, errors, handleChange, handleSubmit, handlePaste } = useForm(
+  const [inputs, errors, handleChange, handleSubmit, handlePaste] = useForm(
     initialState,
     joinCallback
   );

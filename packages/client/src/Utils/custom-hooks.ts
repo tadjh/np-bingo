@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
@@ -6,12 +6,12 @@ import { useLocation } from 'react-router-dom';
  * @param initialValue
  * @returns value, toggle
  */
-export function useToggle(initialValue = false) {
+export function useToggle(initialValue = false): [boolean, () => void] {
   const [value, setValue] = useState(initialValue);
   const toggle = useCallback(() => {
     setValue((v) => !v);
   }, []);
-  return { value, toggle };
+  return [value, toggle];
 }
 
 /**
@@ -23,7 +23,17 @@ export function useToggle(initialValue = false) {
 export function useForm(
   initialState: { [key: string]: string },
   callback?: (inputs: any) => void
-) {
+): [
+  { [key: string]: string },
+  string,
+  (event: React.ChangeEvent<HTMLInputElement>) => void,
+  () => void,
+  (
+    event: React.ClipboardEvent<HTMLInputElement>,
+    key: string,
+    maxStringLength?: number | undefined
+  ) => void
+] {
   const [inputs, setInputs] = useState(initialState);
   const [errors, setErrors] = useState('');
 
@@ -89,10 +99,11 @@ export function useForm(
 
   function handleError(error: Error) {
     setErrors(() => error.message);
-    return;
+    // TODO removed return, test this
+    // return
   }
 
-  return { inputs, errors, handleChange, handleSubmit, handlePaste };
+  return [inputs, errors, handleChange, handleSubmit, handlePaste];
 }
 
 /**
@@ -101,7 +112,10 @@ export function useForm(
  * @param callback
  * @returns open, handleOpen, handleClose
  */
-export function useDialog(initialState: boolean, callback?: () => void) {
+export function useDialog(
+  initialState: boolean,
+  callback?: () => void
+): [boolean, () => void, () => void] {
   const [open, setOpen] = useState(initialState);
 
   /**
@@ -119,7 +133,7 @@ export function useDialog(initialState: boolean, callback?: () => void) {
     callback && callback();
   };
 
-  return { open, handleOpen, handleClose };
+  return [open, handleOpen, handleClose];
 }
 
 /**

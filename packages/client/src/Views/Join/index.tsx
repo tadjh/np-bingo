@@ -19,7 +19,7 @@ type Props = {
 function Join(props: Props) {
   let { joinRoom, queryRoom, solo } = props;
   let history = useHistory();
-  const { open, handleOpen, handleClose } = useDialog(false);
+  const [open, handleOpen, handleClose] = useDialog(false);
 
   const join = useCallback(
     (room: Room) => {
