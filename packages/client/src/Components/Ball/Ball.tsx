@@ -12,8 +12,8 @@ export interface BallProps {
 }
 
 export default function Ball({
-  ball = initialState.ball,
-  loop = false,
+  ball = { ...initialState.ball },
+  loop = initialState.loop,
   progress = 0,
   disabled = false,
 }: BallProps) {

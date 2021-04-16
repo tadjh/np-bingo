@@ -47,4 +47,4 @@ Progress.args = {
   progress: 75,
 };
 
-export const Default = Template.bind({});
+export const Empty = Template.bind({});
