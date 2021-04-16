@@ -102,19 +102,36 @@ function Host(props: Props) {
               <React.Fragment>
                 <BallContext.Consumer>
                   {(ballContext) => (
-                    <Ball
-                      ball={ballContext.ball}
-                      loop={ballContext.loop}
-                      progress={ballContext.progress}
-                      disabled={
-                        value.gamestate !== 'start' &&
-                        value.gamestate !== 'standby' &&
-                        value.gamestate !== 'failure' &&
-                        true
-                      }
-                      host={true}
-                      newBall={() => handleBall(value.gamestate, value.room)}
-                    />
+                    <div className="ball-wrapper">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        disabled={
+                          value.gamestate !== 'start' &&
+                          value.gamestate !== 'standby' &&
+                          value.gamestate !== 'failure' &&
+                          true
+                        }
+                        className={`${
+                          value.gamestate !== 'start' &&
+                          value.gamestate !== 'standby' &&
+                          value.gamestate !== 'failure' &&
+                          'disabled'
+                        }`}
+                        onClick={() => handleBall(value.gamestate, value.room)}
+                      >
+                        New Ball
+                      </Button>
+                      <Ball
+                        ball={ballContext.ball}
+                        disabled={
+                          value.gamestate !== 'start' &&
+                          value.gamestate !== 'standby' &&
+                          value.gamestate !== 'failure' &&
+                          true
+                        }
+                      />
+                    </div>
                   )}
                 </BallContext.Consumer>
 

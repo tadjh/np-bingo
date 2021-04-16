@@ -1,8 +1,3 @@
-.ball-container-wrapper {
-  display: flex;
-  align-items: baseline;
-}
-
 .ball-container {
   display: inline-block;
 }
@@ -58,4 +53,9 @@
 
 .remainder {
   font-size: var(--font-size-h6);
+  text-align: center;
+}
+
+.remainder.disabled {
+  color: var(--color-disabled);
 }
