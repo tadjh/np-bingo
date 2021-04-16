@@ -1,5 +1,6 @@
 .code-label {
-  font-size: var(--font-size-h6);
+  font-size: var(--font-size-h5);
+  text-align: center;
 }
 
 .code-row {
@@ -9,8 +10,6 @@
 
 .code {
   margin: var(--spacing-half) 0 var(--font-size-h4);
-  /* font-family: monospace; */
-  /* height: calc(var(--font-size-h3) * 2); */
   font-size: var(--font-size-h1);
 }
 
