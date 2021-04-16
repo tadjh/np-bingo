@@ -4,6 +4,7 @@
   width: var(--grid);
   border: var(--border-width-bold) solid var(--color-dark);
   border-radius: var(--spacing);
+  text-align: center;
 }
 
 .grid.winner {
