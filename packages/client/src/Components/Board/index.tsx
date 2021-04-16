@@ -23,8 +23,8 @@ function Board(props: Props) {
           return (
             <Cell
               id={id}
-              className={`grid-item-${index + 1}`}
               key={index}
+              index={index + 1}
               crossmark={crossmarks[id]}
               onClick={toggleCrossmark}
             >
