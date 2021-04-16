@@ -27,6 +27,7 @@ div.grid-header {
   height: var(--ball-size-sm);
   width: var(--ball-size-sm);
   border-radius: 50%;
+  text-align: center;
 }
 
 .grid-header.logo .grid-header-item > div {
