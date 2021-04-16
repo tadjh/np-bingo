@@ -12,7 +12,8 @@
     "common-build": "yarn workspace @np-bingo/common build",
     "server-build": "yarn workspace @np-bingo/server build",
     "client-build": "yarn workspace @np-bingo/client build",
-    "build": "run-s common-build server-build client-build"
+    "build": "run-s common-build server-build client-build",
+    "storybook": "yarn workspace @np-bingo/client storybook"
   },
   "repository": {
     "type": "git",
@@ -30,5 +31,8 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "resolutions": {
+    "babel-loader": "8.1.0"
+  }
 }
