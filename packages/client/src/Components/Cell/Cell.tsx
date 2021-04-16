@@ -14,10 +14,13 @@ export default function Cell({
   children,
   ...props
 }: CellProps) {
-  const checked = crossmark && 'crossmark';
   return (
     <div
-      className={['grid-item', `grid-item-${index}`, checked].join(' ')}
+      className={[
+        'grid-item',
+        `grid-item-${index}`,
+        crossmark && 'crossmark',
+      ].join(' ')}
       {...props}
     >
       {children}
