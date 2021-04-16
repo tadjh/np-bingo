@@ -209,9 +209,9 @@ function Play(props: Props) {
           )}
         </GameContext.Consumer>
         <Board
-          board={board}
+          card={board}
           serial={serial}
-          winner={winner}
+          winner={winner.methods.length > 0 && true}
           crossmarks={crossmarks}
           toggleCrossmark={toggleCrossmark}
         />
