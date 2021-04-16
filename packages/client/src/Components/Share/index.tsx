@@ -10,9 +10,13 @@ import TextField from '@material-ui/core/TextField';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import { useDialog } from '../../Utils/custom-hooks';
-import { GameContext } from '../../Utils/contexts';
+import { Room } from '@np-bingo/types';
 
-function Share() {
+interface ShareProps {
+  room: Room;
+}
+
+function Share({ room }: ShareProps) {
   const [open, handleOpen, handleClose] = useDialog(false, handleCopyText);
   const [copyText, setCopyText] = useState('Click to copy link to clipboard');
   const ref = useRef<HTMLInputElement>(null);
@@ -58,16 +62,12 @@ function Share() {
         </DialogTitle>
         <DialogContent>
           <DialogContentText>{copyText}</DialogContentText>
-          <GameContext.Consumer>
-            {(value) => (
-              <TextField
-                inputRef={ref}
-                value={`${window.location.protocol}//${window.location.host}/join?r=${value.room}`}
-                id="code"
-                fullWidth
-              />
-            )}
-          </GameContext.Consumer>
+          <TextField
+            inputRef={ref}
+            value={`${window.location.protocol}//${window.location.host}/join?r=${room}`}
+            id="code"
+            fullWidth
+          />
         </DialogContent>
         <DialogActions>
           <Button onClick={copyToClipboard} color="primary" autoFocus>
