@@ -9,10 +9,8 @@ export default {
 
 const Template: Story<BoardProps> = (args) => <Board {...args} />;
 
-export const Blank = Template.bind({});
-
-export const Full = Template.bind({});
-Full.args = {
+export const Default = Template.bind({});
+Default.args = {
   card: [
     2,
     27,
@@ -136,3 +134,5 @@ Winner.args = {
   },
   winner: true,
 };
+
+export const Blank = Template.bind({});
