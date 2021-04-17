@@ -5,6 +5,10 @@ import DialogCode, { DialogCodeProps } from './DialogCode';
 export default {
   title: 'Components/DialogCode',
   component: DialogCode,
+  argTypes: {
+    handleClose: { action: 'clicked' },
+    callback: { action: 'callback' },
+  },
 } as Meta;
 
 const Template: Story<DialogCodeProps> = (args) => <DialogCode {...args} />;

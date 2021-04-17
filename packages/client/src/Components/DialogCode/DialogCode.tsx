@@ -5,15 +5,15 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import { useForm } from '../../Utils/custom-hooks';
-import { Room } from '@np-bingo/types';
-import { roomPattern } from '@np-bingo/common';
+import { roomChar } from '@np-bingo/common';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import './style.css';
+import features from '../../Config/features';
 
 export interface DialogCodeProps {
   open: boolean;
   handleClose: () => void;
-  join: (room: Room) => void;
+  callback?: (param?: any) => void;
 }
 
 const initialState = {
@@ -26,7 +26,7 @@ const initialState = {
 export default function DialogCode({
   open = false,
   handleClose,
-  join,
+  callback,
 }: DialogCodeProps) {
   const [inputs, errors, handleChange, handleSubmit, handlePaste] = useForm(
     initialState,
@@ -34,19 +34,21 @@ export default function DialogCode({
   );
 
   useEffect(() => {
-    if (
-      inputs.code1 !== '' &&
-      inputs.code2 !== '' &&
-      inputs.code3 !== '' &&
-      inputs.code4 !== ''
-    ) {
-      handleSubmit();
+    if (features['auto-join']) {
+      if (
+        inputs.code1 !== '' &&
+        inputs.code2 !== '' &&
+        inputs.code3 !== '' &&
+        inputs.code4 !== ''
+      ) {
+        handleSubmit();
+      }
     }
   }, [inputs, handleSubmit]);
 
   function joinCallback(formInputs: typeof inputs) {
     let room = Object.values(formInputs).join('').toUpperCase();
-    join(room);
+    callback && callback(room);
   }
 
   const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -86,7 +88,7 @@ export default function DialogCode({
             <input
               name="code1"
               type="text"
-              pattern={roomPattern}
+              pattern={roomChar}
               maxLength={1}
               className="partitioned"
               autoCapitalize="on"
@@ -99,7 +101,7 @@ export default function DialogCode({
             <input
               name="code2"
               type="text"
-              pattern={roomPattern}
+              pattern={roomChar}
               maxLength={1}
               className="partitioned"
               autoCapitalize="on"
@@ -110,7 +112,7 @@ export default function DialogCode({
             <input
               name="code3"
               type="text"
-              pattern={roomPattern}
+              pattern={roomChar}
               maxLength={1}
               className="partitioned"
               autoCapitalize="on"
@@ -121,7 +123,7 @@ export default function DialogCode({
             <input
               name="code4"
               type="text"
-              pattern={roomPattern}
+              pattern={roomChar}
               maxLength={1}
               className="partitioned"
               autoCapitalize="on"

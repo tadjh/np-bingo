@@ -14,5 +14,6 @@ export function makeID(length: number) {
   return result;
 }
 
-export const roomPattern = '[A-Z1-9][^IO0]+?';
-export const roomRegex = new RegExp(roomPattern, 'g');
+export const roomChar = '[A-HJ-NP-Z1-9]';
+export const roomPattern = `${roomChar}{4}`;
+export const roomRegex = new RegExp(roomPattern);
