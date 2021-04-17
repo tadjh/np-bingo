@@ -13,7 +13,7 @@ import features from '../../Config/features';
 export interface DialogCodeProps {
   open: boolean;
   handleClose: () => void;
-  callback?: (param?: any) => void;
+  onSumbit?: (param?: any) => void;
 }
 
 const initialState = {
@@ -26,7 +26,7 @@ const initialState = {
 export default function DialogCode({
   open = false,
   handleClose,
-  callback,
+  onSumbit,
 }: DialogCodeProps) {
   const [inputs, errors, handleChange, handleSubmit, handlePaste] = useForm(
     initialState,
@@ -48,7 +48,7 @@ export default function DialogCode({
 
   function joinCallback(formInputs: typeof inputs) {
     let room = Object.values(formInputs).join('').toUpperCase();
-    callback && callback(room);
+    onSumbit && onSumbit(room);
   }
 
   const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {

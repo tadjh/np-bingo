@@ -44,7 +44,7 @@ function Join(props: Props) {
   // const handleBlur = (event: KeyboardEvent<HTMLInputElement>) => {
   //   return inputs.code.length === 4 && event.target.blur();
   // };
-
+  // TODO replace with Public Room Implementation
   const dummyArray = [
     {
       _id: 'dadkjashdjshadka',
@@ -94,7 +94,7 @@ function Join(props: Props) {
           &larr; Back
         </Link>
       </footer>
-      <DialogCode open={open} handleClose={handleClose} callback={join} />
+      <DialogCode open={open} handleClose={handleClose} onSumbit={join} />
     </div>
   );
 }
