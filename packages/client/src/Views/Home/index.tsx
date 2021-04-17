@@ -64,7 +64,7 @@ function Home(props: Props) {
           https://github.com/TadjhBrooks/np-bingo
         </Link>
       </footer>
-      <DialogCode open={open} handleClose={handleClose} join={join} />
+      <DialogCode open={open} handleClose={handleClose} callback={join} />
     </div>
   );
 }

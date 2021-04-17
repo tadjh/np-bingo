@@ -94,7 +94,7 @@ function Join(props: Props) {
           &larr; Back
         </Link>
       </footer>
-      <DialogCode open={open} handleClose={handleClose} join={join} />
+      <DialogCode open={open} handleClose={handleClose} callback={join} />
     </div>
   );
 }
