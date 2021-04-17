@@ -14,7 +14,7 @@
   overflow: hidden;
 }
 
-.crossmark::before {
+.checked::before {
   content: '\2715';
   position: absolute;
   font-size: var(--crossmark);
@@ -26,6 +26,6 @@
   color: var(--color-alert);
 }
 
-.grid.winner .crossmark::before {
+.checked.winner::before {
   color: var(--color-success-dark);
 }

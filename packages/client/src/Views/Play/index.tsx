@@ -213,7 +213,7 @@ function Play(props: Props) {
           serial={serial}
           winner={winner.methods.length > 0 && true}
           crossmarks={crossmarks}
-          toggleCrossmark={toggleCrossmark}
+          onClick={toggleCrossmark}
         />
       </div>
       <GameContext.Consumer>

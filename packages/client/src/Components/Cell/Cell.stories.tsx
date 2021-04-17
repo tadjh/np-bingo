@@ -9,15 +9,22 @@ export default {
 
 const Template: Story<CellProps> = (args) => <Cell {...args} />;
 
-export const Numbered = Template.bind({});
-Numbered.args = {
+export const Default = Template.bind({});
+Default.args = {
   children: 15,
 };
 
 export const Checked = Template.bind({});
 Checked.args = {
-  children: 15,
-  crossmark: true,
+  ...Default.args,
+  checked: true,
 };
 
-export const Default = Template.bind({});
+export const Winner = Template.bind({});
+Winner.args = {
+  ...Checked.args,
+  className: 'winner',
+  disabled: true,
+};
+
+export const Blank = Template.bind({});

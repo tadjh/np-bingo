@@ -10,7 +10,7 @@ export interface BoardProps {
   serial: string;
   crossmarks: { [key: string]: boolean };
   winner: boolean;
-  toggleCrossmark: (event: React.MouseEvent) => void;
+  onClick: (event: React.MouseEvent) => void;
 }
 
 export default function Board({
@@ -18,7 +18,7 @@ export default function Board({
   serial = '',
   crossmarks = { ...initialState.crossmarks },
   winner = false,
-  toggleCrossmark,
+  ...props
 }: BoardProps) {
   return (
     <div className="grid-container">
@@ -29,10 +29,12 @@ export default function Board({
           return (
             <Cell
               id={id}
+              className={[winner && 'winner'].join('')}
               key={index}
               index={index + 1}
-              crossmark={crossmarks[id]}
-              onClick={toggleCrossmark}
+              checked={crossmarks[id]}
+              {...props}
+              disabled={winner}
             >
               {index !== 12 ? value : 'free'}
             </Cell>
