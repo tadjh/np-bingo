@@ -1,8 +1,7 @@
-import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 import { Gamestate } from '@np-bingo/types';
 import { randomElement } from '../../Utils';
-import { initialState } from '../../Reducers/app.reducer';
 
 /**
  * Text to be displayed to players based on current gamestate
@@ -11,6 +10,8 @@ import { initialState } from '../../Reducers/app.reducer';
  * @returns string
  */
 export function statusText(gamestate: Gamestate) {
+  console.log(gamestate);
+
   let text: string;
   switch (gamestate) {
     case 'init':
@@ -116,7 +117,7 @@ export interface StatusProps {
 }
 
 export default function Status({
-  gamestate = initialState.gamestate,
+  gamestate = 'init',
   host = false,
   count = 0,
 }: StatusProps) {
