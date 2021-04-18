@@ -128,7 +128,9 @@ function Host({
                         <AddCircleOutlineIcon fontSize="large" />
                       </IconButton>
                       <Ball
-                        ball={ballContext.ball}
+                        number={ballContext.ball.number}
+                        column={ballContext.ball.column}
+                        remainder={ballContext.ball.remainder}
                         disabled={
                           gameContext.gamestate !== 'start' &&
                           gameContext.gamestate !== 'standby' &&

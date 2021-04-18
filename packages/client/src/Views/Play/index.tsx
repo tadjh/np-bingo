@@ -207,7 +207,9 @@ export default function Play(props: Props) {
                 {(ballContext) => (
                   <div className="ball-wrapper">
                     <Ball
-                      ball={ballContext.ball}
+                      number={ballContext.ball.number}
+                      column={ballContext.ball.column}
+                      remainder={ballContext.ball.remainder}
                       loop={ballContext.loop}
                       progress={ballContext.progress}
                       disabled={

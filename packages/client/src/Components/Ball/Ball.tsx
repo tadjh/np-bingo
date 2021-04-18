@@ -1,19 +1,22 @@
 import React from 'react';
 import { Ball as BallType } from '@np-bingo/types';
-import { initialState } from '../../Reducers/app.reducer';
 import './style.css';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Badge from '@material-ui/core/Badge';
 
 export interface BallProps {
-  ball: BallType;
+  number: BallType['number'];
+  column: BallType['column'];
+  remainder: BallType['remainder'];
   loop?: boolean;
   progress?: number;
   disabled?: boolean;
 }
 
 export default function Ball({
-  ball = { ...initialState.ball },
+  number = 0,
+  column = '',
+  remainder = 75,
   loop = false,
   progress = 0,
   disabled = false,
@@ -23,21 +26,16 @@ export default function Ball({
       <Badge
         color="primary"
         className="badge monospace"
-        badgeContent={disabled ? 0 : ball.remainder}
+        badgeContent={disabled ? 0 : remainder}
         overlap="circle"
       >
         <div
-          className={[
-            'ball',
-            'shadow',
-            ball.column,
-            disabled && 'disabled',
-          ].join(' ')}
+          className={['ball', 'shadow', column, disabled && 'disabled'].join(
+            ' '
+          )}
         >
-          <div className="column monospace">{ball.column}</div>
-          <div className="number monospace">
-            {ball.number !== 0 && ball.number}
-          </div>
+          <div className="column monospace">{column}</div>
+          <div className="number monospace">{number !== 0 && number}</div>
         </div>
       </Badge>
       {loop && (
