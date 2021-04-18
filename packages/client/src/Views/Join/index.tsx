@@ -5,7 +5,7 @@ import { Link as RouterLink, useHistory } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import { Gamestate, Room } from '@np-bingo/types';
 import { useDialog } from '../../Utils/custom-hooks';
-import Public from '../../Components/Public';
+import RoomList from '../../Components/RoomList';
 import DialogCode from '../../Components/DialogCode';
 import './style.css';
 import { FeautresContext } from '../../Utils/contexts';
@@ -75,7 +75,7 @@ function Join(props: Props) {
         {(features) => (
           <div className="main" role="main">
             {features['public-rooms'] && (
-              <Public rooms={dummyArray} joinRoom={joinRoom} />
+              <RoomList data={dummyArray} action={joinRoom} />
             )}
             <Button
               variant="contained"
