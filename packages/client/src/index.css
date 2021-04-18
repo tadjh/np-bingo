@@ -54,7 +54,8 @@ ul > li {
   --ball-size-sm: 3.4375rem; /* ~ 55px */
   --ball-size: 3.75rem; /* ~ 60px */
   --ball-size-lrg: 4.6875rem; /* ~ 75px */
-  --draws: 25rem; /* ~ 400px */
+  --draws-h: 25rem; /* ~ 400px */
+  --draws-w: 13.75rem; /* ~ 200px */
   --grid: 20rem; /* ~ 320px */
   --grid-item: 3.25rem; /* ~ 52px */
   --crossmark: 4rem; /* ~64px */

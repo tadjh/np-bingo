@@ -2,8 +2,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   border-radius: var(--spacing);
-  width: 47%;
-  min-height: var(--draws);
+  min-width: var(--draws-w);
+  min-height: var(--draws-h);
 }
 
 .draws > ul {
@@ -13,6 +13,8 @@
   font-weight: bold;
   border: var(--border-width-light) solid var(--color-disabled);
   border-right-width: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .draws > ul:nth-child(even) {
@@ -31,6 +33,8 @@
 }
 
 .draws > ul > li {
+  text-align: center;
+  margin: 0;
   height: var(--spacing-2x);
   border-bottom: var(--border-width-light) solid var(--color-disabled);
 }
