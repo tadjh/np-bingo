@@ -12,7 +12,7 @@ const Template: Story<PlayerListProps> = (args) => <PlayerList {...args} />;
 
 export const SingleItem = Template.bind({});
 SingleItem.args = {
-  players: [
+  data: [
     {
       _id: 'adaskdjsahkd',
       uid: 2222,
@@ -25,7 +25,7 @@ SingleItem.args = {
 
 export const SingleItemReady = Template.bind({});
 SingleItemReady.args = {
-  players: [
+  data: [
     {
       _id: 'adaskdjsahkd',
       uid: 2222,
@@ -38,7 +38,7 @@ SingleItemReady.args = {
 
 export const ManyItems = Template.bind({});
 ManyItems.args = {
-  players: [
+  data: [
     {
       _id: 'adaskdjsahkd',
       uid: 2222,

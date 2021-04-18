@@ -13,44 +13,52 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import { Player } from '@np-bingo/types';
 import Typography from '@material-ui/core/Typography';
 
-export interface PlayerListProps {
-  players: Player[];
-  onRemove?: (player: Player) => void;
+export interface ListProps {
+  data?: any[];
+  action?: (param?: any) => void;
+}
+
+export interface PlayerListProps extends ListProps {
+  action?: (player: Player) => void;
 }
 
 export default function PlayerList({
-  players = [],
-  onRemove,
+  data = [],
+  action: onRemove,
 }: PlayerListProps) {
-  if (players.length === 0) {
-    return <Typography>No players found</Typography>;
-  }
   return (
     <div className="player-list">
-      <List>
-        {players.map((player, index) => {
-          return (
-            <ListItem key={`player${index + 1}`}>
-              <ListItemAvatar>
-                <Avatar>{player.ready ? <CheckIcon /> : <RemoveIcon />}</Avatar>
-              </ListItemAvatar>
-              <ListItemText
-                primary={player.name}
-                secondary={player.ready ? 'Ready' : 'Selecting a card...'}
-              />
-              <ListItemSecondaryAction>
-                <IconButton
-                  onClick={onRemove && (() => onRemove(player))}
-                  edge="end"
-                  aria-label="status"
-                >
-                  <CancelIcon />
-                </IconButton>
-              </ListItemSecondaryAction>
-            </ListItem>
-          );
-        })}
-      </List>
+      <Typography variant="h5">Players</Typography>
+      {data.length !== 0 ? (
+        <List>
+          {data.map((player, index) => {
+            return (
+              <ListItem key={`player${index + 1}`}>
+                <ListItemAvatar>
+                  <Avatar>
+                    {player.ready ? <CheckIcon /> : <RemoveIcon />}
+                  </Avatar>
+                </ListItemAvatar>
+                <ListItemText
+                  primary={player.name}
+                  secondary={player.ready ? 'Ready' : 'Selecting a card...'}
+                />
+                <ListItemSecondaryAction>
+                  <IconButton
+                    onClick={onRemove && (() => onRemove(player))}
+                    edge="end"
+                    aria-label="status"
+                  >
+                    <CancelIcon />
+                  </IconButton>
+                </ListItemSecondaryAction>
+              </ListItem>
+            );
+          })}
+        </List>
+      ) : (
+        <Typography>No players found</Typography>
+      )}
     </div>
   );
 }

@@ -19,6 +19,7 @@ Development
 // TODO Write basic tests
 // TODO Disable socket.io when in solo
 // TODO Migrate to React Router v6
+// TODO Make List generation generic
 
 QOL
 // TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
@@ -26,7 +27,6 @@ QOL
 // TODO Host has left game notification
 // TODO Show winner name on win
 // TODO Handle Errors non destructively
-// TODO restart solo mode
 
 Future Features
 // TODO Public Rooms

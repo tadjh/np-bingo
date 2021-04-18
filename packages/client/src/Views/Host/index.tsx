@@ -97,7 +97,7 @@ function Host(props: Props) {
               count={players.length}
             />
             {value.gamestate === 'ready' ? (
-              <PlayerList players={players} onRemove={removePlayer} />
+              <PlayerList data={players} action={removePlayer} />
             ) : (
               <React.Fragment>
                 <BallContext.Consumer>
