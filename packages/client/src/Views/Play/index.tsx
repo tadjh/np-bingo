@@ -143,7 +143,7 @@ function Play(props: Props) {
     <div className="Play">
       <header>
         <GameContext.Consumer>
-          {(value) => (
+          {(gameContext) => (
             <div className="App-buttons">
               <ButtonGroup
                 variant="contained"
@@ -151,35 +151,44 @@ function Play(props: Props) {
                 aria-label="contained primary button group"
               >
                 <Button
-                  className={`${value.gamestate !== 'start' && 'disabled'}`} // TODO removed value.gamestate !== 'failure' on these??
-                  disabled={value.gamestate !== 'start' && true}
+                  className={`${
+                    gameContext.gamestate !== 'start' && 'disabled'
+                  }`} // TODO removed value.gamestate !== 'failure' on these??
+                  disabled={gameContext.gamestate !== 'start' && true}
                   onClick={() =>
-                    handleSendCard(value.mode, card, value.room, value.host)
+                    handleSendCard(
+                      gameContext.mode,
+                      card,
+                      gameContext.room,
+                      gameContext.host
+                    )
                   }
                 >
                   Bingo
                 </Button>
                 <Button
-                  className={`${value.gamestate !== 'ready' && 'disabled'}`}
-                  disabled={value.gamestate !== 'ready' && true}
+                  className={`${
+                    gameContext.gamestate !== 'ready' && 'disabled'
+                  }`}
+                  disabled={gameContext.gamestate !== 'ready' && true}
                   onClick={newCard}
                 >
                   New Card
                 </Button>
                 <Button
                   className={`ready ${
-                    value.gamestate !== 'ready' &&
-                    value.gamestate !== 'failure' &&
+                    gameContext.gamestate !== 'ready' &&
+                    gameContext.gamestate !== 'failure' &&
                     'disabled'
                   }`}
                   disabled={
-                    value.gamestate !== 'ready' &&
-                    value.gamestate !== 'failure' &&
+                    gameContext.gamestate !== 'ready' &&
+                    gameContext.gamestate !== 'failure' &&
                     true
                   }
-                  onClick={() => standby(value.mode)}
+                  onClick={() => standby(gameContext.mode)}
                 >
-                  {value.gamestate === 'failure' ? 'Resume' : 'Ready'}
+                  {gameContext.gamestate === 'failure' ? 'Resume' : 'Ready'}
                 </Button>
               </ButtonGroup>
             </div>
@@ -188,9 +197,9 @@ function Play(props: Props) {
       </header>
       <div className="main" role="main">
         <GameContext.Consumer>
-          {(value) => (
+          {(gameContext) => (
             <React.Fragment>
-              <StatusMessage gamestate={value.gamestate} />
+              <StatusMessage gamestate={gameContext.gamestate} />
               <BallContext.Consumer>
                 {(ballContext) => (
                   <Ball
@@ -198,8 +207,8 @@ function Play(props: Props) {
                     loop={ballContext.loop}
                     progress={ballContext.progress}
                     disabled={
-                      value.gamestate !== 'start' &&
-                      value.gamestate !== 'failure' &&
+                      gameContext.gamestate !== 'start' &&
+                      gameContext.gamestate !== 'failure' &&
                       true
                     }
                   />
@@ -217,11 +226,11 @@ function Play(props: Props) {
         />
       </div>
       <GameContext.Consumer>
-        {(value) => (
+        {(gameContext) => (
           <Footer
-            leaveRoom={() => leaveRoom(value.room, value.host)}
-            room={value.room}
-            mode={value.mode}
+            onClick={() => leaveRoom(gameContext.room, gameContext.host)}
+            room={gameContext.room}
+            mode={gameContext.mode}
           />
         )}
       </GameContext.Consumer>
