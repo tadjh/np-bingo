@@ -33,19 +33,6 @@ export default function DialogCode({
     joinCallback
   );
 
-  useEffect(() => {
-    if (features['auto-join']) {
-      if (
-        inputs.code1 !== '' &&
-        inputs.code2 !== '' &&
-        inputs.code3 !== '' &&
-        inputs.code4 !== ''
-      ) {
-        handleSubmit();
-      }
-    }
-  }, [inputs, handleSubmit]);
-
   function joinCallback(formInputs: typeof inputs) {
     let room = Object.values(formInputs).join('').toUpperCase();
     onSumbit && onSumbit(room);
