@@ -12,10 +12,6 @@ import Typography from '@material-ui/core/Typography';
 
 const styles = (theme: Theme) =>
   createStyles({
-    title: {
-      position: 'relative',
-      width: '100%',
-    },
     closeButton: {
       position: 'absolute',
       right: theme.spacing(1),
