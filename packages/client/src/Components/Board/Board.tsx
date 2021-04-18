@@ -23,7 +23,9 @@ export default function Board({
   return (
     <div className="grid-container">
       <div className={['grid', 'shadow', winner && 'winner'].join(' ')}>
-        <Logo winner={winner} />
+        <div className="grid-header">
+          <Logo winner={winner} />
+        </div>
         {card.map((value, index) => {
           let id = `cell${index + 1}`;
           return (

@@ -11,6 +11,16 @@
   border-color: var(--color-success-dark);
 }
 
+.grid .grid-header {
+  grid-column-start: 1;
+  grid-column-end: 6;
+  border-bottom: var(--border-width-bold) solid var(--color-dark);
+}
+
+.grid.winner .grid-header {
+  border-bottom-color: var(--color-success-dark);
+}
+
 .grid-item.grid-item-5,
 .grid-item.grid-item-10,
 .grid-item.grid-item-15,

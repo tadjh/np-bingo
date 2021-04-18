@@ -9,14 +9,14 @@ export interface LogoProps {
 
 export default function Logo({ home = false, winner }: LogoProps) {
   return (
-    <div className={['grid-header', home && 'logo'].join(' ')}>
+    <div className={['logo', home && 'home'].join(' ')}>
       {letters.map((value, index) => {
         return (
           <div
             key={index}
             className={[
-              'grid-header-item',
-              `grid-header-item-${index + 1}`,
+              'logo-item',
+              `logo-item-${index + 1}`,
               winner && 'winner',
             ].join(' ')}
           >
