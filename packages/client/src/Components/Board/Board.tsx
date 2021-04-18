@@ -32,7 +32,7 @@ export default function Board({
             <Cell
               id={id}
               className={[winner && 'winner'].join('')}
-              key={index}
+              key={id}
               index={index + 1}
               checked={crossmarks[id]}
               {...props}
