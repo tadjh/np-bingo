@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.css';
 import Share from '../Share';
-import features from '../../Config/features';
 import { Room } from '@np-bingo/types';
+import { FeautresContext } from '../../Utils/contexts';
 
 export interface CodeProps {
   room: Room;
@@ -39,9 +39,13 @@ export default function Code({ room = '    ' }: CodeProps) {
         <div className="code">
           <code>{room !== '' ? code(room) : <Empty />}</code>
         </div>
-        <div className="code-right align-left">
-          {features['share-room'] && room !== '' && <Share room={room} />}
-        </div>
+        <FeautresContext.Consumer>
+          {(features) => (
+            <div className="code-right align-left">
+              {features['share-room'] && room !== '' && <Share room={room} />}
+            </div>
+          )}
+        </FeautresContext.Consumer>
       </div>
     </div>
   );

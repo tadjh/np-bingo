@@ -4,13 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { FeautresContext } from './Utils/contexts';
+import features from './Config/features';
 import dotenv from 'dotenv';
 dotenv.config();
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-      <App />
+      <FeautresContext.Provider value={features}>
+        <App />
+      </FeautresContext.Provider>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

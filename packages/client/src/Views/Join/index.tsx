@@ -3,12 +3,12 @@ import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
 import { Link as RouterLink, useHistory } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
-import features from '../../Config/features';
 import { Gamestate, Room } from '@np-bingo/types';
 import { useDialog } from '../../Utils/custom-hooks';
 import Public from '../../Components/Public';
 import DialogCode from '../../Components/DialogCode';
 import './style.css';
+import { FeautresContext } from '../../Utils/contexts';
 
 type Props = {
   joinRoom: (room: string) => void;
@@ -71,24 +71,28 @@ function Join(props: Props) {
       <header>
         <Typography variant="h4">Join</Typography>
       </header>
-      <div className="main" role="main">
-        {features['public-rooms'] && (
-          <Public rooms={dummyArray} joinRoom={joinRoom} />
+      <FeautresContext.Consumer>
+        {(features) => (
+          <div className="main" role="main">
+            {features['public-rooms'] && (
+              <Public rooms={dummyArray} joinRoom={joinRoom} />
+            )}
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={handleOpen}
+              size="large"
+            >
+              Join Room
+            </Button>
+            {features['single-player'] && (
+              <Button color="primary" onClick={handleSolo} size="large">
+                Play Solo
+              </Button>
+            )}
+          </div>
         )}
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={handleOpen}
-          size="large"
-        >
-          Join Room
-        </Button>
-        {features['single-player'] && (
-          <Button color="primary" onClick={handleSolo} size="large">
-            Play Solo
-          </Button>
-        )}
-      </div>
+      </FeautresContext.Consumer>
       <footer>
         <Link component={RouterLink} to="/">
           &larr; Back
