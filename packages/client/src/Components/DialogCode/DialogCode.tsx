@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '../../Components/DialogTitle';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -8,7 +8,6 @@ import { useForm } from '../../Utils/custom-hooks';
 import { roomChar } from '@np-bingo/common';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import './style.css';
-import features from '../../Config/features';
 
 export interface DialogCodeProps {
   open: boolean;
