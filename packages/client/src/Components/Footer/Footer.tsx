@@ -13,22 +13,23 @@ export interface FooterProps {
 }
 
 function Footer({ home, room = '', mode = 'default', onClick }: FooterProps) {
-  if (home) {
-    return (
-      <React.Fragment>
-        <Typography align="center">Made by Tadjh Brooks</Typography>
-        <Link href="https://github.com/TadjhBrooks/np-bingo/" color="primary">
-          https://github.com/TadjhBrooks/np-bingo
-        </Link>
-      </React.Fragment>
-    );
-  }
   return (
     <footer>
-      {mode !== 'solo' && <Code room={room} />}
-      <Link onClick={onClick} component={RouterLink} to="/">
-        Leave Room
-      </Link>
+      {home ? (
+        <React.Fragment>
+          <Typography align="center">Made by Tadjh Brooks</Typography>
+          <Link href="https://github.com/TadjhBrooks/np-bingo/" color="primary">
+            https://github.com/TadjhBrooks/np-bingo
+          </Link>
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          {mode !== 'solo' && <Code room={room} />}
+          <Link onClick={onClick} component={RouterLink} to="/">
+            Leave Room
+          </Link>
+        </React.Fragment>
+      )}
     </footer>
   );
 }
