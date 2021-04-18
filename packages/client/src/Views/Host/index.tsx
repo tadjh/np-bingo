@@ -7,7 +7,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Footer from '../../Components/Footer';
 import Draws from '../../Components/Draws';
-import Players from '../../Components/Players';
+import PlayerList from '../../Components/PlayerList';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import './style.css';
 
@@ -97,7 +97,7 @@ function Host(props: Props) {
               count={players.length}
             />
             {value.gamestate === 'ready' ? (
-              <Players players={players} removePlayer={removePlayer} />
+              <PlayerList players={players} onRemove={removePlayer} />
             ) : (
               <React.Fragment>
                 <BallContext.Consumer>
