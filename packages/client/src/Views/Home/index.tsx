@@ -1,14 +1,13 @@
 import React from 'react';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 import Logo from '../../Components/Logo';
 import './style.css';
-import Typography from '@material-ui/core/Typography';
 import { Room } from '@np-bingo/types';
 import { useDialog } from '../../Utils/custom-hooks';
 import DialogCode from '../../Components/DialogCode';
 import { FeautresContext } from '../../Utils/contexts';
+import Footer from '../../Components/Footer';
 
 type Props = {
   createRoom: () => void;
@@ -67,12 +66,7 @@ function Home(props: Props) {
           )}
         </FeautresContext.Consumer>
       </div>
-      <footer>
-        <Typography>Made by Tadjh Brooks</Typography>
-        <Link href="https://github.com/TadjhBrooks/np-bingo/" color="primary">
-          https://github.com/TadjhBrooks/np-bingo
-        </Link>
-      </footer>
+      <Footer home={true} />
       <DialogCode open={open} handleClose={handleClose} onSumbit={join} />
     </div>
   );

@@ -142,7 +142,7 @@ function Host(props: Props) {
               </React.Fragment>
             )}
           </div>
-          <Footer room={value.room} leaveRoom={() => leaveRoom(value.room)} />
+          <Footer room={value.room} onClick={() => leaveRoom(value.room)} />
         </div>
       )}
     </GameContext.Consumer>

@@ -29,10 +29,6 @@ ul > li {
   padding: var(--spacing-half);
 }
 
-footer {
-  height: calc(var(--font-size-h1) * 3);
-}
-
 :root {
   --color-light: #ffffff;
   --color-light-alt: #eeeeee;
