@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useReducer, useState } from 'react';
 import socket from './Config/socket.io';
+import { createMuiTheme, ThemeProvider } from '@material-ui/core';
 import './App.css';
 import {
   INIT_GAME,
@@ -60,8 +61,16 @@ import { useQuery } from './Utils/custom-hooks';
 import config from './Config/features';
 import { GameContext, BallContext } from './Utils/contexts';
 import logger from 'use-reducer-logger';
+import Container from '@material-ui/core/Container';
+import features from './Config/features';
 
-function App() {
+const theme = createMuiTheme({
+  palette: {
+    type: features['dark-mode'] ? 'dark' : 'light',
+  },
+});
+
+export default function App() {
   let history = useHistory();
   let query = useQuery();
   const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
@@ -627,49 +636,51 @@ function App() {
   return (
     <GameContext.Provider value={gameContext}>
       <BallContext.Provider value={ballContext}>
-        <div className="App">
-          <Switch>
-            <Route path="/create">
-              <Create></Create>
-            </Route>
-            <Route path="/host">
-              <Host
-                checkCard={() => checkCard(rules.mode, playerCard, draws, room)}
-                newBall={() => newBall(rules.mode, pool, draws, room)}
-                draws={draws}
-                leaveRoom={leaveRoom}
-                players={players}
-                gameToggle={gameToggle}
-                removePlayer={removePlayer}
-                start={start}
-              ></Host>
-            </Route>
-            <Route path="/join">
-              <Join
-                joinRoom={joinRoom}
-                queryRoom={query.get('r')}
-                solo={solo}
-              />
-            </Route>
-            <Route path="/play">
-              <Play
-                gamestate={gamestate}
-                init={() => play('init')}
-                standby={standby}
-                leaveRoom={leaveRoom}
-                kicked={kicked}
-                sendCard={sendCard}
-                winner={winner}
-              ></Play>
-            </Route>
-            <Route exact path="/">
-              <Home joinRoom={joinRoom} createRoom={createRoom} />
-            </Route>
-          </Switch>
-        </div>
+        <ThemeProvider theme={theme}>
+          <Container className="App" fixed maxWidth="xs">
+            <Switch>
+              <Route path="/create">
+                <Create></Create>
+              </Route>
+              <Route path="/host">
+                <Host
+                  checkCard={() =>
+                    checkCard(rules.mode, playerCard, draws, room)
+                  }
+                  newBall={() => newBall(rules.mode, pool, draws, room)}
+                  draws={draws}
+                  leaveRoom={leaveRoom}
+                  players={players}
+                  gameToggle={gameToggle}
+                  removePlayer={removePlayer}
+                  start={start}
+                ></Host>
+              </Route>
+              <Route path="/join">
+                <Join
+                  joinRoom={joinRoom}
+                  queryRoom={query.get('r')}
+                  solo={solo}
+                />
+              </Route>
+              <Route path="/play">
+                <Play
+                  gamestate={gamestate}
+                  init={() => play('init')}
+                  standby={standby}
+                  leaveRoom={leaveRoom}
+                  kicked={kicked}
+                  sendCard={sendCard}
+                  winner={winner}
+                ></Play>
+              </Route>
+              <Route exact path="/">
+                <Home joinRoom={joinRoom} createRoom={createRoom} />
+              </Route>
+            </Switch>
+          </Container>
+        </ThemeProvider>
       </BallContext.Provider>
     </GameContext.Provider>
   );
 }
-
-export default App;

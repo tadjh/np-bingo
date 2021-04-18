@@ -28,7 +28,9 @@ export default function PlayerList({
 }: PlayerListProps) {
   return (
     <div className="player-list">
-      <Typography variant="h5">Players</Typography>
+      {/* <Typography variant="h5" gutterBottom>
+        Players
+      </Typography> */}
       {data.length !== 0 ? (
         <List>
           {data.map((player, index) => {
@@ -57,7 +59,7 @@ export default function PlayerList({
           })}
         </List>
       ) : (
-        <Typography>No players found</Typography>
+        <Typography align="center">No players found</Typography>
       )}
     </div>
   );

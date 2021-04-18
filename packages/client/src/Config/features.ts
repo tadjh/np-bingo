@@ -1,4 +1,5 @@
 const config = {
+  'dark-mode': false,
   'single-player': true, // Allow solo mode
   'share-room': true,
   'public-rooms': false, // TODO Only mock-up

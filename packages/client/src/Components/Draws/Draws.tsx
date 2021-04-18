@@ -42,7 +42,9 @@ export default function Draws({
     table[i] = (
       <ul
         key={`column${i + 1}`}
-        className={['draws-column', `draws-column-${i + 1}`].join(' ')}
+        className={['draws-column', `draws-column-${i + 1}`, 'monospace'].join(
+          ' '
+        )}
       >
         {items}
       </ul>

@@ -25,50 +25,47 @@ function Home(props: Props) {
   }
 
   return (
-    <div className="Home">
+    <React.Fragment>
       <div className="background"></div>
-      <header>
-        <Logo home={true} />
-      </header>
-      <div className="main" role="main">
-        <Button
-          variant="outlined"
-          color="primary"
-          onClick={createRoom}
-          size="large"
-        >
-          Host
-        </Button>
-        <FeautresContext.Consumer>
-          {(features) => (
-            <Button
-              variant="contained"
-              color="primary"
-              component={
-                !features['single-player'] && !features['public-rooms']
-                  ? 'button'
-                  : RouterLink
-              }
-              to={
-                !features['single-player'] && !features['public-rooms']
-                  ? undefined
-                  : '/join'
-              }
-              onClick={
-                !features['single-player'] && !features['public-rooms']
-                  ? handleOpen
-                  : undefined
-              }
-              size="large"
-            >
-              Play
-            </Button>
-          )}
-        </FeautresContext.Consumer>
+      <div className="Home">
+        <header>
+          <Logo home={true} />
+        </header>
+        <div className="main" role="main">
+          <FeautresContext.Consumer>
+            {(features) => (
+              <Button
+                variant="contained"
+                color="primary"
+                component={
+                  !features['single-player'] && !features['public-rooms']
+                    ? 'button'
+                    : RouterLink
+                }
+                to={
+                  !features['single-player'] && !features['public-rooms']
+                    ? undefined
+                    : '/join'
+                }
+                onClick={
+                  !features['single-player'] && !features['public-rooms']
+                    ? handleOpen
+                    : undefined
+                }
+                size="large"
+              >
+                Play
+              </Button>
+            )}
+          </FeautresContext.Consumer>
+          <Button color="primary" onClick={createRoom} size="large">
+            Host
+          </Button>
+        </div>
+        <Footer home={true} />
+        <DialogCode open={open} handleClose={handleClose} onSumbit={join} />
       </div>
-      <Footer home={true} />
-      <DialogCode open={open} handleClose={handleClose} onSumbit={join} />
-    </div>
+    </React.Fragment>
   );
 }
 

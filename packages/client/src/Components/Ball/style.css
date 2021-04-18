@@ -1,24 +1,21 @@
 .ball-container {
-  display: inline-block;
+  position: relative;
+  margin: var(--spacing);
 }
 
 .ball {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  text-align: center;
   text-transform: uppercase;
   border-radius: 50%;
   padding: var(--spacing);
   background-color: var(--color-light);
   color: var(--bingo-blue);
   border: var(--border-width) solid var(--bingo-grey);
-  margin: var(--spacing) var(--spacing-2x) 0;
   width: var(--ball-size);
   height: var(--ball-size);
   vertical-align: middle;
   font-weight: bold;
-  position: relative;
+  line-height: 1.2;
 }
 
 .ball.b {
@@ -51,11 +48,13 @@
   font-size: var(--font-size-h1);
 }
 
-.remainder {
-  font-size: var(--font-size-h6);
-  text-align: center;
+.progress {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  z-index: 1;
 }
 
-.remainder.disabled {
-  color: var(--color-disabled);
+.badge {
+  z-index: 2;
 }

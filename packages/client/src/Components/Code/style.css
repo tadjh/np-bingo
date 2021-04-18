@@ -11,6 +11,7 @@
 .code {
   margin: var(--spacing-half) 0 var(--font-size-h4);
   font-size: var(--font-size-h1);
+  font-weight: bold;
 }
 
 .code-item {

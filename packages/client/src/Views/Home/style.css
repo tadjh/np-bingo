@@ -1,21 +1,18 @@
-.Home {
-  position: relative;
-}
-
 .Home > * {
   position: relative;
   z-index: 1;
 }
 
-.Home > .background {
+.background {
   display: block;
   position: absolute;
+  margin-left: -24px;
+  margin-right: -24px;
   height: 100%;
   width: 100%;
   background-image: url(../../Assets/background.png);
   background-position: center top;
   background-repeat: repeat;
-  background-size: 50%;
   animation: slide 50s linear infinite;
   -webkit-animation: slide 50s linear infinite;
   filter: blur(4px);
@@ -27,16 +24,12 @@
   flex: 0 1;
 }
 
-.Home > .main > * {
-  margin: var(--spacing);
-}
-
 @keyframes slide {
   from {
     background-position: 0 0;
   }
 
   to {
-    background-position: 580px -580px;
+    background-position: 250px -250px;
   }
 }

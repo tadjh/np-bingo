@@ -1,7 +1,15 @@
+.app-buttons {
+  margin: var(--spacing-2x);
+}
+
 .main.even {
   justify-content: space-evenly;
 }
 
 .ready > span {
   min-width: calc(var(--spacing-2x) * 3);
+}
+
+.ball-wrapper {
+  margin: var(--spacing);
 }

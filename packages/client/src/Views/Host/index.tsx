@@ -9,9 +9,12 @@ import Footer from '../../Components/Footer';
 import Draws from '../../Components/Draws';
 import PlayerList from '../../Components/PlayerList';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import './style.css';
+import IconButton from '@material-ui/core/IconButton';
+import Paper from '@material-ui/core/Paper';
 
-type Props = {
+export interface HostProps {
   checkCard: () => void;
   newBall: () => void;
   draws: Pool;
@@ -20,7 +23,7 @@ type Props = {
   gameToggle: (gamestate: Gamestate, room: Room) => void;
   removePlayer: (player: Player) => void;
   start: (room: Room) => void;
-};
+}
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,18 +33,17 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-function Host(props: Props) {
+function Host({
+  checkCard,
+  newBall,
+  draws,
+  leaveRoom,
+  players,
+  gameToggle,
+  removePlayer,
+  start,
+}: HostProps) {
   const classes = useStyles();
-  let {
-    checkCard,
-    newBall,
-    draws,
-    leaveRoom,
-    players,
-    gameToggle,
-    removePlayer,
-    start,
-  } = props;
 
   const buttonText = (gamestate: Gamestate) => {
     switch (gamestate) {
@@ -63,7 +65,7 @@ function Host(props: Props) {
 
   return (
     <GameContext.Consumer>
-      {(value) => (
+      {(gameContext) => (
         <div className="Host">
           <header>
             <div className="app-buttons">
@@ -74,60 +76,63 @@ function Host(props: Props) {
               >
                 <Button
                   className={classes.width}
-                  onClick={() => gameToggle(value.gamestate, value.room)}
+                  onClick={() =>
+                    gameToggle(gameContext.gamestate, gameContext.room)
+                  }
                 >
-                  {buttonText(value.gamestate)}
+                  {buttonText(gameContext.gamestate)}
                 </Button>
                 <Button
                   className={`${classes.width} ${
-                    value.gamestate !== 'validate' && 'disabled'
+                    gameContext.gamestate !== 'validate' && 'disabled'
                   }`}
-                  disabled={value.gamestate !== 'validate' && true}
+                  disabled={gameContext.gamestate !== 'validate' && true}
                   onClick={checkCard}
                 >
                   Check Card
                 </Button>
               </ButtonGroup>
             </div>
-          </header>
-          <div className="main" role="main">
             <StatusMessage
               host={true}
-              gamestate={value.gamestate}
+              gamestate={gameContext.gamestate}
               count={players.length}
             />
-            {value.gamestate === 'ready' ? (
+          </header>
+          <div className="main" role="main">
+            {gameContext.gamestate === 'ready' ? (
               <PlayerList data={players} action={removePlayer} />
             ) : (
               <React.Fragment>
                 <BallContext.Consumer>
                   {(ballContext) => (
                     <div className="ball-wrapper">
-                      <Button
-                        variant="contained"
+                      <IconButton
                         color="primary"
                         disabled={
-                          value.gamestate !== 'start' &&
-                          value.gamestate !== 'standby' &&
-                          value.gamestate !== 'failure' &&
+                          gameContext.gamestate !== 'start' &&
+                          gameContext.gamestate !== 'standby' &&
+                          gameContext.gamestate !== 'failure' &&
                           true
                         }
                         className={`${
-                          value.gamestate !== 'start' &&
-                          value.gamestate !== 'standby' &&
-                          value.gamestate !== 'failure' &&
+                          gameContext.gamestate !== 'start' &&
+                          gameContext.gamestate !== 'standby' &&
+                          gameContext.gamestate !== 'failure' &&
                           'disabled'
                         }`}
-                        onClick={() => handleBall(value.gamestate, value.room)}
+                        onClick={() =>
+                          handleBall(gameContext.gamestate, gameContext.room)
+                        }
                       >
-                        New Ball
-                      </Button>
+                        <AddCircleOutlineIcon fontSize="large" />
+                      </IconButton>
                       <Ball
                         ball={ballContext.ball}
                         disabled={
-                          value.gamestate !== 'start' &&
-                          value.gamestate !== 'standby' &&
-                          value.gamestate !== 'failure' &&
+                          gameContext.gamestate !== 'start' &&
+                          gameContext.gamestate !== 'standby' &&
+                          gameContext.gamestate !== 'failure' &&
                           true
                         }
                       />
@@ -137,12 +142,15 @@ function Host(props: Props) {
 
                 <Draws
                   draws={draws}
-                  disabled={value.gamestate === 'end' && true}
+                  disabled={gameContext.gamestate === 'end' && true}
                 />
               </React.Fragment>
             )}
           </div>
-          <Footer room={value.room} onClick={() => leaveRoom(value.room)} />
+          <Footer
+            room={gameContext.room}
+            onClick={() => leaveRoom(gameContext.room)}
+          />
         </div>
       )}
     </GameContext.Consumer>

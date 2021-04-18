@@ -12,6 +12,8 @@ High Priority
 // TODO Create users
 
 Development
+// TODO Rename storybook defaults to base
+// TODO Combine similar buttons into variant
 // TODO Push app to new branch once stable
 // TODO Remove as many player functions from App.tsx as possible
 // TODO MongoDB model timestamps

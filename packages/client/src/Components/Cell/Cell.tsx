@@ -35,6 +35,7 @@ export default function Cell({
         `grid-item-${index}`,
         (override || checked) && 'checked',
         className && className,
+        'monospace',
       ].join(' ')}
       onClick={eventHandler}
       {...props}

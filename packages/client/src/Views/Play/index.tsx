@@ -46,7 +46,7 @@ type Props = {
   init: () => void;
 };
 
-function Play(props: Props) {
+export default function Play(props: Props) {
   let { gamestate, winner, sendCard, leaveRoom, standby, kicked, init } = props;
   const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
     reducer,
@@ -144,54 +144,58 @@ function Play(props: Props) {
       <header>
         <GameContext.Consumer>
           {(gameContext) => (
-            <div className="App-buttons">
-              <ButtonGroup
-                variant="contained"
-                color="primary"
-                aria-label="contained primary button group"
-              >
-                <Button
-                  className={`${
-                    gameContext.gamestate !== 'start' && 'disabled'
-                  }`} // TODO removed value.gamestate !== 'failure' on these??
-                  disabled={gameContext.gamestate !== 'start' && true}
-                  onClick={() =>
-                    handleSendCard(
-                      gameContext.mode,
-                      card,
-                      gameContext.room,
-                      gameContext.host
-                    )
-                  }
+            <React.Fragment>
+              <div className="app-buttons">
+                <ButtonGroup
+                  variant="contained"
+                  color="primary"
+                  aria-label="contained primary button group"
+                  size="large"
                 >
-                  Bingo
-                </Button>
-                <Button
-                  className={`${
-                    gameContext.gamestate !== 'ready' && 'disabled'
-                  }`}
-                  disabled={gameContext.gamestate !== 'ready' && true}
-                  onClick={newCard}
-                >
-                  New Card
-                </Button>
-                <Button
-                  className={`ready ${
-                    gameContext.gamestate !== 'ready' &&
-                    gameContext.gamestate !== 'failure' &&
-                    'disabled'
-                  }`}
-                  disabled={
-                    gameContext.gamestate !== 'ready' &&
-                    gameContext.gamestate !== 'failure' &&
-                    true
-                  }
-                  onClick={() => standby(gameContext.mode)}
-                >
-                  {gameContext.gamestate === 'failure' ? 'Resume' : 'Ready'}
-                </Button>
-              </ButtonGroup>
-            </div>
+                  <Button
+                    className={`${
+                      gameContext.gamestate !== 'start' && 'disabled'
+                    }`} // TODO removed value.gamestate !== 'failure' on these??
+                    disabled={gameContext.gamestate !== 'start' && true}
+                    onClick={() =>
+                      handleSendCard(
+                        gameContext.mode,
+                        card,
+                        gameContext.room,
+                        gameContext.host
+                      )
+                    }
+                  >
+                    Bingo
+                  </Button>
+                  <Button
+                    className={`${
+                      gameContext.gamestate !== 'ready' && 'disabled'
+                    }`}
+                    disabled={gameContext.gamestate !== 'ready' && true}
+                    onClick={newCard}
+                  >
+                    New Card
+                  </Button>
+                  <Button
+                    className={`ready ${
+                      gameContext.gamestate !== 'ready' &&
+                      gameContext.gamestate !== 'failure' &&
+                      'disabled'
+                    }`}
+                    disabled={
+                      gameContext.gamestate !== 'ready' &&
+                      gameContext.gamestate !== 'failure' &&
+                      true
+                    }
+                    onClick={() => standby(gameContext.mode)}
+                  >
+                    {gameContext.gamestate === 'failure' ? 'Resume' : 'Ready'}
+                  </Button>
+                </ButtonGroup>
+              </div>
+              <StatusMessage gamestate={gameContext.gamestate} />
+            </React.Fragment>
           )}
         </GameContext.Consumer>
       </header>
@@ -199,19 +203,20 @@ function Play(props: Props) {
         <GameContext.Consumer>
           {(gameContext) => (
             <React.Fragment>
-              <StatusMessage gamestate={gameContext.gamestate} />
               <BallContext.Consumer>
                 {(ballContext) => (
-                  <Ball
-                    ball={ballContext.ball}
-                    loop={ballContext.loop}
-                    progress={ballContext.progress}
-                    disabled={
-                      gameContext.gamestate !== 'start' &&
-                      gameContext.gamestate !== 'failure' &&
-                      true
-                    }
-                  />
+                  <div className="ball-wrapper">
+                    <Ball
+                      ball={ballContext.ball}
+                      loop={ballContext.loop}
+                      progress={ballContext.progress}
+                      disabled={
+                        gameContext.gamestate !== 'start' &&
+                        gameContext.gamestate !== 'failure' &&
+                        true
+                      }
+                    />
+                  </div>
                 )}
               </BallContext.Consumer>
             </React.Fragment>
@@ -255,5 +260,3 @@ function Play(props: Props) {
     </div>
   );
 }
-
-export default Play;

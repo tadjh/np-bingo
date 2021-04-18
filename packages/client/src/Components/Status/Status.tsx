@@ -10,8 +10,6 @@ import { randomElement } from '../../Utils';
  * @returns string
  */
 export function statusText(gamestate: Gamestate) {
-  console.log(gamestate);
-
   let text: string;
   switch (gamestate) {
     case 'init':

@@ -1,8 +1,9 @@
 import React from 'react';
-import LinearProgress from '@material-ui/core/LinearProgress';
 import { Ball as BallType } from '@np-bingo/types';
 import { initialState } from '../../Reducers/app.reducer';
 import './style.css';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import Badge from '@material-ui/core/Badge';
 
 export interface BallProps {
   ball: BallType;
@@ -13,21 +14,40 @@ export interface BallProps {
 
 export default function Ball({
   ball = { ...initialState.ball },
-  loop = initialState.loop,
+  loop = false,
   progress = 0,
   disabled = false,
 }: BallProps) {
-  // TODO Lineaer progress needs work
   return (
     <div className="ball-container">
-      <div className={`ball shadow ${ball.column} ${disabled && 'disabled'}`}>
-        <div className="column">{ball.column}</div>
-        <div className="number">{ball.number !== 0 && ball.number}</div>
-      </div>
-      <p
-        className={`remainder ${disabled && 'disabled'}`}
-      >{`Balls Remaining: ${ball.remainder}`}</p>
-      {loop && <LinearProgress variant="determinate" value={progress} />}
+      <Badge
+        color="primary"
+        className="badge monospace"
+        badgeContent={disabled ? 0 : ball.remainder}
+        overlap="circle"
+      >
+        <div
+          className={[
+            'ball',
+            'shadow',
+            ball.column,
+            disabled && 'disabled',
+          ].join(' ')}
+        >
+          <div className="column monospace">{ball.column}</div>
+          <div className="number monospace">
+            {ball.number !== 0 && ball.number}
+          </div>
+        </div>
+      </Badge>
+      {loop && (
+        <CircularProgress
+          className="progress"
+          size={102}
+          variant="determinate"
+          value={progress}
+        />
+      )}
     </div>
   );
 }

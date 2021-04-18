@@ -23,7 +23,7 @@ export interface RoomListProps extends ListProps {
 export default function RoomList({ data = [], action: onJoin }: RoomListProps) {
   return (
     <div className="room-list">
-      <Typography variant="h5">Public Rooms</Typography>
+      {/* <Typography variant="h5">Public Rooms</Typography> */}
       {data.length !== 0 ? (
         <List>
           {data.map((value) => {

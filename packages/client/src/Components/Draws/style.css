@@ -37,6 +37,7 @@
   margin: 0;
   height: var(--spacing-2x);
   border-bottom: var(--border-width-light) solid var(--color-disabled);
+  padding: var(--spacing-half);
 }
 
 .draws > ul > li:nth-child(15) {

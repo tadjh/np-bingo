@@ -1,19 +1,22 @@
 .App {
-  height: 100vh;
-  /* text-align: center; */
+  position: relative;
+  background-color: var(--color-light-alt);
 }
 
-.App > div:first-child {
+.App > div:not(.background) {
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  background-color: var(--color-light);
+  height: 100vh;
+}
+
+.App > div > .main > * {
+  margin: var(--spacing);
 }
 
 .main {
-  width: 88%;
+  width: 100%;
   height: 65vh;
   display: flex;
   flex-direction: column;
