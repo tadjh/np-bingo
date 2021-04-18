@@ -18,6 +18,7 @@ Development
 // TODO Socket.io error handling?
 // TODO Write basic tests
 // TODO Disable socket.io when in solo
+// TODO Migrate to React Router v6
 
 QOL
 // TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
