@@ -3,7 +3,6 @@ Bugs
 // TODO Crossmarks make random status text change especially on failure
 
 High Priority
-// TODO Solo Card Validation
 // TODO Rest api use game "_id" instead of room id
 // TODO Save Game to DB after game over
 // TODO Rest Api auth
@@ -12,11 +11,8 @@ High Priority
 // TODO Create users
 
 Development
-// TODO Rename storybook defaults to base
-// TODO Combine similar buttons into variant
 // TODO Push app to new branch once stable
-// TODO Remove as many player functions from App.tsx as possible
-// TODO MongoDB model timestamps
+// TODO MongoDB model timestamps?
 // TODO Socket.io error handling?
 // TODO Write basic tests
 // TODO Disable socket.io when in solo
@@ -28,11 +24,10 @@ QOL
 // TODO Change color of ready check background
 // TODO Host has left game notification
 // TODO Show winner name on win
-// TODO Handle Errors non destructively
+// TODO Error Boundaries
 
 Future Features
 // TODO Public Rooms
-// TODO Share room link
 // TODO Streamer Mode
 // TODO Balls remaining color based on amount
             * Bright Green @ 75 (default)
