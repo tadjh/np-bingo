@@ -9,18 +9,17 @@ import DialogCode from '../../Components/DialogCode';
 import { FeautresContext } from '../../Utils/contexts';
 import Footer from '../../Components/Footer';
 
-type Props = {
-  createRoom: () => void;
-  joinRoom: (room: Room) => void;
-};
+export interface HomeProps {
+  createRoom?: () => void;
+  joinRoom?: (room: Room) => void;
+}
 
-function Home(props: Props) {
-  let { createRoom, joinRoom } = props;
+export default function Home({ createRoom, joinRoom }: HomeProps) {
   let history = useHistory();
   const [open, handleOpen, handleClose] = useDialog(false);
 
   function join(room: Room) {
-    joinRoom(room);
+    joinRoom && joinRoom(room);
     history.push(`/play?r=${room}`);
   }
 
@@ -35,20 +34,21 @@ function Home(props: Props) {
           <FeautresContext.Consumer>
             {(features) => (
               <Button
+                className="play-button"
                 variant="contained"
                 color="primary"
                 component={
-                  !features['single-player'] && !features['public-rooms']
+                  !features['solo-mode'] && !features['public-rooms']
                     ? 'button'
                     : RouterLink
                 }
                 to={
-                  !features['single-player'] && !features['public-rooms']
+                  !features['solo-mode'] && !features['public-rooms']
                     ? undefined
                     : '/join'
                 }
                 onClick={
-                  !features['single-player'] && !features['public-rooms']
+                  !features['solo-mode'] && !features['public-rooms']
                     ? handleOpen
                     : undefined
                 }
@@ -68,5 +68,3 @@ function Home(props: Props) {
     </React.Fragment>
   );
 }
-
-export default Home;

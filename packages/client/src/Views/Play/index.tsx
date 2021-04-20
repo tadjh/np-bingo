@@ -35,19 +35,27 @@ import DialogActions from '@material-ui/core/DialogActions';
 import Link from '@material-ui/core/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import { initialState, reducer } from '../../Reducers/play.reducer';
+import { initialState as appState } from '../../Reducers/app.reducer';
 
-type Props = {
-  gamestate: Gamestate;
-  winner: Winner;
-  sendCard: (mode: Gamemode, card: Card, room?: Room, host?: Host) => void;
-  leaveRoom: (room: Room, host: Host) => void;
-  standby: (mode: Gamemode) => void;
-  kicked: boolean;
-  init: () => void;
-};
+export interface PlayProps {
+  gamestate?: Gamestate;
+  winner?: Winner;
+  kicked?: boolean;
+  sendCard?: (mode: Gamemode, card: Card, room?: Room, host?: Host) => void;
+  leaveRoom?: (room: Room, host: Host) => void;
+  standby?: (mode: Gamemode) => void;
+  init?: () => void;
+}
 
-export default function Play(props: Props) {
-  let { gamestate, winner, sendCard, leaveRoom, standby, kicked, init } = props;
+export default function Play({
+  gamestate = 'init',
+  winner = { ...appState.winner },
+  kicked = false,
+  sendCard,
+  leaveRoom,
+  standby,
+  init,
+}: PlayProps) {
   const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
     reducer,
     initialState
@@ -130,10 +138,12 @@ export default function Play(props: Props) {
     room: Room,
     host: Host
   ) => {
-    if (mode !== 'solo') {
-      sendCard(mode, card, room, host);
-    } else {
-      sendCard(mode, card);
+    if (sendCard) {
+      if (mode !== 'solo') {
+        sendCard(mode, card, room, host);
+      } else {
+        sendCard(mode, card);
+      }
     }
   };
 
@@ -188,7 +198,7 @@ export default function Play(props: Props) {
                       gameContext.gamestate !== 'failure' &&
                       true
                     }
-                    onClick={() => standby(gameContext.mode)}
+                    onClick={() => standby && standby(gameContext.mode)}
                   >
                     {gameContext.gamestate === 'failure' ? 'Resume' : 'Ready'}
                   </Button>
@@ -235,7 +245,9 @@ export default function Play(props: Props) {
       <GameContext.Consumer>
         {(gameContext) => (
           <Footer
-            onClick={() => leaveRoom(gameContext.room, gameContext.host)}
+            onClick={() =>
+              leaveRoom && leaveRoom(gameContext.room, gameContext.host)
+            }
             room={gameContext.room}
             mode={gameContext.mode}
           />

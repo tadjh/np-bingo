@@ -1,4 +1,5 @@
 .ball-container {
+  display: inline-flex;
   position: relative;
   margin: var(--spacing);
 }

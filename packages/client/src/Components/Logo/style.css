@@ -2,22 +2,18 @@ div.logo {
   font-weight: bold;
   text-transform: uppercase;
   color: var(--color-light);
-  font-size: var(--font-size-h2);
+  font-size: var(--font-size-h1);
   line-height: 1;
-  height: calc(var(--ball-size-sm) + var(--spacing));
+  height: calc(var(--ball-size) + var(--spacing));
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
 }
 
-.logo.home {
-  font-size: var(--font-size-h1);
-}
-
 .logo-item > div {
-  line-height: var(--ball-size-sm);
-  height: var(--ball-size-sm);
-  width: var(--ball-size-sm);
+  line-height: var(--ball-size);
+  height: var(--ball-size);
+  width: var(--ball-size);
   border-radius: 50%;
   text-align: center;
 }

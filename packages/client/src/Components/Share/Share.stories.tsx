@@ -1,10 +1,15 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Share, { ShareProps } from './Share';
+import Share, { ShareProps } from './';
 
 export default {
-  title: 'Components/Share',
+  title: 'Components/Code/Share',
   component: Share,
+  parameters: {
+    actions: {
+      handles: ['click .share-button', 'click .copy-button'],
+    },
+  },
 } as Meta;
 
 const Template: Story<ShareProps> = (args) => <Share {...args} />;

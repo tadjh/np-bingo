@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Board, { BoardProps } from './Board';
+import Board, { BoardProps } from './';
 
 export default {
   title: 'Components/Board',

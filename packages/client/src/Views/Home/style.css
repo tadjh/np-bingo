@@ -1,13 +1,19 @@
 .Home > * {
   position: relative;
   z-index: 1;
+  flex: 1;
+  justify-content: center;
+}
+
+.Home > .main {
+  justify-content: center;
 }
 
 .background {
   display: block;
   position: absolute;
-  margin-left: -24px;
-  margin-right: -24px;
+  left: 0;
+  top: 0;
   height: 100%;
   width: 100%;
   background-image: url(../../Assets/background.png);
@@ -18,10 +24,6 @@
   filter: blur(4px);
   -webkit-filter: blur(4px);
   opacity: 0.8;
-}
-
-.Home > .main {
-  flex: 0 1;
 }
 
 @keyframes slide {

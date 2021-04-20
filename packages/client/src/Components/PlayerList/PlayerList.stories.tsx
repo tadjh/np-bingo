@@ -1,11 +1,16 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import PlayerList, { PlayerListProps } from './PlayerList';
+import PlayerList, { PlayerListProps } from './';
 
 export default {
   title: 'Components/PlayerList',
   component: PlayerList,
   argTypes: { onRemove: { action: 'click' } },
+  parameters: {
+    actions: {
+      handles: ['click .delete-button'],
+    },
+  },
 } as Meta;
 
 const Template: Story<PlayerListProps> = (args) => <PlayerList {...args} />;

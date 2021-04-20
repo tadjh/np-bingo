@@ -1,6 +1,6 @@
 const config = {
   'dark-mode': false,
-  'single-player': true, // Allow solo mode
+  'solo-mode': true, // Allow solo mode
   'share-room': true,
   'public-rooms': false, // TODO Only mock-up
   'game-modes': false, // TODO no game logic built for alternate modes

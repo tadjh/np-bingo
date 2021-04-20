@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Code, { CodeProps } from './Code';
+import Code, { CodeProps } from './';
 import { FeautresContext } from '../../Utils/contexts';
 import features from '../../Config/features';
 
@@ -11,8 +11,8 @@ export default {
 
 const Template: Story<CodeProps> = (args) => <Code {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Base = Template.bind({});
+Base.args = {
   room: 'A1B2',
 };
 
@@ -24,6 +24,6 @@ ShareDisabled.decorators = [
     </FeautresContext.Provider>
   ),
 ];
-ShareDisabled.args = { ...Default.args };
+ShareDisabled.args = { ...Base.args };
 
 export const Blank = Template.bind({});

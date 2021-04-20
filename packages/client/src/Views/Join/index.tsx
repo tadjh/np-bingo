@@ -10,20 +10,19 @@ import DialogCode from '../../Components/DialogCode';
 import './style.css';
 import { FeautresContext } from '../../Utils/contexts';
 
-type Props = {
-  joinRoom: (room: string) => void;
+export interface JoinProps {
   queryRoom: string | null;
-  solo: (gamestate: Gamestate) => void;
-};
+  joinRoom?: (room: string) => void;
+  solo?: (gamestate: Gamestate) => void;
+}
 
-function Join(props: Props) {
-  let { joinRoom, queryRoom, solo } = props;
+export default function Join({ queryRoom = null, joinRoom, solo }: JoinProps) {
   let history = useHistory();
   const [open, handleOpen, handleClose] = useDialog(false);
 
   const join = useCallback(
     (room: Room) => {
-      joinRoom(room);
+      joinRoom && joinRoom(room);
       history.push(`/play?r=${room}`);
     },
     [history, joinRoom]
@@ -37,13 +36,10 @@ function Join(props: Props) {
   }, [queryRoom, join]);
 
   const handleSolo = () => {
-    solo('init');
+    solo && solo('init');
     history.push(`/play?m=solo`);
   };
 
-  // const handleBlur = (event: KeyboardEvent<HTMLInputElement>) => {
-  //   return inputs.code.length === 4 && event.target.blur();
-  // };
   // TODO replace with Public Room Implementation
   const dummyArray = [
     {
@@ -78,6 +74,7 @@ function Join(props: Props) {
               <RoomList data={dummyArray} action={joinRoom} />
             )}
             <Button
+              className="join-button"
               variant="contained"
               color="primary"
               onClick={handleOpen}
@@ -85,16 +82,21 @@ function Join(props: Props) {
             >
               Join Room
             </Button>
-            {features['single-player'] && (
-              <Button color="primary" onClick={handleSolo} size="large">
-                Play Solo
+            {features['solo-mode'] && (
+              <Button
+                className="solo-button"
+                color="primary"
+                onClick={handleSolo}
+                size="large"
+              >
+                Solo
               </Button>
             )}
           </div>
         )}
       </FeautresContext.Consumer>
       <footer>
-        <Link component={RouterLink} to="/">
+        <Link className="nav-button" component={RouterLink} to="/">
           &larr; Back
         </Link>
       </footer>
@@ -102,5 +104,3 @@ function Join(props: Props) {
     </div>
   );
 }
-
-export default Join;

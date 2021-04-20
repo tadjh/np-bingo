@@ -15,13 +15,13 @@ import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import { useTitle } from '../../Utils/custom-hooks';
 
-type Props = {
+export interface CreateProps {
   title?: string;
-};
+}
 
-function Create(props: Props) {
-  let { title } = props;
+export default function Create({ title }: CreateProps) {
   useTitle(title && title);
+
   const [type, setType] = useState('default');
   const [state, setState] = useState({
     postage: false,
@@ -141,12 +141,10 @@ function Create(props: Props) {
         </Button>
       </div>
       <footer>
-        <Link component={RouterLink} to="/">
+        <Link className="nav-button" component={RouterLink} to="/">
           &larr; Back
         </Link>
       </footer>
     </div>
   );
 }
-
-export default Create;

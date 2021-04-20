@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Cell, { CellProps } from './Cell';
+import Cell, { CellProps } from './';
 
 export default {
   title: 'Components/Board/Cell',
@@ -9,22 +9,31 @@ export default {
 
 const Template: Story<CellProps> = (args) => <Cell {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Base = Template.bind({});
+Base.args = {
   children: 15,
 };
 
-export const Checked = Template.bind({});
-Checked.args = {
-  ...Default.args,
-  checked: true,
-};
+const Stack: Story<CellProps> = (args) => (
+  <React.Fragment>
+    <Cell {...args} />
+    <Cell {...args} children={15} />
+    <Cell {...args} children={15} checked={true} />
+    <Cell
+      {...args}
+      children={15}
+      checked={true}
+      className="winner"
+      disabled={true}
+    />
+  </React.Fragment>
+);
 
-export const Winner = Template.bind({});
-Winner.args = {
-  ...Checked.args,
-  className: 'winner',
-  disabled: true,
-};
-
-export const Blank = Template.bind({});
+export const Variants = Stack.bind({});
+Variants.decorators = [
+  (Story) => (
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+      <Story />
+    </div>
+  ),
+];

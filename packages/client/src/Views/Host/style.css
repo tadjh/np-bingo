@@ -1,3 +1,7 @@
+.Host > .main {
+  justify-content: flex-start;
+}
+
 .app-buttons {
   margin: var(--spacing-2x);
 }

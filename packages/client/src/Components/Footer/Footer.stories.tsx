@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Footer, { FooterProps } from './Footer';
+import Footer, { FooterProps } from './';
 import { FeautresContext } from '../../Utils/contexts';
 import features from '../../Config/features';
 
@@ -25,7 +25,7 @@ const Template: Story<FooterProps> = (args) => <Footer {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  ...CodeStories.Default.args,
+  ...CodeStories.Base.args,
 };
 
 export const ShareDisabled = Template.bind({});

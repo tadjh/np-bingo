@@ -12,33 +12,32 @@ import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import './style.css';
 import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
 
 export interface HostProps {
-  checkCard: () => void;
-  newBall: () => void;
   draws: Pool;
-  leaveRoom: (room: Room) => void;
   players: Player[];
-  gameToggle: (gamestate: Gamestate, room: Room) => void;
-  removePlayer: (player: Player) => void;
-  start: (room: Room) => void;
+  checkCard?: () => void;
+  newBall?: () => void;
+  leaveRoom?: (room: Room) => void;
+  gameToggle?: (gamestate: Gamestate, room: Room) => void;
+  removePlayer?: (player: Player) => void;
+  start?: (room: Room) => void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     width: {
-      width: theme.spacing(16),
+      width: theme.spacing(18),
     },
   })
 );
 
 function Host({
+  draws = [[], [], [], [], []],
+  players = [],
   checkCard,
   newBall,
-  draws,
   leaveRoom,
-  players,
   gameToggle,
   removePlayer,
   start,
@@ -58,9 +57,9 @@ function Host({
 
   const handleBall = (gamestate: Gamestate, room: Room) => {
     if (gamestate === 'standby' || gamestate === 'failure') {
-      start(room);
+      start && start(room);
     }
-    newBall();
+    newBall && newBall();
   };
 
   return (
@@ -73,10 +72,12 @@ function Host({
                 variant="contained"
                 color="primary"
                 aria-label="contained primary button group"
+                size="large"
               >
                 <Button
                   className={classes.width}
                   onClick={() =>
+                    gameToggle &&
                     gameToggle(gameContext.gamestate, gameContext.room)
                   }
                 >
@@ -151,7 +152,7 @@ function Host({
           </div>
           <Footer
             room={gameContext.room}
-            onClick={() => leaveRoom(gameContext.room)}
+            onClick={() => leaveRoom && leaveRoom(gameContext.room)}
           />
         </div>
       )}

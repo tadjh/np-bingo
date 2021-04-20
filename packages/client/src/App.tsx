@@ -637,7 +637,7 @@ export default function App() {
     <GameContext.Provider value={gameContext}>
       <BallContext.Provider value={ballContext}>
         <ThemeProvider theme={theme}>
-          <Container className="App" fixed maxWidth="xs">
+          <Container className="App shadow" fixed maxWidth="xs">
             <Switch>
               <Route path="/create">
                 <Create></Create>

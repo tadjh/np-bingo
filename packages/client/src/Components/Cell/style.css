@@ -1,9 +1,9 @@
 .grid-item {
   font-weight: bold;
-  font-size: var(--font-size-h3);
-  height: var(--grid-item);
-  min-width: calc(var(--spacing-2x) * 3);
-  line-height: var(--grid-item);
+  font-size: var(--font-size-h2);
+  height: var(--grid-item-h);
+  min-width: var(--grid-item-w);
+  line-height: var(--grid-item-h);
   text-align: center;
   vertical-align: middle;
   text-transform: uppercase;
@@ -25,7 +25,8 @@
   left: 0;
   top: 0;
   color: var(--color-alert);
-  line-height: 0.4;
+  line-height: calc(var(--crossmark) / 3);
+  mix-blend-mode: multiply;
 }
 
 .checked.winner::before {

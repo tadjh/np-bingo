@@ -1,7 +1,6 @@
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  width: var(--grid);
   border: var(--border-width-bold) solid var(--color-dark);
   border-radius: var(--spacing);
   text-align: center;
@@ -15,6 +14,9 @@
   grid-column-start: 1;
   grid-column-end: 6;
   border-bottom: var(--border-width-bold) solid var(--color-dark);
+  background-color: var(--color-light);
+  border-top-left-radius: var(--spacing);
+  border-top-right-radius: var(--spacing);
 }
 
 .grid.winner .grid-header {

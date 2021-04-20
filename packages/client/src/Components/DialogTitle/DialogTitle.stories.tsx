@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import DialogTitle, { DialogTitleProps } from './DialogTitle';
+import DialogTitle, { DialogTitleProps } from './';
 
 export default {
   title: 'Components/DialogTitle',
@@ -17,7 +17,7 @@ export default {
 
 const Template: Story<DialogTitleProps> = (args) => <DialogTitle {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  children: 'Enter Room Code',
+export const Base = Template.bind({});
+Base.args = {
+  children: 'Dialog Title',
 };

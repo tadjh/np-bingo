@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Remainder, { RemainderProps } from './Remainder';
+import Remainder, { RemainderProps } from './';
 
 export default {
   title: 'Components/Ball/Remainder',
