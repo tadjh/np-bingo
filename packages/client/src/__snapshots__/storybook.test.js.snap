@@ -1254,7 +1254,6 @@ exports[`Storyshots Components/Code/Share Default 1`] = `
 
 exports[`Storyshots Components/DialogTitle Base 1`] = `
 <div
-  id="root"
   style="position: relative; min-width: 300px;"
 >
   <div
@@ -2961,11 +2960,7 @@ exports[`Storyshots Components/Status/Player Win 1`] = `
 </p>
 `;
 
-exports[`Storyshots Forms/DialogCode Base 1`] = `
-<div
-  id="root"
-/>
-`;
+exports[`Storyshots Forms/DialogCode Base 1`] = `null`;
 
 exports[`Storyshots Pages/Create Base 1`] = `
 <div
