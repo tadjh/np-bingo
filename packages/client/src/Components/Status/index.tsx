@@ -1,7 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Gamestate } from '@np-bingo/types';
-import { randomElement } from '../../Utils';
+// import { randomElement } from '../../Utils';
 
 /**
  * Text to be displayed to players based on current gamestate
@@ -31,13 +31,15 @@ export function statusText(gamestate: Gamestate) {
       text = 'A card is being checked for BINGO!';
       break;
     case 'failure':
-      let failureText = [
-        'Jumping the gun. No Bingo...',
-        'False alarm... BONGO!',
-        'Just practicing? No Bingo...',
-        'Falsie. Keep trying...',
-      ];
-      text = randomElement(failureText);
+      // let failureText = [
+      //   'Jumping the gun. No Bingo...',
+      //   'False alarm... BONGO!',
+      //   'Just practicing? No Bingo...',
+      //   'Falsie. Keep trying...',
+      // ];
+      // text = randomElement(failureText);
+
+      text = 'Jumping the gun. No Bingo...';
       break;
     case 'end':
       text = 'Game Over!';
@@ -79,13 +81,14 @@ export function hostStatusText(gamestate: Gamestate, count?: number) {
       text = 'Click to dispense a ball.';
       break;
     case 'start':
-      let rollText = [
-        'Call the ball, then keep on rolling...',
-        'Call it out! Then fetch another ball!',
-        'Say the name of the ball, then roll again!',
-        'Call out the ball, then dispense another.',
-      ];
-      text = randomElement(rollText);
+      // let rollText = [
+      //   'Call the ball, then keep on rolling...',
+      //   'Call it out! Then fetch another ball!',
+      //   'Say the name of the ball, then roll again!',
+      //   'Call out the ball, then dispense another.',
+      // ];
+      // text = randomElement(rollText);
+      text = 'Call out the ball, then dispense another';
       break;
     case 'validate':
       text = 'Check card for a BINGO!';
