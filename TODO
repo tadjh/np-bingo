@@ -14,10 +14,10 @@ Development
 // TODO Push app to new branch once stable
 // TODO MongoDB model timestamps?
 // TODO Socket.io error handling?
-// TODO Write basic tests
 // TODO Disable socket.io when in solo
 // TODO Migrate to React Router v6
 // TODO Make List generation generic
+// TODO Add profiler tracing?
 
 QOL
 // TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
