@@ -1,23 +1,22 @@
 Bugs
 // TODO Prevent Join room that doesn't exist
-// TODO Crossmarks make random status text change especially on failure
 
 High Priority
 // TODO Rest api use game "_id" instead of room id
-// TODO Save Game to DB after game over
 // TODO Rest Api auth
 // TODO Max active Games
 // TODO Max room size 
-// TODO Create users
+// TODO Create users?
 
 Development
 // TODO Push app to new branch once stable
 // TODO MongoDB model timestamps?
 // TODO Socket.io error handling?
-// TODO Disable socket.io when in solo
+// TODO Disable socket.io when in solo?
 // TODO Migrate to React Router v6
 // TODO Make List generation generic
 // TODO Add profiler tracing?
+// TODO Socket.io Tests https://socket.io/docs/v4/testing/#Example-with-jest
 
 QOL
 // TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
