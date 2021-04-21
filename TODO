@@ -10,6 +10,8 @@ High Priority
 
 Development
 // TODO Push app to new branch once stable
+// TODO redis 
+// TODO Helmet
 // TODO MongoDB model timestamps?
 // TODO Socket.io error handling?
 // TODO Disable socket.io when in solo?
