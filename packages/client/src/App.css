@@ -1,6 +1,7 @@
 .App {
   position: relative;
   background-color: var(--color-light-alt);
+  overflow: hidden;
 }
 
 .App > div:not(.background) {
