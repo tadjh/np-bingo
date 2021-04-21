@@ -1,0 +1,17 @@
+.Host > .main {
+  justify-content: flex-start;
+}
+
+.app-buttons {
+  margin: var(--spacing-2x);
+}
+
+.app-buttons .toggle-button {
+  min-width: var(--spacing-2x * 5);
+}
+
+.ball-wrapper {
+  display: flex;
+  align-items: center;
+  margin: var(--spacing);
+}

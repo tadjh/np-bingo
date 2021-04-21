@@ -1,0 +1,5439 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Components/Ball Base 1`] = `
+<div
+  class="ball-container"
+>
+  <span
+    class="MuiBadge-root badge monospace"
+  >
+    <div
+      class="ball shadow  false"
+    >
+      <div
+        class="column monospace"
+      />
+      <div
+        class="number monospace"
+      />
+    </div>
+    <span
+      class="MuiBadge-badge MuiBadge-anchorOriginTopRightCircle MuiBadge-colorPrimary"
+    >
+      75
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Storyshots Components/Ball Disabled 1`] = `
+<div
+  class="ball-container"
+>
+  <span
+    class="MuiBadge-root badge monospace"
+  >
+    <div
+      class="ball shadow i disabled"
+    >
+      <div
+        class="column monospace"
+      >
+        i
+      </div>
+      <div
+        class="number monospace"
+      >
+        24
+      </div>
+    </div>
+    <span
+      class="MuiBadge-badge MuiBadge-anchorOriginTopRightCircle MuiBadge-colorPrimary MuiBadge-invisible"
+    >
+      0
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Storyshots Components/Ball Progress 1`] = `
+<div
+  class="ball-container"
+>
+  <span
+    class="MuiBadge-root badge monospace"
+  >
+    <div
+      class="ball shadow i false"
+    >
+      <div
+        class="column monospace"
+      >
+        i
+      </div>
+      <div
+        class="number monospace"
+      >
+        24
+      </div>
+    </div>
+    <span
+      class="MuiBadge-badge MuiBadge-anchorOriginTopRightCircle MuiBadge-colorPrimary"
+    >
+      74
+    </span>
+  </span>
+  <div
+    aria-valuenow="75"
+    class="MuiCircularProgress-root progress MuiCircularProgress-colorPrimary MuiCircularProgress-determinate"
+    role="progressbar"
+    style="width: 102px; height: 102px; transform: rotate(-90deg);"
+  >
+    <svg
+      class="MuiCircularProgress-svg"
+      viewBox="22 22 44 44"
+    >
+      <circle
+        class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate"
+        cx="44"
+        cy="44"
+        fill="none"
+        r="20.2"
+        stroke-width="3.6"
+        style="stroke-dasharray: 126.920; stroke-dashoffset: 31.730px;"
+      />
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Ball Variants 1`] = `
+<div
+  class="ball-container"
+>
+  <span
+    class="MuiBadge-root badge monospace"
+  >
+    <div
+      class="ball shadow b false"
+    >
+      <div
+        class="column monospace"
+      >
+        b
+      </div>
+      <div
+        class="number monospace"
+      >
+        3
+      </div>
+    </div>
+    <span
+      class="MuiBadge-badge MuiBadge-anchorOriginTopRightCircle MuiBadge-colorPrimary"
+    >
+      73
+    </span>
+  </span>
+</div>
+`;
+
+exports[`Storyshots Components/Ball/Remainder Base 1`] = `
+<span
+  class="MuiTypography-root remainder  MuiTypography-caption MuiTypography-gutterBottom"
+>
+  Balls Remaining: 0
+</span>
+`;
+
+exports[`Storyshots Components/Board Blank 1`] = `
+<div
+  class="grid-container"
+>
+  <div
+    class="grid shadow false"
+  >
+    <div
+      class="grid-header"
+    >
+      <div
+        class="logo false"
+      >
+        <div
+          class="logo-item logo-item-1 false"
+        >
+          <div
+            class="false"
+          >
+            b
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-2 false"
+        >
+          <div
+            class="false"
+          >
+            i
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-3 false"
+        >
+          <div
+            class="false"
+          >
+            n
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-4 false"
+        >
+          <div
+            class="false"
+          >
+            g
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-5 false"
+        >
+          <div
+            class="false"
+          >
+            o
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-item grid-item-1 false false monospace"
+      id="cell1"
+    />
+    <div
+      class="grid-item grid-item-2 false false monospace"
+      id="cell2"
+    />
+    <div
+      class="grid-item grid-item-3 false false monospace"
+      id="cell3"
+    />
+    <div
+      class="grid-item grid-item-4 false false monospace"
+      id="cell4"
+    />
+    <div
+      class="grid-item grid-item-5 false false monospace"
+      id="cell5"
+    />
+    <div
+      class="grid-item grid-item-6 false false monospace"
+      id="cell6"
+    />
+    <div
+      class="grid-item grid-item-7 false false monospace"
+      id="cell7"
+    />
+    <div
+      class="grid-item grid-item-8 false false monospace"
+      id="cell8"
+    />
+    <div
+      class="grid-item grid-item-9 false false monospace"
+      id="cell9"
+    />
+    <div
+      class="grid-item grid-item-10 false false monospace"
+      id="cell10"
+    />
+    <div
+      class="grid-item grid-item-11 false false monospace"
+      id="cell11"
+    />
+    <div
+      class="grid-item grid-item-12 false false monospace"
+      id="cell12"
+    />
+    <div
+      class="grid-item grid-item-13 false false monospace"
+      id="cell13"
+    >
+      free
+    </div>
+    <div
+      class="grid-item grid-item-14 false false monospace"
+      id="cell14"
+    />
+    <div
+      class="grid-item grid-item-15 false false monospace"
+      id="cell15"
+    />
+    <div
+      class="grid-item grid-item-16 false false monospace"
+      id="cell16"
+    />
+    <div
+      class="grid-item grid-item-17 false false monospace"
+      id="cell17"
+    />
+    <div
+      class="grid-item grid-item-18 false false monospace"
+      id="cell18"
+    />
+    <div
+      class="grid-item grid-item-19 false false monospace"
+      id="cell19"
+    />
+    <div
+      class="grid-item grid-item-20 false false monospace"
+      id="cell20"
+    />
+    <div
+      class="grid-item grid-item-21 false false monospace"
+      id="cell21"
+    />
+    <div
+      class="grid-item grid-item-22 false false monospace"
+      id="cell22"
+    />
+    <div
+      class="grid-item grid-item-23 false false monospace"
+      id="cell23"
+    />
+    <div
+      class="grid-item grid-item-24 false false monospace"
+      id="cell24"
+    />
+    <div
+      class="grid-item grid-item-25 false false monospace"
+      id="cell25"
+    />
+    <div
+      class="serial"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Board Checked 1`] = `
+<div
+  class="grid-container"
+>
+  <div
+    class="grid shadow false"
+  >
+    <div
+      class="grid-header"
+    >
+      <div
+        class="logo false"
+      >
+        <div
+          class="logo-item logo-item-1 false"
+        >
+          <div
+            class="false"
+          >
+            b
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-2 false"
+        >
+          <div
+            class="false"
+          >
+            i
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-3 false"
+        >
+          <div
+            class="false"
+          >
+            n
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-4 false"
+        >
+          <div
+            class="false"
+          >
+            g
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-5 false"
+        >
+          <div
+            class="false"
+          >
+            o
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-item grid-item-1 false false monospace"
+      id="cell1"
+    >
+      2
+    </div>
+    <div
+      class="grid-item grid-item-2 checked false monospace"
+      id="cell2"
+    >
+      27
+    </div>
+    <div
+      class="grid-item grid-item-3 false false monospace"
+      id="cell3"
+    >
+      44
+    </div>
+    <div
+      class="grid-item grid-item-4 checked false monospace"
+      id="cell4"
+    >
+      55
+    </div>
+    <div
+      class="grid-item grid-item-5 false false monospace"
+      id="cell5"
+    >
+      63
+    </div>
+    <div
+      class="grid-item grid-item-6 false false monospace"
+      id="cell6"
+    >
+      12
+    </div>
+    <div
+      class="grid-item grid-item-7 checked false monospace"
+      id="cell7"
+    >
+      23
+    </div>
+    <div
+      class="grid-item grid-item-8 checked false monospace"
+      id="cell8"
+    >
+      33
+    </div>
+    <div
+      class="grid-item grid-item-9 checked false monospace"
+      id="cell9"
+    >
+      52
+    </div>
+    <div
+      class="grid-item grid-item-10 false false monospace"
+      id="cell10"
+    >
+      75
+    </div>
+    <div
+      class="grid-item grid-item-11 checked false monospace"
+      id="cell11"
+    >
+      10
+    </div>
+    <div
+      class="grid-item grid-item-12 checked false monospace"
+      id="cell12"
+    >
+      17
+    </div>
+    <div
+      class="grid-item grid-item-13 checked false monospace"
+      id="cell13"
+    >
+      free
+    </div>
+    <div
+      class="grid-item grid-item-14 checked false monospace"
+      id="cell14"
+    >
+      56
+    </div>
+    <div
+      class="grid-item grid-item-15 checked false monospace"
+      id="cell15"
+    >
+      65
+    </div>
+    <div
+      class="grid-item grid-item-16 checked false monospace"
+      id="cell16"
+    >
+      1
+    </div>
+    <div
+      class="grid-item grid-item-17 checked false monospace"
+      id="cell17"
+    >
+      18
+    </div>
+    <div
+      class="grid-item grid-item-18 checked false monospace"
+      id="cell18"
+    >
+      31
+    </div>
+    <div
+      class="grid-item grid-item-19 false false monospace"
+      id="cell19"
+    >
+      51
+    </div>
+    <div
+      class="grid-item grid-item-20 false false monospace"
+      id="cell20"
+    >
+      61
+    </div>
+    <div
+      class="grid-item grid-item-21 false false monospace"
+      id="cell21"
+    >
+      9
+    </div>
+    <div
+      class="grid-item grid-item-22 checked false monospace"
+      id="cell22"
+    >
+      26
+    </div>
+    <div
+      class="grid-item grid-item-23 false false monospace"
+      id="cell23"
+    >
+      32
+    </div>
+    <div
+      class="grid-item grid-item-24 checked false monospace"
+      id="cell24"
+    >
+      50
+    </div>
+    <div
+      class="grid-item grid-item-25 false false monospace"
+      id="cell25"
+    >
+      62
+    </div>
+    <div
+      class="serial"
+    >
+      EzDsBZwVig2BmAjCeqpiogDI0daaIAcSmsiAnMAsFFrMEA==
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Board Default 1`] = `
+<div
+  class="grid-container"
+>
+  <div
+    class="grid shadow false"
+  >
+    <div
+      class="grid-header"
+    >
+      <div
+        class="logo false"
+      >
+        <div
+          class="logo-item logo-item-1 false"
+        >
+          <div
+            class="false"
+          >
+            b
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-2 false"
+        >
+          <div
+            class="false"
+          >
+            i
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-3 false"
+        >
+          <div
+            class="false"
+          >
+            n
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-4 false"
+        >
+          <div
+            class="false"
+          >
+            g
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-5 false"
+        >
+          <div
+            class="false"
+          >
+            o
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-item grid-item-1 false false monospace"
+      id="cell1"
+    >
+      2
+    </div>
+    <div
+      class="grid-item grid-item-2 false false monospace"
+      id="cell2"
+    >
+      27
+    </div>
+    <div
+      class="grid-item grid-item-3 false false monospace"
+      id="cell3"
+    >
+      44
+    </div>
+    <div
+      class="grid-item grid-item-4 false false monospace"
+      id="cell4"
+    >
+      55
+    </div>
+    <div
+      class="grid-item grid-item-5 false false monospace"
+      id="cell5"
+    >
+      63
+    </div>
+    <div
+      class="grid-item grid-item-6 false false monospace"
+      id="cell6"
+    >
+      12
+    </div>
+    <div
+      class="grid-item grid-item-7 false false monospace"
+      id="cell7"
+    >
+      23
+    </div>
+    <div
+      class="grid-item grid-item-8 false false monospace"
+      id="cell8"
+    >
+      33
+    </div>
+    <div
+      class="grid-item grid-item-9 false false monospace"
+      id="cell9"
+    >
+      52
+    </div>
+    <div
+      class="grid-item grid-item-10 false false monospace"
+      id="cell10"
+    >
+      75
+    </div>
+    <div
+      class="grid-item grid-item-11 false false monospace"
+      id="cell11"
+    >
+      10
+    </div>
+    <div
+      class="grid-item grid-item-12 false false monospace"
+      id="cell12"
+    >
+      17
+    </div>
+    <div
+      class="grid-item grid-item-13 false false monospace"
+      id="cell13"
+    >
+      free
+    </div>
+    <div
+      class="grid-item grid-item-14 false false monospace"
+      id="cell14"
+    >
+      56
+    </div>
+    <div
+      class="grid-item grid-item-15 false false monospace"
+      id="cell15"
+    >
+      65
+    </div>
+    <div
+      class="grid-item grid-item-16 false false monospace"
+      id="cell16"
+    >
+      1
+    </div>
+    <div
+      class="grid-item grid-item-17 false false monospace"
+      id="cell17"
+    >
+      18
+    </div>
+    <div
+      class="grid-item grid-item-18 false false monospace"
+      id="cell18"
+    >
+      31
+    </div>
+    <div
+      class="grid-item grid-item-19 false false monospace"
+      id="cell19"
+    >
+      51
+    </div>
+    <div
+      class="grid-item grid-item-20 false false monospace"
+      id="cell20"
+    >
+      61
+    </div>
+    <div
+      class="grid-item grid-item-21 false false monospace"
+      id="cell21"
+    >
+      9
+    </div>
+    <div
+      class="grid-item grid-item-22 false false monospace"
+      id="cell22"
+    >
+      26
+    </div>
+    <div
+      class="grid-item grid-item-23 false false monospace"
+      id="cell23"
+    >
+      32
+    </div>
+    <div
+      class="grid-item grid-item-24 false false monospace"
+      id="cell24"
+    >
+      50
+    </div>
+    <div
+      class="grid-item grid-item-25 false false monospace"
+      id="cell25"
+    >
+      62
+    </div>
+    <div
+      class="serial"
+    >
+      EzDsBZwVig2BmAjCeqpiogDI0daaIAcSmsiAnMAsFFrMEA==
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Board Winner 1`] = `
+<div
+  class="grid-container"
+>
+  <div
+    class="grid shadow winner"
+  >
+    <div
+      class="grid-header"
+    >
+      <div
+        class="logo false"
+      >
+        <div
+          class="logo-item logo-item-1 winner"
+        >
+          <div
+            class="false"
+          >
+            b
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-2 winner"
+        >
+          <div
+            class="false"
+          >
+            i
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-3 winner"
+        >
+          <div
+            class="false"
+          >
+            n
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-4 winner"
+        >
+          <div
+            class="false"
+          >
+            g
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-5 winner"
+        >
+          <div
+            class="false"
+          >
+            o
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="grid-item grid-item-1 false winner monospace"
+      id="cell1"
+    >
+      2
+    </div>
+    <div
+      class="grid-item grid-item-2 checked winner monospace"
+      id="cell2"
+    >
+      27
+    </div>
+    <div
+      class="grid-item grid-item-3 false winner monospace"
+      id="cell3"
+    >
+      44
+    </div>
+    <div
+      class="grid-item grid-item-4 false winner monospace"
+      id="cell4"
+    >
+      55
+    </div>
+    <div
+      class="grid-item grid-item-5 false winner monospace"
+      id="cell5"
+    >
+      63
+    </div>
+    <div
+      class="grid-item grid-item-6 false winner monospace"
+      id="cell6"
+    >
+      12
+    </div>
+    <div
+      class="grid-item grid-item-7 checked winner monospace"
+      id="cell7"
+    >
+      23
+    </div>
+    <div
+      class="grid-item grid-item-8 false winner monospace"
+      id="cell8"
+    >
+      33
+    </div>
+    <div
+      class="grid-item grid-item-9 false winner monospace"
+      id="cell9"
+    >
+      52
+    </div>
+    <div
+      class="grid-item grid-item-10 false winner monospace"
+      id="cell10"
+    >
+      75
+    </div>
+    <div
+      class="grid-item grid-item-11 checked winner monospace"
+      id="cell11"
+    >
+      10
+    </div>
+    <div
+      class="grid-item grid-item-12 checked winner monospace"
+      id="cell12"
+    >
+      17
+    </div>
+    <div
+      class="grid-item grid-item-13 checked winner monospace"
+      id="cell13"
+    >
+      free
+    </div>
+    <div
+      class="grid-item grid-item-14 checked winner monospace"
+      id="cell14"
+    >
+      56
+    </div>
+    <div
+      class="grid-item grid-item-15 checked winner monospace"
+      id="cell15"
+    >
+      65
+    </div>
+    <div
+      class="grid-item grid-item-16 false winner monospace"
+      id="cell16"
+    >
+      1
+    </div>
+    <div
+      class="grid-item grid-item-17 checked winner monospace"
+      id="cell17"
+    >
+      18
+    </div>
+    <div
+      class="grid-item grid-item-18 false winner monospace"
+      id="cell18"
+    >
+      31
+    </div>
+    <div
+      class="grid-item grid-item-19 false winner monospace"
+      id="cell19"
+    >
+      51
+    </div>
+    <div
+      class="grid-item grid-item-20 false winner monospace"
+      id="cell20"
+    >
+      61
+    </div>
+    <div
+      class="grid-item grid-item-21 false winner monospace"
+      id="cell21"
+    >
+      9
+    </div>
+    <div
+      class="grid-item grid-item-22 checked winner monospace"
+      id="cell22"
+    >
+      26
+    </div>
+    <div
+      class="grid-item grid-item-23 false winner monospace"
+      id="cell23"
+    >
+      32
+    </div>
+    <div
+      class="grid-item grid-item-24 false winner monospace"
+      id="cell24"
+    >
+      50
+    </div>
+    <div
+      class="grid-item grid-item-25 false winner monospace"
+      id="cell25"
+    >
+      62
+    </div>
+    <div
+      class="serial"
+    >
+      EzDsBZwVig2BmAjCeqpiogDI0daaIAcSmsiAnMAsFFrMEA==
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Board/Cell Base 1`] = `
+<div
+  class="grid-item grid-item-1 false  monospace"
+>
+  15
+</div>
+`;
+
+exports[`Storyshots Components/Board/Cell Variants 1`] = `
+<div
+  style="display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;"
+>
+  <div
+    class="grid-item grid-item-1 false  monospace"
+  />
+  <div
+    class="grid-item grid-item-1 false  monospace"
+  >
+    15
+  </div>
+  <div
+    class="grid-item grid-item-1 checked  monospace"
+  >
+    15
+  </div>
+  <div
+    class="grid-item grid-item-1 checked winner monospace"
+  >
+    15
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Code Base 1`] = `
+<div
+  id="Code"
+>
+  <div
+    class="code-label"
+  >
+    Room Code:
+  </div>
+  <div
+    class="code-row"
+  >
+    <div
+      class="code-left"
+    />
+    <div
+      class="code"
+    >
+      <code>
+        <span
+          class="code-item false"
+        >
+          A
+        </span>
+        <span
+          class="code-item false"
+        >
+          1
+        </span>
+        <span
+          class="code-item false"
+        >
+          B
+        </span>
+        <span
+          class="code-item false"
+        >
+          2
+        </span>
+      </code>
+    </div>
+    <div
+      class="code-right align-left"
+    >
+      <button
+        aria-label="share"
+        class="MuiButtonBase-root MuiIconButton-root share-button"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Code Blank 1`] = `
+<div
+  id="Code"
+>
+  <div
+    class="code-label"
+  >
+    Room Code:
+  </div>
+  <div
+    class="code-row"
+  >
+    <div
+      class="code-left"
+    />
+    <div
+      class="code"
+    >
+      <code>
+        <span
+          class="code-item false"
+        >
+           
+        </span>
+        <span
+          class="code-item false"
+        >
+           
+        </span>
+        <span
+          class="code-item false"
+        >
+           
+        </span>
+        <span
+          class="code-item false"
+        >
+           
+        </span>
+      </code>
+    </div>
+    <div
+      class="code-right align-left"
+    >
+      <button
+        aria-label="share"
+        class="MuiButtonBase-root MuiIconButton-root share-button"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiIconButton-label"
+        >
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+            />
+          </svg>
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Code Share Disabled 1`] = `
+<div
+  id="Code"
+>
+  <div
+    class="code-label"
+  >
+    Room Code:
+  </div>
+  <div
+    class="code-row"
+  >
+    <div
+      class="code-left"
+    />
+    <div
+      class="code"
+    >
+      <code>
+        <span
+          class="code-item false"
+        >
+          A
+        </span>
+        <span
+          class="code-item false"
+        >
+          1
+        </span>
+        <span
+          class="code-item false"
+        >
+          B
+        </span>
+        <span
+          class="code-item false"
+        >
+          2
+        </span>
+      </code>
+    </div>
+    <div
+      class="code-right align-left"
+    />
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Code/Share Blank 1`] = `
+<button
+  aria-label="share"
+  class="MuiButtonBase-root MuiIconButton-root share-button"
+  tabindex="0"
+  type="button"
+>
+  <span
+    class="MuiIconButton-label"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+      />
+    </svg>
+  </span>
+  <span
+    class="MuiTouchRipple-root"
+  />
+</button>
+`;
+
+exports[`Storyshots Components/Code/Share Default 1`] = `
+<button
+  aria-label="share"
+  class="MuiButtonBase-root MuiIconButton-root share-button"
+  tabindex="0"
+  type="button"
+>
+  <span
+    class="MuiIconButton-label"
+  >
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root"
+      focusable="false"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+      />
+    </svg>
+  </span>
+  <span
+    class="MuiTouchRipple-root"
+  />
+</button>
+`;
+
+exports[`Storyshots Components/DialogTitle Base 1`] = `
+<div
+  style="position: relative; min-width: 300px;"
+>
+  <div
+    class="MuiDialogTitle-root"
+  >
+    <h6
+      class="MuiTypography-root MuiTypography-h6"
+    >
+      Dialog Title
+    </h6>
+    <button
+      aria-label="close"
+      class="MuiButtonBase-root MuiIconButton-root Component-closeButton-2 close-button"
+      tabindex="0"
+      type="button"
+    >
+      <span
+        class="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"
+          />
+        </svg>
+      </span>
+      <span
+        class="MuiTouchRipple-root"
+      />
+    </button>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Draws Blank 1`] = `
+<div
+  class="draws shadow "
+>
+  <ul
+    class="draws-column draws-column-1 monospace"
+  >
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+  <ul
+    class="draws-column draws-column-2 monospace"
+  >
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+  <ul
+    class="draws-column draws-column-3 monospace"
+  >
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+  <ul
+    class="draws-column draws-column-4 monospace"
+  >
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+  <ul
+    class="draws-column draws-column-5 monospace"
+  >
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+</div>
+`;
+
+exports[`Storyshots Components/Draws Default 1`] = `
+<div
+  class="draws shadow "
+>
+  <ul
+    class="draws-column draws-column-1 monospace"
+  >
+    <li>
+      b10
+    </li>
+    <li>
+      b15
+    </li>
+    <li>
+      b2
+    </li>
+    <li>
+      b5
+    </li>
+    <li>
+      b11
+    </li>
+    <li>
+      b12
+    </li>
+    <li>
+      b6
+    </li>
+    <li>
+      b14
+    </li>
+    <li>
+      b3
+    </li>
+    <li>
+      b13
+    </li>
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+  <ul
+    class="draws-column draws-column-2 monospace"
+  >
+    <li>
+      i23
+    </li>
+    <li>
+      i27
+    </li>
+    <li>
+      i25
+    </li>
+    <li>
+      i19
+    </li>
+    <li>
+      i24
+    </li>
+    <li>
+      i30
+    </li>
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+  <ul
+    class="draws-column draws-column-3 monospace"
+  >
+    <li>
+      n45
+    </li>
+    <li>
+      n43
+    </li>
+    <li>
+      n34
+    </li>
+    <li>
+      n35
+    </li>
+    <li>
+      n41
+    </li>
+    <li>
+      n44
+    </li>
+    <li>
+      n32
+    </li>
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+  <ul
+    class="draws-column draws-column-4 monospace"
+  >
+    <li>
+      g59
+    </li>
+    <li>
+      g51
+    </li>
+    <li>
+      g47
+    </li>
+    <li>
+      g46
+    </li>
+    <li>
+      g50
+    </li>
+    <li>
+      g49
+    </li>
+    <li>
+      g54
+    </li>
+    <li>
+      g58
+    </li>
+    <li>
+      g48
+    </li>
+    <li>
+      g53
+    </li>
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+  <ul
+    class="draws-column draws-column-5 monospace"
+  >
+    <li>
+      o71
+    </li>
+    <li>
+      o73
+    </li>
+    <li>
+      o68
+    </li>
+    <li>
+      o67
+    </li>
+    <li>
+      o62
+    </li>
+    <li>
+      o74
+    </li>
+    <li>
+      o70
+    </li>
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+    <li />
+  </ul>
+</div>
+`;
+
+exports[`Storyshots Components/Draws Disabled 1`] = `
+<div
+  class="draws shadow disabled"
+>
+  <ul
+    class="draws-column draws-column-1 monospace"
+  >
+    <li>
+      b10
+    </li>
+    <li>
+      b15
+    </li>
+    <li>
+      b2
+    </li>
+    <li>
+      b5
+    </li>
+    <li>
+      b11
+    </li>
+    <li>
+      b12
+    </li>
+    <li>
+      b6
+    </li>
+    <li>
+      b14
+    </li>
+    <li>
+      b3
+    </li>
+    <li>
+      b13
+    </li>
+    <li>
+      b7
+    </li>
+    <li>
+      b1
+    </li>
+    <li>
+      b9
+    </li>
+    <li>
+      b8
+    </li>
+    <li>
+      b4
+    </li>
+  </ul>
+  <ul
+    class="draws-column draws-column-2 monospace"
+  >
+    <li>
+      i23
+    </li>
+    <li>
+      i27
+    </li>
+    <li>
+      i25
+    </li>
+    <li>
+      i19
+    </li>
+    <li>
+      i24
+    </li>
+    <li>
+      i30
+    </li>
+    <li>
+      i29
+    </li>
+    <li>
+      i21
+    </li>
+    <li>
+      i16
+    </li>
+    <li>
+      i17
+    </li>
+    <li>
+      i26
+    </li>
+    <li>
+      i22
+    </li>
+    <li>
+      i28
+    </li>
+    <li>
+      i18
+    </li>
+    <li>
+      i20
+    </li>
+  </ul>
+  <ul
+    class="draws-column draws-column-3 monospace"
+  >
+    <li>
+      n45
+    </li>
+    <li>
+      n43
+    </li>
+    <li>
+      n34
+    </li>
+    <li>
+      n35
+    </li>
+    <li>
+      n41
+    </li>
+    <li>
+      n44
+    </li>
+    <li>
+      n32
+    </li>
+    <li>
+      n37
+    </li>
+    <li>
+      n36
+    </li>
+    <li>
+      n31
+    </li>
+    <li>
+      n39
+    </li>
+    <li>
+      n33
+    </li>
+    <li>
+      n40
+    </li>
+    <li>
+      n42
+    </li>
+    <li>
+      n38
+    </li>
+  </ul>
+  <ul
+    class="draws-column draws-column-4 monospace"
+  >
+    <li>
+      g59
+    </li>
+    <li>
+      g51
+    </li>
+    <li>
+      g47
+    </li>
+    <li>
+      g46
+    </li>
+    <li>
+      g50
+    </li>
+    <li>
+      g49
+    </li>
+    <li>
+      g54
+    </li>
+    <li>
+      g58
+    </li>
+    <li>
+      g48
+    </li>
+    <li>
+      g53
+    </li>
+    <li>
+      g60
+    </li>
+    <li>
+      g55
+    </li>
+    <li>
+      g57
+    </li>
+    <li>
+      g52
+    </li>
+    <li>
+      g56
+    </li>
+  </ul>
+  <ul
+    class="draws-column draws-column-5 monospace"
+  >
+    <li>
+      o71
+    </li>
+    <li>
+      o73
+    </li>
+    <li>
+      o68
+    </li>
+    <li>
+      o67
+    </li>
+    <li>
+      o62
+    </li>
+    <li>
+      o74
+    </li>
+    <li>
+      o70
+    </li>
+    <li>
+      o75
+    </li>
+    <li>
+      o65
+    </li>
+    <li>
+      o66
+    </li>
+    <li>
+      o63
+    </li>
+    <li>
+      o64
+    </li>
+    <li>
+      o72
+    </li>
+    <li>
+      o61
+    </li>
+    <li>
+      o69
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Storyshots Components/Footer Blank 1`] = `
+<footer>
+  <div
+    id="Code"
+  >
+    <div
+      class="code-label"
+    >
+      Room Code:
+    </div>
+    <div
+      class="code-row"
+    >
+      <div
+        class="code-left"
+      />
+      <div
+        class="code"
+      >
+        <code>
+          <span
+            class="code-item empty"
+          >
+            _
+          </span>
+          <span
+            class="code-item empty"
+          >
+            _
+          </span>
+          <span
+            class="code-item empty"
+          >
+            _
+          </span>
+          <span
+            class="code-item empty"
+          >
+            _
+          </span>
+        </code>
+      </div>
+      <div
+        class="code-right align-left"
+      />
+    </div>
+  </div>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/"
+  >
+    Leave Room
+  </a>
+</footer>
+`;
+
+exports[`Storyshots Components/Footer Default 1`] = `
+<footer>
+  <div
+    id="Code"
+  >
+    <div
+      class="code-label"
+    >
+      Room Code:
+    </div>
+    <div
+      class="code-row"
+    >
+      <div
+        class="code-left"
+      />
+      <div
+        class="code"
+      >
+        <code>
+          <span
+            class="code-item false"
+          >
+            A
+          </span>
+          <span
+            class="code-item false"
+          >
+            1
+          </span>
+          <span
+            class="code-item false"
+          >
+            B
+          </span>
+          <span
+            class="code-item false"
+          >
+            2
+          </span>
+        </code>
+      </div>
+      <div
+        class="code-right align-left"
+      >
+        <button
+          aria-label="share"
+          class="MuiButtonBase-root MuiIconButton-root share-button"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </div>
+  </div>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/"
+  >
+    Leave Room
+  </a>
+</footer>
+`;
+
+exports[`Storyshots Components/Footer Home 1`] = `
+<footer>
+  <p
+    class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+  >
+    Made by Tadjh Brooks
+  </p>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="https://github.com/TadjhBrooks/np-bingo/"
+  >
+    https://github.com/TadjhBrooks/np-bingo
+  </a>
+</footer>
+`;
+
+exports[`Storyshots Components/Footer Share Disabled 1`] = `
+<footer>
+  <div
+    id="Code"
+  >
+    <div
+      class="code-label"
+    >
+      Room Code:
+    </div>
+    <div
+      class="code-row"
+    >
+      <div
+        class="code-left"
+      />
+      <div
+        class="code"
+      >
+        <code>
+          <span
+            class="code-item false"
+          >
+            A
+          </span>
+          <span
+            class="code-item false"
+          >
+            1
+          </span>
+          <span
+            class="code-item false"
+          >
+            B
+          </span>
+          <span
+            class="code-item false"
+          >
+            2
+          </span>
+        </code>
+      </div>
+      <div
+        class="code-right align-left"
+      />
+    </div>
+  </div>
+  <a
+    class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+    href="/"
+  >
+    Leave Room
+  </a>
+</footer>
+`;
+
+exports[`Storyshots Components/Logo Large 1`] = `
+<div
+  class="logo home"
+>
+  <div
+    class="logo-item logo-item-1 "
+  >
+    <div
+      class="shadow"
+    >
+      b
+    </div>
+  </div>
+  <div
+    class="logo-item logo-item-2 "
+  >
+    <div
+      class="shadow"
+    >
+      i
+    </div>
+  </div>
+  <div
+    class="logo-item logo-item-3 "
+  >
+    <div
+      class="shadow"
+    >
+      n
+    </div>
+  </div>
+  <div
+    class="logo-item logo-item-4 "
+  >
+    <div
+      class="shadow"
+    >
+      g
+    </div>
+  </div>
+  <div
+    class="logo-item logo-item-5 "
+  >
+    <div
+      class="shadow"
+    >
+      o
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/Logo Small 1`] = `
+<div
+  class="logo false"
+>
+  <div
+    class="logo-item logo-item-1 "
+  >
+    <div
+      class="false"
+    >
+      b
+    </div>
+  </div>
+  <div
+    class="logo-item logo-item-2 "
+  >
+    <div
+      class="false"
+    >
+      i
+    </div>
+  </div>
+  <div
+    class="logo-item logo-item-3 "
+  >
+    <div
+      class="false"
+    >
+      n
+    </div>
+  </div>
+  <div
+    class="logo-item logo-item-4 "
+  >
+    <div
+      class="false"
+    >
+      g
+    </div>
+  </div>
+  <div
+    class="logo-item logo-item-5 "
+  >
+    <div
+      class="false"
+    >
+      o
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Components/PlayerList Blank 1`] = `
+<div
+  class="player-list"
+>
+  <p
+    class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+  >
+    No players found
+  </p>
+</div>
+`;
+
+exports[`Storyshots Components/PlayerList Many Items 1`] = `
+<div
+  class="player-list"
+>
+  <ul
+    class="MuiList-root MuiList-padding"
+  >
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root MuiListItemText-multiline"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Jane Doe
+          </span>
+          <p
+            class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            Ready
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+      >
+        <button
+          aria-label="status"
+          class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </li>
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13H5v-2h14v2z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root MuiListItemText-multiline"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Jane Doa
+          </span>
+          <p
+            class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            Selecting a card...
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+      >
+        <button
+          aria-label="status"
+          class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </li>
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13H5v-2h14v2z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root MuiListItemText-multiline"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Jane Do
+          </span>
+          <p
+            class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            Selecting a card...
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+      >
+        <button
+          aria-label="status"
+          class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </li>
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13H5v-2h14v2z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root MuiListItemText-multiline"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Jane Doh
+          </span>
+          <p
+            class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            Selecting a card...
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+      >
+        <button
+          aria-label="status"
+          class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Storyshots Components/PlayerList Single Item 1`] = `
+<div
+  class="player-list"
+>
+  <ul
+    class="MuiList-root MuiList-padding"
+  >
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13H5v-2h14v2z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root MuiListItemText-multiline"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Jane Doe
+          </span>
+          <p
+            class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            Selecting a card...
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+      >
+        <button
+          aria-label="status"
+          class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Storyshots Components/PlayerList Single Item Ready 1`] = `
+<div
+  class="player-list"
+>
+  <ul
+    class="MuiList-root MuiList-padding"
+  >
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+              />
+            </svg>
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root MuiListItemText-multiline"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            Jane Doe
+          </span>
+          <p
+            class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            Ready
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+      >
+        <button
+          aria-label="status"
+          class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Storyshots Components/RoomList Blank 1`] = `
+<div
+  class="room-list"
+>
+  <p
+    class="MuiTypography-root MuiTypography-body1"
+  >
+    No rooms found
+  </p>
+</div>
+`;
+
+exports[`Storyshots Components/RoomList Rooms 1`] = `
+<div
+  class="room-list"
+>
+  <ul
+    class="MuiList-root MuiList-padding"
+  >
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            8
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root MuiListItemText-multiline"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            NYPD
+          </span>
+          <p
+            class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            Siz Fulker
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+      >
+        <a
+          aria-disabled="false"
+          aria-label="play"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+          href="/play/NYPD"
+          role="button"
+          tabindex="0"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </a>
+      </div>
+    </li>
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            5
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root MuiListItemText-multiline"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            TEST
+          </span>
+          <p
+            class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            Dean Watson
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+      >
+        <a
+          aria-disabled="false"
+          aria-label="play"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+          href="/play/TEST"
+          role="button"
+          tabindex="0"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </a>
+      </div>
+    </li>
+    <li
+      class="MuiListItem-container"
+    >
+      <div
+        class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+      >
+        <div
+          class="MuiListItemAvatar-root"
+        >
+          <div
+            class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+          >
+            1
+          </div>
+        </div>
+        <div
+          class="MuiListItemText-root MuiListItemText-multiline"
+        >
+          <span
+            class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+          >
+            ABCD
+          </span>
+          <p
+            class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+          >
+            Manny McDaniels
+          </p>
+        </div>
+      </div>
+      <div
+        class="MuiListItemSecondaryAction-root"
+      >
+        <a
+          aria-disabled="false"
+          aria-label="play"
+          class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+          href="/play/ABCD"
+          role="button"
+          tabindex="0"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </a>
+      </div>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`Storyshots Components/Status/Host End 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Game Over!
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Failure 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  This card is not a Bingo. Roll on!
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Init 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Waiting on host to start the game...
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Pause 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Checking if card is a winner...
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Ready 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Waiting for player(s) to join...
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Ready Plural 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  5 players have joined...
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Ready Singular 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  1 player has joined...
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Standby 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Click to dispense a ball.
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Start (Randomized) 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Call out the ball, then dispense another
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Validate 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Check card for a BINGO!
+</p>
+`;
+
+exports[`Storyshots Components/Status/Host Win 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  BINGO!
+</p>
+`;
+
+exports[`Storyshots Components/Status/Player End 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Game Over!
+</p>
+`;
+
+exports[`Storyshots Components/Status/Player Failure (Randomized) 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Jumping the gun. No Bingo...
+</p>
+`;
+
+exports[`Storyshots Components/Status/Player Init 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Waiting on host to start the game...
+</p>
+`;
+
+exports[`Storyshots Components/Status/Player Pause 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  A card is being checked for BINGO!
+</p>
+`;
+
+exports[`Storyshots Components/Status/Player Ready 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Draw a card and click ready.
+</p>
+`;
+
+exports[`Storyshots Components/Status/Player Standby 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Waiting for host to dispense a ball...
+</p>
+`;
+
+exports[`Storyshots Components/Status/Player Start 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Click a square on the card to cross it out
+</p>
+`;
+
+exports[`Storyshots Components/Status/Player Validate 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  Sending card to host...
+</p>
+`;
+
+exports[`Storyshots Components/Status/Player Win 1`] = `
+<p
+  class="MuiTypography-root MuiTypography-body1"
+>
+  BINGO!
+</p>
+`;
+
+exports[`Storyshots Forms/DialogCode Base 1`] = `null`;
+
+exports[`Storyshots Pages/Create Base 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="Create"
+  >
+    <header>
+      <h1
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Create
+      </h1>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <fieldset
+        class="MuiFormControl-root"
+      >
+        <legend
+          class="MuiFormLabel-root"
+        >
+          Game Type
+        </legend>
+        <div
+          aria-label="gametype"
+          class="MuiFormGroup-root"
+          role="radiogroup"
+        >
+          <label
+            class="MuiFormControlLabel-root"
+          >
+            <span
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-checked-4 Mui-checked MuiIconButton-colorSecondary"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  checked=""
+                  class="PrivateSwitchBase-input-6"
+                  name="gametype1"
+                  type="radio"
+                  value="default"
+                />
+                <div
+                  class="PrivateRadioButtonIcon-root-7 PrivateRadioButtonIcon-checked-9"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-8"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                    />
+                  </svg>
+                </div>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            >
+              Bingo
+            </span>
+          </label>
+          <label
+            class="MuiFormControlLabel-root Mui-disabled"
+          >
+            <span
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-disabled-5 Mui-disabled MuiIconButton-colorSecondary Mui-disabled Mui-disabled"
+              tabindex="-1"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-6"
+                  disabled=""
+                  name="gametype1"
+                  type="radio"
+                  value="housey"
+                />
+                <div
+                  class="PrivateRadioButtonIcon-root-7"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-8"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                    />
+                  </svg>
+                </div>
+              </span>
+            </span>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label Mui-disabled MuiTypography-body1"
+            >
+              Housey-Housey
+            </span>
+          </label>
+          <label
+            class="MuiFormControlLabel-root Mui-disabled"
+          >
+            <span
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-disabled-5 Mui-disabled MuiIconButton-colorSecondary Mui-disabled Mui-disabled"
+              tabindex="-1"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-6"
+                  disabled=""
+                  name="gametype1"
+                  type="radio"
+                  value="death"
+                />
+                <div
+                  class="PrivateRadioButtonIcon-root-7"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-8"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                    />
+                  </svg>
+                </div>
+              </span>
+            </span>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label Mui-disabled MuiTypography-body1"
+            >
+              Death Bingo
+            </span>
+          </label>
+          <label
+            class="MuiFormControlLabel-root Mui-disabled"
+          >
+            <span
+              aria-disabled="true"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiRadio-root MuiRadio-colorSecondary PrivateSwitchBase-disabled-5 Mui-disabled MuiIconButton-colorSecondary Mui-disabled Mui-disabled"
+              tabindex="-1"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-6"
+                  disabled=""
+                  name="gametype1"
+                  type="radio"
+                  value="blackout"
+                />
+                <div
+                  class="PrivateRadioButtonIcon-root-7"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+                    />
+                  </svg>
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root PrivateRadioButtonIcon-layer-8"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M8.465 8.465C9.37 7.56 10.62 7 12 7C14.76 7 17 9.24 17 12C17 13.38 16.44 14.63 15.535 15.535C14.63 16.44 13.38 17 12 17C9.24 17 7 14.76 7 12C7 10.62 7.56 9.37 8.465 8.465Z"
+                    />
+                  </svg>
+                </div>
+              </span>
+            </span>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label Mui-disabled MuiTypography-body1"
+            >
+              Blackout Bingo
+            </span>
+          </label>
+        </div>
+      </fieldset>
+      <fieldset
+        class="MuiFormControl-root"
+      >
+        <legend
+          class="MuiFormLabel-root"
+        >
+          Special Rules
+        </legend>
+        <div
+          class="MuiFormGroup-root"
+        >
+          <label
+            class="MuiFormControlLabel-root"
+          >
+            <span
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-6"
+                  data-indeterminate="false"
+                  name="postage"
+                  type="checkbox"
+                  value=""
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            >
+              Postage Stamp
+            </span>
+          </label>
+          <label
+            class="MuiFormControlLabel-root"
+          >
+            <span
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-6"
+                  data-indeterminate="false"
+                  name="corners"
+                  type="checkbox"
+                  value=""
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            >
+              Corners
+            </span>
+          </label>
+          <label
+            class="MuiFormControlLabel-root"
+          >
+            <span
+              aria-disabled="false"
+              class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiCheckbox-root MuiCheckbox-colorSecondary MuiIconButton-colorSecondary"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <input
+                  class="PrivateSwitchBase-input-6"
+                  data-indeterminate="false"
+                  name="rovingl"
+                  type="checkbox"
+                  value=""
+                />
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            >
+              Roving L
+            </span>
+          </label>
+        </div>
+        <p
+          class="MuiFormHelperText-root"
+        >
+          Optional
+        </p>
+      </fieldset>
+      <fieldset
+        class="MuiFormControl-root"
+      >
+        <legend
+          class="MuiFormLabel-root"
+        >
+          Visibility
+        </legend>
+        <div
+          class="MuiFormGroup-root"
+        >
+          <label
+            class="MuiFormControlLabel-root"
+          >
+            <span
+              class="MuiSwitch-root"
+            >
+              <span
+                aria-disabled="false"
+                class="MuiButtonBase-root MuiIconButton-root PrivateSwitchBase-root-3 MuiSwitch-switchBase MuiSwitch-colorSecondary"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <input
+                    class="PrivateSwitchBase-input-6 MuiSwitch-input"
+                    name="visible"
+                    type="checkbox"
+                    value=""
+                  />
+                  <span
+                    class="MuiSwitch-thumb"
+                  />
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </span>
+              <span
+                class="MuiSwitch-track"
+              />
+            </span>
+            <span
+              class="MuiTypography-root MuiFormControlLabel-label MuiTypography-body1"
+            >
+              Public
+            </span>
+          </label>
+        </div>
+      </fieldset>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButton-containedPrimary"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Create Room
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <footer>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover nav-button MuiTypography-colorPrimary"
+        href="/"
+      >
+        ← Back
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Home Base 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="background"
+  />
+  <div
+    class="Home"
+  >
+    <header>
+      <div
+        class="logo home"
+      >
+        <div
+          class="logo-item logo-item-1 "
+        >
+          <div
+            class="shadow"
+          >
+            b
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-2 "
+        >
+          <div
+            class="shadow"
+          >
+            i
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-3 "
+        >
+          <div
+            class="shadow"
+          >
+            n
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-4 "
+        >
+          <div
+            class="shadow"
+          >
+            g
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-5 "
+        >
+          <div
+            class="shadow"
+          >
+            o
+          </div>
+        </div>
+      </div>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <a
+        aria-disabled="false"
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained play-button MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+        href="/join"
+        role="button"
+        tabindex="0"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Play
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </a>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeLarge MuiButton-sizeLarge"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Host
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <footer>
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+      >
+        Made by Tadjh Brooks
+      </p>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="https://github.com/TadjhBrooks/np-bingo/"
+      >
+        https://github.com/TadjhBrooks/np-bingo
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Home Private Rooms Only 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="background"
+  />
+  <div
+    class="Home"
+  >
+    <header>
+      <div
+        class="logo home"
+      >
+        <div
+          class="logo-item logo-item-1 "
+        >
+          <div
+            class="shadow"
+          >
+            b
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-2 "
+        >
+          <div
+            class="shadow"
+          >
+            i
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-3 "
+        >
+          <div
+            class="shadow"
+          >
+            n
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-4 "
+        >
+          <div
+            class="shadow"
+          >
+            g
+          </div>
+        </div>
+        <div
+          class="logo-item logo-item-5 "
+        >
+          <div
+            class="shadow"
+          >
+            o
+          </div>
+        </div>
+      </div>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained play-button MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Play
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-textSizeLarge MuiButton-sizeLarge"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Host
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <footer>
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+      >
+        Made by Tadjh Brooks
+      </p>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="https://github.com/TadjhBrooks/np-bingo/"
+      >
+        https://github.com/TadjhBrooks/np-bingo
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Host Base 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="Host"
+  >
+    <header>
+      <div
+        class="app-buttons"
+      >
+        <div
+          aria-label="contained primary button group"
+          class="MuiButtonGroup-root MuiButtonGroup-contained"
+          role="group"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-10 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              End Game
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-10 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Check Card
+            </span>
+          </button>
+        </div>
+      </div>
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        Click to dispense a ball.
+      </p>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <div
+        class="ball-wrapper"
+      >
+        <button
+          class="MuiButtonBase-root MuiIconButton-root false MuiIconButton-colorPrimary"
+          tabindex="0"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+              />
+            </svg>
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+        <div
+          class="ball-container"
+        >
+          <span
+            class="MuiBadge-root badge monospace"
+          >
+            <div
+              class="ball shadow i false"
+            >
+              <div
+                class="column monospace"
+              >
+                i
+              </div>
+              <div
+                class="number monospace"
+              >
+                24
+              </div>
+            </div>
+            <span
+              class="MuiBadge-badge MuiBadge-anchorOriginTopRightCircle MuiBadge-colorPrimary"
+            >
+              74
+            </span>
+          </span>
+        </div>
+      </div>
+      <div
+        class="draws shadow false"
+      >
+        <ul
+          class="draws-column draws-column-1 monospace"
+        >
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+        <ul
+          class="draws-column draws-column-2 monospace"
+        >
+          <li>
+            i24
+          </li>
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+        <ul
+          class="draws-column draws-column-3 monospace"
+        >
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+        <ul
+          class="draws-column draws-column-4 monospace"
+        >
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+        <ul
+          class="draws-column draws-column-5 monospace"
+        >
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <div
+        id="Code"
+      >
+        <div
+          class="code-label"
+        >
+          Room Code:
+        </div>
+        <div
+          class="code-row"
+        >
+          <div
+            class="code-left"
+          />
+          <div
+            class="code"
+          >
+            <code>
+              <span
+                class="code-item false"
+              >
+                A
+              </span>
+              <span
+                class="code-item false"
+              >
+                1
+              </span>
+              <span
+                class="code-item false"
+              >
+                B
+              </span>
+              <span
+                class="code-item false"
+              >
+                2
+              </span>
+            </code>
+          </div>
+          <div
+            class="code-right align-left"
+          >
+            <button
+              aria-label="share"
+              class="MuiButtonBase-root MuiIconButton-root share-button"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="/"
+      >
+        Leave Room
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Host Game Over 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="Host"
+  >
+    <header>
+      <div
+        class="app-buttons"
+      >
+        <div
+          aria-label="contained primary button group"
+          class="MuiButtonGroup-root MuiButtonGroup-contained"
+          role="group"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-13 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              New Game
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-13 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Check Card
+            </span>
+          </button>
+        </div>
+      </div>
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        Game Over!
+      </p>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <div
+        class="ball-wrapper"
+      >
+        <button
+          class="MuiButtonBase-root MuiIconButton-root disabled MuiIconButton-colorPrimary Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiIconButton-label"
+          >
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root MuiSvgIcon-fontSizeLarge"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+              />
+            </svg>
+          </span>
+        </button>
+        <div
+          class="ball-container"
+        >
+          <span
+            class="MuiBadge-root badge monospace"
+          >
+            <div
+              class="ball shadow  disabled"
+            >
+              <div
+                class="column monospace"
+              />
+              <div
+                class="number monospace"
+              />
+            </div>
+            <span
+              class="MuiBadge-badge MuiBadge-anchorOriginTopRightCircle MuiBadge-colorPrimary MuiBadge-invisible"
+            >
+              0
+            </span>
+          </span>
+        </div>
+      </div>
+      <div
+        class="draws shadow disabled"
+      >
+        <ul
+          class="draws-column draws-column-1 monospace"
+        >
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+        <ul
+          class="draws-column draws-column-2 monospace"
+        >
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+        <ul
+          class="draws-column draws-column-3 monospace"
+        >
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+        <ul
+          class="draws-column draws-column-4 monospace"
+        >
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+        <ul
+          class="draws-column draws-column-5 monospace"
+        >
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+          <li />
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <div
+        id="Code"
+      >
+        <div
+          class="code-label"
+        >
+          Room Code:
+        </div>
+        <div
+          class="code-row"
+        >
+          <div
+            class="code-left"
+          />
+          <div
+            class="code"
+          >
+            <code>
+              <span
+                class="code-item false"
+              >
+                A
+              </span>
+              <span
+                class="code-item false"
+              >
+                1
+              </span>
+              <span
+                class="code-item false"
+              >
+                B
+              </span>
+              <span
+                class="code-item false"
+              >
+                2
+              </span>
+            </code>
+          </div>
+          <div
+            class="code-right align-left"
+          >
+            <button
+              aria-label="share"
+              class="MuiButtonBase-root MuiIconButton-root share-button"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="/"
+      >
+        Leave Room
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Host Ready List 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="Host"
+  >
+    <header>
+      <div
+        class="app-buttons"
+      >
+        <div
+          aria-label="contained primary button group"
+          class="MuiButtonGroup-root MuiButtonGroup-contained"
+          role="group"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-12 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Start Game
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-12 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Check Card
+            </span>
+          </button>
+        </div>
+      </div>
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        4 players have joined...
+      </p>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <div
+        class="player-list"
+      >
+        <ul
+          class="MuiList-root MuiList-padding"
+        >
+          <li
+            class="MuiListItem-container"
+          >
+            <div
+              class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+            >
+              <div
+                class="MuiListItemAvatar-root"
+              >
+                <div
+                  class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="MuiListItemText-root MuiListItemText-multiline"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Jane Doe
+                </span>
+                <p
+                  class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                >
+                  Ready
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiListItemSecondaryAction-root"
+            >
+              <button
+                aria-label="status"
+                class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </li>
+          <li
+            class="MuiListItem-container"
+          >
+            <div
+              class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+            >
+              <div
+                class="MuiListItemAvatar-root"
+              >
+                <div
+                  class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13H5v-2h14v2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="MuiListItemText-root MuiListItemText-multiline"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Jane Doa
+                </span>
+                <p
+                  class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                >
+                  Selecting a card...
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiListItemSecondaryAction-root"
+            >
+              <button
+                aria-label="status"
+                class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </li>
+          <li
+            class="MuiListItem-container"
+          >
+            <div
+              class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+            >
+              <div
+                class="MuiListItemAvatar-root"
+              >
+                <div
+                  class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13H5v-2h14v2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="MuiListItemText-root MuiListItemText-multiline"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Jane Do
+                </span>
+                <p
+                  class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                >
+                  Selecting a card...
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiListItemSecondaryAction-root"
+            >
+              <button
+                aria-label="status"
+                class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </li>
+          <li
+            class="MuiListItem-container"
+          >
+            <div
+              class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+            >
+              <div
+                class="MuiListItemAvatar-root"
+              >
+                <div
+                  class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M19 13H5v-2h14v2z"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div
+                class="MuiListItemText-root MuiListItemText-multiline"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  Jane Doh
+                </span>
+                <p
+                  class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                >
+                  Selecting a card...
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiListItemSecondaryAction-root"
+            >
+              <button
+                aria-label="status"
+                class="MuiButtonBase-root MuiIconButton-root delete-button MuiIconButton-edgeEnd"
+                tabindex="0"
+                type="button"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </button>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <footer>
+      <div
+        id="Code"
+      >
+        <div
+          class="code-label"
+        >
+          Room Code:
+        </div>
+        <div
+          class="code-row"
+        >
+          <div
+            class="code-left"
+          />
+          <div
+            class="code"
+          >
+            <code>
+              <span
+                class="code-item false"
+              >
+                A
+              </span>
+              <span
+                class="code-item false"
+              >
+                1
+              </span>
+              <span
+                class="code-item false"
+              >
+                B
+              </span>
+              <span
+                class="code-item false"
+              >
+                2
+              </span>
+            </code>
+          </div>
+          <div
+            class="code-right align-left"
+          >
+            <button
+              aria-label="share"
+              class="MuiButtonBase-root MuiIconButton-root share-button"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="/"
+      >
+        Leave Room
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Host Waiting 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="Host"
+  >
+    <header>
+      <div
+        class="app-buttons"
+      >
+        <div
+          aria-label="contained primary button group"
+          class="MuiButtonGroup-root MuiButtonGroup-contained"
+          role="group"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-11 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Start Game
+            </span>
+            <span
+              class="MuiTouchRipple-root"
+            />
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-11 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Check Card
+            </span>
+          </button>
+        </div>
+      </div>
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        Waiting for player(s) to join...
+      </p>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <div
+        class="player-list"
+      >
+        <p
+          class="MuiTypography-root MuiTypography-body1 MuiTypography-alignCenter"
+        >
+          No players found
+        </p>
+      </div>
+    </div>
+    <footer>
+      <div
+        id="Code"
+      >
+        <div
+          class="code-label"
+        >
+          Room Code:
+        </div>
+        <div
+          class="code-row"
+        >
+          <div
+            class="code-left"
+          />
+          <div
+            class="code"
+          >
+            <code>
+              <span
+                class="code-item false"
+              >
+                A
+              </span>
+              <span
+                class="code-item false"
+              >
+                1
+              </span>
+              <span
+                class="code-item false"
+              >
+                B
+              </span>
+              <span
+                class="code-item false"
+              >
+                2
+              </span>
+            </code>
+          </div>
+          <div
+            class="code-right align-left"
+          >
+            <button
+              aria-label="share"
+              class="MuiButtonBase-root MuiIconButton-root share-button"
+              tabindex="0"
+              type="button"
+            >
+              <span
+                class="MuiIconButton-label"
+              >
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root"
+                  focusable="false"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"
+                  />
+                </svg>
+              </span>
+              <span
+                class="MuiTouchRipple-root"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="/"
+      >
+        Leave Room
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Join Base 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="Join"
+  >
+    <header>
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Join
+      </h4>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained join-button MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Join Room
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text solo-button MuiButton-textPrimary MuiButton-textSizeLarge MuiButton-sizeLarge"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Solo
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <footer>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover nav-button MuiTypography-colorPrimary"
+        href="/"
+      >
+        ← Back
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Join No Solo Mode 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="Join"
+  >
+    <header>
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Join
+      </h4>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained join-button MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Join Room
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <footer>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover nav-button MuiTypography-colorPrimary"
+        href="/"
+      >
+        ← Back
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Join Public Rooms 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="Join"
+  >
+    <header>
+      <h4
+        class="MuiTypography-root MuiTypography-h4"
+      >
+        Join
+      </h4>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <div
+        class="room-list"
+      >
+        <ul
+          class="MuiList-root MuiList-padding"
+        >
+          <li
+            class="MuiListItem-container"
+          >
+            <div
+              class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+            >
+              <div
+                class="MuiListItemAvatar-root"
+              >
+                <div
+                  class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+                >
+                  8
+                </div>
+              </div>
+              <div
+                class="MuiListItemText-root MuiListItemText-multiline"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  NYPD
+                </span>
+                <p
+                  class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                >
+                  Siz Fulker
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiListItemSecondaryAction-root"
+            >
+              <a
+                aria-disabled="false"
+                aria-label="play"
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+                href="/play/NYPD"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </a>
+            </div>
+          </li>
+          <li
+            class="MuiListItem-container"
+          >
+            <div
+              class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+            >
+              <div
+                class="MuiListItemAvatar-root"
+              >
+                <div
+                  class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+                >
+                  5
+                </div>
+              </div>
+              <div
+                class="MuiListItemText-root MuiListItemText-multiline"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  TEST
+                </span>
+                <p
+                  class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                >
+                  Dean Watson
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiListItemSecondaryAction-root"
+            >
+              <a
+                aria-disabled="false"
+                aria-label="play"
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+                href="/play/TEST"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </a>
+            </div>
+          </li>
+          <li
+            class="MuiListItem-container"
+          >
+            <div
+              class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+            >
+              <div
+                class="MuiListItemAvatar-root"
+              >
+                <div
+                  class="MuiAvatar-root MuiAvatar-circle MuiAvatar-colorDefault"
+                >
+                  1
+                </div>
+              </div>
+              <div
+                class="MuiListItemText-root MuiListItemText-multiline"
+              >
+                <span
+                  class="MuiTypography-root MuiListItemText-primary MuiTypography-body1 MuiTypography-displayBlock"
+                >
+                  ABCD
+                </span>
+                <p
+                  class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary MuiTypography-displayBlock"
+                >
+                  Manny McDaniels
+                </p>
+              </div>
+            </div>
+            <div
+              class="MuiListItemSecondaryAction-root"
+            >
+              <a
+                aria-disabled="false"
+                aria-label="play"
+                class="MuiButtonBase-root MuiIconButton-root MuiIconButton-edgeEnd"
+                href="/play/ABCD"
+                role="button"
+                tabindex="0"
+              >
+                <span
+                  class="MuiIconButton-label"
+                >
+                  <svg
+                    aria-hidden="true"
+                    class="MuiSvgIcon-root"
+                    focusable="false"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      d="M10.09 15.59L11.5 17l5-5-5-5-1.41 1.41L12.67 11H3v2h9.67l-2.58 2.59zM19 3H5c-1.11 0-2 .9-2 2v4h2V5h14v14H5v-4H3v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"
+                    />
+                  </svg>
+                </span>
+                <span
+                  class="MuiTouchRipple-root"
+                />
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-contained join-button MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Join Room
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+      <button
+        class="MuiButtonBase-root MuiButton-root MuiButton-text solo-button MuiButton-textPrimary MuiButton-textSizeLarge MuiButton-sizeLarge"
+        tabindex="0"
+        type="button"
+      >
+        <span
+          class="MuiButton-label"
+        >
+          Solo
+        </span>
+        <span
+          class="MuiTouchRipple-root"
+        />
+      </button>
+    </div>
+    <footer>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover nav-button MuiTypography-colorPrimary"
+        href="/"
+      >
+        ← Back
+      </a>
+    </footer>
+  </div>
+</div>
+`;
+
+exports[`Storyshots Pages/Play Base 1`] = `
+<div
+  class="MuiContainer-root App MuiContainer-fixed MuiContainer-maxWidthXs"
+>
+  <div
+    class="Play"
+  >
+    <header>
+      <div
+        class="app-buttons"
+      >
+        <div
+          aria-label="contained primary button group"
+          class="MuiButtonGroup-root MuiButtonGroup-contained"
+          role="group"
+        >
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Bingo
+            </span>
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              New Card
+            </span>
+          </button>
+          <button
+            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary ready disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+            disabled=""
+            tabindex="-1"
+            type="button"
+          >
+            <span
+              class="MuiButton-label"
+            >
+              Ready
+            </span>
+          </button>
+        </div>
+      </div>
+      <p
+        class="MuiTypography-root MuiTypography-body1"
+      >
+        Waiting on host to start the game...
+      </p>
+    </header>
+    <div
+      class="main"
+      role="main"
+    >
+      <div
+        class="ball-wrapper"
+      >
+        <div
+          class="ball-container"
+        >
+          <span
+            class="MuiBadge-root badge monospace"
+          >
+            <div
+              class="ball shadow  disabled"
+            >
+              <div
+                class="column monospace"
+              />
+              <div
+                class="number monospace"
+              />
+            </div>
+            <span
+              class="MuiBadge-badge MuiBadge-anchorOriginTopRightCircle MuiBadge-colorPrimary MuiBadge-invisible"
+            >
+              0
+            </span>
+          </span>
+        </div>
+      </div>
+      <div
+        class="grid-container"
+      >
+        <div
+          class="grid shadow false"
+        >
+          <div
+            class="grid-header"
+          >
+            <div
+              class="logo false"
+            >
+              <div
+                class="logo-item logo-item-1 false"
+              >
+                <div
+                  class="false"
+                >
+                  b
+                </div>
+              </div>
+              <div
+                class="logo-item logo-item-2 false"
+              >
+                <div
+                  class="false"
+                >
+                  i
+                </div>
+              </div>
+              <div
+                class="logo-item logo-item-3 false"
+              >
+                <div
+                  class="false"
+                >
+                  n
+                </div>
+              </div>
+              <div
+                class="logo-item logo-item-4 false"
+              >
+                <div
+                  class="false"
+                >
+                  g
+                </div>
+              </div>
+              <div
+                class="logo-item logo-item-5 false"
+              >
+                <div
+                  class="false"
+                >
+                  o
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="grid-item grid-item-1 false false monospace"
+            id="cell1"
+          />
+          <div
+            class="grid-item grid-item-2 false false monospace"
+            id="cell2"
+          />
+          <div
+            class="grid-item grid-item-3 false false monospace"
+            id="cell3"
+          />
+          <div
+            class="grid-item grid-item-4 false false monospace"
+            id="cell4"
+          />
+          <div
+            class="grid-item grid-item-5 false false monospace"
+            id="cell5"
+          />
+          <div
+            class="grid-item grid-item-6 false false monospace"
+            id="cell6"
+          />
+          <div
+            class="grid-item grid-item-7 false false monospace"
+            id="cell7"
+          />
+          <div
+            class="grid-item grid-item-8 false false monospace"
+            id="cell8"
+          />
+          <div
+            class="grid-item grid-item-9 false false monospace"
+            id="cell9"
+          />
+          <div
+            class="grid-item grid-item-10 false false monospace"
+            id="cell10"
+          />
+          <div
+            class="grid-item grid-item-11 false false monospace"
+            id="cell11"
+          />
+          <div
+            class="grid-item grid-item-12 false false monospace"
+            id="cell12"
+          />
+          <div
+            class="grid-item grid-item-13 false false monospace"
+            id="cell13"
+          >
+            free
+          </div>
+          <div
+            class="grid-item grid-item-14 false false monospace"
+            id="cell14"
+          />
+          <div
+            class="grid-item grid-item-15 false false monospace"
+            id="cell15"
+          />
+          <div
+            class="grid-item grid-item-16 false false monospace"
+            id="cell16"
+          />
+          <div
+            class="grid-item grid-item-17 false false monospace"
+            id="cell17"
+          />
+          <div
+            class="grid-item grid-item-18 false false monospace"
+            id="cell18"
+          />
+          <div
+            class="grid-item grid-item-19 false false monospace"
+            id="cell19"
+          />
+          <div
+            class="grid-item grid-item-20 false false monospace"
+            id="cell20"
+          />
+          <div
+            class="grid-item grid-item-21 false false monospace"
+            id="cell21"
+          />
+          <div
+            class="grid-item grid-item-22 false false monospace"
+            id="cell22"
+          />
+          <div
+            class="grid-item grid-item-23 false false monospace"
+            id="cell23"
+          />
+          <div
+            class="grid-item grid-item-24 false false monospace"
+            id="cell24"
+          />
+          <div
+            class="grid-item grid-item-25 false false monospace"
+            id="cell25"
+          />
+          <div
+            class="serial"
+          />
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div
+        id="Code"
+      >
+        <div
+          class="code-label"
+        >
+          Room Code:
+        </div>
+        <div
+          class="code-row"
+        >
+          <div
+            class="code-left"
+          />
+          <div
+            class="code"
+          >
+            <code>
+              <span
+                class="code-item empty"
+              >
+                _
+              </span>
+              <span
+                class="code-item empty"
+              >
+                _
+              </span>
+              <span
+                class="code-item empty"
+              >
+                _
+              </span>
+              <span
+                class="code-item empty"
+              >
+                _
+              </span>
+            </code>
+          </div>
+          <div
+            class="code-right align-left"
+          />
+        </div>
+      </div>
+      <a
+        class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiTypography-colorPrimary"
+        href="/"
+      >
+        Leave Room
+      </a>
+    </footer>
+  </div>
+</div>
+`;

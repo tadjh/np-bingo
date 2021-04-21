@@ -1,0 +1,61 @@
+.ball-container {
+  display: inline-flex;
+  position: relative;
+  margin: var(--spacing);
+}
+
+.ball {
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 50%;
+  padding: var(--spacing);
+  background-color: var(--color-light);
+  color: var(--bingo-blue);
+  border: var(--border-width) solid var(--bingo-grey);
+  width: var(--ball-size);
+  height: var(--ball-size);
+  vertical-align: middle;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.ball.b {
+  border-color: var(--bingo-blue);
+}
+
+.ball.i {
+  border-color: var(--bingo-red);
+}
+
+.ball.n {
+  border-color: var(--bingo-grey);
+}
+
+.ball.g {
+  border-color: var(--bingo-green);
+}
+
+.ball.o {
+  border-color: var(--bingo-orange);
+}
+
+.ball.disabled {
+  background-color: var(--color-light-alt);
+  color: var(--color-disabled);
+  border-color: var(--color-disabled);
+}
+
+.number {
+  font-size: var(--font-size-h1);
+}
+
+.progress {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  z-index: 1;
+}
+
+.badge {
+  z-index: 2;
+}

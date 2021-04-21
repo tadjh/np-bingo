@@ -1,0 +1,30 @@
+.App {
+  position: relative;
+  background-color: var(--color-light-alt);
+  overflow: hidden;
+}
+
+.App > div:not(.background) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App > div > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.App > div > header,
+.App > div > footer {
+  margin: calc(var(--spacing-2x) * 1.5) 0;
+}
+
+.App > div > .main {
+  flex: 1;
+}
+
+.App > div > .main > * {
+  margin: var(--spacing);
+}

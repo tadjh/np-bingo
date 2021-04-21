@@ -1,0 +1,41 @@
+Bugs
+// TODO Prevent Join room that doesn't exist
+
+High Priority
+// TODO Rest api use game "_id" instead of room id
+// TODO Rest Api auth
+// TODO Max active Games
+// TODO Max room size 
+// TODO Create users?
+
+Development
+// TODO Push app to new branch once stable
+// TODO redis 
+// TODO Helmet
+// TODO MongoDB model timestamps?
+// TODO Socket.io error handling?
+// TODO Disable socket.io when in solo?
+// TODO Migrate to React Router v6
+// TODO Make List generation generic
+// TODO Add profiler tracing?
+// TODO Socket.io Tests https://socket.io/docs/v4/testing/#Example-with-jest
+
+QOL
+// TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
+// TODO Change color of ready check background
+// TODO Host has left game notification
+// TODO Show winner name on win
+// TODO Error Boundaries
+
+Future Features
+// TODO Public Rooms
+// TODO Streamer Mode
+// TODO Balls remaining color based on amount
+            * Bright Green @ 75 (default)
+            * Yellow-Green when 5 balls have been drawn in each column (Earliest possible bingo)
+            * Red below 42 avg bingo
+// TODO Death Bingo
+// TODO Blackout Bingo
+// TODO Postage Stamp Rule
+// TODO Four Corners Rule
+// TODO Roving L Rule

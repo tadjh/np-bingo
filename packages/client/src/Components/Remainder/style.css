@@ -1,0 +1,10 @@
+span.remainder {
+  font-family: 'Roboto Mono', source-code-pro, Menlo, Monaco, Consolas,
+    'Courier New', monospace;
+  font-size: var(--font-size-h6);
+  text-align: center;
+}
+
+.remainder.disabled {
+  color: var(--color-disabled);
+}

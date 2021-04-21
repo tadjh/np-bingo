@@ -1,0 +1,26 @@
+.code-label {
+  font-size: var(--font-size-h5);
+  text-align: center;
+}
+
+.code-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+.code {
+  margin: var(--spacing-half) 0 var(--font-size-h4);
+  font-size: var(--font-size-h1);
+  font-weight: bold;
+}
+
+.code-item {
+  background-color: var(--color-disabled);
+  border-radius: var(--border-width);
+  margin: var(--spacing-half);
+  padding: var(--spacing-half) var(--spacing);
+}
+
+.code-item.empty {
+  color: var(--color-disabled);
+}

@@ -1,48 +1,40 @@
 {
   "name": "np-bingo",
-  "version": "0.1.0",
-  "homepage": "http://dev.tadjhbrooks.com/np-bingo/",
   "private": true,
-  "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@testing-library/jest-dom": "^5.11.4",
-    "@testing-library/react": "^11.1.0",
-    "@testing-library/user-event": "^12.1.10",
-    "@types/jest": "^26.0.15",
-    "@types/node": "^12.0.0",
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.3",
-    "typescript": "^4.1.2",
-    "web-vitals": "^1.0.1"
-  },
+  "version": "1.0.0",
+  "description": "http://dev.tadjhbrooks.com/np-bingo/",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "server-test": "echo \"Error: no test specified\" && exit 1",
+    "client-test": "yarn workspace @np-bingo/client test",
+    "test": "run-p client-test",
+    "server-start": "yarn workspace @np-bingo/server start",
+    "client-start": "yarn workspace @np-bingo/client start",
+    "start": "run-p server-start client-start",
+    "common-build": "yarn workspace @np-bingo/common build",
+    "server-build": "yarn workspace @np-bingo/server build",
+    "client-build": "yarn workspace @np-bingo/client build",
+    "build": "run-s common-build server-build client-build",
+    "storybook": "yarn workspace @np-bingo/client storybook"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TadjhBrooks/np-bingo.git"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "keywords": [],
+  "author": "Tadjh Brooks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TadjhBrooks/np-bingo/issues"
   },
+  "homepage": "https://github.com/TadjhBrooks/np-bingo#readme",
   "devDependencies": {
-    "@types/lz-string": "^1.3.34"
+    "npm-run-all": "^4.1.5"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "resolutions": {
+    "babel-loader": "8.1.0"
   }
 }
