@@ -193,13 +193,17 @@ export default function App() {
 
   /**
    * Socket.io Side-effects
-   * // TODO this might need to be split into seperate subscriptions
    */
   useEffect(() => {
     socket.on('connect', () => {
       console.log('User connected');
       setUser((prevUser) => ({ ...prevUser, socket: socket.id }));
     });
+
+    socket.on('disconnect', () => {
+      console.log('User disconnected');
+    });
+
     /**
      * To Host: Player joined
      * @param player Player
