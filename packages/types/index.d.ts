@@ -22,9 +22,9 @@ export type PlayerState = {
   crossmarks: { [key: string]: boolean };
 };
 export type Player = {
-  _id: string;
-  uid: number;
-  name: string;
+  _id?: string;
+  uid?: number;
+  name?: string;
   socket?: string;
   ready?: boolean;
 };
