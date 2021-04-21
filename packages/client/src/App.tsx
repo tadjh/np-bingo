@@ -77,6 +77,12 @@ export default function App() {
     process.env.NODE_ENV === 'development' ? logger(reducer) : reducer,
     initialState
   );
+
+  // User
+  const [user, setUser] = useState<Player>({
+    name: 'Player',
+    socket: '',
+  });
   // TODO where does this belong?
   const [progress, setProgress] = useState(0);
 
@@ -124,14 +130,8 @@ export default function App() {
   const standby = (mode: Gamemode) => {
     play('standby');
 
-    // TODO This info should be set when player loads app
-    let player = {
-      uid: 2222,
-      name: 'Jane Doe',
-      socket: socket.id,
-    };
     mode !== 'solo'
-      ? socket.emit('ready-up', state.host.socket, player)
+      ? socket.emit('ready-up', state.host.socket, user)
       : solo('standby');
   };
 
@@ -193,8 +193,13 @@ export default function App() {
 
   /**
    * Socket.io Side-effects
+   * // TODO this might need to be split into seperate subscriptions
    */
   useEffect(() => {
+    socket.on('connect', () => {
+      console.log('User connected');
+      setUser((prevUser) => ({ ...prevUser, socket: socket.id }));
+    });
     /**
      * To Host: Player joined
      * @param player Player
@@ -337,14 +342,9 @@ export default function App() {
    * Host: Create a new game room
    */
   const createRoom = () => {
-    let host = {
-      uid: 1111,
-      name: 'John Tester',
-      socket: socket.id,
-    };
     play('ready');
 
-    apiCreateRoom(host, (res) => {
+    apiCreateRoom(user, (res) => {
       dispatch({
         type: SET_ROOM,
         payload: { room: res.data.game.room, host: res.data.game.host },
@@ -361,20 +361,10 @@ export default function App() {
    * @param room Room code
    */
   const joinRoom = (room: string) => {
-    // TODO This info should be set when user loads app
-    let player = {
-      _id: 'adaskdjsahkd',
-      uid: 2222,
-      name: 'Jane Doe',
-    };
-
     play('ready');
 
-    apiUpdateRoom(room, player, (res) => {
-      socket.emit('join-room', room, res.data.host.socket, {
-        ...player,
-        socket: socket.id,
-      });
+    apiUpdateRoom(room, user, (res) => {
+      socket.emit('join-room', room, res.data.host.socket, user);
 
       dispatch({
         type: JOIN_ROOM,
@@ -393,16 +383,7 @@ export default function App() {
 
     if (host) {
       // Player
-
-      // TODO This info should be set when user loads app
-      let player = {
-        _id: 'adaskdjsahkd',
-        uid: 2222,
-        name: 'Jane Doe',
-        socket: socket.id,
-      };
-
-      socket.emit('leave-room', room, host.socket, player);
+      socket.emit('leave-room', room, host.socket, user);
     } else {
       // Host
       // TODO Tell room host left and kick players
@@ -512,18 +493,11 @@ export default function App() {
     room?: Room,
     host?: RoomHost
   ) => {
-    // TODO This info should be set when user loads app
-    let player = {
-      _id: 'adaskdjsahkd',
-      uid: 2222,
-      name: 'Jane Doe',
-      socket: socket.id,
-    };
     if (mode !== 'solo') {
       play('validate');
-      room && host && socket.emit('send-card', room, host.socket, player, card);
+      room && host && socket.emit('send-card', room, host.socket, user, card);
     } else {
-      dispatch({ type: GET_CARD, payload: { card: card, owner: player } });
+      dispatch({ type: GET_CARD, payload: { card: card, owner: user } });
       solo('validate');
     }
   };

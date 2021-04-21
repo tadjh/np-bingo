@@ -4,14 +4,11 @@ const socket = io(process.env.SERVER || 'http://localhost:8082/', {
   withCredentials: true,
 });
 
-socket.on('connect', () => {
-  console.log('User connected');
-});
-
 socket.on('disconnect', () => {
   console.log('User disconnected');
 });
 
+// TODO Limit reconnectionAttempts
 // TODO Reconnect to room?
 
 export default socket;
