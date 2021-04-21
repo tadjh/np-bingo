@@ -5,7 +5,7 @@ import Host, { HostProps } from './';
 import Container from '@material-ui/core/Container';
 import { BallContext, GameContext } from '../../Utils/contexts';
 import { initialState as AppState } from '../../Reducers/app.reducer';
-import * as DrawStories from '../../Components/Draws/Draws.stories';
+// import * as DrawStories from '../../Components/Draws/Draws.stories';
 
 export default {
   title: 'Pages/Host',
