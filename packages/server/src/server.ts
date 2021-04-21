@@ -15,10 +15,13 @@ import game from './Routes/game';
 
 const app = express();
 const httpServer = createServer(app);
+/**
+ * Socket.io CORS
+ */
 // TODO set origin to production server
 const io = new Server(httpServer, {
   cors: {
-    origin: true,
+    origin: process.env.ORIGIN,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
@@ -27,11 +30,13 @@ const io = new Server(httpServer, {
 connectDB();
 
 // middleware
-
-app.use(cors({ origin: true, credentials: true })); // TODO is this duplicaton with line 7?
+/**
+ * REST Api CORS
+ */
+app.use(cors({ origin: process.env.ORIGIN, credentials: true })); // TODO is this duplicaton with line 7?
 app.use(express.json());
 // use Routes
-app.get('/', (req, res) => {
+app.get('/api/', (req, res) => {
   res.send('Hello World!');
 });
 
