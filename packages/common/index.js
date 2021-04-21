@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.roomRegex = exports.roomPattern = exports.makeID = void 0;
+exports.roomRegex = exports.roomPattern = exports.roomChar = exports.makeID = void 0;
 /**
  * Creates an id
  * @param length String length of id
@@ -17,5 +17,6 @@ function makeID(length) {
     return result;
 }
 exports.makeID = makeID;
-exports.roomPattern = '[A-Z1-9][^IO0]+?';
-exports.roomRegex = new RegExp(exports.roomPattern, 'g');
+exports.roomChar = '[A-HJ-NP-Z1-9]';
+exports.roomPattern = exports.roomChar + "{4}";
+exports.roomRegex = new RegExp(exports.roomPattern);

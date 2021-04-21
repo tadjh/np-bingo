@@ -3,10 +3,10 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PlayerSchema = void 0;
 var mongoose_1 = require("mongoose");
 exports.PlayerSchema = new mongoose_1.Schema({
-    uid: {
-        type: Number,
-        required: true,
-    },
+    // uid: {
+    //   type: Number,
+    //   required: true,
+    // },
     name: String,
     socket: mongoose_1.Schema.Types.Mixed,
 });

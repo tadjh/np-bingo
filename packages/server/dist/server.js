@@ -14,20 +14,26 @@ var db_1 = __importDefault(require("./Config/db"));
 var game_1 = __importDefault(require("./Routes/game"));
 var app = express_1.default();
 var httpServer = http_1.createServer(app);
+/**
+ * Socket.io CORS
+ */
 // TODO set origin to production server
 var io = new socket_io_1.Server(httpServer, {
     cors: {
-        origin: true,
+        origin: process.env.ORIGIN,
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         credentials: true,
     },
 });
 db_1.default();
 // middleware
-app.use(cors_1.default({ origin: true, credentials: true })); // TODO is this duplicaton with line 7?
+/**
+ * REST Api CORS
+ */
+app.use(cors_1.default({ origin: process.env.ORIGIN, credentials: true })); // TODO is this duplicaton with line 7?
 app.use(express_1.default.json());
 // use Routes
-app.get('/', function (req, res) {
+app.get('/api/', function (req, res) {
     res.send('Hello World!');
 });
 app.use('/api/game/', game_1.default);

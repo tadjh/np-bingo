@@ -8,7 +8,7 @@
   "devDependencies": {
     "typescript": "^4.2.4"
   },
-  "scipts": {
+  "scripts": {
     "build": "tsc"
   }
 }
