@@ -1,4 +1,6 @@
 import express from 'express';
+import favicon from 'serve-favicon';
+import path from 'path';
 import cors from 'cors';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
@@ -30,6 +32,7 @@ const io = new Server(httpServer, {
 connectDB();
 
 // middleware
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 /**
  * REST Api CORS
  */
