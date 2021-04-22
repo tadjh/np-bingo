@@ -11,7 +11,7 @@ dotenv.config();
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Router basename="/np-bingo">
       <FeautresContext.Provider value={features}>
         <App />
       </FeautresContext.Provider>
