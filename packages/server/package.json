@@ -6,9 +6,12 @@
   "private": true,
   "author": "Tadjh Brooks",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc"
+    "build": "tsc",
+    "test-deploy": "heroku local web",
+    "deploy": "git push heroku main"
   },
   "keywords": [],
   "license": "MIT",
@@ -19,12 +22,17 @@
     "express": "^4.17.1",
     "mongodb": "^3.6.4",
     "mongoose": "^5.12.0",
+    "serve-favicon": "^2.5.0",
     "socket.io": "^4.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",
+    "@types/serve-favicon": "^2.5.2",
     "@np-bingo/types": "^1.0.0",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.3"
+  },
+  "engines": {
+    "node": "15.12.0"
   }
 }

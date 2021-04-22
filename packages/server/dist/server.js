@@ -4,6 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
+var serve_favicon_1 = __importDefault(require("serve-favicon"));
+var path_1 = __importDefault(require("path"));
 var cors_1 = __importDefault(require("cors"));
 var http_1 = require("http");
 var socket_io_1 = require("socket.io");
@@ -27,6 +29,7 @@ var io = new socket_io_1.Server(httpServer, {
 });
 db_1.default();
 // middleware
+app.use(serve_favicon_1.default(path_1.default.join(__dirname, 'public', 'favicon.ico')));
 /**
  * REST Api CORS
  */

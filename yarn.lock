@@ -2847,7 +2847,7 @@
     "@types/qs" "*"
     "@types/range-parser" "*"
 
-"@types/express@^4.17.11":
+"@types/express@*", "@types/express@^4.17.11":
   version "4.17.11"
   resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.11.tgz#debe3caa6f8e5fcda96b47bd54e2f40c4ee59545"
   integrity sha512-no+R6rW60JEc59977wIxreQVsIEOAYwgCqldrA/vkpCnbD7MqTefO97lmoBe4WE0F156bC4uLSP1XHDOySnChg==
@@ -3125,6 +3125,13 @@
   version "0.16.1"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.1.tgz#18845205e86ff0038517aab7a18a62a6b9f71275"
   integrity sha512-EaCxbanVeyxDRTQBkdLb3Bvl/HK7PBK6UJjsSixB0iHKoWxE5uu2Q/DgtpOhPIojN0Zl1whvOd7PoHs2P0s5eA==
+
+"@types/serve-favicon@^2.5.2":
+  version "2.5.2"
+  resolved "https://registry.yarnpkg.com/@types/serve-favicon/-/serve-favicon-2.5.2.tgz#c0f73f9e4f61fe61ad209ec7b8daacf3159f0fa8"
+  integrity sha512-tGpJ3ZdAxnmuHX/BCRnZcPNQe2J8PbmwWFB2Fi6BvepDYuakFKraMG7orLkv387HS2C4MJm2UCINaxv4p7kP9A==
+  dependencies:
+    "@types/express" "*"
 
 "@types/serve-static@*":
   version "1.13.9"
