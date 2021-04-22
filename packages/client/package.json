@@ -1,7 +1,7 @@
 {
   "name": "@np-bingo/client",
   "version": "1.0.0",
-  "homepage": "https://np-bingo-client.herokuapp.com/",
+  "homepage": ".",
   "private": true,
   "author": "Tadjh Brooks",
   "dependencies": {
