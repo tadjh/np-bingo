@@ -60,7 +60,7 @@ import {
 import { useQuery } from './Utils/custom-hooks';
 import config from './Config/features';
 import { GameContext, BallContext } from './Utils/contexts';
-import logger from 'use-reducer-logger';
+// import logger from 'use-reducer-logger';
 import Container from '@material-ui/core/Container';
 import features from './Config/features';
 
@@ -70,11 +70,13 @@ const theme = createMuiTheme({
   },
 });
 
+// process.env.NODE_ENV === 'development' ? logger(reducer) : reducer,
+
 export default function App() {
   let history = useHistory();
   let query = useQuery();
   const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
-    process.env.NODE_ENV === 'development' ? logger(reducer) : reducer,
+    reducer,
     initialState
   );
 
