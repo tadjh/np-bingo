@@ -5,7 +5,6 @@
   "main": "",
   "types": "index.d.ts",
   "license": "MIT",
-  "private": true,
   "author": "Tadjh Brooks",
   "typeScriptVersion": "4.2"
 }
