@@ -4,7 +4,6 @@
   "main": "index.js",
   "author": "Tadjh Brooks",
   "license": "MIT",
-  "private": true,
   "devDependencies": {
     "typescript": "^4.2.4"
   },
