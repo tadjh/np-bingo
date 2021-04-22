@@ -6,7 +6,8 @@
   "private": true,
   "author": "Tadjh Brooks",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "start": "node dist/server.js",
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
   },
@@ -26,5 +27,8 @@
     "@np-bingo/types": "^1.0.0",
     "ts-node-dev": "^1.1.6",
     "typescript": "^4.2.3"
+  },
+  "engines": {
+    "node": "15.12.0"
   }
 }
