@@ -202,9 +202,11 @@ export default function Play({
                   >
                     {gameContext.gamestate === 'failure' ? 'Resume' : 'Ready'}
                   </Button>
-                </ButtonGroup>
               </div>
-              <StatusMessage gamestate={gameContext.gamestate} />
+              <StatusMessage
+                gamestate={gameContext.gamestate}
+                mode={gameContext.mode}
+              />
             </React.Fragment>
           )}
         </GameContext.Consumer>
