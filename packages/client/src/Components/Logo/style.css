@@ -22,6 +22,10 @@ div.logo {
   margin-left: -10px;
 }
 
+.logo.home .logo-item:first-child {
+  margin-left: 0;
+}
+
 .logo.home .logo-item > div {
   line-height: var(--ball-size-lrg);
   height: var(--ball-size-lrg);

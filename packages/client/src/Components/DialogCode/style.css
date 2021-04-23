@@ -16,11 +16,15 @@
   font-family: 'Roboto Mono';
   text-transform: uppercase;
   width: calc(var(--spacing-2x) * 2);
-  margin-right: var(--spacing-2x);
+  margin-right: var(--spacing);
   font-size: var(--font-size-h1);
   font-weight: 700;
   border: 1px solid transparent;
   border-radius: var(--spacing-half);
   text-align: center;
   background-color: var(--color-disabled);
+}
+
+.code-input .partitioned:last-child {
+  margin-right: 0;
 }
