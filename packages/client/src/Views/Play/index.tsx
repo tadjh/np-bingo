@@ -10,7 +10,11 @@ import {
   Room,
   Gamemode,
 } from '@np-bingo/types';
-import { BallContext, GameContext } from '../../Utils/contexts';
+import {
+  BallContext,
+  FeautresContext,
+  GameContext,
+} from '../../Utils/contexts';
 import {
   BINGO,
   INIT_CROSSMARKS,
@@ -24,7 +28,6 @@ import Ball from '../../Components/Ball';
 import Board from '../../Components/Board';
 import StatusMessage from '../../Components/Status';
 import { createCard, serializeCard } from '../../Utils/bingo';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Footer from '../../Components/Footer';
 import Dialog from '@material-ui/core/Dialog';
@@ -156,52 +159,62 @@ export default function Play({
           {(gameContext) => (
             <React.Fragment>
               <div className="app-buttons">
-                <ButtonGroup
+                <FeautresContext.Consumer>
+                  {(features) =>
+                    features['new-card'] && (
+                      <Button
+                        className={`${
+                          gameContext.gamestate !== 'ready' && 'disabled'
+                        }`}
+                        disabled={gameContext.gamestate !== 'ready' && true}
+                        onClick={newCard}
+                      >
+                        New Card
+                      </Button>
+                    )
+                  }
+                </FeautresContext.Consumer>
+                <Button
                   variant="contained"
-                  color="primary"
-                  aria-label="contained primary button group"
                   size="large"
+                  color="primary"
+                  className={`ready ${
+                    gameContext.gamestate !== 'ready' &&
+                    gameContext.gamestate !== 'failure' &&
+                    'disabled'
+                  }`}
+                  disabled={
+                    gameContext.gamestate !== 'ready' &&
+                    gameContext.gamestate !== 'failure' &&
+                    true
+                  }
+                  onClick={() => standby && standby(gameContext.mode)}
                 >
-                  <Button
-                    className={`${
-                      gameContext.gamestate !== 'start' && 'disabled'
-                    }`} // TODO removed value.gamestate !== 'failure' on these??
-                    disabled={gameContext.gamestate !== 'start' && true}
-                    onClick={() =>
-                      handleSendCard(
-                        gameContext.mode,
-                        card,
-                        gameContext.room,
-                        gameContext.host
-                      )
-                    }
-                  >
-                    Bingo
-                  </Button>
-                  <Button
-                    className={`${
-                      gameContext.gamestate !== 'ready' && 'disabled'
-                    }`}
-                    disabled={gameContext.gamestate !== 'ready' && true}
-                    onClick={newCard}
-                  >
-                    New Card
-                  </Button>
-                  <Button
-                    className={`ready ${
-                      gameContext.gamestate !== 'ready' &&
-                      gameContext.gamestate !== 'failure' &&
-                      'disabled'
-                    }`}
-                    disabled={
-                      gameContext.gamestate !== 'ready' &&
-                      gameContext.gamestate !== 'failure' &&
-                      true
-                    }
-                    onClick={() => standby && standby(gameContext.mode)}
-                  >
-                    {gameContext.gamestate === 'failure' ? 'Resume' : 'Ready'}
-                  </Button>
+                  {gameContext.gamestate === 'failure'
+                    ? 'Resume'
+                    : gameContext.mode === 'solo'
+                    ? 'Start'
+                    : 'Ready'}
+                </Button>
+                <Button
+                  variant="contained"
+                  size="large"
+                  color="primary"
+                  className={`${
+                    gameContext.gamestate !== 'start' && 'disabled'
+                  }`} // TODO removed value.gamestate !== 'failure' on these??
+                  disabled={gameContext.gamestate !== 'start' && true}
+                  onClick={() =>
+                    handleSendCard(
+                      gameContext.mode,
+                      card,
+                      gameContext.room,
+                      gameContext.host
+                    )
+                  }
+                >
+                  Bingo
+                </Button>
               </div>
               <StatusMessage
                 gamestate={gameContext.gamestate}
