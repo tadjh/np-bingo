@@ -143,7 +143,12 @@ export function getPoolSize(pool: Pool) {
 
   return { remainder, columns };
 }
-
+/**
+ * Check if card is a winner based on current draw pool
+ * @param card
+ * @param draws
+ * @returns
+ */
 export function validateCard(card: Card, draws: Pool) {
   let results: Results = { row: false, column: false, diagonal: false };
   let rowResults = checkRows(card, draws);
