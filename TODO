@@ -1,5 +1,6 @@
 Bugs
-// When user clicks bingo host validation was skipped
+// TODO When user clicks bingo host validation was skipped
+// TODO Mobile winning crossmarks returns all crossmarks
 // TODO Prevent Join room that doesn't exist
 // TODO Player doesn't leave room on back button (socket.close? or window.onpopstate)
 // TODO Board Pixel 2 weird padding 
