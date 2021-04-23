@@ -18,7 +18,7 @@
 
 .App > div > header,
 .App > div > footer {
-  margin: calc(var(--spacing-2x) * 1.5) 0;
+  padding: var(--spacing-2x) 0;
 }
 
 .App > div > .main {
@@ -26,5 +26,5 @@
 }
 
 .App > div > .main > * {
-  margin: var(--spacing);
+  margin-bottom: var(--spacing);
 }

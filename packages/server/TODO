@@ -1,5 +1,0 @@
-Environment
-// TODO Use copyfiles or webpack(?) to move favicon from 'Public' to 'dist/Public' or something
-
-Hosting
-// TODO mongodB Atlas IP needs more strict whitelist

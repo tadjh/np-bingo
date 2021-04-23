@@ -8,7 +8,8 @@ const config = {
   'streamer-mode': false, // TODO not implemented
   'max-room-size': 30,
   'max-active-games': 5,
-  'ball-delay': 3500, // 3.5 seconds before next auto-draw in solo mode
+  'ball-delay': 5000, // 3.5 seconds before next auto-draw in solo mode
+  'new-card': false,
 };
 
 export default config;

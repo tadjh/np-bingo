@@ -452,15 +452,29 @@ export default function App() {
   );
 
   /**
-   * Solo mode progress bar animation
+   * Cooldown timer
+   * @returns void
+   */
+  const cooldown = () => {
+    dispatch({ type: LOOP_START });
+
+    const lockout = setTimeout(() => {
+      dispatch({ type: LOOP_STOP });
+      setProgress(0);
+    }, config['ball-delay']);
+    return () => clearTimeout(lockout);
+  };
+
+  /**
+   * Progress bar animation
    */
   useEffect(() => {
     if (state.loop && state.gamestate === 'start') {
       const timer = setInterval(() => {
         setProgress((prevProgress) =>
-          prevProgress >= 100 ? 100 : prevProgress + 9.17
+          prevProgress >= 100 ? 100 : prevProgress + 4.59
         );
-      }, config['ball-delay'] / 12);
+      }, config['ball-delay'] / 24);
       return () => clearInterval(timer);
     }
   }, [state.gamestate, state.loop, progress]);
@@ -632,6 +646,7 @@ export default function App() {
                   gameToggle={gameToggle}
                   removePlayer={removePlayer}
                   start={start}
+                  cooldown={cooldown}
                 ></Host>
               </Route>
               <Route path="/join">

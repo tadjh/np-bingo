@@ -1,6 +1,7 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { Gamestate } from '@np-bingo/types';
+import { Gamemode, Gamestate } from '@np-bingo/types';
+import './style.css';
 // import { randomElement } from '../../Utils';
 
 /**
@@ -9,23 +10,31 @@ import { Gamestate } from '@np-bingo/types';
  * @param host View
  * @returns string
  */
-export function statusText(gamestate: Gamestate) {
+export function statusText(gamestate: Gamestate, mode?: Gamemode) {
   let text: string;
   switch (gamestate) {
     case 'init':
       text = 'Waiting on host to start the game...';
       break;
     case 'ready':
-      text = 'Draw a card and click ready.';
+      if (mode === 'solo') {
+        text = 'Click start to begin.';
+      } else {
+        text = 'Click ready, then wait for host to start game...';
+      }
       break;
     case 'standby':
       text = 'Waiting for host to dispense a ball...';
       break;
     case 'start':
-      text = 'Click a square on the card to cross it out';
+      text = 'Click a number to cross it out.';
       break;
     case 'validate':
-      text = 'Sending card to host...';
+      if (mode === 'solo') {
+        text = 'Checking card for Bingo...';
+      } else {
+        text = 'Sending card to host...';
+      }
       break;
     case 'pause':
       text = 'A card is being checked for BINGO!';
@@ -38,7 +47,6 @@ export function statusText(gamestate: Gamestate) {
       //   'Falsie. Keep trying...',
       // ];
       // text = randomElement(failureText);
-
       text = 'Jumping the gun. No Bingo...';
       break;
     case 'end':
@@ -78,7 +86,7 @@ export function hostStatusText(gamestate: Gamestate, count?: number) {
       }
       break;
     case 'standby':
-      text = 'Click to dispense a ball.';
+      text = 'Click "+" to dispense a ball.';
       break;
     case 'start':
       // let rollText = [
@@ -115,16 +123,18 @@ export interface StatusProps {
   gamestate: Gamestate;
   host?: boolean;
   count?: number;
+  mode?: Gamemode;
 }
 
 export default function Status({
   gamestate = 'init',
   host = false,
   count = 0,
+  mode = 'default',
 }: StatusProps) {
   return (
-    <Typography>
-      {host ? hostStatusText(gamestate, count) : statusText(gamestate)}
+    <Typography className="status-text">
+      {host ? hostStatusText(gamestate, count) : statusText(gamestate, mode)}
     </Typography>
   );
 }

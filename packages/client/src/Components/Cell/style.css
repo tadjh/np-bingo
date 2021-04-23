@@ -16,16 +16,14 @@
 }
 
 .checked::before {
-  content: '\2715';
+  content: '\00d7';
   position: absolute;
   font-size: var(--crossmark);
+  font-weight: normal;
   height: 100%;
-  width: 100%;
-  text-align: center;
-  left: 0;
-  top: 0;
+  left: -2px;
   color: var(--color-alert);
-  line-height: calc(var(--crossmark) / 3);
+  line-height: var(--crossmark-line-height);
   mix-blend-mode: multiply;
 }
 

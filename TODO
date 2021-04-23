@@ -1,5 +1,6 @@
 Bugs
 // TODO Prevent Join room that doesn't exist
+// TODO Player doesn't leave room on back button (socket.close? or window.onpopstate)
 
 High Priority
 // TODO Rest api use game "_id" instead of room id
@@ -7,6 +8,7 @@ High Priority
 // TODO Max active Games
 // TODO Max room size 
 // TODO Create users?
+// TODO Timeout socket.io connection with reconnect popup
 
 Development
 // TODO Push app to new branch once stable
@@ -19,6 +21,12 @@ Development
 // TODO Make List generation generic
 // TODO Add profiler tracing?
 // TODO Socket.io Tests https://socket.io/docs/v4/testing/#Example-with-jest
+
+Environment
+// TODO Use copyfiles or webpack(?) to move favicon from 'Public' to 'dist/Public' or something
+
+Hosting
+// TODO mongodB Atlas IP needs more strict whitelist
 
 QOL
 // TODO Remove used cards from set of all possible cards so two people cant have same cards using serial

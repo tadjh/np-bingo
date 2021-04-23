@@ -50,9 +50,10 @@ header {
   --ball-size-lrg: 4.6875rem; /* ~ 75px */
   --draws-h: 25rem; /* ~ 400px */
   --draws-w: 13.75rem; /* ~ 200px */
-  --grid-item-w: 4rem; /* ~ 64px */
-  --grid-item-h: 3.5rem; /* ~ 54px */
-  --crossmark: 6.875rem; /* ~110px */
+  --grid-item-w: 3.75rem; /* ~ 60px */
+  --grid-item-h: 3.25rem; /* ~ 52px */
+  --crossmark: 6.625rem; /* ~106px */
+  --crossmark-line-height: 2.5rem; /* ~40px */
   --font-size-h1: 2rem; /* ~ 32px */
   --font-size-h2: 1.5rem; /* ~ 24px */
   --font-size-h3: 1.17rem; /* ~ 18.72px */

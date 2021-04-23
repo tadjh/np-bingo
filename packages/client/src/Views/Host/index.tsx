@@ -22,6 +22,7 @@ export interface HostProps {
   gameToggle?: (gamestate: Gamestate, room: Room) => void;
   removePlayer?: (player: Player) => void;
   start?: (room: Room) => void;
+  cooldown?: () => () => void;
 }
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -41,6 +42,7 @@ function Host({
   gameToggle,
   removePlayer,
   start,
+  cooldown,
 }: HostProps) {
   const classes = useStyles();
 
@@ -60,6 +62,7 @@ function Host({
       start && start(room);
     }
     newBall && newBall();
+    cooldown && cooldown();
   };
 
   return (
@@ -111,15 +114,17 @@ function Host({
                       <IconButton
                         color="primary"
                         disabled={
-                          gameContext.gamestate !== 'start' &&
-                          gameContext.gamestate !== 'standby' &&
-                          gameContext.gamestate !== 'failure' &&
+                          ((gameContext.gamestate !== 'start' &&
+                            gameContext.gamestate !== 'standby' &&
+                            gameContext.gamestate !== 'failure') ||
+                            ballContext.loop) &&
                           true
                         }
                         className={`${
-                          gameContext.gamestate !== 'start' &&
-                          gameContext.gamestate !== 'standby' &&
-                          gameContext.gamestate !== 'failure' &&
+                          ((gameContext.gamestate !== 'start' &&
+                            gameContext.gamestate !== 'standby' &&
+                            gameContext.gamestate !== 'failure') ||
+                            ballContext.loop) &&
                           'disabled'
                         }`}
                         onClick={() =>
@@ -132,6 +137,8 @@ function Host({
                         number={ballContext.ball.number}
                         column={ballContext.ball.column}
                         remainder={ballContext.ball.remainder}
+                        loop={ballContext.loop}
+                        progress={ballContext.progress}
                         disabled={
                           gameContext.gamestate !== 'start' &&
                           gameContext.gamestate !== 'standby' &&

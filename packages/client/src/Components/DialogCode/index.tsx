@@ -38,7 +38,7 @@ export default function DialogCode({
   }
 
   const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
-    // TODO event.persist()?
+    event.target.value = event.target.value.toUpperCase();
     handleChange(event);
 
     if (event.target.value.length < event.target.maxLength) {
@@ -55,6 +55,7 @@ export default function DialogCode({
       }
     }
   };
+
   return (
     <Dialog
       open={open}
@@ -77,7 +78,7 @@ export default function DialogCode({
               pattern={roomChar}
               maxLength={1}
               className="partitioned"
-              autoCapitalize="on"
+              autoCapitalize="characters"
               autoFocus
               value={inputs.code1}
               onPaste={(event) => handlePaste(event, 'code', 4)}
@@ -90,7 +91,7 @@ export default function DialogCode({
               pattern={roomChar}
               maxLength={1}
               className="partitioned"
-              autoCapitalize="on"
+              autoCapitalize="characters"
               value={inputs.code2}
               onChange={handleChangeText}
               required
@@ -101,7 +102,7 @@ export default function DialogCode({
               pattern={roomChar}
               maxLength={1}
               className="partitioned"
-              autoCapitalize="on"
+              autoCapitalize="characters"
               value={inputs.code3}
               onChange={handleChangeText}
               required
@@ -112,7 +113,7 @@ export default function DialogCode({
               pattern={roomChar}
               maxLength={1}
               className="partitioned"
-              autoCapitalize="on"
+              autoCapitalize="characters"
               value={inputs.code4}
               onChange={handleChangeText}
               required
