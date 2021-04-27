@@ -579,6 +579,8 @@ export default function App() {
           break;
         case 'pause':
           play('pause');
+          console.log('solo fired');
+
           // TODO Pulling directly from state feels wrong
           checkCard(state.rules.mode, state.playerCard, state.draws);
           break;
@@ -593,14 +595,18 @@ export default function App() {
    * Pause solo mode loop on validate
    */
   useEffect(() => {
-    if (!state.loop && state.gamestate === 'validate') {
+    if (
+      !state.loop &&
+      state.rules.mode === 'solo' &&
+      state.gamestate === 'validate'
+    ) {
       const pauseTime = setTimeout(() => {
         solo('pause');
         setProgress(0);
       }, 1000);
       return () => clearTimeout(pauseTime);
     }
-  }, [solo, state.loop, state.gamestate]);
+  }, [solo, state.loop, state.gamestate, state.rules.mode]);
 
   let {
     gamestate,
