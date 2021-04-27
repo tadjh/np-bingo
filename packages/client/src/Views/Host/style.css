@@ -2,6 +2,10 @@
   justify-content: flex-start;
 }
 
+.Host .app-buttons > button:first-child {
+  margin-right: var(--spacing);
+}
+
 .app-buttons .toggle-button {
   min-width: var(--spacing-2x * 5);
 }
@@ -9,5 +13,4 @@
 .ball-wrapper {
   display: flex;
   align-items: center;
-  /* margin: var(--spacing); */
 }
