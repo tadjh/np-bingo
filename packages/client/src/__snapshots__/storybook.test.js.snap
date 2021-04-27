@@ -2802,7 +2802,7 @@ exports[`Storyshots Components/RoomList Rooms 1`] = `
 
 exports[`Storyshots Components/Status/Host End 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Game Over!
 </p>
@@ -2810,7 +2810,7 @@ exports[`Storyshots Components/Status/Host End 1`] = `
 
 exports[`Storyshots Components/Status/Host Failure 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   This card is not a Bingo. Roll on!
 </p>
@@ -2818,7 +2818,7 @@ exports[`Storyshots Components/Status/Host Failure 1`] = `
 
 exports[`Storyshots Components/Status/Host Init 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Waiting on host to start the game...
 </p>
@@ -2826,7 +2826,7 @@ exports[`Storyshots Components/Status/Host Init 1`] = `
 
 exports[`Storyshots Components/Status/Host Pause 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Checking if card is a winner...
 </p>
@@ -2834,7 +2834,7 @@ exports[`Storyshots Components/Status/Host Pause 1`] = `
 
 exports[`Storyshots Components/Status/Host Ready 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Waiting for player(s) to join...
 </p>
@@ -2842,7 +2842,7 @@ exports[`Storyshots Components/Status/Host Ready 1`] = `
 
 exports[`Storyshots Components/Status/Host Ready Plural 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   5 players have joined...
 </p>
@@ -2850,7 +2850,7 @@ exports[`Storyshots Components/Status/Host Ready Plural 1`] = `
 
 exports[`Storyshots Components/Status/Host Ready Singular 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   1 player has joined...
 </p>
@@ -2858,15 +2858,15 @@ exports[`Storyshots Components/Status/Host Ready Singular 1`] = `
 
 exports[`Storyshots Components/Status/Host Standby 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
-  Click to dispense a ball.
+  Click "+" to dispense a ball.
 </p>
 `;
 
 exports[`Storyshots Components/Status/Host Start (Randomized) 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Call out the ball, then dispense another
 </p>
@@ -2874,7 +2874,7 @@ exports[`Storyshots Components/Status/Host Start (Randomized) 1`] = `
 
 exports[`Storyshots Components/Status/Host Validate 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Check card for a BINGO!
 </p>
@@ -2882,7 +2882,7 @@ exports[`Storyshots Components/Status/Host Validate 1`] = `
 
 exports[`Storyshots Components/Status/Host Win 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   BINGO!
 </p>
@@ -2890,7 +2890,7 @@ exports[`Storyshots Components/Status/Host Win 1`] = `
 
 exports[`Storyshots Components/Status/Player End 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Game Over!
 </p>
@@ -2898,7 +2898,7 @@ exports[`Storyshots Components/Status/Player End 1`] = `
 
 exports[`Storyshots Components/Status/Player Failure (Randomized) 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Jumping the gun. No Bingo...
 </p>
@@ -2906,7 +2906,7 @@ exports[`Storyshots Components/Status/Player Failure (Randomized) 1`] = `
 
 exports[`Storyshots Components/Status/Player Init 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Waiting on host to start the game...
 </p>
@@ -2914,7 +2914,7 @@ exports[`Storyshots Components/Status/Player Init 1`] = `
 
 exports[`Storyshots Components/Status/Player Pause 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   A card is being checked for BINGO!
 </p>
@@ -2922,15 +2922,15 @@ exports[`Storyshots Components/Status/Player Pause 1`] = `
 
 exports[`Storyshots Components/Status/Player Ready 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
-  Draw a card and click ready.
+  Click ready, then wait for host to start game...
 </p>
 `;
 
 exports[`Storyshots Components/Status/Player Standby 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Waiting for host to dispense a ball...
 </p>
@@ -2938,15 +2938,15 @@ exports[`Storyshots Components/Status/Player Standby 1`] = `
 
 exports[`Storyshots Components/Status/Player Start 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
-  Click a square on the card to cross it out
+  Click a number to cross it out.
 </p>
 `;
 
 exports[`Storyshots Components/Status/Player Validate 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   Sending card to host...
 </p>
@@ -2954,7 +2954,7 @@ exports[`Storyshots Components/Status/Player Validate 1`] = `
 
 exports[`Storyshots Components/Status/Player Win 1`] = `
 <p
-  class="MuiTypography-root MuiTypography-body1"
+  class="MuiTypography-root status-text MuiTypography-body1"
 >
   BINGO!
 </p>
@@ -3641,43 +3641,37 @@ exports[`Storyshots Pages/Host Base 1`] = `
       <div
         class="app-buttons"
       >
-        <div
-          aria-label="contained primary button group"
-          class="MuiButtonGroup-root MuiButtonGroup-contained"
-          role="group"
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-width-10 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+          tabindex="0"
+          type="button"
         >
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-10 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
-            tabindex="0"
-            type="button"
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              End Game
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-10 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
-            disabled=""
-            tabindex="-1"
-            type="button"
+            End Game
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-width-10 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              Check Card
-            </span>
-          </button>
-        </div>
+            Check Card
+          </span>
+        </button>
       </div>
       <p
-        class="MuiTypography-root MuiTypography-body1"
+        class="MuiTypography-root status-text MuiTypography-body1"
       >
-        Click to dispense a ball.
+        Click "+" to dispense a ball.
       </p>
     </header>
     <div
@@ -3688,8 +3682,9 @@ exports[`Storyshots Pages/Host Base 1`] = `
         class="ball-wrapper"
       >
         <button
-          class="MuiButtonBase-root MuiIconButton-root false MuiIconButton-colorPrimary"
-          tabindex="0"
+          class="MuiButtonBase-root MuiIconButton-root disabled MuiIconButton-colorPrimary Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
           type="button"
         >
           <span
@@ -3706,9 +3701,6 @@ exports[`Storyshots Pages/Host Base 1`] = `
               />
             </svg>
           </span>
-          <span
-            class="MuiTouchRipple-root"
-          />
         </button>
         <div
           class="ball-container"
@@ -3736,6 +3728,27 @@ exports[`Storyshots Pages/Host Base 1`] = `
               74
             </span>
           </span>
+          <div
+            aria-valuenow="75"
+            class="MuiCircularProgress-root progress MuiCircularProgress-colorPrimary MuiCircularProgress-determinate"
+            role="progressbar"
+            style="width: 102px; height: 102px; transform: rotate(-90deg);"
+          >
+            <svg
+              class="MuiCircularProgress-svg"
+              viewBox="22 22 44 44"
+            >
+              <circle
+                class="MuiCircularProgress-circle MuiCircularProgress-circleDeterminate"
+                cx="44"
+                cy="44"
+                fill="none"
+                r="20.2"
+                stroke-width="3.6"
+                style="stroke-dasharray: 126.920; stroke-dashoffset: 31.730px;"
+              />
+            </svg>
+          </div>
         </div>
       </div>
       <div
@@ -3933,41 +3946,35 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
       <div
         class="app-buttons"
       >
-        <div
-          aria-label="contained primary button group"
-          class="MuiButtonGroup-root MuiButtonGroup-contained"
-          role="group"
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-width-13 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+          tabindex="0"
+          type="button"
         >
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-13 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
-            tabindex="0"
-            type="button"
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              New Game
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-13 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
-            disabled=""
-            tabindex="-1"
-            type="button"
+            New Game
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-width-13 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              Check Card
-            </span>
-          </button>
-        </div>
+            Check Card
+          </span>
+        </button>
       </div>
       <p
-        class="MuiTypography-root MuiTypography-body1"
+        class="MuiTypography-root status-text MuiTypography-body1"
       >
         Game Over!
       </p>
@@ -4217,41 +4224,35 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
       <div
         class="app-buttons"
       >
-        <div
-          aria-label="contained primary button group"
-          class="MuiButtonGroup-root MuiButtonGroup-contained"
-          role="group"
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-width-12 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+          tabindex="0"
+          type="button"
         >
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-12 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
-            tabindex="0"
-            type="button"
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              Start Game
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-12 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
-            disabled=""
-            tabindex="-1"
-            type="button"
+            Start Game
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-width-12 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              Check Card
-            </span>
-          </button>
-        </div>
+            Check Card
+          </span>
+        </button>
       </div>
       <p
-        class="MuiTypography-root MuiTypography-body1"
+        class="MuiTypography-root status-text MuiTypography-body1"
       >
         4 players have joined...
       </p>
@@ -4634,41 +4635,35 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
       <div
         class="app-buttons"
       >
-        <div
-          aria-label="contained primary button group"
-          class="MuiButtonGroup-root MuiButtonGroup-contained"
-          role="group"
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-width-11 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
+          tabindex="0"
+          type="button"
         >
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-11 MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge"
-            tabindex="0"
-            type="button"
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              Start Game
-            </span>
-            <span
-              class="MuiTouchRipple-root"
-            />
-          </button>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary makeStyles-width-11 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
-            disabled=""
-            tabindex="-1"
-            type="button"
+            Start Game
+          </span>
+          <span
+            class="MuiTouchRipple-root"
+          />
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained makeStyles-width-11 disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              Check Card
-            </span>
-          </button>
-        </div>
+            Check Card
+          </span>
+        </button>
       </div>
       <p
-        class="MuiTypography-root MuiTypography-body1"
+        class="MuiTypography-root status-text MuiTypography-body1"
       >
         Waiting for player(s) to join...
       </p>
@@ -5134,51 +5129,33 @@ exports[`Storyshots Pages/Play Base 1`] = `
       <div
         class="app-buttons"
       >
-        <div
-          aria-label="contained primary button group"
-          class="MuiButtonGroup-root MuiButtonGroup-contained"
-          role="group"
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained ready disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
         >
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
-            disabled=""
-            tabindex="-1"
-            type="button"
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              Bingo
-            </span>
-          </button>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
-            disabled=""
-            tabindex="-1"
-            type="button"
+            Ready
+          </span>
+        </button>
+        <button
+          class="MuiButtonBase-root MuiButton-root MuiButton-contained disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
+          disabled=""
+          tabindex="-1"
+          type="button"
+        >
+          <span
+            class="MuiButton-label"
           >
-            <span
-              class="MuiButton-label"
-            >
-              New Card
-            </span>
-          </button>
-          <button
-            class="MuiButtonBase-root MuiButton-root MuiButton-contained MuiButtonGroup-grouped MuiButtonGroup-groupedHorizontal MuiButtonGroup-groupedContained MuiButtonGroup-groupedContainedHorizontal MuiButtonGroup-groupedContainedPrimary ready disabled MuiButton-containedPrimary MuiButton-containedSizeLarge MuiButton-sizeLarge Mui-disabled Mui-disabled"
-            disabled=""
-            tabindex="-1"
-            type="button"
-          >
-            <span
-              class="MuiButton-label"
-            >
-              Ready
-            </span>
-          </button>
-        </div>
+            Bingo
+          </span>
+        </button>
       </div>
       <p
-        class="MuiTypography-root MuiTypography-body1"
+        class="MuiTypography-root status-text MuiTypography-body1"
       >
         Waiting on host to start the game...
       </p>
