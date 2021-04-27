@@ -3,7 +3,6 @@ import Ball from '../../Components/Ball';
 import { BallContext, GameContext } from '../../Utils/contexts';
 import { Gamestate, Player, Pool, Room } from '@np-bingo/types';
 import StatusMessage from '../../Components/Status';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Footer from '../../Components/Footer';
 import Draws from '../../Components/Draws';
@@ -71,31 +70,30 @@ function Host({
         <div className="Host">
           <header>
             <div className="app-buttons">
-              <ButtonGroup
+              <Button
                 variant="contained"
-                color="primary"
-                aria-label="contained primary button group"
                 size="large"
+                color="primary"
+                className={classes.width}
+                onClick={() =>
+                  gameToggle &&
+                  gameToggle(gameContext.gamestate, gameContext.room)
+                }
               >
-                <Button
-                  className={classes.width}
-                  onClick={() =>
-                    gameToggle &&
-                    gameToggle(gameContext.gamestate, gameContext.room)
-                  }
-                >
-                  {buttonText(gameContext.gamestate)}
-                </Button>
-                <Button
-                  className={`${classes.width} ${
-                    gameContext.gamestate !== 'validate' && 'disabled'
-                  }`}
-                  disabled={gameContext.gamestate !== 'validate' && true}
-                  onClick={checkCard}
-                >
-                  Check Card
-                </Button>
-              </ButtonGroup>
+                {buttonText(gameContext.gamestate)}
+              </Button>
+              <Button
+                variant="contained"
+                size="large"
+                color="primary"
+                className={`${classes.width} ${
+                  gameContext.gamestate !== 'validate' && 'disabled'
+                }`}
+                disabled={gameContext.gamestate !== 'validate' && true}
+                onClick={checkCard}
+              >
+                Check Card
+              </Button>
             </div>
             <StatusMessage
               host={true}
