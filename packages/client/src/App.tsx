@@ -579,8 +579,6 @@ export default function App() {
           break;
         case 'pause':
           play('pause');
-          console.log('solo fired');
-
           // TODO Pulling directly from state feels wrong
           checkCard(state.rules.mode, state.playerCard, state.draws);
           break;
