@@ -88,18 +88,8 @@ export function decompressSerial(serial: string) {
 export function getBall(pool: Pool): Ball {
   let { columns, remainder } = getPoolSize(pool);
 
-  if (columns.length > 0) {
-    let columnIndex = randomIndex(columns);
-    let values = pool[columns[columnIndex]];
-    let valueIndex = randomIndex(values);
-
-    return {
-      key: columns[columnIndex],
-      number: values[valueIndex],
-      column: letters[columns[columnIndex]],
-      remainder: remainder - 1,
-    };
-  } else {
+  // No more balls remaining
+  if (columns.length <= 0) {
     return {
       key: 0,
       number: 0,
@@ -107,6 +97,17 @@ export function getBall(pool: Pool): Ball {
       remainder: 0,
     };
   }
+
+  let columnIndex = randomIndex(columns);
+  let values = pool[columns[columnIndex]];
+  let valueIndex = randomIndex(values);
+
+  return {
+    key: columns[columnIndex],
+    number: values[valueIndex],
+    column: letters[columns[columnIndex]],
+    remainder: remainder - 1,
+  };
 }
 /**
  * Removes a single ball from the remaining set of balls and returns the updated array
@@ -185,11 +186,7 @@ function checkRows(card: Card, draws: Pool) {
       break;
     }
   }
-  if (result) {
-    return result;
-  } else {
-    return false;
-  }
+  return result;
 }
 /**
  * Check each cell in each row on card for a win
@@ -208,28 +205,28 @@ function checkCellsInRow(
   if (!offset) {
     offset = 0;
   }
-  let result: number[] | boolean = [];
+  let result: number[] = [];
   let i;
   for (i = 0; i < 5; i++) {
+    // Skip comparison for free spot
     if (flag && i === 2) {
       result.push(offset * 5 + i);
       continue;
     }
+
     let check = findCommonElements([card[offset * 5 + i]], draws[i]);
 
-    // if comparison fails reset result array, otherwise push successful index
+    // If comparison fails reset result array
     if (!check) {
       result = [];
       break;
-    } else {
-      result.push(offset * 5 + i);
     }
+
+    result.push(offset * 5 + i);
     continue;
   }
-  if (result.length === 0) {
-    result = false;
-  }
-  return result;
+
+  return falseOrResult(result);
 }
 /**
  * Check all columns on card for a win
@@ -250,11 +247,7 @@ function checkColumns(card: Card, draws: Pool) {
       break;
     }
   }
-  if (result) {
-    return result;
-  } else {
-    return false;
-  }
+  return result;
 }
 /**
  * Check each cell in each column on card for a win
@@ -273,28 +266,27 @@ function checkCellsInColumn(
   if (!offset) {
     offset = 0;
   }
-  let result: number[] | boolean = [];
+  let result: number[] = [];
   let i;
   for (i = 0; i < 5; i++) {
+    // Skip comparison for free spot
     if (flag && i === 2) {
       result.push(i * 5 + offset);
       continue;
     }
-    let check = findCommonElements([card[i * 5 + offset]], draws[offset]);
 
-    // if comparison fails reset result array, otherwise push successful index
+    let check = findCommonElements([card[i * 5 + offset]], draws[offset]);
+    // If comparison fails reset result array
     if (!check) {
       result = [];
       break;
-    } else {
-      result.push(i * 5 + offset);
     }
+
+    result.push(i * 5 + offset);
     continue;
   }
-  if (result.length === 0) {
-    result = false;
-  }
-  return result;
+
+  return falseOrResult(result);
 }
 /**
  * Check all diagonals on card for a win
@@ -316,11 +308,7 @@ function checkDiagonals(card: Card, draws: Pool) {
       break;
     }
   }
-  if (result) {
-    return result;
-  } else {
-    return false;
-  }
+  return result;
 }
 /**
  * Check each cell on the falling diagonal on card for a win
@@ -330,28 +318,27 @@ function checkDiagonals(card: Card, draws: Pool) {
  * @param flag Flag for free spot
  */
 function checkFallingDiagonal(card: Card, draws: Pool, flag?: boolean) {
-  let result: number[] | boolean = [];
+  let result: number[] = [];
   let i;
   for (i = 0; i < 5; i++) {
+    // Skip comparison for free spot
     if (flag && i === 2) {
       result.push(i * 6);
       continue;
     }
-    let check = findCommonElements([card[i * 6]], draws[i]);
 
-    // if comparison fails reset result array, otherwise push successful index
+    let check = findCommonElements([card[i * 6]], draws[i]);
+    // If comparison fails reset result array
     if (!check) {
       result = [];
       break;
-    } else {
-      result.push(i * 6);
     }
+
+    result.push(i * 6);
     continue;
   }
-  if (result.length === 0) {
-    result = false;
-  }
-  return result;
+
+  return falseOrResult(result);
 }
 /**
  * Check each cell on the rising diagonal on card for a win
@@ -361,7 +348,7 @@ function checkFallingDiagonal(card: Card, draws: Pool, flag?: boolean) {
  * @param flag Flag for free spot
  */
 function checkRisingDiagonal(card: Card, draws: Pool, flag?: boolean) {
-  let result: number[] | boolean = [];
+  let result: number[] = [];
   let i;
   // Too tired to figure out an algorithim for this one
   // card[5 * 4 + 0 ] draw[0]
@@ -372,25 +359,33 @@ function checkRisingDiagonal(card: Card, draws: Pool, flag?: boolean) {
   const offset = [4, 3, 2, 1, 0];
 
   for (i = 0; i < 5; i++) {
+    // Skip comparison for free spot
     if (flag && i === 2) {
       result.push(offset[i] * 5 + i);
       continue;
     }
     let check = findCommonElements([card[offset[i] * 5 + i]], draws[i]);
-    // if comparison fails reset result array, otherwise push successful index
+    // If comparison fails reset result array
     if (!check) {
       result = [];
       break;
-    } else {
-      result.push(offset[i] * 5 + i);
     }
+
+    result.push(offset[i] * 5 + i);
     continue;
   }
+
+  return falseOrResult(result);
+}
+
+function falseOrResult(result: number[]) {
   if (result.length === 0) {
-    result = false;
+    return false;
   }
+
   return result;
 }
+
 /**
  * Find if current value exists in the search pool
  * @param value Array of number to be checked

@@ -29,10 +29,10 @@ export default function Join({ queryRoom = null, joinRoom, solo }: JoinProps) {
   );
 
   useEffect(() => {
-    if (queryRoom !== null) {
-      // TODO Check if room is active
-      join(queryRoom);
-    }
+    if (queryRoom === null) return;
+
+    // TODO Check if room is active
+    join(queryRoom);
   }, [queryRoom, join]);
 
   const handleSolo = () => {

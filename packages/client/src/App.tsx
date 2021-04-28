@@ -385,16 +385,16 @@ export default function App() {
   const leaveRoom = (room: string, host?: RoomHost) => {
     play('init');
 
-    if (host) {
-      // Player
-      socket.emit('leave-room', room, host.socket, user);
-    } else {
-      // Host
+    // Host leave Room
+    if (!host) {
       // TODO Tell room host left and kick players
       socket.emit('leave-room', room);
-
       apiDeleteRoom(room);
+      return;
     }
+
+    // Player leave room
+    socket.emit('leave-room', room, host.socket, user);
   };
 
   /**
@@ -469,33 +469,33 @@ export default function App() {
    * Progress bar animation
    */
   useEffect(() => {
-    if (state.loop && state.gamestate === 'start') {
-      const timer = setInterval(() => {
-        setProgress((prevProgress) =>
-          prevProgress >= 100 ? 100 : prevProgress + 4.59
-        );
-      }, config['ball-delay'] / 24);
-      return () => clearInterval(timer);
-    }
+    if (!state.loop || state.gamestate !== 'start') return;
+
+    const timer = setInterval(() => {
+      setProgress((prevProgress) =>
+        prevProgress >= 100 ? 100 : prevProgress + 4.59
+      );
+    }, config['ball-delay'] / 24);
+    return () => clearInterval(timer);
   }, [state.gamestate, state.loop, progress]);
 
   /**
    * Solo mode new ball delay and animation reset
    */
   useEffect(() => {
-    if (state.loop && state.ball.remainder !== 0) {
-      const timeout = setTimeout(() => {
-        newBall('solo', state.pool, state.draws, undefined, (ball: Ball) => {
-          setProgress(0);
-          console.log(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
-          if (ball.remainder === 0) {
-            dispatch({ type: LOOP_STOP });
-            console.log('Game over');
-          }
-        });
-      }, config['ball-delay']);
-      return () => clearTimeout(timeout);
-    }
+    if (!state.loop || state.ball.remainder > 0) return;
+
+    const timeout = setTimeout(() => {
+      newBall('solo', state.pool, state.draws, undefined, (ball: Ball) => {
+        setProgress(0);
+        console.log(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
+        if (ball.remainder === 0) {
+          dispatch({ type: LOOP_STOP });
+          console.log('Game over');
+        }
+      });
+    }, config['ball-delay']);
+    return () => clearTimeout(timeout);
   }, [newBall, state.ball.remainder, state.loop, state.draws, state.pool]);
 
   /**
@@ -511,13 +511,16 @@ export default function App() {
     room?: Room,
     host?: RoomHost
   ) => {
+    // default
     if (mode !== 'solo') {
       play('validate');
       room && host && socket.emit('send-card', room, host.socket, user, card);
-    } else {
-      dispatch({ type: GET_CARD, payload: { card: card, owner: user } });
-      solo('validate');
+      return;
     }
+
+    // solo
+    dispatch({ type: GET_CARD, payload: { card: card, owner: user } });
+    solo('validate');
   };
 
   /**
@@ -540,25 +543,28 @@ export default function App() {
       return data[items];
     });
 
-    if (methods.length > 0) {
-      let winner = {
-        methods: methods,
-        data: data,
-        player: playerCard.owner,
-        card: playerCard.card,
-      };
-
-      dispatch({
-        type: CHECK_CARD_SUCCESS,
-        payload: winner,
-      });
-      if (mode !== 'solo' && room) {
-        socket.emit('winning-card', room, winner);
-        apiSaveRoom(room, winner);
-      }
-    } else {
+    // No winning methods
+    if (methods.length <= 0) {
       dispatch({ type: CHECK_CARD_FAILURE });
       mode !== 'solo' && room && socket.emit('losing-card', room);
+      return;
+    }
+
+    let winner = {
+      methods: methods,
+      data: data,
+      player: playerCard.owner,
+      card: playerCard.card,
+    };
+
+    dispatch({
+      type: CHECK_CARD_SUCCESS,
+      payload: winner,
+    });
+
+    if (mode !== 'solo' && room) {
+      socket.emit('winning-card', room, winner);
+      apiSaveRoom(room, winner);
     }
   };
 
@@ -594,16 +600,17 @@ export default function App() {
    */
   useEffect(() => {
     if (
-      !state.loop &&
-      state.rules.mode === 'solo' &&
-      state.gamestate === 'validate'
-    ) {
-      const pauseTime = setTimeout(() => {
-        solo('pause');
-        setProgress(0);
-      }, 1000);
-      return () => clearTimeout(pauseTime);
-    }
+      state.loop ||
+      state.rules.mode !== 'solo' ||
+      state.gamestate !== 'validate'
+    )
+      return;
+
+    const pauseTime = setTimeout(() => {
+      solo('pause');
+      setProgress(0);
+    }, 1000);
+    return () => clearTimeout(pauseTime);
   }, [solo, state.loop, state.gamestate, state.rules.mode]);
 
   let {

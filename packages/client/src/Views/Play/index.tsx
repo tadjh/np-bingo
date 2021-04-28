@@ -130,9 +130,9 @@ export default function Play({
    * Update winning results after successful validation
    */
   useEffect(() => {
-    if (winner.methods.length > 0) {
-      setWinningCrossmarks(winner.methods, winner.data);
-    }
+    if (winner.methods.length <= 0) return;
+
+    setWinningCrossmarks(winner.methods, winner.data);
   }, [winner]);
 
   const handleSendCard = (
@@ -141,13 +141,16 @@ export default function Play({
     room: Room,
     host: Host
   ) => {
-    if (sendCard) {
-      if (mode !== 'solo') {
-        sendCard(mode, card, room, host);
-      } else {
-        sendCard(mode, card);
-      }
+    if (!sendCard) return;
+
+    // default
+    if (mode !== 'solo') {
+      sendCard(mode, card, room, host);
+      return;
     }
+
+    // solo
+    sendCard(mode, card);
   };
 
   let { card, serial, crossmarks } = state;

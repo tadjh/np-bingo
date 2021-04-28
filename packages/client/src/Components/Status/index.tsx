@@ -17,11 +17,13 @@ export function statusText(gamestate: Gamestate, mode?: Gamemode) {
       text = 'Waiting on host to start the game...';
       break;
     case 'ready':
-      if (mode === 'solo') {
-        text = 'Click start to begin.';
-      } else {
+      // default
+      if (mode !== 'solo') {
         text = 'Click ready, then wait for host to start game...';
       }
+
+      // solo
+      text = 'Click start to begin.';
       break;
     case 'standby':
       text = 'Waiting for host to dispense a ball...';
@@ -30,11 +32,12 @@ export function statusText(gamestate: Gamestate, mode?: Gamemode) {
       text = 'Click a number to cross it out.';
       break;
     case 'validate':
-      if (mode === 'solo') {
-        text = 'Checking card for Bingo...';
-      } else {
+      // default
+      if (mode !== 'solo') {
         text = 'Sending card to host...';
       }
+
+      text = 'Checking card for Bingo...';
       break;
     case 'pause':
       text = 'A card is being checked for BINGO!';
@@ -76,13 +79,16 @@ export function hostStatusText(gamestate: Gamestate, count?: number) {
       break;
     case 'ready':
       text = 'Waiting for player(s) to join...';
-      if (count) {
-        if (count === 1) {
-          text = `${count} player has joined...`;
-        }
-        if (count > 1) {
-          text = `${count} players have joined...`;
-        }
+      if (!count) break;
+
+      if (count === 1) {
+        text = `${count} player has joined...`;
+        break;
+      }
+
+      if (count > 1) {
+        text = `${count} players have joined...`;
+        break;
       }
       break;
     case 'standby':
