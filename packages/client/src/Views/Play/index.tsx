@@ -121,7 +121,6 @@ export default function Play({
    */
   useEffect(() => {
     if (winner.methods.length <= 0) return;
-
     setWinningCrossmarks(winner.results);
   }, [winner.methods, winner.results]);
 
@@ -220,26 +219,24 @@ export default function Play({
       <div className="main" role="main">
         <GameContext.Consumer>
           {(gameContext) => (
-            <React.Fragment>
-              <BallContext.Consumer>
-                {(ballContext) => (
-                  <div className="ball-wrapper">
-                    <Ball
-                      number={ballContext.ball.number}
-                      column={ballContext.ball.column}
-                      remainder={ballContext.ball.remainder}
-                      loop={ballContext.loop}
-                      progress={ballContext.progress}
-                      disabled={
-                        gameContext.gamestate !== 'start' &&
-                        gameContext.gamestate !== 'failure' &&
-                        true
-                      }
-                    />
-                  </div>
-                )}
-              </BallContext.Consumer>
-            </React.Fragment>
+            <BallContext.Consumer>
+              {(ballContext) => (
+                <div className="ball-wrapper">
+                  <Ball
+                    number={ballContext.ball.number}
+                    column={ballContext.ball.column}
+                    remainder={ballContext.ball.remainder}
+                    loop={ballContext.loop}
+                    progress={ballContext.progress}
+                    disabled={
+                      gameContext.gamestate !== 'start' &&
+                      gameContext.gamestate !== 'failure' &&
+                      true
+                    }
+                  />
+                </div>
+              )}
+            </BallContext.Consumer>
           )}
         </GameContext.Consumer>
         <Board

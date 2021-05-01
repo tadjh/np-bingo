@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './style.css';
 
 export interface CellProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -27,6 +27,11 @@ export default function Cell({
     setChecked((prevCheck) => !prevCheck);
     onClick(event);
   };
+
+  useEffect(() => {
+    if (override === undefined) return;
+    setChecked(false);
+  }, [override]);
   // TODO override may need work
   return (
     <div

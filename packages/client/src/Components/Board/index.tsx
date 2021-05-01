@@ -16,7 +16,7 @@ export interface BoardProps {
 export default function Board({
   card = [...initialState.card],
   serial = '',
-  crossmarks = { ...initialState.crossmarks },
+  crossmarks = {},
   winner = false,
   ...props
 }: BoardProps) {
@@ -34,7 +34,7 @@ export default function Board({
               className={[winner && 'winner'].join('')}
               key={id}
               index={index + 1}
-              checked={crossmarks[id]}
+              checked={winner ? crossmarks[id] || false : undefined}
               {...props}
               disabled={winner}
             >
