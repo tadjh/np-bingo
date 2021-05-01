@@ -82,7 +82,6 @@ export default function App() {
     name: 'Player',
     socket: '',
   });
-  // TODO where does this belong?
   const [progress, setProgress] = useState(0);
 
   /**

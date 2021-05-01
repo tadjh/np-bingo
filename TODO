@@ -1,11 +1,9 @@
 Bugs
-// TODO Mobile winning crossmarks returns all crossmarks
 // TODO Prevent Join room that doesn't exist
 // TODO Player doesn't leave room on back button (socket.close? or window.onpopstate)
 // TODO Board Pixel 2 weird padding 
 
 Vulnerbilities
-// TODO Rest api use game "_id" instead of room id
 // TODO Rest Api has no auth
 // TODO Max active Games
 // TODO Max room size 
@@ -13,6 +11,7 @@ Vulnerbilities
 // TODO Timeout socket.io connection with reconnect popup
 
 Development
+// TODO Rest api use game "_id" instead of room id
 // TODO redis
 // TODO Helmet
 // TODO MongoDB model timestamps?
