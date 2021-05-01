@@ -124,6 +124,14 @@ export default function Play({
     setWinningCrossmarks(winner.results);
   }, [winner.methods, winner.results]);
 
+  /**
+   * Wrapper function for sendCard
+   * @param mode
+   * @param card
+   * @param room
+   * @param host
+   * @returns
+   */
   const handleSendCard = (
     mode: Gamemode,
     card: Card,
@@ -131,18 +139,16 @@ export default function Play({
     host: Host
   ) => {
     if (!sendCard) return;
-
     // default
     if (mode !== 'solo') {
       sendCard(mode, card, room, host);
       return;
     }
-
     // solo
     sendCard(mode, card);
   };
 
-  let { card, serial, crossmarks } = state;
+  const { card, serial, crossmarks } = state;
   const board = [...card];
   return (
     <div className="Play">
