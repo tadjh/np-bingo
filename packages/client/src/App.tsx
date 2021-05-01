@@ -35,7 +35,6 @@ import {
   Ball,
   Card,
   Pool,
-  Results,
   Gamestate,
   Winner,
   Player,
@@ -537,11 +536,7 @@ export default function App() {
     room?: Room
   ) => {
     // TODO Add rulesets
-    let data: Results = validateCard(playerCard.card, draws);
-
-    const methods = Object.keys(data).filter(function (items) {
-      return data[items];
-    });
+    const [results, methods] = validateCard(playerCard.card, draws);
 
     // No winning methods
     if (methods.length <= 0) {
@@ -550,12 +545,12 @@ export default function App() {
       return;
     }
 
-    let winner = {
-      methods: methods,
-      data: data,
+    const winner = {
+      methods,
+      results,
       player: playerCard.owner,
       card: playerCard.card,
-    };
+    } as Winner;
 
     dispatch({
       type: CHECK_CARD_SUCCESS,

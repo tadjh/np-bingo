@@ -1,5 +1,5 @@
 import lz from 'lz-string';
-import { Pool, Ball, Card, Results } from '@np-bingo/types';
+import { Pool, Ball, Card, Results, Methods } from '@np-bingo/types';
 import { letters } from '../Constants';
 import { randomIndex } from '.';
 
@@ -10,19 +10,17 @@ import { randomIndex } from '.';
 
 export function createCard(pool: Pool) {
   let card = [];
-  let i: number;
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     let column = createColumn(pool[i]);
 
-    let x: number;
-    for (x = 0; x < 5; x++) {
+    for (let x = 0; x < 5; x++) {
       let offset = 5 * x + i;
       card[offset] = column[x];
     }
   }
 
-  // Note: Remove 13th card and replace with a free spot on display
-  // card[12] = 'free';
+  // Note: Remove 13th cell and replace with a free spot on display
+  // cell[12] = 'free';
   return card;
 }
 /**
@@ -35,8 +33,7 @@ function createColumn(array: number[]) {
   // Store values into new array so that we can remove used values and prevent duplication
   let values = array;
 
-  let i: number;
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     let index = randomIndex(values);
     let value = values[index];
     column[i] = value;
@@ -145,52 +142,81 @@ export function getPoolSize(pool: Pool) {
   return { remainder, columns };
 }
 /**
+ * Check if card is a winner and return the winning methods
+ * @param card
+ * @param draws
+ * @returns Tuple of Results, Methods
+ */
+export function validateCard(card: Card, draws: Pool) {
+  const results = checkCard(card, draws);
+  const methods = winningMethods(results);
+  return [results, methods] as [Results, Methods];
+}
+
+/**
  * Check if card is a winner based on current draw pool
  * @param card
  * @param draws
- * @returns
+ * @returns Results object
  */
-export function validateCard(card: Card, draws: Pool) {
-  let results: Results = { row: false, column: false, diagonal: false };
-  let rowResults = checkRows(card, draws);
-  let columnResults = checkColumns(card, draws);
-  let diagonalResults = checkDiagonals(card, draws);
-
-  if (rowResults) {
-    results = { ...results, row: rowResults };
-  }
-  if (columnResults) {
-    results = { ...results, column: columnResults };
-  }
-  if (diagonalResults) {
-    results = { ...results, diagonal: diagonalResults };
-  }
-  return results;
+function checkCard(card: Card, draws: Pool): Results {
+  const row = checkRows(card, draws);
+  const column = checkColumns(card, draws);
+  const diagonal = checkDiagonals(card, draws);
+  return { row, column, diagonal };
 }
+
+/**
+ * Checks results for winning methods
+ * @param results
+ * @returns Array of winning methods
+ */
+function winningMethods(results: Results): string[] {
+  return Object.keys(results).filter((method) => {
+    if (results[method].length <= 0) return undefined;
+    return results[method];
+  });
+}
+
+/**
+ * Sets Winning crossmarks after successful card validations
+ * @param methods Array of current winning methods (row, column, diagonal)
+ * @param results Results of validation check
+ */
+export function winningCells(results: Results) {
+  const methods = winningMethods(results);
+  let winningCrossmarks = {};
+  for (let i = 0; i < methods.length; i++) {
+    let marks = (results[methods[i]] as number[]).map(function (item) {
+      let id = `cell${item + 1}`;
+      return { [id]: true };
+    });
+    winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
+  }
+  return winningCrossmarks;
+}
+
 /**
  * Check all rows on card for a win
- * Returns true if winning row is found
+ * Returns early if winning row is found
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
  */
 function checkRows(card: Card, draws: Pool) {
-  let result: number[] | boolean = false;
-  let i;
-  for (i = 0; i < 5; i++) {
+  let result: number[] = [];
+  for (let i = 0; i < 5; i++) {
     if (i === 2) {
       result = checkCellsInRow(card, draws, i, true);
     } else {
       result = checkCellsInRow(card, draws, i);
     }
-    if (result) {
-      break;
-    }
+    if (result.length > 0) break;
   }
   return result;
 }
 /**
  * Check each cell in each row on card for a win
- * Returns true if a row contains only winning cells
+ * Returns if a row contains only winning cells
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
  * @param offset Row offset
@@ -199,15 +225,11 @@ function checkRows(card: Card, draws: Pool) {
 function checkCellsInRow(
   card: Card,
   draws: Pool,
-  offset?: number,
+  offset: number,
   flag?: boolean
 ) {
-  if (!offset) {
-    offset = 0;
-  }
   let result: number[] = [];
-  let i;
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     // Skip comparison for free spot
     if (flag && i === 2) {
       result.push(offset * 5 + i);
@@ -226,32 +248,29 @@ function checkCellsInRow(
     continue;
   }
 
-  return falseOrResult(result);
+  return result;
 }
 /**
  * Check all columns on card for a win
- * Returns true if winning column is found
+ * Returns early if winning column is found
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
  */
 function checkColumns(card: Card, draws: Pool) {
-  let result: number[] | boolean = false;
-  let i;
-  for (i = 0; i < 5; i++) {
+  let result: number[] = [];
+  for (let i = 0; i < 5; i++) {
     if (i === 2) {
       result = checkCellsInColumn(card, draws, i, true);
     } else {
       result = checkCellsInColumn(card, draws, i);
     }
-    if (result) {
-      break;
-    }
+    if (result.length > 0) break;
   }
   return result;
 }
 /**
  * Check each cell in each column on card for a win
- * Returns true if a column contains only winning cells
+ * Returns if a column contains only winning cells
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
  * @param offset Row offset
@@ -260,15 +279,11 @@ function checkColumns(card: Card, draws: Pool) {
 function checkCellsInColumn(
   card: Card,
   draws: Pool,
-  offset?: number,
+  offset: number,
   flag?: boolean
 ) {
-  if (!offset) {
-    offset = 0;
-  }
   let result: number[] = [];
-  let i;
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     // Skip comparison for free spot
     if (flag && i === 2) {
       result.push(i * 5 + offset);
@@ -286,27 +301,24 @@ function checkCellsInColumn(
     continue;
   }
 
-  return falseOrResult(result);
+  return result;
 }
 /**
  * Check all diagonals on card for a win
- * Returns true if winning diagonal is found
+ * Returns if winning diagonal is found
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
  */
 function checkDiagonals(card: Card, draws: Pool) {
-  let result: number[] | boolean = false;
-  let i;
-  for (i = 0; i < 2; i++) {
+  let result: number[] = [];
+  for (let i = 0; i < 2; i++) {
     if (i === 0) {
       result = checkFallingDiagonal(card, draws, true);
     }
     if (i === 1) {
       result = checkRisingDiagonal(card, draws, true);
     }
-    if (result) {
-      break;
-    }
+    if (result.length > 0) break;
   }
   return result;
 }
@@ -319,8 +331,7 @@ function checkDiagonals(card: Card, draws: Pool) {
  */
 function checkFallingDiagonal(card: Card, draws: Pool, flag?: boolean) {
   let result: number[] = [];
-  let i;
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     // Skip comparison for free spot
     if (flag && i === 2) {
       result.push(i * 6);
@@ -338,7 +349,7 @@ function checkFallingDiagonal(card: Card, draws: Pool, flag?: boolean) {
     continue;
   }
 
-  return falseOrResult(result);
+  return result;
 }
 /**
  * Check each cell on the rising diagonal on card for a win
@@ -349,16 +360,9 @@ function checkFallingDiagonal(card: Card, draws: Pool, flag?: boolean) {
  */
 function checkRisingDiagonal(card: Card, draws: Pool, flag?: boolean) {
   let result: number[] = [];
-  let i;
-  // Too tired to figure out an algorithim for this one
-  // card[5 * 4 + 0 ] draw[0]
-  // card[5 * 3 + 1 ] draw[1]
-  // card[5 * 2 + 2 ] draw[2]
-  // card[5 * 1 + 3 ] draw[3]
-  // card[5 * 0 + 4 ] draw[4]
   const offset = [4, 3, 2, 1, 0];
 
-  for (i = 0; i < 5; i++) {
+  for (let i = 0; i < 5; i++) {
     // Skip comparison for free spot
     if (flag && i === 2) {
       result.push(offset[i] * 5 + i);
@@ -375,14 +379,6 @@ function checkRisingDiagonal(card: Card, draws: Pool, flag?: boolean) {
     continue;
   }
 
-  return falseOrResult(result);
-}
-
-function falseOrResult(result: number[]) {
-  if (result.length === 0) {
-    return false;
-  }
-
   return result;
 }
 
@@ -390,6 +386,7 @@ function falseOrResult(result: number[]) {
  * Find if current value exists in the search pool
  * @param value Array of number to be checked
  * @param search Array of search pool
+ * @returns
  */
 function findCommonElements(value: number[], search: number[]) {
   return search.some((item) => value.includes(item));

@@ -46,11 +46,11 @@ export type Methods = string[];
 export type Card = number[];
 export type Pool = number[][];
 export type Results = {
-  [key: string]: number[] | boolean;
+  [key: string]: number[];
 };
 export type Winner = {
   methods: Methods;
-  data: Results;
+  results: Results;
   player: Player;
   card: Card;
 };

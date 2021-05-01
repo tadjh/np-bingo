@@ -27,7 +27,7 @@ import './style.css';
 import Ball from '../../Components/Ball';
 import Board from '../../Components/Board';
 import StatusMessage from '../../Components/Status';
-import { createCard, serializeCard } from '../../Utils/bingo';
+import { createCard, serializeCard, winningCells } from '../../Utils/bingo';
 import Button from '@material-ui/core/Button';
 import Footer from '../../Components/Footer';
 import Dialog from '@material-ui/core/Dialog';
@@ -109,20 +109,10 @@ export default function Play({
 
   /**
    * Sets Winning crossmarks after successful card validations
-   * @param methods Array of current winning methods (row, column, diagonal)
-   * @param data Results of validation check
+   * @param results Results of validation check
    */
-  const setWinningCrossmarks = (methods: string[], data: Results) => {
-    let winningCrossmarks = {};
-    let i;
-    for (i = 0; i < methods.length; i++) {
-      let marks = (data[methods[i]] as number[]).map(function (item) {
-        let id = `cell${item + 1}`;
-        return { [id]: true };
-      });
-      winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
-    }
-
+  const setWinningCrossmarks = (results: Results) => {
+    const winningCrossmarks = winningCells(results);
     dispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
   };
 
@@ -132,8 +122,8 @@ export default function Play({
   useEffect(() => {
     if (winner.methods.length <= 0) return;
 
-    setWinningCrossmarks(winner.methods, winner.data);
-  }, [winner]);
+    setWinningCrossmarks(winner.results);
+  }, [winner.methods, winner.results]);
 
   const handleSendCard = (
     mode: Gamemode,

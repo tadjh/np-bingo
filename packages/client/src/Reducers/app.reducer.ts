@@ -42,7 +42,7 @@ export const initialState: AppState = {
   },
   winner: {
     methods: [],
-    data: {},
+    results: {},
     player: { _id: '', uid: 0, name: '', socket: '' },
     card: new Array(25),
   },
