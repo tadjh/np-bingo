@@ -1,4 +1,14 @@
 /**
+ * Search if number exists in the array
+ * @param search Number to be queried
+ * @param set Array of search set
+ * @returns True or false depending on match
+ */
+export function findElementInArray(search: number, set: number[]): boolean {
+  return set.some((element) => search === element);
+}
+
+/**
  * Takes an array and returns a random element.
  * @param array
  */
