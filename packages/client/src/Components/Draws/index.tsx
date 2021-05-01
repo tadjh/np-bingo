@@ -12,7 +12,7 @@ export default function Draws({
   disabled,
 }: DrawsProps) {
   let table = [];
-  let itemsInit = [
+  const itemsInit = [
     <li key="ball1"></li>,
     <li key="ball2"></li>,
     <li key="ball3"></li>,
@@ -29,16 +29,13 @@ export default function Draws({
     <li key="ball14"></li>,
     <li key="ball15"></li>,
   ];
-  let letter;
-  let i;
-  for (i = 0; i < draws.length; i++) {
-    letter = letters[i];
-    let items = [...itemsInit];
-    let j;
-    for (j = 0; j < draws[i].length; j++) {
+  // let letter;
+  for (let i = 0; i < draws.length; i++) {
+    const letter = letters[i];
+    const items = [...itemsInit];
+    for (let j = 0; j < draws[i].length; j++) {
       items[j] = <li key={`ball${j + 1}`}>{`${letter}${draws[i][j]}`}</li>;
     }
-
     table[i] = (
       <ul
         key={`column${i + 1}`}
