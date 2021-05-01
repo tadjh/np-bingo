@@ -189,12 +189,7 @@ io.on('connection', (socket: Socket) => {
    */
   socket.on('winning-card', (room: Room, winner: Winner) => {
     if (winner.player.socket) {
-      io.to(winner.player.socket).emit('winner', room, {
-        player: winner.player,
-        card: winner.card,
-        methods: winner.methods,
-        data: winner.data,
-      } as Winner);
+      io.to(winner.player.socket).emit('winner', room, winner);
       console.log('Bingo!');
     } else {
       console.log(`${winner.player.name} socket not found in wininng card`);
