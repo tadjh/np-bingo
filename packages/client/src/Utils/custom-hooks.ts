@@ -1,5 +1,21 @@
+import { Player } from '@np-bingo/types';
 import React, { useState, useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+
+/**
+ * User Hook
+ * @param initialValue
+ * @returns
+ */
+export function useUser(
+  initialValue = {
+    name: 'Player',
+    socket: '',
+  }
+): [Player, React.Dispatch<React.SetStateAction<Player>>] {
+  const [user, setUser] = useState<Player>(initialValue);
+  return [user, setUser];
+}
 
 /**
  * Use Toggle Hook
