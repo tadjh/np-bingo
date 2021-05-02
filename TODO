@@ -27,6 +27,7 @@ Environment
 
 QOL
 // TODO Create users?
+// TODO Implement useTitle
 // TODO Improve room input behavior for typos
 // TODO Popup when user submits card for host and user
 // TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
