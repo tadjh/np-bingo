@@ -27,7 +27,7 @@ import './style.css';
 import Ball from '../../Components/Ball';
 import Board from '../../Components/Board';
 import StatusMessage from '../../Components/Status';
-import { createCard, serializeCard, winningCells } from '../../Utils/bingo';
+import { newCard, winningCells } from '../../Utils/bingo';
 import Button from '@material-ui/core/Button';
 import Footer from '../../Components/Footer';
 import Dialog from '@material-ui/core/Dialog';
@@ -67,10 +67,8 @@ export default function Play({
   /**
    * Creates a new card and stores it in state
    */
-  const newCard = useCallback(() => {
-    let card: Card = createCard(BINGO);
-    let serialCard = [...card];
-    let serial = serializeCard(serialCard);
+  const getCard = useCallback(() => {
+    const [card, serial] = newCard(BINGO);
     dispatch({ type: NEW_CARD, payload: { card: card, serial: serial } });
     clearCrossmarks();
   }, []);
@@ -84,9 +82,9 @@ export default function Play({
       dispatch({ type: INIT_GAME });
     }
     if (gamestate === 'ready') {
-      newCard();
+      getCard();
     }
-  }, [gamestate, newCard]);
+  }, [gamestate, getCard]);
 
   /**
    * Toggle current target's crossmark visibility
@@ -96,7 +94,6 @@ export default function Play({
     let target = event.target as HTMLDivElement;
     let value = state.crossmarks[target.id];
     let crossmark = { [target.id]: !value };
-
     dispatch({ type: UPDATE_CROSSMARKS, payload: crossmark });
   };
 
@@ -165,7 +162,7 @@ export default function Play({
                           gameContext.gamestate !== 'ready' && 'disabled'
                         }`}
                         disabled={gameContext.gamestate !== 'ready' && true}
-                        onClick={newCard}
+                        onClick={getCard}
                       >
                         New Card
                       </Button>
