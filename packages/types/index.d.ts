@@ -43,6 +43,7 @@ export type PlayerCard = {
 };
 export type Room = string;
 export type Methods = string[];
+export type Serial = string;
 export type Card = number[];
 export type Pool = number[][];
 export type Results = {
