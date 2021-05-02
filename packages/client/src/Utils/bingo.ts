@@ -1,7 +1,18 @@
 import lz from 'lz-string';
-import { Pool, Ball, Card, Results, Methods } from '@np-bingo/types';
+import { Pool, Ball, Card, Results, Methods, Serial } from '@np-bingo/types';
 import { letters } from '../Constants';
 import { findElementInArray, randomIndex } from '.';
+
+/**
+ * Creates a new card and stores it in state
+ * @param pool multidimensional array of all possible values
+ * @returns {{card: Card, serial: string}}
+ */
+export function newCard(pool: Pool): [Card, Serial] {
+  const card = createCard(pool);
+  const serial = serializeCard(card);
+  return [card, serial];
+}
 
 /**
  * Creates an array with 25 randomized values ordered left to right, top to bottom from a pool of values
@@ -48,7 +59,7 @@ export function createColumn(array: number[]): number[] {
  * @param card
  * @returns string
  */
-export function serializeCard(card: Card): string {
+export function serializeCard(card: Card): Serial {
   const newCard = [...card];
   // Remove free space from serial
   newCard.splice(12, 1);
@@ -59,11 +70,11 @@ export function serializeCard(card: Card): string {
 
 /**
  * Compress serial
- * @param serial string
+ * @param string string
  * @returns string
  */
-function compressSerial(serial: string): string {
-  return lz.compressToBase64(serial);
+function compressSerial(string: string): Serial {
+  return lz.compressToBase64(string);
 }
 
 /**
@@ -71,7 +82,7 @@ function compressSerial(serial: string): string {
  * @param serial string
  * @returns string
  */
-export function decompressSerial(serial: string) {
+export function decompressSerial(serial: Serial) {
   return lz.decompressFromBase64(serial);
 }
 
