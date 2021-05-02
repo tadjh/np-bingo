@@ -56,7 +56,7 @@ import {
   apiSaveRoom,
   apiUpdateRoom,
 } from './Api';
-import { useQuery } from './Utils/custom-hooks';
+import { useQuery, useUser } from './Utils/custom-hooks';
 import config from './Config/features';
 import { GameContext, BallContext } from './Utils/contexts';
 import logger from 'use-reducer-logger';
@@ -72,16 +72,11 @@ const theme = createMuiTheme({
 export default function App() {
   let history = useHistory();
   let query = useQuery();
+  const [user, setUser] = useUser();
   const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
     process.env.NODE_ENV === 'development' ? logger(reducer) : reducer,
     initialState
   );
-
-  // User
-  const [user, setUser] = useState<Player>({
-    name: 'Player',
-    socket: '',
-  });
   const [progress, setProgress] = useState(0);
 
   /**
@@ -193,6 +188,9 @@ export default function App() {
    * Socket.io Side-effects
    */
   useEffect(() => {
+    /**
+     * Add player socketId on connect
+     */
     socket.on('connect', () => {
       console.log('User connected');
       setUser((prevUser) => ({ ...prevUser, socket: socket.id }));
@@ -338,7 +336,7 @@ export default function App() {
       console.log('Game over!');
       play('end');
     });
-  }, [play]);
+  }, [play, setUser]);
 
   /**
    * Host: Create a new game room
@@ -562,6 +560,10 @@ export default function App() {
     }
   };
 
+  /**
+   * Handles solo mode game states
+   * @param gamestate Gamestate
+   */
   const solo = useCallback(
     (gamestate: Gamestate) => {
       switch (gamestate) {
@@ -581,6 +583,7 @@ export default function App() {
           play('pause');
           // TODO Pulling directly from state feels wrong
           checkCard(state.rules.mode, state.playerCard, state.draws);
+          // TODO checkCard probably shouldn't happen here
           break;
         default:
           throw new Error('Invalid game state in solo.');
