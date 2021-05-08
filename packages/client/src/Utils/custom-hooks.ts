@@ -1,4 +1,4 @@
-import { Player } from '@np-bingo/types';
+import { Player, Theme } from '@np-bingo/types';
 import React, { useState, useCallback, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -170,4 +170,14 @@ export const useTitle = (title?: string) => {
  */
 export function useQuery() {
   return new URLSearchParams(useLocation().search);
+}
+
+export function useTheme(): [Theme, () => void] {
+  const [theme, setTheme] = useState<Theme>('light');
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme !== 'dark' ? 'dark' : 'light'));
+  };
+
+  return [theme, toggleTheme];
 }

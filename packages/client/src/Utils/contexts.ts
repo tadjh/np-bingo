@@ -16,3 +16,8 @@ export const BallContext = React.createContext({
 });
 
 export const FeautresContext = React.createContext({ ...features });
+
+export const ThemeContext = React.createContext({
+  theme: '',
+  toggleTheme: () => {},
+});
