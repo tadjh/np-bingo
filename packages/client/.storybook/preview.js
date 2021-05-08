@@ -9,4 +9,17 @@ export const parameters = {
     },
   },
   layout: 'centered',
+  backgrounds: {
+    default: 'light',
+    values: [
+      {
+        name: 'dark',
+        value: 'rgb(24, 24, 27)',
+      },
+      {
+        name: 'light',
+        value: 'rgb(244, 244, 245)',
+      },
+    ],
+  },
 };
