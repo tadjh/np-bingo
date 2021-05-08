@@ -46,6 +46,7 @@ export type Methods = string[];
 export type Serial = string;
 export type Card = number[];
 export type Pool = number[][];
+export type Theme = 'light' | 'dark';
 export type Results = {
   [key: string]: number[];
 };
