@@ -10,6 +10,9 @@ export default {
 const Template: Story<StatusProps> = (args) => <Status {...args} />;
 
 export const Init = Template.bind({});
+Init.args = {
+  gamestate: 'init',
+};
 
 export const Ready = Template.bind({});
 Ready.args = {
@@ -37,7 +40,7 @@ Pause.args = {
 };
 
 export const Failure = Template.bind({});
-Failure.storyName = 'Failure (Randomized)';
+// Failure.storyName = 'Failure (Randomized)';
 Failure.args = {
   gamestate: 'failure',
 };

@@ -1,7 +1,5 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import { Gamemode, Gamestate } from '@np-bingo/types';
-import './style.css';
 // import { randomElement } from '../../Utils';
 
 /**
@@ -137,10 +135,10 @@ export default function Status({
   host = false,
   count = 0,
   mode = 'default',
-}: StatusProps) {
+}: StatusProps): JSX.Element {
   return (
-    <Typography className="status-text">
+    <div className="text-black dark:text-white text-opacity-80">
       {host ? hostStatusText(gamestate, count) : statusText(gamestate, mode)}
-    </Typography>
+    </div>
   );
 }
