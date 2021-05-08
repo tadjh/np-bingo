@@ -15,3 +15,8 @@ Large.args = {
 };
 
 export const Small = Template.bind({});
+
+export const Winner = Template.bind({});
+Winner.args = {
+  winner: true,
+};
