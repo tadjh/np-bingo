@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
+export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export default function Container({
   className = '',
