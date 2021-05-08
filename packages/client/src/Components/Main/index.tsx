@@ -1,18 +1,19 @@
 import React from 'react';
 
-export interface FooterProps extends React.HTMLAttributes<HTMLElement> {}
+export interface MainProps extends React.HTMLAttributes<HTMLElement> {}
 
-export default function Footer({
+export default function Main({
   className = '',
   children,
   ...props
-}: FooterProps): JSX.Element {
+}: MainProps): JSX.Element {
   return (
-    <footer
+    <main
+      role="main"
       className={['flex flex-col items-center z-10 p-5', className].join(' ')}
       {...props}
     >
       {children}
-    </footer>
+    </main>
   );
 }
