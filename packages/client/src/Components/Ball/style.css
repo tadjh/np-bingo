@@ -1,61 +1,27 @@
-.ball-container {
-  display: inline-flex;
-  position: relative;
-  margin: var(--spacing);
-}
-
 .ball {
-  text-align: center;
-  text-transform: uppercase;
-  border-radius: 50%;
-  padding: var(--spacing);
-  background-color: var(--color-light);
-  color: var(--bingo-blue);
-  border: var(--border-width) solid var(--bingo-grey);
-  width: var(--ball-size);
-  height: var(--ball-size);
-  vertical-align: middle;
-  font-weight: bold;
-  line-height: 1.2;
+  @apply dark:border-gray-800;
 }
 
 .ball.b {
-  border-color: var(--bingo-blue);
+  @apply border-blue-bingo dark:from-blue-300 dark:via-blue-300 dark:to-blue-500 dark:border-gray-800;
 }
 
 .ball.i {
-  border-color: var(--bingo-red);
+  @apply border-red-bingo  dark:from-red-300 dark:via-red-300 dark:to-red-500 dark:border-gray-800;
 }
 
 .ball.n {
-  border-color: var(--bingo-grey);
+  @apply border-gray-400 dark:from-gray-300 dark:via-gray-300 dark:to-gray-500 dark:border-gray-800;
 }
 
 .ball.g {
-  border-color: var(--bingo-green);
+  @apply border-green-bingo dark:from-green-300 dark:via-green-300 dark:to-green-500 dark:border-gray-800;
 }
 
 .ball.o {
-  border-color: var(--bingo-orange);
+  @apply border-orange-bingo dark:from-orange-300 dark:via-orange-300 dark:to-orange-500 dark:border-gray-800;
 }
 
-.ball.disabled {
-  background-color: var(--color-light-alt);
-  color: var(--color-disabled);
-  border-color: var(--color-disabled);
-}
-
-.number {
-  font-size: var(--font-size-h1);
-}
-
-.progress {
-  position: absolute;
-  top: -8px;
-  left: -8px;
-  z-index: 1;
-}
-
-.badge {
-  z-index: 2;
+div.ball.disabled {
+  @apply opacity-50 bg-gray-400 dark:bg-gray-700 text-gray-800 dark:text-gray-400 shadow-none border-gray-400 dark:border-gray-700 bg-none;
 }
