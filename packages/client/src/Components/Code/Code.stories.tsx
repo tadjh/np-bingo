@@ -14,4 +14,10 @@ Base.args = {
   room: 'A1B2',
 };
 
+export const Hovered = Template.bind({});
+Hovered.args = {
+  ...Base.args,
+  isHovered: true,
+};
+
 export const Blank = Template.bind({});
