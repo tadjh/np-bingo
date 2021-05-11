@@ -7,17 +7,20 @@ export default {
   component: Tooltip,
   decorators: [
     (Story) => (
-      <div className="relative">
+      <div className="relative tooltip">
         <Story />
       </div>
     ),
   ],
 } as Meta;
 
-const Template: Story<TooltipProps> = (args) => <Tooltip {...args} />;
+const Template: Story<TooltipProps> = (args) => (
+  <React.Fragment>
+    <Tooltip isHovered={true} children="Tooltip Top" direction="top" />
+    <Tooltip isHovered={true} children="Tooltip Right" direction="right" />
+    <Tooltip isHovered={true} children="Tooltip Bottom" direction="bottom" />
+    <Tooltip isHovered={true} children="Tooltip Left" direction="left" />
+  </React.Fragment>
+);
 
-export const Base = Template.bind({});
-Base.args = {
-  isHovered: true,
-  children: 'Tooltip Text',
-};
+export const Variants = Template.bind({});
