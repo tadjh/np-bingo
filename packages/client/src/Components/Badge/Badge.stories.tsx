@@ -44,4 +44,8 @@ Hovered.args = {
   isHovered: true,
 };
 
-export const Blank = Template.bind({});
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...Base.args,
+  disabled: true,
+};
