@@ -15,6 +15,7 @@ export default function Button({
   className = '',
   children,
   type = 'button',
+  disabled,
   ...props
 }: ButtonProps): JSX.Element {
   const baseStyle =
@@ -42,9 +43,10 @@ export default function Button({
           disabledStyle,
           className,
         ].join(' ')}
+        disabled={disabled}
         {...props}
       >
-        <Ripple />
+        {!disabled && <Ripple />}
         {children}
       </Component>
     );
@@ -57,9 +59,10 @@ export default function Button({
         className,
       ].join(' ')}
       type={type}
+      disabled={disabled}
       {...props}
     >
-      <Ripple />
+      {!disabled && <Ripple />}
       {children}
     </button>
   );
