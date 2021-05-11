@@ -1,5 +1,5 @@
 import { Player, Theme } from '@np-bingo/types';
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
 /**
@@ -123,6 +123,7 @@ export function useForm(
 }
 
 /**
+ * // TODO Rename to useModal
  * Use Dialog Hook
  * @param initialState
  * @param callback
@@ -180,4 +181,35 @@ export function useTheme(): [Theme, () => void] {
   };
 
   return [theme, toggleTheme];
+}
+
+/**
+ * Use Portal Hook
+ * @param target DOM Element
+ * @returns
+ */
+export function usePortal(target: HTMLElement | null): HTMLDivElement {
+  // lazy load portal
+  const portalRef = useRef<HTMLDivElement | null>(null);
+
+  const portal = setPortal(portalRef);
+
+  function setPortal(
+    portalRef: React.MutableRefObject<HTMLDivElement | null>
+  ): HTMLDivElement {
+    if (portalRef.current !== null) return portalRef.current;
+    portalRef.current = document.createElement('div');
+    return portalRef.current;
+  }
+
+  useEffect(() => {
+    if (target === null) return;
+    target.appendChild(portal);
+    return function cleanup() {
+      if (!target.contains(portal)) return;
+      target.removeChild(portal);
+    };
+  }, [portal, target]);
+
+  return portal;
 }
