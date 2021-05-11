@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Ripple from './';
+import Ripple from '.';
 import Button from '../Button';
 
 export default {

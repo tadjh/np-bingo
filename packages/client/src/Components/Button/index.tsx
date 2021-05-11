@@ -1,9 +1,9 @@
 import React from 'react';
 import Ripple from '../Ripple';
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'contained';
-  type?: 'button' | 'submit' | 'reset';
   component?: any;
   to?: string;
   disabled?: boolean;

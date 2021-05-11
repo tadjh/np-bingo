@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Cell, { CellProps } from './';
+import Cell, { CellProps } from '.';
 
 export default {
   title: 'Components/Board/Cell',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import PlayerList, { PlayerListProps } from './';
+import PlayerList, { PlayerListProps } from '.';
 
 export default {
   title: 'Components/PlayerList',

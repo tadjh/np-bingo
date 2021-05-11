@@ -1,9 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Share, { ShareProps } from './';
+import Share, { ShareProps } from '.';
 
 export default {
-  title: 'Components/Code/Share',
+  title: 'Components/Share',
   component: Share,
   parameters: {
     actions: {

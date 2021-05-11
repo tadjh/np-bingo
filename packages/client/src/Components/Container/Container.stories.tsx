@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Container, { ContainerProps } from './';
+import Container, { ContainerProps } from '.';
 
 export default {
   title: 'Wrappers/Container',

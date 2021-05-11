@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Status, { StatusProps } from './';
+import Status, { StatusProps } from '.';
 
 export default {
   title: 'Components/Status/Player',

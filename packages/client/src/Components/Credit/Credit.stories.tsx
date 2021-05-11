@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Credit, { CreditProps } from './';
+import Credit, { CreditProps } from '.';
 
 export default {
   title: 'Components/Credit',

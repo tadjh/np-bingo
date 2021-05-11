@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Header, { HeaderProps } from './';
+import Header, { HeaderProps } from '.';
 import Container from '../Container';
 import Main from '../Main';
 import Footer from '../Footer';

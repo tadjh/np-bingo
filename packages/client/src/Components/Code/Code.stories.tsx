@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Code, { CodeProps } from './';
+import Code, { CodeProps } from '.';
 
 export default {
   title: 'Components/Code',
