@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Join, { JoinProps } from './';
-import Container from '@material-ui/core/Container';
 import { FeautresContext } from '../../Utils/contexts';
 import features from '../../Config/features';
+import Container from '../../Components/Container';
+import * as RoomListStories from '../../Components/RoomList/RoomList.stories';
 
 export default {
   title: 'Pages/Join',
@@ -16,7 +17,7 @@ export default {
     (Story) => {
       return (
         <Router>
-          <Container className="App" fixed maxWidth="xs">
+          <Container>
             <Story />
           </Container>
         </Router>
@@ -49,6 +50,9 @@ PublicRooms.decorators = [
     );
   },
 ];
+PublicRooms.args = {
+  ...RoomListStories.Rooms.args,
+};
 
 export const NoSoloMode = Template.bind({});
 NoSoloMode.decorators = [

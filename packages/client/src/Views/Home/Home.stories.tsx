@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Home, { HomeProps } from './';
-import Container from '@material-ui/core/Container';
 import { FeautresContext } from '../../Utils/contexts';
 import features from '../../Config/features';
+import Container from '../../Components/Container';
 
 export default {
   title: 'Pages/Home',
@@ -17,7 +17,7 @@ export default {
     (Story) => {
       return (
         <Router>
-          <Container className="App" fixed maxWidth="xs">
+          <Container>
             <Story />
           </Container>
         </Router>

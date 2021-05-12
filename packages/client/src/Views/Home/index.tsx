@@ -1,20 +1,23 @@
 import React from 'react';
-import Button from '@material-ui/core/Button';
+import Button from '../../Components/Button';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 import Logo from '../../Components/Logo';
-import './style.css';
 import { Room } from '@np-bingo/types';
 import { useDialog } from '../../Utils/custom-hooks';
-import DialogCode from '../../Components/DialogCode';
+import CodeModal from '../../Components/CodeModal';
 import { FeautresContext } from '../../Utils/contexts';
 import Footer from '../../Components/Footer';
+import Credit from '../../Components/Credit';
+import ThemeToggle from '../../Components/ThemeToggle';
+import Main from '../../Components/Main';
+import Header from '../../Components/Header';
 
 export interface HomeProps {
   createRoom?: () => void;
   joinRoom?: (room: Room) => void;
 }
 
-export default function Home({ createRoom, joinRoom }: HomeProps) {
+export default function Home({ createRoom, joinRoom }: HomeProps): JSX.Element {
   let history = useHistory();
   const [open, handleOpen, handleClose] = useDialog(false);
 
@@ -25,21 +28,19 @@ export default function Home({ createRoom, joinRoom }: HomeProps) {
 
   return (
     <React.Fragment>
-      <div className="background"></div>
-      <div className="Home">
-        <header>
-          <Logo home={true} />
-        </header>
-        <div className="main" role="main">
-          <FeautresContext.Consumer>
-            {(features) => (
+      <Header className="flex-1 items-center">
+        <Logo home={true} />
+      </Header>
+      <Main className="flex-1 justify-center space-y-3">
+        <FeautresContext.Consumer>
+          {(features) => (
+            <React.Fragment>
               <Button
                 className="play-button"
                 variant="contained"
-                color="primary"
                 component={
                   !features['solo-mode'] && !features['public-rooms']
-                    ? 'button'
+                    ? undefined
                     : RouterLink
                 }
                 to={
@@ -52,19 +53,26 @@ export default function Home({ createRoom, joinRoom }: HomeProps) {
                     ? handleOpen
                     : undefined
                 }
-                size="large"
               >
                 Play
               </Button>
-            )}
-          </FeautresContext.Consumer>
-          <Button color="primary" onClick={createRoom} size="large">
-            Host
-          </Button>
-        </div>
-        <Footer home={true} />
-        <DialogCode open={open} handleClose={handleClose} onSumbit={join} />
-      </div>
+              {!features['solo-mode'] && !features['public-rooms'] && (
+                <CodeModal open={open} onClose={handleClose} onSumbit={join} />
+              )}
+            </React.Fragment>
+          )}
+        </FeautresContext.Consumer>
+        <Button className="host-button" onClick={createRoom}>
+          Host
+        </Button>
+      </Main>
+      <Footer className="flex-1 justify-end">
+        <Credit
+          author="Tadjh Brooks"
+          link="https://github.com/TadjhBrooks/np-bingo/"
+        />
+        <ThemeToggle />
+      </Footer>
     </React.Fragment>
   );
 }

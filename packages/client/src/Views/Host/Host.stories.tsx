@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Host, { HostProps } from './';
-import Container from '@material-ui/core/Container';
 import { BallContext, GameContext } from '../../Utils/contexts';
 import { initialState as AppState } from '../../Reducers/app.reducer';
+import Container from '../../Components/Container';
 // import * as DrawStories from '../../Components/Draws/Draws.stories';
 
 export default {
@@ -17,7 +17,7 @@ export default {
     (Story) => {
       return (
         <Router>
-          <Container className="App" fixed maxWidth="xs">
+          <Container>
             <Story />
           </Container>
         </Router>

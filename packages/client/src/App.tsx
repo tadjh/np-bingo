@@ -1,7 +1,5 @@
 import React, { useCallback, useEffect, useReducer, useState } from 'react';
 import socket from './Config/socket.io';
-import { createMuiTheme, ThemeProvider } from '@material-ui/core';
-import './App.css';
 import {
   INIT_GAME,
   READY_CHECK,
@@ -43,7 +41,7 @@ import {
   Host as RoomHost,
   Gamemode,
 } from '@np-bingo/types';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route, useHistory, Link } from 'react-router-dom';
 import Host from './Views/Host';
 import Play from './Views/Play';
 import Home from './Views/Home';
@@ -56,18 +54,12 @@ import {
   apiSaveRoom,
   apiUpdateRoom,
 } from './Api';
-import { useQuery, useUser } from './Utils/custom-hooks';
+import { useQuery, useTheme, useUser } from './Utils/custom-hooks';
 import config from './Config/features';
-import { GameContext, BallContext } from './Utils/contexts';
+import { GameContext, BallContext, ThemeContext } from './Utils/contexts';
 import logger from 'use-reducer-logger';
-import Container from '@material-ui/core/Container';
-import features from './Config/features';
-
-const theme = createMuiTheme({
-  palette: {
-    type: features['dark-mode'] ? 'dark' : 'light',
-  },
-});
+import Background from './Components/Background';
+import Container from './Components/Container';
 
 export default function App() {
   let history = useHistory();
@@ -78,6 +70,7 @@ export default function App() {
     initialState
   );
   const [progress, setProgress] = useState(0);
+  const [theme, toggleTheme] = useTheme();
 
   /**
    * Manage game state
@@ -625,63 +618,65 @@ export default function App() {
     loop,
   } = state;
 
-  let gameContext = {
-    gamestate: gamestate,
-    room: room,
-    host: host,
-    mode: rules.mode,
-  };
-  let ballContext = { ball: ball, loop: loop, progress: progress };
-
   return (
-    <GameContext.Provider value={gameContext}>
-      <BallContext.Provider value={ballContext}>
-        <ThemeProvider theme={theme}>
-          <Container className="App shadow" fixed maxWidth="xs">
-            <Switch>
-              <Route path="/create">
-                <Create></Create>
-              </Route>
-              <Route path="/host">
-                <Host
-                  checkCard={() =>
-                    checkCard(rules.mode, playerCard, draws, room)
-                  }
-                  newBall={() => newBall(rules.mode, pool, draws, room)}
-                  draws={draws}
-                  leaveRoom={leaveRoom}
-                  players={players}
-                  gameToggle={gameToggle}
-                  removePlayer={removePlayer}
-                  start={start}
-                  cooldown={cooldown}
-                ></Host>
-              </Route>
-              <Route path="/join">
-                <Join
-                  joinRoom={joinRoom}
-                  queryRoom={query.get('r')}
-                  solo={solo}
-                />
-              </Route>
-              <Route path="/play">
-                <Play
-                  gamestate={gamestate}
-                  init={() => play('init')}
-                  standby={standby}
-                  leaveRoom={leaveRoom}
-                  kicked={kicked}
-                  sendCard={sendCard}
-                  winner={winner}
-                ></Play>
-              </Route>
-              <Route exact path="/">
-                <Home joinRoom={joinRoom} createRoom={createRoom} />
-              </Route>
-            </Switch>
-          </Container>
-        </ThemeProvider>
-      </BallContext.Provider>
-    </GameContext.Provider>
+    <div id="App" className={theme}>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <GameContext.Provider
+          value={{
+            gamestate,
+            room,
+            host,
+            mode: rules.mode,
+          }}
+        >
+          <BallContext.Provider value={{ ball, loop, progress }}>
+            <Container>
+              {/* <Background /> */}
+              <Switch>
+                <Route path="/create">
+                  <Create></Create>
+                </Route>
+                <Route path="/host">
+                  <Host
+                    checkCard={() =>
+                      checkCard(rules.mode, playerCard, draws, room)
+                    }
+                    newBall={() => newBall(rules.mode, pool, draws, room)}
+                    draws={draws}
+                    leaveRoom={leaveRoom}
+                    players={players}
+                    gameToggle={gameToggle}
+                    removePlayer={removePlayer}
+                    start={start}
+                    cooldown={cooldown}
+                  ></Host>
+                </Route>
+                <Route path="/join">
+                  <Join
+                    joinRoom={joinRoom}
+                    queryRoom={query.get('r')}
+                    solo={solo}
+                  />
+                </Route>
+                <Route path="/play">
+                  <Play
+                    gamestate={gamestate}
+                    init={() => play('init')}
+                    standby={standby}
+                    leaveRoom={leaveRoom}
+                    kicked={kicked}
+                    sendCard={sendCard}
+                    winner={winner}
+                  ></Play>
+                </Route>
+                <Route exact path="/">
+                  <Home joinRoom={joinRoom} createRoom={createRoom} />
+                </Route>
+              </Switch>
+            </Container>
+          </BallContext.Provider>
+        </GameContext.Provider>
+      </ThemeContext.Provider>
+    </div>
   );
 }
