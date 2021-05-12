@@ -108,7 +108,16 @@ function Host({
                         description="New Ball"
                         direction="left"
                       >
-                        <PlusCircleIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
+                        <PlusCircleIcon
+                          className={`${
+                            (gameContext.gamestate !== 'start' &&
+                              gameContext.gamestate !== 'standby' &&
+                              gameContext.gamestate !== 'failure') ||
+                            ballContext.loop
+                              ? 'text-gray-300 dark:text-gray-500 cursor-default'
+                              : 'text-blue-700 dark:text-blue-300'
+                          } text-opacity-90 dark:text-opacity-90 group-hover:text-opacity-60`}
+                        />
                       </IconButton>
                       <Ball
                         number={ballContext.ball.number}
