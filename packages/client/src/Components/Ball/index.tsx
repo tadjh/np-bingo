@@ -1,6 +1,6 @@
 import React from 'react';
 import { Ball as BallType } from '@np-bingo/types';
-import CircularProgress from '@material-ui/core/CircularProgress';
+import CircularProgress from '../CircularProgress';
 import Badge from '../Badge';
 
 export interface BallProps extends Partial<BallType> {
@@ -51,14 +51,7 @@ export default function Ball({
         <div className="leading-4 uppercase">{column}</div>
         <div className="text-3xl leading-7">{number !== 0 && number}</div>
       </div>
-      {loop && (
-        <CircularProgress
-          className="absolute -top-1.5 -left-1.5 transition-transform text-gray-700 dark:text-gray-600"
-          size={93}
-          variant="determinate"
-          value={progress}
-        />
-      )}
+      {loop && <CircularProgress className="absolute" progress={progress} />}
     </div>
   );
 }
