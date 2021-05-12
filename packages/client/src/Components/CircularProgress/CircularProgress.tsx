@@ -17,7 +17,7 @@ export default function CircularProgress(
         fill="none"
         strokeWidth="3.6"
         strokeDasharray="126.92"
-        className="stroke-current transition-all"
+        className="stroke-current transition-all duration-75 ease-linear"
         {...props}
       ></circle>
     </svg>
