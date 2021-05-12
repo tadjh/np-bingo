@@ -5,7 +5,7 @@ import Logo from '../../Components/Logo';
 import { Room } from '@np-bingo/types';
 import { useDialog } from '../../Utils/custom-hooks';
 import CodeModal from '../../Components/CodeModal';
-import { FeautresContext } from '../../Utils/contexts';
+import { FeautresContext, ThemeContext } from '../../Utils/contexts';
 import Footer from '../../Components/Footer';
 import Credit from '../../Components/Credit';
 import ThemeToggle from '../../Components/ThemeToggle';
@@ -71,7 +71,14 @@ export default function Home({ createRoom, joinRoom }: HomeProps): JSX.Element {
           author="Tadjh Brooks"
           link="https://github.com/TadjhBrooks/np-bingo/"
         />
-        <ThemeToggle />
+        <ThemeContext.Consumer>
+          {(themeContext) => (
+            <ThemeToggle
+              onClick={themeContext.toggleTheme}
+              theme={themeContext.theme}
+            />
+          )}
+        </ThemeContext.Consumer>
       </Footer>
     </React.Fragment>
   );
