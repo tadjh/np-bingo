@@ -2,7 +2,7 @@ const config = {
   'dark-mode': false,
   'solo-mode': true, // Allow solo mode
   'share-room': true,
-  'public-rooms': false, // TODO Only mock-up
+  'public-rooms': true, // TODO Only mock-up
   'game-modes': false, // TODO no game logic built for alternate modes
   'special-rules': false, // TODO no win conditions built for special rules
   'streamer-mode': false, // TODO not implemented
