@@ -41,7 +41,7 @@ import {
   Host as RoomHost,
   Gamemode,
 } from '@np-bingo/types';
-import { Switch, Route, useHistory, Link } from 'react-router-dom';
+import { Switch, Route, useHistory } from 'react-router-dom';
 import Host from './Views/Host';
 import Play from './Views/Play';
 import Home from './Views/Home';
@@ -58,7 +58,7 @@ import { useQuery, useTheme, useUser } from './Utils/custom-hooks';
 import config from './Config/features';
 import { GameContext, BallContext, ThemeContext } from './Utils/contexts';
 import logger from 'use-reducer-logger';
-import Background from './Components/Background';
+// import Background from './Components/Background';
 import Container from './Components/Container';
 
 export default function App() {
@@ -459,12 +459,11 @@ export default function App() {
    */
   useEffect(() => {
     if (!state.loop || state.gamestate !== 'start') return;
-
     const timer = setInterval(() => {
       setProgress((prevProgress) =>
-        prevProgress >= 100 ? 100 : prevProgress + 4.59
+        prevProgress >= 100 ? 100 : prevProgress + 1
       );
-    }, config['ball-delay'] / 24);
+    }, config['ball-delay'] / 120);
     return () => clearInterval(timer);
   }, [state.gamestate, state.loop, progress]);
 
@@ -472,8 +471,7 @@ export default function App() {
    * Solo mode new ball delay and animation reset
    */
   useEffect(() => {
-    if (!state.loop || state.ball.remainder > 0) return;
-
+    if (!state.loop || state.ball.remainder <= 0) return;
     const timeout = setTimeout(() => {
       newBall('solo', state.pool, state.draws, undefined, (ball: Ball) => {
         setProgress(0);
