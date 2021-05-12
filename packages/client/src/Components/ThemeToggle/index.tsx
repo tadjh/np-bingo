@@ -1,7 +1,7 @@
 import React from 'react';
 import IconButton from '../IconButton';
-import MoonIcon from '../../Assets/MoonIcon';
-import SunIcon from '../../Assets/SunIcon';
+import MoonIcon from '../../Assets/Moon';
+import SunIcon from '../../Assets/Sun';
 import { Theme } from '@np-bingo/types';
 
 export interface ThemeToggleProps
