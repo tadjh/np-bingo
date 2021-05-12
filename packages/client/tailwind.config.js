@@ -65,6 +65,12 @@ module.exports = {
       backgroundImage: (theme) => ({
         'bingo-pattern-light': "url('/src/Assets/background-blur.png')",
       }),
+      width: {
+        23.5: '5.875rem',
+      },
+      height: {
+        23.5: '5.875rem',
+      },
     },
   },
   variants: {
