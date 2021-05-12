@@ -16,7 +16,7 @@ export default function Credit({
         {`Made by ${author}`}
       </div>
       <a
-        className="hover:underline text-blue-600 dark:text-white dark:text-opacity-40"
+        className="hover:underline text-blue-600 dark:text-white text-opacity-90 dark:text-opacity-40"
         href={link}
         target="_blank"
         rel="noreferrer"
