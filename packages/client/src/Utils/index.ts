@@ -20,7 +20,7 @@ export function randomElement(array: any[]) {
  * Takes an array and returns a random index position
  * @param array Any array
  */
-export function randomIndex(array: any[]) {
+export function randomIndex(array: any[]): number {
   return Math.floor(Math.random() * array.length);
 }
 
@@ -41,4 +41,17 @@ export function handleError(error: any) {
     console.log('Error', error.message);
   }
   console.log(error.config);
+}
+
+/**
+ * Turns input text into slug
+ * @param text
+ * @returns slug
+ */
+export function toSlug(text?: string): string | undefined {
+  if (!text) return undefined;
+  return text
+    .toLowerCase()
+    .replace(/ /g, '-')
+    .replace(/[^\w-]+/g, '');
 }
