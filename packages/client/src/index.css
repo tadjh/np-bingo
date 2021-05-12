@@ -26,15 +26,6 @@
       background-size: 10000%;
     }
   }
-  @variants disabled {
-    .ripple-none {
-      transition: none;
-    }
-    .ripple-none:active > .ripple {
-      background-image: none;
-      background-size: initial;
-    }
-  }
   @variants hover {
     .tooltip:hover > .tooltip-t,
     .tooltip:hover > .tooltip-r,
