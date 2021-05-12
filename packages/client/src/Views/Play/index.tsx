@@ -249,9 +249,7 @@ export default function Play({
         <GameContext.Consumer>
           {(gameContext) => (
             <React.Fragment>
-              {gameContext.mode !== 'solo' && (
-                <Widgets room={gameContext.room} />
-              )}
+              <Widgets variant={gameContext.mode} room={gameContext.room} />
               <Link
                 className="hover:underline"
                 onClick={() =>
