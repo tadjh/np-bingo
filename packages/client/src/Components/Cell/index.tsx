@@ -39,7 +39,7 @@ export default function Cell({
   return (
     <div
       className={[
-        'flex justify-center items-center relative w-16 h-14 ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-2xl uppercase transition-colors cursor-pointer',
+        'flex justify-center items-center relative w-16 h-14 ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-2xl uppercase transition-colors cursor-pointer',
         `cell-${index}`,
       ].join(' ')}
       onClick={eventHandler}
