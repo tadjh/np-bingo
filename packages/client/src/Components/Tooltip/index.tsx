@@ -48,7 +48,7 @@ export default function Tooltip({
   if (disabled) return null;
   return (
     <span
-      className={`${tooltip()} absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal transition-opacity delay-300 whitespace-nowrap box-content z-50 ${
+      className={`${tooltip()} absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal transition-opacity delay-500 whitespace-nowrap box-content z-50 ${
         !isHovered ? 'opacity-0 invisible' : ''
       } ${className}`}
     >
