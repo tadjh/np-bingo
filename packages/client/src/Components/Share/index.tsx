@@ -50,7 +50,7 @@ export default function Share({ room = '' }: ShareProps): JSX.Element {
         onClick={handleOpen}
         aria-label="share"
         description="Share link"
-        direction="left"
+        direction="top"
       >
         <ShareIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
       </IconButton>

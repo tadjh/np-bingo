@@ -18,6 +18,7 @@ export default function ThemeToggle({
       className="group"
       onClick={onClick}
       description={theme === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'}
+      direction="top"
     >
       {theme === 'light' ? (
         <SunIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
