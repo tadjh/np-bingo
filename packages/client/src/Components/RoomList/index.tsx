@@ -20,7 +20,7 @@ export default function RoomList({
   rooms = [],
   onClick,
 }: RoomListProps): JSX.Element {
-  if (rooms.length !== 0)
+  if (rooms.length > 0)
     return (
       <List title="Public Rooms">
         {rooms.map((item) => {
@@ -59,5 +59,3 @@ export default function RoomList({
     </p>
   );
 }
-
-// text-opacity-90 dark:text-opacity-90
