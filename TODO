@@ -26,6 +26,7 @@ Environment
 // TODO Use copyfiles or webpack(?) to move server favicon from 'Public' to 'dist/Public' or something
 
 QOL
+// TODO ARIA for screen readers
 // TODO Create users?
 // TODO Implement useTitle
 // TODO Improve room input behavior for typos
