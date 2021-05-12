@@ -21,7 +21,7 @@ export interface JoinProps {
 export default function Join({
   queryRoom = null,
   joinRoom,
-  rooms,
+  rooms = [],
   solo,
 }: JoinProps) {
   let history = useHistory();
@@ -42,37 +42,12 @@ export default function Join({
     join(queryRoom);
   }, [queryRoom, join]);
 
-  // const handleSolo = () => {
-  //   solo && solo('init');
-  //   history.push(`/play?m=solo`);
-  // };
-
-  // TODO replace with Public Room Implementation
-  // const dummyArray = [
-  //   {
-  //     _id: 'dadkjashdjshadka',
-  //     room: 'NYPD',
-  //     host: { id: 1100, name: 'Siz Fulker' },
-  //     players: [1111, 1122, 1133, 1144, 1155, 1121, 1112, 1114],
-  //   },
-  //   {
-  //     _id: 'dadkjashdjshadka',
-  //     room: 'TEST',
-  //     host: { id: 1100, name: 'Dean Watson' },
-  //     players: [1111, 1122, 1133, 1144, 1155],
-  //   },
-  //   {
-  //     _id: 'dadkjashdjshadka',
-  //     room: 'ABCD',
-  //     host: { id: 1100, name: 'Manny McDaniels' },
-  //     players: [1111],
-  //   },
-  // ];
-
   return (
     <React.Fragment>
       <Header className="flex-1 items-center">
-        <h1 className="text-center text-3xl uppercase">Join</h1>
+        <h1 className="text-center text-3xl text-black dark:text-white text-opacity-60 dark:text-opacity-60">
+          Join
+        </h1>
       </Header>
       <Main className="flex-1 justify-around gap-y-3">
         <FeautresContext.Consumer>
