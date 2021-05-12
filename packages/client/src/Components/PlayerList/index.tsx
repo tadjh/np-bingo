@@ -1,17 +1,13 @@
 import React from 'react';
-import './style.css';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import IconButton from '@material-ui/core/IconButton';
-import RemoveIcon from '@material-ui/icons/Remove';
-import CheckIcon from '@material-ui/icons/Check';
-import CancelIcon from '@material-ui/icons/Cancel';
+import List from '../List';
+import ListItem from '../ListItem';
+import ListItemText from '../ListItemText';
+import IconButton from '../IconButton';
+import MinusIcon from '../../Assets/Minus';
+import CheckIcon from '../../Assets/Check';
+import CloseCircleIcon from '../../Assets/CloseCircle';
+import Tooltip from '../Tooltip';
 import { Player } from '@np-bingo/types';
-import Typography from '@material-ui/core/Typography';
 
 export interface ListProps {
   data?: any[];
@@ -19,49 +15,53 @@ export interface ListProps {
 }
 
 export interface PlayerListProps extends ListProps {
+  data?: Player[];
   action?: (player: Player) => void;
 }
 
 export default function PlayerList({
   data = [],
   action: onRemove,
-}: PlayerListProps) {
+}: PlayerListProps): JSX.Element {
+  if (data.length !== 0)
+    return (
+      <List>
+        {data.map((player, index) => {
+          return (
+            <ListItem key={`player${index + 1}`}>
+              <div
+                className={`relative tooltip flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 ${
+                  player.ready
+                    ? 'bg-green-200 group-hover:bg-green-300 dark:bg-green-800 dark:group-hover:bg-green-700 '
+                    : 'bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700 '
+                } shadow-sm`}
+              >
+                <Tooltip direction="right">
+                  {player.ready ? 'Ready' : 'Not Ready'}
+                </Tooltip>
+                {player.ready ? <CheckIcon /> : <MinusIcon />}
+              </div>
+              <ListItemText
+                primary={player.name}
+                secondary={player.ready ? 'Ready' : 'Selecting a card...'}
+              />
+              <div className="ml-auto">
+                <IconButton
+                  className="delete-button"
+                  onClick={onRemove && (() => onRemove(player))}
+                  aria-label="status"
+                >
+                  <CloseCircleIcon className="text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90" />
+                </IconButton>
+              </div>
+            </ListItem>
+          );
+        })}
+      </List>
+    );
   return (
-    <div className="player-list">
-      {/* <Typography variant="h5" gutterBottom>
-        Players
-      </Typography> */}
-      {data.length !== 0 ? (
-        <List>
-          {data.map((player, index) => {
-            return (
-              <ListItem key={`player${index + 1}`}>
-                <ListItemAvatar>
-                  <Avatar>
-                    {player.ready ? <CheckIcon /> : <RemoveIcon />}
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary={player.name}
-                  secondary={player.ready ? 'Ready' : 'Selecting a card...'}
-                />
-                <ListItemSecondaryAction>
-                  <IconButton
-                    className="delete-button"
-                    onClick={onRemove && (() => onRemove(player))}
-                    edge="end"
-                    aria-label="status"
-                  >
-                    <CancelIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
-              </ListItem>
-            );
-          })}
-        </List>
-      ) : (
-        <Typography align="center">No players found</Typography>
-      )}
-    </div>
+    <p className="flex justify-center items-center text-black dark:text-white text-opacity-60 dark:text-opacity-60">
+      No players found
+    </p>
   );
 }

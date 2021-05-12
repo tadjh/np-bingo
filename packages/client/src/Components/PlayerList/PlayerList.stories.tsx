@@ -11,6 +11,15 @@ export default {
       handles: ['click .delete-button'],
     },
   },
+  decorators: [
+    (Story) => {
+      return (
+        <div className="w-96">
+          <Story />
+        </div>
+      );
+    },
+  ],
 } as Meta;
 
 const Template: Story<PlayerListProps> = (args) => <PlayerList {...args} />;
