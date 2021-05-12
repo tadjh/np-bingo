@@ -137,7 +137,7 @@ export default function Status({
   mode = 'default',
 }: StatusProps): JSX.Element {
   return (
-    <div className="text-black dark:text-white text-opacity-80">
+    <div className="text-black dark:text-white text-opacity-90 dark:text-opacity-90">
       {host ? hostStatusText(gamestate, count) : statusText(gamestate, mode)}
     </div>
   );
