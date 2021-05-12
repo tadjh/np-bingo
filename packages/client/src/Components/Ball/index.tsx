@@ -41,17 +41,15 @@ export default function Ball({
   return (
     <div className="relative inline-flex">
       <div
-        className={`relative z-10 text-black dark:text-opacity-90 bg-gradient-to-br from-gray-100 via-gray-100 to-gray-300 dark:border-gray-800 w-20 h-20 flex justify-center items-center flex-col shadow-md text-center rounded-full border-4 ${
+        className={`relative z-10 font-mono font-bold text-black text-opacity-90 dark:text-opacity-90 bg-gradient-to-br from-gray-100 via-gray-100 to-gray-300 dark:border-gray-800 w-20 h-20 flex justify-center items-center flex-col shadow-md text-center rounded-full border-4 ${
           !disabled ? ballStyle(column) : ballStyle('disabled')
         }`}
       >
         <Badge description="Balls Remaining" disabled={disabled}>
           {!disabled && remainder}
         </Badge>
-        <div className="leading-4 uppercase font-mono font-bold">{column}</div>
-        <div className="text-3xl leading-7 font-mono font-bold">
-          {number !== 0 && number}
-        </div>
+        <div className="leading-4 uppercase">{column}</div>
+        <div className="text-3xl leading-7">{number !== 0 && number}</div>
       </div>
       {loop && (
         <CircularProgress
