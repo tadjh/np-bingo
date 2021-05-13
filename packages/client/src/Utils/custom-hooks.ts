@@ -173,8 +173,13 @@ export function useQuery() {
   return new URLSearchParams(useLocation().search);
 }
 
-export function useTheme(): [Theme, () => void] {
-  const [theme, setTheme] = useState<Theme>('light');
+/**
+ * Hook for toggling light/dark mode
+ * @param initialTheme
+ * @returns
+ */
+export function useTheme(initialTheme: Theme): [Theme, () => void] {
+  const [theme, setTheme] = useState<Theme>(initialTheme);
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme !== 'dark' ? 'dark' : 'light'));
@@ -242,7 +247,6 @@ export function useProgress(
    * Set inProgress false
    */
   const disableProgress = () => {
-    console.log('disabled');
     setInProgress(false);
   };
 
@@ -250,7 +254,6 @@ export function useProgress(
    * Reset to initial state
    */
   const resetProgress = useCallback(() => {
-    console.log('resetting');
     disableProgress();
     setProgress(0);
     startTime.current = null;
