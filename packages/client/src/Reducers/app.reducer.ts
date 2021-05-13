@@ -24,8 +24,6 @@ import {
   CHECK_CARD_FAILURE,
   WIN_GAME,
   UPDATE_GAMEMODE,
-  LOOP_START,
-  LOOP_STOP,
 } from '../Constants';
 
 export const initialState: AppState = {
@@ -48,7 +46,6 @@ export const initialState: AppState = {
   },
   kicked: false,
   rules: { mode: 'default' as Gamemode, special: [] },
-  loop: false,
 };
 
 export function reducer(state: AppState, action: Action) {
@@ -150,10 +147,6 @@ export function reducer(state: AppState, action: Action) {
       return { ...state, ball: { ...state.ball, remainder: action.payload } };
     case UPDATE_GAMEMODE:
       return { ...state, rules: { ...state.rules, mode: action.payload } };
-    case LOOP_START:
-      return { ...state, loop: true };
-    case LOOP_STOP:
-      return { ...state, loop: false };
     default:
       throw new Error('Invalid dispatch type.');
   }

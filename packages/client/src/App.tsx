@@ -646,7 +646,6 @@ export default function App() {
                     gameToggle={gameToggle}
                     removePlayer={removePlayer}
                     start={start}
-                    cooldown={cooldown}
                   ></Host>
                 </Route>
                 <Route path="/join">

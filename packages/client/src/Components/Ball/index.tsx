@@ -4,7 +4,7 @@ import CircularProgress from '../CircularProgress';
 import Badge from '../Badge';
 
 export interface BallProps extends Partial<BallType> {
-  loop?: boolean;
+  inProgress?: boolean;
   progress?: number;
   disabled?: boolean;
 }
@@ -13,7 +13,7 @@ export default function Ball({
   number = 0,
   column = '',
   remainder = 75,
-  loop = false,
+  inProgress = false,
   progress = 0,
   disabled = false,
 }: BallProps) {
@@ -51,7 +51,9 @@ export default function Ball({
         <div className="leading-4 uppercase">{column}</div>
         <div className="text-3xl leading-7">{number !== 0 && number}</div>
       </div>
-      {loop && <CircularProgress className="absolute" progress={progress} />}
+      {inProgress && (
+        <CircularProgress className="absolute" progress={progress} />
+      )}
     </div>
   );
 }

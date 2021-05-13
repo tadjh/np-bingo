@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useRef } from 'react';
 import Ball from '../../Components/Ball';
 import { BallContext, GameContext } from '../../Utils/contexts';
 import { Gamestate, Player, Pool, Room } from '@np-bingo/types';
@@ -13,6 +13,7 @@ import Main from '../../Components/Main';
 import Header from '../../Components/Header';
 import Widgets from '../../Components/Widgets';
 import Link from '../../Components/Link';
+import { useProgress } from '../../Utils/custom-hooks';
 
 export interface HostProps {
   draws: Pool;
@@ -35,8 +36,28 @@ function Host({
   gameToggle,
   removePlayer,
   start,
-  cooldown,
 }: HostProps) {
+  const { gamestate, room } = useContext(GameContext);
+  const ball = useContext(BallContext);
+  const { ballDelay } = useContext(FeautresContext);
+
+  const max = useRef(100);
+  const multiplier = useRef(max.current / ballDelay);
+
+  const incrementProgress = (elapsed: number) =>
+    setProgress(Math.min(multiplier.current * elapsed, max.current));
+
+  const { progress, inProgress, setProgress, enableProgress } = useProgress(
+    ballDelay,
+    incrementProgress
+  );
+
+  const isDisabled =
+    gamestate !== 'start' &&
+    gamestate !== 'standby' &&
+    gamestate !== 'failure' &&
+    true;
+
   const buttonText = (gamestate: Gamestate) => {
     switch (gamestate) {
       case 'ready':
@@ -53,7 +74,7 @@ function Host({
       start && start(room);
     }
     newBall && newBall();
-    cooldown && cooldown();
+    enableProgress();
   };
 
   return (
@@ -95,42 +116,22 @@ function Host({
                   {(ballContext) => (
                     <div className="flex items-center gap-x-3">
                       <IconButton
-                        disabled={
-                          ((gameContext.gamestate !== 'start' &&
-                            gameContext.gamestate !== 'standby' &&
-                            gameContext.gamestate !== 'failure') ||
-                            ballContext.loop) &&
-                          true
-                        }
-                        onClick={() =>
-                          handleBall(gameContext.gamestate, gameContext.room)
-                        }
+                disabled={(isDisabled || inProgress) && true}
                         description="New Ball"
                         direction="left"
                       >
                         <PlusCircleIcon
                           className={`${
-                            (gameContext.gamestate !== 'start' &&
-                              gameContext.gamestate !== 'standby' &&
-                              gameContext.gamestate !== 'failure') ||
-                            ballContext.loop
+                    isDisabled || inProgress
                               ? 'text-gray-300 dark:text-gray-500 cursor-default'
                               : 'text-blue-700 dark:text-blue-300'
                           } text-opacity-90 dark:text-opacity-90 group-hover:text-opacity-60`}
                         />
                       </IconButton>
                       <Ball
-                        number={ballContext.ball.number}
-                        column={ballContext.ball.column}
-                        remainder={ballContext.ball.remainder}
-                        loop={ballContext.loop}
-                        progress={ballContext.progress}
-                        disabled={
-                          gameContext.gamestate !== 'start' &&
-                          gameContext.gamestate !== 'standby' &&
-                          gameContext.gamestate !== 'failure' &&
-                          true
-                        }
+                inProgress={inProgress}
+                progress={progress}
+                disabled={isDisabled}
                       />
                     </div>
                   )}

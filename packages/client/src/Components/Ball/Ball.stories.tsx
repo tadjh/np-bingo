@@ -30,7 +30,7 @@ Disabled.args = {
 
 export const Progress = Template.bind({});
 Progress.args = {
-  loop: true,
+  inProgress: true,
   column: 'i',
   number: 24,
   remainder: 74,

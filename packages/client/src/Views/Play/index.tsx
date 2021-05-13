@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useReducer } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+} from 'react';
 import {
   Action,
   PlayerState as State,
@@ -39,6 +45,7 @@ import { initialState as appState } from '../../Reducers/app.reducer';
 import Main from '../../Components/Main';
 import Header from '../../Components/Header';
 import Widgets from '../../Components/Widgets';
+import { useProgress } from '../../Utils/custom-hooks';
 
 export interface PlayProps {
   gamestate?: Gamestate;
@@ -62,6 +69,17 @@ export default function Play({
   const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
     reducer,
     initialState
+  );
+  const { gamestate, mode, room, host } = useContext(GameContext);
+  const ball = useContext(BallContext);
+  const { ballDelay, allowNewCard } = useContext(FeautresContext);
+  const max = useRef(100);
+  const multiplier = useRef(max.current / ballDelay);
+  const incrementProgress = (elapsed: number) =>
+    setProgress(Math.min(multiplier.current * elapsed, max.current));
+  const { progress, inProgress, setProgress, enableProgress } = useProgress(
+    ballDelay,
+    incrementProgress
   );
 
   /**
@@ -120,6 +138,11 @@ export default function Play({
     if (winner.methods.length <= 0) return;
     setWinningCrossmarks(winner.results);
   }, [winner.methods, winner.results]);
+
+  const handleStandby = () => {
+    standby && standby(mode);
+    enableProgress();
+  };
 
   /**
    * Wrapper function for sendCard

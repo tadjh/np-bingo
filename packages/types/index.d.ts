@@ -14,7 +14,6 @@ export type AppState = {
   winner: Winner;
   kicked: boolean;
   rules: Rules;
-  loop: boolean;
 };
 export type PlayerState = {
   card: Card;

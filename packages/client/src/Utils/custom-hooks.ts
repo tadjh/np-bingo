@@ -213,3 +213,100 @@ export function usePortal(target: HTMLElement | null): HTMLDivElement {
 
   return portal;
 }
+
+export function useProgress(
+  duration: number,
+  callback: (param: any) => void
+): {
+  progress: number;
+  inProgress: boolean;
+  setProgress: React.Dispatch<React.SetStateAction<number>>;
+  enableProgress: () => void;
+  disableProgress: () => void;
+  triggerProgress: (callback?: (() => void) | undefined) => () => void;
+  resetProgress: () => void;
+} {
+  const requestRef = useRef<number | null>(null);
+  const startTime = useRef<number | null>(null);
+  const [inProgress, setInProgress] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  /**
+   * Set inProgress true
+   */
+  const enableProgress = () => {
+    setInProgress(true);
+  };
+
+  /**
+   * Set inProgress false
+   */
+  const disableProgress = () => {
+    console.log('disabled');
+    setInProgress(false);
+  };
+
+  /**
+   * Reset to initial state
+   */
+  const resetProgress = useCallback(() => {
+    console.log('resetting');
+    disableProgress();
+    setProgress(0);
+    startTime.current = null;
+  }, []);
+
+  const animate = useCallback(
+    (timestamp: number) => {
+      if (startTime.current === null) startTime.current = timestamp;
+      const elapsed = timestamp - startTime.current;
+      callback(elapsed);
+      if (elapsed >= (duration || 5000)) return resetProgress();
+      requestRef.current = requestAnimationFrame(animate);
+    },
+    [duration, callback, resetProgress]
+  );
+
+  useEffect(() => {
+    if (!inProgress) return;
+    requestRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(requestRef.current as number);
+  }, [animate, inProgress]);
+
+  /**
+   * Triggers progress for a set duration
+   * @param Override useProgress duration
+   * @param callback function
+   * @returns void
+   */
+  const triggerProgress = (callback?: () => void) => {
+    enableProgress();
+    const lockout = setTimeout(callback || resetProgress, duration || 5000);
+    return () => clearTimeout(lockout);
+  };
+
+  /**
+   * Increment progress bar until it reaches 100%
+   */
+  // useEffect(() => {
+  //   return
+  // if (!inProgress) return;
+
+  // const incrementProgress = () =>
+  //   setProgress((prevProgress) =>
+  //     prevProgress >= 100 ? 100 : prevProgress + 1
+  //   );
+  // const timer = setInterval(incrementProgress, (duration || 5000) / 115);
+  // return () => clearInterval(timer);
+  // });
+
+  return {
+    progress,
+    inProgress,
+    setProgress,
+    enableProgress,
+    disableProgress,
+    triggerProgress,
+    resetProgress,
+  };
+}
