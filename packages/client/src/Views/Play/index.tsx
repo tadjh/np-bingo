@@ -10,7 +10,6 @@ import {
   PlayerState as State,
   Card,
   Results,
-  Gamestate,
   Winner,
   Host,
   Room,
@@ -48,7 +47,6 @@ import Widgets from '../../Components/Widgets';
 import { useProgress } from '../../Utils/custom-hooks';
 
 export interface PlayProps {
-  gamestate?: Gamestate;
   winner?: Winner;
   kicked?: boolean;
   sendCard?: (mode: Gamemode, card: Card, room?: Room, host?: Host) => void;
@@ -58,7 +56,6 @@ export interface PlayProps {
 }
 
 export default function Play({
-  gamestate = 'init',
   winner = { ...appState.winner },
   kicked = false,
   sendCard,
@@ -174,92 +171,42 @@ export default function Play({
   return (
     <React.Fragment>
       <Header className="gap-3">
-        <GameContext.Consumer>
-          {(gameContext) => (
-            <React.Fragment>
-              <FeautresContext.Consumer>
-                {(features) =>
-                  features['new-card'] && (
-                    <Button
-                      className={`${
-                        gameContext.gamestate !== 'ready' && 'disabled'
-                      }`}
-                      disabled={gameContext.gamestate !== 'ready' && true}
-                      onClick={getCard}
-                    >
-                      New Card
-                    </Button>
-                  )
-                }
-              </FeautresContext.Consumer>
-              <Button
-                variant="contained"
-                className={`${
-                  gameContext.gamestate !== 'ready' &&
-                  gameContext.gamestate !== 'failure' &&
-                  'disabled'
-                }`}
-                disabled={
-                  gameContext.gamestate !== 'ready' &&
-                  gameContext.gamestate !== 'failure' &&
-                  true
-                }
-                onClick={() => standby && standby(gameContext.mode)}
-              >
-                {gameContext.gamestate === 'failure'
-                  ? 'Resume'
-                  : gameContext.mode === 'solo'
-                  ? 'Start'
-                  : 'Ready'}
-              </Button>
-              <Button
-                variant="contained"
-                className={`${gameContext.gamestate !== 'start' && 'disabled'}`} // TODO removed value.gamestate !== 'failure' on these??
-                disabled={gameContext.gamestate !== 'start' && true}
-                onClick={() =>
-                  handleSendCard(
-                    gameContext.mode,
-                    card,
-                    gameContext.room,
-                    gameContext.host
-                  )
-                }
-              >
-                Bingo
-              </Button>
-            </React.Fragment>
-          )}
-        </GameContext.Consumer>
+        {allowNewCard && (
+          <Button disabled={gamestate !== 'ready' && true} onClick={getCard}>
+            New Card
+          </Button>
+        )}
+        <Button
+          variant="contained"
+          disabled={gamestate !== 'ready' && gamestate !== 'failure' && true}
+          onClick={handleStandby}
+        >
+          {gamestate === 'failure'
+            ? 'Resume'
+            : mode === 'solo'
+            ? 'Start'
+            : 'Ready'}
+        </Button>
+        <Button
+          variant="contained"
+          disabled={gamestate !== 'start' && true}
+          onClick={() => handleSendCard(mode, card, room, host)}
+        >
+          Bingo
+        </Button>
       </Header>
       <Main className="flex-1 gap-y-4">
-        <GameContext.Consumer>
-          {(gameContext) => (
-            <React.Fragment>
-              <StatusMessage
-                gamestate={gameContext.gamestate}
-                mode={gameContext.mode}
-              />
-              <BallContext.Consumer>
-                {(ballContext) => (
-                  <div className="ball-wrapper">
-                    <Ball
-                      number={ballContext.ball.number}
-                      column={ballContext.ball.column}
-                      remainder={ballContext.ball.remainder}
-                      loop={ballContext.loop}
-                      progress={ballContext.progress}
-                      disabled={
-                        gameContext.gamestate !== 'start' &&
-                        gameContext.gamestate !== 'failure' &&
-                        true
-                      }
-                    />
-                  </div>
-                )}
-              </BallContext.Consumer>
-            </React.Fragment>
-          )}
-        </GameContext.Consumer>
+        <StatusMessage gamestate={gamestate} mode={mode} />
+        <div className="ball-wrapper">
+          <Ball
+            number={ball.number}
+            column={ball.column}
+            remainder={ball.remainder}
+            inProgress={inProgress}
+            progress={progress}
+            disabled={gamestate !== 'start' && gamestate !== 'failure' && true}
+          />
+        </div>
         <Board
           card={board}
           serial={serial}
@@ -269,22 +216,14 @@ export default function Play({
         />
       </Main>
       <Footer className="gap-3">
-        <GameContext.Consumer>
-          {(gameContext) => (
-            <React.Fragment>
-              <Widgets variant={gameContext.mode} room={gameContext.room} />
-              <Link
-                className="hover:underline"
-                onClick={() =>
-                  leaveRoom && leaveRoom(gameContext.room, gameContext.host)
-                }
-                to="/"
-              >
-                Leave Room
-              </Link>
-            </React.Fragment>
-          )}
-        </GameContext.Consumer>
+        <Widgets variant={mode} room={room} />
+        <Link
+          className="hover:underline"
+          onClick={() => leaveRoom && leaveRoom(room, host)}
+          to="/"
+        >
+          Leave Room
+        </Link>
       </Footer>
       <Modal
         id="leave-modal"

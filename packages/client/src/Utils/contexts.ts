@@ -10,11 +10,7 @@ export const GameContext = React.createContext({
   mode: initialState.rules.mode,
 });
 
-export const BallContext = React.createContext({
-  ball: { ...initialState.ball },
-  loop: initialState.loop,
-  progress: 0,
-});
+export const BallContext = React.createContext({ ...initialState.ball });
 
 export const FeautresContext = React.createContext({ ...features });
 

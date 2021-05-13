@@ -1,6 +1,10 @@
 import React, { useContext, useRef } from 'react';
 import Ball from '../../Components/Ball';
-import { BallContext, GameContext } from '../../Utils/contexts';
+import {
+  BallContext,
+  FeautresContext,
+  GameContext,
+} from '../../Utils/contexts';
 import { Gamestate, Player, Pool, Room } from '@np-bingo/types';
 import StatusMessage from '../../Components/Status';
 import Button from '../../Components/Button';
@@ -24,10 +28,9 @@ export interface HostProps {
   gameToggle?: (gamestate: Gamestate, room: Room) => void;
   removePlayer?: (player: Player) => void;
   start?: (room: Room) => void;
-  cooldown?: () => () => void;
 }
 
-function Host({
+export default function Host({
   draws = [[], [], [], [], []],
   players = [],
   checkCard,
@@ -78,85 +81,73 @@ function Host({
   };
 
   return (
-    <GameContext.Consumer>
-      {(gameContext) => (
-        <React.Fragment>
-          <Header className="gap-3">
-            <Button
-              variant="contained"
-              color="primary"
-              className="w-36"
-              onClick={() =>
-                gameToggle &&
-                gameToggle(gameContext.gamestate, gameContext.room)
-              }
-            >
-              {buttonText(gameContext.gamestate)}
-            </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              disabled={gameContext.gamestate !== 'validate' && true}
-              onClick={checkCard}
-            >
-              Check Card
-            </Button>
-          </Header>
-          <Main className="flex-1 gap-y-4">
-            <StatusMessage
-              host={true}
-              gamestate={gameContext.gamestate}
-              count={players.length}
-            />
-            {gameContext.gamestate === 'ready' ? (
-              <PlayerList data={players} action={removePlayer} />
-            ) : (
-              <React.Fragment>
-                <BallContext.Consumer>
-                  {(ballContext) => (
-                    <div className="flex items-center gap-x-3">
-                      <IconButton
+    <React.Fragment>
+      <Header className="gap-3">
+        <Button
+          variant="contained"
+          color="primary"
+          className="w-36"
+          onClick={() => gameToggle && gameToggle(gamestate, room)}
+        >
+          {buttonText(gamestate)}
+        </Button>
+        <Button
+          variant="contained"
+          color="primary"
+          disabled={gamestate !== 'validate' && true}
+          onClick={checkCard}
+        >
+          Check Card
+        </Button>
+      </Header>
+      <Main className="flex-1 gap-y-4">
+        <StatusMessage
+          host={true}
+          gamestate={gamestate}
+          count={players.length}
+        />
+        {gamestate === 'ready' ? (
+          <PlayerList data={players} action={removePlayer} />
+        ) : (
+          <React.Fragment>
+            <div className="flex items-center gap-x-3">
+              <IconButton
                 disabled={(isDisabled || inProgress) && true}
-                        description="New Ball"
-                        direction="left"
-                      >
-                        <PlusCircleIcon
-                          className={`${
+                onClick={() => handleBall(gamestate, room)}
+                description="New Ball"
+                direction="left"
+              >
+                <PlusCircleIcon
+                  className={`${
                     isDisabled || inProgress
-                              ? 'text-gray-300 dark:text-gray-500 cursor-default'
-                              : 'text-blue-700 dark:text-blue-300'
-                          } text-opacity-90 dark:text-opacity-90 group-hover:text-opacity-60`}
-                        />
-                      </IconButton>
-                      <Ball
+                      ? 'text-gray-300 dark:text-gray-500 cursor-default'
+                      : 'text-blue-700 dark:text-blue-300'
+                  } text-opacity-90 dark:text-opacity-90 group-hover:text-opacity-60`}
+                />
+              </IconButton>
+              <Ball
+                number={ball.number}
+                column={ball.column}
+                remainder={ball.remainder}
                 inProgress={inProgress}
                 progress={progress}
                 disabled={isDisabled}
-                      />
-                    </div>
-                  )}
-                </BallContext.Consumer>
-                <Draws
-                  draws={draws}
-                  disabled={gameContext.gamestate === 'end' && true}
-                />
-              </React.Fragment>
-            )}
-          </Main>
-          <Footer className="gap-3">
-            <Widgets room={gameContext.room} />
-            <Link
-              className="hover:underline"
-              onClick={() => leaveRoom && leaveRoom(gameContext.room)}
-              to="/"
-            >
-              Leave Room
-            </Link>
-          </Footer>
-        </React.Fragment>
-      )}
-    </GameContext.Consumer>
+              />
+            </div>
+            <Draws draws={draws} disabled={gamestate === 'end' && true} />
+          </React.Fragment>
+        )}
+      </Main>
+      <Footer className="gap-3">
+        <Widgets room={room} />
+        <Link
+          className="hover:underline"
+          onClick={() => leaveRoom && leaveRoom(room)}
+          to="/"
+        >
+          Leave Room
+        </Link>
+      </Footer>
+    </React.Fragment>
   );
 }
-
-export default Host;

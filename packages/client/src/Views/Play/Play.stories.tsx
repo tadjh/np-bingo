@@ -49,14 +49,10 @@ Base.decorators = [
       >
         <BallContext.Provider
           value={{
-            ball: {
-              key: 1,
-              number: 24,
-              column: 'i',
-              remainder: 74,
-            },
-            loop: true,
-            progress: 75,
+            key: 1,
+            number: 24,
+            column: 'i',
+            remainder: 74,
           }}
         >
           <Story />
@@ -65,6 +61,3 @@ Base.decorators = [
     );
   },
 ];
-Base.args = {
-  gamestate: 'start',
-};

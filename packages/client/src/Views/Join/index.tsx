@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Gamestate, Room } from '@np-bingo/types';
 import { useDialog } from '../../Utils/custom-hooks';
@@ -24,6 +24,7 @@ export default function Join({
   rooms = [],
   solo,
 }: JoinProps) {
+  const { publicRooms, allowSolo } = useContext(FeautresContext);
   let history = useHistory();
   const [open, handleOpen, handleClose] = useDialog(false);
 
@@ -50,35 +51,27 @@ export default function Join({
         </h1>
       </Header>
       <Main className="flex-1 justify-around gap-y-3">
-        <FeautresContext.Consumer>
-          {(features) => (
-            <React.Fragment>
-              {features['public-rooms'] && (
-                <RoomList rooms={rooms} onClick={joinRoom} />
-              )}
-              <div className="flex flex-col items-center gap-y-3">
-                <Button
-                  variant="contained"
-                  className="join-button"
-                  onClick={handleOpen}
-                >
-                  Private Room
-                </Button>
-                <CodeModal open={open} onClose={handleClose} onSumbit={join} />
-                {features['solo-mode'] && (
-                  <Button
-                    component={Link}
-                    className="solo-button"
-                    onClick={() => solo && solo('init')}
-                    to="/play?m=solo"
-                  >
-                    Solo
-                  </Button>
-                )}
-              </div>
-            </React.Fragment>
+        {publicRooms && <RoomList rooms={rooms} onClick={joinRoom} />}
+        <div className="flex flex-col items-center gap-y-3">
+          <Button
+            variant="contained"
+            className="join-button"
+            onClick={handleOpen}
+          >
+            Private Room
+          </Button>
+          <CodeModal open={open} onClose={handleClose} onSumbit={join} />
+          {allowSolo && (
+            <Button
+              component={Link}
+              className="solo-button"
+              onClick={() => solo && solo('init')}
+              to="/play?m=solo"
+            >
+              Solo
+            </Button>
           )}
-        </FeautresContext.Consumer>
+        </div>
       </Main>
       <Footer className="flex-1 justify-center">
         <Link className="nav-button hover:underline" to="/">

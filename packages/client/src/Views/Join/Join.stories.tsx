@@ -44,7 +44,7 @@ export const PublicRooms = Template.bind({});
 PublicRooms.decorators = [
   (Story) => {
     return (
-      <FeautresContext.Provider value={{ ...features, 'public-rooms': true }}>
+      <FeautresContext.Provider value={{ ...features, publicRooms: true }}>
         <Story />
       </FeautresContext.Provider>
     );
@@ -58,7 +58,7 @@ export const NoSoloMode = Template.bind({});
 NoSoloMode.decorators = [
   (Story) => {
     return (
-      <FeautresContext.Provider value={{ ...features, 'solo-mode': false }}>
+      <FeautresContext.Provider value={{ ...features, allowSolo: false }}>
         <Story />
       </FeautresContext.Provider>
     );

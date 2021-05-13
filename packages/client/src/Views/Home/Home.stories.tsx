@@ -41,7 +41,7 @@ PrivateRoomsOnly.decorators = [
   (Story) => {
     return (
       <FeautresContext.Provider
-        value={{ ...features, 'solo-mode': false, 'public-rooms': false }}
+        value={{ ...features, allowSolo: false, publicRooms: false }}
       >
         <Story />
       </FeautresContext.Provider>

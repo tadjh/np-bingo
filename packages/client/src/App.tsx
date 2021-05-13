@@ -627,7 +627,7 @@ export default function App() {
             mode: rules.mode,
           }}
         >
-          <BallContext.Provider value={{ ball, loop, progress }}>
+          <BallContext.Provider value={ball}>
             <Container>
               {/* <Background /> */}
               <Switch>
@@ -657,8 +657,7 @@ export default function App() {
                 </Route>
                 <Route path="/play">
                   <Play
-                    gamestate={gamestate}
-                    init={() => play('init')}
+                    init={init}
                     standby={standby}
                     leaveRoom={leaveRoom}
                     kicked={kicked}

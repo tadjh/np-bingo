@@ -1,6 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import ThemeToggle, { ThemeToggleProps } from '.';
+import { ThemeContext } from '../../Utils/contexts';
 
 export default {
   title: 'Components/Theme Toggle',
@@ -12,6 +13,12 @@ const Template: Story<ThemeToggleProps> = (args) => <ThemeToggle {...args} />;
 export const Light = Template.bind({});
 
 export const Dark = Template.bind({});
-Dark.args = {
-  theme: 'dark',
-};
+Dark.decorators = [
+  (Story) => {
+    return (
+      <ThemeContext.Provider value={{ theme: 'dark', toggleTheme: () => {} }}>
+        <Story />
+      </ThemeContext.Provider>
+    );
+  },
+];

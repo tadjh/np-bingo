@@ -1,22 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import IconButton from '../IconButton';
 import MoonIcon from '../../Assets/Moon';
 import SunIcon from '../../Assets/Sun';
-import { Theme } from '@np-bingo/types';
+import { ThemeContext } from '../../Utils/contexts';
 
 export interface ThemeToggleProps
-  extends React.HTMLAttributes<HTMLButtonElement> {
-  theme?: Theme;
-}
+  extends React.HTMLAttributes<HTMLButtonElement> {}
 
 export default function ThemeToggle({
-  theme = 'light',
-  onClick,
+  ...props
 }: ThemeToggleProps): JSX.Element {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <IconButton
       className="group"
-      onClick={onClick}
+      onClick={toggleTheme}
       description={theme === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'}
       direction="top"
     >
