@@ -43,7 +43,7 @@ export default function PlayerList({
               </div>
               <ListItemText
                 primary={player.name}
-                secondary={player.ready ? 'Ready' : 'Selecting a card...'}
+                secondary={player.ready ? 'Ready' : 'Not ready...'}
               />
               <div className="ml-auto">
                 <IconButton
