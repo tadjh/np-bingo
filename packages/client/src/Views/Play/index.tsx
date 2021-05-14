@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useReducer,
-  useRef,
-} from 'react';
+import React, { useCallback, useContext, useEffect, useReducer } from 'react';
 import {
   Action,
   PlayerState as State,
@@ -14,6 +8,7 @@ import {
   Host,
   Room,
   Gamemode,
+  Ball as BallType,
 } from '@np-bingo/types';
 import {
   BallContext,
@@ -45,38 +40,45 @@ import Main from '../../Components/Main';
 import Header from '../../Components/Header';
 import Widgets from '../../Components/Widgets';
 import { useProgress } from '../../Utils/custom-hooks';
+import socket from '../../Config/socket.io';
+import { useHistory } from 'react-router-dom';
 
 export interface PlayProps {
   winner?: Winner;
   kicked?: boolean;
   sendCard?: (mode: Gamemode, card: Card, room?: Room, host?: Host) => void;
-  leaveRoom?: (room: Room, host: Host) => void;
   standby?: (mode: Gamemode) => void;
-  init?: () => void;
+  newBall: () => BallType;
 }
 
 export default function Play({
   winner = { ...appState.winner },
   kicked = false,
   sendCard,
-  leaveRoom,
   standby,
-  init,
+  newBall,
 }: PlayProps) {
+  let history = useHistory();
   const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
     reducer,
     initialState
   );
-  const { gamestate, mode, room, host } = useContext(GameContext);
+  const { gamestate, mode, room, host, user, play } = useContext(GameContext);
   const ball = useContext(BallContext);
   const { ballDelay, allowNewCard } = useContext(FeautresContext);
-  const max = useRef(100);
-  const multiplier = useRef(max.current / ballDelay);
-  const incrementProgress = (elapsed: number) =>
-    setProgress(Math.min(multiplier.current * elapsed, max.current));
-  const { progress, inProgress, setProgress, enableProgress } = useProgress(
+
+  /**
+   * Loop ball animation and call newBall each completion
+   * @returns When ball number is 0
+   */
+  const onProgressDone = () => {
+    const brandNewBall = newBall();
+    if (brandNewBall.number === 0) return;
+    enableProgress();
+  };
+  const { progress, inProgress, enableProgress } = useProgress(
     ballDelay,
-    incrementProgress
+    onProgressDone
   );
 
   /**
@@ -94,12 +96,13 @@ export default function Play({
   useEffect(() => {
     // Syncing Player View with Host Game State.
     if (gamestate === 'init') {
+      play('ready');
       dispatch({ type: INIT_GAME });
     }
     if (gamestate === 'ready') {
       getCard();
     }
-  }, [gamestate, getCard]);
+  }, [gamestate, getCard, play]);
 
   /**
    * Toggle current target's crossmark visibility
@@ -138,7 +141,7 @@ export default function Play({
 
   const handleStandby = () => {
     standby && standby(mode);
-    enableProgress();
+    if (mode === 'solo') enableProgress();
   };
 
   /**
@@ -163,6 +166,14 @@ export default function Play({
     }
     // solo
     sendCard(mode, card);
+  };
+
+  const leaveRoom = () => {
+    socket.emit('leave-room', room, host.socket, user);
+  };
+
+  const exit = () => {
+    history.push(`/`);
   };
 
   const { card, serial, crossmarks } = state;
@@ -217,29 +228,25 @@ export default function Play({
       </Main>
       <Footer className="gap-3">
         <Widgets variant={mode} room={room} />
-        <Link
-          className="hover:underline"
-          onClick={() => leaveRoom && leaveRoom(room, host)}
-          to="/"
-        >
+        <Link className="hover:underline" onClick={leaveRoom} to="/">
           Leave Room
         </Link>
       </Footer>
       <Modal
         id="leave-modal"
         open={kicked}
-        onClose={init}
+        onClose={exit}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <ModalHeader id="alert-dialog-title">{'Leaving Room'}</ModalHeader>
+        <ModalHeader id="alert-dialog-title">Leaving Room</ModalHeader>
         <ModalContent>
           <p id="alert-dialog-description">
             You have been kicked from the room.
           </p>
         </ModalContent>
         <ModalFooter>
-          <Link className="hover:underline" onClick={init} to="/">
+          <Link className="hover:underline" onClick={exit} to="/">
             Leave Room
           </Link>
         </ModalFooter>

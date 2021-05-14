@@ -44,7 +44,9 @@ Base.decorators = [
           gamestate: 'start',
           room: 'A1B2',
           host: { ...AppState.host },
+          user: {},
           mode: AppState.rules.mode,
+          play: () => {},
         }}
       >
         <BallContext.Provider
