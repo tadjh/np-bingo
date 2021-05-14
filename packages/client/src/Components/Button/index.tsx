@@ -21,8 +21,8 @@ export default function Button({
   ...props
 }: ButtonProps): JSX.Element {
   const baseStyle =
-    'relative px-7 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker transform hover:-translate-y-0.5 active:translate-y-0';
-
+    'relative px-7 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker';
+  //  transform hover:-translate-y-0.5 active:translate-y-0
   function variantStyle(variant?: ButtonVariants | 'disabled'): string {
     switch (variant) {
       case 'disabled':
