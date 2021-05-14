@@ -1,7 +1,7 @@
 Bugs
 // TODO Prevent Join room that doesn't exist
 // TODO Player doesn't leave room on back button (socket.close? or window.onpopstate)
-// TODO Board Pixel 2 weird padding 
+// TODO Kick from room logic is borked
 
 Vulnerbilities
 // TODO Rest Api has no auth
@@ -11,6 +11,7 @@ Vulnerbilities
 // TODO Timeout socket.io connection with reconnect popup
 
 Development
+// TODO Optimize Tailwind
 // TODO Rest api use game "_id" instead of room id
 // TODO redis
 // TODO Helmet
@@ -26,7 +27,8 @@ Environment
 // TODO Use copyfiles or webpack(?) to move server favicon from 'Public' to 'dist/Public' or something
 
 QOL
-// TODO ARIA for screen readers
+// TODO useDebugValue label my custom hooks
+// TODO React ARIA for screen readers
 // TODO Create users?
 // TODO Implement useTitle
 // TODO Improve room input behavior for typos
