@@ -19,6 +19,7 @@ import Widgets from '../../Components/Widgets';
 import Link from '../../Components/Link';
 import { useProgress } from '../../Utils/custom-hooks';
 import socket from '../../Config/socket.io';
+import { apiDeleteRoom } from '../../Api';
 
 export interface HostProps {
   gameToggle?: (gamestate: Gamestate) => void;
@@ -26,7 +27,6 @@ export interface HostProps {
   players: Player[];
   checkCard?: () => void;
   newBall?: () => void;
-  leaveRoom?: (room: Room) => void;
   removePlayer?: (player: Player) => void;
 }
 
@@ -36,7 +36,6 @@ export default function Host({
   players = [],
   checkCard,
   newBall,
-  leaveRoom,
   removePlayer,
 }: HostProps) {
   const { gamestate, room, play } = useContext(GameContext);
@@ -67,6 +66,16 @@ export default function Host({
     }
     newBall && newBall();
     enableProgress();
+  };
+
+  /**
+   * Leave room by room code
+   * @param room Room code
+   */
+  const leaveRoom = (room: string) => {
+    // TODO Tell room host left and kick players
+    socket.emit('leave-room', room);
+    apiDeleteRoom(room);
   };
 
   /**
