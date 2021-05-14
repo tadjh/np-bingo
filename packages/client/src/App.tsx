@@ -1,16 +1,9 @@
-import React, { useCallback, useEffect, useReducer, useState } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import socket from './Config/socket.io';
 import {
-  INIT_GAME,
-  READY_CHECK,
-  START_GAME,
-  END_GAME,
   CHECK_CARD_SUCCESS,
   NEW_BALL,
-  STANDBY,
-  VALIDATE,
   GET_CARD,
-  FAILURE,
   SET_ROOM,
   JOIN_ROOM,
   PLAYER_JOINED,
@@ -18,18 +11,10 @@ import {
   PLAYER_READY,
   SET_BALL,
   PLAYER_KICKED,
-  PLAYER_UNREADY,
-  PAUSE,
   CHECK_CARD_FAILURE,
-  WIN_GAME,
-  UPDATE_GAMEMODE,
-  LOOP_START,
-  LOOP_STOP,
 } from './Constants';
 import { getBall, removeBall, validateCard } from './Utils/bingo';
 import {
-  Action,
-  AppState as State,
   Ball,
   Card,
   Pool,
@@ -41,13 +26,12 @@ import {
   Host as RoomHost,
   Gamemode,
 } from '@np-bingo/types';
-import { Switch, Route, useHistory } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Host from './Views/Host';
 import Play from './Views/Play';
 import Home from './Views/Home';
 import Join from './Views/Join';
 import Create from './Views/Create';
-import { initialState, reducer } from './Reducers/app.reducer';
 import {
   apiCreateRoom,
   apiDeleteRoom,
@@ -57,125 +41,30 @@ import {
 import { useQuery, useTheme, useUser } from './Utils/custom-hooks';
 import config from './Config/features';
 import { GameContext, BallContext, ThemeContext } from './Utils/contexts';
-import logger from 'use-reducer-logger';
 // import Background from './Components/Background';
 import Container from './Components/Container';
+import { useAppState } from './Utils/useAppState';
 
 export default function App() {
-  let history = useHistory();
+  // TODO Remove any config.
   let query = useQuery();
   const [user, setUser] = useUser();
-  const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
-    process.env.NODE_ENV === 'development' ? logger(reducer) : reducer,
-    initialState
-  );
-  const [progress, setProgress] = useState(0);
-  const [theme, toggleTheme] = useTheme();
+  const { state, dispatch, play, mode, gameToggle } = useAppState();
+  const [theme, toggleTheme] = useTheme(config.theme);
 
-  /**
-   * Manage game state
-   * @param gamestate
-   */
-  const play = useCallback((gamestate: Gamestate) => {
-    switch (gamestate) {
-      case 'init':
-        dispatch({ type: INIT_GAME });
-        break;
-      case 'ready':
-        dispatch({ type: READY_CHECK });
-        break;
-      case 'standby':
-        dispatch({ type: STANDBY });
-        break;
-      case 'start':
-        dispatch({ type: START_GAME });
-        break;
-      case 'validate':
-        dispatch({ type: VALIDATE });
-        break;
-      case 'pause':
-        dispatch({ type: PAUSE });
-        break;
-      case 'failure':
-        dispatch({ type: FAILURE });
-        break;
-      case 'win':
-        dispatch({ type: WIN_GAME });
-        break;
-      case 'end':
-        dispatch({ type: END_GAME });
-        break;
-      default:
-        throw new Error('Invalid game state.');
-    }
-  }, []);
-
-  /**
-   * Player: Set standby
-   */
-  const standby = (mode: Gamemode) => {
-    play('standby');
-
-    mode !== 'solo'
-      ? socket.emit('ready-up', state.host.socket, user)
-      : solo('standby');
-  };
-
-  /**
-   * Host: Start game
-   * @param room
-   * @param mode
-   */
-  const start = (room: Room) => {
-    play('start');
-    socket.emit('start', room);
-  };
-
-  /**
-   * Host: Three way toggle for main button
-   * @param gamestate Gamestate
-   * @param room Room
-   */
-  const gameToggle = (gamestate: Gamestate, room: Room) => {
-    switch (gamestate) {
-      case 'ready':
-        play('standby');
-        socket.emit('standby', room);
-        break;
-      case 'end':
-        play('ready');
-        socket.emit('ready', room);
-        break;
-      default:
-        dispatch({ type: PLAYER_UNREADY });
-        play('end');
-        socket.emit('end', room);
-        break;
-    }
-  };
-
-  /**
-   * Update game mode
-   * @param gamemode
-   */
-  const mode = (gamemode: Gamemode) => {
-    switch (gamemode) {
-      case 'default':
-        dispatch({ type: UPDATE_GAMEMODE, payload: 'default' });
-        break;
-      case 'solo':
-        dispatch({ type: UPDATE_GAMEMODE, payload: 'solo' });
-        break;
-      case 'death':
-        dispatch({ type: UPDATE_GAMEMODE, payload: 'death' });
-        break;
-      case 'blackout':
-        dispatch({ type: UPDATE_GAMEMODE, payload: 'blackout' });
-        break;
-      default:
-        throw new Error('Invalid game mode.');
-    }
-  };
+  let {
+    gamestate,
+    ball,
+    draws,
+    pool,
+    playerCard,
+    winner,
+    room,
+    players,
+    kicked,
+    host,
+    rules,
+  } = state;
 
   /**
    * Socket.io Side-effects
@@ -237,7 +126,7 @@ export default function App() {
      * To Room: Ready check
      */
     socket.on('game-ready', () => {
-      console.log('Pick a card');
+      console.log('Click to ready up');
       play('ready');
     });
 
@@ -329,71 +218,47 @@ export default function App() {
       console.log('Game over!');
       play('end');
     });
-  }, [play, setUser]);
+  }, [dispatch, play, setUser]);
 
   /**
-   * Host: Create a new game room
+   * Create a new game room
    */
-  const createRoom = () => {
-    play('ready');
-
+  const createRoom = useCallback(() => {
     apiCreateRoom(user, (res) => {
       dispatch({
         type: SET_ROOM,
         payload: { room: res.data.game.room, host: res.data.game.host },
       });
-
-      socket.emit('create-room', res.data.game.room);
-
-      history.push(`/host?r=${res.data.game.room}`);
     });
-  };
+  }, [dispatch, user]);
 
   /**
    * Player: Join game by room code
    * @param room Room code
    */
-  const joinRoom = (room: string) => {
-    play('ready');
-
-    apiUpdateRoom(room, user, (res) => {
-      socket.emit('join-room', room, res.data.host.socket, user);
-
-      dispatch({
-        type: JOIN_ROOM,
-        payload: { room: room, host: res.data.host },
+  const joinRoom = useCallback(
+    (room: string) => {
+      apiUpdateRoom(room, user, (res) => {
+        dispatch({
+          type: JOIN_ROOM,
+          payload: { room: room, host: res.data.host },
+        });
       });
-    });
-  };
-
-  /**
-   * Leave room by room code
-   * @param room Room code
-   * @param host Room host (required if player)
-   */
-  const leaveRoom = (room: string, host?: RoomHost) => {
-    play('init');
-
-    // Host leave Room
-    if (!host) {
-      // TODO Tell room host left and kick players
-      socket.emit('leave-room', room);
-      apiDeleteRoom(room);
-      return;
-    }
-
-    // Player leave room
-    socket.emit('leave-room', room, host.socket, user);
-  };
+    },
+    [dispatch, user]
+  );
 
   /**
    * Remove player from room
    * @param player Player socket id
    */
-  const removePlayer = (player: Player) => {
-    socket.emit('remove-player', player);
-    dispatch({ type: PLAYER_LEFT, payload: player });
-  };
+  const removePlayer = useCallback(
+    (player: Player) => {
+      socket.emit('remove-player', player);
+      dispatch({ type: PLAYER_LEFT, payload: player });
+    },
+    [dispatch]
+  );
 
   /**
    * Retrieve a new Bingo ball from the remaining pool of balls.
@@ -404,111 +269,35 @@ export default function App() {
    * @param room (Optional)
    */
   const newBall = useCallback(
-    (
-      mode: Gamemode,
-      pool: Pool,
-      draws: Pool,
-      room?: Room,
-      callback?: (...args: any[]) => void
-    ) => {
-      let poolArray = [...pool];
-      let drawsArray = [...draws];
-      let ball = getBall(pool);
+    (mode: Gamemode, pool: Pool, draws: Pool, room?: Room) => {
+      const poolArray = [...pool];
+      const drawsArray = [...draws];
+      const ball = getBall(poolArray);
 
-      if (ball.number !== 0) {
-        poolArray = removeBall(pool, ball);
-        drawsArray[ball.key].push(ball.number);
+      if (ball.number === 0) {
+        play('end');
+        mode !== 'solo' && room && socket.emit('end', room);
+        return ball;
       }
+
+      const filteredPool = removeBall(poolArray, ball);
+      drawsArray[ball.key].push(ball.number);
 
       dispatch({
         type: NEW_BALL,
         payload: {
           ball: ball,
           draws: drawsArray,
-          pool: poolArray,
+          pool: filteredPool,
         },
       });
       mode !== 'solo' && room && socket.emit('ball', room, ball);
 
-      if (ball.remainder === 0) {
-        play('end');
-        mode !== 'solo' && room && socket.emit('end', room);
-      }
-
-      callback && callback(ball);
+      // ??
+      return ball;
     },
-    [play]
+    [dispatch, play]
   );
-
-  /**
-   * Cooldown timer
-   * @returns void
-   */
-  const cooldown = () => {
-    dispatch({ type: LOOP_START });
-
-    const lockout = setTimeout(() => {
-      dispatch({ type: LOOP_STOP });
-      setProgress(0);
-    }, config['ball-delay']);
-    return () => clearTimeout(lockout);
-  };
-
-  /**
-   * Progress bar animation
-   */
-  useEffect(() => {
-    if (!state.loop || state.gamestate !== 'start') return;
-    const timer = setInterval(() => {
-      setProgress((prevProgress) =>
-        prevProgress >= 100 ? 100 : prevProgress + 1
-      );
-    }, config['ball-delay'] / 120);
-    return () => clearInterval(timer);
-  }, [state.gamestate, state.loop, progress]);
-
-  /**
-   * Solo mode new ball delay and animation reset
-   */
-  useEffect(() => {
-    if (!state.loop || state.ball.remainder <= 0) return;
-    const timeout = setTimeout(() => {
-      newBall('solo', state.pool, state.draws, undefined, (ball: Ball) => {
-        setProgress(0);
-        console.log(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
-        if (ball.remainder === 0) {
-          dispatch({ type: LOOP_STOP });
-          console.log('Game over');
-        }
-      });
-    }, config['ball-delay']);
-    return () => clearTimeout(timeout);
-  }, [newBall, state.ball.remainder, state.loop, state.draws, state.pool]);
-
-  /**
-   * Player: Send card to host
-   * @param mode
-   * @param card
-   * @param room
-   * @param host
-   */
-  const sendCard = (
-    mode: Gamemode,
-    card: Card,
-    room?: Room,
-    host?: RoomHost
-  ) => {
-    // default
-    if (mode !== 'solo') {
-      play('validate');
-      room && host && socket.emit('send-card', room, host.socket, user, card);
-      return;
-    }
-
-    // solo
-    dispatch({ type: GET_CARD, payload: { card: card, owner: user } });
-    solo('validate');
-  };
 
   /**
    * Checks if input card is a winner
@@ -517,39 +306,37 @@ export default function App() {
    * @param draws Pool of bingo balls that have already been drawn
    * @param room Room code
    */
-  const checkCard = (
-    mode: Gamemode,
-    playerCard: PlayerCard,
-    draws: Pool,
-    room?: Room
-  ) => {
-    // TODO Add rulesets
-    const [results, methods] = validateCard(playerCard.card, draws);
+  const checkCard = useCallback(
+    (mode: Gamemode, playerCard: PlayerCard, draws: Pool, room?: Room) => {
+      // TODO Add rulesets
+      const [results, methods] = validateCard(playerCard.card, draws);
 
-    // No winning methods
-    if (methods.length <= 0) {
-      dispatch({ type: CHECK_CARD_FAILURE });
-      mode !== 'solo' && room && socket.emit('losing-card', room);
-      return;
-    }
+      // No winning methods
+      if (methods.length <= 0) {
+        dispatch({ type: CHECK_CARD_FAILURE });
+        mode !== 'solo' && room && socket.emit('losing-card', room);
+        return;
+      }
 
-    const winner = {
-      methods,
-      results,
-      player: playerCard.owner,
-      card: playerCard.card,
-    } as Winner;
+      const winner = {
+        methods,
+        results,
+        player: playerCard.owner,
+        card: playerCard.card,
+      } as Winner;
 
-    dispatch({
-      type: CHECK_CARD_SUCCESS,
-      payload: winner,
-    });
+      dispatch({
+        type: CHECK_CARD_SUCCESS,
+        payload: winner,
+      });
 
-    if (mode !== 'solo' && room) {
-      socket.emit('winning-card', room, winner);
-      apiSaveRoom(room, winner);
-    }
-  };
+      if (mode !== 'solo' && room) {
+        socket.emit('winning-card', room, winner);
+        apiSaveRoom(room, winner);
+      }
+    },
+    [dispatch]
+  );
 
   /**
    * Handles solo mode game states
@@ -564,57 +351,79 @@ export default function App() {
           break;
         case 'standby':
           play('start');
-          dispatch({ type: LOOP_START });
           break;
         case 'validate':
           play('validate');
-          dispatch({ type: LOOP_STOP });
+          // disableProgress();
           break;
         case 'pause':
           play('pause');
           // TODO Pulling directly from state feels wrong
-          checkCard(state.rules.mode, state.playerCard, state.draws);
+          checkCard(rules.mode, playerCard, draws);
           // TODO checkCard probably shouldn't happen here
           break;
         default:
           throw new Error('Invalid game state in solo.');
       }
     },
-    [play, state.draws, state.playerCard, state.rules.mode]
+    [play, mode, checkCard, draws, playerCard, rules.mode]
   );
 
   /**
-   * Pause solo mode loop on validate
+   * Player: Set standby
    */
-  useEffect(() => {
-    if (
-      state.loop ||
-      state.rules.mode !== 'solo' ||
-      state.gamestate !== 'validate'
-    )
-      return;
+  const standby = useCallback(
+    (mode: Gamemode) => {
+      play('standby');
 
-    const pauseTime = setTimeout(() => {
-      solo('pause');
-      setProgress(0);
-    }, 1000);
-    return () => clearTimeout(pauseTime);
-  }, [solo, state.loop, state.gamestate, state.rules.mode]);
+      mode !== 'solo'
+        ? socket.emit('ready-up', state.host.socket, user)
+        : solo('standby');
+    },
+    [play, solo, state.host.socket, user]
+  );
 
-  let {
-    gamestate,
-    ball,
-    draws,
-    pool,
-    playerCard,
-    winner,
-    room,
-    players,
-    kicked,
-    host,
-    rules,
-    loop,
-  } = state;
+  /**
+   * Player: Send card to host
+   * @param mode
+   * @param card
+   * @param room
+   * @param host
+   */
+  const sendCard = useCallback(
+    (mode: Gamemode, card: Card, room?: Room, host?: RoomHost) => {
+      // default
+      if (mode !== 'solo') {
+        play('validate');
+        room && host && socket.emit('send-card', room, host.socket, user, card);
+        return;
+      }
+
+      // solo
+      dispatch({ type: GET_CARD, payload: { card: card, owner: user } });
+      solo('validate');
+    },
+    [dispatch, play, solo, user]
+  );
+
+  /**
+   * Pause solo mode inProgress on validate
+   */
+  // TODO add back
+  // useEffect(() => {
+  //   if (
+  //     inProgress ||
+  //     state.rules.mode !== 'solo' ||
+  //     state.gamestate !== 'validate'
+  //   )
+  //     return;
+
+  //   const pauseTime = setTimeout(() => {
+  //     solo('pause');
+  //     setCompletion(0);
+  //   }, 1000);
+  //   return () => clearTimeout(pauseTime);
+  // }, [solo, setCompletion, inProgress, state.gamestate, state.rules.mode]);
 
   return (
     <div id="App" className={theme}>
@@ -624,7 +433,9 @@ export default function App() {
             gamestate,
             room,
             host,
+            user,
             mode: rules.mode,
+            play,
           }}
         >
           <BallContext.Provider value={ball}>
@@ -636,16 +447,14 @@ export default function App() {
                 </Route>
                 <Route path="/host">
                   <Host
+                    gameToggle={() => gameToggle(gamestate)}
                     checkCard={() =>
                       checkCard(rules.mode, playerCard, draws, room)
                     }
                     newBall={() => newBall(rules.mode, pool, draws, room)}
                     draws={draws}
-                    leaveRoom={leaveRoom}
                     players={players}
-                    gameToggle={gameToggle}
                     removePlayer={removePlayer}
-                    start={start}
                   ></Host>
                 </Route>
                 <Route path="/join">
@@ -657,9 +466,8 @@ export default function App() {
                 </Route>
                 <Route path="/play">
                   <Play
-                    init={init}
                     standby={standby}
-                    leaveRoom={leaveRoom}
+                    newBall={() => newBall(rules.mode, pool, draws, room)}
                     kicked={kicked}
                     sendCard={sendCard}
                     winner={winner}
