@@ -1,13 +1,15 @@
 import React from 'react';
 import { initialState } from '../Reducers/app.reducer';
 import features from '../Config/features';
-import { Theme } from '@np-bingo/types';
+import { Gamestate, Player, Theme } from '@np-bingo/types';
 
 export const GameContext = React.createContext({
   gamestate: initialState.gamestate,
   room: initialState.room,
   host: { ...initialState.host },
   mode: initialState.rules.mode,
+  play: (gamestate: Gamestate) => {},
+  user: {} as Player,
 });
 
 export const BallContext = React.createContext({ ...initialState.ball });
