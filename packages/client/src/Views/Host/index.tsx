@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Ball from '../../Components/Ball';
 import {
   BallContext,
@@ -18,42 +18,31 @@ import Header from '../../Components/Header';
 import Widgets from '../../Components/Widgets';
 import Link from '../../Components/Link';
 import { useProgress } from '../../Utils/custom-hooks';
+import socket from '../../Config/socket.io';
 
 export interface HostProps {
+  gameToggle?: (gamestate: Gamestate) => void;
   draws: Pool;
   players: Player[];
   checkCard?: () => void;
   newBall?: () => void;
   leaveRoom?: (room: Room) => void;
-  gameToggle?: (gamestate: Gamestate, room: Room) => void;
   removePlayer?: (player: Player) => void;
-  start?: (room: Room) => void;
 }
 
 export default function Host({
+  gameToggle,
   draws = [[], [], [], [], []],
   players = [],
   checkCard,
   newBall,
   leaveRoom,
-  gameToggle,
   removePlayer,
-  start,
 }: HostProps) {
-  const { gamestate, room } = useContext(GameContext);
+  const { gamestate, room, play } = useContext(GameContext);
   const ball = useContext(BallContext);
   const { ballDelay } = useContext(FeautresContext);
-
-  const max = useRef(100);
-  const multiplier = useRef(max.current / ballDelay);
-
-  const incrementProgress = (elapsed: number) =>
-    setProgress(Math.min(multiplier.current * elapsed, max.current));
-
-  const { progress, inProgress, setProgress, enableProgress } = useProgress(
-    ballDelay,
-    incrementProgress
-  );
+  const { progress, inProgress, enableProgress } = useProgress(ballDelay);
 
   const isDisabled =
     gamestate !== 'start' &&
@@ -74,11 +63,33 @@ export default function Host({
 
   const handleBall = (gamestate: Gamestate, room: Room) => {
     if (gamestate === 'standby' || gamestate === 'failure') {
-      start && start(room);
+      play('start');
     }
     newBall && newBall();
     enableProgress();
   };
+
+  /**
+   * Keep room in sync with host
+   */
+  useEffect(() => {
+    if (gamestate === 'init') {
+      play('ready');
+      socket.emit('create-room', room);
+    }
+    if (gamestate === 'ready') {
+      socket.emit('ready', room);
+    }
+    if (gamestate === 'standby') {
+      socket.emit('standby', room);
+    }
+    if (gamestate === 'start') {
+      socket.emit('start', room);
+    }
+    if (gamestate === 'end') {
+      socket.emit('end', room);
+    }
+  }, [gamestate, room, play]);
 
   return (
     <React.Fragment>
@@ -87,7 +98,7 @@ export default function Host({
           variant="contained"
           color="primary"
           className="w-36"
-          onClick={() => gameToggle && gameToggle(gamestate, room)}
+          onClick={() => gameToggle && gameToggle(gamestate)}
         >
           {buttonText(gamestate)}
         </Button>
@@ -106,7 +117,7 @@ export default function Host({
           gamestate={gamestate}
           count={players.length}
         />
-        {gamestate === 'ready' ? (
+        {gamestate === 'init' || gamestate === 'ready' ? (
           <PlayerList data={players} action={removePlayer} />
         ) : (
           <React.Fragment>

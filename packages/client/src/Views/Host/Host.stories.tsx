@@ -40,7 +40,9 @@ Base.decorators = [
           gamestate: 'standby',
           room: 'A1B2',
           host: { ...AppState.host },
+          user: {},
           mode: AppState.rules.mode,
+          play: () => {},
         }}
       >
         <BallContext.Provider
@@ -70,7 +72,9 @@ Waiting.decorators = [
           gamestate: 'ready',
           room: 'A1B2',
           host: { ...AppState.host },
+          user: {},
           mode: AppState.rules.mode,
+          play: () => {},
         }}
       >
         <Story />
@@ -126,7 +130,9 @@ GameOver.decorators = [
           gamestate: 'end',
           room: 'A1B2',
           host: { ...AppState.host },
+          user: {},
           mode: AppState.rules.mode,
+          play: () => {},
         }}
       >
         <Story />
