@@ -27,7 +27,7 @@ export default {
   parameters: {
     layout: 'none',
     actions: {
-      handles: ['click .play-button'],
+      handles: ['click #play-button'],
     },
   },
 } as Meta;
