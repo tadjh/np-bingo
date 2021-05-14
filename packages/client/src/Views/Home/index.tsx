@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Button from '../../Components/Button';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 import Logo from '../../Components/Logo';
 import { Room } from '@np-bingo/types';
-import { useDialog } from '../../Utils/custom-hooks';
-import CodeModal from '../../Components/CodeModal';
-import { FeautresContext } from '../../Utils/contexts';
+import { GameContext } from '../../Utils/contexts';
 import Footer from '../../Components/Footer';
 import Credit from '../../Components/Credit';
 import ThemeToggle from '../../Components/ThemeToggle';
@@ -18,15 +16,24 @@ export interface HomeProps {
 }
 
 export default function Home({ createRoom, joinRoom }: HomeProps): JSX.Element {
-  const { allowSolo: solo, publicRooms } = useContext(FeautresContext);
-  const stayHome = !solo && !publicRooms && true;
+  const { gamestate, room, play } = useContext(GameContext);
   let history = useHistory();
-  const [open, handleOpen, handleClose] = useDialog(false);
 
-  function join(room: Room) {
-    joinRoom && joinRoom(room);
-    history.push(`/play?r=${room}`);
-  }
+  /**
+   * Reset gamestate on visit to home
+   */
+  useEffect(() => {
+    if (gamestate === 'init') return;
+    play('init');
+  }, [gamestate, play]);
+
+  /**
+   * Route after create room
+   */
+  useEffect(() => {
+    if (gamestate !== 'init' || room === '') return;
+    history.push(`/host?r=${room}`);
+  }, [gamestate, room, history]);
 
   return (
     <React.Fragment>
@@ -35,17 +42,13 @@ export default function Home({ createRoom, joinRoom }: HomeProps): JSX.Element {
       </Header>
       <Main className="flex-1 justify-center space-y-3">
         <Button
-          className="play-button"
+          id="play-button"
           variant="contained"
-          component={stayHome ? undefined : RouterLink}
-          to={stayHome ? undefined : '/join'}
-          onClick={stayHome ? handleOpen : undefined}
+          component={RouterLink}
+          to="/join"
         >
           Play
         </Button>
-        {stayHome && (
-          <CodeModal open={open} onClose={handleClose} onSumbit={join} />
-        )}
         <Button className="host-button" onClick={createRoom}>
           Host
         </Button>
