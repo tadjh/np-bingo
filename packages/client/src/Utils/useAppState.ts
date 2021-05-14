@@ -12,6 +12,7 @@ import {
   WIN_GAME,
   END_GAME,
   UPDATE_GAMEMODE,
+  PLAYER_UNREADY,
 } from '../Constants';
 import { initialState, reducer } from '../Reducers/app.reducer';
 
@@ -84,5 +85,25 @@ export function useAppState() {
     }
   };
 
-  return { state, dispatch, play, mode };
+  /**
+   * Three way toggle for host main button
+   * @param gamestate Gamestate
+   * @param room Room
+   */
+  const gameToggle = (gamestate: Gamestate) => {
+    switch (gamestate) {
+      case 'ready':
+        play('standby');
+        break;
+      case 'end':
+        play('ready');
+        break;
+      default:
+        play('end');
+        dispatch({ type: PLAYER_UNREADY }); // TODO is this best?
+        break;
+    }
+  };
+
+  return { state, dispatch, play, mode, gameToggle };
 }
