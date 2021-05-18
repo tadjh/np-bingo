@@ -431,10 +431,10 @@ export default function App() {
         <GameContext.Provider
           value={{
             gamestate,
+            gamemode: rules.mode,
             room,
             host,
             user,
-            mode: rules.mode,
             play,
           }}
         >
@@ -474,7 +474,7 @@ export default function App() {
                   ></Play>
                 </Route>
                 <Route exact path="/">
-                  <Home joinRoom={joinRoom} createRoom={createRoom} />
+                  <Home createRoom={createRoom} />
                 </Route>
               </Switch>
             </Container>
