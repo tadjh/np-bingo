@@ -5,11 +5,11 @@ import { Gamestate, Player, Theme } from '@np-bingo/types';
 
 export const GameContext = React.createContext({
   gamestate: initialState.gamestate,
+  gamemode: initialState.rules.mode,
   room: initialState.room,
   host: { ...initialState.host },
-  mode: initialState.rules.mode,
-  play: (gamestate: Gamestate) => {},
   user: {} as Player,
+  play: (gamestate: Gamestate) => {},
 });
 
 export const BallContext = React.createContext({ ...initialState.ball });
