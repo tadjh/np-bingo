@@ -42,10 +42,10 @@ Base.decorators = [
       <GameContext.Provider
         value={{
           gamestate: 'start',
+          gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
           user: {},
-          mode: AppState.rules.mode,
           play: () => {},
         }}
       >

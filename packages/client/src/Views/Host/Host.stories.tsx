@@ -38,10 +38,10 @@ Base.decorators = [
       <GameContext.Provider
         value={{
           gamestate: 'standby',
+          gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
           user: {},
-          mode: AppState.rules.mode,
           play: () => {},
         }}
       >
@@ -70,10 +70,10 @@ Waiting.decorators = [
       <GameContext.Provider
         value={{
           gamestate: 'ready',
+          gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
           user: {},
-          mode: AppState.rules.mode,
           play: () => {},
         }}
       >
@@ -128,10 +128,10 @@ GameOver.decorators = [
       <GameContext.Provider
         value={{
           gamestate: 'end',
+          gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
           user: {},
-          mode: AppState.rules.mode,
           play: () => {},
         }}
       >
