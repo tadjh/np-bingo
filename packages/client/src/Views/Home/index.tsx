@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from 'react';
 import Button from '../../Components/Button';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 import Logo from '../../Components/Logo';
-import { Room } from '@np-bingo/types';
 import { GameContext } from '../../Utils/contexts';
 import Footer from '../../Components/Footer';
 import Credit from '../../Components/Credit';
@@ -12,10 +11,9 @@ import Header from '../../Components/Header';
 
 export interface HomeProps {
   createRoom?: () => void;
-  joinRoom?: (room: Room) => void;
 }
 
-export default function Home({ createRoom, joinRoom }: HomeProps): JSX.Element {
+export default function Home({ createRoom }: HomeProps): JSX.Element {
   const { gamestate, room, play } = useContext(GameContext);
   let history = useHistory();
 
