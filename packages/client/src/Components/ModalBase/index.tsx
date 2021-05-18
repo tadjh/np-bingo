@@ -14,7 +14,7 @@ export default function ModalBase({
         onClick={onClose}
       ></div>
       <div
-        className={`absolute z-50 w-11/12 max-w-md rounded-md flex flex-col gap-5 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 overflow-hidden shadow-md ${className}`}
+        className={`absolute z-50 w-11/12 max-w-sm rounded-md flex flex-col gap-5 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 overflow-hidden shadow-md ${className}`}
       >
         {children}
       </div>
