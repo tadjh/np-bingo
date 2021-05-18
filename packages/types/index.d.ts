@@ -2,24 +2,6 @@ export type Action = {
   type: string;
   payload?: any;
 };
-export type AppState = {
-  gamestate: Gamestate;
-  room: string;
-  host: Host;
-  players: Player[];
-  ball: Ball;
-  pool: Pool;
-  draws: Pool;
-  playerCard: PlayerCard;
-  winner: Winner;
-  kicked: boolean;
-  rules: Rules;
-};
-export type PlayerState = {
-  card: Card;
-  serial: string;
-  crossmarks: { [key: string]: boolean };
-};
 export type Player = {
   _id?: string;
   uid?: number;
