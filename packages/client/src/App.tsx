@@ -38,9 +38,10 @@ import {
 import { useQuery, useTheme, useUser } from './Utils/custom-hooks';
 import config from './Config/features';
 import { GameContext, BallContext, ThemeContext } from './Utils/contexts';
-// import Background from './Components/Background';
+import Background from './Components/Background';
 import Container from './Components/Container';
 import { useAppState } from './Utils/useAppState';
+import './App.css';
 
 export default function App() {
   // TODO Remove any config.
@@ -366,7 +367,7 @@ export default function App() {
         >
           <BallContext.Provider value={ball}>
             <Container>
-              {/* <Background /> */}
+              <Background />
               <Switch>
                 <Route path="/create">
                   <Create></Create>
