@@ -56,9 +56,7 @@ export default function Join({
         </h1>
       </Header>
       <Main className="flex-1 justify-around gap-y-3">
-        {publicRooms && (
-          <RoomList rooms={rooms} onClick={() => joinRoom && joinRoom(room)} />
-        )}
+        {publicRooms && <RoomList rooms={rooms} onClick={joinRoom} />}
         <div className="flex flex-col items-center gap-y-3">
           <Button
             variant="contained"
@@ -67,16 +65,12 @@ export default function Join({
           >
             Private Room
           </Button>
-          <CodeModal
-            open={open}
-            onClose={handleClose}
-            onSumbit={() => joinRoom && joinRoom(room)}
-          />
+          <CodeModal open={open} onClose={handleClose} onSumbit={joinRoom} />
           {allowSolo && (
             <Button
               component={Link}
               className="solo-button"
-              onClick={() => solo && solo('init')}
+              onClick={() => solo && solo('ready')}
               to="/play?m=solo"
             >
               Solo

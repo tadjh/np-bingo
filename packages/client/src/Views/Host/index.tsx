@@ -5,7 +5,14 @@ import {
   FeautresContext,
   GameContext,
 } from '../../Utils/contexts';
-import { Gamestate, Player, Pool, Room } from '@np-bingo/types';
+import {
+  Ball as BallType,
+  Gamestate,
+  Player,
+  Pool,
+  Room,
+  Winner,
+} from '@np-bingo/types';
 import StatusMessage from '../../Components/Status';
 import Button from '../../Components/Button';
 import Footer from '../../Components/Footer';
@@ -19,37 +26,66 @@ import Widgets from '../../Components/Widgets';
 import Link from '../../Components/Link';
 import { useProgress } from '../../Utils/custom-hooks';
 import socket from '../../Config/socket.io';
-import { apiDeleteRoom } from '../../Api';
 
 export interface HostProps {
-  gameToggle?: (gamestate: Gamestate) => void;
+  checkCard?: () => void;
+  newBall?: () => BallType;
+  removePlayer?: (player: Player) => void;
+  leaveRoom?: (room: Room) => void;
+  saveRoom?: (room: Room, winner: Winner) => void;
   draws: Pool;
   players: Player[];
-  checkCard?: () => void;
-  newBall?: () => void;
-  removePlayer?: (player: Player) => void;
 }
 
 export default function Host({
-  gameToggle,
-  draws = [[], [], [], [], []],
-  players = [],
   checkCard,
   newBall,
   removePlayer,
+  leaveRoom,
+  saveRoom,
+  draws = [[], [], [], [], []],
+  players = [],
 }: HostProps) {
-  const { gamestate, room, play } = useContext(GameContext);
-  const ball = useContext(BallContext);
   const { ballDelay } = useContext(FeautresContext);
+  const { gamestate, room, winner, play } = useContext(GameContext);
+  const ball = useContext(BallContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
 
+  /**
+   * isDisabled is true when gamestate is not start, standby or failure
+   */
   const isDisabled =
     gamestate !== 'start' &&
     gamestate !== 'standby' &&
     gamestate !== 'failure' &&
     true;
 
-  const buttonText = (gamestate: Gamestate) => {
+  /**
+   * Three way toggle for host main button
+   * @param gamestate Gamestate
+   * @param room Room
+   */
+  const gamestateToggle = (gamestate: Gamestate) => {
+    switch (gamestate) {
+      case 'ready':
+        play('standby');
+        break;
+      case 'end':
+        play('ready');
+        break;
+      default:
+        play('end');
+        // dispatch({ type: PLAYER_UNREADY }); // TODO is this best?
+        break;
+    }
+  };
+
+  /**
+   * Display text for main action button
+   * @param gamestate
+   * @returns
+   */
+  const gamestateToggleText = (gamestate: Gamestate): string => {
     switch (gamestate) {
       case 'ready':
         return 'Start Game';
@@ -60,45 +96,84 @@ export default function Host({
     }
   };
 
-  const handleBall = (gamestate: Gamestate, room: Room) => {
+  /**
+   * Kick player from room
+   * @param player
+   */
+  const handleRemovePlayer = (player: Player) => {
+    if (!removePlayer) return;
+    socket.emit('remove-player', player);
+    removePlayer(player);
+  };
+
+  /**
+   * Trigger gamestate start, queue new ball and show ball progress animation
+   * @param gamestate
+   * @param room
+   */
+  const handleBall = (gamestate: Gamestate) => {
+    if (!newBall) return;
+    // If gamestate isn't already start, set it when a ball is drawn
     if (gamestate === 'standby' || gamestate === 'failure') {
       play('start');
     }
-    newBall && newBall();
-    enableProgress();
+    const ball = newBall();
+
+    if (ball.number === 0) {
+      play('end');
+    } else {
+      // TODO Where to enable?
+      enableProgress();
+      socket.emit('ball', room, ball);
+    }
   };
 
   /**
    * Leave room by room code
    * @param room Room code
    */
-  const leaveRoom = (room: string) => {
+  const handleLeaveRoom = (room: Room) => {
+    if (!leaveRoom) return;
     // TODO Tell room host left and kick players
     socket.emit('leave-room', room);
-    apiDeleteRoom(room);
+    leaveRoom(room);
+  };
+
+  const handleCheckCard = (room: Room) => {
+    if (!checkCard) return;
+    checkCard();
   };
 
   /**
-   * Keep room in sync with host
+   * Keep the room in sync with this host's gamestate
    */
   useEffect(() => {
-    if (gamestate === 'init') {
-      play('ready');
-      socket.emit('create-room', room);
+    switch (gamestate) {
+      case 'init':
+        socket.emit('create-room', room);
+        play('ready');
+        break;
+      case 'ready':
+        socket.emit('ready', room);
+        break;
+      case 'standby':
+        socket.emit('standby', room);
+        break;
+      case 'start':
+        socket.emit('start', room);
+        break;
+      case 'failure':
+        socket.emit('losing-card', room);
+        break;
+      case 'win':
+        socket.emit('winning-card', room, winner);
+        saveRoom && saveRoom(room, winner);
+        break;
+      case 'end':
+        socket.emit('end', room);
+        break;
     }
-    if (gamestate === 'ready') {
-      socket.emit('ready', room);
-    }
-    if (gamestate === 'standby') {
-      socket.emit('standby', room);
-    }
-    if (gamestate === 'start') {
-      socket.emit('start', room);
-    }
-    if (gamestate === 'end') {
-      socket.emit('end', room);
-    }
-  }, [gamestate, room, play]);
+  }, [gamestate, room, winner, play, saveRoom]);
 
   return (
     <React.Fragment>
@@ -107,15 +182,15 @@ export default function Host({
           variant="contained"
           color="primary"
           className="w-36"
-          onClick={() => gameToggle && gameToggle(gamestate)}
+          onClick={() => gamestateToggle(gamestate)}
         >
-          {buttonText(gamestate)}
+          {gamestateToggleText(gamestate)}
         </Button>
         <Button
           variant="contained"
           color="primary"
           disabled={gamestate !== 'validate' && true}
-          onClick={checkCard}
+          onClick={() => handleCheckCard(room)}
         >
           Check Card
         </Button>
@@ -127,13 +202,13 @@ export default function Host({
           count={players.length}
         />
         {gamestate === 'init' || gamestate === 'ready' ? (
-          <PlayerList data={players} action={removePlayer} />
+          <PlayerList data={players} action={handleRemovePlayer} />
         ) : (
           <React.Fragment>
             <div className="flex items-center gap-x-3">
               <IconButton
                 disabled={(isDisabled || inProgress) && true}
-                onClick={() => handleBall(gamestate, room)}
+                onClick={() => handleBall(gamestate)}
                 description="New Ball"
                 direction="left"
               >
@@ -162,7 +237,7 @@ export default function Host({
         <Widgets room={room} />
         <Link
           className="hover:underline"
-          onClick={() => leaveRoom && leaveRoom(room)}
+          onClick={() => handleLeaveRoom(room)}
           to="/"
         >
           Leave Room

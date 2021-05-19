@@ -1,4 +1,15 @@
-import { Action, AppState, Gamestate, Gamemode } from '@np-bingo/types';
+import {
+  Action,
+  Gamestate,
+  Gamemode,
+  Ball,
+  Host,
+  Player,
+  PlayerCard,
+  Pool,
+  Rules,
+  Winner,
+} from '@np-bingo/types';
 import {
   INIT_GAME,
   READY_CHECK,
@@ -26,6 +37,20 @@ import {
   UPDATE_GAMEMODE,
 } from '../Constants';
 
+export interface AppState {
+  gamestate: Gamestate;
+  room: string;
+  host: Host;
+  players: Player[];
+  ball: Ball;
+  pool: Pool;
+  draws: Pool;
+  playerCard: PlayerCard;
+  winner: Winner;
+  kicked: boolean;
+  rules: Rules;
+}
+
 export const initialState: AppState = {
   gamestate: 'init' as Gamestate,
   room: '',
@@ -51,16 +76,14 @@ export const initialState: AppState = {
 export function reducer(state: AppState, action: Action) {
   switch (action.type) {
     case INIT_GAME:
-      // TODO Why does draws need to be forced?
-      // Probably mutating state somewhere
-      return { ...initialState, draws: [[], [], [], [], []] };
+      return initialState;
     case READY_CHECK:
       return {
         ...state,
         gamestate: 'ready' as Gamestate,
         ball: { ...initialState.ball },
         pool: [...initialState.pool],
-        draws: [[], [], [], [], []],
+        draws: [...initialState.draws],
         playerCard: { ...initialState.playerCard },
         winner: { ...initialState.winner },
       };
@@ -73,9 +96,9 @@ export function reducer(state: AppState, action: Action) {
     case PAUSE:
       return { ...state, gamestate: 'pause' as Gamestate };
     case FAILURE:
-      return { ...state, gamestate: 'failure' as Gamestate }; // TODO Verify that this is unsued
+      return { ...state, gamestate: 'failure' as Gamestate }; // TODO This is unsued
     case WIN_GAME:
-      return { ...state, gamestate: 'win' as Gamestate }; // TODO Verify that this is unsued
+      return { ...state, gamestate: 'win' as Gamestate }; // TODO This is unsued
     case END_GAME:
       return { ...state, gamestate: 'end' as Gamestate };
     case SET_ROOM:

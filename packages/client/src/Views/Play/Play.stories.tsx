@@ -46,6 +46,7 @@ Base.decorators = [
           room: 'A1B2',
           host: { ...AppState.host },
           user: {},
+          winner: { ...AppState.winner },
           play: () => {},
         }}
       >

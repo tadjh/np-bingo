@@ -1,4 +1,4 @@
-import { Action, AppState, Gamemode, Gamestate } from '@np-bingo/types';
+import { Action, Gamemode, Gamestate } from '@np-bingo/types';
 import { useCallback, useReducer } from 'react';
 import logger from 'use-reducer-logger';
 import {
@@ -12,9 +12,8 @@ import {
   WIN_GAME,
   END_GAME,
   UPDATE_GAMEMODE,
-  PLAYER_UNREADY,
 } from '../Constants';
-import { initialState, reducer } from '../Reducers/app.reducer';
+import { AppState, initialState, reducer } from '../Reducers/app.reducer';
 
 export function useAppState() {
   const [state, dispatch] = useReducer<
@@ -66,7 +65,7 @@ export function useAppState() {
    * Update game mode
    * @param gamemode
    */
-  const mode = (gamemode: Gamemode) => {
+  const mode = useCallback((gamemode: Gamemode) => {
     switch (gamemode) {
       case 'default':
         dispatch({ type: UPDATE_GAMEMODE, payload: 'default' });
@@ -83,27 +82,7 @@ export function useAppState() {
       default:
         throw new Error('Invalid game mode.');
     }
-  };
+  }, []);
 
-  /**
-   * Three way toggle for host main button
-   * @param gamestate Gamestate
-   * @param room Room
-   */
-  const gameToggle = (gamestate: Gamestate) => {
-    switch (gamestate) {
-      case 'ready':
-        play('standby');
-        break;
-      case 'end':
-        play('ready');
-        break;
-      default:
-        play('end');
-        dispatch({ type: PLAYER_UNREADY }); // TODO is this best?
-        break;
-    }
-  };
-
-  return { state, dispatch, play, mode, gameToggle };
+  return { state, dispatch, play, mode };
 }

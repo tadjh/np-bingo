@@ -9,6 +9,7 @@ export const GameContext = React.createContext({
   room: initialState.room,
   host: { ...initialState.host },
   user: {} as Player,
+  winner: { ...initialState.winner },
   play: (gamestate: Gamestate) => {},
 });
 

@@ -227,6 +227,7 @@ export function useProgress(
   inProgress: boolean;
   setProgress: React.Dispatch<React.SetStateAction<number>>;
   enableProgress: () => void;
+  disableProgress: () => void;
 } {
   const requestRef = useRef<number | null>(null);
   const startTime = useRef<number | null>(null);
@@ -238,16 +239,16 @@ export function useProgress(
   /**
    * Set inProgress true
    */
-  const enableProgress = () => {
+  const enableProgress = useCallback(() => {
     setInProgress(true);
-  };
+  }, []);
 
   /**
    * Set inProgress false
    */
-  const disableProgress = () => {
+  const disableProgress = useCallback(() => {
     setInProgress(false);
-  };
+  }, []);
 
   /**
    * Reset to initial state
@@ -256,7 +257,7 @@ export function useProgress(
     disableProgress();
     setProgress(0);
     startTime.current = null;
-  }, []);
+  }, [disableProgress]);
 
   /**
    * Update progress with new value
@@ -298,5 +299,6 @@ export function useProgress(
     inProgress,
     setProgress,
     enableProgress,
+    disableProgress,
   };
 }

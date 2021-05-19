@@ -10,7 +10,7 @@ import { roomChar } from '@np-bingo/common';
 export interface CodeModalProps {
   open: boolean;
   onClose: () => void;
-  onSumbit?: (param?: any) => void;
+  onSumbit?: (room: string) => void;
 }
 
 const initialState = {
@@ -27,10 +27,14 @@ export default function CodeModal({
 }: CodeModalProps): JSX.Element {
   const [inputs, errors, handleChange, handleSubmit, handlePaste] = useForm(
     initialState,
-    joinCallback
+    onSubmitCallback
   );
 
-  function joinCallback(formInputs: typeof inputs) {
+  /**
+   * Action on form submit
+   * @param formInputs
+   */
+  function onSubmitCallback(formInputs: typeof inputs) {
     let room = Object.values(formInputs).join('').toUpperCase();
     onSumbit && onSumbit(room);
   }

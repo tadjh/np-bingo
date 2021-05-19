@@ -42,6 +42,7 @@ Base.decorators = [
           room: 'A1B2',
           host: { ...AppState.host },
           user: {},
+          winner: { ...AppState.winner },
           play: () => {},
         }}
       >
@@ -74,6 +75,7 @@ Waiting.decorators = [
           room: 'A1B2',
           host: { ...AppState.host },
           user: {},
+          winner: { ...AppState.winner },
           play: () => {},
         }}
       >
@@ -132,6 +134,7 @@ GameOver.decorators = [
           room: 'A1B2',
           host: { ...AppState.host },
           user: {},
+          winner: { ...AppState.winner },
           play: () => {},
         }}
       >
