@@ -11,10 +11,11 @@ Vulnerbilities
 // TODO Timeout socket.io connection with reconnect popup
 
 Development
+// TODO add @socket.io/admin-ui
 // TODO Optimize Tailwind
 // TODO Rest api use game "_id" instead of room id
-// TODO redis
-// TODO Helmet
+// TODO redis?
+// TODO Helmet?
 // TODO MongoDB model timestamps?
 // TODO Socket.io error handling?
 // TODO Disable socket.io when in solo?
