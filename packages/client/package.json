@@ -18,6 +18,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "socket.io-client": "^4.0.0",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
@@ -75,7 +76,6 @@
     "autoprefixer": "^9",
     "postcss": "^7",
     "storybook-tailwind-dark-mode": "^1.0.9",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "typescript": "^4.2.3",
     "use-reducer-logger": "^1.0.2"
   },
