@@ -83,7 +83,7 @@ export default function Play({
       enableProgress();
     }
   };
-  const { progress, inProgress, enableProgress, disableProgress } = useProgress(
+  const { progress, inProgress, enableProgress } = useProgress(
     ballDelay,
     onProgressDone
   );
@@ -143,7 +143,7 @@ export default function Play({
       default:
         break;
     }
-  }, [gamemode, gamestate, disableProgress, enableProgress, checkCard, play]);
+  }, [gamemode, gamestate, enableProgress, checkCard, play]);
 
   /**
    * Toggle current target's crossmark visibility
@@ -233,6 +233,7 @@ export default function Play({
           variant="contained"
           disabled={gamestate !== 'ready' && gamestate !== 'failure' && true}
           onClick={handleStartOrStandby}
+          className="w-[115px]"
         >
           {gamestate === 'failure'
             ? 'Resume'
