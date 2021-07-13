@@ -3,6 +3,18 @@
 @tailwind utilities;
 
 @layer utilities {
+  .animation-delay-300 {
+    animation-delay: 300ms;
+  }
+  .animation-delay-600 {
+    animation-delay: 600ms;
+  }
+  .animation-delay-900 {
+    animation-delay: 900ms;
+  }
+  .animation-delay-1200 {
+    animation-delay: 1200ms;
+  }
   .text-xxs {
     font-size: 7px;
   }
