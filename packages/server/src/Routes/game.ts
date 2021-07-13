@@ -28,7 +28,6 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   let room = makeID(4);
   // TODO check unique ID against previous game IDs
-  // TODO hashmap ?
   Game.create({ host: req.body, room: room })
     .then((doc) => res.json({ game: doc, msg: `Created game room ${room}` }))
     .catch((err) =>
@@ -36,8 +35,6 @@ router.post('/', (req, res) => {
     );
 });
 
-// TODO hinges on ID being unique other grabs first document with this ID
-// TODO Will add a subdoc every time user exits and rejoins...
 /**
  * @route PUT api/game/join/:id
  * @description Join game by ID
@@ -122,7 +119,6 @@ router.put('/:id', async (req, res) => {
 // });
 
 /**
- * TODO is Delete the best option?
  * @route DELETE api/game/:id
  * @description End game by ID
  * @access Public

@@ -20,7 +20,6 @@ const httpServer = createServer(app);
 /**
  * Socket.io CORS
  */
-// TODO set origin to production server
 const io = new Server(httpServer, {
   cors: {
     origin: process.env.ORIGIN,
@@ -36,7 +35,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 /**
  * REST Api CORS
  */
-app.use(cors({ origin: process.env.ORIGIN, credentials: true })); // TODO is this duplicaton with line 7?
+app.use(cors({ origin: process.env.ORIGIN, credentials: true }));
 app.use(express.json());
 // use Routes
 app.get('/api/', (req, res) => {

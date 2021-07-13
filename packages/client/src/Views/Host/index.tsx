@@ -75,7 +75,6 @@ export default function Host({
         break;
       default:
         play('end');
-        // dispatch({ type: PLAYER_UNREADY }); // TODO is this best?
         break;
     }
   };
@@ -122,7 +121,6 @@ export default function Host({
     if (ball.number === 0) {
       play('end');
     } else {
-      // TODO Where to enable?
       enableProgress();
       socket.emit('ball', room, ball);
     }
@@ -134,7 +132,6 @@ export default function Host({
    */
   const handleLeaveRoom = (room: Room) => {
     if (!leaveRoom) return;
-    // TODO Tell room host left and kick players
     socket.emit('leave-room', room);
     leaveRoom(room);
   };

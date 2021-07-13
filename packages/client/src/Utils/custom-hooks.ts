@@ -123,7 +123,6 @@ export function useForm(
 }
 
 /**
- * // TODO Rename to useModal
  * Use Dialog Hook
  * @param initialState
  * @param callback

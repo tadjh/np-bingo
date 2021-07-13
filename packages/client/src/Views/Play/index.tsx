@@ -100,7 +100,6 @@ export default function Play({
   /**
    * Sync Play gamestate with App gamestate
    */
-  // TODO I don't like this a whole lot
   useEffect(() => {
     // Syncing Player View with Host Game State.
     if (gamestate === 'init') {

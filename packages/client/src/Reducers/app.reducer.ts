@@ -96,9 +96,9 @@ export function reducer(state: AppState, action: Action) {
     case PAUSE:
       return { ...state, gamestate: 'pause' as Gamestate };
     case FAILURE:
-      return { ...state, gamestate: 'failure' as Gamestate }; // TODO This is unsued
+      return { ...state, gamestate: 'failure' as Gamestate };
     case WIN_GAME:
-      return { ...state, gamestate: 'win' as Gamestate }; // TODO This is unsued
+      return { ...state, gamestate: 'win' as Gamestate };
     case END_GAME:
       return { ...state, gamestate: 'end' as Gamestate };
     case SET_ROOM:

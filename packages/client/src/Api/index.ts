@@ -8,7 +8,6 @@ import { handleError } from '../Utils';
  * @param body
  * @param callback
  */
-// TODO promise?
 export async function apiCreateRoom(
   body: any,
   callback: (res: AxiosResponse) => void
@@ -30,7 +29,6 @@ export async function apiCreateRoom(
  * @param body Player
  * @param callback
  */
-// TODO promise?
 export async function apiUpdateRoom(
   room: Room,
   body: Player,
@@ -43,6 +41,7 @@ export async function apiUpdateRoom(
     })
     .catch((err) => {
       console.log('Error in Join Room');
+      // TODO Show error on front-end
       handleError(err);
     });
 }

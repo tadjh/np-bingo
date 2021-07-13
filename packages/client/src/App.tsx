@@ -44,7 +44,6 @@ import { useAppState } from './Utils/useAppState';
 import './App.css';
 
 export default function App() {
-  // TODO Remove any config.
   let query = useQuery();
   const [user, setUser] = useUser();
   const { state, dispatch, play, mode } = useAppState();
@@ -315,7 +314,6 @@ export default function App() {
    */
   const checkCard = useCallback(
     (playerCard: PlayerCard, draws: Pool) => {
-      // TODO Add rulesets
       const [results, methods] = validateCard(playerCard.card, draws);
 
       // No winning methods

@@ -1,7 +1,5 @@
-Bugs
-// TODO Prevent Join room that doesn't exist
+rBugs
 // TODO Player doesn't leave room on back button (socket.close? or window.onpopstate)
-// TODO Kick from room logic is borked
 
 Vulnerbilities
 // TODO Rest Api has no auth
@@ -12,13 +10,9 @@ Vulnerbilities
 
 Development
 // TODO add @socket.io/admin-ui
-// TODO Optimize Tailwind
 // TODO Rest api use game "_id" instead of room id
-// TODO redis?
-// TODO Helmet?
 // TODO MongoDB model timestamps?
 // TODO Socket.io error handling?
-// TODO Disable socket.io when in solo?
 // TODO Migrate to React Router v6
 // TODO Make List generation generic
 // TODO Add profiler tracing?
