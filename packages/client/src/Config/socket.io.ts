@@ -5,6 +5,6 @@ const socket = io(process.env.REACT_APP_SERVER || 'http://localhost:8082/', {
 });
 
 // TODO Limit reconnectionAttempts
-// TODO Reconnect to room?
+// TODO Manual Reconnect to room?
 
 export default socket;

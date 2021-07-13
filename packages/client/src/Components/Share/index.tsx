@@ -1,21 +1,20 @@
 import React, { useRef, useState } from 'react';
-import ShareIcon from '@material-ui/icons/Share';
-import IconButton from '@material-ui/core/IconButton';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '../DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import TextField from '@material-ui/core/TextField';
-import DialogActions from '@material-ui/core/DialogActions';
-import Button from '@material-ui/core/Button';
+import ShareIcon from '../../Assets/Share';
+import IconButton from '../IconButton';
+import Modal from '../Modal';
+import ModalHeader from '../ModalHeader';
+import ModalContent from '../ModalContent';
+import ModalFooter from '../ModalFooter';
+import Button from '../Button';
 import { useDialog } from '../../Utils/custom-hooks';
 import { Room } from '@np-bingo/types';
+import TextInput from '../TextInput';
 
 export interface ShareProps {
-  room: Room;
+  room?: Room;
 }
 
-function Share({ room = '' }: ShareProps) {
+export default function Share({ room = '' }: ShareProps): JSX.Element {
   const [open, handleOpen, handleClose] = useDialog(false, handleCopyText);
   const [copyText, setCopyText] = useState('Click to copy link to clipboard');
   const ref = useRef<HTMLInputElement>(null);
@@ -23,15 +22,15 @@ function Share({ room = '' }: ShareProps) {
   const copyToClipboard = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
-    if (ref.current) {
-      ref.current.select();
-
-      try {
-        document.execCommand('copy');
-        setCopyText('Link copied to clipboard!');
-      } catch (err) {
-        throw new Error('Error in copy code to clipboard');
-      }
+    if (ref.current === null) return;
+    ref.current.select();
+    try {
+      document.execCommand('copy');
+      const text = 'Link copied to clipboard!';
+      if (copyText === text) return;
+      setCopyText(text);
+    } catch (err) {
+      throw new Error('Error in copy code to clipboard');
     }
   };
 
@@ -47,44 +46,40 @@ function Share({ room = '' }: ShareProps) {
   return (
     <React.Fragment>
       <IconButton
-        className="share-button"
+        className="share-button group"
         onClick={handleOpen}
         aria-label="share"
+        description="Share link"
+        direction="top"
       >
-        <ShareIcon />
+        <ShareIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
       </IconButton>
-      <Dialog
+      <Modal
+        id="share-modal"
         open={open}
-        onClose={handleClose}
         aria-labelledby="share-dialog-title"
-        fullWidth={true}
-        maxWidth="xs"
+        onClose={handleClose}
       >
-        <DialogTitle id="share-dialog-title" onClose={handleClose}>
+        <ModalHeader id="share-dialog-title" onClose={handleClose}>
           Share Game
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText>{copyText}</DialogContentText>
-          <TextField
-            inputRef={ref}
+        </ModalHeader>
+        <ModalContent>
+          <p className="text-black dark:text-white text-opacity-60 dark:text-opacity-60">
+            {copyText}
+          </p>
+          <TextInput
+            id="room-link"
+            ref={ref}
             value={`${window.location.protocol}//${window.location.host}/join?r=${room}`}
-            id="code"
-            fullWidth
+            readOnly
           />
-        </DialogContent>
-        <DialogActions>
-          <Button
-            className="copy-button"
-            onClick={copyToClipboard}
-            color="primary"
-            autoFocus
-          >
+        </ModalContent>
+        <ModalFooter>
+          <Button className="copy-button" onClick={copyToClipboard} autoFocus>
             Copy
           </Button>
-        </DialogActions>
-      </Dialog>
+        </ModalFooter>
+      </Modal>
     </React.Fragment>
   );
 }
-
-export default Share;

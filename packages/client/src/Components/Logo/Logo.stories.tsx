@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Logo, { LogoProps } from './';
+import Logo, { LogoProps } from '.';
 
 export default {
   title: 'Components/Logo',
@@ -15,3 +15,8 @@ Large.args = {
 };
 
 export const Small = Template.bind({});
+
+export const Winner = Template.bind({});
+Winner.args = {
+  winner: true,
+};

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import './style.css';
-import Link from '@material-ui/core/Link';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -14,6 +12,9 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import { useTitle } from '../../Utils/custom-hooks';
+import Main from '../../Components/Main';
+import Footer from '../../Components/Footer';
+import Header from '../../Components/Header';
 
 export interface CreateProps {
   title?: string;
@@ -41,13 +42,13 @@ export default function Create({ title }: CreateProps) {
   const { postage, corners, rovingl, visible } = state;
 
   return (
-    <div className="Create">
-      <header>
+    <React.Fragment>
+      <Header>
         <Typography variant="h4" component="h1">
           Create
         </Typography>
-      </header>
-      <div className="main" role="main">
+      </Header>
+      <Main className="justify-evenly">
         <FormControl component="fieldset">
           <FormLabel component="legend">Game Type</FormLabel>
           <RadioGroup
@@ -139,12 +140,12 @@ export default function Create({ title }: CreateProps) {
         <Button color="primary" variant="contained">
           Create Room
         </Button>
-      </div>
-      <footer>
-        <Link className="nav-button" component={RouterLink} to="/">
+      </Main>
+      <Footer>
+        <Link className="nav-button" to="/">
           &larr; Back
         </Link>
-      </footer>
-    </div>
+      </Footer>
+    </React.Fragment>
   );
 }

@@ -1,51 +1,36 @@
 import React from 'react';
-import './style.css';
-import Share from '../Share';
 import { Room } from '@np-bingo/types';
-import { FeautresContext } from '../../Utils/contexts';
+import Tooltip from '../Tooltip';
 
-export interface CodeProps {
-  room: Room;
+export interface CodeProps extends React.HTMLAttributes<HTMLDivElement> {
+  room?: Room;
+  isHovered?: boolean;
 }
 
-export default function Code({ room = '    ' }: CodeProps) {
-  const code = (room: string) => {
-    let array = Object.assign([], room);
-    return array.map((value, index) => {
-      return (
-        <span key={index} className={`code-item ${room === '' && 'empty'}`}>
-          {value}
-        </span>
-      );
-    });
-  };
-
-  const Empty = () => {
-    return (
-      <React.Fragment>
-        <span className="code-item empty">_</span>
-        <span className="code-item empty">_</span>
-        <span className="code-item empty">_</span>
-        <span className="code-item empty">_</span>
-      </React.Fragment>
+export default function Code({
+  room = '',
+  isHovered = false,
+  children,
+}: CodeProps): JSX.Element {
+  function generate(array: string[], element: React.ReactElement) {
+    return array.map((item, index) =>
+      React.cloneElement(element, {
+        key: index,
+        children: item,
+      })
     );
-  };
+  }
 
   return (
-    <div id="Code">
-      <div className="code-label">Room Code:</div>
-      <div className="code-row">
-        <div className="code-left"></div>
-        <div className="code">
-          <code>{room !== '' ? code(room) : <Empty />}</code>
-        </div>
-        <FeautresContext.Consumer>
-          {(features) => (
-            <div className="code-right align-left">
-              {features['share-room'] && room !== '' && <Share room={room} />}
-            </div>
-          )}
-        </FeautresContext.Consumer>
+    <div className="relative tooltip">
+      <Tooltip isHovered={isHovered} direction="top">
+        Room Code
+      </Tooltip>
+      <div className="flex font-mono text-3xl font-bold space-x-2 text-black dark:text-white text-opacity-60 hover:text-opacity-90 dark:text-opacity-60 dark:hover:text-opacity-90">
+        {generate(
+          room !== '' ? Object.assign([], room) : [' ', ' ', ' ', ' '],
+          <div className="flex justify-center items-center bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner" />
+        )}
       </div>
     </div>
   );

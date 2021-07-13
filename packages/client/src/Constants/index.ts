@@ -43,6 +43,3 @@ export const SET_BALL = 'SET BALL';
 export const UPDATE_POOL = 'UPDATE POOL';
 
 export const UPDATE_GAMEMODE = 'UPDATE GAMEMODE';
-export const LOOP_START = 'LOOP START';
-export const LOOP_STOP = 'LOOP STOP';
-export const LOOP_UNSET = 'LOOP UNSET';

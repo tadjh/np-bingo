@@ -1,4 +1,4 @@
-import { Action, PlayerState } from '@np-bingo/types';
+import { Action, Card } from '@np-bingo/types';
 import {
   INIT_CROSSMARKS,
   INIT_GAME,
@@ -6,6 +6,12 @@ import {
   UPDATE_CROSSMARKS,
   WINNER_CROSSMARKS,
 } from '../Constants';
+
+export interface PlayerState {
+  card: Card;
+  serial: string;
+  crossmarks: { [key: string]: boolean };
+}
 
 export const initialState: PlayerState = {
   card: new Array(25),

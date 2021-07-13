@@ -1,4 +1,15 @@
-import { Action, AppState, Gamestate, Gamemode } from '@np-bingo/types';
+import {
+  Action,
+  Gamestate,
+  Gamemode,
+  Ball,
+  Host,
+  Player,
+  PlayerCard,
+  Pool,
+  Rules,
+  Winner,
+} from '@np-bingo/types';
 import {
   INIT_GAME,
   READY_CHECK,
@@ -24,9 +35,21 @@ import {
   CHECK_CARD_FAILURE,
   WIN_GAME,
   UPDATE_GAMEMODE,
-  LOOP_START,
-  LOOP_STOP,
 } from '../Constants';
+
+export interface AppState {
+  gamestate: Gamestate;
+  room: string;
+  host: Host;
+  players: Player[];
+  ball: Ball;
+  pool: Pool;
+  draws: Pool;
+  playerCard: PlayerCard;
+  winner: Winner;
+  kicked: boolean;
+  rules: Rules;
+}
 
 export const initialState: AppState = {
   gamestate: 'init' as Gamestate,
@@ -42,28 +65,25 @@ export const initialState: AppState = {
   },
   winner: {
     methods: [],
-    data: {},
+    results: {},
     player: { _id: '', uid: 0, name: '', socket: '' },
     card: new Array(25),
   },
   kicked: false,
   rules: { mode: 'default' as Gamemode, special: [] },
-  loop: false,
 };
 
 export function reducer(state: AppState, action: Action) {
   switch (action.type) {
     case INIT_GAME:
-      // TODO Why does draws need to be forced?
-      // Probably mutating state somewhere
-      return { ...initialState, draws: [[], [], [], [], []] };
+      return initialState;
     case READY_CHECK:
       return {
         ...state,
         gamestate: 'ready' as Gamestate,
         ball: { ...initialState.ball },
         pool: [...initialState.pool],
-        draws: [[], [], [], [], []],
+        draws: [...initialState.draws],
         playerCard: { ...initialState.playerCard },
         winner: { ...initialState.winner },
       };
@@ -76,9 +96,9 @@ export function reducer(state: AppState, action: Action) {
     case PAUSE:
       return { ...state, gamestate: 'pause' as Gamestate };
     case FAILURE:
-      return { ...state, gamestate: 'failure' as Gamestate }; // TODO Verify that this is unsued
+      return { ...state, gamestate: 'failure' as Gamestate };
     case WIN_GAME:
-      return { ...state, gamestate: 'win' as Gamestate }; // TODO Verify that this is unsued
+      return { ...state, gamestate: 'win' as Gamestate };
     case END_GAME:
       return { ...state, gamestate: 'end' as Gamestate };
     case SET_ROOM:
@@ -150,10 +170,6 @@ export function reducer(state: AppState, action: Action) {
       return { ...state, ball: { ...state.ball, remainder: action.payload } };
     case UPDATE_GAMEMODE:
       return { ...state, rules: { ...state.rules, mode: action.payload } };
-    case LOOP_START:
-      return { ...state, loop: true };
-    case LOOP_STOP:
-      return { ...state, loop: false };
     default:
       throw new Error('Invalid dispatch type.');
   }

@@ -1,5 +1,21 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import { Player, Theme } from '@np-bingo/types';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
+
+/**
+ * User Hook
+ * @param initialValue
+ * @returns
+ */
+export function useUser(
+  initialValue = {
+    name: 'Player',
+    socket: '',
+  }
+): [Player, React.Dispatch<React.SetStateAction<Player>>] {
+  const [user, setUser] = useState<Player>(initialValue);
+  return [user, setUser];
+}
 
 /**
  * Use Toggle Hook
@@ -154,4 +170,134 @@ export const useTitle = (title?: string) => {
  */
 export function useQuery() {
   return new URLSearchParams(useLocation().search);
+}
+
+/**
+ * Hook for toggling light/dark mode
+ * @param initialTheme
+ * @returns
+ */
+export function useTheme(initialTheme: Theme): [Theme, () => void] {
+  const [theme, setTheme] = useState<Theme>(initialTheme);
+
+  const toggleTheme = () => {
+    setTheme((prevTheme) => (prevTheme !== 'dark' ? 'dark' : 'light'));
+  };
+
+  return [theme, toggleTheme];
+}
+
+/**
+ * Use Portal Hook
+ * @param target DOM Element
+ * @returns
+ */
+export function usePortal(target: HTMLElement | null): HTMLDivElement {
+  // lazy load portal
+  const portalRef = useRef<HTMLDivElement | null>(null);
+
+  const portal = setPortal(portalRef);
+
+  function setPortal(
+    portalRef: React.MutableRefObject<HTMLDivElement | null>
+  ): HTMLDivElement {
+    if (portalRef.current !== null) return portalRef.current;
+    portalRef.current = document.createElement('div');
+    return portalRef.current;
+  }
+
+  useEffect(() => {
+    if (target === null) return;
+    target.appendChild(portal);
+    return function cleanup() {
+      if (!target.contains(portal)) return;
+      target.removeChild(portal);
+    };
+  }, [portal, target]);
+
+  return portal;
+}
+
+export function useProgress(
+  duration: number,
+  callback?: (param?: any) => void
+): {
+  progress: number;
+  inProgress: boolean;
+  setProgress: React.Dispatch<React.SetStateAction<number>>;
+  enableProgress: () => void;
+  disableProgress: () => void;
+} {
+  const requestRef = useRef<number | null>(null);
+  const startTime = useRef<number | null>(null);
+  const [inProgress, setInProgress] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const max = useRef(100);
+  const multiplier = useRef(max.current / duration);
+
+  /**
+   * Set inProgress true
+   */
+  const enableProgress = useCallback(() => {
+    setInProgress(true);
+  }, []);
+
+  /**
+   * Set inProgress false
+   */
+  const disableProgress = useCallback(() => {
+    setInProgress(false);
+  }, []);
+
+  /**
+   * Reset to initial state
+   */
+  const resetProgress = useCallback(() => {
+    disableProgress();
+    setProgress(0);
+    startTime.current = null;
+  }, [disableProgress]);
+
+  /**
+   * Update progress with new value
+   * @param elapsed time
+   * @returns
+   */
+  const incrementProgress = (elapsed: number) =>
+    setProgress(Math.min(multiplier.current * elapsed, max.current));
+
+  /**
+   * Animate progress bar
+   */
+  const animate = useCallback(
+    (timestamp: number) => {
+      if (startTime.current === null) startTime.current = timestamp;
+      const elapsed = timestamp - startTime.current;
+      incrementProgress(elapsed);
+      if (elapsed >= (duration || 5000)) {
+        resetProgress();
+        callback && callback();
+        return;
+      }
+      requestRef.current = requestAnimationFrame(animate);
+    },
+    [duration, callback, resetProgress]
+  );
+
+  /**
+   * Starts animation when inProgress is true
+   */
+  useEffect(() => {
+    if (!inProgress) return;
+    requestRef.current = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(requestRef.current as number);
+  }, [animate, inProgress]);
+
+  return {
+    progress,
+    inProgress,
+    setProgress,
+    enableProgress,
+    disableProgress,
+  };
 }

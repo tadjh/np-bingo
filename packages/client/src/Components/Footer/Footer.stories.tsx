@@ -1,21 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Footer, { FooterProps } from './';
-import { FeautresContext } from '../../Utils/contexts';
-import features from '../../Config/features';
-
-import * as CodeStories from '../Code/Code.stories';
+import Footer, { FooterProps } from '.';
+import Header from '../Header';
+import Main from '../Main';
+import Container from '../Container';
 
 export default {
-  title: 'Components/Footer',
+  title: 'Wrappers/Footer',
   component: Footer,
   decorators: [
     (Story) => {
       return (
-        <Router>
+        <Container>
+          <Header className="flex-1" />
+          <Main className="flex-1" />
           <Story />
-        </Router>
+        </Container>
       );
     },
   ],
@@ -23,24 +23,8 @@ export default {
 
 const Template: Story<FooterProps> = (args) => <Footer {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
-  ...CodeStories.Base.args,
-};
-
-export const ShareDisabled = Template.bind({});
-ShareDisabled.decorators = [
-  (Story) => (
-    <FeautresContext.Provider value={{ ...features, 'share-room': false }}>
-      <Story />
-    </FeautresContext.Provider>
-  ),
-];
-ShareDisabled.args = { ...CodeStories.ShareDisabled.args };
-
-export const Blank = Template.bind({});
-
-export const Home = Template.bind({});
-Home.args = {
-  home: true,
+export const Base = Template.bind({});
+Base.args = {
+  children: <div>Footer</div>,
+  className: 'flex-1 bg-gray-200 justify-center',
 };

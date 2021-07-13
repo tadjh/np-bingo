@@ -41,6 +41,7 @@ export async function apiUpdateRoom(
     })
     .catch((err) => {
       console.log('Error in Join Room');
+      // TODO Show error on front-end
       handleError(err);
     });
 }

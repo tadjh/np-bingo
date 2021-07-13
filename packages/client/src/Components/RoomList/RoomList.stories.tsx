@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import RoomList, { RoomListProps } from './';
+import RoomList, { RoomListProps } from '.';
 
 export default {
   title: 'Components/RoomList',
@@ -11,7 +11,9 @@ export default {
     (Story) => {
       return (
         <Router>
-          <Story />
+          <div className="w-96">
+            <Story />
+          </div>
         </Router>
       );
     },
@@ -22,7 +24,7 @@ const Template: Story<RoomListProps> = (args) => <RoomList {...args} />;
 
 export const Rooms = Template.bind({});
 Rooms.args = {
-  data: [
+  rooms: [
     {
       _id: 'dadkjashdjshadka',
       room: 'NYPD',
@@ -44,4 +46,4 @@ Rooms.args = {
   ],
 };
 
-export const Blank = Template.bind({});
+export const NoRooms = Template.bind({});

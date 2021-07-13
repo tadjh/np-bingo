@@ -1,13 +1,13 @@
 {
   "name": "@np-bingo/client",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "homepage": ".",
   "private": true,
   "author": "Tadjh Brooks",
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "@material-ui/icons": "^4.11.2",
-    "@np-bingo/common": "^1.0.0",
+    "@np-bingo/common": "^1.0.3",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -21,9 +21,9 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -57,7 +57,8 @@
     ]
   },
   "devDependencies": {
-    "@np-bingo/types": "^1.0.0",
+    "@craco/craco": "^6.1.2",
+    "@np-bingo/types": "^1.0.3",
     "@storybook/addon-actions": "^6.2.8",
     "@storybook/addon-essentials": "^6.2.8",
     "@storybook/addon-links": "^6.2.8",
@@ -71,8 +72,12 @@
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@types/react-router-dom": "^5.1.7",
-    "use-reducer-logger": "^1.0.2",
-    "typescript": "^4.2.3"
+    "autoprefixer": "^9",
+    "postcss": "^7",
+    "storybook-tailwind-dark-mode": "^1.0.9",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
+    "typescript": "^4.2.3",
+    "use-reducer-logger": "^1.0.2"
   },
   "resolutions": {
     "babel-loader": "8.1.0"

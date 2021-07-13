@@ -1,32 +1,3 @@
-.grid-item {
-  font-weight: bold;
-  font-size: var(--font-size-h2);
-  height: var(--grid-item-h);
-  min-width: var(--grid-item-w);
-  line-height: var(--grid-item-h);
-  text-align: center;
-  vertical-align: middle;
-  text-transform: uppercase;
-  color: var(--color-dark);
-  background-color: var(--color-light);
-  border: var(--border-width-light) solid var(--color-dark);
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-}
-
-.checked::before {
-  content: '\00d7';
-  position: absolute;
-  font-size: var(--crossmark);
-  font-weight: normal;
-  height: 100%;
-  left: -2px;
-  color: var(--color-alert);
-  line-height: var(--crossmark-line-height);
-  mix-blend-mode: multiply;
-}
-
-.checked.winner::before {
-  color: var(--color-success-dark);
+.cell-13 {
+  @apply text-lg;
 }

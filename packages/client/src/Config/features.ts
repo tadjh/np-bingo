@@ -1,15 +1,29 @@
+import { Special, Theme } from '@np-bingo/types';
+
+interface Config {
+  theme: Theme;
+  allowSolo: boolean;
+  share: boolean;
+  publicRooms: boolean;
+  specialRules: Special[];
+  streamerMode: boolean;
+  maxRoomSize: number;
+  maxActiveGames: number;
+  ballDelay: number;
+  allowNewCard: boolean;
+}
+
 const config = {
-  'dark-mode': false,
-  'solo-mode': true, // Allow solo mode
-  'share-room': true,
-  'public-rooms': false, // TODO Only mock-up
-  'game-modes': false, // TODO no game logic built for alternate modes
-  'special-rules': false, // TODO no win conditions built for special rules
-  'streamer-mode': false, // TODO not implemented
-  'max-room-size': 30,
-  'max-active-games': 5,
-  'ball-delay': 5000, // 3.5 seconds before next auto-draw in solo mode
-  'new-card': false,
-};
+  theme: 'dark', // Set initial theme 'light' or 'dark'
+  allowSolo: true, // Allow solo mode
+  share: true, // Allow shareable room links
+  publicRooms: true, // TODO Allow public game rooms
+  specialRules: [], // TODO Array of valid special rules
+  streamerMode: false, // TODO Hide
+  maxRoomSize: 30, // TODO
+  maxActiveGames: 5, // TODO
+  ballDelay: 5000, // Ball animation duration in milliseconds
+  allowNewCard: false, // Allow players to draw a new random card
+} as Config;
 
 export default config;

@@ -2,9 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Host, { HostProps } from './';
-import Container from '@material-ui/core/Container';
 import { BallContext, GameContext } from '../../Utils/contexts';
 import { initialState as AppState } from '../../Reducers/app.reducer';
+import Container from '../../Components/Container';
 // import * as DrawStories from '../../Components/Draws/Draws.stories';
 
 export default {
@@ -17,7 +17,7 @@ export default {
     (Story) => {
       return (
         <Router>
-          <Container className="App" fixed maxWidth="xs">
+          <Container>
             <Story />
           </Container>
         </Router>
@@ -38,21 +38,20 @@ Base.decorators = [
       <GameContext.Provider
         value={{
           gamestate: 'standby',
+          gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
-          mode: AppState.rules.mode,
+          user: {},
+          winner: { ...AppState.winner },
+          play: () => {},
         }}
       >
         <BallContext.Provider
           value={{
-            ball: {
-              key: 1,
-              number: 24,
-              column: 'i',
-              remainder: 74,
-            },
-            loop: true,
-            progress: 75,
+            key: 1,
+            number: 24,
+            column: 'i',
+            remainder: 74,
           }}
         >
           <Story />
@@ -72,9 +71,12 @@ Waiting.decorators = [
       <GameContext.Provider
         value={{
           gamestate: 'ready',
+          gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
-          mode: AppState.rules.mode,
+          user: {},
+          winner: { ...AppState.winner },
+          play: () => {},
         }}
       >
         <Story />
@@ -128,9 +130,12 @@ GameOver.decorators = [
       <GameContext.Provider
         value={{
           gamestate: 'end',
+          gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
-          mode: AppState.rules.mode,
+          user: {},
+          winner: { ...AppState.winner },
+          play: () => {},
         }}
       >
         <Story />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Draws, { DrawsProps } from './';
+import Draws, { DrawsProps } from '.';
 export default {
   title: 'Components/Draws',
   component: Draws,
@@ -8,8 +8,8 @@ export default {
 
 const Template: Story<DrawsProps> = (args) => <Draws {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {
+export const Base = Template.bind({});
+Base.args = {
   draws: [
     [10, 15, 2, 5, 11, 12, 6, 14, 3, 13],
     [23, 27, 25, 19, 24, 30],

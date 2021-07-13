@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Status, { StatusProps } from './';
+import Status, { StatusProps } from '.';
 
 export default {
   title: 'Components/Status/Host',
@@ -10,67 +10,67 @@ export default {
 const Template: Story<StatusProps> = (args) => <Status {...args} />;
 
 export const Init = Template.bind({});
+Init.args = {
+  host: true,
+};
 
 export const Ready = Template.bind({});
-Ready.storyName = 'Ready';
 Ready.args = {
+  ...Init.args,
   gamestate: 'ready',
-  host: true,
 };
 
 export const ReadySingular = Template.bind({});
 ReadySingular.args = {
-  gamestate: 'ready',
-  host: true,
+  ...Ready.args,
   count: 1,
 };
 
 export const ReadyPlural = Template.bind({});
 ReadyPlural.args = {
-  gamestate: 'ready',
-  host: true,
+  ...Ready.args,
   count: 5,
 };
 
 export const Standby = Template.bind({});
 Standby.args = {
+  ...Init.args,
   gamestate: 'standby',
-  host: true,
 };
 
 export const Start = Template.bind({});
-Start.storyName = 'Start (Randomized)';
+// Start.storyName = 'Start (Randomized)';
 Start.args = {
+  ...Init.args,
   gamestate: 'start',
-  host: true,
 };
 
 export const Validate = Template.bind({});
 Validate.args = {
+  ...Init.args,
   gamestate: 'validate',
-  host: true,
 };
 
 export const Pause = Template.bind({});
 Pause.args = {
+  ...Init.args,
   gamestate: 'pause',
-  host: true,
 };
 
 export const Failure = Template.bind({});
 Failure.args = {
+  ...Init.args,
   gamestate: 'failure',
-  host: true,
 };
 
 export const End = Template.bind({});
 End.args = {
+  ...Init.args,
   gamestate: 'end',
-  host: true,
 };
 
 export const Win = Template.bind({});
 Win.args = {
+  ...Init.args,
   gamestate: 'win',
-  host: true,
 };

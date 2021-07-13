@@ -20,7 +20,6 @@ const httpServer = createServer(app);
 /**
  * Socket.io CORS
  */
-// TODO set origin to production server
 const io = new Server(httpServer, {
   cors: {
     origin: process.env.ORIGIN,
@@ -36,7 +35,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 /**
  * REST Api CORS
  */
-app.use(cors({ origin: process.env.ORIGIN, credentials: true })); // TODO is this duplicaton with line 7?
+app.use(cors({ origin: process.env.ORIGIN, credentials: true }));
 app.use(express.json());
 // use Routes
 app.get('/api/', (req, res) => {
@@ -189,12 +188,7 @@ io.on('connection', (socket: Socket) => {
    */
   socket.on('winning-card', (room: Room, winner: Winner) => {
     if (winner.player.socket) {
-      io.to(winner.player.socket).emit('winner', room, {
-        player: winner.player,
-        card: winner.card,
-        methods: winner.methods,
-        data: winner.data,
-      } as Winner);
+      io.to(winner.player.socket).emit('winner', room, winner);
       console.log('Bingo!');
     } else {
       console.log(`${winner.player.name} socket not found in wininng card`);

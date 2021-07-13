@@ -1,14 +1,12 @@
-import React, { useCallback, useEffect, useReducer } from 'react';
+import React, { useCallback, useContext, useEffect, useReducer } from 'react';
 import {
   Action,
-  PlayerState as State,
   Card,
   Results,
-  Gamestate,
   Winner,
-  Host,
-  Room,
   Gamemode,
+  Ball as BallType,
+  Player,
 } from '@np-bingo/types';
 import {
   BallContext,
@@ -23,55 +21,79 @@ import {
   UPDATE_CROSSMARKS,
   WINNER_CROSSMARKS,
 } from '../../Constants';
-import './style.css';
 import Ball from '../../Components/Ball';
 import Board from '../../Components/Board';
 import StatusMessage from '../../Components/Status';
-import { createCard, serializeCard } from '../../Utils/bingo';
-import Button from '@material-ui/core/Button';
+import { newCard, winningCells } from '../../Utils/bingo';
+import Button from '../../Components/Button';
 import Footer from '../../Components/Footer';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogActions from '@material-ui/core/DialogActions';
-import Link from '@material-ui/core/Link';
-import { Link as RouterLink } from 'react-router-dom';
-import { initialState, reducer } from '../../Reducers/play.reducer';
+import Modal from '../../Components/Modal';
+import ModalHeader from '../../Components/ModalHeader';
+import ModalContent from '../../Components/ModalContent';
+import ModalFooter from '../../Components/ModalFooter';
+import Link from '../../Components/Link';
+import {
+  initialState,
+  PlayerState,
+  reducer,
+} from '../../Reducers/play.reducer';
 import { initialState as appState } from '../../Reducers/app.reducer';
+import Main from '../../Components/Main';
+import Header from '../../Components/Header';
+import Widgets from '../../Components/Widgets';
+import { useProgress } from '../../Utils/custom-hooks';
+import socket from '../../Config/socket.io';
+import { useHistory } from 'react-router-dom';
 
 export interface PlayProps {
-  gamestate?: Gamestate;
+  checkCard?: () => void;
+  newBall: () => BallType;
+  sendCard?: (card: Card, user?: Player) => void;
   winner?: Winner;
   kicked?: boolean;
-  sendCard?: (mode: Gamemode, card: Card, room?: Room, host?: Host) => void;
-  leaveRoom?: (room: Room, host: Host) => void;
-  standby?: (mode: Gamemode) => void;
-  init?: () => void;
 }
 
 export default function Play({
-  gamestate = 'init',
+  checkCard,
+  newBall,
+  sendCard,
   winner = { ...appState.winner },
   kicked = false,
-  sendCard,
-  leaveRoom,
-  standby,
-  init,
 }: PlayProps) {
-  const [state, dispatch] = useReducer<(state: State, action: Action) => State>(
-    reducer,
-    initialState
+  let history = useHistory();
+  const [playState, playDispatch] = useReducer<
+    (state: PlayerState, action: Action) => PlayerState
+  >(reducer, initialState);
+  const { gamestate, gamemode, room, host, user, play } = useContext(
+    GameContext
+  );
+  const ball = useContext(BallContext);
+  const { ballDelay, allowNewCard } = useContext(FeautresContext);
+  const { card, serial, crossmarks } = playState;
+
+  /**
+   * Loop ball animation and call newBall each completion
+   * @returns When ball number is 0
+   */
+  const onProgressDone = () => {
+    const brandNewBall = newBall();
+    if (brandNewBall.number === 0) return play('end');
+
+    if (gamestate === 'start') {
+      enableProgress();
+    }
+  };
+  const { progress, inProgress, enableProgress } = useProgress(
+    ballDelay,
+    onProgressDone
   );
 
   /**
    * Creates a new card and stores it in state
    */
-  const newCard = useCallback(() => {
-    let card: Card = createCard(BINGO);
-    let serialCard = [...card];
-    let serial = serializeCard(serialCard);
-    dispatch({ type: NEW_CARD, payload: { card: card, serial: serial } });
+  const getCard = useCallback(() => {
+    const [card, serial] = newCard(BINGO);
+    playDispatch({ type: NEW_CARD, payload: { card: card, serial: serial } });
     clearCrossmarks();
   }, []);
 
@@ -81,12 +103,47 @@ export default function Play({
   useEffect(() => {
     // Syncing Player View with Host Game State.
     if (gamestate === 'init') {
-      dispatch({ type: INIT_GAME });
+      playDispatch({ type: INIT_GAME });
+      play('ready');
     }
     if (gamestate === 'ready') {
-      newCard();
+      getCard();
     }
-  }, [gamestate, newCard]);
+  }, [gamestate, getCard, play]);
+
+  /**
+   * Socket.io Emit Side-effects
+   */
+  useEffect(() => {
+    if (gamemode === 'solo') return;
+
+    if (gamestate === 'standby') {
+      socket.emit('ready-up', host.socket, user);
+    }
+    if (gamestate === 'validate') {
+      socket.emit('send-card', room, host.socket, user, card);
+    }
+  }, [gamestate, gamemode, card, host.socket, room, user]);
+
+  /**
+   * Solo side-effects
+   */
+  useEffect(() => {
+    if (gamemode !== 'solo') return;
+    switch (gamestate) {
+      case 'start':
+        enableProgress();
+        break;
+      case 'validate':
+        play('pause');
+        break;
+      case 'pause':
+        checkCard && checkCard();
+        break;
+      default:
+        break;
+    }
+  }, [gamemode, gamestate, enableProgress, checkCard, play]);
 
   /**
    * Toggle current target's crossmark visibility
@@ -94,198 +151,151 @@ export default function Play({
    */
   const toggleCrossmark = (event: React.MouseEvent) => {
     let target = event.target as HTMLDivElement;
-    let value = state.crossmarks[target.id];
+    let value = playState.crossmarks[target.id];
     let crossmark = { [target.id]: !value };
-
-    dispatch({ type: UPDATE_CROSSMARKS, payload: crossmark });
+    playDispatch({ type: UPDATE_CROSSMARKS, payload: crossmark });
   };
 
   /**
    * Resets all crossmarks
    */
   const clearCrossmarks = () => {
-    dispatch({ type: INIT_CROSSMARKS, payload: {} });
+    playDispatch({ type: INIT_CROSSMARKS, payload: {} });
   };
 
   /**
    * Sets Winning crossmarks after successful card validations
-   * @param methods Array of current winning methods (row, column, diagonal)
-   * @param data Results of validation check
+   * @param results Results of validation check
    */
-  const setWinningCrossmarks = (methods: string[], data: Results) => {
-    let winningCrossmarks = {};
-    let i;
-    for (i = 0; i < methods.length; i++) {
-      let marks = (data[methods[i]] as number[]).map(function (item) {
-        let id = `cell${item + 1}`;
-        return { [id]: true };
-      });
-      winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
-    }
-
-    dispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
+  const setWinningCrossmarks = (results: Results) => {
+    const winningCrossmarks = winningCells(results);
+    playDispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
   };
 
   /**
    * Update winning results after successful validation
    */
   useEffect(() => {
-    if (winner.methods.length > 0) {
-      setWinningCrossmarks(winner.methods, winner.data);
-    }
-  }, [winner]);
+    if (winner.methods.length <= 0) return;
+    setWinningCrossmarks(winner.results);
+  }, [winner.methods, winner.results]);
 
-  const handleSendCard = (
-    mode: Gamemode,
-    card: Card,
-    room: Room,
-    host: Host
-  ) => {
-    if (sendCard) {
-      if (mode !== 'solo') {
-        sendCard(mode, card, room, host);
-      } else {
-        sendCard(mode, card);
-      }
+  /**
+   * Sets gamestate to standby in default, start in solo mode
+   */
+  const handleStartOrStandby = () => {
+    if (gamemode === 'solo') {
+      return play('start');
     }
+    // default
+    play('standby');
   };
 
-  let { card, serial, crossmarks } = state;
-  const board = [...card];
+  /**
+   * Wrapper function for sendCard
+   * @param mode
+   * @param card
+   * @param room
+   * @param host
+   * @returns
+   */
+  const handleSendCard = (gamemode: Gamemode, card: Card, user: Player) => {
+    if (gamemode === 'solo') sendCard && sendCard(card, user);
+
+    // default & solo
+    play('validate');
+  };
+
+  /**
+   * Send leave event to room
+   */
+  const leaveRoom = (gamemode: Gamemode) => {
+    if (gamemode === 'solo') return;
+    socket.emit('leave-room', room, host.socket, user);
+  };
+
+  /**
+   * Force route to home on kicked modal click events
+   */
+  const exit = () => {
+    history.push('/');
+  };
+
   return (
-    <div className="Play">
-      <header>
-        <GameContext.Consumer>
-          {(gameContext) => (
-            <React.Fragment>
-              <div className="app-buttons">
-                <FeautresContext.Consumer>
-                  {(features) =>
-                    features['new-card'] && (
-                      <Button
-                        className={`${
-                          gameContext.gamestate !== 'ready' && 'disabled'
-                        }`}
-                        disabled={gameContext.gamestate !== 'ready' && true}
-                        onClick={newCard}
-                      >
-                        New Card
-                      </Button>
-                    )
-                  }
-                </FeautresContext.Consumer>
-                <Button
-                  variant="contained"
-                  size="large"
-                  color="primary"
-                  className={`ready ${
-                    gameContext.gamestate !== 'ready' &&
-                    gameContext.gamestate !== 'failure' &&
-                    'disabled'
-                  }`}
-                  disabled={
-                    gameContext.gamestate !== 'ready' &&
-                    gameContext.gamestate !== 'failure' &&
-                    true
-                  }
-                  onClick={() => standby && standby(gameContext.mode)}
-                >
-                  {gameContext.gamestate === 'failure'
-                    ? 'Resume'
-                    : gameContext.mode === 'solo'
-                    ? 'Start'
-                    : 'Ready'}
-                </Button>
-                <Button
-                  variant="contained"
-                  size="large"
-                  color="primary"
-                  className={`${
-                    gameContext.gamestate !== 'start' && 'disabled'
-                  }`} // TODO removed value.gamestate !== 'failure' on these??
-                  disabled={gameContext.gamestate !== 'start' && true}
-                  onClick={() =>
-                    handleSendCard(
-                      gameContext.mode,
-                      card,
-                      gameContext.room,
-                      gameContext.host
-                    )
-                  }
-                >
-                  Bingo
-                </Button>
-              </div>
-              <StatusMessage
-                gamestate={gameContext.gamestate}
-                mode={gameContext.mode}
-              />
-            </React.Fragment>
-          )}
-        </GameContext.Consumer>
-      </header>
-      <div className="main" role="main">
-        <GameContext.Consumer>
-          {(gameContext) => (
-            <React.Fragment>
-              <BallContext.Consumer>
-                {(ballContext) => (
-                  <div className="ball-wrapper">
-                    <Ball
-                      number={ballContext.ball.number}
-                      column={ballContext.ball.column}
-                      remainder={ballContext.ball.remainder}
-                      loop={ballContext.loop}
-                      progress={ballContext.progress}
-                      disabled={
-                        gameContext.gamestate !== 'start' &&
-                        gameContext.gamestate !== 'failure' &&
-                        true
-                      }
-                    />
-                  </div>
-                )}
-              </BallContext.Consumer>
-            </React.Fragment>
-          )}
-        </GameContext.Consumer>
+    <React.Fragment>
+      <Header className="gap-3">
+        {allowNewCard && (
+          <Button disabled={gamestate !== 'ready' && true} onClick={getCard}>
+            New Card
+          </Button>
+        )}
+        <Button
+          variant="contained"
+          disabled={gamestate !== 'ready' && gamestate !== 'failure' && true}
+          onClick={handleStartOrStandby}
+          className="w-[115px]"
+        >
+          {gamestate === 'failure'
+            ? 'Resume'
+            : gamemode === 'solo'
+            ? 'Start'
+            : 'Ready'}
+        </Button>
+        <Button
+          variant="contained"
+          disabled={gamestate !== 'start' && true}
+          onClick={() => handleSendCard(gamemode, card, user)}
+        >
+          Bingo
+        </Button>
+      </Header>
+      <Main className="flex-1 gap-y-4">
+        <StatusMessage gamestate={gamestate} mode={gamemode} />
+        <Ball
+          number={ball.number}
+          column={ball.column}
+          remainder={ball.remainder}
+          inProgress={inProgress}
+          progress={progress}
+          disabled={gamestate !== 'start' && gamestate !== 'failure' && true}
+        />
         <Board
-          card={board}
+          card={[...card]}
           serial={serial}
           winner={winner.methods.length > 0 && true}
           crossmarks={crossmarks}
           onClick={toggleCrossmark}
         />
-      </div>
-      <GameContext.Consumer>
-        {(gameContext) => (
-          <Footer
-            onClick={() =>
-              leaveRoom && leaveRoom(gameContext.room, gameContext.host)
-            }
-            room={gameContext.room}
-            mode={gameContext.mode}
-          />
-        )}
-      </GameContext.Consumer>
-      <Dialog
+      </Main>
+      <Footer className="gap-3">
+        <Widgets variant={gamemode} room={room} />
+        <Link
+          className="hover:underline"
+          onClick={() => leaveRoom(gamemode)}
+          to="/"
+        >
+          Leave Room
+        </Link>
+      </Footer>
+      <Modal
+        id="leave-modal"
         open={kicked}
-        onClose={init}
+        onClose={exit}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{'Leaving Room'}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
+        <ModalHeader id="alert-dialog-title">Leaving Room</ModalHeader>
+        <ModalContent>
+          <p id="alert-dialog-description">
             You have been kicked from the room.
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Link component={RouterLink} onClick={init} color="primary" to="/">
+          </p>
+        </ModalContent>
+        <ModalFooter>
+          <Link className="hover:underline" onClick={exit} to="/">
             Leave Room
           </Link>
-        </DialogActions>
-      </Dialog>
-    </div>
+        </ModalFooter>
+      </Modal>
+    </React.Fragment>
   );
 }

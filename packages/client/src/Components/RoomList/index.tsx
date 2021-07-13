@@ -1,59 +1,61 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import ListItemText from '@material-ui/core/ListItemText';
-import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
-import IconButton from '@material-ui/core/IconButton';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import Typography from '@material-ui/core/Typography';
-import './style.css';
+import IconButton from '../IconButton';
+import ChevronRight from '../../Assets/ChevronRight';
+import Tooltip from '../Tooltip';
+import List from '../List';
+import ListItem from '../ListItem';
+import ListItemText from '../ListItemText';
 
 export interface ListProps {
-  data?: any[];
-  action?: (param?: any) => void;
+  rooms?: any[];
+  onClick?: (param?: any) => void;
 }
 
 export interface RoomListProps extends ListProps {
-  action?: (room: string) => void;
+  onClick?: (room: string) => void;
 }
 
-export default function RoomList({ data = [], action: onJoin }: RoomListProps) {
+export default function RoomList({
+  rooms = [],
+  onClick,
+}: RoomListProps): JSX.Element {
+  if (rooms.length > 0)
+    return (
+      <List title="Public Rooms">
+        {rooms.map((item) => {
+          return (
+            <ListItem key={item.room}>
+              <div className="relative tooltip flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700 shadow-md">
+                <Tooltip direction="right">{`${item.players.length} players in room`}</Tooltip>
+                {item.players.length}
+              </div>
+              <ListItemText
+                primary={item.room}
+                secondary={item.host.name}
+                primaryInfo="Room Code"
+                secondaryInfo="Room Host"
+              />
+              <div className="ml-auto">
+                <IconButton
+                  aria-label="play"
+                  component={RouterLink}
+                  to={`/play/${item.room}`} // TODO Will go even if Room doesn't exist
+                  onClick={onClick && (() => onClick(item.room))}
+                  description="Join Room"
+                  direction="left"
+                >
+                  <ChevronRight className="text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90" />
+                </IconButton>
+              </div>
+            </ListItem>
+          );
+        })}
+      </List>
+    );
   return (
-    <div className="room-list">
-      {/* <Typography variant="h5">Public Rooms</Typography> */}
-      {data.length !== 0 ? (
-        <List>
-          {data.map((value) => {
-            return (
-              <ListItem key={value.room}>
-                <ListItemAvatar>
-                  <Avatar>{value.players.length}</Avatar>
-                </ListItemAvatar>
-                <ListItemText
-                  primary={value.room}
-                  secondary={value.host.name}
-                />
-                <ListItemSecondaryAction>
-                  <IconButton
-                    edge="end"
-                    aria-label="play"
-                    component={RouterLink}
-                    to={`/play/${value.room}`} // TODO Will go even if Room doesn't exist
-                    onClick={onJoin && (() => onJoin(value.room))}
-                  >
-                    <ExitToAppIcon />
-                  </IconButton>
-                </ListItemSecondaryAction>
-              </ListItem>
-            );
-          })}
-        </List>
-      ) : (
-        <Typography>No rooms found</Typography>
-      )}
-    </div>
+    <p className="flex justify-center items-center text-black dark:text-white text-opacity-60 dark:text-opacity-60">
+      No public rooms found
+    </p>
   );
 }

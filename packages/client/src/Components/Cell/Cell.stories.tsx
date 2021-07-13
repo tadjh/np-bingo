@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Cell, { CellProps } from './';
+import Cell, { CellProps } from '.';
 
 export default {
   title: 'Components/Board/Cell',
@@ -18,12 +18,13 @@ const Stack: Story<CellProps> = (args) => (
   <React.Fragment>
     <Cell {...args} />
     <Cell {...args} children={15} />
+    <Cell {...args} index={13} children={'free'} />
     <Cell {...args} children={15} checked={true} />
     <Cell
       {...args}
       children={15}
       checked={true}
-      className="winner"
+      winner={true}
       disabled={true}
     />
   </React.Fragment>
@@ -32,7 +33,7 @@ const Stack: Story<CellProps> = (args) => (
 export const Variants = Stack.bind({});
 Variants.decorators = [
   (Story) => (
-    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr' }}>
+    <div style={{ display: 'flex' }}>
       <Story />
     </div>
   ),

@@ -2,25 +2,6 @@ export type Action = {
   type: string;
   payload?: any;
 };
-export type AppState = {
-  gamestate: Gamestate;
-  room: string;
-  host: Host;
-  players: Player[];
-  ball: Ball;
-  pool: Pool;
-  draws: Pool;
-  playerCard: PlayerCard;
-  winner: Winner;
-  kicked: boolean;
-  rules: Rules;
-  loop: boolean;
-};
-export type PlayerState = {
-  card: Card;
-  serial: string;
-  crossmarks: { [key: string]: boolean };
-};
 export type Player = {
   _id?: string;
   uid?: number;
@@ -43,14 +24,16 @@ export type PlayerCard = {
 };
 export type Room = string;
 export type Methods = string[];
+export type Serial = string;
 export type Card = number[];
 export type Pool = number[][];
+export type Theme = 'light' | 'dark';
 export type Results = {
-  [key: string]: number[] | boolean;
+  [key: string]: number[];
 };
 export type Winner = {
   methods: Methods;
-  data: Results;
+  results: Results;
   player: Player;
   card: Card;
 };

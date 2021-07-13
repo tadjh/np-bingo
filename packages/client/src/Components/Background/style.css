@@ -1,0 +1,16 @@
+.background {
+  animation: slide 50s linear infinite;
+  -webkit-animation: slide 50s linear infinite;
+  /* filter: blur(4px);
+  -webkit-filter: blur(4px); */
+}
+
+@keyframes slide {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 250px -250px;
+  }
+}

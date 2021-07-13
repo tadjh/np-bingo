@@ -1,46 +1,49 @@
 import lz from 'lz-string';
-import { Pool, Ball, Card, Results } from '@np-bingo/types';
+import { Pool, Ball, Card, Results, Methods, Serial } from '@np-bingo/types';
 import { letters } from '../Constants';
-import { randomIndex } from '.';
+import { findElementInArray, randomIndex } from '.';
+
+/**
+ * Creates a new card and stores it in state
+ * @param pool multidimensional array of all possible values
+ * @returns {{card: Card, serial: string}}
+ */
+export function newCard(pool: Pool): [Card, Serial] {
+  const card = createCard(pool);
+  const serial = serializeCard(card);
+  return [card, serial];
+}
 
 /**
  * Creates an array with 25 randomized values ordered left to right, top to bottom from a pool of values
  * @param pool multidimensional array of all possible values
+ * @returns
  */
-
-export function createCard(pool: Pool) {
+export function createCard(pool: Pool): Card {
   let card = [];
-  let i: number;
-  for (i = 0; i < 5; i++) {
-    let column = createColumn(pool[i]);
-
-    let x: number;
-    for (x = 0; x < 5; x++) {
-      let offset = 5 * x + i;
-      card[offset] = column[x];
+  for (let i = 0; i < 5; i++) {
+    const column = createColumn(pool[i]);
+    for (let j = 0; j < 5; j++) {
+      const offset = 5 * j + i;
+      card[offset] = column[j];
     }
   }
-
-  // Note: Remove 13th card and replace with a free spot on display
-  // card[12] = 'free';
+  // Note: Remove 13th cell and replace with a free spot on display
+  // cell[12] = 'free';
   return card;
 }
+
 /**
  * Create a randomized column array from an array of integers
  * @param array integer array
+ * @returns array
  */
-function createColumn(array: number[]) {
+export function createColumn(array: number[]): number[] {
   let column = [];
-
-  // Store values into new array so that we can remove used values and prevent duplication
-  let values = array;
-
-  let i: number;
-  for (i = 0; i < 5; i++) {
-    let index = randomIndex(values);
-    let value = values[index];
+  let values = [...array];
+  for (let i = 0; i < 5; i++) {
+    let value = values[randomIndex(values)];
     column[i] = value;
-
     // Remove value from values array for loop interations 0 thru 3
     if (i !== 4) {
       values = values.filter(function (item: number) {
@@ -48,35 +51,38 @@ function createColumn(array: number[]) {
       });
     }
   }
-
   return column;
 }
 
 /**
  * Serialized card to a unique string
  * @param card
+ * @returns string
  */
-export function serializeCard(card: Card): string {
+export function serializeCard(card: Card): Serial {
+  const newCard = [...card];
   // Remove free space from serial
-  card.splice(12, 1);
-  let serial = card.join('');
-  let compressedSerial = compressSerial(serial);
-  return compressedSerial;
+  newCard.splice(12, 1);
+  const serial = newCard.join('');
+  if (serial === '') return '';
+  return compressSerial(serial);
 }
 
 /**
  * Compress serial
- * @param serial string
+ * @param string string
+ * @returns string
  */
-function compressSerial(serial: string) {
-  return lz.compressToBase64(serial);
+function compressSerial(string: string): Serial {
+  return lz.compressToBase64(string);
 }
 
 /**
  * Decompress serial
  * @param serial string
+ * @returns string
  */
-export function decompressSerial(serial: string) {
+export function decompressSerial(serial: Serial) {
   return lz.decompressFromBase64(serial);
 }
 
@@ -86,35 +92,50 @@ export function decompressSerial(serial: string) {
  */
 
 export function getBall(pool: Pool): Ball {
-  let { columns, remainder } = getPoolSize(pool);
-
-  if (columns.length > 0) {
-    let columnIndex = randomIndex(columns);
-    let values = pool[columns[columnIndex]];
-    let valueIndex = randomIndex(values);
-
-    return {
-      key: columns[columnIndex],
-      number: values[valueIndex],
-      column: letters[columns[columnIndex]],
-      remainder: remainder - 1,
-    };
-  } else {
+  const [remainder, columns] = getPoolSize(pool);
+  // No balls remaining
+  if (columns.length <= 0)
     return {
       key: 0,
       number: 0,
       column: '',
       remainder: 0,
     };
-  }
+  const columnIndex = randomIndex(columns);
+  const column = pool[columns[columnIndex]];
+  const ballIndex = randomIndex(column);
+  return {
+    key: columns[columnIndex],
+    number: column[ballIndex],
+    column: letters[columns[columnIndex]],
+    remainder: remainder - 1,
+  };
 }
+
 /**
- * Removes a single ball from the remaining set of balls and returns the updated array
+ * Updates the remaining size of the given pool
+ * @param pool Set of all balls in pool
+ * @returns Size of the pool and an index of valid remaining columns
+ */
+export function getPoolSize(pool: Pool): [number, number[]] {
+  let remainder = 0;
+  let columns = [];
+  for (let i = 0; i < pool.length; i++) {
+    if (pool[i].length > 0) {
+      remainder += pool[i].length;
+      columns.push(i);
+    }
+  }
+  return [remainder, columns];
+}
+
+/**
+ * Removes a single ball from the remaining set of balls
  * @param pool Remaining set of all possible balls
  * @param value The ball to be removed
+ * @returns Updated pool of balls
  */
-
-export function removeBall(pool: Pool, ball: Ball) {
+export function removeBall(pool: Pool, ball: Ball): Pool {
   return pool.map(function (item: number[], index) {
     if (index === ball.key) {
       return item.filter(function (element: number) {
@@ -124,278 +145,219 @@ export function removeBall(pool: Pool, ball: Ball) {
     return item;
   });
 }
+
 /**
- * Takes a pool of numbers and return the size of the pool and an index of valid remaining columns
- * @param pool Set of all balls in pool
+ * Check if card is a winner and return the winning methods
+ * @param card
+ * @param draws
+ * @returns Tuple of Results, Methods
  */
-
-export function getPoolSize(pool: Pool) {
-  let remainder = 0;
-  let columns = [];
-
-  let i;
-  for (i = 0; i < pool.length; i++) {
-    if (pool[i].length > 0) {
-      remainder += pool[i].length;
-      columns.push(i);
-    }
-  }
-
-  return { remainder, columns };
+export function validateCard(card: Card, draws: Pool): [Results, Methods] {
+  const results = checkCard(card, draws);
+  const methods = winningMethods(results);
+  return [results, methods];
 }
+
 /**
  * Check if card is a winner based on current draw pool
  * @param card
  * @param draws
- * @returns
+ * @returns Results object
  */
-export function validateCard(card: Card, draws: Pool) {
-  let results: Results = { row: false, column: false, diagonal: false };
-  let rowResults = checkRows(card, draws);
-  let columnResults = checkColumns(card, draws);
-  let diagonalResults = checkDiagonals(card, draws);
-
-  if (rowResults) {
-    results = { ...results, row: rowResults };
-  }
-  if (columnResults) {
-    results = { ...results, column: columnResults };
-  }
-  if (diagonalResults) {
-    results = { ...results, diagonal: diagonalResults };
-  }
-  return results;
+export function checkCard(card: Card, draws: Pool): Results {
+  const row = checkRows(card, draws);
+  const column = checkColumns(card, draws);
+  const diagonal = checkDiagonals(card, draws);
+  return { row, column, diagonal };
 }
+
 /**
  * Check all rows on card for a win
- * Returns true if winning row is found
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
+ * @returns Array of winning index positions on card or otherwise an empty array
  */
-function checkRows(card: Card, draws: Pool) {
-  let result: number[] | boolean = false;
-  let i;
-  for (i = 0; i < 5; i++) {
+export function checkRows(card: Card, draws: Pool) {
+  let result: number[] = [];
+  for (let i = 0; i < 5; i++) {
     if (i === 2) {
-      result = checkCellsInRow(card, draws, i, true);
+      result = checkCellsInRow(card, draws, { offset: i, flag: true });
     } else {
-      result = checkCellsInRow(card, draws, i);
+      result = checkCellsInRow(card, draws, { offset: i });
     }
-    if (result) {
-      break;
-    }
+    if (result.length > 0) break;
   }
-  if (result) {
-    return result;
-  } else {
-    return false;
-  }
+  return result;
 }
 /**
  * Check each cell in each row on card for a win
- * Returns true if a row contains only winning cells
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
- * @param offset Row offset
- * @param flag Flag for free spot
+ * @param {{offset: number, flag: boolean}} args additional arguments
+ * @returns Array of winning index positions on card or otherwise an empty array
  */
-function checkCellsInRow(
+export function checkCellsInRow(
   card: Card,
   draws: Pool,
-  offset?: number,
-  flag?: boolean
-) {
-  if (!offset) {
-    offset = 0;
-  }
-  let result: number[] | boolean = [];
-  let i;
-  for (i = 0; i < 5; i++) {
+  { offset = 0, flag = false } = {}
+): number[] {
+  let result = [];
+  for (let i = 0; i < 5; i++) {
+    // Skip free spot
     if (flag && i === 2) {
       result.push(offset * 5 + i);
       continue;
     }
-    let check = findCommonElements([card[offset * 5 + i]], draws[i]);
-
-    // if comparison fails reset result array, otherwise push successful index
+    let check = findElementInArray(card[offset * 5 + i], draws[i]);
+    // If comparison fails reset result array
     if (!check) {
       result = [];
       break;
-    } else {
-      result.push(offset * 5 + i);
     }
-    continue;
-  }
-  if (result.length === 0) {
-    result = false;
+    result.push(offset * 5 + i);
   }
   return result;
 }
+
 /**
  * Check all columns on card for a win
- * Returns true if winning column is found
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
+ *  @returns Array of winning index positions on card or otherwise an empty array
  */
-function checkColumns(card: Card, draws: Pool) {
-  let result: number[] | boolean = false;
-  let i;
-  for (i = 0; i < 5; i++) {
+export function checkColumns(card: Card, draws: Pool): number[] {
+  let result: number[] = [];
+  for (let i = 0; i < 5; i++) {
     if (i === 2) {
-      result = checkCellsInColumn(card, draws, i, true);
+      result = checkCellsInColumn(card, draws, { offset: i, flag: true });
     } else {
-      result = checkCellsInColumn(card, draws, i);
+      result = checkCellsInColumn(card, draws, { offset: i });
     }
-    if (result) {
-      break;
-    }
+    if (result.length > 0) break;
   }
-  if (result) {
-    return result;
-  } else {
-    return false;
-  }
+  return result;
 }
+
 /**
- * Check each cell in each column on card for a win
- * Returns true if a column contains only winning cells
+ * Check each cell in each column (offset) on card for a win
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
- * @param offset Row offset
- * @param flag Flag for free spot
+ * @param {{offset: number, flag: boolean}} args additional arguments
+ * @returns Array of winning index positions on card or otherwise an empty array
  */
-function checkCellsInColumn(
+export function checkCellsInColumn(
   card: Card,
   draws: Pool,
-  offset?: number,
-  flag?: boolean
-) {
-  if (!offset) {
-    offset = 0;
-  }
-  let result: number[] | boolean = [];
-  let i;
-  for (i = 0; i < 5; i++) {
+  { offset = 0, flag = false } = {}
+): number[] {
+  let result = [];
+  for (let i = 0; i < 5; i++) {
+    // Skip free spot
     if (flag && i === 2) {
       result.push(i * 5 + offset);
       continue;
     }
-    let check = findCommonElements([card[i * 5 + offset]], draws[offset]);
-
-    // if comparison fails reset result array, otherwise push successful index
+    const check = findElementInArray(card[i * 5 + offset], draws[offset]);
+    // If comparison fails reset result array
     if (!check) {
       result = [];
       break;
-    } else {
-      result.push(i * 5 + offset);
     }
-    continue;
-  }
-  if (result.length === 0) {
-    result = false;
+    result.push(i * 5 + offset);
   }
   return result;
 }
+
 /**
- * Check all diagonals on card for a win
- * Returns true if winning diagonal is found
+ * Check diagonals on card for a win
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
+ * @returns Array of winning index positions on card or otherwise an empty array
  */
-function checkDiagonals(card: Card, draws: Pool) {
-  let result: number[] | boolean = false;
-  let i;
-  for (i = 0; i < 2; i++) {
-    if (i === 0) {
-      result = checkFallingDiagonal(card, draws, true);
-    }
-    if (i === 1) {
-      result = checkRisingDiagonal(card, draws, true);
-    }
-    if (result) {
-      break;
-    }
-  }
-  if (result) {
-    return result;
-  } else {
-    return false;
-  }
+export function checkDiagonals(card: Card, draws: Pool): number[] {
+  const falling = checkFallingDiagonal(card, draws);
+  const rising = checkRisingDiagonal(card, draws);
+  return [...falling, ...rising];
 }
+
 /**
  * Check each cell on the falling diagonal on card for a win
- * Returns true if the falling diagonal contains only winning cells
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
- * @param flag Flag for free spot
+ * @returns Array of winning index positions on card or otherwise an empty array
  */
-function checkFallingDiagonal(card: Card, draws: Pool, flag?: boolean) {
-  let result: number[] | boolean = [];
-  let i;
-  for (i = 0; i < 5; i++) {
-    if (flag && i === 2) {
+export function checkFallingDiagonal(card: Card, draws: Pool): number[] {
+  let result = [];
+  for (let i = 0; i < 5; i++) {
+    // Skip free spot
+    if (i === 2) {
       result.push(i * 6);
       continue;
     }
-    let check = findCommonElements([card[i * 6]], draws[i]);
-
-    // if comparison fails reset result array, otherwise push successful index
+    const check = findElementInArray(card[i * 6], draws[i]);
+    // If comparison fails reset result array
     if (!check) {
       result = [];
       break;
-    } else {
-      result.push(i * 6);
     }
-    continue;
-  }
-  if (result.length === 0) {
-    result = false;
+    result.push(i * 6);
   }
   return result;
 }
+
 /**
  * Check each cell on the rising diagonal on card for a win
- * Returns true if the rising diagonal contains only winning cells
  * @param card Current card to be checked
  * @param draws Pool of currently drawn Bingo balls
- * @param flag Flag for free spot
+ * @returns Array of winning index positions on card or otherwise an empty array
  */
-function checkRisingDiagonal(card: Card, draws: Pool, flag?: boolean) {
-  let result: number[] | boolean = [];
-  let i;
-  // Too tired to figure out an algorithim for this one
-  // card[5 * 4 + 0 ] draw[0]
-  // card[5 * 3 + 1 ] draw[1]
-  // card[5 * 2 + 2 ] draw[2]
-  // card[5 * 1 + 3 ] draw[3]
-  // card[5 * 0 + 4 ] draw[4]
+export function checkRisingDiagonal(card: Card, draws: Pool): number[] {
+  let result = [];
   const offset = [4, 3, 2, 1, 0];
-
-  for (i = 0; i < 5; i++) {
-    if (flag && i === 2) {
+  for (let i = 0; i < 5; i++) {
+    // Skip free spot
+    if (i === 2) {
       result.push(offset[i] * 5 + i);
       continue;
     }
-    let check = findCommonElements([card[offset[i] * 5 + i]], draws[i]);
-    // if comparison fails reset result array, otherwise push successful index
+    const check = findElementInArray(card[offset[i] * 5 + i], draws[i]);
+    // If comparison fails reset result array
     if (!check) {
       result = [];
       break;
-    } else {
-      result.push(offset[i] * 5 + i);
     }
-    continue;
-  }
-  if (result.length === 0) {
-    result = false;
+    result.push(offset[i] * 5 + i);
   }
   return result;
 }
+
 /**
- * Find if current value exists in the search pool
- * @param value Array of number to be checked
- * @param search Array of search pool
+ * Checks results for winning methods
+ * @param results
+ * @returns Array of winning methods
  */
-function findCommonElements(value: number[], search: number[]) {
-  return search.some((item) => value.includes(item));
+export function winningMethods(results: Results): string[] {
+  return Object.keys(results).filter((method) => {
+    if (results[method].length <= 0) return undefined;
+    return results[method];
+  });
+}
+
+/**
+ * Sets Winning crossmarks after successful card validations
+ * @param methods Array of current winning methods (row, column, diagonal)
+ * @param results Results of validation check
+ * @retuns Object of winning crossmarks
+ */
+export function winningCells(results: Results): { [key: string]: boolean } {
+  const methods = winningMethods(results);
+  let winningCrossmarks = {};
+  for (let i = 0; i < methods.length; i++) {
+    let marks = (results[methods[i]] as number[]).map(function (item) {
+      let id = `cell${item + 1}`;
+      return { [id]: true };
+    });
+    winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
+  }
+  return winningCrossmarks;
 }

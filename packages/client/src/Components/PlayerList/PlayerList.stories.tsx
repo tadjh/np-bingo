@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import PlayerList, { PlayerListProps } from './';
+import PlayerList, { PlayerListProps } from '.';
 
 export default {
   title: 'Components/PlayerList',
@@ -11,6 +11,15 @@ export default {
       handles: ['click .delete-button'],
     },
   },
+  decorators: [
+    (Story) => {
+      return (
+        <div className="w-96">
+          <Story />
+        </div>
+      );
+    },
+  ],
 } as Meta;
 
 const Template: Story<PlayerListProps> = (args) => <PlayerList {...args} />;
