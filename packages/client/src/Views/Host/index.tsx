@@ -136,7 +136,12 @@ export default function Host({
     leaveRoom(room);
   };
 
-  const handleCheckCard = (room: Room) => {
+  /**
+   * Check card for validation
+   * @param room
+   * @returns
+   */
+  const handleCheckCard = () => {
     if (!checkCard) return;
     checkCard();
   };
@@ -187,7 +192,7 @@ export default function Host({
           variant="contained"
           color="primary"
           disabled={gamestate !== 'validate' && true}
-          onClick={() => handleCheckCard(room)}
+          onClick={handleCheckCard}
         >
           Check Card
         </Button>
