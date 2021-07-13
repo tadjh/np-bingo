@@ -21,7 +21,7 @@ export default function Badge({
   function backgroundColor(color: BadgeColors): string {
     switch (color) {
       case 'disabled':
-        return 'bg-gray-700';
+        return 'bg-gray-500 dark:bg-gray-600';
       case 'blue':
         return 'bg-blue-bingo hover:bg-blue-900 active:bg-blue-800';
       case 'gray':
@@ -33,7 +33,7 @@ export default function Badge({
 
   return (
     <div
-      className={`absolute w-7 h-5 -top-2 -right-2 z-20 rounded-full text-white text-opacity-90 text-xs text-center font-mono font-bold leading-normal shadow-md hover:shadow-lg tooltip ${
+      className={`absolute w-7 h-5 -top-2 -right-1 z-20 rounded-full text-white text-opacity-90 text-xs text-center font-mono font-bold leading-normal shadow-md hover:shadow-lg tooltip ${
         !disabled ? backgroundColor(color) : backgroundColor('disabled')
       }`}
       {...props}
