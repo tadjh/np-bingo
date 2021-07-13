@@ -21,4 +21,5 @@ export const Base = Template.bind({});
 Base.args = {
   children: 'Link',
   className: 'hover:underline',
+  to: '',
 };
