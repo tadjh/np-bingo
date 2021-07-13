@@ -14085,7 +14085,7 @@ table@^6.0.9:
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
 
-"tailwindcss@npm:@tailwindcss/postcss7-compat":
+"tailwindcss@npm:@tailwindcss/postcss7-compat@^2.2.4":
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/@tailwindcss/postcss7-compat/-/postcss7-compat-2.2.4.tgz#0e5b446e94cfdf892e4f76cecb703c8d698050f3"
   integrity sha512-lFIBdD1D2w3RgHFg7kNB7U5LOlfbd+KXTzcLyC/RlQ9eVko6GjNCKpN/kdmfF9wiGxbSDT/3mousXeMZdOOuBg==
