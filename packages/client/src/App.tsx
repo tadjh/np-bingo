@@ -101,6 +101,10 @@ export default function App() {
      * To Player: Host left
      */
     // TODO Dialog when host leaves
+    socket.on('host-left', () => {
+      console.log(`Host left, and you have been removed from the room`);
+      dispatch({ type: PLAYER_KICKED });
+    });
 
     /**
      * To Player: Removed from game
