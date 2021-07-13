@@ -36,8 +36,46 @@ router.post('/', (req, res) => {
 });
 
 /**
+ * @route PUT api/game/:id
+ * @description Update game winner by room ID
+ * @access Public
+ */
+router.put('/:id', async (req, res) => {
+  try {
+    await Game.findOneAndUpdate(
+      { room: req.params.id },
+      { $addToSet: { winners: req.body } },
+      {},
+      function (err, doc) {
+        if (err) {
+          res
+            .status(400)
+            .json({ error: `Error while finding game room ${req.params.id}` });
+        }
+        if (doc) {
+          res.json({
+            msg: `Game room ${req.params.id} saved`,
+          });
+        }
+        if (!doc) {
+          res
+            .status(404)
+            .json({ error: `Game room ${req.params.id} does not exist` });
+        }
+      }
+    );
+  } catch (err) {
+    res
+      .status(400)
+      .json({ error: `Unable to update game room ${req.params.id} ` });
+  }
+});
+
+// TODO hinges on ID being unique, otherwise grabs first document with this ID
+// TODO Will add a subdoc every time user exits and rejoins...
+/**
  * @route PUT api/game/join/:id
- * @description Join game by ID
+ * @description Join game by room ID
  * @access Public
  */
 router.put('/join/:id', async (req, res) => {
@@ -58,31 +96,10 @@ router.put('/join/:id', async (req, res) => {
             msg: `Joined game room ${req.params.id}`,
           });
         }
-      }
-    );
-  } catch (err) {
-    res
-      .status(400)
-      .json({ error: `Unable to join game room ${req.params.id} ` });
-  }
-});
-
-router.put('/:id', async (req, res) => {
-  try {
-    await Game.findOneAndUpdate(
-      { room: req.params.id },
-      { $addToSet: { winners: req.body } },
-      {},
-      function (err, doc) {
-        if (err) {
+        if (!doc) {
           res
-            .status(400)
-            .json({ error: `Unable to find game room ${req.params.id}` });
-        }
-        if (doc) {
-          res.json({
-            msg: `Game room saved ${req.params.id}`,
-          });
+            .status(404)
+            .json({ error: `Game room ${req.params.id} does not exist` });
         }
       }
     );
