@@ -46,19 +46,26 @@ export default function CodeModal({
     handleChange(event);
 
     if (event.target.value.length < event.target.maxLength) {
-      if (event.target.previousSibling) {
-        let target = event.target.previousSibling as HTMLInputElement;
-        target.focus();
-      }
+      if (!event.target.previousSibling) return;
+      let target = event.target.previousSibling as HTMLInputElement;
+      target.focus();
     }
 
     if (event.target.value.length === event.target.maxLength) {
-      if (event.target.nextSibling) {
-        let target = event.target.nextSibling as HTMLInputElement;
-        target.focus();
-      }
+      if (!event.target.nextSibling) return;
+      let target = event.target.nextSibling as HTMLInputElement;
+      target.focus();
     }
   };
+
+  // const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  //   if (event.keyCode === 8 || event.keyCode === 46) {
+  //     if (!event.currentTarget.previousSibling) return;
+  //     let target = event.currentTarget.previousSibling as HTMLInputElement;
+  //     target.focus();
+  //   }
+  // };
+  // onKeyDown={handleKeyDown}
 
   return (
     <React.Fragment>
