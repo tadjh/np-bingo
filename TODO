@@ -20,6 +20,11 @@ Development
 
 Environment
 // TODO Use copyfiles or webpack(?) to move server favicon from 'Public' to 'dist/Public' or something
+heroku local web
+git push heroku-web-client main
+git push heroku-api main
+heroku restart --remote heroku-api
+heroku logs -t --remote heroku-web-client
 
 QOL
 // TODO useDebugValue label my custom hooks?
