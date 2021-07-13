@@ -19,7 +19,6 @@ var httpServer = http_1.createServer(app);
 /**
  * Socket.io CORS
  */
-// TODO set origin to production server
 var io = new socket_io_1.Server(httpServer, {
     cors: {
         origin: process.env.ORIGIN,
@@ -33,7 +32,7 @@ app.use(serve_favicon_1.default(path_1.default.join(__dirname, 'public', 'favico
 /**
  * REST Api CORS
  */
-app.use(cors_1.default({ origin: process.env.ORIGIN, credentials: true })); // TODO is this duplicaton with line 7?
+app.use(cors_1.default({ origin: process.env.ORIGIN, credentials: true }));
 app.use(express_1.default.json());
 // use Routes
 app.get('/api/', function (req, res) {
@@ -165,12 +164,7 @@ io.on('connection', function (socket) {
      */
     socket.on('winning-card', function (room, winner) {
         if (winner.player.socket) {
-            io.to(winner.player.socket).emit('winner', room, {
-                player: winner.player,
-                card: winner.card,
-                methods: winner.methods,
-                data: winner.data,
-            });
+            io.to(winner.player.socket).emit('winner', room, winner);
             console.log('Bingo!');
         }
         else {

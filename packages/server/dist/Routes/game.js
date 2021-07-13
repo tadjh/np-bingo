@@ -65,22 +65,62 @@ router.get('/:id', function (req, res) {
 router.post('/', function (req, res) {
     var room = common_1.makeID(4);
     // TODO check unique ID against previous game IDs
-    // TODO hashmap ?
     game_1.default.create({ host: req.body, room: room })
         .then(function (doc) { return res.json({ game: doc, msg: "Created game room " + room }); })
         .catch(function (err) {
         return res.status(400).json({ error: 'Unable to create a game room' });
     });
 });
-// TODO hinges on ID being unique other grabs first document with this ID
+/**
+ * @route PUT api/game/:id
+ * @description Update game winner by room ID
+ * @access Public
+ */
+router.put('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var err_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                _a.trys.push([0, 2, , 3]);
+                return [4 /*yield*/, game_1.default.findOneAndUpdate({ room: req.params.id }, { $addToSet: { winners: req.body } }, {}, function (err, doc) {
+                        if (err) {
+                            res
+                                .status(400)
+                                .json({ error: "Error while finding game room " + req.params.id });
+                        }
+                        if (doc) {
+                            res.json({
+                                msg: "Game room " + req.params.id + " saved",
+                            });
+                        }
+                        if (!doc) {
+                            res
+                                .status(404)
+                                .json({ error: "Game room " + req.params.id + " does not exist" });
+                        }
+                    })];
+            case 1:
+                _a.sent();
+                return [3 /*break*/, 3];
+            case 2:
+                err_1 = _a.sent();
+                res
+                    .status(400)
+                    .json({ error: "Unable to update game room " + req.params.id + " " });
+                return [3 /*break*/, 3];
+            case 3: return [2 /*return*/];
+        }
+    });
+}); });
+// TODO hinges on ID being unique, otherwise grabs first document with this ID
 // TODO Will add a subdoc every time user exits and rejoins...
 /**
  * @route PUT api/game/join/:id
- * @description Join game by ID
+ * @description Join game by room ID
  * @access Public
  */
 router.put('/join/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var err_1;
+    var err_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -97,36 +137,10 @@ router.put('/join/:id', function (req, res) { return __awaiter(void 0, void 0, v
                                 msg: "Joined game room " + req.params.id,
                             });
                         }
-                    })];
-            case 1:
-                _a.sent();
-                return [3 /*break*/, 3];
-            case 2:
-                err_1 = _a.sent();
-                res
-                    .status(400)
-                    .json({ error: "Unable to join game room " + req.params.id + " " });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
-router.put('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var err_2;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, game_1.default.findOneAndUpdate({ room: req.params.id }, { $addToSet: { winners: req.body } }, {}, function (err, doc) {
-                        if (err) {
+                        if (!doc) {
                             res
-                                .status(400)
-                                .json({ error: "Unable to find game room " + req.params.id });
-                        }
-                        if (doc) {
-                            res.json({
-                                msg: "Game room saved " + req.params.id,
-                            });
+                                .status(404)
+                                .json({ error: "Game room " + req.params.id + " does not exist" });
                         }
                     })];
             case 1:
@@ -167,7 +181,6 @@ router.put('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0
 //   }
 // });
 /**
- * TODO is Delete the best option?
  * @route DELETE api/game/:id
  * @description End game by ID
  * @access Public
