@@ -17,19 +17,37 @@ export default function Logo({ home = false, winner }: LogoProps): JSX.Element {
       case -1:
         return 'bg-green-700 dark:bg-green-600 dark:text-white';
       case 0:
-        return 'bg-blue-bingo dark:bg-blue-300 dark:text-black';
+        return 'bg-blue-700';
       case 1:
-        return 'bg-red-bingo dark:bg-red-300 dark:text-black';
+        return 'bg-red-700 animation-delay-300';
       case 2:
-        return 'bg-gray-400 dark:bg-gray-300 dark:text-black';
+        return 'bg-gray-500 animation-delay-900';
       case 3:
-        return 'bg-green-bingo dark:bg-green-300 dark:text-black';
+        return 'bg-green-700 animation-delay-1200';
       case 4:
-        return 'bg-orange-bingo dark:bg-orange-300 dark:text-black';
+        return 'bg-orange-600 animation-delay-600';
       default:
         throw new Error('Error in Logo style');
     }
   }
+
+  function logoStyleInner(index: number): string {
+    switch (index) {
+      case 0:
+        return 'from-blue-100 via-blue-400 to-blue-700';
+      case 1:
+        return 'from-red-100 via-red-400 to-red-700';
+      case 2:
+        return 'from-gray-100 via-gray-200 to-gray-500';
+      case 3:
+        return 'from-green-100 via-green-400 to-green-700';
+      case 4:
+        return 'from-orange-100 via-orange-300 to-orange-600';
+      default:
+        throw new Error('Error in Logo inner style');
+    }
+  }
+
   return (
     <div
       className={[
@@ -41,11 +59,22 @@ export default function Logo({ home = false, winner }: LogoProps): JSX.Element {
         return (
           <div
             key={index}
-            className={`flex justify-center items-center rounded-full select-none text-white font-sans font-bold uppercase text-center ${
+            className={`relative flex justify-center items-center rounded-full select-none text-black text-opacity-90 font-sans font-bold uppercase text-center ${
               !winner ? logoStyle(index) : logoStyle(-1)
-            } ${home ? 'h-20 w-20 shadow-md text-4xl' : 'h-14 w-14 text-3xl'}`}
+            } ${
+              home
+                ? 'h-20 w-20 shadow-md text-4xl animate-bounce'
+                : 'h-14 w-14 text-3xl'
+            }`}
           >
-            {item}
+            <div className="w-full h-full absolute overflow-hidden rounded-full">
+              <div
+                className={`rounded-full filter blur-[6px] bg-gradient-radial w-[97%] h-[97%] ${logoStyleInner(
+                  index
+                )}`}
+              ></div>
+            </div>
+            <div className="relative z-10">{item}</div>
           </div>
         );
       })}

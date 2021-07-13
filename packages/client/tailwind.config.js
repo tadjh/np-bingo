@@ -1,6 +1,7 @@
 const colors = require('tailwindcss/colors');
 
 module.exports = {
+  mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: 'class', // or 'media' or 'class'
   theme: {
@@ -63,14 +64,31 @@ module.exports = {
         },
       },
       backgroundImage: (theme) => ({
-        'bingo-light': "url('/src/Assets/bg-tranparent-light.png')",
-        'bingo-dark': "url('/src/Assets/bg-tranparent-dark.png')",
+        'bingo-light': "url('/src/Assets/bg-tranparent-light.svg')",
+        'bingo-dark': "url('/src/Assets/bg-tranparent-dark.svg')",
+        'gradient-radial':
+          'radial-gradient(circle at 25% 25%, var(--tw-gradient-stops))',
       }),
       width: {
         23.5: '5.875rem',
       },
       height: {
         23.5: '5.875rem',
+      },
+      keyframes: {
+        bounce: {
+          '0%, 100%': {
+            transform: 'translateY(0)',
+            animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)',
+          },
+          '50%': {
+            transform: 'translateY(-10%)',
+            animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
+          },
+        },
+      },
+      animation: {
+        bounce: 'bounce 1500ms infinite',
       },
     },
   },
