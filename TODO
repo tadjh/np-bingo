@@ -1,11 +1,11 @@
-rBugs
-// TODO Player doesn't leave room on back button (socket.close? or window.onpopstate)
+Bugs
+// TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
 
 Vulnerbilities
 // TODO Rest Api has no auth
 // TODO Max active Games
 // TODO Max room size 
-// TODO mongodB Atlas IP needs more strict whitelist
+// TODO mongodB Atlas IP needs strict whitelist
 // TODO Timeout socket.io connection with reconnect popup
 
 Development
@@ -22,7 +22,7 @@ Environment
 // TODO Use copyfiles or webpack(?) to move server favicon from 'Public' to 'dist/Public' or something
 
 QOL
-// TODO useDebugValue label my custom hooks
+// TODO useDebugValue label my custom hooks?
 // TODO React ARIA for screen readers
 // TODO Create users?
 // TODO Implement useTitle
@@ -30,18 +30,18 @@ QOL
 // TODO Popup when user submits card for host and user
 // TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
 // TODO Change color of ready check background
-// TODO Host has left game notification
+// TODO Host has left game popup notification
 // TODO Show winner name on win?
 // TODO Error Boundaries
 
 Future Features
 // TODO Public Rooms
 // TODO Streamer Mode
-// TODO Balls remaining color based on amount
-            * Bright Green @ 75 (default)
-            * Yellow-Green when 5 balls have been drawn in each column (Earliest possible bingo)
-            * Red below 42 avg bingo
-// TODO Death Bingo
+// TODO Balls remaining color based on amount??
+            * Bright Green  - @ 75 (default)
+            * Yellow-Green  - when 5 balls have been drawn in each column (Earliest possible bingo)
+            * Red  - below 42 avg bingo
+// TODO Death Bingo!!!
 // TODO Blackout Bingo
 // TODO Postage Stamp Rule
 // TODO Four Corners Rule
