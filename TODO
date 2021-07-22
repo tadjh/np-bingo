@@ -27,6 +27,7 @@ heroku restart --remote heroku-api
 heroku logs -t --remote heroku-web-client
 
 QOL
+// TODO Add cogwheel menu with mute audio and dark mode?
 // TODO useDebugValue label my custom hooks?
 // TODO React ARIA for screen readers
 // TODO Create users?
