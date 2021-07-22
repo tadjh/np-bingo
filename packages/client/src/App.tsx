@@ -35,7 +35,7 @@ import {
   apiSaveRoom,
   apiUpdateRoom,
 } from './Api';
-import { useQuery, useTheme, useUser } from './Utils/custom-hooks';
+import { useQuery, useSounds, useTheme, useUser } from './Utils/custom-hooks';
 import config from './Config/features';
 import { GameContext, BallContext, ThemeContext } from './Utils/contexts';
 import Background from './Components/Background';
@@ -48,6 +48,7 @@ export default function App() {
   const [user, setUser] = useUser();
   const { state, dispatch, play, mode } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
+  const [sounds, toggleSounds] = useSounds(config.sounds);
 
   let {
     gamestate,
@@ -355,7 +356,9 @@ export default function App() {
 
   return (
     <div id="App" className={theme}>
-      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <ThemeContext.Provider
+        value={{ theme, toggleTheme, sounds, toggleSounds }}
+      >
         <GameContext.Provider
           value={{
             gamestate,

@@ -13,16 +13,17 @@ export interface ThemeToggleProps
 export default function ThemeToggle({
   ...props
 }: ThemeToggleProps): JSX.Element {
+  const { theme, toggleTheme, sounds } = useContext(ThemeContext);
   const lightSfxSpriteMap = {
     lightOffPress: [0, 1000],
     lightOffUnpress: [1000, 1000],
     lightOnPress: [2000, 1000],
     lightOnUnpress: [3000, 1000],
   } as SpriteMap;
-  const { theme, toggleTheme } = useContext(ThemeContext);
   const [playSfx] = useSound(lightSfx, {
     volume: 0.25,
     sprite: { ...lightSfxSpriteMap },
+    soundEnabled: sounds,
   });
   return (
     <IconButton

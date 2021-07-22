@@ -188,6 +188,21 @@ export function useTheme(initialTheme: Theme): [Theme, () => void] {
 }
 
 /**
+ * Hook for toggling all sounds
+ * @param initialSounds
+ * @returns
+ */
+export function useSounds(initialSounds: boolean): [boolean, () => void] {
+  const [sounds, setSounds] = useState<boolean>(initialSounds);
+
+  const toggleSounds = () => {
+    setSounds((prevSounds) => !prevSounds);
+  };
+
+  return [sounds, toggleSounds];
+}
+
+/**
  * Use Portal Hook
  * @param target DOM Element
  * @returns

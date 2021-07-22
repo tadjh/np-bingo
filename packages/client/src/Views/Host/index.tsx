@@ -4,6 +4,7 @@ import {
   BallContext,
   FeautresContext,
   GameContext,
+  ThemeContext,
 } from '../../Utils/contexts';
 import {
   Ball as BallType,
@@ -26,6 +27,8 @@ import Widgets from '../../Components/Widgets';
 import Link from '../../Components/Link';
 import { useProgress } from '../../Utils/custom-hooks';
 import socket from '../../Config/socket.io';
+import useSound from 'use-sound';
+import dispenseSfx from '../..//Assets/Sounds/Ball_Drop.mp3';
 
 export interface HostProps {
   checkCard?: () => void;
@@ -48,6 +51,7 @@ export default function Host({
 }: HostProps) {
   const { ballDelay } = useContext(FeautresContext);
   const { gamestate, room, winner, play } = useContext(GameContext);
+  const { sounds } = useContext(ThemeContext);
   const ball = useContext(BallContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
 
@@ -177,6 +181,12 @@ export default function Host({
     }
   }, [gamestate, room, winner, play, saveRoom]);
 
+  const [playSfx] = useSound(dispenseSfx, {
+    volume: 0.25,
+    playbackRate: 0.9,
+    soundEnabled: sounds,
+  });
+
   return (
     <React.Fragment>
       <Header className="gap-3">
@@ -211,6 +221,7 @@ export default function Host({
               <IconButton
                 disabled={(isDisabled || inProgress) && true}
                 onClick={() => handleBall(gamestate)}
+                onMouseDown={() => playSfx()}
                 description="New Ball"
                 direction="left"
               >

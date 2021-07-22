@@ -11,6 +11,7 @@ interface Config {
   maxActiveGames: number;
   ballDelay: number;
   allowNewCard: boolean;
+  sounds: boolean;
 }
 
 const config = {
@@ -24,6 +25,7 @@ const config = {
   maxActiveGames: 5, // TODO
   ballDelay: 5000, // Ball animation duration in milliseconds
   allowNewCard: false, // Allow players to draw a new random card
+  sounds: true,
 } as Config;
 
 export default config;

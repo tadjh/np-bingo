@@ -16,7 +16,14 @@ export const Dark = Template.bind({});
 Dark.decorators = [
   (Story) => {
     return (
-      <ThemeContext.Provider value={{ theme: 'dark', toggleTheme: () => {} }}>
+      <ThemeContext.Provider
+        value={{
+          theme: 'dark',
+          toggleTheme: () => {},
+          sounds: true,
+          toggleSounds: () => {},
+        }}
+      >
         <Story />
       </ThemeContext.Provider>
     );
