@@ -1,3 +1,3 @@
 # np-bingo
 
-http://dev.tadjhbrooks.com/np-bingo/
+http://np-bingo-client.herokuapp.com/
