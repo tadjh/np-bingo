@@ -15,7 +15,7 @@ export default function Logo({ home = false, winner }: LogoProps): JSX.Element {
   function logoStyle(index: number): string {
     switch (index) {
       case -1:
-        return 'bg-green-700 dark:bg-green-600 dark:text-white';
+        return 'bg-green-700';
       case 0:
         return 'bg-blue-700';
       case 1:
@@ -33,6 +33,8 @@ export default function Logo({ home = false, winner }: LogoProps): JSX.Element {
 
   function logoStyleInner(index: number): string {
     switch (index) {
+      case -1:
+        return 'from-green-100 via-green-400 to-green-700';
       case 0:
         return 'from-blue-100 via-blue-400 to-blue-700';
       case 1:
@@ -69,9 +71,9 @@ export default function Logo({ home = false, winner }: LogoProps): JSX.Element {
           >
             <div className="w-full h-full absolute overflow-hidden rounded-full">
               <div
-                className={`rounded-full filter blur-[6px] bg-gradient-radial w-[97%] h-[97%] ${logoStyleInner(
-                  index
-                )}`}
+                className={`rounded-full filter blur-[6px] bg-gradient-radial w-[97%] h-[97%] ${
+                  !winner ? logoStyleInner(index) : logoStyleInner(-1)
+                }`}
               ></div>
             </div>
             <div className="relative z-10">{item}</div>
