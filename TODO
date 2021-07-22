@@ -2,7 +2,7 @@ Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
 
 Vulnerbilities
-// TODO Rest Api has no auth
+// TODO Rest Api has no auth (JWT)
 // TODO Max active Games
 // TODO Max room size 
 // TODO mongodB Atlas IP needs strict whitelist
