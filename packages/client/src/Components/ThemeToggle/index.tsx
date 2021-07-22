@@ -3,6 +3,9 @@ import IconButton from '../IconButton';
 import MoonIcon from '../../Assets/Moon';
 import SunIcon from '../../Assets/Sun';
 import { ThemeContext } from '../../Utils/contexts';
+import useSound from 'use-sound';
+import lightSfx from '../..//Assets/Sounds/Light_Switch_On_Off.mp3';
+import { SpriteMap } from 'use-sound/dist/types';
 
 export interface ThemeToggleProps
   extends React.HTMLAttributes<HTMLButtonElement> {}
@@ -10,11 +13,31 @@ export interface ThemeToggleProps
 export default function ThemeToggle({
   ...props
 }: ThemeToggleProps): JSX.Element {
+  const lightSfxSpriteMap = {
+    lightOffPress: [0, 1000],
+    lightOffUnpress: [1000, 1000],
+    lightOnPress: [2000, 1000],
+    lightOnUnpress: [3000, 1000],
+  } as SpriteMap;
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const [playSfx] = useSound(lightSfx, {
+    volume: 0.25,
+    sprite: { ...lightSfxSpriteMap },
+  });
   return (
     <IconButton
       className="group"
       onClick={toggleTheme}
+      onMouseDown={() => {
+        theme === 'light'
+          ? playSfx({ id: 'lightOnPress' })
+          : playSfx({ id: 'lightOffPress' });
+      }}
+      onMouseUp={() => {
+        theme === 'light'
+          ? playSfx({ id: 'lightOnUnpress' })
+          : playSfx({ id: 'lightOffUnpress' });
+      }}
       description={theme === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'}
       direction="top"
     >
