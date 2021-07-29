@@ -1,5 +1,9 @@
 import React from 'react';
+// import useSound from 'use-sound';
+// import { SpriteMap } from 'use-sound/dist/types';
+// import { ThemeContext } from '../../Utils/contexts';
 import Ripple from '../Ripple';
+// import dispenseSfx from '../..//Assets/Sounds/Dispense.mp3';
 
 export type ButtonVariants = 'contained';
 
@@ -38,9 +42,25 @@ export default function Button({
     !disabled ? variantStyle(variant) : variantStyle('disabled')
   } ${className}`;
 
+  // const { sounds } = useContext(ThemeContext);
+  // const dispenseSfxSpriteMap = {
+  //   dispensePress: [0, 1000],
+  //   dispenseUnpress: [1000, 1000],
+  // } as SpriteMap;
+  // const [playSfx] = useSound(dispenseSfx, {
+  //   volume: 0.25,
+  //   sprite: { ...dispenseSfxSpriteMap },
+  //   soundEnabled: sounds,
+  // });
+
   if (Component)
     return (
-      <Component className={buttonClasses} disabled={disabled} {...props}>
+      <Component
+        className={buttonClasses}
+        disabled={disabled}
+        // onMouseDown={() => playSfx({ id: 'dispensePress' })}
+        {...props}
+      >
         <Ripple disabled={disabled} />
         {children}
       </Component>
@@ -50,6 +70,7 @@ export default function Button({
       className={buttonClasses}
       disabled={disabled}
       type={type}
+      // onMouseDown={() => playSfx({ id: 'dispensePress' })}
       {...props}
     >
       <Ripple disabled={disabled} />
