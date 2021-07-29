@@ -8,6 +8,7 @@ import Credit from '../../Components/Credit';
 import ThemeToggle from '../../Components/ThemeToggle';
 import Main from '../../Components/Main';
 import Header from '../../Components/Header';
+import VolumeToggle from '../../Components/VolumeToggle';
 
 export interface HomeProps {
   createRoom?: () => void;
@@ -56,7 +57,10 @@ export default function Home({ createRoom }: HomeProps): JSX.Element {
           author="Tadjh Brooks"
           link="https://github.com/TadjhBrooks/np-bingo/"
         />
-        <ThemeToggle />
+        <div className="flex">
+          <ThemeToggle />
+          <VolumeToggle />
+        </div>
       </Footer>
     </React.Fragment>
   );
