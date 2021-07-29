@@ -24,6 +24,15 @@ export function randomIndex(array: any[]): number {
   return Math.floor(Math.random() * array.length);
 }
 
+/**
+ * Takes a range and returns a random value from 0 to the specified range
+ * @param range Number
+ * @returns
+ */
+export function randomNumber(range: number): number {
+  return Math.floor(Math.random() * range + 1);
+}
+
 export function handleError(error: any) {
   if (error.response) {
     // The request was made and the server responded with a status code
