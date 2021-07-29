@@ -12,6 +12,7 @@ interface Config {
   ballDelay: number;
   allowNewCard: boolean;
   sounds: boolean;
+  defaultVolume: number;
 }
 
 const config = {
@@ -26,6 +27,7 @@ const config = {
   ballDelay: 5000, // Ball animation duration in milliseconds
   allowNewCard: false, // Allow players to draw a new random card
   sounds: true,
+  defaultVolume: 0.25,
 } as Config;
 
 export default config;
