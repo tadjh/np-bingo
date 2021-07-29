@@ -12,6 +12,7 @@ import {
   BallContext,
   FeautresContext,
   GameContext,
+  ThemeContext,
 } from '../../Utils/contexts';
 import {
   BINGO,
@@ -44,6 +45,10 @@ import Widgets from '../../Components/Widgets';
 import { useProgress } from '../../Utils/custom-hooks';
 import socket from '../../Config/socket.io';
 import { useHistory } from 'react-router-dom';
+import useSound from 'use-sound';
+import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
+import winnerSfx from '../../Assets/Sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';
+import { randomNumber } from '../../Utils';
 
 export interface PlayProps {
   checkCard?: () => void;
@@ -64,12 +69,30 @@ export default function Play({
   const [playState, playDispatch] = useReducer<
     (state: PlayerState, action: Action) => PlayerState
   >(reducer, initialState);
+  const { sounds } = useContext(ThemeContext);
   const { gamestate, gamemode, room, host, user, play } = useContext(
     GameContext
   );
   const ball = useContext(BallContext);
-  const { ballDelay, allowNewCard } = useContext(FeautresContext);
+  const { ballDelay, allowNewCard, defaultVolume } = useContext(
+    FeautresContext
+  );
   const { card, serial, crossmarks } = playState;
+
+  const [playSfx] = useSound(dispenseSfx, {
+    volume: defaultVolume,
+    sprite: {
+      dispenseBall1: [0, 2000],
+      dispenseBall2: [250, 1750],
+      dispenseBall3: [2000, 2000],
+      dispenseBall4: [2250, 1750],
+    },
+    soundEnabled: sounds,
+  });
+  const [playWinSfx] = useSound(winnerSfx, {
+    volume: defaultVolume,
+    soundEnabled: sounds,
+  });
 
   /**
    * Loop ball animation and call newBall each completion
@@ -81,6 +104,7 @@ export default function Play({
 
     if (gamestate === 'start') {
       enableProgress();
+      playSfx({ id: `dispenseBall${randomNumber(2)}` });
     }
   };
   const { progress, inProgress, enableProgress } = useProgress(
@@ -178,7 +202,8 @@ export default function Play({
   useEffect(() => {
     if (winner.methods.length <= 0) return;
     setWinningCrossmarks(winner.results);
-  }, [winner.methods, winner.results]);
+    playWinSfx();
+  }, [winner.methods, winner.results, playWinSfx]);
 
   /**
    * Sets gamestate to standby in default, start in solo mode
