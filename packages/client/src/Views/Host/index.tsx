@@ -28,7 +28,8 @@ import Link from '../../Components/Link';
 import { useProgress } from '../../Utils/custom-hooks';
 import socket from '../../Config/socket.io';
 import useSound from 'use-sound';
-import dispenseSfx from '../..//Assets/Sounds/Ball_Drop.mp3';
+import dispenseSfx from '../..//Assets/Sounds/Ball_Dispenser.mp3';
+import { randomNumber } from '../../Utils';
 
 export interface HostProps {
   checkCard?: () => void;
@@ -49,11 +50,22 @@ export default function Host({
   draws = [[], [], [], [], []],
   players = [],
 }: HostProps) {
-  const { ballDelay } = useContext(FeautresContext);
+  const { ballDelay, defaultVolume } = useContext(FeautresContext);
   const { gamestate, room, winner, play } = useContext(GameContext);
   const { sounds } = useContext(ThemeContext);
   const ball = useContext(BallContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
+
+  const [playSfx] = useSound(dispenseSfx, {
+    volume: defaultVolume,
+    sprite: {
+      dispenseBall1: [0, 2000],
+      dispenseBall2: [250, 1750],
+      dispenseBall3: [2000, 2000],
+      dispenseBall4: [2250, 1750],
+    },
+    soundEnabled: sounds,
+  });
 
   /**
    * isDisabled is true when gamestate is not start, standby or failure
@@ -181,12 +193,6 @@ export default function Host({
     }
   }, [gamestate, room, winner, play, saveRoom]);
 
-  const [playSfx] = useSound(dispenseSfx, {
-    volume: 0.25,
-    playbackRate: 0.9,
-    soundEnabled: sounds,
-  });
-
   return (
     <React.Fragment>
       <Header className="gap-3">
@@ -221,7 +227,9 @@ export default function Host({
               <IconButton
                 disabled={(isDisabled || inProgress) && true}
                 onClick={() => handleBall(gamestate)}
-                onMouseDown={() => playSfx()}
+                onMouseDown={() =>
+                  playSfx({ id: `dispenseBall${randomNumber(4)}` })
+                }
                 description="New Ball"
                 direction="left"
               >
