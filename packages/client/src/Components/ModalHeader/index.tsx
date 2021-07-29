@@ -1,5 +1,5 @@
 import React from 'react';
-import CloseIcon from '../../Assets/Close';
+import CloseIcon from '../../Assets/Icons/Close';
 import IconButton from '../IconButton';
 
 export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {

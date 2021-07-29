@@ -3,9 +3,9 @@ import List from '../List';
 import ListItem from '../ListItem';
 import ListItemText from '../ListItemText';
 import IconButton from '../IconButton';
-import MinusIcon from '../../Assets/Minus';
-import CheckIcon from '../../Assets/Check';
-import CloseCircleIcon from '../../Assets/CloseCircle';
+import MinusIcon from '../../Assets/Icons/Minus';
+import CheckIcon from '../../Assets/Icons/Check';
+import CloseCircleIcon from '../../Assets/Icons/CloseCircle';
 import Tooltip from '../Tooltip';
 import { Player } from '@np-bingo/types';
 

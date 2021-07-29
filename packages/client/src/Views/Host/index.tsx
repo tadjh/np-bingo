@@ -20,7 +20,7 @@ import Footer from '../../Components/Footer';
 import Draws from '../../Components/Draws';
 import PlayerList from '../../Components/PlayerList';
 import IconButton from '../../Components/IconButton';
-import PlusCircleIcon from '../../Assets/PlusCircle';
+import PlusCircleIcon from '../../Assets/Icons/PlusCircle';
 import Main from '../../Components/Main';
 import Header from '../../Components/Header';
 import Widgets from '../../Components/Widgets';
