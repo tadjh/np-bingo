@@ -5,10 +5,9 @@ import Logo from '../../Components/Logo';
 import { GameContext } from '../../Utils/contexts';
 import Footer from '../../Components/Footer';
 import Credit from '../../Components/Credit';
-import ThemeToggle from '../../Components/ThemeToggle';
 import Main from '../../Components/Main';
 import Header from '../../Components/Header';
-import VolumeToggle from '../../Components/VolumeToggle';
+import IconMenu from '../../Components/IconMenu';
 
 export interface HomeProps {
   createRoom?: () => void;
@@ -58,8 +57,7 @@ export default function Home({ createRoom }: HomeProps): JSX.Element {
           link="https://github.com/TadjhBrooks/np-bingo/"
         />
         <div className="flex">
-          <ThemeToggle />
-          <VolumeToggle />
+          <IconMenu direction="up" />
         </div>
       </Footer>
     </React.Fragment>

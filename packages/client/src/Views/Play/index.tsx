@@ -49,6 +49,7 @@ import useSound from 'use-sound';
 import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
 import winnerSfx from '../../Assets/Sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';
 import { randomNumber } from '../../Utils';
+import confetti from 'canvas-confetti';
 
 export interface PlayProps {
   checkCard?: () => void;
@@ -197,13 +198,41 @@ export default function Play({
   };
 
   /**
+   * Show confetti on the screen
+   */
+  const confettiAnimation = useCallback(() => {
+    const duration = 15000; // theme song is 15 seconds
+    const end = Date.now() + duration;
+    (function frame() {
+      confetti({
+        particleCount: 7,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+      });
+      // and launch a few from the right edge
+      confetti({
+        particleCount: 7,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+      });
+      // keep going until we are out of time
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  }, []);
+
+  /**
    * Update winning results after successful validation
    */
   useEffect(() => {
     if (winner.methods.length <= 0) return;
     setWinningCrossmarks(winner.results);
     playWinSfx();
-  }, [winner.methods, winner.results, playWinSfx]);
+    confettiAnimation();
+  }, [winner.methods, winner.results, playWinSfx, confettiAnimation]);
 
   /**
    * Sets gamestate to standby in default, start in solo mode

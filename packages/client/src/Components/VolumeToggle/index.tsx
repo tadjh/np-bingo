@@ -21,7 +21,7 @@ export default function VolumeToggle({
   const [playVolumeSfx] = useSound(volumeSfx, {
     volume: defaultVolume,
     sprite: {
-      soundOn: [150, 850],
+      soundOn: [0, 1000],
       soundOff: [1000, 1000],
     },
     soundEnabled: true, // volume toggle should always have sound enabled

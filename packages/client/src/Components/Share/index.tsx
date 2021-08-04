@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import ShareIcon from '../../Assets/Icons/Share';
 import IconButton from '../IconButton';
 import Modal from '../Modal';
@@ -9,6 +9,9 @@ import Button from '../Button';
 import { useDialog } from '../../Utils/custom-hooks';
 import { Room } from '@np-bingo/types';
 import TextInput from '../TextInput';
+import useSound from 'use-sound';
+import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
+import { FeautresContext, ThemeContext } from '../../Utils/contexts';
 
 export interface ShareProps {
   room?: Room;
@@ -18,6 +21,21 @@ export default function Share({ room = '' }: ShareProps): JSX.Element {
   const [open, handleOpen, handleClose] = useDialog(false, handleCopyText);
   const [copyText, setCopyText] = useState('Click to copy link to clipboard');
   const ref = useRef<HTMLInputElement>(null);
+  const { defaultVolume } = useContext(FeautresContext);
+  const { sounds } = useContext(ThemeContext);
+
+  const [playSfx] = useSound(buttonSfx, {
+    volume: defaultVolume,
+    sprite: {
+      buttonPress: [1000, 1000],
+    },
+    soundEnabled: sounds,
+    playbackRate: 1.5,
+  });
+
+  const buttonPressSfx = () => {
+    playSfx({ id: 'buttonPress' });
+  };
 
   const copyToClipboard = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
@@ -51,6 +69,7 @@ export default function Share({ room = '' }: ShareProps): JSX.Element {
         aria-label="share"
         description="Share link"
         direction="top"
+        onMouseDown={buttonPressSfx}
       >
         <ShareIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
       </IconButton>

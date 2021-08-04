@@ -1,9 +1,8 @@
-import React from 'react';
-// import useSound from 'use-sound';
-// import { SpriteMap } from 'use-sound/dist/types';
-// import { ThemeContext } from '../../Utils/contexts';
+import React, { useContext } from 'react';
+import useSound from 'use-sound';
+import { FeautresContext, ThemeContext } from '../../Utils/contexts';
 import Ripple from '../Ripple';
-// import dispenseSfx from '../..//Assets/Sounds/Dispense.mp3';
+import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
 
 export type ButtonVariants = 'contained';
 
@@ -24,6 +23,22 @@ export default function Button({
   disabled,
   ...props
 }: ButtonProps): JSX.Element {
+  const { defaultVolume } = useContext(FeautresContext);
+  const { sounds } = useContext(ThemeContext);
+
+  const [playSfx] = useSound(buttonSfx, {
+    volume: defaultVolume / 2,
+    sprite: {
+      buttonPress: [0, 1000],
+    },
+    soundEnabled: sounds,
+    playbackRate: 1.5,
+  });
+
+  const buttonPressSfx = () => {
+    playSfx({ id: 'buttonPress' });
+  };
+
   const baseStyle =
     'relative px-7 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker';
   //  transform hover:-translate-y-0.5 active:translate-y-0
@@ -42,23 +57,12 @@ export default function Button({
     !disabled ? variantStyle(variant) : variantStyle('disabled')
   } ${className}`;
 
-  // const { sounds } = useContext(ThemeContext);
-  // const dispenseSfxSpriteMap = {
-  //   dispensePress: [0, 1000],
-  //   dispenseUnpress: [1000, 1000],
-  // } as SpriteMap;
-  // const [playSfx] = useSound(dispenseSfx, {
-  //   volume: 0.25,
-  //   sprite: { ...dispenseSfxSpriteMap },
-  //   soundEnabled: sounds,
-  // });
-
   if (Component)
     return (
       <Component
         className={buttonClasses}
         disabled={disabled}
-        // onMouseDown={() => playSfx({ id: 'dispensePress' })}
+        onMouseDown={buttonPressSfx}
         {...props}
       >
         <Ripple disabled={disabled} />
@@ -70,7 +74,7 @@ export default function Button({
       className={buttonClasses}
       disabled={disabled}
       type={type}
-      // onMouseDown={() => playSfx({ id: 'dispensePress' })}
+      onMouseDown={buttonPressSfx}
       {...props}
     >
       <Ripple disabled={disabled} />

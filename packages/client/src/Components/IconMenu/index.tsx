@@ -8,7 +8,7 @@ import IconButton from '../IconButton';
 import ThemeToggle from '../ThemeToggle';
 import { TooltipDirection } from '../Tooltip';
 import VolumeToggle from '../VolumeToggle';
-import menuSfx from '../../Assets/Sounds/Scribble_Erase.mp3';
+import menuSfx from '../../Assets/Sounds/Drawer_Open_Close.mp3';
 
 export type MenuDirection = 'up' | 'right' | 'down' | 'left';
 
@@ -29,8 +29,8 @@ export default function IconMenu({
   const [playMenuSfx] = useSound(menuSfx, {
     volume: defaultVolume,
     sprite: {
-      menuOpen: [0, 1000],
-      menuClosed: [1000, 1000],
+      menuOpen: [3000, 1000],
+      menuClosed: [2000, 1000],
     },
     soundEnabled: sounds,
   });
@@ -162,9 +162,9 @@ export default function IconMenu({
 
   return (
     <div
-      className={`relative p-1 ${open && 'z-50 bg-gray-300 dark:bg-gray-700'} ${
-        open && stylePopoutMenuBorderCog(direction)
-      }`}
+      className={`relative p-1 transition-all duration-100 ${
+        open && 'z-50 bg-gray-300 dark:bg-gray-700'
+      } ${open && stylePopoutMenuBorderCog(direction)}`}
     >
       <IconButton
         onClick={toggleMenu}
@@ -174,30 +174,30 @@ export default function IconMenu({
       >
         <Cog className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
       </IconButton>
-      {open && (
-        <ul
-          className={`absolute flex p-1 ${stylePopoutMenu(direction)} ${
-            open && 'z-50 bg-gray-300 dark:bg-gray-700'
-          } ${open && stylePopoutMenuBorderDrawer(direction)}`}
-        >
-          <li>
-            <ThemeToggle direction={stylePopoutMenuTooltips(direction)} />
-          </li>
-          <li>
-            <VolumeToggle direction={stylePopoutMenuTooltips(direction)} />
-          </li>
-          <li>
-            <IconButton
-              onClick={closeMenu}
-              onMouseDown={closeMenuSfx}
-              description="Close"
-              direction={stylePopoutMenuTooltips(direction)}
-            >
-              <CloseIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
-            </IconButton>
-          </li>
-        </ul>
-      )}
+      <ul
+        className={`absolute flex p-1 transition-all duration-100 ${stylePopoutMenu(
+          direction
+        )} ${!open ? 'invisible' : 'z-50 bg-gray-300 dark:bg-gray-700'} ${
+          open && stylePopoutMenuBorderDrawer(direction)
+        }`}
+      >
+        <li>
+          <ThemeToggle direction={stylePopoutMenuTooltips(direction)} />
+        </li>
+        <li>
+          <VolumeToggle direction={stylePopoutMenuTooltips(direction)} />
+        </li>
+        <li>
+          <IconButton
+            onClick={closeMenu}
+            onMouseDown={closeMenuSfx}
+            description="Close"
+            direction={stylePopoutMenuTooltips(direction)}
+          >
+            <CloseIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
+          </IconButton>
+        </li>
+      </ul>
     </div>
   );
 }

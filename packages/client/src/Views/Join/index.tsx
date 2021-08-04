@@ -11,6 +11,7 @@ import Header from '../../Components/Header';
 import Button from '../../Components/Button';
 import Link from '../../Components/Link';
 import socket from '../../Config/socket.io';
+import { Link as RouterLink } from 'react-router-dom';
 
 export interface JoinProps {
   queryRoom: string | null;
@@ -68,7 +69,7 @@ export default function Join({
           <CodeModal open={open} onClose={handleClose} onSumbit={joinRoom} />
           {allowSolo && (
             <Button
-              component={Link}
+              component={RouterLink}
               className="solo-button"
               onClick={() => solo && solo('ready')}
               to="/play?m=solo"
