@@ -1,6 +1,5 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Gamestate } from '@np-bingo/types';
 import { useDialog } from '../../Utils/custom-hooks';
 import RoomList from '../../Components/RoomList';
 import CodeModal from '../../Components/CodeModal';
@@ -17,7 +16,7 @@ export interface JoinProps {
   queryRoom: string | null;
   joinRoom?: (room: string) => void;
   rooms?: any[];
-  solo?: (gamestate: Gamestate) => void;
+  solo?: () => void;
 }
 
 export default function Join({
@@ -71,7 +70,7 @@ export default function Join({
             <Button
               component={RouterLink}
               className="solo-button"
-              onClick={() => solo && solo('ready')}
+              onClick={solo}
               to="/play?m=solo"
             >
               Solo
