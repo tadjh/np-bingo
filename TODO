@@ -2,7 +2,7 @@ Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
 
 Vulnerbilities
-// TODO Rest Api has no auth (JWT)
+// TODO Rest Api has no auth (JWT?)
 // TODO Max active Games
 // TODO Max room size 
 // TODO mongodB Atlas IP needs strict whitelist
@@ -33,7 +33,6 @@ QOL
 // TODO Implement useTitle
 // TODO Improve room input behavior for typos
 // TODO Popup when user submits card for host and user
-// TODO Change color of ready check background
 // TODO Host has left game popup notification
 // TODO Show winner name on win?
 // TODO Error Boundaries
