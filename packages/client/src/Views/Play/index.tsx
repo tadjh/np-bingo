@@ -206,14 +206,14 @@ export default function Play({
     const end = Date.now() + duration;
     (function frame() {
       confetti({
-        particleCount: 7,
+        particleCount: 4,
         angle: 60,
         spread: 55,
         origin: { x: 0 },
       });
       // and launch a few from the right edge
       confetti({
-        particleCount: 7,
+        particleCount: 4,
         angle: 120,
         spread: 55,
         origin: { x: 1 },
