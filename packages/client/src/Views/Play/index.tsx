@@ -29,10 +29,6 @@ import StatusMessage from '../../Components/Status';
 import { newCard, winningCells } from '../../Utils/bingo';
 import Button from '../../Components/Button';
 import Footer from '../../Components/Footer';
-import Modal from '../../Components/Modal';
-import ModalHeader from '../../Components/ModalHeader';
-import ModalContent from '../../Components/ModalContent';
-import ModalFooter from '../../Components/ModalFooter';
 import Link from '../../Components/Link';
 import {
   initialState,
@@ -45,12 +41,12 @@ import Header from '../../Components/Header';
 import Widgets from '../../Components/Widgets';
 import { useProgress } from '../../Utils/custom-hooks';
 import socket from '../../Config/socket.io';
-import { useHistory } from 'react-router-dom';
 import useSound from 'use-sound';
 import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
 import winnerSfx from '../../Assets/Sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';
 import { randomNumber } from '../../Utils';
 import confetti from 'canvas-confetti';
+import KickedModal from '../../Components/KickedModal';
 
 export interface PlayProps {
   checkCard?: () => void;
@@ -67,7 +63,6 @@ export default function Play({
   winner = { ...appState.winner },
   kicked = { status: false, reason: 'none' },
 }: PlayProps) {
-  let history = useHistory();
   const [playState, playDispatch] = useReducer<
     (state: PlayerState, action: Action) => PlayerState
   >(reducer, initialState);
@@ -294,30 +289,6 @@ export default function Play({
     socket.emit('leave-room', room, host.socket, user);
   };
 
-  /**
-   * Force route to home on kicked modal click events
-   */
-  const exit = () => {
-    history.push('/');
-  };
-
-  /**
-   * Displays leaving room message based on reason
-   * @returns String
-   */
-  const kickedMessage = () => {
-    switch (kicked.reason) {
-      case 'none':
-        return;
-      case 'banned':
-        return 'You have been kicked from the room.';
-      case 'abandoned':
-        return 'The host has left the room.';
-      default:
-        throw new Error('Error in kick Message');
-    }
-  };
-
   return (
     <React.Fragment>
       <Header className="gap-3">
@@ -370,23 +341,7 @@ export default function Play({
           Leave Room
         </Link>
       </Footer>
-      <Modal
-        id="leave-modal"
-        open={kicked.status}
-        onClose={exit}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <ModalHeader id="alert-dialog-title">Leaving Room</ModalHeader>
-        <ModalContent>
-          <p id="alert-dialog-description">{kickedMessage}</p>
-        </ModalContent>
-        <ModalFooter>
-          <Link className="hover:underline" onClick={exit} to="/">
-            Leave Room
-          </Link>
-        </ModalFooter>
-      </Modal>
+      <KickedModal open={kicked.status} reason={kicked.reason} />
     </React.Fragment>
   );
 }
