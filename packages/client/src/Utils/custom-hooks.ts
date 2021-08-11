@@ -242,6 +242,7 @@ export function useProgress(
   setProgress: React.Dispatch<React.SetStateAction<number>>;
   enableProgress: () => void;
   disableProgress: () => void;
+  pauseProgress: () => void;
 } {
   const requestRef = useRef<number | null>(null);
   const startTime = useRef<number | null>(null);
@@ -274,6 +275,16 @@ export function useProgress(
   }, [disableProgress]);
 
   /**
+   * Pause animation progress and reset animation
+   */
+  const pauseProgress = useCallback(() => {
+    cancelAnimationFrame(requestRef.current as number);
+    // TODO should elapsed callback trigger based on startTime plus pause delay?
+    // Reset progress due to startTime still triggering callback once animation re-enabled
+    resetProgress();
+  }, [resetProgress]);
+
+  /**
    * Update progress with new value
    * @param elapsed time
    * @returns
@@ -286,6 +297,8 @@ export function useProgress(
    */
   const animate = useCallback(
     (timestamp: number) => {
+      console.log('test');
+
       if (startTime.current === null) startTime.current = timestamp;
       const elapsed = timestamp - startTime.current;
       incrementProgress(elapsed);
@@ -314,5 +327,6 @@ export function useProgress(
     setProgress,
     enableProgress,
     disableProgress,
+    pauseProgress,
   };
 }

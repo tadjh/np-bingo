@@ -109,7 +109,7 @@ export default function Play({
       playSfx({ id: `dispenseBall${randomNumber(2)}` });
     }
   };
-  const { progress, inProgress, enableProgress } = useProgress(
+  const { progress, inProgress, enableProgress, pauseProgress } = useProgress(
     ballDelay,
     onProgressDone
   );
@@ -161,15 +161,15 @@ export default function Play({
         enableProgress();
         break;
       case 'validate':
-        play('pause');
+        checkCard && checkCard();
         break;
       case 'pause':
-        checkCard && checkCard();
+        pauseProgress();
         break;
       default:
         break;
     }
-  }, [gamemode, gamestate, enableProgress, checkCard, play]);
+  }, [gamemode, gamestate, enableProgress, pauseProgress, checkCard]);
 
   /**
    * Toggle current target's crossmark visibility
@@ -236,14 +236,40 @@ export default function Play({
   }, [winner.methods, winner.results, playWinSfx, confettiAnimation]);
 
   /**
-   * Sets gamestate to standby in default, start in solo mode
+   * Sets gamestate to standby in default, start in solo mode, or pause when solo is already started
    */
-  const handleStartOrStandby = () => {
-    if (gamemode === 'solo') {
-      return play('start');
-    }
+  const handlePrimaryButton = () => {
+    if (gamemode === 'solo' && gamestate === 'start') return play('pause');
+    if (gamemode === 'solo') return play('start');
     // default
-    play('standby');
+    return play('standby');
+  };
+
+  /**
+   * Text to display on primary button
+   * @returns String
+   */
+  const primaryButtonText = (): string => {
+    if (gamemode !== 'solo') return 'Ready';
+    // solo
+    if (gamestate === 'pause' || gamestate === 'failure') return 'Resume';
+    if (gamestate === 'start') return 'Pause';
+    return 'Start';
+  };
+
+  /**
+   * Disables primary button except once ready, solo start, solo pause, or solo failure
+   * @returns boolean
+   */
+  const disablePrimaryButton = (): boolean => {
+    // default
+    if (gamestate === 'ready') return false;
+    if (gamemode !== 'solo') return true;
+    // solo
+    if (gamestate === 'start') return false;
+    if (gamestate === 'pause') return false;
+    if (gamestate === 'failure') return false;
+    return true;
   };
 
   /**
@@ -256,7 +282,6 @@ export default function Play({
    */
   const handleSendCard = (gamemode: Gamemode, card: Card, user: Player) => {
     if (gamemode === 'solo') sendCard && sendCard(card, user);
-
     // default & solo
     play('validate');
   };
@@ -303,15 +328,11 @@ export default function Play({
         )}
         <Button
           variant="contained"
-          disabled={gamestate !== 'ready' && gamestate !== 'failure' && true}
-          onClick={handleStartOrStandby}
+          disabled={disablePrimaryButton()}
+          onClick={handlePrimaryButton}
           className="w-[115px]"
         >
-          {gamestate === 'failure'
-            ? 'Resume'
-            : gamemode === 'solo'
-            ? 'Start'
-            : 'Ready'}
+          {primaryButtonText()}
         </Button>
         <Button
           variant="contained"

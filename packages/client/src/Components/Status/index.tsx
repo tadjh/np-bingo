@@ -31,7 +31,10 @@ export function statusText(gamestate: Gamestate, mode?: Gamemode): string {
       // solo
       return 'Checking card for Bingo...';
     case 'pause':
-      return 'A card is being checked for BINGO!';
+      // default
+      if (mode !== 'solo') return 'A card is being checked for BINGO!';
+      // solo
+      return 'Game paused.';
     case 'failure':
       // let failureText = [
       //   'Jumping the gun. No Bingo...',

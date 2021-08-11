@@ -74,7 +74,7 @@ export default function Ball({
           ></div>
         </div>
         <Badge description="Balls Remaining" disabled={disabled}>
-          {!disabled && remainder}
+          {remainder}
         </Badge>
         <div className="leading-4 uppercase relative z-20">{column}</div>
         <div className="text-3xl leading-7 relative z-20">
