@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import ModalHeader, { ModalHeaderProps } from '.';
 
 export default {
-  title: 'Modal/Modal Header',
+  title: 'Modals/Modal Header',
   component: ModalHeader,
   argTypes: { onClose: { action: 'click' } },
 } as Meta;

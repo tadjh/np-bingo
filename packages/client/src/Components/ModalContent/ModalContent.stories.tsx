@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import ModalContent, { ModalContentProps } from '.';
 
 export default {
-  title: 'Modal/Modal Content',
+  title: 'Modals/Modal Content',
   component: ModalContent,
 } as Meta;
 
