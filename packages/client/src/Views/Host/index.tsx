@@ -25,7 +25,7 @@ import Main from '../../Components/Main';
 import Header from '../../Components/Header';
 import Widgets from '../../Components/Widgets';
 import Link from '../../Components/Link';
-import { useProgress } from '../../Utils/custom-hooks';
+import useProgress from '../../Utils/useProgress';
 import socket from '../../Config/socket.io';
 import useSound from 'use-sound';
 import dispenseSfx from '../..//Assets/Sounds/Ball_Dispenser.mp3';
