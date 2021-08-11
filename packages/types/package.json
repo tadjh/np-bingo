@@ -6,5 +6,8 @@
   "types": "index.d.ts",
   "license": "MIT",
   "author": "Tadjh Brooks",
-  "typeScriptVersion": "4.2"
+  "typeScriptVersion": "4.2",
+  "scripts": {
+    "publish": "npm publish"
+  }
 }

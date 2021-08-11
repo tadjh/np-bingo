@@ -16,6 +16,9 @@
     "server-build": "yarn workspace @np-bingo/server build",
     "client-build": "yarn workspace @np-bingo/client build",
     "build": "run-s common-build server-build client-build",
+    "publish-types": "yarn workspace @np-bingo/types publish",
+    "publish-common": "yarn workspace @np-bingo/common publish",
+    "publish": "run-p publish-types publish-common",
     "storybook": "yarn workspace @np-bingo/client storybook"
   },
   "repository": {
