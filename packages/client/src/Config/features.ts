@@ -1,33 +1,33 @@
 import { Special, Theme } from '@np-bingo/types';
 
 interface Config {
-  theme: Theme;
+  allowNewCard: boolean;
   allowSolo: boolean;
-  share: boolean;
+  ballDelay: number;
+  defaultVolume: number;
+  maxActiveGames: number;
+  maxRoomSize: number;
   publicRooms: boolean;
+  share: boolean;
+  sounds: boolean;
   specialRules: Special[];
   streamerMode: boolean;
-  maxRoomSize: number;
-  maxActiveGames: number;
-  ballDelay: number;
-  allowNewCard: boolean;
-  sounds: boolean;
-  defaultVolume: number;
+  theme: Theme;
 }
 
 const config = {
-  theme: 'dark', // Set initial theme 'light' or 'dark'
+  allowNewCard: false, // Allow players to draw a new random card
   allowSolo: true, // Allow solo mode
-  share: true, // Allow shareable room links
+  ballDelay: 5000, // Ball animation duration in milliseconds
+  defaultVolume: 0.25,
+  maxActiveGames: 5, // TODO
+  maxRoomSize: 30, // TODO
   publicRooms: true, // TODO Allow public game rooms
+  share: true, // Allow shareable room links
+  sounds: true,
   specialRules: [], // TODO Array of valid special rules
   streamerMode: false, // TODO Hide
-  maxRoomSize: 30, // TODO
-  maxActiveGames: 5, // TODO
-  ballDelay: 5000, // Ball animation duration in milliseconds
-  allowNewCard: false, // Allow players to draw a new random card
-  sounds: true,
-  defaultVolume: 0.25,
+  theme: 'dark', // Set initial theme 'light' or 'dark'
 } as Config;
 
 export default config;
