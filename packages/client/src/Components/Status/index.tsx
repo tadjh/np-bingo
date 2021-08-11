@@ -8,38 +8,30 @@ import { Gamemode, Gamestate } from '@np-bingo/types';
  * @param host View
  * @returns string
  */
-export function statusText(gamestate: Gamestate, mode?: Gamemode) {
-  let text: string;
+export function statusText(gamestate: Gamestate, mode?: Gamemode): string {
   switch (gamestate) {
     case 'init':
-      text = 'Waiting on host to start the game...';
-      break;
+      //default
+      if (mode !== 'solo') return 'Waiting on host to start the game...';
+      // solo
+      return ' ';
     case 'ready':
       // default
-      if (mode !== 'solo') {
-        text = 'Click ready, then wait for host to start game...';
-      }
-
+      if (mode !== 'solo')
+        return 'Click ready, then wait for host to start game...';
       // solo
-      text = 'Click start to begin.';
-      break;
+      return 'Click start to begin.';
     case 'standby':
-      text = 'Waiting for host to dispense a ball...';
-      break;
+      return 'Waiting for host to dispense a ball...';
     case 'start':
-      text = 'Click a number to cross it out.';
-      break;
+      return 'Click a number to cross it out.';
     case 'validate':
       // default
-      if (mode !== 'solo') {
-        text = 'Sending card to host...';
-      }
-
-      text = 'Checking card for Bingo...';
-      break;
+      if (mode !== 'solo') return 'Sending card to host...';
+      // solo
+      return 'Checking card for Bingo...';
     case 'pause':
-      text = 'A card is being checked for BINGO!';
-      break;
+      return 'A card is being checked for BINGO!';
     case 'failure':
       // let failureText = [
       //   'Jumping the gun. No Bingo...',
@@ -47,19 +39,15 @@ export function statusText(gamestate: Gamestate, mode?: Gamemode) {
       //   'Just practicing? No Bingo...',
       //   'Falsie. Keep trying...',
       // ];
-      // text = randomElement(failureText);
-      text = 'Jumping the gun. No Bingo...';
-      break;
+      // return randomElement(failureText);
+      return 'Jumping the gun. No Bingo...';
     case 'end':
-      text = 'Game Over!';
-      break;
+      return 'Game Over!';
     case 'win':
-      text = 'BINGO!';
-      break;
+      return 'BINGO!';
     default:
       throw new Error(`Invalid Gamestate in Player Status`);
   }
-  return text;
 }
 
 /**
@@ -68,30 +56,17 @@ export function statusText(gamestate: Gamestate, mode?: Gamemode) {
  * @param count
  * @returns string
  */
-export function hostStatusText(gamestate: Gamestate, count?: number) {
-  let text: string;
+export function hostStatusText(gamestate: Gamestate, count?: number): string {
   switch (gamestate) {
     case 'init':
-      // text = 'Click to start the game.';
-      text = ' ';
-      break;
+      // return 'Click to start the game.';
+      return ' ';
     case 'ready':
-      text = 'Waiting for player(s) to join...';
-      if (!count) break;
-
-      if (count === 1) {
-        text = `${count} player has joined...`;
-        break;
-      }
-
-      if (count > 1) {
-        text = `${count} players have joined...`;
-        break;
-      }
-      break;
+      if (count === 1) return `${count} player has joined...`;
+      if (count && count > 1) return `${count} players have joined...`;
+      return 'Waiting for player(s) to join...';
     case 'standby':
-      text = 'Click "+" to dispense a ball.';
-      break;
+      return 'Click "+" to dispense a ball.';
     case 'start':
       // let rollText = [
       //   'Call the ball, then keep on rolling...',
@@ -99,28 +74,21 @@ export function hostStatusText(gamestate: Gamestate, count?: number) {
       //   'Say the name of the ball, then roll again!',
       //   'Call out the ball, then dispense another.',
       // ];
-      // text = randomElement(rollText);
-      text = 'Call out the ball, then dispense another';
-      break;
+      // return randomElement(rollText);
+      return 'Call out the ball, then dispense another';
     case 'validate':
-      text = 'Check card for a BINGO!';
-      break;
+      return 'Check card for a BINGO!';
     case 'pause':
-      text = 'Checking if card is a winner...';
-      break;
+      return 'Checking if card is a winner...';
     case 'failure':
-      text = 'This card is not a Bingo. Roll on!';
-      break;
+      return 'This card is not a Bingo. Roll on!';
     case 'end':
-      text = 'Game Over!';
-      break;
+      return 'Game Over!';
     case 'win':
-      text = 'BINGO!';
-      break;
+      return 'BINGO!';
     default:
       throw new Error('Invalid Gamestate in Host Status');
   }
-  return text;
 }
 
 export interface StatusProps {
