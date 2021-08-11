@@ -5406,6 +5406,14 @@ exports[`Storyshots Components/Status/Player Init 1`] = `
 </div>
 `;
 
+exports[`Storyshots Components/Status/Player Init Solo 1`] = `
+<div
+  class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
+>
+   
+</div>
+`;
+
 exports[`Storyshots Components/Status/Player Pause 1`] = `
 <div
   class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
@@ -5415,6 +5423,14 @@ exports[`Storyshots Components/Status/Player Pause 1`] = `
 `;
 
 exports[`Storyshots Components/Status/Player Ready 1`] = `
+<div
+  class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
+>
+  Click ready, then wait for host to start game...
+</div>
+`;
+
+exports[`Storyshots Components/Status/Player Ready Solo 1`] = `
 <div
   class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
 >
@@ -5439,6 +5455,14 @@ exports[`Storyshots Components/Status/Player Start 1`] = `
 `;
 
 exports[`Storyshots Components/Status/Player Validate 1`] = `
+<div
+  class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
+>
+  Sending card to host...
+</div>
+`;
+
+exports[`Storyshots Components/Status/Player Validate Solo 1`] = `
 <div
   class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
 >
