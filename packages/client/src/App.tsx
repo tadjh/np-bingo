@@ -104,7 +104,7 @@ export default function App() {
     // TODO Dialog when host leaves
     socket.on('host-left', () => {
       console.log(`Host left, and you have been removed from the room`);
-      dispatch({ type: PLAYER_KICKED });
+      dispatch({ type: PLAYER_KICKED, payload: 'abandoned' });
     });
 
     /**
@@ -112,7 +112,7 @@ export default function App() {
      */
     socket.on('player-remove', () => {
       console.log(`You have been removed from the room`);
-      dispatch({ type: PLAYER_KICKED });
+      dispatch({ type: PLAYER_KICKED, payload: 'banned' });
     });
 
     /**

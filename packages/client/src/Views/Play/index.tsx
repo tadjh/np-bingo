@@ -7,6 +7,7 @@ import {
   Gamemode,
   Ball as BallType,
   Player,
+  Kicked,
 } from '@np-bingo/types';
 import {
   BallContext,
@@ -56,7 +57,7 @@ export interface PlayProps {
   newBall: () => BallType;
   sendCard?: (card: Card, user?: Player) => void;
   winner?: Winner;
-  kicked?: boolean;
+  kicked?: Kicked;
 }
 
 export default function Play({
@@ -64,7 +65,7 @@ export default function Play({
   newBall,
   sendCard,
   winner = { ...appState.winner },
-  kicked = false,
+  kicked = { status: false, reason: 'none' },
 }: PlayProps) {
   let history = useHistory();
   const [playState, playDispatch] = useReducer<
@@ -275,6 +276,23 @@ export default function Play({
     history.push('/');
   };
 
+  /**
+   * Displays leaving room message based on reason
+   * @returns String
+   */
+  const kickedMessage = () => {
+    switch (kicked.reason) {
+      case 'none':
+        return;
+      case 'banned':
+        return 'You have been kicked from the room.';
+      case 'abandoned':
+        return 'The host has left the room.';
+      default:
+        throw new Error('Error in kick Message');
+    }
+  };
+
   return (
     <React.Fragment>
       <Header className="gap-3">
@@ -333,16 +351,14 @@ export default function Play({
       </Footer>
       <Modal
         id="leave-modal"
-        open={kicked}
+        open={kicked.status}
         onClose={exit}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
         <ModalHeader id="alert-dialog-title">Leaving Room</ModalHeader>
         <ModalContent>
-          <p id="alert-dialog-description">
-            You have been kicked from the room.
-          </p>
+          <p id="alert-dialog-description">{kickedMessage}</p>
         </ModalContent>
         <ModalFooter>
           <Link className="hover:underline" onClick={exit} to="/">
