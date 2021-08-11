@@ -186,7 +186,9 @@ exports[`Storyshots Components/Ball Disabled 1`] = `
     </div>
     <div
       class="absolute w-7 h-5 -top-2 -right-1 z-20 rounded-full text-white text-opacity-90 text-xs text-center font-mono font-bold leading-normal shadow-md hover:shadow-lg tooltip bg-gray-500 dark:bg-gray-600"
-    />
+    >
+      75
+    </div>
     <div
       class="leading-4 uppercase relative z-20"
     />
@@ -6283,8 +6285,6 @@ exports[`Storyshots Components/Widgets Share Disabled 1`] = `
 </div>
 `;
 
-exports[`Storyshots Forms/Code Modal Base 1`] = `null`;
-
 exports[`Storyshots Forms/Text Input Base 1`] = `
 <div
   class="group"
@@ -6366,11 +6366,19 @@ exports[`Storyshots List/List Item Text Base 1`] = `
 </div>
 `;
 
-exports[`Storyshots Modal/Modal Base 1`] = `null`;
+exports[`Storyshots Modals/Code Modal Base 1`] = `null`;
 
-exports[`Storyshots Modal/Modal Base Base 1`] = `null`;
+exports[`Storyshots Modals/Kicked Modal Abandoned 1`] = `null`;
 
-exports[`Storyshots Modal/Modal Content Base 1`] = `
+exports[`Storyshots Modals/Kicked Modal Banned 1`] = `null`;
+
+exports[`Storyshots Modals/Kicked Modal Base 1`] = `null`;
+
+exports[`Storyshots Modals/Modal Base 1`] = `null`;
+
+exports[`Storyshots Modals/Modal Base Base 1`] = `null`;
+
+exports[`Storyshots Modals/Modal Content Base 1`] = `
 <div
   class="flex flex-col gap-3 px-5"
 >
@@ -6380,7 +6388,7 @@ exports[`Storyshots Modal/Modal Content Base 1`] = `
 </div>
 `;
 
-exports[`Storyshots Modal/Modal Footer Base 1`] = `
+exports[`Storyshots Modals/Modal Footer Base 1`] = `
 <div
   class="flex justify-end p-3"
 >
@@ -6390,7 +6398,7 @@ exports[`Storyshots Modal/Modal Footer Base 1`] = `
 </div>
 `;
 
-exports[`Storyshots Modal/Modal Header Base 1`] = `
+exports[`Storyshots Modals/Modal Header Base 1`] = `
 <div
   class="flex items-center justify-between bg-blue-300 dark:bg-gray-700 p-5 border-b-2 border-blue-400 dark:border-gray-900"
 >
@@ -8238,7 +8246,9 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
           </div>
           <div
             class="absolute w-7 h-5 -top-2 -right-1 z-20 rounded-full text-white text-opacity-90 text-xs text-center font-mono font-bold leading-normal shadow-md hover:shadow-lg tooltip bg-gray-500 dark:bg-gray-600"
-          />
+          >
+            75
+          </div>
           <div
             class="leading-4 uppercase relative z-20"
           />
