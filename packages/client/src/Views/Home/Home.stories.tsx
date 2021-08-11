@@ -35,16 +35,3 @@ export default {
 const Template: Story<HomeProps> = (args) => <Home {...args} />;
 
 export const Base = Template.bind({});
-
-export const PrivateRoomsOnly = Template.bind({});
-PrivateRoomsOnly.decorators = [
-  (Story) => {
-    return (
-      <FeautresContext.Provider
-        value={{ ...features, allowSolo: false, publicRooms: false }}
-      >
-        <Story />
-      </FeautresContext.Provider>
-    );
-  },
-];
