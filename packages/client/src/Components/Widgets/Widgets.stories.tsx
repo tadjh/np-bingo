@@ -20,7 +20,7 @@ Base.args = {
 export const ShareDisabled = Template.bind({});
 ShareDisabled.decorators = [
   (Story) => (
-    <FeautresContext.Provider value={{ ...features, share: false }}>
+    <FeautresContext.Provider value={{ ...features, allowShare: false }}>
       <Story />
     </FeautresContext.Provider>
   ),

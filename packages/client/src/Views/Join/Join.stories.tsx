@@ -44,7 +44,7 @@ export const PublicRooms = Template.bind({});
 PublicRooms.decorators = [
   (Story) => {
     return (
-      <FeautresContext.Provider value={{ ...features, publicRooms: true }}>
+      <FeautresContext.Provider value={{ ...features, allowPublic: true }}>
         <Story />
       </FeautresContext.Provider>
     );

@@ -25,7 +25,7 @@ export default function Join({
   rooms = [],
   solo,
 }: JoinProps) {
-  const { publicRooms, allowSolo } = useContext(FeautresContext);
+  const { allowPublic, allowSolo } = useContext(FeautresContext);
   const { room, user, host } = useContext(GameContext);
   let history = useHistory();
   const [open, handleOpen, handleClose] = useDialog(false);
@@ -56,7 +56,7 @@ export default function Join({
         </h1>
       </Header>
       <Main className="flex-1 justify-around gap-y-3">
-        {publicRooms && <RoomList rooms={rooms} onClick={joinRoom} />}
+        {allowPublic && <RoomList rooms={rooms} onClick={joinRoom} />}
         <div className="flex flex-col items-center gap-y-3">
           <Button
             variant="contained"

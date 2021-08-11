@@ -14,11 +14,13 @@ export default function Widgets({
   variant = 'default',
   room = '',
 }: WidgetProps): JSX.Element {
-  const { share } = useContext(FeautresContext);
+  const { allowShare } = useContext(FeautresContext);
   if (variant === 'solo') return <IconMenu direction="up" />;
   return (
     <div className="flex gap-5">
-      <div className="flex items-end">{share && <Share room={room} />}</div>
+      <div className="flex items-end">
+        {allowShare && <Share room={room} />}
+      </div>
       <div>
         <Code room={room} />
       </div>
