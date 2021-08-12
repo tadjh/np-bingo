@@ -64,8 +64,6 @@ export default function useProgress(
    */
   const animate = useCallback(
     (timestamp: number) => {
-      console.log('test');
-
       if (startTime.current === null) startTime.current = timestamp;
       const elapsed = timestamp - startTime.current;
       incrementProgress(elapsed);
