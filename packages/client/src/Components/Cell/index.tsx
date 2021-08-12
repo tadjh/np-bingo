@@ -4,6 +4,7 @@ import useSound from 'use-sound';
 import scribbleSfx from '../../Assets/Sounds/Scribble_Erase.mp3';
 import { SpriteMap } from 'use-sound/dist/types';
 import { ThemeContext } from '../../Utils/contexts';
+import HeavyBallotXIcon from '../../Assets/Icons/HeavyBallotX';
 
 export interface CellProps extends React.HTMLAttributes<HTMLDivElement> {
   winner: boolean;
@@ -66,13 +67,13 @@ export default function Cell({
       <Ripple />
       <div
         className={[
-          override || checked ? 'absolute -bottom-2 text-7xl' : 'hidden',
+          override || checked ? 'absolute' : 'hidden',
           winner
             ? 'text-green-600 dark:text-green-500'
             : 'text-red-600 dark:text-red-500',
         ].join(' ')}
       >
-        &#10008;
+        <HeavyBallotXIcon size="medium-2" />
       </div>
       <div className="relative z-10">{children}</div>
     </div>
