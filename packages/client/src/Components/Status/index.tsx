@@ -14,11 +14,10 @@ export function statusText(gamestate: Gamestate, mode?: Gamemode): string {
       //default
       if (mode !== 'solo') return 'Waiting on host to start the game...';
       // solo
-      return ' ';
+      return '\u00a0';
     case 'ready':
       // default
-      if (mode !== 'solo')
-        return 'Click ready, then wait for host to start game...';
+      if (mode !== 'solo') return 'Click ready, then wait for host to begin.';
       // solo
       return 'Click start to begin.';
     case 'standby':
@@ -63,7 +62,7 @@ export function hostStatusText(gamestate: Gamestate, count?: number): string {
   switch (gamestate) {
     case 'init':
       // return 'Click to start the game.';
-      return ' ';
+      return '\u00a0';
     case 'ready':
       if (count === 1) return `${count} player has joined...`;
       if (count && count > 1) return `${count} players have joined...`;
