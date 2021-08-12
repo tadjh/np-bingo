@@ -9,7 +9,7 @@ export default function Header({
 }: HeaderProps): JSX.Element {
   return (
     <header
-      className={['flex justify-center z-10 p-5', className].join(' ')}
+      className={['flex justify-center z-10 p-4', className].join(' ')}
       {...props}
     >
       {children}

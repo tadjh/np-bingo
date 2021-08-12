@@ -55,6 +55,7 @@ export default function Home({ createRoom }: HomeProps): JSX.Element {
         <Credit
           author="Tadjh Brooks"
           link="https://github.com/TadjhBrooks/np-bingo/"
+          text="github.com/TadjhBrooks/np-bingo"
         />
         <div className="flex">
           <IconMenu direction="up" />

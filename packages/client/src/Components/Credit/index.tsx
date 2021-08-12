@@ -4,11 +4,13 @@ export interface CreditProps
   extends React.HTMLAttributes<HTMLDivElement | HTMLAnchorElement> {
   author?: string;
   link?: string;
+  text?: string;
 }
 
 export default function Credit({
   author,
   link = '',
+  text = undefined,
 }: CreditProps): JSX.Element {
   return (
     <React.Fragment>
@@ -21,7 +23,7 @@ export default function Credit({
         target="_blank"
         rel="noreferrer"
       >
-        {link}
+        {text || link}
       </a>
     </React.Fragment>
   );

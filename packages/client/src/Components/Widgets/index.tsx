@@ -17,14 +17,14 @@ export default function Widgets({
   const { allowShare } = useContext(FeautresContext);
   if (variant === 'solo') return <IconMenu direction="up" />;
   return (
-    <div className="flex gap-5">
-      <div className="flex items-end">
+    <div className="flex gap-4">
+      <div className="flex items-center">
         {allowShare && <Share room={room} />}
       </div>
       <div>
         <Code room={room} />
       </div>
-      <div className="flex items-end">
+      <div className="flex items-center">
         <IconMenu direction="up" />
       </div>
     </div>

@@ -65,8 +65,8 @@ export default function Logo({ home = false, winner }: LogoProps): JSX.Element {
               !winner ? logoStyle(index) : logoStyle(-1)
             } ${
               home
-                ? 'h-20 w-20 shadow-md text-4xl animate-bounce'
-                : 'h-14 w-14 text-3xl'
+                ? 'h-[75px] w-[75px] shadow-md text-4xl animate-bounce'
+                : 'h-[50px] w-[50px] text-3xl'
             }`}
           >
             <div className="w-full h-full absolute overflow-hidden rounded-full">
