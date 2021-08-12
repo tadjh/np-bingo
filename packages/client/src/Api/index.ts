@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import axios from '../Config/axios';
 import { Player, Room, Winner } from '@np-bingo/types';
-import { handleError } from '../Utils';
+import { handleError, logger } from '../Utils';
 
 /**
  * Create game room on server
@@ -18,7 +18,7 @@ export async function apiCreateRoom(
       callback(res);
     })
     .catch((err) => {
-      console.log('Error in Create Room');
+      logger('Error in Create Room');
       handleError(err);
     });
 }
@@ -40,7 +40,7 @@ export async function apiUpdateRoom(
       callback(res);
     })
     .catch((err) => {
-      console.log('Error in Join Room');
+      logger('Error in Join Room');
       // TODO Show error on front-end
       handleError(err);
     });
@@ -55,10 +55,10 @@ export async function apiSaveRoom(room: Room, body: Winner) {
   await axios
     .put(`/api/game/${room}`, body)
     .then(() => {
-      console.log('Saving room');
+      logger('Saving room');
     })
     .catch((err) => {
-      console.log('Error in Save Room');
+      logger('Error in Save Room');
       handleError(err);
     });
 }
@@ -71,10 +71,10 @@ export async function apiDeleteRoom(room: Room) {
   await axios
     .delete(`/api/game/${room}`)
     .then(() => {
-      console.log('Leaving room');
+      logger('Leaving room');
     })
     .catch((err) => {
-      console.log('Error in Close Room');
+      logger('Error in Close Room');
       handleError(err);
     });
 }

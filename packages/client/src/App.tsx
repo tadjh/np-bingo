@@ -42,6 +42,7 @@ import Background from './Components/Background';
 import Container from './Components/Container';
 import { useAppState } from './Utils/useAppState';
 import './App.css';
+import { logger } from './Utils';
 
 export default function App() {
   let query = useQuery();
@@ -72,12 +73,12 @@ export default function App() {
      * Add player socketId on connect
      */
     socket.on('connect', () => {
-      console.log('User connected');
+      logger('User connected');
       setUser((prevUser) => ({ ...prevUser, socket: socket.id }));
     });
 
     socket.on('disconnect', () => {
-      console.log('User disconnected');
+      logger('User disconnected');
     });
 
     /**
@@ -85,7 +86,7 @@ export default function App() {
      * @param player Player
      */
     socket.on('player-joined', (player: Player) => {
-      console.log(`${player.name} joined`);
+      logger(`${player.name} joined`);
       dispatch({ type: PLAYER_JOINED, payload: player });
     });
 
@@ -94,7 +95,7 @@ export default function App() {
      * @param player Player
      */
     socket.on('player-left', (player: Player) => {
-      console.log(`${player.name} left`);
+      logger(`${player.name} left`);
       dispatch({ type: PLAYER_LEFT, payload: player });
     });
 
@@ -103,7 +104,7 @@ export default function App() {
      */
     // TODO Dialog when host leaves
     socket.on('host-left', () => {
-      console.log(`Host left, and you have been removed from the room`);
+      logger(`Host left, and you have been removed from the room`);
       dispatch({ type: PLAYER_KICKED, payload: 'abandoned' });
     });
 
@@ -111,7 +112,7 @@ export default function App() {
      * To Player: Removed from game
      */
     socket.on('player-remove', () => {
-      console.log(`You have been removed from the room`);
+      logger(`You have been removed from the room`);
       dispatch({ type: PLAYER_KICKED, payload: 'banned' });
     });
 
@@ -120,7 +121,7 @@ export default function App() {
      * @param player Player
      */
     socket.on('player-ready', (player: Player) => {
-      console.log(`${player.name} ready`);
+      logger(`${player.name} ready`);
       dispatch({ type: PLAYER_READY, payload: player });
     });
 
@@ -128,7 +129,7 @@ export default function App() {
      * To Room: Ready check
      */
     socket.on('game-ready', () => {
-      console.log('Click to ready up');
+      logger('Click to ready up');
       play('ready');
     });
 
@@ -136,7 +137,7 @@ export default function App() {
      * To Room: Standby for first ball
      */
     socket.on('game-standby', () => {
-      console.log('Game starting shortly...');
+      logger('Game starting shortly...');
       play('standby');
     });
 
@@ -144,7 +145,7 @@ export default function App() {
      * To Room: Game start
      */
     socket.on('game-start', () => {
-      console.log('Game started');
+      logger('Game started');
       play('start');
     });
 
@@ -153,7 +154,7 @@ export default function App() {
      * @param ball Ball
      */
     socket.on('game-ball', (ball: Ball) => {
-      console.log(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
+      logger(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
       dispatch({ type: SET_BALL, payload: ball });
     });
 
@@ -164,7 +165,7 @@ export default function App() {
      * @param card Card
      */
     socket.on('receive-card', (room: Room, player: Player, card: Card) => {
-      console.log(`${player.name} sent a card to you.`);
+      logger(`${player.name} sent a card to you.`);
       play('validate');
       socket.emit('checking-card', room);
       dispatch({ type: GET_CARD, payload: { card: card, owner: player } });
@@ -174,9 +175,7 @@ export default function App() {
      * To Room: Notify a card is being checked
      */
     socket.on('game-validation', () => {
-      console.log(
-        `A card has been sent to the host. Checking if it's a winner!`
-      );
+      logger(`A card has been sent to the host. Checking if it's a winner!`);
       play('pause');
     });
 
@@ -185,7 +184,7 @@ export default function App() {
      * @param winner Winner
      */
     socket.on('winner', (room: Room, winner: Winner) => {
-      console.log(`You won the game!`);
+      logger(`You won the game!`);
 
       socket.emit('win', room, winner.player.name);
 
@@ -200,7 +199,7 @@ export default function App() {
      * @param username string
      */
     socket.on('game-win', (username) => {
-      console.log(`${username} won the game!`);
+      logger(`${username} won the game!`);
       // TODO Show winner name on win ?
       // play('win');
     });
@@ -209,7 +208,7 @@ export default function App() {
      * To Room: Continue
      */
     socket.on('game-continue', () => {
-      console.log('Not a winner...');
+      logger('Not a winner...');
       play('start');
     });
 
@@ -217,7 +216,7 @@ export default function App() {
      * To Room: Game End
      */
     socket.on('game-end', () => {
-      console.log('Game over!');
+      logger('Game over!');
       play('end');
     });
   }, [dispatch, play, setUser]);

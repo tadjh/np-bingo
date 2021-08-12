@@ -64,3 +64,13 @@ export function toSlug(text?: string): string | undefined {
     .replace(/ /g, '-')
     .replace(/[^\w-]+/g, '');
 }
+
+/**
+ * Console log (Development Only)
+ * @param message string
+ */
+export function logger(message: string) {
+  if (process.env.NODE_ENV === 'development') {
+    console.log(message);
+  }
+}
