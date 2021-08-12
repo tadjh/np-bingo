@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Ripple from '../Ripple';
 import './style.css';
 import useSound from 'use-sound';
 import scribbleSfx from '../../Assets/Sounds/Scribble_Erase.mp3';
 import { SpriteMap } from 'use-sound/dist/types';
+import { ThemeContext } from '../../Utils/contexts';
 
 export interface CellProps extends React.HTMLAttributes<HTMLDivElement> {
   winner: boolean;
@@ -22,6 +23,7 @@ export default function Cell({
   ...props
 }: CellProps): JSX.Element {
   const [checked, setChecked] = useState(false);
+  const { sounds } = useContext(ThemeContext);
 
   const eventHandler = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -46,6 +48,7 @@ export default function Cell({
   const [playSfx] = useSound(scribbleSfx, {
     volume: 0.25,
     sprite: { ...scribbleSfxSpriteMap },
+    soundEnabled: sounds,
   });
 
   return (

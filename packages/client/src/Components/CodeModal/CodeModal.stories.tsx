@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import CodeModal, { CodeModalProps } from '.';
 
 export default {
-  title: 'Forms/Code Modal',
+  title: 'Modals/Code Modal',
   component: CodeModal,
   argTypes: {
     onClose: { action: 'click' },

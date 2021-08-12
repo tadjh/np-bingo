@@ -4,6 +4,7 @@ import {
   BallContext,
   FeautresContext,
   GameContext,
+  ThemeContext,
 } from '../../Utils/contexts';
 import {
   Ball as BallType,
@@ -19,13 +20,16 @@ import Footer from '../../Components/Footer';
 import Draws from '../../Components/Draws';
 import PlayerList from '../../Components/PlayerList';
 import IconButton from '../../Components/IconButton';
-import PlusCircleIcon from '../../Assets/PlusCircle';
+import PlusCircleIcon from '../../Assets/Icons/PlusCircle';
 import Main from '../../Components/Main';
 import Header from '../../Components/Header';
 import Widgets from '../../Components/Widgets';
 import Link from '../../Components/Link';
-import { useProgress } from '../../Utils/custom-hooks';
+import useProgress from '../../Utils/useProgress';
 import socket from '../../Config/socket.io';
+import useSound from 'use-sound';
+import dispenseSfx from '../..//Assets/Sounds/Ball_Dispenser.mp3';
+import { randomNumber } from '../../Utils';
 
 export interface HostProps {
   checkCard?: () => void;
@@ -46,10 +50,22 @@ export default function Host({
   draws = [[], [], [], [], []],
   players = [],
 }: HostProps) {
-  const { ballDelay } = useContext(FeautresContext);
+  const { ballDelay, defaultVolume } = useContext(FeautresContext);
   const { gamestate, room, winner, play } = useContext(GameContext);
+  const { sounds } = useContext(ThemeContext);
   const ball = useContext(BallContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
+
+  const [playSfx] = useSound(dispenseSfx, {
+    volume: defaultVolume,
+    sprite: {
+      dispenseBall1: [0, 2000],
+      dispenseBall2: [250, 1750],
+      dispenseBall3: [2000, 2000],
+      dispenseBall4: [2250, 1750],
+    },
+    soundEnabled: sounds,
+  });
 
   /**
    * isDisabled is true when gamestate is not start, standby or failure
@@ -211,6 +227,9 @@ export default function Host({
               <IconButton
                 disabled={(isDisabled || inProgress) && true}
                 onClick={() => handleBall(gamestate)}
+                onMouseDown={() =>
+                  playSfx({ id: `dispenseBall${randomNumber(4)}` })
+                }
                 description="New Ball"
                 direction="left"
               >

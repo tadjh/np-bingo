@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import useSound from 'use-sound';
+import { FeautresContext, ThemeContext } from '../../Utils/contexts';
 import Ripple from '../Ripple';
+import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
 
 export type ButtonVariants = 'contained';
 
@@ -20,6 +23,22 @@ export default function Button({
   disabled,
   ...props
 }: ButtonProps): JSX.Element {
+  const { defaultVolume } = useContext(FeautresContext);
+  const { sounds } = useContext(ThemeContext);
+
+  const [playSfx] = useSound(buttonSfx, {
+    volume: defaultVolume / 2,
+    sprite: {
+      buttonPress: [0, 1000],
+    },
+    soundEnabled: sounds,
+    playbackRate: 1.5,
+  });
+
+  const buttonPressSfx = () => {
+    playSfx({ id: 'buttonPress' });
+  };
+
   const baseStyle =
     'relative px-7 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker';
   //  transform hover:-translate-y-0.5 active:translate-y-0
@@ -40,7 +59,12 @@ export default function Button({
 
   if (Component)
     return (
-      <Component className={buttonClasses} disabled={disabled} {...props}>
+      <Component
+        className={buttonClasses}
+        disabled={disabled}
+        onMouseDown={buttonPressSfx}
+        {...props}
+      >
         <Ripple disabled={disabled} />
         {children}
       </Component>
@@ -50,6 +74,7 @@ export default function Button({
       className={buttonClasses}
       disabled={disabled}
       type={type}
+      onMouseDown={buttonPressSfx}
       {...props}
     >
       <Ripple disabled={disabled} />

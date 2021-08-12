@@ -4,7 +4,7 @@ import ModalBase from '.';
 import Modal, { ModalProps } from '../Modal';
 
 export default {
-  title: 'Modal/Modal Base',
+  title: 'Modals/Modal Base',
   component: ModalBase,
 } as Meta;
 

@@ -63,3 +63,8 @@ export type Gamemode = 'default' | 'solo' | 'death' | 'blackout';
  */
 export type Special = 'postage' | 'corners' | 'roving l';
 export type Rules = { mode: Gamemode; special?: Special[] };
+export type Kicked = {
+  status: boolean;
+  reason: Reason;
+};
+export type Reason = 'none' | 'banned' | 'abandoned';

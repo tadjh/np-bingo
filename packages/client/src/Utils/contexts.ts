@@ -20,7 +20,11 @@ export const FeautresContext = React.createContext({ ...features });
 export const ThemeContext = React.createContext<{
   theme: Theme;
   toggleTheme: () => void;
+  sounds: boolean;
+  toggleSounds: () => void;
 }>({
   theme: 'light',
   toggleTheme: () => {},
+  sounds: true,
+  toggleSounds: () => {},
 });

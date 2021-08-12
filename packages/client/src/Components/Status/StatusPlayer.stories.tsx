@@ -14,9 +14,21 @@ Init.args = {
   gamestate: 'init',
 };
 
+export const InitSolo = Template.bind({});
+InitSolo.args = {
+  ...Init.args,
+  mode: 'solo',
+};
+
 export const Ready = Template.bind({});
 Ready.args = {
   gamestate: 'ready',
+};
+
+export const ReadySolo = Template.bind({});
+ReadySolo.args = {
+  ...Ready.args,
+  mode: 'solo',
 };
 
 export const Standby = Template.bind({});
@@ -32,6 +44,12 @@ Start.args = {
 export const Validate = Template.bind({});
 Validate.args = {
   gamestate: 'validate',
+};
+
+export const ValidateSolo = Template.bind({});
+ValidateSolo.args = {
+  ...Validate.args,
+  mode: 'solo',
 };
 
 export const Pause = Template.bind({});

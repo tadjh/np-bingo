@@ -9,6 +9,7 @@ import {
   Pool,
   Rules,
   Winner,
+  Kicked,
 } from '@np-bingo/types';
 import {
   INIT_GAME,
@@ -47,7 +48,7 @@ export interface AppState {
   draws: Pool;
   playerCard: PlayerCard;
   winner: Winner;
-  kicked: boolean;
+  kicked: Kicked;
   rules: Rules;
 }
 
@@ -69,7 +70,7 @@ export const initialState: AppState = {
     player: { _id: '', uid: 0, name: '', socket: '' },
     card: new Array(25),
   },
-  kicked: false,
+  kicked: { status: false, reason: 'none' },
   rules: { mode: 'default' as Gamemode, special: [] },
 };
 
@@ -121,7 +122,10 @@ export function reducer(state: AppState, action: Action) {
       });
       return { ...state, players: [...leaveFiltered] };
     case PLAYER_KICKED:
-      return { ...state, kicked: true };
+      return {
+        ...state,
+        kicked: { ...state.kicked, status: true, reason: action.payload },
+      };
     case PLAYER_READY:
       const readyFiltered = state.players.map((element) => {
         if (element.socket === action.payload.socket) {

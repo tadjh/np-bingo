@@ -1,28 +1,32 @@
 import React, { useContext } from 'react';
 import IconButton from '../IconButton';
-import MoonIcon from '../../Assets/Moon';
-import SunIcon from '../../Assets/Sun';
-import { ThemeContext } from '../../Utils/contexts';
+import MoonIcon from '../../Assets/Icons/Moon';
+import SunIcon from '../../Assets/Icons/Sun';
+import { FeautresContext, ThemeContext } from '../../Utils/contexts';
 import useSound from 'use-sound';
 import lightSfx from '../..//Assets/Sounds/Light_Switch_On_Off.mp3';
-import { SpriteMap } from 'use-sound/dist/types';
+import { TooltipDirection } from '../Tooltip';
 
 export interface ThemeToggleProps
-  extends React.HTMLAttributes<HTMLButtonElement> {}
+  extends React.HTMLAttributes<HTMLButtonElement> {
+  direction?: TooltipDirection;
+}
 
 export default function ThemeToggle({
+  direction = 'top',
   ...props
 }: ThemeToggleProps): JSX.Element {
-  const lightSfxSpriteMap = {
-    lightOffPress: [0, 1000],
-    lightOffUnpress: [1000, 1000],
-    lightOnPress: [2000, 1000],
-    lightOnUnpress: [3000, 1000],
-  } as SpriteMap;
-  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { defaultVolume } = useContext(FeautresContext);
+  const { theme, toggleTheme, sounds } = useContext(ThemeContext);
   const [playSfx] = useSound(lightSfx, {
-    volume: 0.25,
-    sprite: { ...lightSfxSpriteMap },
+    volume: defaultVolume,
+    sprite: {
+      lightOffPress: [0, 1000],
+      lightOffUnpress: [1000, 1000],
+      lightOnPress: [2000, 1000],
+      lightOnUnpress: [3000, 1000],
+    },
+    soundEnabled: sounds,
   });
   return (
     <IconButton
@@ -39,7 +43,7 @@ export default function ThemeToggle({
           : playSfx({ id: 'lightOffUnpress' });
       }}
       description={theme === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'}
-      direction="top"
+      direction={direction}
     >
       {theme === 'light' ? (
         <SunIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />

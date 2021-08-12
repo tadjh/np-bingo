@@ -1,26 +1,26 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import ThemeToggle, { ThemeToggleProps } from '.';
+import VolumeToggle, { VolumeToggleProps } from '.';
 import { ThemeContext } from '../../Utils/contexts';
 
 export default {
-  title: 'Components/Theme Toggle',
-  component: ThemeToggle,
+  title: 'Components/Volume Toggle',
+  component: VolumeToggle,
 } as Meta;
 
-const Template: Story<ThemeToggleProps> = (args) => <ThemeToggle {...args} />;
+const Template: Story<VolumeToggleProps> = (args) => <VolumeToggle {...args} />;
 
-export const Light = Template.bind({});
+export const On = Template.bind({});
 
-export const Dark = Template.bind({});
-Dark.decorators = [
+export const Off = Template.bind({});
+Off.decorators = [
   (Story) => {
     return (
       <ThemeContext.Provider
         value={{
           theme: 'dark',
           toggleTheme: () => {},
-          sounds: true,
+          sounds: false,
           toggleSounds: () => {},
         }}
       >

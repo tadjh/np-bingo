@@ -188,6 +188,21 @@ export function useTheme(initialTheme: Theme): [Theme, () => void] {
 }
 
 /**
+ * Hook for toggling all sounds
+ * @param initialSounds
+ * @returns
+ */
+export function useSounds(initialSounds: boolean): [boolean, () => void] {
+  const [sounds, setSounds] = useState<boolean>(initialSounds);
+
+  const toggleSounds = () => {
+    setSounds((prevSounds) => !prevSounds);
+  };
+
+  return [sounds, toggleSounds];
+}
+
+/**
  * Use Portal Hook
  * @param target DOM Element
  * @returns
@@ -216,88 +231,4 @@ export function usePortal(target: HTMLElement | null): HTMLDivElement {
   }, [portal, target]);
 
   return portal;
-}
-
-export function useProgress(
-  duration: number,
-  callback?: (param?: any) => void
-): {
-  progress: number;
-  inProgress: boolean;
-  setProgress: React.Dispatch<React.SetStateAction<number>>;
-  enableProgress: () => void;
-  disableProgress: () => void;
-} {
-  const requestRef = useRef<number | null>(null);
-  const startTime = useRef<number | null>(null);
-  const [inProgress, setInProgress] = useState(false);
-  const [progress, setProgress] = useState(0);
-  const max = useRef(100);
-  const multiplier = useRef(max.current / duration);
-
-  /**
-   * Set inProgress true
-   */
-  const enableProgress = useCallback(() => {
-    setInProgress(true);
-  }, []);
-
-  /**
-   * Set inProgress false
-   */
-  const disableProgress = useCallback(() => {
-    setInProgress(false);
-  }, []);
-
-  /**
-   * Reset to initial state
-   */
-  const resetProgress = useCallback(() => {
-    disableProgress();
-    setProgress(0);
-    startTime.current = null;
-  }, [disableProgress]);
-
-  /**
-   * Update progress with new value
-   * @param elapsed time
-   * @returns
-   */
-  const incrementProgress = (elapsed: number) =>
-    setProgress(Math.min(multiplier.current * elapsed, max.current));
-
-  /**
-   * Animate progress bar
-   */
-  const animate = useCallback(
-    (timestamp: number) => {
-      if (startTime.current === null) startTime.current = timestamp;
-      const elapsed = timestamp - startTime.current;
-      incrementProgress(elapsed);
-      if (elapsed >= (duration || 5000)) {
-        resetProgress();
-        callback && callback();
-        return;
-      }
-      requestRef.current = requestAnimationFrame(animate);
-    },
-    [duration, callback, resetProgress]
-  );
-
-  /**
-   * Starts animation when inProgress is true
-   */
-  useEffect(() => {
-    if (!inProgress) return;
-    requestRef.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(requestRef.current as number);
-  }, [animate, inProgress]);
-
-  return {
-    progress,
-    inProgress,
-    setProgress,
-    enableProgress,
-    disableProgress,
-  };
 }

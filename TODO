@@ -2,7 +2,7 @@ Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
 
 Vulnerbilities
-// TODO Rest Api has no auth (JWT)
+// TODO Rest Api has no auth (JWT?)
 // TODO Max active Games
 // TODO Max room size 
 // TODO mongodB Atlas IP needs strict whitelist
@@ -17,9 +17,11 @@ Development
 // TODO Make List generation generic
 // TODO Add profiler tracing?
 // TODO Socket.io Tests https://socket.io/docs/v4/testing/#Example-with-jest
+// TODO Remove material-ui from Create view
 
 Environment
 // TODO Use copyfiles or webpack(?) to move server favicon from 'Public' to 'dist/Public' or something
+
 heroku local web
 git push heroku-web-client main
 git push heroku-api main
@@ -27,17 +29,16 @@ heroku restart --remote heroku-api
 heroku logs -t --remote heroku-web-client
 
 QOL
-// TODO useDebugValue label my custom hooks?
 // TODO React ARIA for screen readers
 // TODO Create users?
 // TODO Implement useTitle
 // TODO Improve room input behavior for typos
 // TODO Popup when user submits card for host and user
-// TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
-// TODO Change color of ready check background
 // TODO Host has left game popup notification
 // TODO Show winner name on win?
 // TODO Error Boundaries
+// TODO Cleanup consoles
+// TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
 
 Future Features
 // TODO Public Rooms

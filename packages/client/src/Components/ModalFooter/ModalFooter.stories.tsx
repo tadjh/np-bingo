@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import ModalFooter, { ModalFooterProps } from '.';
 
 export default {
-  title: 'Modal/Modal Footer',
+  title: 'Modals/Modal Footer',
   component: ModalFooter,
 } as Meta;
 
