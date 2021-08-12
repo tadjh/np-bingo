@@ -32,7 +32,7 @@ export default function ModalHeader({
 
   return (
     <div
-      className="flex items-center justify-between bg-blue-300 dark:bg-gray-700 p-5 border-b-2 border-blue-400 dark:border-gray-900"
+      className="flex items-center justify-between bg-blue-300 dark:bg-gray-700 px-4 py-2 border-b-2 border-blue-400 dark:border-gray-900"
       {...props}
     >
       <span className="text-lg text-black dark:text-white text-opacity-90 dark:text-opacity-90">

@@ -9,7 +9,7 @@ export default function Footer({
 }: FooterProps): JSX.Element {
   return (
     <footer
-      className={['flex flex-col items-center z-10 p-5', className].join(' ')}
+      className={['flex flex-col items-center z-10 p-4', className].join(' ')}
       {...props}
     >
       {children}

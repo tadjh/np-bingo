@@ -199,7 +199,7 @@ export default function Host({
         <Button
           variant="contained"
           color="primary"
-          className="w-36"
+          className="w-[132px]"
           onClick={() => gamestateToggle(gamestate)}
         >
           {gamestateToggleText(gamestate)}
