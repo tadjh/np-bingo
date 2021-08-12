@@ -17,6 +17,7 @@ Development
 // TODO Make List generation generic
 // TODO Add profiler tracing?
 // TODO Socket.io Tests https://socket.io/docs/v4/testing/#Example-with-jest
+// TODO Remove material-ui from Create view
 
 Environment
 // TODO Use copyfiles or webpack(?) to move server favicon from 'Public' to 'dist/Public' or something
