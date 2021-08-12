@@ -86,13 +86,13 @@ export default function IconMenu({
   const stylePopoutMenu = (direction: MenuDirection): string => {
     switch (direction) {
       case 'up':
-        return 'flex-col-reverse left-0 bottom-full';
+        return 'flex-col-reverse bottom-0';
       case 'down':
-        return 'flex-col left-0 top-full';
+        return 'flex-col';
       case 'left':
-        return 'flex-row-reverse top-0 right-full';
+        return 'flex-row-reverse right-0';
       case 'right':
-        return 'flex-row top-0 left-full';
+        return 'flex-row';
       default:
         throw new Error('Error in style popout menu');
     }
@@ -120,81 +120,39 @@ export default function IconMenu({
     }
   };
 
-  /**
-   * Style rounded border nearest cog wheel
-   * @param direction
-   * @returns
-   */
-  const stylePopoutMenuBorderCog = (direction: MenuDirection): string => {
-    switch (direction) {
-      case 'up':
-        return 'rounded-b-full';
-      case 'down':
-        return 'rounded-t-full';
-      case 'left':
-        return 'rounded-r-full';
-      case 'right':
-        return 'rounded-l-full';
-      default:
-        throw new Error('Error in style popout menu border cog');
-    }
-  };
-
-  /**
-   * Style rounded border nearest drawer
-   * @param direction
-   * @returns
-   */
-  const stylePopoutMenuBorderDrawer = (direction: MenuDirection): string => {
-    switch (direction) {
-      case 'up':
-        return 'rounded-t-full';
-      case 'down':
-        return 'rounded-b-full';
-      case 'left':
-        return 'rounded-l-full';
-      case 'right':
-        return 'rounded-r-full';
-      default:
-        throw new Error('Error in style popout menu border drawer');
-    }
-  };
-
   return (
-    <div
-      className={`relative p-1 transition-all duration-100 ${
-        open && 'z-50 bg-gray-300 dark:bg-gray-700'
-      } ${open && stylePopoutMenuBorderCog(direction)}`}
-    >
-      <IconButton
-        onClick={toggleMenu}
-        onMouseDown={toggleMenuSfx}
-        description="Settings"
-        direction={stylePopoutMenuTooltips(direction)}
-      >
-        <Cog className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
-      </IconButton>
+    <div className="relative w-14 h-14 block">
       <ul
-        className={`absolute flex p-1 transition-all duration-100 ${stylePopoutMenu(
-          direction
-        )} ${!open ? 'invisible' : 'z-50 bg-gray-300 dark:bg-gray-700'} ${
-          open && stylePopoutMenuBorderDrawer(direction)
-        }`}
+        className={`absolute flex p-1 transition-all duration-75 rounded-full border-2 ${
+          open
+            ? 'z-50 bg-gray-300 dark:bg-gray-700 shadow-2xl border-gray-500 dark:border-gray-600'
+            : 'border-transparent'
+        } ${stylePopoutMenu(direction)}`}
       >
         <li>
+          <IconButton
+            onClick={toggleMenu}
+            onMouseDown={toggleMenuSfx}
+            description="Settings"
+            direction={stylePopoutMenuTooltips(direction)}
+          >
+            <Cog className="text-black dark:text-white text-opacity-40 dark:text-opacity-50 group-hover:text-opacity-70" />
+          </IconButton>
+        </li>
+        <li className={`${!open ? 'invisible' : ''}`}>
           <ThemeToggle direction={stylePopoutMenuTooltips(direction)} />
         </li>
-        <li>
+        <li className={`${!open ? 'invisible' : ''}`}>
           <VolumeToggle direction={stylePopoutMenuTooltips(direction)} />
         </li>
-        <li>
+        <li className={`${!open ? 'invisible' : ''}`}>
           <IconButton
             onClick={closeMenu}
             onMouseDown={closeMenuSfx}
             description="Close"
             direction={stylePopoutMenuTooltips(direction)}
           >
-            <CloseIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
+            <CloseIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-50 group-hover:text-opacity-70" />
           </IconButton>
         </li>
       </ul>
