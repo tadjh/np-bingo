@@ -1,5 +1,22 @@
 Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
+DONE Bug: No Bingo doesn’t play sound (solo & multiplayer)
+DONE Bug: Tooltips are broken
+DONE Bug: On Win, Scribble sound still plays
+// TODO Bug: On win, Play Again button 
+// TODO Bug: On win, Sound disabled retriggers confetti and song
+// TODO Bug: On win, Failure sounds retriggers
+// TODO Bug: No sound for send card
+// TODO Bug: On no bingo, failure state (multiplayer)
+// TODO Bug: On no bingo, failure for game room
+// TODO Bug: On send card, card sender shouldn’t get “A card being checked for bingo”
+// TODO Bug: Player join sound for host
+// TODO Refresh Play: breaks page, set game mode solo
+// TODO Refresh Play: game in progress try again later
+// TODO Bug: Multiplayer show progress indicator after host pushes ball
+// TODO Bug: Multiplayer new ball no sound
+// TODO Snapshot update
+// TODO Bug: Modal no dark mode on refresh
 
 Vulnerbilities
 // TODO Rest Api has no auth (JWT?)
