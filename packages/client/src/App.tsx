@@ -194,6 +194,8 @@ export default function App() {
       });
     });
 
+    // TODO To Player Not a winner
+
     /**
      * To Room: Broadcast Winner
      * @param username string
@@ -314,17 +316,14 @@ export default function App() {
    * @param mode Game mdoe
    * @param playerCard Input card to be checked and owner of card
    * @param draws Pool of bingo balls that have already been drawn
-   * @return Winner | null
+   * @return void
    */
   const checkCard = useCallback(
     (playerCard: PlayerCard, draws: Pool) => {
       const [results, methods] = validateCard(playerCard.card, draws);
 
       // No winning methods
-      if (methods.length <= 0) {
-        dispatch({ type: CHECK_CARD_FAILURE });
-        return;
-      }
+      if (methods.length <= 0) return dispatch({ type: CHECK_CARD_FAILURE });
 
       const winner = {
         methods,
