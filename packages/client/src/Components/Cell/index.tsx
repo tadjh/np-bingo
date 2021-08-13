@@ -51,6 +51,11 @@ export default function Cell({
     soundEnabled: sounds,
   });
 
+  const handleScribbleSfx = () => {
+    if (winner) return;
+    !checked ? playSfx({ id: 'scribble' }) : playSfx({ id: 'erase' });
+  };
+
   return (
     <div
       className={[
@@ -59,9 +64,7 @@ export default function Cell({
         `${index === 13 ? 'text-base' : ''}`,
       ].join(' ')}
       onClick={eventHandler}
-      onMouseDown={() => {
-        !checked ? playSfx({ id: 'scribble' }) : playSfx({ id: 'erase' });
-      }}
+      onMouseDown={handleScribbleSfx}
       {...props}
     >
       <Ripple />
