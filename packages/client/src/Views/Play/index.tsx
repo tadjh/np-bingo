@@ -44,6 +44,7 @@ import socket from '../../Config/socket.io';
 import useSound from 'use-sound';
 import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
 import winnerSfx from '../../Assets/Sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';
+import loseSfx from '../../Assets/Sounds/Denied.mp3';
 import { randomNumber } from '../../Utils';
 import confetti from 'canvas-confetti';
 import KickedModal from '../../Components/KickedModal';
@@ -91,6 +92,11 @@ export default function Play({
     soundEnabled: sounds,
   });
 
+  const [playLoseSfx] = useSound(loseSfx, {
+    volume: defaultVolume,
+    soundEnabled: sounds,
+  });
+
   /**
    * Loop ball animation and call newBall each completion
    * @returns When ball number is 0
@@ -119,6 +125,50 @@ export default function Play({
   }, []);
 
   /**
+   * Show confetti on the screen
+   */
+  const confettiAnimation = useCallback(() => {
+    const duration = 15000 / 2; // theme song is 15 seconds
+    const end = Date.now() + duration;
+    (function frame() {
+      confetti({
+        particleCount: 2,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0 },
+      });
+      // and launch a few from the right edge
+      confetti({
+        particleCount: 2,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1 },
+      });
+      // keep going until we are out of time
+      if (Date.now() < end) {
+        requestAnimationFrame(frame);
+      }
+    })();
+  }, []);
+
+  /**
+   * Handles win
+   */
+  const handleWin = useCallback(() => {
+    if (winner.methods.length <= 0) return;
+    setWinningCrossmarks(winner.results);
+    playWinSfx();
+    confettiAnimation();
+  }, [confettiAnimation, playWinSfx, winner.methods.length, winner.results]);
+
+  /**
+   * Handles lose
+   */
+  const handleLose = useCallback(() => {
+    playLoseSfx();
+  }, [playLoseSfx]);
+
+  /**
    * Sync Play gamestate with App gamestate
    */
   useEffect(() => {
@@ -133,18 +183,36 @@ export default function Play({
   }, [gamestate, getCard, play]);
 
   /**
-   * Socket.io Emit Side-effects
+   * Multiplayer Side-effects
    */
   useEffect(() => {
     if (gamemode === 'solo') return;
-
-    if (gamestate === 'standby') {
-      socket.emit('ready-up', host.socket, user);
+    switch (gamestate) {
+      case 'standby':
+        socket.emit('ready-up', host.socket, user);
+        break;
+      case 'validate':
+        socket.emit('send-card', room, host.socket, user, card);
+        break;
+      case 'win':
+        handleWin();
+        break;
+      case 'failure':
+        handleLose();
+        break;
+      default:
+        break;
     }
-    if (gamestate === 'validate') {
-      socket.emit('send-card', room, host.socket, user, card);
-    }
-  }, [gamestate, gamemode, card, host.socket, room, user]);
+  }, [
+    gamestate,
+    gamemode,
+    card,
+    host.socket,
+    room,
+    user,
+    handleWin,
+    handleLose,
+  ]);
 
   /**
    * Solo side-effects
@@ -156,15 +224,30 @@ export default function Play({
         enableProgress();
         break;
       case 'validate':
+        // TODO pauseProgress();
         checkCard && checkCard();
         break;
       case 'pause':
         pauseProgress();
         break;
+      case 'win':
+        handleWin();
+        break;
+      case 'failure':
+        handleLose();
+        break;
       default:
         break;
     }
-  }, [gamemode, gamestate, enableProgress, pauseProgress, checkCard]);
+  }, [
+    gamemode,
+    gamestate,
+    enableProgress,
+    pauseProgress,
+    checkCard,
+    handleLose,
+    handleWin,
+  ]);
 
   /**
    * Toggle current target's crossmark visibility
@@ -192,43 +275,6 @@ export default function Play({
     const winningCrossmarks = winningCells(results);
     playDispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
   };
-
-  /**
-   * Show confetti on the screen
-   */
-  const confettiAnimation = useCallback(() => {
-    const duration = 15000; // theme song is 15 seconds
-    const end = Date.now() + duration;
-    (function frame() {
-      confetti({
-        particleCount: 4,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-      });
-      // and launch a few from the right edge
-      confetti({
-        particleCount: 4,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-      });
-      // keep going until we are out of time
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
-  }, []);
-
-  /**
-   * Update winning results after successful validation
-   */
-  useEffect(() => {
-    if (winner.methods.length <= 0) return;
-    setWinningCrossmarks(winner.results);
-    playWinSfx();
-    confettiAnimation();
-  }, [winner.methods, winner.results, playWinSfx, confettiAnimation]);
 
   /**
    * Sets gamestate to standby in default, start in solo mode, or pause when solo is already started
