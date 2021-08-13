@@ -121,7 +121,11 @@ export default function IconMenu({
   };
 
   return (
-    <div className="relative w-14 h-14 block">
+    <div
+      className={`relative block w-14 h-14 ${
+        !open ? 'overflow-hidden hover:overflow-visible' : ''
+      }`}
+    >
       <ul
         className={`absolute flex p-1 transition-all duration-75 rounded-full border-2 ${
           open
