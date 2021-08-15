@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDialog } from '../../Utils/custom-hooks';
+import useDialog from '../../hooks/useDialog';
 import RoomList from '../../components/RoomList';
 import CodeModal from '../../components/CodeModal';
 import Footer from '../../components/Footer';
@@ -13,22 +13,22 @@ import socket from '../../config/socket.io';
 import { Link as RouterLink } from 'react-router-dom';
 
 export interface JoinProps {
-  queryRoom: string | null;
   joinRoom?: (room: string) => void;
-  rooms?: any[];
   solo?: () => void;
+  queryRoom: string | null;
+  rooms?: any[];
 }
 
 export default function Join({
-  queryRoom = null,
   joinRoom,
-  rooms = [],
   solo,
+  queryRoom = null,
+  rooms = [],
 }: JoinProps) {
+  let history = useHistory();
   const { allowPublic, allowSolo } = useContext(FeautresContext);
   const { room, user, host } = useContext(GameContext);
-  let history = useHistory();
-  const [open, handleOpen, handleClose] = useDialog(false);
+  const [isOpen, open, close] = useDialog();
 
   /**
    * Handles share link
@@ -58,14 +58,10 @@ export default function Join({
       <Main className="flex-1 justify-around gap-y-3">
         {allowPublic && <RoomList rooms={rooms} onClick={joinRoom} />}
         <div className="flex flex-col items-center gap-y-3">
-          <Button
-            variant="contained"
-            className="join-button"
-            onClick={handleOpen}
-          >
+          <Button variant="contained" className="join-button" onClick={open}>
             Private Room
           </Button>
-          <CodeModal open={open} onClose={handleClose} onSumbit={joinRoom} />
+          <CodeModal open={isOpen} onClose={close} onSumbit={joinRoom} />
           {allowSolo && (
             <Button
               component={RouterLink}

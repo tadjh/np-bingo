@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import useSound from 'use-sound';
 import VolumeOffIcon from '../../assets/Icons/VolumeOff';
 import VolumeUpIcon from '../../assets/Icons/VolumeUp';
-import { FeautresContext, ThemeContext } from '../../context';
+import { FeautresContext, SoundContext } from '../../context';
 import IconButton from '../IconButton';
 import { TooltipDirection } from '../Tooltip';
 import volumeSfx from '../../Assets/Sounds/Click_2.mp3';
@@ -16,7 +16,7 @@ export default function VolumeToggle({
   direction = 'top',
   ...props
 }: VolumeToggleProps): JSX.Element {
-  const { sounds, toggleSounds } = useContext(ThemeContext);
+  const { sounds, toggleSounds } = useContext(SoundContext);
   const { defaultVolume } = useContext(FeautresContext);
   const [playVolumeSfx] = useSound(volumeSfx, {
     volume: defaultVolume,

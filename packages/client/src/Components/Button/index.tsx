@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import useSound from 'use-sound';
-import { FeautresContext, ThemeContext } from '../../context';
+import { FeautresContext, SoundContext } from '../../context';
 import Ripple from '../Ripple';
 import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
 
@@ -24,7 +24,7 @@ export default function Button({
   ...props
 }: ButtonProps): JSX.Element {
   const { defaultVolume } = useContext(FeautresContext);
-  const { sounds } = useContext(ThemeContext);
+  const { sounds } = useContext(SoundContext);
 
   const [playSfx] = useSound(buttonSfx, {
     volume: defaultVolume / 2,

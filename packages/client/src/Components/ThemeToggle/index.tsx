@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import IconButton from '../IconButton';
 import MoonIcon from '../../assets/Icons/Moon';
 import SunIcon from '../../assets/Icons/Sun';
-import { FeautresContext, ThemeContext } from '../../context';
+import { FeautresContext, ThemeContext, SoundContext } from '../../context';
 import useSound from 'use-sound';
 import lightSfx from '../..//Assets/Sounds/Light_Switch_On_Off.mp3';
 import { TooltipDirection } from '../Tooltip';
@@ -17,7 +17,8 @@ export default function ThemeToggle({
   ...props
 }: ThemeToggleProps): JSX.Element {
   const { defaultVolume } = useContext(FeautresContext);
-  const { theme, toggleTheme, sounds } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { sounds } = useContext(SoundContext);
   const [playSfx] = useSound(lightSfx, {
     volume: defaultVolume,
     sprite: {

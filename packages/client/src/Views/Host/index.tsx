@@ -4,7 +4,7 @@ import {
   BallContext,
   FeautresContext,
   GameContext,
-  ThemeContext,
+  SoundContext,
 } from '../../context';
 import {
   Ball as BallType,
@@ -24,7 +24,7 @@ import Main from '../../components/Main';
 import Header from '../../components/Header';
 import Widgets from '../../components/Widgets';
 import Link from '../../components/Link';
-import useProgress from '../../Utils/useProgress';
+import useProgress from '../../hooks/useProgress';
 import socket from '../../config/socket.io';
 import useSound from 'use-sound';
 import dispenseSfx from '../..//Assets/Sounds/Ball_Dispenser.mp3';
@@ -49,7 +49,7 @@ export default function Host({
 }: HostProps) {
   const { ballDelay, defaultVolume } = useContext(FeautresContext);
   const { gamestate, room, winner, play } = useContext(GameContext);
-  const { sounds } = useContext(ThemeContext);
+  const { sounds } = useContext(SoundContext);
   const ball = useContext(BallContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
 

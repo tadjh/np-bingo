@@ -1,7 +1,7 @@
 import React from 'react';
 import { initialState } from '../Reducers/app.reducer';
 import features from '../config/features';
-import { Gamestate, Player, Theme } from '@np-bingo/types';
+import { Gamestate, Player } from '@np-bingo/types';
 
 export const GameContext = React.createContext({
   gamestate: initialState.gamestate,
@@ -17,14 +17,12 @@ export const BallContext = React.createContext({ ...initialState.ball });
 
 export const FeautresContext = React.createContext({ ...features });
 
-export const ThemeContext = React.createContext<{
-  theme: Theme;
-  toggleTheme: () => void;
-  sounds: boolean;
-  toggleSounds: () => void;
-}>({
-  theme: 'light',
+export const ThemeContext = React.createContext({
+  theme: features.theme,
   toggleTheme: () => {},
-  sounds: true,
+});
+
+export const SoundContext = React.createContext({
+  sounds: features.sounds,
   toggleSounds: () => {},
 });

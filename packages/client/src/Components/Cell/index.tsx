@@ -3,7 +3,7 @@ import Ripple from '../Ripple';
 import useSound from 'use-sound';
 import scribbleSfx from '../../Assets/Sounds/Scribble_Erase.mp3';
 import { SpriteMap } from 'use-sound/dist/types';
-import { ThemeContext } from '../../context';
+import { SoundContext } from '../../context';
 import HeavyBallotXIcon from '../../assets/Icons/HeavyBallotX';
 
 export interface CellProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -23,7 +23,7 @@ export default function Cell({
   ...props
 }: CellProps): JSX.Element {
   const [checked, setChecked] = useState(false);
-  const { sounds } = useContext(ThemeContext);
+  const { sounds } = useContext(SoundContext);
 
   const eventHandler = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>

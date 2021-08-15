@@ -11,7 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
-import { useTitle } from '../../Utils/custom-hooks';
+import useTitle from '../../hooks/useTitle';
 import Main from '../../components/Main';
 import Footer from '../../components/Footer';
 import Header from '../../components/Header';
@@ -21,7 +21,7 @@ export interface CreateProps {
 }
 
 export default function Create({ title }: CreateProps) {
-  useTitle(title && title);
+  useTitle(title);
 
   const [type, setType] = useState('default');
   const [state, setState] = useState({

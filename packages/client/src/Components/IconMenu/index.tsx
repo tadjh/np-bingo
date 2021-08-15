@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import useSound from 'use-sound';
 import CloseIcon from '../../assets/Icons/Close';
 import Cog from '../../assets/Icons/Cog';
-import { FeautresContext, ThemeContext } from '../../context';
+import { FeautresContext, SoundContext } from '../../context';
 import IconButton from '../IconButton';
 import ThemeToggle from '../ThemeToggle';
 import { TooltipDirection } from '../Tooltip';
@@ -25,7 +25,7 @@ export default function IconMenu({
 }: IconMenuProps): JSX.Element {
   const [open, setOpen] = useState(false);
   const { defaultVolume } = useContext(FeautresContext);
-  const { sounds } = useContext(ThemeContext);
+  const { sounds } = useContext(SoundContext);
   const [playMenuSfx] = useSound(menuSfx, {
     volume: defaultVolume,
     sprite: {

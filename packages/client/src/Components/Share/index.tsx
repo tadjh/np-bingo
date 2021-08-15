@@ -6,23 +6,23 @@ import ModalHeader from '../ModalHeader';
 import ModalContent from '../ModalContent';
 import ModalFooter from '../ModalFooter';
 import Button from '../Button';
-import { useDialog } from '../../Utils/custom-hooks';
+import useDialog from '../../hooks/useDialog';
 import { Room } from '@np-bingo/types';
 import TextInput from '../TextInput';
 import useSound from 'use-sound';
 import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
-import { FeautresContext, ThemeContext } from '../../context';
+import { FeautresContext, SoundContext } from '../../context';
 
 export interface ShareProps {
   room?: Room;
 }
 
 export default function Share({ room = '' }: ShareProps): JSX.Element {
-  const [open, handleOpen, handleClose] = useDialog(false, handleCopyText);
-  const [copyText, setCopyText] = useState('Click to copy link to clipboard');
-  const ref = useRef<HTMLInputElement>(null);
+  const [isOpen, open, close] = useDialog();
+  const [isCopied, setIsCopied] = useState(false);
+  const linkRef = useRef<HTMLInputElement>(null);
   const { defaultVolume } = useContext(FeautresContext);
-  const { sounds } = useContext(ThemeContext);
+  const { sounds } = useContext(SoundContext);
 
   const [playSfx] = useSound(buttonSfx, {
     volume: defaultVolume,
@@ -37,27 +37,28 @@ export default function Share({ room = '' }: ShareProps): JSX.Element {
     playSfx({ id: 'buttonPress' });
   };
 
-  const copyToClipboard = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    if (ref.current === null) return;
-    ref.current.select();
+  /**
+   * Focus link and copy value to keyboard
+   * @returns
+   */
+  const copyToClipboard = () => {
+    if (linkRef.current === null) return;
+    linkRef.current.select();
     try {
       document.execCommand('copy');
-      const text = 'Link copied to clipboard!';
-      if (copyText === text) return;
-      setCopyText(text);
+      setIsCopied(true);
     } catch (err) {
       throw new Error('Error in copy code to clipboard');
     }
   };
 
   /**
-   * Callback function on Dialog close
+   * Closes modal and resets copy
    */
-  function handleCopyText() {
-    setCopyText('Click to copy link to clipboard');
-  }
+  const handleClose = () => {
+    close();
+    setIsCopied(false);
+  };
 
   // TODO Hide full URL when config set to Streamer Mode
 
@@ -65,7 +66,7 @@ export default function Share({ room = '' }: ShareProps): JSX.Element {
     <React.Fragment>
       <IconButton
         className="share-button group"
-        onClick={handleOpen}
+        onClick={open}
         aria-label="share"
         description="Share link"
         direction="top"
@@ -75,7 +76,7 @@ export default function Share({ room = '' }: ShareProps): JSX.Element {
       </IconButton>
       <Modal
         id="share-modal"
-        open={open}
+        open={isOpen}
         aria-labelledby="share-dialog-title"
         onClose={handleClose}
       >
@@ -84,11 +85,13 @@ export default function Share({ room = '' }: ShareProps): JSX.Element {
         </ModalHeader>
         <ModalContent>
           <p className="text-black dark:text-white text-opacity-60 dark:text-opacity-60">
-            {copyText}
+            {isCopied
+              ? 'Link copied to clipboard!'
+              : 'Click to copy link to clipboard'}
           </p>
           <TextInput
             id="room-link"
-            ref={ref}
+            ref={linkRef}
             value={`${window.location.protocol}//${window.location.host}/join?r=${room}`}
             readOnly
           />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import VolumeToggle, { VolumeToggleProps } from '.';
-import { ThemeContext } from '../../context';
+import { SoundContext } from '../../context';
 
 export default {
   title: 'Components/Volume Toggle',
@@ -16,16 +16,14 @@ export const Off = Template.bind({});
 Off.decorators = [
   (Story) => {
     return (
-      <ThemeContext.Provider
+      <SoundContext.Provider
         value={{
-          theme: 'dark',
-          toggleTheme: () => {},
           sounds: false,
           toggleSounds: () => {},
         }}
       >
         <Story />
-      </ThemeContext.Provider>
+      </SoundContext.Provider>
     );
   },
 ];

@@ -4,7 +4,7 @@ import ModalHeader from '../ModalHeader';
 import ModalContent from '../ModalContent';
 import ModalFooter from '../ModalFooter';
 import Button from '../Button';
-import { useForm } from '../../Utils/custom-hooks';
+import useForm from '../../hooks/useForm';
 import { roomChar } from '@np-bingo/common';
 
 export interface CodeModalProps {

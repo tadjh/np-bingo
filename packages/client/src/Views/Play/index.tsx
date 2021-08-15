@@ -21,7 +21,7 @@ import {
   BallContext,
   FeautresContext,
   GameContext,
-  ThemeContext,
+  SoundContext,
 } from '../../context';
 import {
   BINGO,
@@ -47,7 +47,7 @@ import { initialState as appState } from '../../Reducers/app.reducer';
 import Main from '../../components/Main';
 import Header from '../../components/Header';
 import Widgets from '../../components/Widgets';
-import useProgress from '../../Utils/useProgress';
+import useProgress from '../../hooks/useProgress';
 import socket from '../../config/socket.io';
 import useSound from 'use-sound';
 import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
@@ -56,7 +56,7 @@ import loseSfx from '../../Assets/Sounds/Denied.mp3';
 import { logger, randomNumber } from '../../Utils';
 import KickedModal from '../../components/KickedModal';
 import Confetti from '../../components/Confetti';
-import { useQuery } from '../../Utils/custom-hooks';
+import useQuery from '../../hooks/useQuery';
 import {
   disableBallDisplay,
   disablePrimaryButton,
@@ -85,7 +85,7 @@ export default function Play({
   const [playState, playDispatch] = useReducer<
     (state: PlayerState, action: Action) => PlayerState
   >(reducer, initialState);
-  const { sounds } = useContext(ThemeContext);
+  const { sounds } = useContext(SoundContext);
   const { gamestate, gamemode, room, host, user, play } =
     useContext(GameContext);
   const ball = useContext(BallContext);

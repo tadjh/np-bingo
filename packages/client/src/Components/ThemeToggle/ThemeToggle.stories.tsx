@@ -20,8 +20,6 @@ Dark.decorators = [
         value={{
           theme: 'dark',
           toggleTheme: () => {},
-          sounds: true,
-          toggleSounds: () => {},
         }}
       >
         <Story />

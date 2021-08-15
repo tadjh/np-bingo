@@ -29,12 +29,20 @@ import Home from './Views/Home';
 import Join from './Views/Join';
 import Create from './Views/Create';
 import { apiCreateRoom, apiUpdateRoom } from './Api';
-import { useQuery, useSounds, useTheme, useUser } from './Utils/custom-hooks';
+import useUser from './hooks/useUser';
+import useQuery from './hooks/useQuery';
+import useTheme from './hooks/useTheme';
+import useSounds from './hooks/useSounds';
 import config from './config/features';
-import { GameContext, BallContext, ThemeContext } from './context';
+import {
+  GameContext,
+  BallContext,
+  ThemeContext,
+  SoundContext,
+} from './context';
 import Background from './components/Background';
 import Container from './components/Container';
-import { useAppState } from './Utils/useAppState';
+import { useAppState } from './hooks/useAppState';
 import './App.css';
 import { logger } from './Utils';
 
@@ -326,60 +334,60 @@ export default function App() {
 
   return (
     <div id="App" className={theme}>
-      <ThemeContext.Provider
-        value={{ theme, toggleTheme, sounds, toggleSounds }}
-      >
-        <GameContext.Provider
-          value={{
-            gamestate,
-            gamemode: rules.mode,
-            room,
-            host,
-            user,
-            winner,
-            play,
-          }}
-        >
-          <BallContext.Provider value={ball}>
-            <Container>
-              <Background />
-              <Switch>
-                <Route path="/create">
-                  <Create></Create>
-                </Route>
-                <Route path="/host">
-                  <Host
-                    checkCard={() => checkCard(playerCard, draws)}
-                    newBall={() => newBall(pool, draws)}
-                    removePlayer={removePlayer}
-                    draws={draws}
-                    players={players}
-                  ></Host>
-                </Route>
-                <Route path="/join">
-                  <Join
-                    joinRoom={joinRoom}
-                    queryRoom={query.get('r')}
-                    solo={() => mode('solo')}
-                  />
-                </Route>
-                <Route path="/play">
-                  <Play
-                    checkCard={() => checkCard(playerCard, draws)}
-                    newBall={() => newBall(pool, draws)}
-                    sendCard={sendCard}
-                    kicked={kicked}
-                    winner={winner}
-                    solo={() => mode('solo')}
-                  ></Play>
-                </Route>
-                <Route exact path="/">
-                  <Home createRoom={createRoom} />
-                </Route>
-              </Switch>
-            </Container>
-          </BallContext.Provider>
-        </GameContext.Provider>
+      <ThemeContext.Provider value={{ theme, toggleTheme }}>
+        <SoundContext.Provider value={{ sounds, toggleSounds }}>
+          <GameContext.Provider
+            value={{
+              gamestate,
+              gamemode: rules.mode,
+              room,
+              host,
+              user,
+              winner,
+              play,
+            }}
+          >
+            <BallContext.Provider value={ball}>
+              <Container>
+                <Background />
+                <Switch>
+                  <Route path="/create">
+                    <Create></Create>
+                  </Route>
+                  <Route path="/host">
+                    <Host
+                      checkCard={() => checkCard(playerCard, draws)}
+                      newBall={() => newBall(pool, draws)}
+                      removePlayer={removePlayer}
+                      draws={draws}
+                      players={players}
+                    ></Host>
+                  </Route>
+                  <Route path="/join">
+                    <Join
+                      joinRoom={joinRoom}
+                      queryRoom={query.get('r')}
+                      solo={() => mode('solo')}
+                    />
+                  </Route>
+                  <Route path="/play">
+                    <Play
+                      checkCard={() => checkCard(playerCard, draws)}
+                      newBall={() => newBall(pool, draws)}
+                      sendCard={sendCard}
+                      kicked={kicked}
+                      winner={winner}
+                      solo={() => mode('solo')}
+                    ></Play>
+                  </Route>
+                  <Route exact path="/">
+                    <Home createRoom={createRoom} />
+                  </Route>
+                </Switch>
+              </Container>
+            </BallContext.Provider>
+          </GameContext.Provider>
+        </SoundContext.Provider>
       </ThemeContext.Provider>
     </div>
   );
