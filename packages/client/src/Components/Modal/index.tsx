@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import ReactDOM from 'react-dom';
 import { usePortal } from '../../Utils/custom-hooks';
 import ModalBase from '../ModalBase';
-// import { usePortal } from '../../Utils/custom-hooks';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   id: string;
