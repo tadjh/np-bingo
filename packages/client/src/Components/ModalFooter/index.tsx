@@ -6,5 +6,7 @@ export interface ModalFooterProps
 export default function ModalFooter({
   children,
 }: ModalFooterProps): JSX.Element {
-  return <div className="flex justify-end p-3">{children}</div>;
+  return (
+    <div className="flex justify-end p-3 gap-x-3 items-center">{children}</div>
+  );
 }
