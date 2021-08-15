@@ -2,7 +2,6 @@ import { useCallback, useEffect } from 'react';
 import socket from './Config/socket.io';
 import {
   CHECK_CARD_SUCCESS,
-  NEW_BALL,
   GET_CARD,
   SET_ROOM,
   JOIN_ROOM,
@@ -13,7 +12,7 @@ import {
   PLAYER_KICKED,
   CHECK_CARD_FAILURE,
 } from './Constants';
-import { getBall, removeBall, validateCard } from './Utils/bingo';
+import { getBall, removeBall, updateDraws, validateCard } from './Utils/bingo';
 import {
   Ball,
   Card,
@@ -29,12 +28,7 @@ import Play from './Views/Play';
 import Home from './Views/Home';
 import Join from './Views/Join';
 import Create from './Views/Create';
-import {
-  apiCreateRoom,
-  apiDeleteRoom,
-  apiSaveRoom,
-  apiUpdateRoom,
-} from './Api';
+import { apiCreateRoom, apiUpdateRoom } from './Api';
 import { useQuery, useSounds, useTheme, useUser } from './Utils/custom-hooks';
 import config from './Config/features';
 import { GameContext, BallContext, ThemeContext } from './Utils/contexts';
@@ -47,7 +41,7 @@ import { logger } from './Utils';
 export default function App() {
   let query = useQuery();
   const [user, setUser] = useUser();
-  const { state, dispatch, play, mode } = useAppState();
+  const { state, dispatch, play, mode, setNewBall } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useSounds(config.sounds);
 
@@ -75,6 +69,7 @@ export default function App() {
     socket.on('connect', () => {
       logger('User connected');
       setUser((prevUser) => ({ ...prevUser, socket: socket.id }));
+      logger(socket.id);
     });
 
     socket.on('disconnect', () => {
@@ -176,7 +171,8 @@ export default function App() {
      */
     socket.on('game-validation', () => {
       logger(`A card has been sent to the host. Checking if it's a winner!`);
-      play('pause');
+      // Card sender should be in validate state
+      // TODO FIX play('pause');
     });
 
     /**
@@ -185,16 +181,22 @@ export default function App() {
      */
     socket.on('winner', (room: Room, winner: Winner) => {
       logger(`You won the game!`);
-
       socket.emit('win', room, winner.player.name);
-
       dispatch({
         type: CHECK_CARD_SUCCESS,
         payload: winner,
       });
     });
 
-    // TODO To Player Not a winner
+    /**
+     * To Player: Loser
+     */
+    socket.on('loser', () => {
+      logger(`This card is not a winner...`);
+      dispatch({
+        type: CHECK_CARD_FAILURE,
+      });
+    });
 
     /**
      * To Room: Broadcast Winner
@@ -211,7 +213,8 @@ export default function App() {
      */
     socket.on('game-continue', () => {
       logger('Not a winner...');
-      play('start');
+
+      // TODO play('start');
     });
 
     /**
@@ -262,54 +265,19 @@ export default function App() {
     [dispatch]
   );
 
-  /**
-   * Leave room by room code
-   * @param room Room code
-   */
-  const leaveRoom = useCallback((room: Room) => {
-    apiDeleteRoom(room);
-  }, []);
+  const newBall = (pool: Pool, draws: Pool) => {
+    const ball = getBall(pool);
+    if (ball.number === 0) return ball;
 
-  /**
-   * Save room after a win
-   * @param room
-   * @param winner
-   */
-  const saveRoom = useCallback((room: Room, winner: Winner) => {
-    apiSaveRoom(room, winner);
-  }, []);
+    // safely clone multidimenional array
+    const drawsArray = draws.map((array) => array.slice());
+    const newDraws = updateDraws(drawsArray, ball);
+    const filteredPool = removeBall(pool, ball);
 
-  /**
-   * Retrieve a new Bingo ball from the remaining pool of balls.
-   * @param pool
-   * @param draws
-   * @returns Ball
-   */
-  const newBall = useCallback(
-    (pool: Pool, draws: Pool) => {
-      const poolArray = [...pool];
-      // safely clone multidimenional array
-      const drawsArray = draws.map((array) => array.slice());
-      const ball = getBall(poolArray);
+    setNewBall(ball, newDraws, filteredPool);
 
-      if (ball.number === 0) return ball;
-
-      const filteredPool = removeBall(poolArray, ball);
-      drawsArray[ball.key].push(ball.number);
-
-      dispatch({
-        type: NEW_BALL,
-        payload: {
-          ball: ball,
-          draws: drawsArray,
-          pool: filteredPool,
-        },
-      });
-
-      return ball;
-    },
-    [dispatch]
-  );
+    return ball;
+  };
 
   /**
    * Checks if input card is a winner
@@ -319,11 +287,14 @@ export default function App() {
    * @return void
    */
   const checkCard = useCallback(
-    (playerCard: PlayerCard, draws: Pool) => {
+    (playerCard: PlayerCard, draws: Pool): boolean => {
       const [results, methods] = validateCard(playerCard.card, draws);
 
       // No winning methods
-      if (methods.length <= 0) return dispatch({ type: CHECK_CARD_FAILURE });
+      if (methods.length <= 0) {
+        dispatch({ type: CHECK_CARD_FAILURE });
+        return false;
+      }
 
       const winner = {
         methods,
@@ -336,6 +307,7 @@ export default function App() {
         type: CHECK_CARD_SUCCESS,
         payload: winner,
       });
+      return true;
     },
     [dispatch]
   );
@@ -380,8 +352,6 @@ export default function App() {
                     checkCard={() => checkCard(playerCard, draws)}
                     newBall={() => newBall(pool, draws)}
                     removePlayer={removePlayer}
-                    leaveRoom={leaveRoom}
-                    saveRoom={saveRoom}
                     draws={draws}
                     players={players}
                   ></Host>
@@ -400,6 +370,7 @@ export default function App() {
                     sendCard={sendCard}
                     kicked={kicked}
                     winner={winner}
+                    solo={() => mode('solo')}
                   ></Play>
                 </Route>
                 <Route exact path="/">
