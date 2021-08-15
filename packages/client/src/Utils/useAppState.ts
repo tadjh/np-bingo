@@ -1,4 +1,4 @@
-import { Action, Gamemode, Gamestate } from '@np-bingo/types';
+import { Action, Ball, Gamemode, Gamestate, Pool } from '@np-bingo/types';
 import { useCallback, useReducer } from 'react';
 import logger from 'use-reducer-logger';
 import {
@@ -12,6 +12,7 @@ import {
   WIN_GAME,
   END_GAME,
   UPDATE_GAMEMODE,
+  NEW_BALL,
 } from '../Constants';
 import { AppState, initialState, reducer } from '../Reducers/app.reducer';
 
@@ -84,5 +85,16 @@ export function useAppState() {
     }
   }, []);
 
-  return { state, dispatch, play, mode };
+  const setNewBall = (ball: Ball, draws: Pool, pool: Pool) => {
+    dispatch({
+      type: NEW_BALL,
+      payload: {
+        ball,
+        draws,
+        pool,
+      },
+    });
+  };
+
+  return { state, dispatch, play, mode, setNewBall };
 }
