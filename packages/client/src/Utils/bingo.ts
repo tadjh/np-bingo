@@ -87,27 +87,32 @@ export function decompressSerial(serial: Serial) {
 }
 
 /**
- * Takes the entire set of remaining balls and returns a random ball
+ * Takes the entire set of remaining balls and returns a random ball with remainder
  * @param pool
+ * @returns Ball
  */
-
 export function getBall(pool: Pool): Ball {
-  const [remainder, columns] = getPoolSize(pool);
+  const [remainder, remainingColumns] = getPoolSize(pool);
+
   // No balls remaining
-  if (columns.length <= 0)
+  if (remainder === 0)
     return {
       key: 0,
       number: 0,
       column: '',
       remainder: 0,
     };
-  const columnIndex = randomIndex(columns);
-  const column = pool[columns[columnIndex]];
+
+  const randomColumn = randomIndex(remainingColumns);
+  const columnIndex = remainingColumns[randomColumn];
+  const column = pool[columnIndex];
   const ballIndex = randomIndex(column);
+
+  // New Ball
   return {
-    key: columns[columnIndex],
+    key: columnIndex,
     number: column[ballIndex],
-    column: letters[columns[columnIndex]],
+    column: letters[columnIndex],
     remainder: remainder - 1,
   };
 }
@@ -136,13 +141,28 @@ export function getPoolSize(pool: Pool): [number, number[]] {
  * @returns Updated pool of balls
  */
 export function removeBall(pool: Pool, ball: Ball): Pool {
-  return pool.map(function (item: number[], index) {
+  return pool.map((item: number[], index) => {
     if (index === ball.key) {
-      return item.filter(function (element: number) {
+      return item.filter((element: number) => {
         return element !== ball.number;
       });
     }
-    return item;
+    return [...item];
+  });
+}
+
+/**
+ * Pushes new ball into draws
+ * @param draws
+ * @param ball
+ * @returns draws Pool
+ */
+export function updateDraws(draws: Pool, ball: Ball): Pool {
+  return draws.map((item: number[], index) => {
+    if (index === ball.key) {
+      return [...item, ball.number];
+    }
+    return [...item];
   });
 }
 
