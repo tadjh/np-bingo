@@ -64,8 +64,8 @@ module.exports = {
         },
       },
       backgroundImage: (theme) => ({
-        'bingo-light': "url('/src/Assets/bg-tranparent-light.svg')",
-        'bingo-dark': "url('/src/Assets/bg-tranparent-dark.svg')",
+        'bingo-light': "url('/src/Assets//img/bg-tranparent-light.svg')",
+        'bingo-dark': "url('/src/Assets/img/bg-tranparent-dark.svg')",
         'gradient-radial':
           'radial-gradient(circle at 25% 25%, var(--tw-gradient-stops))',
       }),
