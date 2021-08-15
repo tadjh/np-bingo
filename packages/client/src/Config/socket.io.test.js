@@ -2,6 +2,8 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import Client from 'socket.io-client';
 
+// TODO Implement socket.io tests
+
 describe('Basic Socket.io Tests', () => {
   let io, serverSocket, clientSocket;
 

@@ -1,6 +1,6 @@
 import { Special, Theme } from '@np-bingo/types';
 
-interface Config {
+export interface Config {
   allowNewCard: boolean;
   allowPublic: boolean;
   allowShare: boolean;
