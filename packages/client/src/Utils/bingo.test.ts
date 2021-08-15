@@ -17,6 +17,7 @@ import {
   checkRisingDiagonal,
   winningMethods,
   winningCells,
+  updateDraws,
 } from './bingo';
 
 const mockCard = [
@@ -172,6 +173,19 @@ describe('removes ball from pool', () => {
         remainder: 0,
       })
     ).toStrictEqual([[], [], [], [], []]);
+  });
+});
+
+describe('updates current draws', () => {
+  it('adds ball', () => {
+    expect(
+      updateDraws([[1], [16], [31], [46], [61]], {
+        key: 0,
+        number: 2,
+        column: 'b',
+        remainder: 69,
+      })
+    ).toStrictEqual([[1, 2], [16], [31], [46], [61]]);
   });
 });
 
