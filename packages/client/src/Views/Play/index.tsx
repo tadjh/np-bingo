@@ -1,4 +1,11 @@
-import React, { useCallback, useContext, useEffect, useReducer } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from 'react';
 import {
   Action,
   Card,
@@ -8,6 +15,7 @@ import {
   Ball as BallType,
   Player,
   Kicked,
+  Gamestate,
 } from '@np-bingo/types';
 import {
   BallContext,
@@ -45,16 +53,23 @@ import useSound from 'use-sound';
 import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
 import winnerSfx from '../../Assets/Sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';
 import loseSfx from '../../Assets/Sounds/Denied.mp3';
-import { randomNumber } from '../../Utils';
-import confetti from 'canvas-confetti';
+import { logger, randomNumber } from '../../Utils';
 import KickedModal from '../../Components/KickedModal';
+import Confetti from '../../Components/Confetti';
+import { useQuery } from '../../Utils/custom-hooks';
+import {
+  disableBallDisplay,
+  disablePrimaryButton,
+  primaryButtonText,
+} from './common.play';
 
 export interface PlayProps {
-  checkCard?: () => void;
+  checkCard?: () => boolean;
   newBall: () => BallType;
   sendCard?: (card: Card, user?: Player) => void;
   winner?: Winner;
   kicked?: Kicked;
+  solo?: () => void;
 }
 
 export default function Play({
@@ -63,7 +78,10 @@ export default function Play({
   sendCard,
   winner = { ...appState.winner },
   kicked = { status: false, reason: 'none' },
+  solo,
 }: PlayProps) {
+  const query = useQuery();
+  const queryMode = useRef(query.get('m'));
   const [playState, playDispatch] = useReducer<
     (state: PlayerState, action: Action) => PlayerState
   >(reducer, initialState);
@@ -76,8 +94,10 @@ export default function Play({
     FeautresContext
   );
   const { card, serial, crossmarks } = playState;
+  const [confetti, setConfetti] = useState(false);
+  // const [replay, setReplay] = useState(false);
 
-  const [playSfx] = useSound(dispenseSfx, {
+  const [playDispenseSfx] = useSound(dispenseSfx, {
     volume: defaultVolume,
     sprite: {
       dispenseBall1: [0, 2000],
@@ -87,7 +107,7 @@ export default function Play({
     },
     soundEnabled: sounds,
   });
-  const [playWinSfx] = useSound(winnerSfx, {
+  const [playWinSfx, playWinSfxData] = useSound(winnerSfx, {
     volume: defaultVolume,
     soundEnabled: sounds,
   });
@@ -98,18 +118,14 @@ export default function Play({
   });
 
   /**
-   * Loop ball animation and call newBall each completion
+   * Loop ball animation and trigger newBall in solo mode
    * @returns When ball number is 0
    */
   const onProgressDone = () => {
-    const brandNewBall = newBall();
-    if (brandNewBall.number === 0) return play('end');
-
-    if (gamestate === 'start') {
-      enableProgress();
-      playSfx({ id: `dispenseBall${randomNumber(2)}` });
-    }
+    if (ball.remainder === 0) return play('end');
+    if (gamemode === 'solo' && gamestate === 'start') return triggerBall();
   };
+
   const { progress, inProgress, enableProgress, pauseProgress } = useProgress(
     ballDelay,
     onProgressDone
@@ -125,129 +141,67 @@ export default function Play({
   }, []);
 
   /**
-   * Show confetti on the screen
+   * New Ball w/ Side Effects
    */
-  const confettiAnimation = useCallback(() => {
-    const duration = 15000 / 2; // theme song is 15 seconds
-    const end = Date.now() + duration;
-    (function frame() {
-      confetti({
-        particleCount: 2,
-        angle: 60,
-        spread: 55,
-        origin: { x: 0 },
-      });
-      // and launch a few from the right edge
-      confetti({
-        particleCount: 2,
-        angle: 120,
-        spread: 55,
-        origin: { x: 1 },
-      });
-      // keep going until we are out of time
-      if (Date.now() < end) {
-        requestAnimationFrame(frame);
-      }
-    })();
-  }, []);
+  const triggerBall = () => {
+    newBall();
+    triggerBallEffects();
+  };
 
   /**
-   * Handles win
+   * Ball side effects
    */
-  const handleWin = useCallback(() => {
-    if (winner.methods.length <= 0) return;
-    setWinningCrossmarks(winner.results);
-    playWinSfx();
-    confettiAnimation();
-  }, [confettiAnimation, playWinSfx, winner.methods.length, winner.results]);
+  const triggerBallEffects = useCallback(() => {
+    playDispenseSfx({ id: `dispenseBall${randomNumber(2)}` });
+    enableProgress();
+  }, [playDispenseSfx, enableProgress]);
 
   /**
-   * Handles lose
+   * Sets gamestate based on gamestate
    */
-  const handleLose = useCallback(() => {
-    playLoseSfx();
-  }, [playLoseSfx]);
+  const handlePrimaryButton = (gamemode: Gamemode, gamestate: Gamestate) => {
+    if (gamemode === 'solo') return soloHandlePrimaryButton(gamestate);
+    return play('standby');
+  };
 
   /**
-   * Sync Play gamestate with App gamestate
+   * Solo handle primary button
+   * @param gamestate
+   * @returns
    */
-  useEffect(() => {
-    // Syncing Player View with Host Game State.
-    if (gamestate === 'init') {
-      playDispatch({ type: INIT_GAME });
-      play('ready');
-    }
-    if (gamestate === 'ready') {
-      getCard();
-    }
-  }, [gamestate, getCard, play]);
-
-  /**
-   * Multiplayer Side-effects
-   */
-  useEffect(() => {
-    if (gamemode === 'solo') return;
-    switch (gamestate) {
-      case 'standby':
-        socket.emit('ready-up', host.socket, user);
-        break;
-      case 'validate':
-        socket.emit('send-card', room, host.socket, user, card);
-        break;
-      case 'win':
-        handleWin();
-        break;
-      case 'failure':
-        handleLose();
-        break;
-      default:
-        break;
-    }
-  }, [
-    gamestate,
-    gamemode,
-    card,
-    host.socket,
-    room,
-    user,
-    handleWin,
-    handleLose,
-  ]);
-
-  /**
-   * Solo side-effects
-   */
-  useEffect(() => {
-    if (gamemode !== 'solo') return;
+  const soloHandlePrimaryButton = (gamestate: Gamestate) => {
     switch (gamestate) {
       case 'start':
-        enableProgress();
+        play('pause');
         break;
-      case 'validate':
-        // TODO pauseProgress();
-        checkCard && checkCard();
+      case 'ready':
+        triggerBall();
+        play('start');
         break;
-      case 'pause':
-        pauseProgress();
-        break;
-      case 'win':
-        handleWin();
-        break;
-      case 'failure':
-        handleLose();
+      case 'end':
+        playWinSfxData.stop();
+        play('init');
+        solo && solo();
         break;
       default:
+        play('start');
+        enableProgress();
         break;
     }
-  }, [
-    gamemode,
-    gamestate,
-    enableProgress,
-    pauseProgress,
-    checkCard,
-    handleLose,
-    handleWin,
-  ]);
+  };
+
+  /**
+   * Wrapper function for sendCard
+   * @param gamemode
+   * @param card
+   * @param user
+   * @returns
+   */
+  const handleSendCard = (gamemode: Gamemode, card: Card, user: Player) => {
+    if (gamemode === 'solo') sendCard && sendCard(card, user);
+    // default & solo
+    play('validate');
+  };
 
   /**
    * Toggle current target's crossmark visibility
@@ -268,6 +222,14 @@ export default function Play({
   };
 
   /**
+   * Send leave event to room
+   */
+  const leaveRoom = (gamemode: Gamemode) => {
+    if (gamemode === 'solo') return;
+    socket.emit('leave-room', room, host.socket, user);
+  };
+
+  /**
    * Sets Winning crossmarks after successful card validations
    * @param results Results of validation check
    */
@@ -277,63 +239,125 @@ export default function Play({
   };
 
   /**
-   * Sets gamestate to standby in default, start in solo mode, or pause when solo is already started
+   * Handles win
    */
-  const handlePrimaryButton = () => {
-    if (gamemode === 'solo' && gamestate === 'start') return play('pause');
-    if (gamemode === 'solo') return play('start');
-    // default
-    return play('standby');
-  };
+  const handleWin = useCallback(() => {
+    // TODO if (winner.methods.length <= 0) return;
+    setWinningCrossmarks(winner.results);
+    playWinSfx();
+    setConfetti(true);
+    logger('handle win');
+  }, [playWinSfx, winner.results]);
 
   /**
-   * Text to display on primary button
-   * @returns String
+   * Handles lose
    */
-  const primaryButtonText = (): string => {
-    if (gamemode !== 'solo') return 'Ready';
-    // solo
-    if (gamestate === 'pause' || gamestate === 'failure') return 'Resume';
-    if (gamestate === 'start') return 'Pause';
-    return 'Start';
-  };
+  const handleLose = useCallback(() => {
+    playLoseSfx();
+  }, [playLoseSfx]);
 
   /**
-   * Disables primary button except once ready, solo start, solo pause, or solo failure
-   * @returns boolean
+   * Sync Play gamestate with App gamestate
    */
-  const disablePrimaryButton = (): boolean => {
-    // default
-    if (gamestate === 'ready') return false;
-    if (gamemode !== 'solo') return true;
-    // solo
-    if (gamestate === 'start') return false;
-    if (gamestate === 'pause') return false;
-    if (gamestate === 'failure') return false;
-    return true;
-  };
+  useEffect(() => {
+    // Syncing Player View with Host Game State.
+    if (gamestate === 'init') {
+      playDispatch({ type: INIT_GAME });
+      play('ready');
+    }
+    if (gamestate === 'ready') {
+      getCard();
+      setConfetti(false);
+    }
+  }, [gamestate, getCard, play]);
 
   /**
-   * Wrapper function for sendCard
-   * @param mode
-   * @param card
-   * @param room
-   * @param host
-   * @returns
+   * Multiplayer Side-effects
    */
-  const handleSendCard = (gamemode: Gamemode, card: Card, user: Player) => {
-    if (gamemode === 'solo') sendCard && sendCard(card, user);
-    // default & solo
-    play('validate');
-  };
-
-  /**
-   * Send leave event to room
-   */
-  const leaveRoom = (gamemode: Gamemode) => {
+  useEffect(() => {
     if (gamemode === 'solo') return;
-    socket.emit('leave-room', room, host.socket, user);
-  };
+    switch (gamestate) {
+      case 'standby':
+        socket.emit('ready-up', host.socket, user);
+        break;
+      case 'validate':
+        socket.emit('send-card', room, host.socket, user, card);
+        break;
+      case 'win':
+        handleWin();
+        play('end');
+        break;
+      case 'failure':
+        handleLose();
+        play('standby');
+        break;
+      default:
+        break;
+    }
+
+    // TODO Does this work?
+    socket.on('game-ball', () => {
+      triggerBallEffects();
+    });
+  }, [
+    gamestate,
+    gamemode,
+    card,
+    host.socket,
+    room,
+    user,
+    triggerBallEffects,
+    handleWin,
+    handleLose,
+    play,
+  ]);
+
+  /**
+   * Solo side-effects
+   */
+  useEffect(() => {
+    if (gamemode !== 'solo') return;
+    switch (gamestate) {
+      case 'validate':
+        // TODO pauseProgress();
+        if (!checkCard) return;
+        const valid = checkCard();
+        valid ? handleWin() : handleLose();
+        break;
+      case 'pause':
+        pauseProgress();
+        break;
+      // case 'win':
+      //   play('end');
+      //   break;
+      // case 'failure':
+      //   play('pause');
+      //   break;
+      // case 'end':
+      //   setReplay(true);
+      //   break;
+      default:
+        break;
+    }
+  }, [
+    gamemode,
+    gamestate,
+    enableProgress,
+    pauseProgress,
+    checkCard,
+    play,
+    handleWin,
+    handleLose,
+  ]);
+
+  /**
+   * Force solo if in query
+   */
+  useEffect(() => {
+    if (queryMode.current === 'solo' && gamemode !== 'solo') {
+      solo && solo();
+    }
+  });
 
   return (
     <React.Fragment>
@@ -345,11 +369,11 @@ export default function Play({
         )}
         <Button
           variant="contained"
-          disabled={disablePrimaryButton()}
-          onClick={handlePrimaryButton}
-          className="w-[115px]"
+          disabled={disablePrimaryButton(gamemode, gamestate)}
+          onClick={() => handlePrimaryButton(gamemode, gamestate)}
+          className="w-32"
         >
-          {primaryButtonText()}
+          {() => primaryButtonText(gamemode, gamestate)}
         </Button>
         <Button
           variant="contained"
@@ -367,7 +391,7 @@ export default function Play({
           remainder={ball.remainder}
           inProgress={inProgress}
           progress={progress}
-          disabled={gamestate !== 'start' && gamestate !== 'failure' && true}
+          disabled={disableBallDisplay(gamestate)}
         />
         <Board
           card={[...card]}
@@ -387,7 +411,10 @@ export default function Play({
           Leave Room
         </Link>
       </Footer>
-      <KickedModal open={kicked.status} reason={kicked.reason} />
+      {gamemode !== 'solo' && (
+        <KickedModal open={kicked.status} reason={kicked.reason} />
+      )}
+      {confetti && <Confetti trigger={confetti} />}
     </React.Fragment>
   );
 }
