@@ -4,8 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import Host, { HostProps } from './';
 import { BallContext, GameContext } from '../../Utils/contexts';
 import { initialState as AppState } from '../../Reducers/app.reducer';
-import Container from '../../Components/Container';
-// import * as DrawStories from '../../Components/Draws/Draws.stories';
+import Container from '../../components/Container';
 
 export default {
   title: 'Pages/Host',

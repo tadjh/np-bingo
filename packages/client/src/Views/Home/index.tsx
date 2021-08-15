@@ -1,13 +1,13 @@
 import React, { useContext, useEffect } from 'react';
-import Button from '../../Components/Button';
+import Button from '../../components/Button';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
-import Logo from '../../Components/Logo';
+import Logo from '../../components/Logo';
 import { GameContext } from '../../Utils/contexts';
-import Footer from '../../Components/Footer';
-import Credit from '../../Components/Credit';
-import Main from '../../Components/Main';
-import Header from '../../Components/Header';
-import IconMenu from '../../Components/IconMenu';
+import Footer from '../../components/Footer';
+import Credit from '../../components/Credit';
+import Main from '../../components/Main';
+import Header from '../../components/Header';
+import IconMenu from '../../components/IconMenu';
 
 export interface HomeProps {
   createRoom?: () => void;

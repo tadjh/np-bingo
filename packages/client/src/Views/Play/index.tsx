@@ -31,22 +31,22 @@ import {
   UPDATE_CROSSMARKS,
   WINNER_CROSSMARKS,
 } from '../../Constants';
-import Ball from '../../Components/Ball';
-import Board from '../../Components/Board';
-import StatusMessage from '../../Components/Status';
+import Ball from '../../components/Ball';
+import Board from '../../components/Board';
+import StatusMessage from '../../components/Status';
 import { newCard, winningCells } from '../../Utils/bingo';
-import Button from '../../Components/Button';
-import Footer from '../../Components/Footer';
-import Link from '../../Components/Link';
+import Button from '../../components/Button';
+import Footer from '../../components/Footer';
+import Link from '../../components/Link';
 import {
   initialState,
   PlayerState,
   reducer,
 } from '../../Reducers/play.reducer';
 import { initialState as appState } from '../../Reducers/app.reducer';
-import Main from '../../Components/Main';
-import Header from '../../Components/Header';
-import Widgets from '../../Components/Widgets';
+import Main from '../../components/Main';
+import Header from '../../components/Header';
+import Widgets from '../../components/Widgets';
 import useProgress from '../../Utils/useProgress';
 import socket from '../../Config/socket.io';
 import useSound from 'use-sound';
@@ -54,8 +54,8 @@ import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
 import winnerSfx from '../../Assets/Sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';
 import loseSfx from '../../Assets/Sounds/Denied.mp3';
 import { logger, randomNumber } from '../../Utils';
-import KickedModal from '../../Components/KickedModal';
-import Confetti from '../../Components/Confetti';
+import KickedModal from '../../components/KickedModal';
+import Confetti from '../../components/Confetti';
 import { useQuery } from '../../Utils/custom-hooks';
 import {
   disableBallDisplay,

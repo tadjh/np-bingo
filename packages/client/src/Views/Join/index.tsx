@@ -1,14 +1,14 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDialog } from '../../Utils/custom-hooks';
-import RoomList from '../../Components/RoomList';
-import CodeModal from '../../Components/CodeModal';
-import Footer from '../../Components/Footer';
+import RoomList from '../../components/RoomList';
+import CodeModal from '../../components/CodeModal';
+import Footer from '../../components/Footer';
 import { FeautresContext, GameContext } from '../../Utils/contexts';
-import Main from '../../Components/Main';
-import Header from '../../Components/Header';
-import Button from '../../Components/Button';
-import Link from '../../Components/Link';
+import Main from '../../components/Main';
+import Header from '../../components/Header';
+import Button from '../../components/Button';
+import Link from '../../components/Link';
 import socket from '../../Config/socket.io';
 import { Link as RouterLink } from 'react-router-dom';
 

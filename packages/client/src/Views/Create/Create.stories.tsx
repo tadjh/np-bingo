@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Create, { CreateProps } from './';
-import Container from '../../Components/Container';
+import Container from '../../components/Container';
 
 export default {
   title: 'Pages/Create',

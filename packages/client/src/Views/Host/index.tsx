@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import Ball from '../../Components/Ball';
+import Ball from '../../components/Ball';
 import {
   BallContext,
   FeautresContext,
@@ -13,17 +13,17 @@ import {
   Pool,
   Room,
 } from '@np-bingo/types';
-import StatusMessage from '../../Components/Status';
-import Button from '../../Components/Button';
-import Footer from '../../Components/Footer';
-import Draws from '../../Components/Draws';
-import PlayerList from '../../Components/PlayerList';
-import IconButton from '../../Components/IconButton';
+import StatusMessage from '../../components/Status';
+import Button from '../../components/Button';
+import Footer from '../../components/Footer';
+import Draws from '../../components/Draws';
+import PlayerList from '../../components/PlayerList';
+import IconButton from '../../components/IconButton';
 import PlusCircleIcon from '../../assets/Icons/PlusCircle';
-import Main from '../../Components/Main';
-import Header from '../../Components/Header';
-import Widgets from '../../Components/Widgets';
-import Link from '../../Components/Link';
+import Main from '../../components/Main';
+import Header from '../../components/Header';
+import Widgets from '../../components/Widgets';
+import Link from '../../components/Link';
 import useProgress from '../../Utils/useProgress';
 import socket from '../../Config/socket.io';
 import useSound from 'use-sound';

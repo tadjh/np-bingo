@@ -2,9 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Home, { HomeProps } from './';
-import { FeautresContext } from '../../Utils/contexts';
-import features from '../../Config/features';
-import Container from '../../Components/Container';
+import Container from '../../components/Container';
 
 export default {
   title: 'Pages/Home',

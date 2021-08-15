@@ -6,7 +6,7 @@ import { BallContext, GameContext } from '../../Utils/contexts';
 import { initialState as AppState } from '../../Reducers/app.reducer';
 // import { FeautresContext } from '../../Utils/contexts';
 // import features from '../../Config/features';
-import Container from '../../Components/Container';
+import Container from '../../components/Container';
 
 export default {
   title: 'Pages/Play',
