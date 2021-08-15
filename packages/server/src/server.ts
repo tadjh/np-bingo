@@ -196,21 +196,28 @@ io.on('connection', (socket: Socket) => {
   });
 
   /**
+   * From Host: Card not a winner
+   * @param room Room
+   */
+  socket.on('losing-card', (room: Room, winner: Winner) => {
+    console.log(winner.player.socket);
+
+    if (winner.player.socket) {
+      socket.to(room).emit('game-continue');
+      // TODO Probably double sends to sender
+      io.to(winner.player.socket).emit('loser');
+      console.log('The card is not a winner...');
+    } else {
+    }
+  });
+
+  /**
    * From Player: Won
    * @param room Room
    * @param name Winner name
    */
   socket.on('win', (room: Room, name: string) => {
     socket.to(room).emit('game-win', name);
-  });
-
-  /**
-   * From Host: Continue Game
-   * @param room Room
-   */
-  socket.on('losing-card', (room: Room) => {
-    socket.to(room).emit('game-continue');
-    console.log('The card is not a winner...');
   });
 
   /**
