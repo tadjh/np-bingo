@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import socket from './Config/socket.io';
+import socket from './config/socket.io';
 import {
   CHECK_CARD_SUCCESS,
   GET_CARD,
@@ -30,7 +30,7 @@ import Join from './Views/Join';
 import Create from './Views/Create';
 import { apiCreateRoom, apiUpdateRoom } from './Api';
 import { useQuery, useSounds, useTheme, useUser } from './Utils/custom-hooks';
-import config from './Config/features';
+import config from './config/features';
 import { GameContext, BallContext, ThemeContext } from './Utils/contexts';
 import Background from './components/Background';
 import Container from './components/Container';

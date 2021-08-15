@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Join, { JoinProps } from './';
 import { FeautresContext } from '../../Utils/contexts';
-import features from '../../Config/features';
+import features from '../../config/features';
 import Container from '../../components/Container';
 import * as RoomListStories from '../../components/RoomList/RoomList.stories';
 

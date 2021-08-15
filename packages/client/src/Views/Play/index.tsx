@@ -48,7 +48,7 @@ import Main from '../../components/Main';
 import Header from '../../components/Header';
 import Widgets from '../../components/Widgets';
 import useProgress from '../../Utils/useProgress';
-import socket from '../../Config/socket.io';
+import socket from '../../config/socket.io';
 import useSound from 'use-sound';
 import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
 import winnerSfx from '../../Assets/Sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';
@@ -86,13 +86,11 @@ export default function Play({
     (state: PlayerState, action: Action) => PlayerState
   >(reducer, initialState);
   const { sounds } = useContext(ThemeContext);
-  const { gamestate, gamemode, room, host, user, play } = useContext(
-    GameContext
-  );
+  const { gamestate, gamemode, room, host, user, play } =
+    useContext(GameContext);
   const ball = useContext(BallContext);
-  const { ballDelay, allowNewCard, defaultVolume } = useContext(
-    FeautresContext
-  );
+  const { ballDelay, allowNewCard, defaultVolume } =
+    useContext(FeautresContext);
   const { card, serial, crossmarks } = playState;
   const [confetti, setConfetti] = useState(false);
   // const [replay, setReplay] = useState(false);

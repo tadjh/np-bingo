@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Widgets, { WidgetProps } from '.';
 import { FeautresContext } from '../../Utils/contexts';
-import features from '../../Config/features';
+import features from '../../config/features';
 import * as CodeStories from '../Code/Code.stories';
 
 export default {

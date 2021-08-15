@@ -25,7 +25,7 @@ import Header from '../../components/Header';
 import Widgets from '../../components/Widgets';
 import Link from '../../components/Link';
 import useProgress from '../../Utils/useProgress';
-import socket from '../../Config/socket.io';
+import socket from '../../config/socket.io';
 import useSound from 'use-sound';
 import dispenseSfx from '../..//Assets/Sounds/Ball_Dispenser.mp3';
 import { randomNumber } from '../../Utils';

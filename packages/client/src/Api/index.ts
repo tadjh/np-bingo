@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import axios from '../Config/axios';
+import axios from '../config/axios';
 import { Player, Room, Winner } from '@np-bingo/types';
 import { handleError, logger } from '../Utils';
 

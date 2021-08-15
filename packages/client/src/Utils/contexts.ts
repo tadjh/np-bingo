@@ -1,6 +1,6 @@
 import React from 'react';
 import { initialState } from '../Reducers/app.reducer';
-import features from '../Config/features';
+import features from '../config/features';
 import { Gamestate, Player, Theme } from '@np-bingo/types';
 
 export const GameContext = React.createContext({
