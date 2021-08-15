@@ -30,7 +30,7 @@ import {
   NEW_CARD,
   UPDATE_CROSSMARKS,
   WINNER_CROSSMARKS,
-} from '../../Constants';
+} from '../../config/constants';
 import Ball from '../../components/Ball';
 import Board from '../../components/Board';
 import StatusMessage from '../../components/Status';

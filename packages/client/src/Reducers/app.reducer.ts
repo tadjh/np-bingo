@@ -36,7 +36,7 @@ import {
   CHECK_CARD_FAILURE,
   WIN_GAME,
   UPDATE_GAMEMODE,
-} from '../Constants';
+} from '../config/constants';
 
 export interface AppState {
   gamestate: Gamestate;

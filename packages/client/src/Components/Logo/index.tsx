@@ -1,5 +1,5 @@
 import React from 'react';
-import { letters } from '../../Constants';
+import { letters } from '../../config/constants';
 
 export interface LogoProps {
   home?: boolean;

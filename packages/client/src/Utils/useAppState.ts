@@ -13,7 +13,7 @@ import {
   END_GAME,
   UPDATE_GAMEMODE,
   NEW_BALL,
-} from '../Constants';
+} from '../config/constants';
 import { AppState, initialState, reducer } from '../Reducers/app.reducer';
 
 export function useAppState() {

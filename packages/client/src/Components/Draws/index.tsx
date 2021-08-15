@@ -1,5 +1,5 @@
 import React from 'react';
-import { letters } from '../../Constants';
+import { letters } from '../../config/constants';
 import { Pool } from '@np-bingo/types';
 
 export interface DrawsProps {

@@ -5,7 +5,7 @@ import {
   NEW_CARD,
   UPDATE_CROSSMARKS,
   WINNER_CROSSMARKS,
-} from '../Constants';
+} from '../config/constants';
 
 export interface PlayerState {
   card: Card;

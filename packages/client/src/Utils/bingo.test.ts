@@ -1,4 +1,4 @@
-import { BINGO } from '../Constants';
+import { BINGO } from '../config/constants';
 import {
   createCard,
   createColumn,
@@ -21,31 +21,8 @@ import {
 } from './bingo';
 
 const mockCard = [
-  9,
-  24,
-  42,
-  55,
-  73,
-  5,
-  16,
-  35,
-  46,
-  70,
-  10,
-  29,
-  45,
-  54,
-  63,
-  6,
-  19,
-  43,
-  57,
-  62,
-  7,
-  28,
-  41,
-  50,
-  72,
+  9, 24, 42, 55, 73, 5, 16, 35, 46, 70, 10, 29, 45, 54, 63, 6, 19, 43, 57, 62,
+  7, 28, 41, 50, 72,
 ];
 
 describe('create card', () => {
@@ -59,31 +36,8 @@ describe('create card', () => {
 
   it('randomized card', () => {
     expect(createCard(BINGO)).toStrictEqual([
-      15,
-      30,
-      45,
-      60,
-      75,
-      14,
-      29,
-      44,
-      59,
-      74,
-      13,
-      28,
-      43,
-      58,
-      73,
-      12,
-      27,
-      42,
-      57,
-      72,
-      11,
-      26,
-      41,
-      56,
-      71,
+      15, 30, 45, 60, 75, 14, 29, 44, 59, 74, 13, 28, 43, 58, 73, 12, 27, 42,
+      57, 72, 11, 26, 41, 56, 71,
     ]);
   });
 });
@@ -191,12 +145,9 @@ describe('updates current draws', () => {
 
 describe('validate card', () => {
   it('winning card', () => {
-    expect(
-      validateCard(mockCard, [[9], [24], [42], [55], [73]])
-    ).toStrictEqual([
-      { column: [], diagonal: [], row: [0, 1, 2, 3, 4] },
-      ['row'],
-    ]);
+    expect(validateCard(mockCard, [[9], [24], [42], [55], [73]])).toStrictEqual(
+      [{ column: [], diagonal: [], row: [0, 1, 2, 3, 4] }, ['row']]
+    );
   });
   it('losing card', () => {
     expect(validateCard(mockCard, [[], [], [], [], []])).toStrictEqual([
@@ -236,20 +187,12 @@ describe('check card', () => {
 describe('check rows', () => {
   it('winning draws for row 1', () => {
     expect(checkRows(mockCard, [[9], [24], [42], [55], [73]])).toStrictEqual([
-      0,
-      1,
-      2,
-      3,
-      4,
+      0, 1, 2, 3, 4,
     ]);
   });
   it('winning draws for row 3', () => {
     expect(checkRows(mockCard, [[10], [29], [], [54], [63]])).toStrictEqual([
-      10,
-      11,
-      12,
-      13,
-      14,
+      10, 11, 12, 13, 14,
     ]);
   });
   it('no winning rows', () => {

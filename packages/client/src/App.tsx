@@ -11,7 +11,7 @@ import {
   SET_BALL,
   PLAYER_KICKED,
   CHECK_CARD_FAILURE,
-} from './Constants';
+} from './config/constants';
 import { getBall, removeBall, updateDraws, validateCard } from './Utils/bingo';
 import {
   Ball,

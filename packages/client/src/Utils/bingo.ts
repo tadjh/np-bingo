@@ -1,6 +1,6 @@
 import lz from 'lz-string';
 import { Pool, Ball, Card, Results, Methods, Serial } from '@np-bingo/types';
-import { letters } from '../Constants';
+import { letters } from '../config/constants';
 import { findElementInArray, randomIndex } from '.';
 
 /**
