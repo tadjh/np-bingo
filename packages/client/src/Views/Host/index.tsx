@@ -12,7 +12,6 @@ import {
   Player,
   Pool,
   Room,
-  Winner,
 } from '@np-bingo/types';
 import StatusMessage from '../../Components/Status';
 import Button from '../../Components/Button';
@@ -30,13 +29,13 @@ import socket from '../../Config/socket.io';
 import useSound from 'use-sound';
 import dispenseSfx from '../..//Assets/Sounds/Ball_Dispenser.mp3';
 import { randomNumber } from '../../Utils';
+import { gamestateToggleText } from './host';
+import { apiDeleteRoom, apiSaveRoom } from '../../Api';
 
 export interface HostProps {
   checkCard?: () => void;
   newBall?: () => BallType;
   removePlayer?: (player: Player) => void;
-  leaveRoom?: (room: Room) => void;
-  saveRoom?: (room: Room, winner: Winner) => void;
   draws: Pool;
   players: Player[];
 }
@@ -45,8 +44,6 @@ export default function Host({
   checkCard,
   newBall,
   removePlayer,
-  leaveRoom,
-  saveRoom,
   draws = [[], [], [], [], []],
   players = [],
 }: HostProps) {
@@ -96,22 +93,6 @@ export default function Host({
   };
 
   /**
-   * Display text for main action button
-   * @param gamestate
-   * @returns
-   */
-  const gamestateToggleText = (gamestate: Gamestate): string => {
-    switch (gamestate) {
-      case 'ready':
-        return 'Start Game';
-      case 'end':
-        return 'New Game';
-      default:
-        return 'End Game';
-    }
-  };
-
-  /**
    * Kick player from room
    * @param player
    */
@@ -147,10 +128,17 @@ export default function Host({
    * @param room Room code
    */
   const handleLeaveRoom = (room: Room) => {
-    if (!leaveRoom) return;
     socket.emit('leave-room', room);
-    leaveRoom(room);
+    apiDeleteRoom(room);
+    // TODO Best way to handle async??
+    // setIsDeleteRoom(true);
   };
+
+  // const [ isDeleteRoom, setIsDeleteRoom ] = useState(false);
+  // useEffect(() => {
+  //   if (!isDeleteRoom) return
+  //   apiDeleteRoom(room);
+  // })
 
   /**
    * Check card for validation
@@ -181,17 +169,17 @@ export default function Host({
         socket.emit('start', room);
         break;
       case 'failure':
-        socket.emit('losing-card', room);
+        socket.emit('losing-card', room, winner);
         break;
       case 'win':
         socket.emit('winning-card', room, winner);
-        saveRoom && saveRoom(room, winner);
+        apiSaveRoom(room, winner);
         break;
       case 'end':
         socket.emit('end', room);
         break;
     }
-  }, [gamestate, room, winner, play, saveRoom]);
+  }, [gamestate, room, winner, play]);
 
   return (
     <React.Fragment>
