@@ -1,22 +1,23 @@
 Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
-DONE Bug: No Bingo doesn’t play sound (solo & multiplayer)
+// TODO Bug: Modal no dark mode on refresh
+DONE Bug: SOLO & MULTI No Bingo doesn’t play sound
 DONE Bug: Tooltips are broken
 DONE Bug: On Win, Scribble sound still plays
-// TODO Bug: On win, Play Again button 
-// TODO Bug: On win, Sound disabled retriggers confetti and song
-// TODO Bug: On win, Failure sounds retriggers
-// TODO Bug: No sound for send card
+DONE Bug: SOLO first ball empty
+DONE Bug: On win, Play Again button 
+DONE Bug: SOLO On win, Sound disabled retriggers confetti and song
+DONE Bug: SOLO On win, Failure sounds retriggers
 // TODO Bug: On no bingo, failure state (multiplayer)
 // TODO Bug: On no bingo, failure for game room
-// TODO Bug: On send card, card sender shouldn’t get “A card being checked for bingo”
-// TODO Bug: Player join sound for host
+// TODO Bug: On send card, card sender shouldn’t get “A card being checked for bingo” TEST
 // TODO Refresh Play: breaks page, set game mode solo
-// TODO Refresh Play: game in progress try again later
-// TODO Bug: Multiplayer show progress indicator after host pushes ball
-// TODO Bug: Multiplayer new ball no sound
+// TODO Refresh Play Multi: game in progress try again later
+DONE Bug: Multiplayer show progress indicator after host pushes ball
+DONE Bug: Multiplayer new ball no sound
 // TODO Snapshot update
-// TODO Bug: Modal no dark mode on refresh
+// TODO Bug: On leave room Bingo Song continues to play
+// TODO Check for 'test'
 
 Vulnerbilities
 // TODO Rest Api has no auth (JWT?)
@@ -26,6 +27,7 @@ Vulnerbilities
 // TODO Timeout socket.io connection with reconnect popup
 
 Development
+// TODO Config Husky
 // TODO add @socket.io/admin-ui
 // TODO Rest api use game "_id" instead of room id
 // TODO MongoDB model timestamps?
@@ -46,6 +48,8 @@ heroku restart --remote heroku-api
 heroku logs -t --remote heroku-web-client
 
 QOL
+// TODO Add: Player join sound for host
+// TODO Add: No sound for send card
 // TODO React ARIA for screen readers
 // TODO Create users?
 // TODO Implement useTitle
