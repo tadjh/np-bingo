@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import useSound from 'use-sound';
-import { FeautresContext, ThemeContext } from '../../Utils/contexts';
+import { FeautresContext, ThemeContext } from '../../context';
 import Ripple from '../Ripple';
 import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
 

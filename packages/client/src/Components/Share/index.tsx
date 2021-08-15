@@ -11,7 +11,7 @@ import { Room } from '@np-bingo/types';
 import TextInput from '../TextInput';
 import useSound from 'use-sound';
 import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
-import { FeautresContext, ThemeContext } from '../../Utils/contexts';
+import { FeautresContext, ThemeContext } from '../../context';
 
 export interface ShareProps {
   room?: Room;

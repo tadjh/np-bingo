@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import VolumeToggle, { VolumeToggleProps } from '.';
-import { ThemeContext } from '../../Utils/contexts';
+import { ThemeContext } from '../../context';
 
 export default {
   title: 'Components/Volume Toggle',

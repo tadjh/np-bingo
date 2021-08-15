@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link as RouterLink, LinkProps } from 'react-router-dom';
 import useSound from 'use-sound';
 import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
-import { FeautresContext, ThemeContext } from '../../Utils/contexts';
+import { FeautresContext, ThemeContext } from '../../context';
 
 export default function Link({
   className = '',

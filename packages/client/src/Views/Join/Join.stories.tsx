@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Join, { JoinProps } from './';
-import { FeautresContext } from '../../Utils/contexts';
+import { FeautresContext } from '../../context';
 import features from '../../config/features';
 import Container from '../../components/Container';
 import * as RoomListStories from '../../components/RoomList/RoomList.stories';

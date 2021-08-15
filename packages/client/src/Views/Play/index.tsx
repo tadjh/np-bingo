@@ -22,7 +22,7 @@ import {
   FeautresContext,
   GameContext,
   ThemeContext,
-} from '../../Utils/contexts';
+} from '../../context';
 import {
   BINGO,
   INIT_CROSSMARKS,

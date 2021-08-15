@@ -31,7 +31,7 @@ import Create from './Views/Create';
 import { apiCreateRoom, apiUpdateRoom } from './Api';
 import { useQuery, useSounds, useTheme, useUser } from './Utils/custom-hooks';
 import config from './config/features';
-import { GameContext, BallContext, ThemeContext } from './Utils/contexts';
+import { GameContext, BallContext, ThemeContext } from './context';
 import Background from './components/Background';
 import Container from './components/Container';
 import { useAppState } from './Utils/useAppState';

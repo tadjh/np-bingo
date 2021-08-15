@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import Button from '../../components/Button';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 import Logo from '../../components/Logo';
-import { GameContext } from '../../Utils/contexts';
+import { GameContext } from '../../context';
 import Footer from '../../components/Footer';
 import Credit from '../../components/Credit';
 import Main from '../../components/Main';

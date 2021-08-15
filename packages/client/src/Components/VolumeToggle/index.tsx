@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import useSound from 'use-sound';
 import VolumeOffIcon from '../../assets/Icons/VolumeOff';
 import VolumeUpIcon from '../../assets/Icons/VolumeUp';
-import { FeautresContext, ThemeContext } from '../../Utils/contexts';
+import { FeautresContext, ThemeContext } from '../../context';
 import IconButton from '../IconButton';
 import { TooltipDirection } from '../Tooltip';
 import volumeSfx from '../../Assets/Sounds/Click_2.mp3';

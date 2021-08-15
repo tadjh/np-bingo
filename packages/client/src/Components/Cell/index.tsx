@@ -3,7 +3,7 @@ import Ripple from '../Ripple';
 import useSound from 'use-sound';
 import scribbleSfx from '../../Assets/Sounds/Scribble_Erase.mp3';
 import { SpriteMap } from 'use-sound/dist/types';
-import { ThemeContext } from '../../Utils/contexts';
+import { ThemeContext } from '../../context';
 import HeavyBallotXIcon from '../../assets/Icons/HeavyBallotX';
 
 export interface CellProps extends React.HTMLAttributes<HTMLDivElement> {

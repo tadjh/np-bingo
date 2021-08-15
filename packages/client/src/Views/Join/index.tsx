@@ -4,7 +4,7 @@ import { useDialog } from '../../Utils/custom-hooks';
 import RoomList from '../../components/RoomList';
 import CodeModal from '../../components/CodeModal';
 import Footer from '../../components/Footer';
-import { FeautresContext, GameContext } from '../../Utils/contexts';
+import { FeautresContext, GameContext } from '../../context';
 import Main from '../../components/Main';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
