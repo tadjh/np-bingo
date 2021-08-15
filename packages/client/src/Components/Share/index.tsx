@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react';
-import ShareIcon from '../../Assets/Icons/Share';
+import ShareIcon from '../../assets/Icons/Share';
 import IconButton from '../IconButton';
 import Modal from '../Modal';
 import ModalHeader from '../ModalHeader';

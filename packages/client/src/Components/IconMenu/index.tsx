@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import useSound from 'use-sound';
-import CloseIcon from '../../Assets/Icons/Close';
-import Cog from '../../Assets/Icons/Cog';
+import CloseIcon from '../../assets/Icons/Close';
+import Cog from '../../assets/Icons/Cog';
 import { FeautresContext, ThemeContext } from '../../Utils/contexts';
 import IconButton from '../IconButton';
 import ThemeToggle from '../ThemeToggle';

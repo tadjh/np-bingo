@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import IconButton, { IconButtonProps } from '../IconButton';
 import IconButtonBase from '.';
-import SunIcon from '../../Assets/Icons/Sun';
+import SunIcon from '../../assets/Icons/Sun';
 
 export default {
   title: 'Components/Icon Button/Icon Button Base',
