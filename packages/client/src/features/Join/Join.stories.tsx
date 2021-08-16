@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Join, { JoinProps } from './';
+import Join, { JoinProps } from '.';
 import { FeautresContext } from '../../context';
 import features from '../../config/features';
 import Container from '../../components/Container';

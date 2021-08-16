@@ -1,16 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Home, { HomeProps } from './';
+import Create, { CreateProps } from '.';
 import Container from '../../components/Container';
 
 export default {
-  title: 'Pages/Home',
-  component: Home,
-  argTypes: {
-    createRoom: { action: 'click' },
-    joinRoom: { action: 'submit' },
-  },
+  title: 'Pages/Create',
+  component: Create,
   decorators: [
     (Story) => {
       return (
@@ -22,14 +18,8 @@ export default {
       );
     },
   ],
-  parameters: {
-    layout: 'none',
-    actions: {
-      handles: ['click #play-button'],
-    },
-  },
 } as Meta;
 
-const Template: Story<HomeProps> = (args) => <Home {...args} />;
+const Template: Story<CreateProps> = (args) => <Create {...args} />;
 
 export const Base = Template.bind({});

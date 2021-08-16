@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Host, { HostProps } from './';
+import Host, { HostProps } from '.';
 import { BallContext, GameContext } from '../../context';
 import { initialState as AppState } from '../../Reducers/app.reducer';
 import Container from '../../components/Container';

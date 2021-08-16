@@ -23,11 +23,11 @@ import {
   Room,
 } from '@np-bingo/types';
 import { Switch, Route } from 'react-router-dom';
-import Host from './Views/Host';
-import Play from './Views/Play';
-import Home from './Views/Home';
-import Join from './Views/Join';
-import Create from './Views/Create';
+import Host from './features/Host';
+import Play from './features/Play';
+import Home from './features/Home';
+import Join from './features/Join';
+import Create from './features/Create';
 import { apiCreateRoom, apiUpdateRoom } from './Api';
 import useUser from './hooks/useUser';
 import useQuery from './hooks/useQuery';
