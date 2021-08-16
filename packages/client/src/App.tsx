@@ -1,5 +1,5 @@
 import { useCallback, useEffect } from 'react';
-import socket from './config/socket.io';
+import socket from './lib/socket.io';
 import {
   CHECK_CARD_SUCCESS,
   GET_CARD,

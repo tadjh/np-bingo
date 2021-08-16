@@ -24,7 +24,6 @@ import {
   SoundContext,
 } from '../../context';
 import {
-  BINGO,
   INIT_CROSSMARKS,
   INIT_GAME,
   NEW_CARD,
@@ -34,7 +33,7 @@ import {
 import Ball from '../../components/Ball';
 import Board from '../../components/Board';
 import StatusMessage from '../../components/Status';
-import { newCard, winningCells } from '../../Utils/bingo';
+import { BINGO, newCard, winningCells } from '../../Utils/bingo';
 import Button from '../../components/Button';
 import Footer from '../../components/Footer';
 import Link from '../../components/Link';
@@ -48,7 +47,7 @@ import Main from '../../components/Main';
 import Header from '../../components/Header';
 import Widgets from '../../components/Widgets';
 import useProgress from '../../hooks/useProgress';
-import socket from '../../config/socket.io';
+import socket from '../../lib/socket.io';
 import useSound from 'use-sound';
 import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
 import winnerSfx from '../../Assets/Sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';

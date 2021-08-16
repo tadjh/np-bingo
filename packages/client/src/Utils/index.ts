@@ -1,3 +1,5 @@
+import { NODE_ENV } from '../config';
+
 /**
  * Search if number exists in the array
  * @param search Number to be queried
@@ -70,7 +72,7 @@ export function toSlug(text?: string): string | undefined {
  * @param message string
  */
 export function logger(message: string) {
-  if (process.env.NODE_ENV === 'development') {
+  if (NODE_ENV === 'development') {
     console.log(message);
   }
 }

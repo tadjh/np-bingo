@@ -1,4 +1,4 @@
-import { BINGO } from '../config/constants';
+import { BINGO } from './bingo';
 import {
   createCard,
   createColumn,

@@ -9,7 +9,7 @@ import Main from '../../components/Main';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import Link from '../../components/Link';
-import socket from '../../config/socket.io';
+import socket from '../../lib/socket.io';
 import { Link as RouterLink } from 'react-router-dom';
 
 export interface JoinProps {

@@ -1,6 +1,7 @@
 import { io } from 'socket.io-client';
+import { API_URL } from '../config';
 
-const socket = io(process.env.REACT_APP_SERVER || 'http://localhost:8082/', {
+const socket = io(API_URL, {
   withCredentials: true,
   reconnectionAttempts: 10,
 });

@@ -56,7 +56,7 @@ export default function Board({
       </div>
       <div
         className={[
-          'h-3 text-white dark:text-opacity-90 text-xxs text-center font-bold align-middle',
+          'h-3 text-white dark:text-opacity-90 text-[7px] text-center font-bold align-middle',
           winner ? 'bg-green-600' : 'bg-gray-900 dark:bg-gray-800',
         ].join(' ')}
       >
