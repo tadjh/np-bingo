@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import useSound from 'use-sound';
 import { FeautresContext, SoundContext } from '../../../context';
 import Ripple from '../../Ripple';
-import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
+import buttonSfx from '../../Assets/sounds/Click_1.mp3';
 
 export type ButtonVariants = 'contained';
 

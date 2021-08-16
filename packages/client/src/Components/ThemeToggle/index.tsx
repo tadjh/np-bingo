@@ -4,7 +4,7 @@ import MoonIcon from '../../assets/icons/Moon';
 import SunIcon from '../../assets/icons/Sun';
 import { FeautresContext, ThemeContext, SoundContext } from '../../context';
 import useSound from 'use-sound';
-import lightSfx from '../..//Assets/Sounds/Light_Switch_On_Off.mp3';
+import lightSfx from '../..//Assets/sounds/Light_Switch_On_Off.mp3';
 import { TooltipDirection } from '../Elements/Tooltip';
 
 export interface ThemeToggleProps

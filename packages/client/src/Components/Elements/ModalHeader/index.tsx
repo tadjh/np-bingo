@@ -3,7 +3,7 @@ import useSound from 'use-sound';
 import CloseIcon from '../../../assets/icons/Close';
 import { FeautresContext, SoundContext } from '../../../context';
 import IconButton from '../../Elements/IconButton';
-import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
+import buttonSfx from '../../Assets/sounds/Click_1.mp3';
 
 export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;

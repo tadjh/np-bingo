@@ -27,7 +27,7 @@ import Link from '../../../components/Elements/Link';
 import useProgress from '../../../hooks/useProgress';
 import socket from '../../../lib/socket.io';
 import useSound from 'use-sound';
-import dispenseSfx from '../..//Assets/Sounds/Ball_Dispenser.mp3';
+import dispenseSfx from '../..//Assets/sounds/Ball_Dispenser.mp3';
 import { randomNumber } from '../../../utils';
 import { apiDeleteRoom, apiSaveRoom } from '../api';
 import useHost from '../hooks/useHost';

@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Ripple from '../Ripple';
 import useSound from 'use-sound';
-import scribbleSfx from '../../Assets/Sounds/Scribble_Erase.mp3';
+import scribbleSfx from '../../Assets/sounds/Scribble_Erase.mp3';
 import { SpriteMap } from 'use-sound/dist/types';
 import { SoundContext } from '../../context';
 import HeavyBallotXIcon from '../../assets/icons/HeavyBallotX';

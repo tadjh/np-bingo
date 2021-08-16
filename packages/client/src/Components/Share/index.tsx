@@ -10,7 +10,7 @@ import useDialog from '../../hooks/useDialog';
 import { Room } from '@np-bingo/types';
 import TextInput from '../Form/TextInput';
 import useSound from 'use-sound';
-import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
+import buttonSfx from '../../Assets/sounds/Click_1.mp3';
 import { FeautresContext, SoundContext } from '../../context';
 
 export interface ShareProps {

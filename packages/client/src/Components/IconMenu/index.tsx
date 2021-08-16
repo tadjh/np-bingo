@@ -8,7 +8,7 @@ import IconButton from '../Elements/IconButton';
 import ThemeToggle from '../ThemeToggle';
 import { TooltipDirection } from '../Elements/Tooltip';
 import VolumeToggle from '../VolumeToggle';
-import menuSfx from '../../Assets/Sounds/Drawer_Open_Close.mp3';
+import menuSfx from '../../Assets/sounds/Drawer_Open_Close.mp3';
 
 export type MenuDirection = 'up' | 'right' | 'down' | 'left';
 

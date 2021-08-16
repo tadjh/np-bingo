@@ -5,7 +5,7 @@ import VolumeUpIcon from '../../assets/icons/VolumeUp';
 import { FeautresContext, SoundContext } from '../../context';
 import IconButton from '../Elements/IconButton';
 import { TooltipDirection } from '../Elements/Tooltip';
-import volumeSfx from '../../Assets/Sounds/Click_2.mp3';
+import volumeSfx from '../../Assets/sounds/Click_2.mp3';
 
 export interface VolumeToggleProps
   extends React.HTMLAttributes<HTMLButtonElement> {
