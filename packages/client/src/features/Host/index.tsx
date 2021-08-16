@@ -28,7 +28,7 @@ import useProgress from '../../hooks/useProgress';
 import socket from '../../lib/socket.io';
 import useSound from 'use-sound';
 import dispenseSfx from '../..//Assets/Sounds/Ball_Dispenser.mp3';
-import { randomNumber } from '../../Utils';
+import { randomNumber } from '../../utils';
 import { gamestateToggleText } from './host';
 import { apiDeleteRoom, apiSaveRoom } from '../../Api';
 

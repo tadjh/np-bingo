@@ -1,6 +1,6 @@
 import lz from 'lz-string';
 import { Pool, Ball, Card, Results, Methods, Serial } from '@np-bingo/types';
-import { findElementInArray, randomIndex } from '../Utils';
+import { findElementInArray, randomIndex } from '.';
 
 // Standard Bingo Number Distribution (USA)
 const _B = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];

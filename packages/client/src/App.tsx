@@ -12,7 +12,7 @@ import {
   PLAYER_KICKED,
   CHECK_CARD_FAILURE,
 } from './config/constants';
-import { getBall, removeBall, updateDraws, validateCard } from './Utils/bingo';
+import { getBall, removeBall, updateDraws, validateCard } from './utils/bingo';
 import {
   Ball,
   Card,
@@ -44,7 +44,7 @@ import Background from './components/Background';
 import Container from './components/Container';
 import { useAppState } from './hooks/useAppState';
 import './App.css';
-import { logger } from './Utils';
+import { logger } from './utils';
 
 export default function App() {
   let query = useQuery();

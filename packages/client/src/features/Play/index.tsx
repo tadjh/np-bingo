@@ -33,7 +33,7 @@ import {
 import Ball from '../../components/Ball';
 import Board from '../../components/Board';
 import StatusMessage from '../../components/Status';
-import { BINGO, newCard, winningCells } from '../../Utils/bingo';
+import { BINGO, newCard, winningCells } from '../../utils/bingo';
 import Button from '../../components/Button';
 import Footer from '../../components/Footer';
 import Link from '../../components/Link';
@@ -52,7 +52,7 @@ import useSound from 'use-sound';
 import dispenseSfx from '../../Assets/Sounds/Ball_Dispenser.mp3';
 import winnerSfx from '../../Assets/Sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';
 import loseSfx from '../../Assets/Sounds/Denied.mp3';
-import { logger, randomNumber } from '../../Utils';
+import { logger, randomNumber } from '../../utils';
 import KickedModal from '../../components/KickedModal';
 import Confetti from '../../components/Confetti';
 import useQuery from '../../hooks/useQuery';

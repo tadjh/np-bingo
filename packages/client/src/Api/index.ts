@@ -1,7 +1,7 @@
 import { AxiosResponse } from 'axios';
 import axios from '../lib/axios';
 import { Player, Room, Winner } from '@np-bingo/types';
-import { handleError, logger } from '../Utils';
+import { handleError, logger } from '../utils';
 
 /**
  * Create game room on server

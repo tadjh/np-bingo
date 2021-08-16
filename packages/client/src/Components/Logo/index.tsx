@@ -1,5 +1,5 @@
 import React from 'react';
-import { letters } from '../../Utils/bingo';
+import { letters } from '../../utils/bingo';
 
 export interface LogoProps {
   home?: boolean;

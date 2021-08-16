@@ -36,7 +36,7 @@ import {
   WIN_GAME,
   UPDATE_GAMEMODE,
 } from '../config/constants';
-import { BINGO } from '../Utils/bingo';
+import { BINGO } from '../utils/bingo';
 
 export interface AppState {
   gamestate: Gamestate;
