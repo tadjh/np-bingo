@@ -1,6 +1,7 @@
 import React from 'react';
 import { Room } from '@np-bingo/types';
-import Tooltip from '../Tooltip';
+import generate from '../../utils/generate';
+import Tooltip from '../Elements/Tooltip';
 
 export interface CodeProps extends React.HTMLAttributes<HTMLDivElement> {
   room?: Room;
@@ -10,16 +11,9 @@ export interface CodeProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function Code({
   room = '',
   isHovered = false,
-  children,
 }: CodeProps): JSX.Element {
-  function generate(array: string[], element: React.ReactElement) {
-    return array.map((item, index) =>
-      React.cloneElement(element, {
-        key: index,
-        children: item,
-      })
-    );
-  }
+  const formattedRoom: string[] =
+    room !== '' ? Object.assign([], room) : [' ', ' ', ' ', ' '];
 
   return (
     <div className="relative tooltip">
@@ -28,7 +22,7 @@ export default function Code({
       </Tooltip>
       <div className="flex font-mono text-3xl font-bold space-x-2 text-black dark:text-white text-opacity-60 hover:text-opacity-90 dark:text-opacity-60 dark:hover:text-opacity-90">
         {generate(
-          room !== '' ? Object.assign([], room) : [' ', ' ', ' ', ' '],
+          formattedRoom,
           <div className="flex justify-center items-center bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner" />
         )}
       </div>

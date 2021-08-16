@@ -1,119 +1,61 @@
 import React from 'react';
 import { letters } from '../../utils/bingo';
 import { Pool } from '@np-bingo/types';
+import generate from '../../utils/generate';
 
 export interface DrawsProps {
   draws?: Pool;
   disabled?: boolean;
 }
 
-function DrawsListItem({
-  children,
-}: React.HTMLAttributes<HTMLLIElement>): JSX.Element {
-  return (
-    <li className="border-gray-300 dark:border-gray-500 border-b-2 px-1 last:border-0">
-      {children}
-    </li>
-  );
-}
-
-function DrawsList({
-  className = '',
-  children,
-}: React.HTMLAttributes<HTMLUListElement>): JSX.Element {
-  return (
-    <ul
-      className={`even:bg-gray-200 dark:even:bg-gray-700 border-gray-300 dark:border-gray-500 border-r-2 last:border-0 ${className}`}
-    >
-      {children}
-    </ul>
-  );
-}
-
 export default function Draws({
   draws = [[], [], [], [], []],
   disabled,
 }: DrawsProps): JSX.Element {
-  /**
-   * Generates an array of react elements
-   * @param array
-   * @param element
-   * @returns React Element Array
-   */
-  function generate(
-    array: number[],
-    element: React.ReactElement
-  ): React.ReactElement[] {
-    return array.map((item, index) =>
-      React.cloneElement(element, {
-        key: `ball${index + 1}`,
-        children: '\xa0\xa0\xa0',
-      })
-    );
-  }
-
-  const initColumn = generate(
+  const blankColumn = generate(
     [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-    <DrawsListItem />
+    <DrawsItem />,
+    'ball',
+    '\xa0\xa0\xa0'
   );
+  return (
+    <div className="shadow-xl grid grid-cols-5 rounded-xl font-mono font-bold uppercase text-sm bg-gray-100 dark:bg-gray-800 border-gray-400 border-4 dark:border-gray-800">
+      {draws.map((column, columnIndex) => (
+        <DrawsColumn
+          key={`column-${columnIndex + 1}`}
+          columnIndex={columnIndex}
+          disabled={disabled}
+        >
+          {blankColumn.map((item, itemIndex) => (
+            <DrawsItem {...item.key}>
+              {`${letters[columnIndex]}${column[itemIndex]}`}
+            </DrawsItem>
+          ))}
+        </DrawsColumn>
+      ))}
+    </div>
+  );
+}
 
-  function makeTable(): JSX.Element[] {
-    let table = [];
-    for (let i = 0; i < draws.length; i++) {
-      const emptyColumn = [...initColumn];
-      const fullColumn = populateColumn(emptyColumn, i);
-      table[i] = populateTable(fullColumn, i);
-    }
-    return table;
-  }
+export interface DrawsColumnProps
+  extends React.HTMLAttributes<HTMLUListElement> {
+  columnIndex: number;
+  disabled?: boolean;
+}
 
-  /**
-   * Fills empty column Array with data from Draws
-   * @param columnArray
-   * @param column
-   * @returns
-   */
-  function populateColumn(
-    columnArray: React.ReactElement[],
-    column: number
-  ): React.ReactElement[] {
-    for (let j = 0; j < draws[column].length; j++) {
-      columnArray[j] = (
-        <DrawsListItem
-          key={`ball${j + 1}`}
-        >{`${letters[column]}${draws[column][j]}`}</DrawsListItem>
-      );
-    }
-    return columnArray;
-  }
-
-  /**
-   * Wraps list elements array with a Ul element
-   * @param columnArray
-   * @param column
-   * @returns
-   */
-  function populateTable(
-    columnArray: React.ReactElement[],
-    column: number
-  ): JSX.Element {
-    return (
-      <DrawsList
-        key={`column${column + 1}`}
-        className={disabled ? columnStyle(-1) : columnStyle(column)}
-      >
-        {columnArray}
-      </DrawsList>
-    );
-  }
-
+function DrawsColumn({
+  columnIndex,
+  disabled = false,
+  className = '',
+  children,
+}: DrawsColumnProps): JSX.Element {
   /**
    * Return style based on column number and disabled state (-1)
-   * @param column
+   * @param columnIndex
    * @returns
    */
-  function columnStyle(column: number): string {
-    switch (column) {
+  function columnStyle(columnIndex: number): string {
+    switch (columnIndex) {
       case -1:
         return 'text-gray-400 dark:text-gray-300';
       case 0:
@@ -131,11 +73,23 @@ export default function Draws({
     }
   }
 
-  const table = makeTable();
-
   return (
-    <div className="shadow-xl grid grid-cols-5 rounded-xl font-mono font-bold uppercase text-sm bg-gray-100 dark:bg-gray-800 border-gray-400 border-4 dark:border-gray-800">
-      {table}
-    </div>
+    <ul
+      className={`even:bg-gray-200 dark:even:bg-gray-700 border-gray-300 dark:border-gray-500 border-r-2 last:border-0 ${
+        disabled ? columnStyle(-1) : columnStyle(columnIndex)
+      } ${className}`}
+    >
+      {children}
+    </ul>
+  );
+}
+
+function DrawsItem({
+  children,
+}: React.HTMLAttributes<HTMLLIElement>): JSX.Element {
+  return (
+    <li className="border-gray-300 dark:border-gray-500 border-b-2 px-1 last:border-0">
+      {children}
+    </li>
   );
 }
