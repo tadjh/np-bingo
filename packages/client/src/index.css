@@ -15,12 +15,6 @@
   .animation-delay-1200 {
     animation-delay: 1200ms;
   }
-  .text-xxs {
-    font-size: 7px;
-  }
-  .border-bl {
-    border-width: 0 0 1px 1px;
-  }
   @variants dark {
     .ripple-lighter > .ripple,
     .ripple-darker > .ripple {
