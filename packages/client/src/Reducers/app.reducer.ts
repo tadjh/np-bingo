@@ -19,7 +19,6 @@ import {
   CHECK_CARD_SUCCESS,
   NEW_BALL,
   UPDATE_POOL,
-  BINGO,
   STANDBY,
   VALIDATE,
   GET_CARD,
@@ -37,6 +36,7 @@ import {
   WIN_GAME,
   UPDATE_GAMEMODE,
 } from '../config/constants';
+import { BINGO } from '../Utils/bingo';
 
 export interface AppState {
   gamestate: Gamestate;
