@@ -3,7 +3,7 @@ import Modal from '../Modal';
 import ModalHeader from '../ModalHeader';
 import ModalContent from '../ModalContent';
 import ModalFooter from '../ModalFooter';
-import Button from '../Button';
+import Button from '../Elements/Button';
 import useForm from '../../hooks/useForm';
 import { roomChar } from '@np-bingo/common';
 

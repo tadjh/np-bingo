@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import useSound from 'use-sound';
-import { FeautresContext, SoundContext } from '../../context';
-import Ripple from '../Ripple';
+import { FeautresContext, SoundContext } from '../../../context';
+import Ripple from '../../Ripple';
 import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
 
 export type ButtonVariants = 'contained';
@@ -35,14 +35,22 @@ export default function Button({
     playbackRate: 1.5,
   });
 
+  /**
+   * Wrapper for button mouse down event
+   */
   const buttonPressSfx = () => {
     playSfx({ id: 'buttonPress' });
   };
 
   const baseStyle =
     'relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker';
-  //  transform hover:-translate-y-0.5 active:translate-y-0
-  function variantStyle(variant?: ButtonVariants | 'disabled'): string {
+
+  /**
+   * Button style based on variant or disabled
+   * @param variant
+   * @returns string
+   */
+  const variantStyle = (variant?: ButtonVariants | 'disabled'): string => {
     switch (variant) {
       case 'disabled':
         return 'disabled:opacity-50 disabled:bg-gray-400 dark:disabled:bg-gray-700 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:translate-y-0';
@@ -51,7 +59,7 @@ export default function Button({
       default:
         return 'text-blue-600 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-700 hover:bg-gray-300';
     }
-  }
+  };
 
   const buttonClasses = `${baseStyle} ${
     !disabled ? variantStyle(variant) : variantStyle('disabled')

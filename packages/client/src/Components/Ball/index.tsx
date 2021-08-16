@@ -1,7 +1,7 @@
 import React from 'react';
 import { Ball as BallType } from '@np-bingo/types';
 import CircularProgress from '../CircularProgress';
-import Badge from '../Badge';
+import Badge from '../Elements/Badge';
 
 export interface BallProps extends Partial<BallType> {
   inProgress?: boolean;

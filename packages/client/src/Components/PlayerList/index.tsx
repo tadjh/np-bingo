@@ -6,7 +6,7 @@ import IconButton from '../IconButton';
 import MinusIcon from '../../assets/Icons/Minus';
 import CheckIcon from '../../assets/Icons/Check';
 import CloseCircleIcon from '../../assets/Icons/CloseCircle';
-import Tooltip from '../Tooltip';
+import Tooltip from '../Elements/Tooltip';
 import { Player } from '@np-bingo/types';
 
 export interface ListProps {

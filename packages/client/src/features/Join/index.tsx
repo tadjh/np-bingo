@@ -3,12 +3,12 @@ import { useHistory } from 'react-router-dom';
 import useDialog from '../../hooks/useDialog';
 import RoomList from '../../components/RoomList';
 import CodeModal from '../../components/CodeModal';
-import Footer from '../../components/Footer';
+import Footer from '../../components/Layout/Footer';
 import { FeautresContext, GameContext } from '../../context';
-import Main from '../../components/Main';
-import Header from '../../components/Header';
-import Button from '../../components/Button';
-import Link from '../../components/Link';
+import Main from '../../components/Layout/Main';
+import Header from '../../components/Layout/Header';
+import Button from '../../components/Elements/Button';
+import Link from '../../components/Elements/Link';
 import socket from '../../lib/socket.io';
 import { Link as RouterLink } from 'react-router-dom';
 

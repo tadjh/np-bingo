@@ -1,6 +1,6 @@
 import { Kicked } from '@np-bingo/types';
 import { useHistory } from 'react-router-dom';
-import Link from '../Link';
+import Link from '../Elements/Link';
 import Modal from '../Modal';
 import ModalContent from '../ModalContent';
 import ModalFooter from '../ModalFooter';

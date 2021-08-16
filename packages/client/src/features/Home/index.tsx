@@ -1,12 +1,12 @@
 import React, { useContext, useEffect } from 'react';
-import Button from '../../components/Button';
+import Button from '../../components/Elements/Button';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 import Logo from '../../components/Logo';
 import { GameContext } from '../../context';
-import Footer from '../../components/Footer';
+import Footer from '../../components/Layout/Footer';
 import Credit from '../../components/Credit';
-import Main from '../../components/Main';
-import Header from '../../components/Header';
+import Main from '../../components/Layout/Main';
+import Header from '../../components/Layout/Header';
 import IconMenu from '../../components/IconMenu';
 
 export interface HomeProps {

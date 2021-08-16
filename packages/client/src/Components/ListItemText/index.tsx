@@ -1,5 +1,5 @@
 import React from 'react';
-import Tooltip from '../Tooltip';
+import Tooltip from '../Elements/Tooltip';
 
 export interface ListItemTextProps
   extends React.HTMLAttributes<HTMLDivElement> {

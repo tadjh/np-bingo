@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Footer, { FooterProps } from '.';
 import Header from '../Header';
 import Main from '../Main';
-import Container from '../Container';
+import Container from '../../Container';
 
 export default {
   title: 'Wrappers/Footer',

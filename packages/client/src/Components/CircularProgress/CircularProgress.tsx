@@ -23,4 +23,3 @@ export default function CircularProgress(
     </svg>
   );
 }
-// transition-all duration-75 ease-linear

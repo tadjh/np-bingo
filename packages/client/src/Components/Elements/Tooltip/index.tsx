@@ -15,6 +15,10 @@ export default function Tooltip({
   disabled = false,
   children,
 }: TooltipProps): JSX.Element | null {
+  /**
+   * Styling for tooltip box
+   * @returns string
+   */
   function tooltip() {
     switch (direction) {
       case 'top':
@@ -30,6 +34,10 @@ export default function Tooltip({
     }
   }
 
+  /**
+   * Styling for tooltip arrow
+   * @returns string
+   */
   function tooltipArrow() {
     switch (direction) {
       case 'top':

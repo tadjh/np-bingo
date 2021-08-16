@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link as RouterLink, LinkProps } from 'react-router-dom';
 import useSound from 'use-sound';
 import buttonSfx from '../../Assets/Sounds/Click_1.mp3';
-import { FeautresContext, SoundContext } from '../../context';
+import { FeautresContext, SoundContext } from '../../../context';
 
 export default function Link({
   className = '',
@@ -21,6 +21,9 @@ export default function Link({
     playbackRate: 1.5,
   });
 
+  /**
+   * Wrapper for button sound effects
+   */
   const buttonPressSfx = () => {
     playSfx({ id: 'buttonPress' });
   };

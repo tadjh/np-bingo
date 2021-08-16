@@ -34,17 +34,17 @@ import Ball from '../../components/Ball';
 import Board from '../../components/Board';
 import StatusMessage from '../../components/Status';
 import { BINGO, newCard, winningCells } from '../../utils/bingo';
-import Button from '../../components/Button';
-import Footer from '../../components/Footer';
-import Link from '../../components/Link';
+import Button from '../../components/Elements/Button';
+import Footer from '../../components/Layout/Footer';
+import Link from '../../components/Elements/Link';
 import {
   initialState,
   PlayerState,
   reducer,
 } from '../../Reducers/play.reducer';
 import { initialState as appState } from '../../Reducers/app.reducer';
-import Main from '../../components/Main';
-import Header from '../../components/Header';
+import Main from '../../components/Layout/Main';
+import Header from '../../components/Layout/Header';
 import Widgets from '../../components/Widgets';
 import useProgress from '../../hooks/useProgress';
 import socket from '../../lib/socket.io';

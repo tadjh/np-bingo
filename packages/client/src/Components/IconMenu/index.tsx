@@ -6,7 +6,7 @@ import Cog from '../../assets/Icons/Cog';
 import { FeautresContext, SoundContext } from '../../context';
 import IconButton from '../IconButton';
 import ThemeToggle from '../ThemeToggle';
-import { TooltipDirection } from '../Tooltip';
+import { TooltipDirection } from '../Elements/Tooltip';
 import VolumeToggle from '../VolumeToggle';
 import menuSfx from '../../Assets/Sounds/Drawer_Open_Close.mp3';
 

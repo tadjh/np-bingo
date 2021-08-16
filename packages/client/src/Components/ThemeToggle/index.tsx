@@ -5,7 +5,7 @@ import SunIcon from '../../assets/Icons/Sun';
 import { FeautresContext, ThemeContext, SoundContext } from '../../context';
 import useSound from 'use-sound';
 import lightSfx from '../..//Assets/Sounds/Light_Switch_On_Off.mp3';
-import { TooltipDirection } from '../Tooltip';
+import { TooltipDirection } from '../Elements/Tooltip';
 
 export interface ThemeToggleProps
   extends React.HTMLAttributes<HTMLButtonElement> {

@@ -14,16 +14,16 @@ import {
   Room,
 } from '@np-bingo/types';
 import StatusMessage from '../../components/Status';
-import Button from '../../components/Button';
-import Footer from '../../components/Footer';
+import Button from '../../components/Elements/Button';
+import Footer from '../../components/Layout/Footer';
 import Draws from '../../components/Draws';
 import PlayerList from '../../components/PlayerList';
 import IconButton from '../../components/IconButton';
 import PlusCircleIcon from '../../assets/Icons/PlusCircle';
-import Main from '../../components/Main';
-import Header from '../../components/Header';
+import Main from '../../components/Layout/Main';
+import Header from '../../components/Layout/Header';
 import Widgets from '../../components/Widgets';
-import Link from '../../components/Link';
+import Link from '../../components/Elements/Link';
 import useProgress from '../../hooks/useProgress';
 import socket from '../../lib/socket.io';
 import useSound from 'use-sound';

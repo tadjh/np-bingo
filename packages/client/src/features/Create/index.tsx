@@ -12,9 +12,9 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
 import useTitle from '../../hooks/useTitle';
-import Main from '../../components/Main';
-import Footer from '../../components/Footer';
-import Header from '../../components/Header';
+import Main from '../../components/Layout/Main';
+import Footer from '../../components/Layout/Footer';
+import Header from '../../components/Layout/Header';
 
 export interface CreateProps {
   title?: string;

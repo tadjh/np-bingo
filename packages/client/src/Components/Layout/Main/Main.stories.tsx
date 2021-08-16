@@ -1,19 +1,19 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import Header, { HeaderProps } from '.';
-import Container from '../Container';
-import Main from '../Main';
+import Main, { MainProps } from '.';
+import Container from '../../Container';
+import Header from '../Header';
 import Footer from '../Footer';
 
 export default {
-  title: 'Wrappers/Header',
-  component: Header,
+  title: 'Wrappers/Main',
+  component: Main,
   decorators: [
     (Story) => {
       return (
         <Container>
+          <Header className="flex-1" />
           <Story />
-          <Main className="flex-1" />
           <Footer className="flex-1" />
         </Container>
       );
@@ -21,10 +21,10 @@ export default {
   ],
 } as Meta;
 
-const Template: Story<HeaderProps> = (args) => <Header {...args} />;
+const Template: Story<MainProps> = (args) => <Main {...args} />;
 
 export const Base = Template.bind({});
 Base.args = {
-  children: <div>Header</div>,
-  className: 'flex-1 bg-gray-200 items-center',
+  children: <div>Main</div>,
+  className: 'flex-1 bg-gray-200 justify-center',
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import IconButtonBase from '../IconButtonBase';
 import Ripple from '../Ripple';
-import Tooltip, { TooltipDirection } from '../Tooltip';
+import Tooltip, { TooltipDirection } from '../Elements/Tooltip';
 
 export interface IconButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

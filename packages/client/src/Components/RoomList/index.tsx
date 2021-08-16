@@ -2,7 +2,7 @@ import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import IconButton from '../IconButton';
 import ChevronRight from '../../assets/Icons/ChevronRight';
-import Tooltip from '../Tooltip';
+import Tooltip from '../Elements/Tooltip';
 import List from '../List';
 import ListItem from '../ListItem';
 import ListItemText from '../ListItemText';
