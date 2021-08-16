@@ -40,7 +40,7 @@ import {
   ThemeContext,
   SoundContext,
 } from './context';
-import Background from './components/Background';
+import Background from './components/Surfaces/Background';
 import Container from './components/Layout/Container';
 import { useAppState } from './hooks/useAppState';
 import './App.css';
