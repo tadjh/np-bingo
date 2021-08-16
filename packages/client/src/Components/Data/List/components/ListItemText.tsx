@@ -1,5 +1,5 @@
 import React from 'react';
-import Tooltip from '../../Elements/Tooltip';
+import Tooltip from '../../Tooltip';
 
 export interface ListItemTextProps
   extends React.HTMLAttributes<HTMLDivElement> {
@@ -9,7 +9,7 @@ export interface ListItemTextProps
   secondaryInfo?: string;
 }
 
-export default function ListItemText({
+export function ListItemText({
   primary = '',
   primaryInfo = '',
   secondary = '',

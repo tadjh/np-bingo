@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
-import { toSlug } from '../../../utils';
-import ListBase from '../ListBase';
+import { toSlug } from '../../../../utils';
+import ListBase from './ListBase';
 
 export interface ListProps extends React.HTMLAttributes<HTMLUListElement> {}
 
-export default function List({ title, children }: ListProps): JSX.Element {
+export function List({ title, children }: ListProps): JSX.Element {
   const id = useMemo(() => toSlug(title), [title]);
 
   if (title) {
