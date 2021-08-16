@@ -1,10 +1,10 @@
 import { Kicked } from '@np-bingo/types';
 import { useHistory } from 'react-router-dom';
 import Link from '../Elements/Link';
-import Modal from '../Modal';
-import ModalContent from '../ModalContent';
-import ModalFooter from '../ModalFooter';
-import ModalHeader from '../ModalHeader';
+import Modal from '../Elements/Modal';
+import ModalContent from '../Elements/ModalContent';
+import ModalFooter from '../Elements/ModalFooter';
+import ModalHeader from '../Elements/ModalHeader';
 
 export interface KickedModalProps {
   open: Kicked['status'];

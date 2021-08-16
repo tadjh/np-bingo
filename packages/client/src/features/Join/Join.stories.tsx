@@ -4,8 +4,8 @@ import { Story, Meta } from '@storybook/react';
 import Join, { JoinProps } from '.';
 import { FeautresContext } from '../../context';
 import features from '../../config/features';
-import Container from '../../components/Container';
-import * as RoomListStories from '../../components/RoomList/RoomList.stories';
+import Container from '../../components/Layout/Container';
+import * as RoomListStories from './components/RoomList.stories';
 
 export default {
   title: 'Pages/Join',

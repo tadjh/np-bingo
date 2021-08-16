@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import useDialog from '../../hooks/useDialog';
-import RoomList from '../../components/RoomList';
+import RoomList from './components/RoomList/RoomsList';
 import CodeModal from '../../components/CodeModal';
 import Footer from '../../components/Layout/Footer';
 import { FeautresContext, GameContext } from '../../context';

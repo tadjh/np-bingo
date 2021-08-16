@@ -27,6 +27,7 @@ Vulnerbilities
 // TODO Timeout socket.io connection with reconnect popup
 
 Development
+// TODO clean up types
 // TODO Config Husky
 // TODO add @socket.io/admin-ui
 // TODO Rest api use game "_id" instead of room id

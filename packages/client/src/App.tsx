@@ -23,7 +23,7 @@ import {
   Room,
 } from '@np-bingo/types';
 import { Switch, Route } from 'react-router-dom';
-import Host from './features/Host';
+import Host from './features/host/routes/Host';
 import Play from './features/Play';
 import Home from './features/Home';
 import Join from './features/Join';
@@ -41,7 +41,7 @@ import {
   SoundContext,
 } from './context';
 import Background from './components/Background';
-import Container from './components/Container';
+import Container from './components/Layout/Container';
 import { useAppState } from './hooks/useAppState';
 import './App.css';
 import { logger } from './utils';

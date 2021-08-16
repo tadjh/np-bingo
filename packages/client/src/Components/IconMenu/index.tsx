@@ -4,7 +4,7 @@ import useSound from 'use-sound';
 import CloseIcon from '../../assets/Icons/Close';
 import Cog from '../../assets/Icons/Cog';
 import { FeautresContext, SoundContext } from '../../context';
-import IconButton from '../IconButton';
+import IconButton from '../Elements/IconButton';
 import ThemeToggle from '../ThemeToggle';
 import { TooltipDirection } from '../Elements/Tooltip';
 import VolumeToggle from '../VolumeToggle';
@@ -23,7 +23,7 @@ export default function IconMenu({
   open: override = false,
   ...props
 }: IconMenuProps): JSX.Element {
-  const [open, setOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const { defaultVolume } = useContext(FeautresContext);
   const { sounds } = useContext(SoundContext);
   const [playMenuSfx] = useSound(menuSfx, {
@@ -40,42 +40,42 @@ export default function IconMenu({
    */
   useEffect(() => {
     if (!override) return;
-    setOpen(override);
+    setIsOpen(override);
   }, [override]);
 
   /**
    * Toggle menu open or closed
    */
-  const toggleMenu = () => {
-    setOpen((prevOpen) => !prevOpen);
+  const toggle = () => {
+    setIsOpen((prevOpen) => !prevOpen);
   };
 
   /**
    * Close menu
    */
-  const closeMenu = () => {
-    setOpen(false);
+  const close = () => {
+    setIsOpen(false);
   };
 
   /**
    * Play open menu sfx
    */
-  const openMenuSfx = () => {
+  const openSfx = () => {
     playMenuSfx({ id: 'menuOpen' });
   };
 
   /**
    * Play clsoe menu sfx
    */
-  const closeMenuSfx = () => {
+  const closeSfx = () => {
     playMenuSfx({ id: 'menuClosed' });
   };
 
   /**
    * Toggle menu sound effect based on open or closed
    */
-  const toggleMenuSfx = () => {
-    !open ? openMenuSfx() : closeMenuSfx();
+  const toggleSfx = () => {
+    !isOpen ? openSfx() : closeSfx();
   };
 
   /**
@@ -123,36 +123,36 @@ export default function IconMenu({
   return (
     <div
       className={`relative block w-14 h-14 ${
-        !open ? 'overflow-hidden hover:overflow-visible' : ''
+        !isOpen ? 'overflow-hidden hover:overflow-visible' : ''
       }`}
     >
       <ul
         className={`absolute flex p-1 transition-all duration-75 rounded-full border-2 ${
-          open
+          isOpen
             ? 'z-50 bg-gray-300 dark:bg-gray-700 shadow-2xl border-gray-500 dark:border-gray-600'
             : 'border-transparent'
         } ${stylePopoutMenu(direction)}`}
       >
         <li>
           <IconButton
-            onClick={toggleMenu}
-            onMouseDown={toggleMenuSfx}
+            onClick={toggle}
+            onMouseDown={toggleSfx}
             description="Settings"
             direction={stylePopoutMenuTooltips(direction)}
           >
             <Cog className="text-black dark:text-white text-opacity-40 dark:text-opacity-50 group-hover:text-opacity-70" />
           </IconButton>
         </li>
-        <li className={`${!open ? 'invisible' : ''}`}>
+        <li className={`${!isOpen ? 'invisible' : ''}`}>
           <ThemeToggle direction={stylePopoutMenuTooltips(direction)} />
         </li>
-        <li className={`${!open ? 'invisible' : ''}`}>
+        <li className={`${!isOpen ? 'invisible' : ''}`}>
           <VolumeToggle direction={stylePopoutMenuTooltips(direction)} />
         </li>
-        <li className={`${!open ? 'invisible' : ''}`}>
+        <li className={`${!isOpen ? 'invisible' : ''}`}>
           <IconButton
-            onClick={closeMenu}
-            onMouseDown={closeMenuSfx}
+            onClick={close}
+            onMouseDown={closeSfx}
             description="Close"
             direction={stylePopoutMenuTooltips(direction)}
           >

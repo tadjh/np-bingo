@@ -1,12 +1,12 @@
 import React from 'react';
-import List from '../List';
-import ListItem from '../ListItem';
-import ListItemText from '../ListItemText';
-import IconButton from '../IconButton';
-import MinusIcon from '../../assets/Icons/Minus';
-import CheckIcon from '../../assets/Icons/Check';
-import CloseCircleIcon from '../../assets/Icons/CloseCircle';
-import Tooltip from '../Elements/Tooltip';
+import List from '../../../components/Elements/List';
+import ListItem from '../../../components/Elements/ListItem';
+import ListItemText from '../../../components/Elements/ListItemText';
+import IconButton from '../../../components/Elements/IconButton';
+import MinusIcon from '../../../assets/Icons/Minus';
+import CheckIcon from '../../../assets/Icons/Check';
+import CloseCircleIcon from '../../../assets/Icons/CloseCircle';
+import Tooltip from '../../../components/Elements/Tooltip';
 import { Player } from '@np-bingo/types';
 
 export interface ListProps {

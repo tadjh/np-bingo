@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import IconButton from '../IconButton';
+import IconButton from '../Elements/IconButton';
 import MoonIcon from '../../assets/Icons/Moon';
 import SunIcon from '../../assets/Icons/Sun';
 import { FeautresContext, ThemeContext, SoundContext } from '../../context';

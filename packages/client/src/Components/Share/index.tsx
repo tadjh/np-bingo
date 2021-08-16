@@ -1,10 +1,10 @@
 import React, { useContext, useRef, useState } from 'react';
 import ShareIcon from '../../assets/Icons/Share';
-import IconButton from '../IconButton';
-import Modal from '../Modal';
-import ModalHeader from '../ModalHeader';
-import ModalContent from '../ModalContent';
-import ModalFooter from '../ModalFooter';
+import IconButton from '../Elements/IconButton';
+import Modal from '../Elements/Modal';
+import ModalHeader from '../Elements/ModalHeader';
+import ModalContent from '../Elements/ModalContent';
+import ModalFooter from '../Elements/ModalFooter';
 import Button from '../Elements/Button';
 import useDialog from '../../hooks/useDialog';
 import { Room } from '@np-bingo/types';

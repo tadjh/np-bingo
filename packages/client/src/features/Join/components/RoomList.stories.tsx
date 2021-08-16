@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import RoomList, { RoomListProps } from '.';
+import RoomList, { RoomListProps } from './RoomsList';
 
 export default {
-  title: 'Components/RoomList',
+  title: 'Components/Room List',
   component: RoomList,
   argTypes: { action: { action: 'click' } },
   decorators: [

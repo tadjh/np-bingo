@@ -15,7 +15,7 @@ export const letters = ['b', 'i', 'n', 'g', 'o'];
 /**
  * Creates a new card and stores it in state
  * @param pool multidimensional array of all possible values
- * @returns {{card: Card, serial: string}}
+ * @returns [ Card, Serial ]
  */
 export function newCard(pool: Pool): [Card, Serial] {
   const card = createCard(pool);

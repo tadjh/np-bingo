@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { toSlug } from '../../utils';
+import { toSlug } from '../../../utils';
 import ListBase from '../ListBase';
 
 export interface ListProps extends React.HTMLAttributes<HTMLUListElement> {}
