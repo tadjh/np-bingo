@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import useSound from 'use-sound';
-import CloseIcon from '../../../assets/Icons/Close';
+import CloseIcon from '../../../assets/icons/Close';
 import { FeautresContext, SoundContext } from '../../../context';
 import IconButton from '../../Elements/IconButton';
 import buttonSfx from '../../Assets/Sounds/Click_1.mp3';

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import IconButton from '../Elements/IconButton';
-import MoonIcon from '../../assets/Icons/Moon';
-import SunIcon from '../../assets/Icons/Sun';
+import MoonIcon from '../../assets/icons/Moon';
+import SunIcon from '../../assets/icons/Sun';
 import { FeautresContext, ThemeContext, SoundContext } from '../../context';
 import useSound from 'use-sound';
 import lightSfx from '../..//Assets/Sounds/Light_Switch_On_Off.mp3';

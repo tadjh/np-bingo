@@ -4,7 +4,7 @@ import useSound from 'use-sound';
 import scribbleSfx from '../../Assets/Sounds/Scribble_Erase.mp3';
 import { SpriteMap } from 'use-sound/dist/types';
 import { SoundContext } from '../../context';
-import HeavyBallotXIcon from '../../assets/Icons/HeavyBallotX';
+import HeavyBallotXIcon from '../../assets/icons/HeavyBallotX';
 
 export interface CellProps extends React.HTMLAttributes<HTMLDivElement> {
   winner: boolean;

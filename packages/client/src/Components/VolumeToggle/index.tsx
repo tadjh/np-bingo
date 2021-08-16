@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import useSound from 'use-sound';
-import VolumeOffIcon from '../../assets/Icons/VolumeOff';
-import VolumeUpIcon from '../../assets/Icons/VolumeUp';
+import VolumeOffIcon from '../../assets/icons/VolumeOff';
+import VolumeUpIcon from '../../assets/icons/VolumeUp';
 import { FeautresContext, SoundContext } from '../../context';
 import IconButton from '../Elements/IconButton';
 import { TooltipDirection } from '../Elements/Tooltip';

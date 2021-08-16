@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import IconButton from '../../../components/Elements/IconButton';
-import ChevronRight from '../../../assets/Icons/ChevronRight';
+import ChevronRight from '../../../assets/icons/ChevronRight';
 import Tooltip from '../../../components/Elements/Tooltip';
 import List from '../../../components/Elements/List';
 import ListItem from '../../../components/Elements/ListItem';
