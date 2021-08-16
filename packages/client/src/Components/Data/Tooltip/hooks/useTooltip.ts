@@ -1,25 +1,11 @@
-import React from 'react';
+import { TooltipDirection } from '..';
 
-export type TooltipDirection = 'top' | 'right' | 'bottom' | 'left';
-
-export interface TooltipProps extends React.HTMLAttributes<HTMLSpanElement> {
-  isHovered?: boolean;
-  direction?: TooltipDirection;
-  disabled?: boolean;
-}
-
-export default function Tooltip({
-  className = '',
-  isHovered = false,
-  direction = 'right',
-  disabled = false,
-  children,
-}: TooltipProps): JSX.Element | null {
+export default function useTooltip(direction: TooltipDirection) {
   /**
    * Styling for tooltip box
    * @returns string
    */
-  function tooltip() {
+  function box(): string {
     switch (direction) {
       case 'top':
         return 'tooltip-t left-2/4 -translate-x-2/4 bottom-full mb-1.5';
@@ -38,7 +24,7 @@ export default function Tooltip({
    * Styling for tooltip arrow
    * @returns string
    */
-  function tooltipArrow() {
+  function arrow() {
     switch (direction) {
       case 'top':
         return 'left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm';
@@ -52,18 +38,5 @@ export default function Tooltip({
         throw new Error('Error in tooltip switch');
     }
   }
-
-  if (disabled) return null;
-  return (
-    <span
-      className={`${tooltip()} absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal transition-opacity delay-500 whitespace-nowrap box-content z-50 ${
-        !isHovered ? 'opacity-0 invisible' : ''
-      } ${className}`}
-    >
-      <span
-        className={`${tooltipArrow()} absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600`}
-      ></span>
-      {children}
-    </span>
-  );
+  return [box, arrow];
 }
