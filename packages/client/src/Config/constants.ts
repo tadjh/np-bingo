@@ -7,6 +7,7 @@ export const PAUSE = 'PAUSE';
 export const FAILURE = 'FAILURE';
 export const WIN_GAME = 'WIN GAME';
 export const END_GAME = 'END GAME';
+export const UPDATE_GAMEMODE = 'UPDATE GAMEMODE';
 
 export const SET_ROOM = 'SET ROOM';
 export const JOIN_ROOM = 'JOIN ROOM';
@@ -29,5 +30,3 @@ export const SET_WINNER = 'SET WINNER';
 export const NEW_BALL = 'NEW BALL';
 export const SET_BALL = 'SET BALL';
 export const UPDATE_POOL = 'UPDATE POOL';
-
-export const UPDATE_GAMEMODE = 'UPDATE GAMEMODE';
