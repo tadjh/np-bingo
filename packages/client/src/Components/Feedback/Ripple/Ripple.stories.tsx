@@ -4,7 +4,7 @@ import Ripple from '.';
 import Button from '../../Inputs/Button';
 
 export default {
-  title: 'Animations/Ripple',
+  title: 'Feedback/Ripple',
   component: Ripple,
 } as Meta;
 

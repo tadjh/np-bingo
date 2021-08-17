@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import CircularProgress, { CircularProgressProps } from '.';
 
 export default {
-  title: 'Animations/Circular Progress',
+  title: 'Feedback/Circular Progress',
   component: CircularProgress,
   decorators: [
     (Story) => (

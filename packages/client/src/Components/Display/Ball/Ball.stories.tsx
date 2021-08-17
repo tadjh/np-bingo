@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Ball, { BallProps } from '.';
 
 export default {
-  title: 'Data/Ball',
+  title: 'Display/Ball',
   component: Ball,
 } as Meta;
 
