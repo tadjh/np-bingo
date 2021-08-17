@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import Ball from '../../../components/Display/Ball';
-import { BallContext, FeautresContext, GameContext } from '../../../context';
-import { Ball as BallType, Player, Pool } from '@np-bingo/types';
+import { BallContext, GameContext } from '../../../context';
+import { Player, Pool } from '@np-bingo/types';
 import StatusMessage from '../../../components/Display/Status';
 import Button from '../../../components/Inputs/Button';
 import { Draws } from '../components/Draws';
@@ -10,37 +10,34 @@ import IconButton from '../../../components/Inputs/IconButton/components/IconBut
 import PlusCircleIcon from '../../../assets/icons/PlusCircle';
 import Widgets from '../../../components/Widgets';
 import Link from '../../../components/Navigation/Link';
-import { useProgress } from '../../../hooks';
-import useHost from '../hooks/useHost';
-import { useHostSounds } from '../hooks/useHostSounds';
+import { useHost, useHostSounds } from '../hooks';
 
 export interface HostProps {
-  checkCard: () => void;
-  newBall: () => BallType;
   dispatchRemovePlayer: (player: Player) => void;
   draws: Pool;
   players: Player[];
 }
 
 export default function Host({
-  checkCard,
-  newBall,
   dispatchRemovePlayer,
   draws = [[], [], [], [], []],
   players = [],
 }: HostProps) {
-  const { ballDelay } = useContext(FeautresContext);
-  const { gamestate, room } = useContext(GameContext);
-  const ball = useContext(BallContext);
-  const { progress, inProgress, enableProgress } = useProgress(ballDelay);
-  const [
+  const { gamestate, room, checkCard } = useContext(GameContext);
+  const {
+    ball: { number, column, remainder },
+  } = useContext(BallContext);
+  const {
+    progress,
+    inProgress,
     isDisabled,
     gamestateToggle,
     toggleText,
     handleRemovePlayer,
     handleBall,
     handleLeaveRoom,
-  ] = useHost(dispatchRemovePlayer, newBall, enableProgress);
+  } = useHost(dispatchRemovePlayer);
+
   const [playRandomSfx] = useHostSounds();
   return (
     <React.Fragment>
@@ -85,9 +82,9 @@ export default function Host({
                 />
               </IconButton>
               <Ball
-                number={ball.number}
-                column={ball.column}
-                remainder={ball.remainder}
+                number={number}
+                column={column}
+                remainder={remainder}
                 inProgress={inProgress}
                 progress={progress}
                 disabled={isDisabled}
