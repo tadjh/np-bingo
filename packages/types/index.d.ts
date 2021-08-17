@@ -15,10 +15,10 @@ export interface Host extends Player {
 export type Ball = {
   key: number;
   number: number;
-  column: Column;
+  column: Column | '';
   remainder: number;
 };
-export type Column = '' | 'b' | 'i' | 'n' | 'g' | 'o';
+export type Column = 'b' | 'i' | 'n' | 'g' | 'o';
 export type PlayerCard = {
   card: Card;
   owner: Player;
