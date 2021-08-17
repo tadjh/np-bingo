@@ -1,6 +1,6 @@
 import React from 'react';
 import IconButtonBase from '../IconButtonBase';
-import Ripple from '../../../../Ripple';
+import Ripple from '../../../../Feedback/Ripple';
 import Tooltip, { TooltipDirection } from '../../../../Display/Tooltip';
 
 export interface IconButtonProps

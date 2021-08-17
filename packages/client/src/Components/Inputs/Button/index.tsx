@@ -1,5 +1,5 @@
 import React from 'react';
-import Ripple from '../../Ripple';
+import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
 
 export type ButtonVariants = 'contained';

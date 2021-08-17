@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Ripple from '.';
-import Button from '../Inputs/Button';
+import Button from '../../Inputs/Button';
 
 export default {
   title: 'Animations/Ripple',
