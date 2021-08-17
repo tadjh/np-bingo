@@ -22,11 +22,17 @@ export default function Ball({
   return (
     <div className="relative inline-flex">
       <div
-        className={`relative z-10 font-mono font-bold text-black text-opacity-90 dark:text-opacity-90 w-20 h-20 flex justify-center items-center flex-col shadow-lg text-center rounded-full ${background}`}
+        className={[
+          'relative z-10 w-20 h-20 flex justify-center items-center flex-col shadow-lg text-center rounded-full font-mono font-bold text-black text-opacity-90 dark:text-opacity-90',
+          background,
+        ].join(' ')}
       >
         <div className="w-full h-full absolute overflow-hidden rounded-full">
           <div
-            className={`rounded-full filter blur-[6px] bg-gradient-radial w-[97%] h-[97%] ${gradient}`}
+            className={[
+              'rounded-full filter blur-[6px] bg-gradient-radial w-[97%] h-[97%]',
+              gradient,
+            ].join(' ')}
           ></div>
         </div>
         <Badge description="Balls Remaining" disabled={disabled}>
