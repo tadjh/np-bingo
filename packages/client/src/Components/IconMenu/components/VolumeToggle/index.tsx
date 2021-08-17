@@ -4,7 +4,7 @@ import VolumeUpIcon from '../../../../assets/icons/VolumeUp';
 import IconButton, {
   IconButtonProps,
 } from '../../../Elements/IconButton/components/IconButton';
-import useVolumeToggle from './hooks/useVolumeToggle';
+import { useVolumeToggle } from './hooks';
 
 export interface VolumeToggleProps
   extends React.HTMLAttributes<HTMLButtonElement> {
@@ -15,8 +15,7 @@ export default function VolumeToggle({
   direction = 'top',
   ...props
 }: VolumeToggleProps): JSX.Element {
-  const { sounds, toggleSounds, toggleSfx } = useVolumeToggle();
-
+  const [sounds, toggleSounds, toggleSfx] = useVolumeToggle();
   return (
     <IconButton
       className="group"

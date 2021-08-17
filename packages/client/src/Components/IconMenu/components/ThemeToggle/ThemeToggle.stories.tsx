@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import ThemeToggle, { ThemeToggleProps } from '.';
-import { ThemeContext } from '../../context';
+import { ThemeContext } from '../../../../context';
 
 export default {
   title: 'Components/Theme Toggle',

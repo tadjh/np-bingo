@@ -3,7 +3,7 @@ import useSound from 'use-sound';
 import { FeautresContext, SoundContext } from '../../../../../context';
 import { clickSfx } from '../../../../../config/sounds';
 
-export default function useVolumeToggle() {
+export function useVolumeToggle(): [boolean, () => void, () => void] {
   const { sounds, toggleSounds } = useContext(SoundContext);
   const { defaultVolume } = useContext(FeautresContext);
 
@@ -37,5 +37,5 @@ export default function useVolumeToggle() {
     !sounds ? volumeOn() : volumeOff();
   };
 
-  return { sounds, toggleSounds, toggleSfx };
+  return [sounds, toggleSounds, toggleSfx];
 }
