@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  header {
+    @apply flex justify-center z-10 p-4;
+  }
+  main {
+    @apply flex flex-1 flex-col items-center z-10 px-4 py-1 gap-y-4;
+  }
+  footer {
+    @apply flex flex-col items-center z-10 p-4;
+  }
+}
+
 @layer utilities {
   .animation-delay-300 {
     animation-delay: 300ms;
