@@ -1,12 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Play, { PlayProps } from '.';
-import { BallContext, GameContext } from '../../context';
-import { initialState as AppState } from '../../Reducers/app.reducer';
-// import { FeautresContext } from '../../Utils/contexts';
-// import features from '../../Config/features';
-import Container from '../../components/Layout/Container';
+import Play, { PlayProps } from './Play';
+import { BallContext, GameContext } from '../../../context';
+import { initialState as AppState } from '../../../Reducers/app.reducer';
+import Container from '../../../components/Layout/Container';
+import { Ball } from '@np-bingo/types';
 
 export default {
   title: 'Pages/Play',
@@ -35,6 +34,13 @@ export default {
 
 const Template: Story<PlayProps> = (args) => <Play {...args} />;
 
+const ball = {
+  key: 1,
+  number: 24,
+  column: 'i',
+  remainder: 74,
+} as Ball;
+
 export const Base = Template.bind({});
 Base.decorators = [
   (Story) => {
@@ -45,17 +51,21 @@ Base.decorators = [
           gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
-          user: {},
           winner: { ...AppState.winner },
           play: () => {},
+          mode: () => {},
+          checkCard: () => false as boolean,
         }}
       >
         <BallContext.Provider
           value={{
-            key: 1,
-            number: 24,
-            column: 'i',
-            remainder: 74,
+            ball: {
+              key: 1,
+              number: 24,
+              column: 'i',
+              remainder: 74,
+            },
+            newBall: () => ball,
           }}
         >
           <Story />
