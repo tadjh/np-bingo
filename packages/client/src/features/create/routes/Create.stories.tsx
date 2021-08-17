@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import { Create, CreateProps } from './Create';
+import Create, { CreateProps } from './Create';
 import Container from '../../../components/Layout/Container';
 
 export default {
