@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 
 export function useDialog(
   initialState = false
-): [boolean, () => void, () => void] {
+): [boolean, () => void, () => void, () => void] {
   const [isOpen, setIsOpen] = useState(initialState);
 
   /**
@@ -19,5 +19,12 @@ export function useDialog(
     setIsOpen(false);
   }, []);
 
-  return [isOpen, open, close];
+  /**
+   * Toggle isOpen
+   */
+  const toggle = useCallback(() => {
+    setIsOpen((prevValue) => !prevValue);
+  }, []);
+
+  return [isOpen, open, close, toggle];
 }
