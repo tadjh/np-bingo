@@ -13,7 +13,7 @@ import {
 import { Ball, Card, Winner, Player, Room } from '@np-bingo/types';
 import { Switch, Route } from 'react-router-dom';
 import Host from './features/host';
-import Play from './features/play';
+import Play, { Solo } from './features/play';
 import Home from './features/home';
 import Join from './features/join';
 import Create from './features/create';
@@ -44,6 +44,7 @@ export default function App() {
     dispatchCreateRoom,
     dispatchJoinRoom,
     dispatchNewBall,
+    dispatchSendCard,
     dispatchCheckCardSuccess,
     dispatchCheckCardFailure,
     dispatchRemovePlayer,
@@ -241,18 +242,6 @@ export default function App() {
     });
   }, [dispatch, play, setUser]);
 
-  /**
-   * Solo: Impersonate sending card to host
-   * @param card
-   * @param user
-   */
-  const sendCard = useCallback(
-    (card: Card, user?: Player) => {
-      dispatch({ type: GET_CARD, payload: { card: card, owner: user } });
-    },
-    [dispatch]
-  );
-
   return (
     <FeautresContext.Provider value={features}>
       <UserContext.Provider value={{ user, setUser }}>
@@ -268,9 +257,11 @@ export default function App() {
                 host,
                 winner,
                 play,
+                mode,
+                checkCard,
               }}
             >
-              <BallContext.Provider value={ball}>
+              <BallContext.Provider value={{ ball, newBall }}>
                 <div id="App" className={theme}>
                   <Container>
                     <Background />
@@ -278,32 +269,26 @@ export default function App() {
                       <Route path="/create">
                         <Create></Create>
                       </Route>
+                      <Route path="/join">
+                        <Join dispatchJoinRoom={dispatchJoinRoom} />
+                      </Route>
                       <Route path="/host">
                         <Host
-                          checkCard={checkCard}
-                          newBall={newBall}
                           dispatchRemovePlayer={dispatchRemovePlayer}
                           draws={draws}
                           players={players}
-                        ></Host>
+                        />
                       </Route>
-                      <Route path="/join">
-                        <Join
-                          dispatchJoinRoom={dispatchJoinRoom}
-                          solo={() => mode('solo')}
+                      <Route path="/play/solo">
+                        <Solo
+                          dispatchSendCard={dispatchSendCard}
+                          kicked={kicked}
                         />
                       </Route>
                       <Route path="/play">
-                        <Play
-                          checkCard={checkCard}
-                          newBall={newBall}
-                          sendCard={sendCard}
-                          kicked={kicked}
-                          winner={winner}
-                          solo={() => mode('solo')}
-                        ></Play>
+                        <Play kicked={kicked} />
                       </Route>
-                      <Route exact path="/">
+                      <Route path="/">
                         <Home dispatchCreateRoom={dispatchCreateRoom} />
                       </Route>
                     </Switch>
