@@ -382,7 +382,6 @@ export function winningMethods(results: Results): string[] {
 
 /**
  * Sets Winning crossmarks after successful card validations
- * @param methods Array of current winning methods (row, column, diagonal)
  * @param results Results of validation check
  * @retuns Object of winning crossmarks
  */
@@ -391,7 +390,7 @@ export function winningCells(results: Results): { [key: string]: boolean } {
   let winningCrossmarks = {};
   for (let i = 0; i < methods.length; i++) {
     let marks = (results[methods[i]] as number[]).map(function (item) {
-      let id = `cell${item + 1}`;
+      let id = `cell-${item + 1}`;
       return { [id]: true };
     });
     winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
