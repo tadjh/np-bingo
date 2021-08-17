@@ -7,8 +7,6 @@ export interface IconButtonbaseProps
   disabled?: boolean;
 }
 
-// TODO Improve Typing
-
 export default function IconButtonBase({
   component: Component,
   children,
