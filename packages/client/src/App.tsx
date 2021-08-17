@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useContext } from 'react';
 import socket from './lib/socket.io';
 import {
   CHECK_CARD_SUCCESS,
@@ -36,6 +36,7 @@ import {
   BallContext,
   ThemeContext,
   SoundContext,
+  FeautresContext,
 } from './context';
 import Background from './components/Surfaces/Background';
 import Container from './components/Layout/Container';
@@ -49,6 +50,7 @@ export default function App() {
   const { state, dispatch, play, mode, setNewBall } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useSounds(config.sounds);
+  const { defaultVolume } = useContext(FeautresContext);
 
   let {
     gamestate,
@@ -332,7 +334,9 @@ export default function App() {
   return (
     <div id="App" className={theme}>
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
-        <SoundContext.Provider value={{ sounds, toggleSounds }}>
+        <SoundContext.Provider
+          value={{ volume: defaultVolume, sounds, toggleSounds }}
+        >
           <GameContext.Provider
             value={{
               gamestate,
