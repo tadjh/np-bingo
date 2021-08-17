@@ -17,6 +17,11 @@ export function useHome(
   useEffect(() => {
     if (gamestate === 'init') return;
     play('init');
+
+    // TODO Does this work?
+    return () => {
+      play('ready');
+    };
   }, [gamestate, play]);
 
   /**
