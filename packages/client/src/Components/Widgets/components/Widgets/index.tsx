@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import Share from '../Share';
 import { Gamemode, Room } from '@np-bingo/types';
 import Code from '../Code';
-import { FeautresContext } from '../../context';
-import IconMenu from '../IconMenu';
+import { FeautresContext } from '../../../../context';
+import IconMenu from '../../../IconMenu';
 
 export interface WidgetProps {
   variant?: Gamemode;

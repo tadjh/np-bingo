@@ -1,7 +1,7 @@
 import React from 'react';
 import { Room } from '@np-bingo/types';
-import generate from '../../utils/generate';
-import Tooltip from '../Elements/Tooltip';
+import generate from '../../../../utils/generate';
+import Tooltip from '../../../Display/Tooltip';
 
 export interface CodeProps extends React.HTMLAttributes<HTMLDivElement> {
   room?: Room;
@@ -14,7 +14,6 @@ export default function Code({
 }: CodeProps): JSX.Element {
   const formattedRoom: string[] =
     room !== '' ? Object.assign([], room) : [' ', ' ', ' ', ' '];
-
   return (
     <div className="relative tooltip">
       <Tooltip isHovered={isHovered} direction="top">
