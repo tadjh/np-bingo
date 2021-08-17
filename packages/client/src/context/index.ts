@@ -23,6 +23,7 @@ export const ThemeContext = React.createContext({
 });
 
 export const SoundContext = React.createContext({
+  volume: features.defaultVolume,
   sounds: features.sounds,
   toggleSounds: () => {},
 });
