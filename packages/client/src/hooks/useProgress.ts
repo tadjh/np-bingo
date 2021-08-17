@@ -1,6 +1,6 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 
-export default function useProgress(
+export function useProgress(
   duration: number,
   callback?: (param?: any) => void
 ): {

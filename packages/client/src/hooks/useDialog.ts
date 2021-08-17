@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
 
-export default function useDialog(
+export function useDialog(
   initialState = false
 ): [boolean, () => void, () => void] {
   const [isOpen, setIsOpen] = useState(initialState);

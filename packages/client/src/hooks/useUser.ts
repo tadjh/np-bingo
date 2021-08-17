@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Player } from '@np-bingo/types';
 
-export default function useUser(
+export function useUser(
   initialValue = {
     name: 'Player',
     socket: '',

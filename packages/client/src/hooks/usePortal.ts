@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 
-export default function usePortal(target: HTMLElement | null): HTMLDivElement {
+export function usePortal(target: HTMLElement | null): HTMLDivElement {
   // lazy load portal
   const portalRef = useRef<HTMLDivElement | null>(null);
 

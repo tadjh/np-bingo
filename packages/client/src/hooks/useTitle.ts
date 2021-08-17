@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-export default function useTitle(pageTitle?: string) {
+export function useTitle(pageTitle?: string) {
   const siteTitle = 'Bingo - np-bingo';
   useEffect(() => {
     pageTitle

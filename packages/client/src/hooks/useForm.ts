@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function useForm(
+export function useForm(
   initialState: { [key: string]: string },
   callback?: (inputs: any) => void
 ): [
