@@ -1,5 +1,6 @@
 import { Gamemode, Gamestate } from '@np-bingo/types';
-import { useHostStatus, usePlayerStatus } from '.';
+import { useHostStatus } from './useHostStatus';
+import { usePlayerStatus } from './usePlayerStatus';
 
 export function useStatus(
   gamestate: Gamestate,
