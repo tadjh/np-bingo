@@ -3,7 +3,7 @@ import VolumeOffIcon from '../../../../assets/icons/VolumeOff';
 import VolumeUpIcon from '../../../../assets/icons/VolumeUp';
 import IconButton, {
   IconButtonProps,
-} from '../../../Elements/IconButton/components/IconButton';
+} from '../../../Inputs/IconButton/components/IconButton';
 import { useVolumeToggle } from './hooks';
 
 export interface VolumeToggleProps

@@ -1,6 +1,6 @@
 import React from 'react';
 import CloseIcon from '../../../../../assets/icons/Close';
-import IconButton from '../../../../Elements/IconButton/components/IconButton';
+import IconButton from '../../../../Inputs/IconButton/components/IconButton';
 import { useModalHeader } from '../../hooks';
 
 export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {

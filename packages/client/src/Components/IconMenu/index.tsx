@@ -1,7 +1,7 @@
 import React from 'react';
 import CloseIcon from '../../assets/icons/Close';
 import Cog from '../../assets/icons/Cog';
-import IconButton from '../Elements/IconButton/components/IconButton';
+import IconButton from '../Inputs/IconButton/components/IconButton';
 import ThemeToggle from './components/ThemeToggle';
 import VolumeToggle from './components/VolumeToggle';
 import { useDialog } from '../../hooks';

@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
 import ShareIcon from '../../../../assets/icons/Share';
-import IconButton from '../../../Elements/IconButton/components/IconButton';
+import IconButton from '../../../Inputs/IconButton/components/IconButton';
 import Modal, {
   ModalHeader,
   ModalContent,
   ModalFooter,
 } from '../../../Feedback/Modal';
-import Button from '../../../Elements/Button';
+import Button from '../../../Inputs/Button';
 import { useDialog } from '../../../../hooks';
 import { Room } from '@np-bingo/types';
 import TextInput from '../../../Form/TextInput';

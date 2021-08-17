@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import IconButton from '../../../Elements/IconButton/components/IconButton';
+import IconButton from '../../../Inputs/IconButton/components/IconButton';
 import MoonIcon from '../../../../assets/icons/Moon';
 import SunIcon from '../../../../assets/icons/Sun';
 import { TooltipDirection } from '../../../Display/Tooltip';
