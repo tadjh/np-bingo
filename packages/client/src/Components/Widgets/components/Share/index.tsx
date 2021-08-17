@@ -7,7 +7,7 @@ import Modal, {
   ModalFooter,
 } from '../../../Feedback/Modal';
 import Button from '../../../Inputs/Button';
-import { useDialog } from '../../../../hooks';
+import { useToggle } from '../../../../hooks';
 import { Room } from '@np-bingo/types';
 import TextInput from '../../../Form/TextInput';
 import { useShare } from './hooks';
@@ -18,7 +18,7 @@ export interface ShareProps {
 
 export default function Share({ room = '' }: ShareProps): JSX.Element {
   const linkRef = useRef<HTMLInputElement>(null);
-  const [isOpen, open, close] = useDialog();
+  const [isOpen, , open, close] = useToggle();
   const [copyText, clickSfx, handleClose, copyToClipboard] = useShare(
     linkRef.current,
     close

@@ -29,7 +29,7 @@ import Home from './features/home';
 import Join from './features/join';
 import Create from './features/create';
 import { apiCreateRoom, apiUpdateRoom } from './Api';
-import { useUser, useQuery, useTheme, useSounds } from './hooks';
+import { useUser, useQuery, useTheme, useToggle } from './hooks';
 import config from './config/features';
 import {
   GameContext,
@@ -49,7 +49,7 @@ export default function App() {
   const [user, setUser] = useUser();
   const { state, dispatch, play, mode, setNewBall } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
-  const [sounds, toggleSounds] = useSounds(config.sounds);
+  const [sounds, toggleSounds] = useToggle(config.sounds);
   const { defaultVolume } = useContext(FeautresContext);
 
   let {

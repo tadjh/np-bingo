@@ -4,7 +4,7 @@ import Cog from '../../../assets/icons/Cog';
 import IconButton from '../IconButton/components/IconButton';
 import ThemeToggle from './components/ThemeToggle';
 import VolumeToggle from './components/VolumeToggle';
-import { useDialog } from '../../../hooks';
+import { useToggle } from '../../../hooks';
 import { useIconMenu } from './hooks';
 
 export type MenuDirection = 'up' | 'right' | 'down' | 'left';
@@ -20,7 +20,7 @@ export default function IconMenu({
   open: override = false,
   ...props
 }: IconMenuProps): JSX.Element {
-  const [isOpen, open, close, toggle] = useDialog(override);
+  const [isOpen, toggle, , close] = useToggle(override);
   const [closeSfx, toggleSfx, menuStyle, tooltipStyle] = useIconMenu(
     isOpen,
     direction
