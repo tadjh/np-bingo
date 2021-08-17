@@ -1,6 +1,7 @@
 import {
   Action,
   Ball,
+  Card,
   Gamemode,
   Gamestate,
   Host,
@@ -27,6 +28,7 @@ import {
   CHECK_CARD_FAILURE,
   CHECK_CARD_SUCCESS,
   PLAYER_LEFT,
+  GET_CARD,
 } from '../config/constants';
 import { AppState, initialState, reducer } from '../Reducers/app.reducer';
 
@@ -141,6 +143,15 @@ export function useAppState() {
   };
 
   /**
+   * Solo: Impersonate sending card to host
+   * @param card
+   * @param user
+   */
+  const dispatchSendCard = (card: Card, user: Player) => {
+    dispatch({ type: GET_CARD, payload: { card: card, owner: user } });
+  };
+
+  /**
    * Dispatch check card success
    */
   const dispatchCheckCardSuccess = (winner: Winner) => {
@@ -173,6 +184,7 @@ export function useAppState() {
     dispatchCreateRoom,
     dispatchJoinRoom,
     dispatchNewBall,
+    dispatchSendCard,
     dispatchCheckCardSuccess,
     dispatchCheckCardFailure,
     dispatchRemovePlayer,
