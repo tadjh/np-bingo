@@ -63,11 +63,7 @@ export default function Host({
         </Button>
       </header>
       <main>
-        <StatusMessage
-          host={true}
-          gamestate={gamestate}
-          count={players.length}
-        />
+        <StatusMessage host={true} count={players.length} />
         {gamestate === 'init' || gamestate === 'ready' ? (
           <PlayerList data={players} action={handleRemovePlayer} />
         ) : (
