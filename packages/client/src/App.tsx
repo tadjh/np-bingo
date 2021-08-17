@@ -23,16 +23,13 @@ import {
   Room,
 } from '@np-bingo/types';
 import { Switch, Route } from 'react-router-dom';
-import Host from './features/host/routes/Host';
-import Play from './features/Play';
-import Home from './features/Home';
-import Join from './features/Join';
-import Create from './features/Create';
+import Host from './features/host';
+import Play from './features/play';
+import Home from './features/home';
+import Join from './features/join';
+import Create from './features/create';
 import { apiCreateRoom, apiUpdateRoom } from './Api';
-import useUser from './hooks/useUser';
-import useQuery from './hooks/useQuery';
-import useTheme from './hooks/useTheme';
-import useSounds from './hooks/useSounds';
+import { useUser, useQuery, useTheme, useSounds } from './hooks';
 import config from './config/features';
 import {
   GameContext,
