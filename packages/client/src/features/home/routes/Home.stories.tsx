@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Home, { HomeProps } from '.';
-import Container from '../../components/Layout/Container';
+import Home, { HomeProps } from './Home';
+import Container from '../../../components/Layout/Container';
 
 export default {
   title: 'Pages/Home',

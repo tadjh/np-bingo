@@ -1,4 +1,4 @@
-import { Action, Ball, Gamemode, Gamestate, Pool } from '@np-bingo/types';
+import { Action, Ball, Gamemode, Gamestate, Host, Pool } from '@np-bingo/types';
 import { useCallback, useReducer } from 'react';
 import logger from 'use-reducer-logger';
 import {
@@ -13,6 +13,7 @@ import {
   END_GAME,
   UPDATE_GAMEMODE,
   NEW_BALL,
+  SET_ROOM,
 } from '../config/constants';
 import { AppState, initialState, reducer } from '../Reducers/app.reducer';
 
@@ -85,7 +86,7 @@ export function useAppState() {
     }
   }, []);
 
-  const setNewBall = (ball: Ball, draws: Pool, pool: Pool) => {
+  const dispatchNewBall = (ball: Ball, draws: Pool, pool: Pool) => {
     dispatch({
       type: NEW_BALL,
       payload: {
@@ -96,5 +97,12 @@ export function useAppState() {
     });
   };
 
-  return { state, dispatch, play, mode, setNewBall };
+  const dispatchCreateRoom = (room: string, host: Host) => {
+    dispatch({
+      type: SET_ROOM,
+      payload: { room: room, host: host },
+    });
+  };
+
+  return { state, dispatch, play, mode, dispatchCreateRoom, dispatchNewBall };
 }

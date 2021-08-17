@@ -4,26 +4,6 @@ import { Player, Room } from '@np-bingo/types';
 import { handleError, logger } from '../utils';
 
 /**
- * Create game room on server
- * @param body
- * @param callback
- */
-export async function apiCreateRoom(
-  body: any,
-  callback: (res: AxiosResponse) => void
-) {
-  await axios
-    .post('/api/game', body)
-    .then((res) => {
-      callback(res);
-    })
-    .catch((err) => {
-      logger('Error in Create Room');
-      handleError(err);
-    });
-}
-
-/**
  * Update game room with player information
  * @param room Room code
  * @param body Player
