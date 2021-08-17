@@ -1,3 +1,4 @@
+export * from './useApp';
 export * from './useAppState';
 export * from './useForm';
 export * from './usePortal';

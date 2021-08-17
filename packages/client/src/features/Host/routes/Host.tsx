@@ -1,41 +1,23 @@
-import React, { useContext, useEffect } from 'react';
-import Ball from '../../../components/Ball';
-import {
-  BallContext,
-  FeautresContext,
-  GameContext,
-  SoundContext,
-} from '../../../context';
-import {
-  Ball as BallType,
-  Gamestate,
-  Player,
-  Pool,
-  Room,
-} from '@np-bingo/types';
-import StatusMessage from '../../../components/Status';
-import Button from '../../../components/Elements/Button';
-import Footer from '../../../components/Layout/Footer';
-import Draws from '../components/Draws';
-import PlayerList from '../components/PlayerList';
-import IconButton from '../../../components/Elements/IconButton';
+import React, { useContext } from 'react';
+import Ball from '../../../components/Display/Ball';
+import { BallContext, FeautresContext, GameContext } from '../../../context';
+import { Ball as BallType, Player, Pool } from '@np-bingo/types';
+import StatusMessage from '../../../components/Display/Status';
+import Button from '../../../components/Inputs/Button';
+import { Draws } from '../components/Draws';
+import { PlayerList } from '../components/PlayerList';
+import IconButton from '../../../components/Inputs/IconButton/components/IconButton';
 import PlusCircleIcon from '../../../assets/icons/PlusCircle';
-import Main from '../../../components/Layout/Main';
-import Header from '../../../components/Layout/Header';
 import Widgets from '../../../components/Widgets';
-import Link from '../../../components/Elements/Link';
-import useProgress from '../../../hooks/useProgress';
-import socket from '../../../lib/socket.io';
-import useSound from 'use-sound';
-import dispenseSfx from '../..//Assets/sounds/Ball_Dispenser.mp3';
-import { randomNumber } from '../../../utils';
-import { apiDeleteRoom, apiSaveRoom } from '../api';
+import Link from '../../../components/Navigation/Link';
+import { useProgress } from '../../../hooks';
 import useHost from '../hooks/useHost';
+import { useHostSounds } from '../hooks/useHostSounds';
 
 export interface HostProps {
-  checkCard?: () => void;
-  newBall?: () => BallType;
-  removePlayer?: (player: Player) => void;
+  checkCard: () => void;
+  newBall: () => BallType;
+  dispatchRemovePlayer: (player: Player) => void;
   draws: Pool;
   players: Player[];
 }
@@ -43,166 +25,44 @@ export interface HostProps {
 export default function Host({
   checkCard,
   newBall,
-  removePlayer,
+  dispatchRemovePlayer,
   draws = [[], [], [], [], []],
   players = [],
 }: HostProps) {
-  const { ballDelay, defaultVolume } = useContext(FeautresContext);
-  const { gamestate, room, winner, play } = useContext(GameContext);
-  const { sounds } = useContext(SoundContext);
+  const { ballDelay } = useContext(FeautresContext);
+  const { gamestate, room } = useContext(GameContext);
   const ball = useContext(BallContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
-  const { toggleText } = useHost(gamestate);
-
-  const [playSfx] = useSound(dispenseSfx, {
-    volume: defaultVolume,
-    sprite: {
-      dispenseBall1: [0, 2000],
-      dispenseBall2: [250, 1750],
-      dispenseBall3: [2000, 2000],
-      dispenseBall4: [2250, 1750],
-    },
-    soundEnabled: sounds,
-  });
-
-  /**
-   * isDisabled is true when gamestate is not start, standby or failure
-   */
-  const isDisabled =
-    gamestate !== 'start' &&
-    gamestate !== 'standby' &&
-    gamestate !== 'failure' &&
-    true;
-
-  /**
-   * Three way toggle for host main button
-   * @param gamestate Gamestate
-   * @param room Room
-   */
-  const gamestateToggle = (gamestate: Gamestate) => {
-    switch (gamestate) {
-      case 'ready':
-        play('standby');
-        break;
-      case 'end':
-        play('ready');
-        break;
-      default:
-        play('end');
-        break;
-    }
-  };
-
-  /**
-   * Kick player from room
-   * @param player
-   */
-  const handleRemovePlayer = (player: Player) => {
-    if (!removePlayer) return;
-    socket.emit('remove-player', player);
-    removePlayer(player);
-  };
-
-  /**
-   * Trigger gamestate start, queue new ball and show ball progress animation
-   * @param gamestate
-   * @param room
-   */
-  const handleBall = (gamestate: Gamestate) => {
-    if (!newBall) return;
-    // If gamestate isn't already start, set it when a ball is drawn
-    if (gamestate === 'standby' || gamestate === 'failure') {
-      play('start');
-    }
-    const ball = newBall();
-
-    if (ball.number === 0) {
-      play('end');
-    } else {
-      enableProgress();
-      socket.emit('ball', room, ball);
-    }
-  };
-
-  /**
-   * Leave room by room code
-   * @param room Room code
-   */
-  const handleLeaveRoom = (room: Room) => {
-    socket.emit('leave-room', room);
-    apiDeleteRoom(room);
-    // TODO Best way to handle async??
-    // setIsDeleteRoom(true);
-  };
-
-  // const [ isDeleteRoom, setIsDeleteRoom ] = useState(false);
-  // useEffect(() => {
-  //   if (!isDeleteRoom) return
-  //   apiDeleteRoom(room);
-  // })
-
-  /**
-   * Check card for validation
-   * @param room
-   * @returns
-   */
-  const handleCheckCard = () => {
-    if (!checkCard) return;
-    checkCard();
-  };
-
-  /**
-   * Keep the room in sync with this host's gamestate
-   */
-  useEffect(() => {
-    switch (gamestate) {
-      case 'init':
-        socket.emit('create-room', room);
-        play('ready');
-        break;
-      case 'ready':
-        socket.emit('ready', room);
-        break;
-      case 'standby':
-        socket.emit('standby', room);
-        break;
-      case 'start':
-        socket.emit('start', room);
-        break;
-      case 'failure':
-        socket.emit('losing-card', room, winner);
-        break;
-      case 'win':
-        socket.emit('winning-card', room, winner);
-        apiSaveRoom(room, winner);
-        break;
-      case 'end':
-        socket.emit('end', room);
-        break;
-    }
-  }, [gamestate, room, winner, play]);
-
+  const [
+    isDisabled,
+    gamestateToggle,
+    toggleText,
+    handleRemovePlayer,
+    handleBall,
+    handleLeaveRoom,
+  ] = useHost(dispatchRemovePlayer, newBall, enableProgress);
+  const [playRandomSfx] = useHostSounds();
   return (
     <React.Fragment>
-      <Header className="gap-3">
+      <header className="gap-3">
         <Button
           variant="contained"
           color="primary"
           className="w-[132px]"
-          onClick={() => gamestateToggle(gamestate)}
+          onClick={gamestateToggle}
         >
-          {toggleText(gamestate)}
+          {toggleText}
         </Button>
         <Button
           variant="contained"
           color="primary"
           disabled={gamestate !== 'validate' && true}
-          onClick={handleCheckCard}
+          onClick={checkCard}
         >
           Check Card
         </Button>
-      </Header>
-      <Main className="flex-1 gap-y-4">
+      </header>
+      <main>
         <StatusMessage
           host={true}
           gamestate={gamestate}
@@ -215,10 +75,8 @@ export default function Host({
             <div className="flex items-center gap-x-3">
               <IconButton
                 disabled={(isDisabled || inProgress) && true}
-                onClick={() => handleBall(gamestate)}
-                onMouseDown={() =>
-                  playSfx({ id: `dispenseBall${randomNumber(4)}` })
-                }
+                onClick={handleBall}
+                onMouseDown={playRandomSfx}
                 description="New Ball"
                 direction="left"
               >
@@ -242,17 +100,13 @@ export default function Host({
             <Draws draws={draws} disabled={gamestate === 'end' && true} />
           </React.Fragment>
         )}
-      </Main>
-      <Footer className="gap-3">
+      </main>
+      <footer className="gap-3">
         <Widgets room={room} />
-        <Link
-          className="hover:underline"
-          onClick={() => handleLeaveRoom(room)}
-          to="/"
-        >
+        <Link className="hover:underline" onClick={handleLeaveRoom} to="/">
           Leave Room
         </Link>
-      </Footer>
+      </footer>
     </React.Fragment>
   );
 }

@@ -1,4 +1,13 @@
-import { Action, Ball, Gamemode, Gamestate, Host, Pool } from '@np-bingo/types';
+import {
+  Action,
+  Ball,
+  Gamemode,
+  Gamestate,
+  Host,
+  Player,
+  Pool,
+  Winner,
+} from '@np-bingo/types';
 import { useCallback, useReducer } from 'react';
 import logger from 'use-reducer-logger';
 import {
@@ -15,6 +24,9 @@ import {
   NEW_BALL,
   SET_ROOM,
   JOIN_ROOM,
+  CHECK_CARD_FAILURE,
+  CHECK_CARD_SUCCESS,
+  PLAYER_LEFT,
 } from '../config/constants';
 import { AppState, initialState, reducer } from '../Reducers/app.reducer';
 
@@ -127,6 +139,32 @@ export function useAppState() {
       },
     });
   };
+
+  /**
+   * Dispatch check card success
+   */
+  const dispatchCheckCardSuccess = (winner: Winner) => {
+    dispatch({
+      type: CHECK_CARD_SUCCESS,
+      payload: winner,
+    });
+  };
+
+  /**
+   * Dispatch check card failure
+   */
+  const dispatchCheckCardFailure = () => {
+    dispatch({ type: CHECK_CARD_FAILURE });
+  };
+
+  /**
+   * Remove player from room
+   * @param player Player socket id
+   */
+  const dispatchRemovePlayer = (player: Player) => {
+    dispatch({ type: PLAYER_LEFT, payload: player });
+  };
+
   return {
     state,
     dispatch,
@@ -135,5 +173,8 @@ export function useAppState() {
     dispatchCreateRoom,
     dispatchJoinRoom,
     dispatchNewBall,
+    dispatchCheckCardSuccess,
+    dispatchCheckCardFailure,
+    dispatchRemovePlayer,
   };
 }

@@ -10,23 +10,14 @@ import {
   PLAYER_KICKED,
   CHECK_CARD_FAILURE,
 } from './config/constants';
-import { getBall, removeBall, updateDraws, validateCard } from './utils/bingo';
-import {
-  Ball,
-  Card,
-  Pool,
-  Winner,
-  Player,
-  PlayerCard,
-  Room,
-} from '@np-bingo/types';
+import { Ball, Card, Winner, Player, Room } from '@np-bingo/types';
 import { Switch, Route } from 'react-router-dom';
 import Host from './features/host';
 import Play from './features/play';
 import Home from './features/home';
 import Join from './features/join';
 import Create from './features/create';
-import { useUser, useTheme, useToggle } from './hooks';
+import { useUser, useTheme, useToggle, useApp } from './hooks';
 import config from './config/features';
 import {
   GameContext,
@@ -53,6 +44,9 @@ export default function App() {
     dispatchCreateRoom,
     dispatchJoinRoom,
     dispatchNewBall,
+    dispatchCheckCardSuccess,
+    dispatchCheckCardFailure,
+    dispatchRemovePlayer,
   } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useToggle(config.sounds);
@@ -72,6 +66,14 @@ export default function App() {
     rules: { mode: gamemode },
   } = state;
 
+  const [newBall, checkCard] = useApp(
+    playerCard,
+    pool,
+    draws,
+    dispatchCheckCardSuccess,
+    dispatchCheckCardFailure,
+    dispatchNewBall
+  );
   /**
    * Socket.io Side-effects
    */
@@ -240,64 +242,6 @@ export default function App() {
   }, [dispatch, play, setUser]);
 
   /**
-   * Remove player from room
-   * @param player Player socket id
-   */
-  const removePlayer = useCallback(
-    (player: Player) => {
-      dispatch({ type: PLAYER_LEFT, payload: player });
-    },
-    [dispatch]
-  );
-
-  const newBall = (pool: Pool, draws: Pool) => {
-    const ball = getBall(pool);
-    if (ball.number === 0) return ball;
-
-    // safely clone multidimenional array
-    const drawsArray = draws.map((array) => array.slice());
-    const newDraws = updateDraws(drawsArray, ball);
-    const filteredPool = removeBall(pool, ball);
-
-    dispatchNewBall(ball, newDraws, filteredPool);
-
-    return ball;
-  };
-
-  /**
-   * Checks if input card is a winner
-   * @param mode Game mdoe
-   * @param playerCard Input card to be checked and owner of card
-   * @param draws Pool of bingo balls that have already been drawn
-   * @return void
-   */
-  const checkCard = useCallback(
-    (playerCard: PlayerCard, draws: Pool): boolean => {
-      const [results, methods] = validateCard(playerCard.card, draws);
-
-      // No winning methods
-      if (methods.length <= 0) {
-        dispatch({ type: CHECK_CARD_FAILURE });
-        return false;
-      }
-
-      const winner = {
-        methods,
-        results,
-        player: playerCard.owner,
-        card: playerCard.card,
-      } as Winner;
-
-      dispatch({
-        type: CHECK_CARD_SUCCESS,
-        payload: winner,
-      });
-      return true;
-    },
-    [dispatch]
-  );
-
-  /**
    * Solo: Impersonate sending card to host
    * @param card
    * @param user
@@ -336,9 +280,9 @@ export default function App() {
                       </Route>
                       <Route path="/host">
                         <Host
-                          checkCard={() => checkCard(playerCard, draws)}
-                          newBall={() => newBall(pool, draws)}
-                          removePlayer={removePlayer}
+                          checkCard={checkCard}
+                          newBall={newBall}
+                          dispatchRemovePlayer={dispatchRemovePlayer}
                           draws={draws}
                           players={players}
                         ></Host>
@@ -351,8 +295,8 @@ export default function App() {
                       </Route>
                       <Route path="/play">
                         <Play
-                          checkCard={() => checkCard(playerCard, draws)}
-                          newBall={() => newBall(pool, draws)}
+                          checkCard={checkCard}
+                          newBall={newBall}
                           sendCard={sendCard}
                           kicked={kicked}
                           winner={winner}

@@ -1,16 +1,16 @@
 import React from 'react';
 import { Pool } from '@np-bingo/types';
-import { letters } from '../../../utils/bingo';
-import generate from '../../../utils/generate';
-import DrawsColumn from './DrawsColumn';
-import DrawsItem from './DrawsItem';
+import { letters } from '../../../../../../utils/bingo';
+import generate from '../../../../../../utils/generate';
+import DrawsColumn from '../DrawsColumn';
+import DrawsItem from '../DrawsItem';
 
 export interface DrawsProps {
   draws?: Pool;
   disabled?: boolean;
 }
 
-export default function Draws({
+export function Draws({
   draws = [[], [], [], [], []],
   disabled,
 }: DrawsProps): JSX.Element {

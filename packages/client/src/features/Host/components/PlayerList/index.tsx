@@ -1,12 +1,13 @@
 import React from 'react';
-import List from '../../../components/Elements/List';
-import ListItem from '../../../components/Elements/ListItem';
-import ListItemText from '../../../components/Elements/ListItemText';
-import IconButton from '../../../components/Elements/IconButton';
-import MinusIcon from '../../../assets/icons/Minus';
-import CheckIcon from '../../../assets/icons/Check';
-import CloseCircleIcon from '../../../assets/icons/CloseCircle';
-import Tooltip from '../../../components/Elements/Tooltip';
+import List, {
+  ListItem,
+  ListItemText,
+} from '../../../../components/Display/List';
+import IconButton from '../../../../components/Inputs/IconButton/components/IconButton';
+import MinusIcon from '../../../../assets/icons/Minus';
+import CheckIcon from '../../../../assets/icons/Check';
+import CloseCircleIcon from '../../../../assets/icons/CloseCircle';
+import Tooltip from '../../../../components/Display/Tooltip';
 import { Player } from '@np-bingo/types';
 
 export interface ListProps {
@@ -19,7 +20,7 @@ export interface PlayerListProps extends ListProps {
   action?: (player: Player) => void;
 }
 
-export default function PlayerList({
+export function PlayerList({
   data = [],
   action: onRemove,
 }: PlayerListProps): JSX.Element {
@@ -30,11 +31,12 @@ export default function PlayerList({
           return (
             <ListItem key={`player${index + 1}`}>
               <div
-                className={`relative tooltip flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 ${
+                className={[
+                  'relative tooltip flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm',
                   player.ready
                     ? 'bg-green-200 group-hover:bg-green-300 dark:bg-green-800 dark:group-hover:bg-green-700 '
-                    : 'bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700 '
-                } shadow-sm`}
+                    : 'bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700 ',
+                ].join(' ')}
               >
                 <Tooltip direction="right">
                   {player.ready ? 'Ready' : 'Not Ready'}

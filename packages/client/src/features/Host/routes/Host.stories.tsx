@@ -40,7 +40,6 @@ Base.decorators = [
           gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
-          user: {},
           winner: { ...AppState.winner },
           play: () => {},
         }}
@@ -73,7 +72,6 @@ Waiting.decorators = [
           gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
-          user: {},
           winner: { ...AppState.winner },
           play: () => {},
         }}
@@ -132,7 +130,6 @@ GameOver.decorators = [
           gamemode: AppState.rules.mode,
           room: 'A1B2',
           host: { ...AppState.host },
-          user: {},
           winner: { ...AppState.winner },
           play: () => {},
         }}
