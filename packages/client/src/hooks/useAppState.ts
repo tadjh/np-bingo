@@ -14,6 +14,7 @@ import {
   UPDATE_GAMEMODE,
   NEW_BALL,
   SET_ROOM,
+  JOIN_ROOM,
 } from '../config/constants';
 import { AppState, initialState, reducer } from '../Reducers/app.reducer';
 
@@ -86,6 +87,36 @@ export function useAppState() {
     }
   }, []);
 
+  /**
+   * Dispatch Create Room
+   * @param room
+   * @param host
+   */
+  const dispatchCreateRoom = (room: string, host: Host) => {
+    dispatch({
+      type: SET_ROOM,
+      payload: { room: room, host: host },
+    });
+  };
+
+  /**
+   * Dispatch Join Room
+   * @param room
+   * @param host
+   */
+  const dispatchJoinRoom = (room: string, host: Host) => {
+    dispatch({
+      type: JOIN_ROOM,
+      payload: { room: room, host: host },
+    });
+  };
+
+  /**
+   * Dispatch New Ball
+   * @param ball
+   * @param draws
+   * @param pool
+   */
   const dispatchNewBall = (ball: Ball, draws: Pool, pool: Pool) => {
     dispatch({
       type: NEW_BALL,
@@ -96,13 +127,13 @@ export function useAppState() {
       },
     });
   };
-
-  const dispatchCreateRoom = (room: string, host: Host) => {
-    dispatch({
-      type: SET_ROOM,
-      payload: { room: room, host: host },
-    });
+  return {
+    state,
+    dispatch,
+    play,
+    mode,
+    dispatchCreateRoom,
+    dispatchJoinRoom,
+    dispatchNewBall,
   };
-
-  return { state, dispatch, play, mode, dispatchCreateRoom, dispatchNewBall };
 }

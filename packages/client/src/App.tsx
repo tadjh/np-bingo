@@ -3,7 +3,6 @@ import socket from './lib/socket.io';
 import {
   CHECK_CARD_SUCCESS,
   GET_CARD,
-  JOIN_ROOM,
   PLAYER_JOINED,
   PLAYER_LEFT,
   PLAYER_READY,
@@ -27,8 +26,7 @@ import Play from './features/play';
 import Home from './features/home';
 import Join from './features/join';
 import Create from './features/create';
-import { apiUpdateRoom } from './Api';
-import { useUser, useQuery, useTheme, useToggle } from './hooks';
+import { useUser, useTheme, useToggle } from './hooks';
 import config from './config/features';
 import {
   GameContext,
@@ -46,10 +44,16 @@ import { logger } from './utils';
 import features from './config/features';
 
 export default function App() {
-  let query = useQuery();
   const [user, setUser] = useUser();
-  const { state, dispatch, play, mode, dispatchCreateRoom, dispatchNewBall } =
-    useAppState();
+  const {
+    state,
+    dispatch,
+    play,
+    mode,
+    dispatchCreateRoom,
+    dispatchJoinRoom,
+    dispatchNewBall,
+  } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useToggle(config.sounds);
   const { defaultVolume } = useContext(FeautresContext);
@@ -236,22 +240,6 @@ export default function App() {
   }, [dispatch, play, setUser]);
 
   /**
-   * Player: Join game by room code
-   * @param room Room code
-   */
-  const joinRoom = useCallback(
-    (room: Room) => {
-      apiUpdateRoom(room, user, (res) => {
-        dispatch({
-          type: JOIN_ROOM,
-          payload: { room: room, host: res.data.host },
-        });
-      });
-    },
-    [dispatch, user]
-  );
-
-  /**
    * Remove player from room
    * @param player Player socket id
    */
@@ -357,8 +345,7 @@ export default function App() {
                       </Route>
                       <Route path="/join">
                         <Join
-                          joinRoom={joinRoom}
-                          queryRoom={query.get('r')}
+                          dispatchJoinRoom={dispatchJoinRoom}
                           solo={() => mode('solo')}
                         />
                       </Route>

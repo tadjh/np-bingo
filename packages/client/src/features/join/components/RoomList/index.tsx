@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-import IconButton from '../../../components/Elements/IconButton';
-import ChevronRight from '../../../assets/icons/ChevronRight';
-import Tooltip from '../../../components/Elements/Tooltip';
-import List from '../../../components/Elements/List';
-import ListItem from '../../../components/Elements/ListItem';
-import ListItemText from '../../../components/Elements/ListItemText';
+import IconButton from '../../../../components/Inputs/IconButton/components/IconButton';
+import ChevronRight from '../../../../assets/icons/ChevronRight';
+import Tooltip from '../../../../components/Display/Tooltip';
+import List, {
+  ListItem,
+  ListItemText,
+} from '../../../../components/Display/List';
 
 export interface ListProps {
   rooms?: any[];
