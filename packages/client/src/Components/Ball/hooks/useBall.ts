@@ -1,6 +1,6 @@
 import { Column } from '@np-bingo/types';
 
-export default function useBall(column: Column, disabled: boolean) {
+export function useBall(column: Column, disabled: boolean) {
   const ballColumn = (disabled && 'disabled') || column;
 
   /**
