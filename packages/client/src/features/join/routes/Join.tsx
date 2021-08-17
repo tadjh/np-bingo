@@ -11,14 +11,12 @@ import { Host } from '@np-bingo/types';
 
 export interface JoinProps {
   dispatchJoinRoom: (room: string, host: Host) => void;
-  solo?: () => void;
-  rooms?: any[];
+  publicRooms?: any[];
 }
 
 export default function Join({
   dispatchJoinRoom,
-  solo,
-  rooms = [],
+  publicRooms = [],
 }: JoinProps) {
   const { allowPublic, allowSolo } = useContext(FeautresContext);
   const [isOpen, , open, close] = useToggle();
@@ -31,7 +29,7 @@ export default function Join({
         </h1>
       </header>
       <main className="justify-around">
-        {allowPublic && <RoomList rooms={rooms} onClick={joinRoom} />}
+        {allowPublic && <RoomList rooms={publicRooms} onClick={joinRoom} />}
         <div className="flex flex-col items-center gap-y-3">
           <Button variant="contained" className="join-button" onClick={open}>
             Private Room
@@ -41,8 +39,7 @@ export default function Join({
             <Button
               component={RouterLink}
               className="solo-button"
-              onClick={solo}
-              to="/play?m=solo"
+              to="/play/solo"
             >
               Solo
             </Button>
