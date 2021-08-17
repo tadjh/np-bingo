@@ -11,10 +11,7 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormHelperText from '@material-ui/core/FormHelperText';
 import Button from '@material-ui/core/Button';
 import Switch from '@material-ui/core/Switch';
-import useTitle from '../../hooks/useTitle';
-import Main from '../../components/Layout/Main';
-import Footer from '../../components/Layout/Footer';
-import Header from '../../components/Layout/Header';
+import { useTitle } from '../../../hooks';
 
 export interface CreateProps {
   title?: string;
@@ -43,12 +40,12 @@ export default function Create({ title }: CreateProps) {
 
   return (
     <React.Fragment>
-      <Header>
+      <header>
         <Typography variant="h4" component="h1">
           Create
         </Typography>
-      </Header>
-      <Main className="justify-evenly">
+      </header>
+      <main className="justify-evenly">
         <FormControl component="fieldset">
           <FormLabel component="legend">Game Type</FormLabel>
           <RadioGroup
@@ -140,12 +137,12 @@ export default function Create({ title }: CreateProps) {
         <Button color="primary" variant="contained">
           Create Room
         </Button>
-      </Main>
-      <Footer>
+      </main>
+      <footer>
         <Link className="nav-button" to="/">
           &larr; Back
         </Link>
-      </Footer>
+      </footer>
     </React.Fragment>
   );
 }
