@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Tooltip, { TooltipProps } from '.';
 
 export default {
-  title: 'Components/Tooltip',
+  title: 'Data/Tooltip',
   component: Tooltip,
   decorators: [
     (Story) => (

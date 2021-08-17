@@ -1,9 +1,9 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { List, ListProps } from '.';
+import List, { ListProps } from '.';
 
 export default {
-  title: 'List/List',
+  title: 'Data/List',
   component: List,
 } as Meta;
 
