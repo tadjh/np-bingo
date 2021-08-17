@@ -3,8 +3,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Host, { HostProps } from './Host';
 import { BallContext, GameContext } from '../../../context';
-import { initialState as AppState } from '../../../Reducers/app.reducer';
+import { initialState as AppState } from '../../../reducers/app.reducer';
 import Container from '../../../components/Layout/Container';
+import { Ball } from '@np-bingo/types';
 
 export default {
   title: 'Pages/Host',
@@ -30,6 +31,8 @@ export default {
 
 const Template: Story<HostProps> = (args) => <Host {...args} />;
 
+const ball = {} as Ball;
+
 export const Base = Template.bind({});
 Base.decorators = [
   (Story) => {
@@ -42,14 +45,19 @@ Base.decorators = [
           host: { ...AppState.host },
           winner: { ...AppState.winner },
           play: () => {},
+          mode: () => {},
+          checkCard: () => false as boolean,
         }}
       >
         <BallContext.Provider
           value={{
-            key: 1,
-            number: 24,
-            column: 'i',
-            remainder: 74,
+            ball: {
+              key: 1,
+              number: 24,
+              column: 'i',
+              remainder: 74,
+            },
+            newBall: () => ball,
           }}
         >
           <Story />
@@ -74,6 +82,8 @@ Waiting.decorators = [
           host: { ...AppState.host },
           winner: { ...AppState.winner },
           play: () => {},
+          mode: () => {},
+          checkCard: () => false as boolean,
         }}
       >
         <Story />
@@ -132,6 +142,8 @@ GameOver.decorators = [
           host: { ...AppState.host },
           winner: { ...AppState.winner },
           play: () => {},
+          mode: () => {},
+          checkCard: () => false as boolean,
         }}
       >
         <Story />

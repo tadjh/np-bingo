@@ -4,7 +4,7 @@ import {
   initialState,
   PlayerState,
   reducer,
-} from '../../../Reducers/play.reducer';
+} from '../../../reducers/play.reducer';
 import { useReducer } from 'react';
 import { Action, Winner } from '@np-bingo/types';
 import {

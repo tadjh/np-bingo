@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Play, { PlayProps } from './Play';
 import { BallContext, GameContext } from '../../../context';
-import { initialState as AppState } from '../../../Reducers/app.reducer';
+import { initialState as AppState } from '../../../reducers/app.reducer';
 import Container from '../../../components/Layout/Container';
 import { Ball } from '@np-bingo/types';
 

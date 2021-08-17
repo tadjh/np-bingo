@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from '@np-bingo/types';
 import Cell from '../Cell';
 import Logo from '../../../../../../components/Logo';
-import { initialState } from '../../../../../../Reducers/play.reducer';
+import { initialState } from '../../../../../../reducers/play.reducer';
 
 export interface BoardProps {
   card: Card;

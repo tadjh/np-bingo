@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction } from 'react';
-import { initialState } from '../Reducers/app.reducer';
+import { initialState } from '../reducers/app.reducer';
 import features from '../config/features';
 import { Gamemode, Gamestate, Player, Ball } from '@np-bingo/types';
 

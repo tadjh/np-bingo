@@ -30,7 +30,7 @@ import {
   PLAYER_LEFT,
   GET_CARD,
 } from '../config/constants';
-import { AppState, initialState, reducer } from '../Reducers/app.reducer';
+import { AppState, initialState, reducer } from '../reducers/app.reducer';
 
 export function useAppState() {
   const [state, dispatch] = useReducer<

@@ -6,7 +6,7 @@ import { Board } from '../components/Board';
 import StatusMessage from '../../../components/Display/Status';
 import Button from '../../../components/Inputs/Button';
 import Link from '../../../components/Navigation/Link';
-import { initialState as appState } from '../../../Reducers/app.reducer';
+import { initialState as appState } from '../../../reducers/app.reducer';
 import Widgets from '../../../components/Widgets';
 import KickedModal from '../components/KickedModal';
 import Confetti from '../components/Confetti';
