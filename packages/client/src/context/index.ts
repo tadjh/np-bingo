@@ -1,7 +1,7 @@
 import React, { Dispatch, SetStateAction } from 'react';
 import { initialState } from '../Reducers/app.reducer';
 import features from '../config/features';
-import { Gamestate, Player } from '@np-bingo/types';
+import { Gamemode, Gamestate, Player, Ball } from '@np-bingo/types';
 
 export const UserContext = React.createContext<{
   user: Player;
@@ -37,6 +37,14 @@ export const GameContext = React.createContext({
   host: { ...initialState.host },
   winner: { ...initialState.winner },
   play: (gamestate: Gamestate) => {},
+  mode: (gamemode: Gamemode) => {},
+  checkCard: () => false as boolean,
 });
 
-export const BallContext = React.createContext({ ...initialState.ball });
+export const BallContext = React.createContext<{
+  ball: Ball;
+  newBall: () => Ball;
+}>({
+  ball: { ...initialState.ball },
+  newBall: () => initialState.ball,
+});
