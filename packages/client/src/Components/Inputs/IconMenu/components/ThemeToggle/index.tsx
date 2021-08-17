@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
-import IconButton from '../../../Inputs/IconButton/components/IconButton';
-import MoonIcon from '../../../../assets/icons/Moon';
-import SunIcon from '../../../../assets/icons/Sun';
-import { TooltipDirection } from '../../../Display/Tooltip';
-import { ThemeContext } from '../../../../context';
+import IconButton from '../../../IconButton/components/IconButton';
+import MoonIcon from '../../../../../assets/icons/Moon';
+import SunIcon from '../../../../../assets/icons/Sun';
+import { TooltipDirection } from '../../../../Display/Tooltip';
+import { ThemeContext } from '../../../../../context';
 import { useThemeToggle } from './hooks';
 
 export interface ThemeToggleProps

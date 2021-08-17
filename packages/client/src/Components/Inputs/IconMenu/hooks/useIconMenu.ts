@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import useSound from 'use-sound';
-import { SoundContext } from '../../../context';
-import { drawerSfx } from '../../../config/sounds';
+import { SoundContext } from '../../../../context';
+import { drawerSfx } from '../../../../config/sounds';
 import { MenuDirection } from '..';
-import { TooltipDirection } from '../../Display/Tooltip';
+import { TooltipDirection } from '../../../Display/Tooltip';
 
 export function useIconMenu(
   isOpen: boolean,

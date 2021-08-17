@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import useSound from 'use-sound';
-import { FeautresContext, SoundContext } from '../../../../../context';
-import { clickSfx } from '../../../../../config/sounds';
+import { FeautresContext, SoundContext } from '../../../../../../context';
+import { clickSfx } from '../../../../../../config/sounds';
 
 export function useVolumeToggle(): [boolean, () => void, () => void] {
   const { sounds, toggleSounds } = useContext(SoundContext);

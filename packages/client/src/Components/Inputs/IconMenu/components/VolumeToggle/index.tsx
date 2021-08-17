@@ -1,9 +1,9 @@
 import React from 'react';
-import VolumeOffIcon from '../../../../assets/icons/VolumeOff';
-import VolumeUpIcon from '../../../../assets/icons/VolumeUp';
+import VolumeOffIcon from '../../../../../assets/icons/VolumeOff';
+import VolumeUpIcon from '../../../../../assets/icons/VolumeUp';
 import IconButton, {
   IconButtonProps,
-} from '../../../Inputs/IconButton/components/IconButton';
+} from '../../../IconButton/components/IconButton';
 import { useVolumeToggle } from './hooks';
 
 export interface VolumeToggleProps

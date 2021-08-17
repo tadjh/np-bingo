@@ -1,8 +1,8 @@
 import { Theme } from '@np-bingo/types';
 import { useContext } from 'react';
-import { SoundContext } from '../../../../../context';
+import { SoundContext } from '../../../../../../context';
 import useSound from 'use-sound';
-import { lightSfx } from '../../../../../config/sounds';
+import { lightSfx } from '../../../../../../config/sounds';
 
 export function useThemeToggle(theme: Theme) {
   const { volume, sounds } = useContext(SoundContext);

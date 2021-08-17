@@ -1,10 +1,10 @@
 import React from 'react';
-import CloseIcon from '../../assets/icons/Close';
-import Cog from '../../assets/icons/Cog';
-import IconButton from '../Inputs/IconButton/components/IconButton';
+import CloseIcon from '../../../assets/icons/Close';
+import Cog from '../../../assets/icons/Cog';
+import IconButton from '../IconButton/components/IconButton';
 import ThemeToggle from './components/ThemeToggle';
 import VolumeToggle from './components/VolumeToggle';
-import { useDialog } from '../../hooks';
+import { useDialog } from '../../../hooks';
 import { useIconMenu } from './hooks';
 
 export type MenuDirection = 'up' | 'right' | 'down' | 'left';
