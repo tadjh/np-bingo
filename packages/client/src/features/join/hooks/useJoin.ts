@@ -6,7 +6,9 @@ import { useQuery } from '../../../hooks';
 import socket from '../../../lib/socket.io';
 import { apiUpdateRoom } from '../api';
 
-export function useJoin(dispatchJoinRoom: (room: string, host: Host) => void) {
+export function useJoin(
+  dispatchJoinRoom: (room: string, host: Host) => void
+): [(room: Room) => void] {
   const { user } = useContext(UserContext);
   const { room, host } = useContext(GameContext);
   let query = useQuery();
