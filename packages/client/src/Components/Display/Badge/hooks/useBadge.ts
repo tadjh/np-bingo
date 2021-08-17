@@ -1,4 +1,4 @@
-import { BadgeColors } from '../';
+import { BadgeColors } from '..';
 
 export function useBadge(color: BadgeColors, disabled: boolean) {
   const style = (disabled && 'disabled') || color;
