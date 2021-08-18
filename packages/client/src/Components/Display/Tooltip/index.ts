@@ -1,4 +1,4 @@
-import Tooltip from './components';
+import Tooltip from './components/Tooltip';
 export * from './types';
-export * from './components';
+export * from './components/Tooltip';
 export default Tooltip;
