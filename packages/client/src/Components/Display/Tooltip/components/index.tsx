@@ -1,6 +1,12 @@
 import React from 'react';
+import { TooltipDirection } from '..';
 import { useTooltip } from '../hooks';
-import { TooltipProps } from '..';
+
+export interface TooltipProps extends React.HTMLAttributes<HTMLSpanElement> {
+  isHovered?: boolean;
+  direction?: TooltipDirection;
+  disabled?: boolean;
+}
 
 export default function Tooltip({
   className = '',
