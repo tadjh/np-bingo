@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import useSound from 'use-sound';
-import buttonSfx from '../../Assets/sounds/Click_1.mp3';
+import { buttonSfx } from '../../../../config/sounds';
 import { FeautresContext, SoundContext } from '../../../../context';
 
 export default function useLink() {
