@@ -12,4 +12,5 @@ const Template: Story<ListProps> = (args) => <List {...args} />;
 export const Base = Template.bind({});
 Base.args = {
   children: 'List',
+  title: 'List Title',
 };
