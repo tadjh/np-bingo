@@ -90,7 +90,7 @@ export default function App() {
                     <Background />
                     <Switch>
                       <Route path="/create">
-                        <Create></Create>
+                        <Create />
                       </Route>
                       <Route path="/join">
                         <Join dispatchJoinRoom={dispatchJoinRoom} />
