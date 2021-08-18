@@ -1,6 +1,6 @@
 import { TooltipDirection } from '..';
 
-export default function useTooltip(direction: TooltipDirection) {
+export function useTooltip(direction: TooltipDirection) {
   /**
    * Styling for tooltip box
    * @returns string
