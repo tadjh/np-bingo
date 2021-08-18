@@ -25,7 +25,7 @@ export default function Button({
 
   const buttonClasses = [
     'relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker',
-    buttonSyle,
+    buttonSyle(),
     className,
   ].join(' ');
 
