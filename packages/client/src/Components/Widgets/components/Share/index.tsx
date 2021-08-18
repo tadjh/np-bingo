@@ -14,11 +14,15 @@ import { useShare } from './hooks';
 
 export interface ShareProps {
   room?: Room;
+  isOpenDefault?: boolean;
 }
 
-export default function Share({ room = '' }: ShareProps): JSX.Element {
+export default function Share({
+  room = '',
+  isOpenDefault = false,
+}: ShareProps): JSX.Element {
   const linkRef = useRef<HTMLInputElement>(null);
-  const [isOpen, , open, close] = useToggle();
+  const [isOpen, , open, close] = useToggle(isOpenDefault);
   const [copyText, clickSfx, handleClose, copyToClipboard] = useShare(
     linkRef.current,
     close

@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Share, { ShareProps } from '.';
 
 export default {
-  title: 'Components/Share',
+  title: 'Widgets/Share',
   component: Share,
   parameters: {
     actions: {
@@ -16,6 +16,7 @@ const Template: Story<ShareProps> = (args) => <Share {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
+  isOpenDefault: true,
   room: 'A1B2',
 };
 
