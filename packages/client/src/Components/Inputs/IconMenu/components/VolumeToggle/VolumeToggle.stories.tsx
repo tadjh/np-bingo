@@ -6,7 +6,7 @@ import features from '../../../../../config/features';
 const { defaultVolume } = features;
 
 export default {
-  title: 'Components/Volume Toggle',
+  title: 'Inputs/Icon Menu/Volume Toggle',
   component: VolumeToggle,
 } as Meta;
 

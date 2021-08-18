@@ -4,7 +4,7 @@ import IconButton, { IconButtonProps } from '.';
 import SunIcon from '../../../assets/icons/Sun';
 
 export default {
-  title: 'Components/Icon Button',
+  title: 'Inputs/Icon Button',
   component: IconButton,
 } as Meta;
 

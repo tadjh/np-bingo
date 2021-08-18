@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import IconMenu, { IconMenuProps } from '.';
 
 export default {
-  title: 'Components/Icon Menu',
+  title: 'Inputs/Icon Menu',
   component: IconMenu,
 } as Meta;
 

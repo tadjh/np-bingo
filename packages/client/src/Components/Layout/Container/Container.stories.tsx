@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Container, { ContainerProps } from '.';
 
 export default {
-  title: 'Wrappers/Container',
+  title: 'Layout/Container',
   component: Container,
 } as Meta;
 

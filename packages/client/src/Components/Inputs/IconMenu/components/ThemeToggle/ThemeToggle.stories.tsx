@@ -4,7 +4,7 @@ import ThemeToggle, { ThemeToggleProps } from '.';
 import { ThemeContext } from '../../../../../context';
 
 export default {
-  title: 'Components/Theme Toggle',
+  title: 'Inputs/Icon Menu/Theme Toggle',
   component: ThemeToggle,
 } as Meta;
 
