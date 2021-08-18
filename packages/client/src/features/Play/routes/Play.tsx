@@ -1,5 +1,12 @@
 import React, { useContext } from 'react';
-import { Winner, Gamemode, Kicked, Card, Player } from '@np-bingo/types';
+import {
+  Winner,
+  Gamemode,
+  Kicked,
+  Card,
+  Player,
+  Ball as BallType,
+} from '@np-bingo/types';
 import { BallContext, FeautresContext, GameContext } from '../../../context';
 import Ball from '../../../components/Display/Ball';
 import { Board } from '../components/Board';
@@ -12,7 +19,18 @@ import KickedModal from '../components/KickedModal';
 import Confetti from '../components/Confetti';
 import { usePlay, usePlayButton, usePlayDisplay } from '../hooks';
 
+export interface PlayerDispatchers {
+  dispatchRoomAbandoned: () => void;
+  dispatchPlayerKicked: () => void;
+  dispatchDispenseBall: (ball: BallType) => void;
+  dispatchPlayerReady: (player: Player) => void;
+  dispatchCheckCardSuccess: (winner: Winner) => void;
+  dispatchCheckCardFailure: () => void;
+  dispatchSendCard: (card: Card, user: Player) => void;
+}
+
 export interface PlayProps {
+  dispatchers: PlayerDispatchers;
   winner?: Winner;
   kicked: Kicked;
   gamemode?: Gamemode;
@@ -20,6 +38,7 @@ export interface PlayProps {
 }
 
 export default function Play({
+  dispatchers,
   winner = { ...appState.winner },
   kicked = { status: false, reason: 'none' },
   gamemode = 'default',
@@ -28,7 +47,7 @@ export default function Play({
   const { ball } = useContext(BallContext);
   const { allowNewCard } = useContext(FeautresContext);
   const { isConfetti, card, serial, crossmarks, setCard, toggleCrossmark } =
-    usePlay(gamemode, winner);
+    usePlay(dispatchers, gamemode);
   const {
     progress,
     inProgress,

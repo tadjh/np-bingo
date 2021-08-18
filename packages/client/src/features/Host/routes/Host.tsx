@@ -44,7 +44,6 @@ export default function Host({
     handleBall,
     handleLeaveRoom,
   } = useHost(dispatchers);
-
   const [playRandomSfx] = useHostSounds();
   return (
     <React.Fragment>

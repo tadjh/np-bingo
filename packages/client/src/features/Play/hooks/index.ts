@@ -1,7 +1,8 @@
 export * from './usePlay';
 export * from './usePlayButton';
 export * from './usePlayDisplay';
-export * from './usePlaySocket';
+export * from './usePlayEmitters';
+export * from './usePlayListeners';
 export * from './usePlaySounds';
 export * from './usePlayState';
 

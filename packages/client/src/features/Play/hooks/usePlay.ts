@@ -1,11 +1,12 @@
-import { Gamemode, Winner } from '@np-bingo/types';
+import { Gamemode } from '@np-bingo/types';
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { GameContext } from '../../../context';
-import { usePlaySocket, usePlaySounds, usePlayState, useSolo } from '.';
+import { usePlayEmitters, usePlaySounds, usePlayState, useSolo } from '.';
 import { logger } from '../../../utils';
+import { PlayerDispatchers } from '..';
 
-export function usePlay(gamemode: Gamemode, winner: Winner) {
-  const { gamestate, mode, play } = useContext(GameContext);
+export function usePlay(dispatchers: PlayerDispatchers, gamemode: Gamemode) {
+  const { gamestate, winner, mode, play } = useContext(GameContext);
   const {
     card,
     serial,
@@ -17,7 +18,7 @@ export function usePlay(gamemode: Gamemode, winner: Winner) {
   } = usePlayState();
   const [isConfetti, setIsConfetti] = useState(false);
   const { playWinSfx, playLoseSfx } = usePlaySounds();
-  const { emitReadyUp, emitSendCard } = usePlaySocket();
+  const { emitReadyUp, emitSendCard } = usePlayEmitters();
   const [, soloSideEffects] = useSolo();
 
   /**

@@ -2,11 +2,11 @@ import { useContext, useEffect } from 'react';
 import { Card } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
 import socket from '../../../lib/socket.io';
-import { usePlayButton } from './usePlayButton';
+import { usePlayButton } from '.';
 
-export function usePlaySocket() {
+export function usePlayEmitters() {
   const user = useContext(UserContext);
-  const { room, host } = useContext(GameContext);
+  const { gamestate, room, host, winner } = useContext(GameContext);
   const { triggerBallEffects } = usePlayButton();
 
   // TODO Consider socket host.socket, user and maybe room into an object
@@ -33,11 +33,22 @@ export function usePlaySocket() {
     socket.emit('leave-room', room, host.socket, user);
   };
 
+  // TODO Is this necessary?
+  /**
+   * To Room: Player won the game
+   */
+  const emitGameWin = () => {
+    socket.emit('win', room, winner.player.name);
+  };
+
   useEffect(() => {
-    // TODO Does this work?
+    if (gamestate === 'win') {
+      emitGameWin();
+    }
+    // TODO Does this work? MOVE TO LISTNERS
     socket.on('game-ball', () => {
       triggerBallEffects();
     });
   });
-  return { emitReadyUp, emitSendCard, emitLeaveRoom };
+  return { emitReadyUp, emitSendCard, emitLeaveRoom, emitGameWin };
 }

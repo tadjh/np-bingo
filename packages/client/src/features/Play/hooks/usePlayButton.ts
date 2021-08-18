@@ -1,7 +1,7 @@
 import { useCallback, useContext } from 'react';
 import { BallContext, FeautresContext, GameContext } from '../../../context';
 import { useProgress } from '../../../hooks';
-import { usePlaySounds, useSoloButton, usePlaySocket } from '.';
+import { usePlaySounds, useSoloButton, usePlayEmitters } from '.';
 
 export function usePlayButton() {
   const { ballDelay } = useContext(FeautresContext);
@@ -9,7 +9,7 @@ export function usePlayButton() {
   const { ball, newBall } = useContext(BallContext);
   const { soloOnProgressDone, soloHandlePrimaryButton, soloHandleSendCard } =
     useSoloButton();
-  const { emitLeaveRoom } = usePlaySocket();
+  const { emitLeaveRoom } = usePlayEmitters();
   const { playRandomSfx } = usePlaySounds();
 
   /**

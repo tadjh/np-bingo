@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from 'react';
+import { useCallback, useContext } from 'react';
 import { Card, Player, Room } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
@@ -12,7 +12,7 @@ export function useHostListeners({
   const {
     user: { socket },
   } = useContext(UserContext);
-  const { gamestate, play } = useContext(GameContext);
+  const { play } = useContext(GameContext);
 
   /**
    * To Host: Player joined
@@ -31,7 +31,6 @@ export function useHostListeners({
   /**
    * To Host: Player left
    */
-
   const listenPlayerLeft = useCallback(() => {
     socket.on('player-left', (player: Player) => {
       logger(`${player.name} left`);
