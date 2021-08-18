@@ -4,19 +4,21 @@ import { useStatus } from './hooks';
 
 export interface StatusProps {
   gamestate?: Gamestate;
+  gamemode?: Gamemode;
   host?: boolean;
   count?: number;
-  mode?: Gamemode;
 }
 
 export default function Status({
-  count = 0,
+  gamestate = 'init',
+  gamemode = 'default',
   host = false,
+  count = 0,
 }: StatusProps): JSX.Element {
-  const [status] = useStatus(count, host);
+  const [status] = useStatus(gamestate, gamemode, host, count);
   return (
     <div className="text-black dark:text-white text-opacity-90 dark:text-opacity-90">
-      {status}
+      {status()}
     </div>
   );
 }

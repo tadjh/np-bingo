@@ -1,10 +1,13 @@
-import { useContext } from 'react';
-import { GameContext } from '../../../../context';
+import { Gamemode, Gamestate } from '@np-bingo/types';
 import { useHostStatus } from './useHostStatus';
 import { usePlayerStatus } from './usePlayerStatus';
 
-export function useStatus(count: number, host: boolean) {
-  const { gamestate, gamemode } = useContext(GameContext);
+export function useStatus(
+  gamestate: Gamestate,
+  gamemode: Gamemode,
+  host: boolean,
+  count: number
+) {
   const [hostStatus] = useHostStatus(gamestate, count);
   const [playerStatus] = usePlayerStatus(gamestate, gamemode);
 
