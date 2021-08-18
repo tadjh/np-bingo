@@ -1,12 +1,21 @@
 import { useState } from 'react';
 import { Player } from '@np-bingo/types';
+import { Socket } from 'socket.io-client';
 
 export function useUser(
   initialValue = {
     name: 'Player',
-    socket: '',
+    socket: {} as Socket,
   }
-): [Player, React.Dispatch<React.SetStateAction<Player>>] {
+) {
   const [user, setUser] = useState<Player>(initialValue);
-  return [user, setUser];
+
+  /**
+   * Set user socket id
+   * @param socketId
+   */
+  const setUserSocket = (socket: Socket) => {
+    setUser((prevUser) => ({ ...prevUser, socket: socket }));
+  };
+  return { user, setUserSocket };
 }

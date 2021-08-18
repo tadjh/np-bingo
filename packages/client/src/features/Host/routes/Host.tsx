@@ -12,14 +12,21 @@ import Widgets from '../../../components/Widgets';
 import Link from '../../../components/Navigation/Link';
 import { useHost, useHostSounds } from '../hooks';
 
-export interface HostProps {
+export interface HostDispatchers {
   dispatchRemovePlayer: (player: Player) => void;
+  dispatchPlayerJoined: (player: Player) => void;
+  dispatchPlayerLeft: (player: Player) => void;
+  dispatchPlayerReady: (player: Player) => void;
+}
+
+export interface HostProps {
+  dispatchers: HostDispatchers;
   draws: Pool;
   players: Player[];
 }
 
 export default function Host({
-  dispatchRemovePlayer,
+  dispatchers,
   draws = [[], [], [], [], []],
   players = [],
 }: HostProps) {
@@ -36,7 +43,7 @@ export default function Host({
     handleRemovePlayer,
     handleBall,
     handleLeaveRoom,
-  } = useHost(dispatchRemovePlayer);
+  } = useHost(dispatchers);
 
   const [playRandomSfx] = useHostSounds();
   return (

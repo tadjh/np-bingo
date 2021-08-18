@@ -11,6 +11,7 @@ import {
 } from '@np-bingo/types';
 import { useCallback, useReducer } from 'react';
 import logger from 'use-reducer-logger';
+import { NODE_ENV } from '../config';
 import {
   INIT_GAME,
   READY_CHECK,
@@ -29,16 +30,15 @@ import {
   CHECK_CARD_SUCCESS,
   PLAYER_LEFT,
   GET_CARD,
+  PLAYER_JOINED,
+  PLAYER_READY,
 } from '../config/constants';
 import { AppState, initialState, reducer } from '../reducers/app.reducer';
 
 export function useAppState() {
   const [state, dispatch] = useReducer<
     (state: AppState, action: Action) => AppState
-  >(
-    process.env.NODE_ENV === 'development' ? logger(reducer) : reducer,
-    initialState
-  );
+  >(NODE_ENV === 'development' ? logger(reducer) : reducer, initialState);
 
   /**
    * Manage game state
@@ -169,11 +169,35 @@ export function useAppState() {
   };
 
   /**
+   * Dispatch new player joined room
+   * @param player Player
+   */
+  const dispatchPlayerJoined = (player: Player) => {
+    dispatch({ type: PLAYER_JOINED, payload: player });
+  };
+
+  /**
+   * Dispatch player left room
+   * @param player Player
+   */
+  const dispatchPlayerLeft = (player: Player) => {
+    dispatch({ type: PLAYER_LEFT, payload: player });
+  };
+
+  /**
    * Remove player from room
-   * @param player Player socket id
+   * @param player Player
    */
   const dispatchRemovePlayer = (player: Player) => {
     dispatch({ type: PLAYER_LEFT, payload: player });
+  };
+
+  /**
+   *
+   * @param player Player
+   */
+  const dispatchPlayerReady = (player: Player) => {
+    dispatch({ type: PLAYER_READY, payload: player });
   };
 
   return {
@@ -187,6 +211,9 @@ export function useAppState() {
     dispatchSendCard,
     dispatchCheckCardSuccess,
     dispatchCheckCardFailure,
+    dispatchPlayerJoined,
+    dispatchPlayerLeft,
     dispatchRemovePlayer,
+    dispatchPlayerReady,
   };
 }

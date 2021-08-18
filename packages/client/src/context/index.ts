@@ -1,20 +1,21 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React from 'react';
 import { initialState } from '../reducers/app.reducer';
 import features from '../config/features';
 import { Gamemode, Gamestate, Player, Ball } from '@np-bingo/types';
+import { Socket } from 'socket.io-client';
 
 export const UserContext = React.createContext<{
   user: Player;
-  setUser: Dispatch<SetStateAction<Player>>;
+  setUserSocket: (socket: Socket) => void;
 }>({
   user: {
     _id: '',
     uid: -1,
     name: 'Player',
-    socket: '',
+    socket: {} as Socket,
     ready: false,
   },
-  setUser: () => {},
+  setUserSocket: () => {},
 });
 
 export const FeautresContext = React.createContext({ ...features });

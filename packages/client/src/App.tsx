@@ -1,23 +1,18 @@
-import { useCallback, useEffect, useContext } from 'react';
-import socket from './lib/socket.io';
+import { useEffect, useContext } from 'react';
 import {
   CHECK_CARD_SUCCESS,
-  GET_CARD,
-  PLAYER_JOINED,
-  PLAYER_LEFT,
-  PLAYER_READY,
   SET_BALL,
   PLAYER_KICKED,
   CHECK_CARD_FAILURE,
 } from './config/constants';
-import { Ball, Card, Winner, Player, Room } from '@np-bingo/types';
+import { Ball, Winner, Room } from '@np-bingo/types';
 import { Switch, Route } from 'react-router-dom';
 import Host from './features/host';
 import Play, { Solo } from './features/play';
 import Home from './features/home';
 import Join from './features/join';
 import Create from './features/create';
-import { useUser, useTheme, useToggle, useApp } from './hooks';
+import { useUser, useTheme, useToggle, useApp, useAppSocket } from './hooks';
 import config from './config/features';
 import {
   GameContext,
@@ -35,9 +30,21 @@ import { logger } from './utils';
 import features from './config/features';
 
 export default function App() {
-  const [user, setUser] = useUser();
+  const { user, setUserSocket } = useUser();
   const {
-    state,
+    state: {
+      gamestate,
+      ball,
+      draws,
+      pool,
+      playerCard,
+      winner,
+      room,
+      players,
+      kicked,
+      host,
+      rules: { mode: gamemode },
+    },
     dispatch,
     play,
     mode,
@@ -47,26 +54,14 @@ export default function App() {
     dispatchSendCard,
     dispatchCheckCardSuccess,
     dispatchCheckCardFailure,
+    dispatchPlayerJoined,
+    dispatchPlayerLeft,
     dispatchRemovePlayer,
+    dispatchPlayerReady,
   } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useToggle(config.sounds);
   const { defaultVolume } = useContext(FeautresContext);
-
-  let {
-    gamestate,
-    ball,
-    draws,
-    pool,
-    playerCard,
-    winner,
-    room,
-    players,
-    kicked,
-    host,
-    rules: { mode: gamemode },
-  } = state;
-
   const [newBall, checkCard] = useApp(
     playerCard,
     pool,
@@ -75,41 +70,18 @@ export default function App() {
     dispatchCheckCardFailure,
     dispatchNewBall
   );
+  const {
+    socket,
+    socketConnect,
+    socketOnConnect,
+    socketDisconnect,
+    socketOnDisconnect,
+  } = useAppSocket(setUserSocket);
+
   /**
    * Socket.io Side-effects
    */
   useEffect(() => {
-    /**
-     * Add player socketId on connect
-     */
-    socket.on('connect', () => {
-      logger('User connected');
-      setUser((prevUser) => ({ ...prevUser, socket: socket.id }));
-      logger(socket.id);
-    });
-
-    socket.on('disconnect', () => {
-      logger('User disconnected');
-    });
-
-    /**
-     * To Host: Player joined
-     * @param player Player
-     */
-    socket.on('player-joined', (player: Player) => {
-      logger(`${player.name} joined`);
-      dispatch({ type: PLAYER_JOINED, payload: player });
-    });
-
-    /**
-     * To Host: Player left
-     * @param player Player
-     */
-    socket.on('player-left', (player: Player) => {
-      logger(`${player.name} left`);
-      dispatch({ type: PLAYER_LEFT, payload: player });
-    });
-
     /**
      * To Player: Host left
      */
@@ -125,15 +97,6 @@ export default function App() {
     socket.on('player-remove', () => {
       logger(`You have been removed from the room`);
       dispatch({ type: PLAYER_KICKED, payload: 'banned' });
-    });
-
-    /**
-     * To Host: Player is ready
-     * @param player Player
-     */
-    socket.on('player-ready', (player: Player) => {
-      logger(`${player.name} ready`);
-      dispatch({ type: PLAYER_READY, payload: player });
     });
 
     /**
@@ -167,19 +130,6 @@ export default function App() {
     socket.on('game-ball', (ball: Ball) => {
       logger(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
       dispatch({ type: SET_BALL, payload: ball });
-    });
-
-    /**
-     * To Host: Receive Card
-     * @param room Room
-     * @param player Player
-     * @param card Card
-     */
-    socket.on('receive-card', (room: Room, player: Player, card: Card) => {
-      logger(`${player.name} sent a card to you.`);
-      play('validate');
-      socket.emit('checking-card', room);
-      dispatch({ type: GET_CARD, payload: { card: card, owner: player } });
     });
 
     /**
@@ -240,11 +190,11 @@ export default function App() {
       logger('Game over!');
       play('end');
     });
-  }, [dispatch, play, setUser]);
+  }, [dispatch, play]);
 
   return (
     <FeautresContext.Provider value={features}>
-      <UserContext.Provider value={{ user, setUser }}>
+      <UserContext.Provider value={{ user, setUserSocket }}>
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <SoundContext.Provider
             value={{ volume: defaultVolume, sounds, toggleSounds }}
@@ -274,7 +224,12 @@ export default function App() {
                       </Route>
                       <Route path="/host">
                         <Host
-                          dispatchRemovePlayer={dispatchRemovePlayer}
+                          dispatchers={{
+                            dispatchRemovePlayer,
+                            dispatchPlayerJoined,
+                            dispatchPlayerLeft,
+                            dispatchPlayerReady,
+                          }}
                           draws={draws}
                           players={players}
                         />

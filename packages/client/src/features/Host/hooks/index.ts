@@ -1,3 +1,4 @@
 export * from './useHost';
-export * from './useHostSocket';
+export * from './useHostEmitters';
+export * from './useHostListeners';
 export * from './useHostSounds';

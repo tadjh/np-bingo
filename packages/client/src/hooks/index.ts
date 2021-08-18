@@ -1,4 +1,5 @@
 export * from './useApp';
+export * from './useAppSocket';
 export * from './useAppState';
 export * from './useForm';
 export * from './usePortal';

@@ -1,3 +1,4 @@
+import { Socket } from 'socket.io-client';
 export type Action = {
   type: string;
   payload?: any;
@@ -6,7 +7,7 @@ export type Player = {
   _id?: string;
   uid?: number;
   name?: string;
-  socket?: string;
+  socket: Socket;
   ready?: boolean;
 };
 export interface Host extends Player {

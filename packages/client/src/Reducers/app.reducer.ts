@@ -62,12 +62,12 @@ export const initialState: AppState = {
   draws: [[], [], [], [], []],
   playerCard: {
     card: new Array(25),
-    owner: { _id: '', uid: 0, name: '', socket: '' },
+    owner: { _id: '', uid: 0, name: '', socket: {} as Player['socket'] },
   },
   winner: {
     methods: [],
     results: {},
-    player: { _id: '', uid: 0, name: '', socket: '' },
+    player: { _id: '', uid: 0, name: '', socket: {} as Player['socket'] },
     card: new Array(25),
   },
   kicked: { status: false, reason: 'none' },

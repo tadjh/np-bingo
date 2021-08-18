@@ -4,6 +4,7 @@ import { API_URL } from '../config';
 const socket = io(API_URL, {
   withCredentials: true,
   reconnectionAttempts: 10,
+  autoConnect: false,
 });
 
 // TODO Manual Reconnect to room?
