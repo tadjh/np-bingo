@@ -17,7 +17,7 @@ export default function Home({ dispatchCreateRoom }: HomeProps): JSX.Element {
       <header className="flex-1 items-center">
         <Logo home={true} />
       </header>
-      <main className="justify-center space-y-3">
+      <main className="justify-center">
         <Button
           id="play-button"
           variant="contained"

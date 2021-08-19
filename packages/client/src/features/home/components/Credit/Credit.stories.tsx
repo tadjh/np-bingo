@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Credit, { CreditProps } from '.';
 
 export default {
-  title: 'Components/Credit',
+  title: 'Pages/Home/Credit',
   component: Credit,
 } as Meta;
 
