@@ -18,13 +18,13 @@ export default function Widgets({
   if (variant === 'solo') return <IconMenu direction="up" />;
   return (
     <div className="flex gap-4">
-      <div className="flex items-center">
+      <div className="flex justify-center items-center w-14">
         {allowShare && <Share room={room} />}
       </div>
-      <div>
+      <div className="flex justify-center items-center">
         <Code room={room} />
       </div>
-      <div className="flex items-center">
+      <div className="flex justify-center items-center w-14">
         <IconMenu direction="up" />
       </div>
     </div>
