@@ -188,7 +188,7 @@ io.on('connection', (socket: Socket) => {
    */
   socket.on('winning-card', (room: Room, winner: Winner) => {
     if (winner.player.socket) {
-      io.to(winner.player.socket).emit('winner', room, winner);
+      io.to(winner.player.socket.id).emit('winner', room, winner);
       console.log('Bingo!');
     } else {
       console.log(`${winner.player.name} socket not found in wininng card`);
@@ -205,7 +205,7 @@ io.on('connection', (socket: Socket) => {
     if (winner.player.socket) {
       socket.to(room).emit('game-continue');
       // TODO Probably double sends to sender
-      io.to(winner.player.socket).emit('loser');
+      io.to(winner.player.socket.id).emit('loser');
       console.log('The card is not a winner...');
     } else {
     }
