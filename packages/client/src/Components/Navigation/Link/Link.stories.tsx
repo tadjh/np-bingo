@@ -4,7 +4,7 @@ import Link from '.';
 import { LinkProps, BrowserRouter as Router } from 'react-router-dom';
 
 export default {
-  title: 'Components/Link',
+  title: 'Navigation/Link',
   component: Link,
   decorators: [
     (Story) => (
