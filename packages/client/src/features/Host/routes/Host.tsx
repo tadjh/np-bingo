@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Ball from '../../../components/Display/Ball';
 import { BallContext, GameContext } from '../../../context';
 import { Player, Pool } from '@np-bingo/types';
-import StatusMessage from '../../../components/Display/Status';
 import Button from '../../../components/Inputs/Button';
 import { Draws } from '../components/Draws';
 import { PlayerList } from '../components/PlayerList';
@@ -11,6 +10,7 @@ import PlusCircleIcon from '../../../assets/icons/PlusCircle';
 import Widgets from '../../../components/Widgets';
 import Link from '../../../components/Navigation/Link';
 import { useHost, useHostSounds } from '../hooks';
+import HostStatus from '../components/HostStatus';
 
 export interface HostDispatchers {
   dispatchRemovePlayer: (player: Player) => void;
@@ -66,7 +66,7 @@ export default function Host({
         </Button>
       </header>
       <main>
-        <StatusMessage host={true} count={players.length} />
+        <HostStatus gamestate={gamestate} count={players.length} />
         {gamestate === 'init' || gamestate === 'ready' ? (
           <PlayerList data={players} action={handleRemovePlayer} />
         ) : (

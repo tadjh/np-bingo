@@ -1,13 +1,13 @@
 import { Gamestate, Gamemode } from '@np-bingo/types';
 
-export function usePlayerStatus(gamestate: Gamestate, mode: Gamemode) {
+export function usePlayStatus(gamestate: Gamestate, mode: Gamemode) {
   /**
    * Text to be displayed to players based on current gamestate
    * @param gamestate
    * @param host View
    * @returns string
    */
-  function playerStatus(): string {
+  function playStatus(): string {
     switch (gamestate) {
       case 'init':
         //default
@@ -50,5 +50,5 @@ export function usePlayerStatus(gamestate: Gamestate, mode: Gamemode) {
         throw new Error(`Invalid Gamestate in Player Status`);
     }
   }
-  return [playerStatus];
+  return [playStatus];
 }

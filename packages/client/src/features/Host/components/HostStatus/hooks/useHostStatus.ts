@@ -14,7 +14,7 @@ export function useHostStatus(gamestate: Gamestate, count: number) {
         return '\u00a0';
       case 'ready':
         if (count === 1) return `${count} player has joined...`;
-        if (count && count > 1) return `${count} players have joined...`;
+        if (count > 1) return `${count} players have joined...`;
         return 'Waiting for player(s) to join...';
       case 'standby':
         return 'Click "+" to dispense a ball.';

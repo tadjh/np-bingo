@@ -10,7 +10,6 @@ import {
 import { BallContext, FeautresContext, GameContext } from '../../../context';
 import Ball from '../../../components/Display/Ball';
 import { Board } from '../components/Board';
-import StatusMessage from '../../../components/Display/Status';
 import Button from '../../../components/Inputs/Button';
 import Link from '../../../components/Navigation/Link';
 import { initialState as appState } from '../../../reducers/app.reducer';
@@ -18,6 +17,7 @@ import Widgets from '../../../components/Widgets';
 import KickedModal from '../components/KickedModal';
 import Confetti from '../components/Confetti';
 import { usePlay, usePlayButton, usePlayDisplay } from '../hooks';
+import PlayStatus from '../components/PlayStatus';
 
 export interface PlayerDispatchers {
   dispatchRoomAbandoned: () => void;
@@ -41,13 +41,13 @@ export default function Play({
   dispatchers,
   winner = { ...appState.winner },
   kicked = { status: false, reason: 'none' },
-  gamemode = 'default',
+  gamemode: gamemodeOverride = 'default',
 }: PlayProps) {
-  const { gamestate, room } = useContext(GameContext);
+  const { gamestate, gamemode, room } = useContext(GameContext);
   const { ball } = useContext(BallContext);
   const { allowNewCard } = useContext(FeautresContext);
   const { isConfetti, card, serial, crossmarks, setCard, toggleCrossmark } =
-    usePlay(dispatchers, gamemode);
+    usePlay(dispatchers, gamemodeOverride);
   const {
     progress,
     inProgress,
@@ -82,7 +82,7 @@ export default function Play({
         </Button>
       </header>
       <main>
-        <StatusMessage />
+        <PlayStatus gamestate={gamestate} gamemode={gamemode} />
         <Ball
           number={ball.number}
           column={ball.column}

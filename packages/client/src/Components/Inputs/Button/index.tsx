@@ -2,7 +2,7 @@ import React from 'react';
 import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
 
-export type ButtonVariants = 'contained';
+export type ButtonVariants = '' | 'contained';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -13,7 +13,7 @@ export interface ButtonProps
 }
 
 export default function Button({
-  variant = 'contained',
+  variant = '',
   component: Component,
   className,
   children,
