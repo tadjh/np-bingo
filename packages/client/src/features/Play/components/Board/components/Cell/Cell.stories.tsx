@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Cell, { CellProps } from '.';
 
 export default {
-  title: 'Components/Board/Cell',
+  title: 'Pages/Play/Board/Cell',
   component: Cell,
 } as Meta;
 
