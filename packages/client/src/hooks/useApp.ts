@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { Ball, PlayerCard, Pool, Winner } from '@np-bingo/types';
-import { getBall, removeBall, updateDraws, validateCard } from '../utils/bingo';
+import { getBall, removeBall, updateDraws } from '../utils/bingo';
+import { validateCard } from '../utils/bingo.validate';
 
 export function useApp(
   playerCard: PlayerCard,
