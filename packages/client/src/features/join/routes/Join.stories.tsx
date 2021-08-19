@@ -5,7 +5,7 @@ import Join, { JoinProps } from './Join';
 import { FeautresContext } from '../../../context';
 import features from '../../../config/features';
 import Container from '../../../components/Layout/Container';
-import * as RoomListStories from '../components/RoomList/RoomList.stories';
+import { Rooms } from '../components/RoomList/RoomList.stories';
 
 export default {
   title: 'Pages/Join',
@@ -51,7 +51,7 @@ PublicRooms.decorators = [
   },
 ];
 PublicRooms.args = {
-  ...RoomListStories.Rooms.args,
+  publicRooms: Rooms.args && Rooms.args.rooms && [...Rooms.args.rooms],
 };
 
 export const NoSoloMode = Template.bind({});
