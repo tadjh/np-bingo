@@ -4,7 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import RoomList, { RoomListProps } from '.';
 
 export default {
-  title: 'Components/Room List',
+  title: 'Pages/Join/Room List',
   component: RoomList,
   argTypes: { action: { action: 'click' } },
   decorators: [
