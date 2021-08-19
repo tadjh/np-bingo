@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import TextInput, { TextInputProps } from '.';
 
 export default {
-  title: 'Forms/Text Input',
+  title: 'Inputs/Text Input',
   component: TextInput,
 } as Meta;
 
