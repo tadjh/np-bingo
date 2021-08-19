@@ -53,7 +53,7 @@ export function PlayerList({
                   onClick={onRemove && (() => onRemove(player))}
                   aria-label="status"
                 >
-                  <CloseCircleIcon className="text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90" />
+                  <CloseCircleIcon />
                 </IconButton>
               </div>
             </ListItem>

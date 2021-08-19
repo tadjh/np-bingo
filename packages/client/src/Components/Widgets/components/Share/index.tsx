@@ -40,7 +40,7 @@ export default function Share({
         direction="top"
         onMouseDown={clickSfx}
       >
-        <ShareIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
+        <ShareIcon />
       </IconButton>
       <Modal
         id="share-modal"

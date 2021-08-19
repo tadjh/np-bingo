@@ -30,7 +30,11 @@ export default function Icon({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={[iconSize(), className].join(' ')}
+      className={[
+        'text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60',
+        iconSize(),
+        className,
+      ].join(' ')}
       fill="currentColor"
       viewBox={viewBox}
     >
