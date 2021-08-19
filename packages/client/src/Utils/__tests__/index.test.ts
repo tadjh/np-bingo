@@ -1,4 +1,4 @@
-import { findElementInArray } from '.';
+import { findElementInArray } from '..';
 
 const mockCard = [
   9,

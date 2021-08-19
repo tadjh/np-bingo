@@ -1,4 +1,4 @@
-import { BINGO } from './bingo';
+import { BINGO } from '../bingo';
 import {
   createCard,
   createColumn,
@@ -7,7 +7,7 @@ import {
   getPoolSize,
   removeBall,
   updateDraws,
-} from './bingo';
+} from '../bingo';
 
 const mockCard = [
   9,

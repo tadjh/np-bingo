@@ -9,7 +9,7 @@ import {
   checkFallingDiagonal,
   checkRisingDiagonal,
   winningMethods,
-} from './bingo.validate';
+} from '../bingo.validate';
 
 const mockCard = [
   9,
