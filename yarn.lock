@@ -13790,10 +13790,10 @@ storybook-addon-outline@^1.4.1:
     "@storybook/core-events" "^6.3.0"
     ts-dedent "^2.1.1"
 
-storybook-tailwind-dark-mode@^1.0.9:
-  version "1.0.9"
-  resolved "https://registry.yarnpkg.com/storybook-tailwind-dark-mode/-/storybook-tailwind-dark-mode-1.0.9.tgz#232ae56644cb89d0fd874d91b6790cb0021de4a8"
-  integrity sha512-T/Tl7nDBeuOKP7SKK+g5cioiFTFRCP4lSio44adkcx9TmtO8vVrRSjJvNMk7n3RnhSd+MxH0zMXDZmQtVvofuA==
+storybook-tailwind-dark-mode@^1.0.11:
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/storybook-tailwind-dark-mode/-/storybook-tailwind-dark-mode-1.0.11.tgz#6e92a01434142972e4ce838fe99c8f8a00ddc5a0"
+  integrity sha512-Y0FP/aOxgdkSbzTQ9xoo346c1BKvp9WtxDVKg3P6S40wypOwK0dBxQEGehrLVB5gDuGiQru81UfitywI6clrcw==
 
 stream-browserify@^2.0.1:
   version "2.0.2"
