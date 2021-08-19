@@ -1,7 +1,7 @@
 import { useRef, useState, useCallback, useEffect } from 'react';
 
 export function useProgress(
-  duration: number,
+  duration = 5000,
   callback?: (param?: any) => void
 ): {
   progress: number;
