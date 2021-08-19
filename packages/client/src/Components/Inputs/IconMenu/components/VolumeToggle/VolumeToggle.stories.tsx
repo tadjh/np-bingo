@@ -10,7 +10,7 @@ export default {
   component: VolumeToggle,
   decorators: [
     (Story) => {
-      const [sounds, setSounds] = useState(false);
+      const [sounds, setSounds] = useState(true);
       const toggleSounds = () => {
         setSounds((prevSounds) => !prevSounds);
       };

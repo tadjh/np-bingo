@@ -1,6 +1,6 @@
 import React from 'react';
 import CloseIcon from '../../../../../assets/icons/Close';
-import Cog from '../../../../../assets/icons/Cog';
+import CogIcon from '../../../../../assets/icons/Cog';
 import IconButton from '../../../IconButton/components/IconButton';
 import ThemeToggle from '../ThemeToggle';
 import VolumeToggle from '../VolumeToggle';
@@ -19,13 +19,9 @@ export default function IconMenu({
   open: override = false,
   ...props
 }: IconMenuProps): JSX.Element {
-  const [isOpen, toggle, , close] = useToggle(override);
-  const [closeSfx, toggleSfx, menuStyle, tooltipStyle] = useIconMenu(
-    isOpen,
-    direction
-  );
+  const [isOpen, toggle, ,] = useToggle(override);
+  const { toggleSfx, menuStyle, tooltipStyle } = useIconMenu(isOpen, direction);
   const hidden = !isOpen ? 'invisible' : undefined;
-
   return (
     <div
       className={`relative block w-14 h-14 ${
@@ -45,10 +41,10 @@ export default function IconMenu({
           <IconButton
             onClick={toggle}
             onMouseDown={toggleSfx}
-            description="Settings"
+            description={!isOpen ? 'Settings' : 'Close'}
             direction={tooltipStyle()}
           >
-            <Cog className="text-black dark:text-white text-opacity-40 dark:text-opacity-50 group-hover:text-opacity-70" />
+            {!isOpen ? <CogIcon /> : <CloseIcon />}
           </IconButton>
         </li>
         <li className={hidden}>
@@ -56,16 +52,6 @@ export default function IconMenu({
         </li>
         <li className={hidden}>
           <VolumeToggle direction={tooltipStyle()} />
-        </li>
-        <li className={hidden}>
-          <IconButton
-            onClick={close}
-            onMouseDown={closeSfx}
-            description="Close"
-            direction={tooltipStyle()}
-          >
-            <CloseIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-50 group-hover:text-opacity-70" />
-          </IconButton>
         </li>
       </ul>
     </div>

@@ -25,11 +25,7 @@ export default function VolumeToggle({
       direction={direction}
       {...props}
     >
-      {sounds ? (
-        <VolumeUpIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
-      ) : (
-        <VolumeOffIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
-      )}
+      {sounds ? <VolumeUpIcon /> : <VolumeOffIcon />}
     </IconButton>
   );
 }

@@ -11,11 +11,11 @@ export default {
   component: IconMenu,
   decorators: [
     (Story) => {
-      const [theme, setTheme] = useState<Theme>('dark');
-      const [sounds, setSounds] = useState(false);
+      const [theme, setTheme] = useState<Theme>('light');
       const toggleTheme = () => {
         setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
       };
+      const [sounds, setSounds] = useState(true);
       const toggleSounds = () => {
         setSounds((prevSounds) => !prevSounds);
       };
@@ -26,7 +26,6 @@ export default {
             toggleTheme: toggleTheme,
           }}
         >
-          {' '}
           <SoundContext.Provider
             value={{
               volume: defaultVolume,
@@ -34,7 +33,9 @@ export default {
               toggleSounds: toggleSounds,
             }}
           >
-            <Story />
+            <div className={theme}>
+              <Story />
+            </div>
           </SoundContext.Provider>
         </ThemeContext.Provider>
       );

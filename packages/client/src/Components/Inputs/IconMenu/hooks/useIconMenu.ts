@@ -5,10 +5,7 @@ import { drawerSfx } from '../../../../config/sounds';
 import { MenuDirection } from '..';
 import { TooltipDirection } from '../../../Display/Tooltip';
 
-export function useIconMenu(
-  isOpen: boolean,
-  direction: MenuDirection
-): [() => void, () => void, () => string, () => TooltipDirection] {
+export function useIconMenu(isOpen: boolean, direction: MenuDirection) {
   const { volume, sounds } = useContext(SoundContext);
   const [playSfx] = useSound(drawerSfx, {
     volume: volume,
@@ -80,5 +77,5 @@ export function useIconMenu(
     }
   };
 
-  return [closeSfx, toggleSfx, menuStyle, tooltipStyle];
+  return { toggleSfx, menuStyle, tooltipStyle };
 }

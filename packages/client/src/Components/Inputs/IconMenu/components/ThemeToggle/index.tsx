@@ -26,11 +26,7 @@ export default function ThemeToggle({
       description={theme === 'light' ? 'Enable Dark Mode' : 'Enable Light Mode'}
       direction={direction}
     >
-      {theme === 'light' ? (
-        <SunIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
-      ) : (
-        <MoonIcon className="text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60" />
-      )}
+      {theme === 'light' ? <SunIcon /> : <MoonIcon />}
     </IconButton>
   );
 }
