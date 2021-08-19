@@ -3,7 +3,7 @@ import React from 'react';
 export interface IconProps {
   className?: string;
   children?: React.ReactNode;
-  size?: 'small' | 'medium' | 'medium-2' | 'large';
+  size?: 'small' | 'medium' | 'large' | 'x-large';
   viewBox?: string;
 }
 
@@ -11,7 +11,7 @@ export default function Icon({
   children,
   size = 'medium',
   viewBox = '0 0 20 20',
-  className = '',
+  className,
 }: IconProps) {
   function iconSize() {
     switch (size) {
@@ -21,6 +21,8 @@ export default function Icon({
         return 'h-7 w-7';
       case 'large':
         return 'h-10 w-10';
+      case 'x-large':
+        return 'h-12 w-12';
       default:
         return 'h-7 w-7';
     }
@@ -30,7 +32,7 @@ export default function Icon({
       xmlns="http://www.w3.org/2000/svg"
       className={[
         iconSize(),
-        className === ''
+        className === undefined
           ? 'text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60'
           : '',
       ].join(' ')}
