@@ -30,7 +30,7 @@ export function Board({
     >
       <div
         className={[
-          'py-2 px-1 bg-gray-100',
+          'p-1 bg-gray-100',
           winner ? 'dark:bg-gray-700' : 'dark:bg-gray-800',
         ].join(' ')}
       >
