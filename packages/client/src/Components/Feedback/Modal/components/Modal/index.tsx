@@ -18,17 +18,14 @@ export default function Modal({
   const appRoot = useRef(document.getElementById('root'));
   const app = useRef(document.getElementById('App'));
   const target = app.current || appRoot.current;
-
-  const modal = usePortal(target);
-  modal.setAttribute('id', id);
-  modal.setAttribute(
-    'class',
-    'absolute w-screen h-screen top-0 left-0 flex justify-center items-center'
-  );
-
+  const classes =
+    'absolute w-screen h-screen top-0 left-0 flex justify-center items-center';
+  const modal = usePortal(target, id, classes);
+  modal.setAttribute('class', '');
+  if (!open) return null;
+  modal.setAttribute('class', classes);
   // TODO add event for Escape key
   // TODO focus?
-  if (!open) return null;
   return ReactDOM.createPortal(
     <ModalBase onClose={onClose}>{children}</ModalBase>,
     modal

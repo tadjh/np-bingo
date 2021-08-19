@@ -1,9 +1,12 @@
 import { useRef, useEffect } from 'react';
 
-export function usePortal(target: HTMLElement | null): HTMLDivElement {
+export function usePortal(
+  target: HTMLElement | null,
+  id: string,
+  classes: string
+): HTMLDivElement {
   // lazy load portal
   const portalRef = useRef<HTMLDivElement | null>(null);
-
   const portal = setPortal(portalRef);
 
   function setPortal(
@@ -21,7 +24,7 @@ export function usePortal(target: HTMLElement | null): HTMLDivElement {
       if (!target.contains(portal)) return;
       target.removeChild(portal);
     };
-  }, [portal, target]);
+  }, [portal, target, id, classes]);
 
   return portal;
 }
