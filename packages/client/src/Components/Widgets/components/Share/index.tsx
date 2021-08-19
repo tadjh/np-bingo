@@ -9,7 +9,7 @@ import Modal, {
 import Button from '../../../Inputs/Button';
 import { useToggle } from '../../../../hooks';
 import { Room } from '@np-bingo/types';
-import TextInput from '../../../Form/TextInput';
+import TextInput from '../../../Inputs/TextInput';
 import { useShare } from './hooks';
 import { useClickSoft } from '../../../../assets/sounds';
 
