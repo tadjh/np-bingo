@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { useClickHard } from '../../../assets/sounds/hooks';
 import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
@@ -24,11 +25,11 @@ export default function Button({
 }: ButtonProps): JSX.Element {
   const [buttonSyle] = useButton(variant, disabled);
   const [clickHardSfx] = useClickHard();
-  const buttonClasses = [
+  const buttonClasses = clsx(
     'relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker',
     buttonSyle(),
-    className,
-  ].join(' ');
+    className
+  );
 
   if (Component)
     return (

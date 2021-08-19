@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 
 export interface IconProps {
   className?: string;
@@ -30,12 +31,11 @@ export default function Icon({
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={[
+      className={clsx(
         iconSize(),
-        className === undefined
-          ? 'text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60'
-          : '',
-      ].join(' ')}
+        className ||
+          'text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60'
+      )}
       fill="currentColor"
       viewBox={viewBox}
     >

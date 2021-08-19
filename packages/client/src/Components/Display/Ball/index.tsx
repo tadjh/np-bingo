@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { Ball as BallType } from '@np-bingo/types';
 import CircularProgress from '../../Feedback/CircularProgress';
 import Badge from '../Badge';
@@ -22,17 +23,17 @@ export default function Ball({
   return (
     <div className="relative inline-flex">
       <div
-        className={[
+        className={clsx(
           'relative z-10 w-20 h-20 flex justify-center items-center flex-col shadow-lg text-center rounded-full font-mono font-bold text-black text-opacity-90 dark:text-opacity-90',
-          background(),
-        ].join(' ')}
+          background()
+        )}
       >
         <div className="w-full h-full absolute overflow-hidden rounded-full">
           <div
-            className={[
+            className={clsx(
               'rounded-full filter blur-[6px] bg-gradient-radial w-[97%] h-[97%]',
-              gradient(),
-            ].join(' ')}
+              gradient()
+            )}
           ></div>
         </div>
         <Badge description="Balls Remaining" disabled={disabled}>

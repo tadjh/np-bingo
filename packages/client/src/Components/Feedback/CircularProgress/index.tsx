@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import CircularProgressSVG from './CircularProgress';
 
 export interface CircularProgressProps
@@ -16,10 +17,10 @@ export default function CircularProgress({
 
   return (
     <div
-      className={[
+      className={clsx(
         'transform top-2/4 -translate-y-2/4 left-2/4 -translate-x-2/4 -rotate-90 text-gray-300 dark:text-gray-600',
-        className,
-      ].join(' ')}
+        className
+      )}
     >
       <CircularProgressSVG strokeDashoffset={`${dashOffset}px`} />
     </div>

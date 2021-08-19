@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { BadgeColors } from '..';
 import Tooltip from '../../Tooltip';
 import { useBadge } from '../hooks';
@@ -21,10 +22,10 @@ export default function Badge({
   const [backgroundColor] = useBadge(color, disabled);
   return (
     <div
-      className={[
+      className={clsx(
         'absolute w-7 h-5 -top-2 -right-1 z-20 rounded-full text-white text-opacity-90 text-xs text-center font-mono font-bold leading-normal shadow-md hover:shadow-lg tooltip',
-        backgroundColor(),
-      ].join(' ')}
+        backgroundColor()
+      )}
       {...props}
     >
       {description !== '' && (

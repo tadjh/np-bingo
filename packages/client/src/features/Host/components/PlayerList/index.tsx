@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import List, {
   ListItem,
   ListItemText,
@@ -30,25 +31,26 @@ export function PlayerList({
     return (
       <List>
         {data.map((player, index) => {
+          const { name, ready } = player;
           const handleRemovePlayer = onRemove && (() => onRemove(player));
           return (
             <ListItem key={`player${index + 1}`}>
               <div
-                className={[
+                className={clsx(
                   'relative tooltip flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm',
-                  player.ready
-                    ? 'bg-green-200 group-hover:bg-green-300 dark:bg-green-800 dark:group-hover:bg-green-700 '
-                    : 'bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700 ',
-                ].join(' ')}
+                  ready
+                    ? 'bg-green-200 group-hover:bg-green-300 dark:bg-green-800 dark:group-hover:bg-green-700'
+                    : 'bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700'
+                )}
               >
                 <Tooltip direction="right">
-                  {player.ready ? 'Ready' : 'Not Ready'}
+                  {ready ? 'Ready' : 'Not Ready'}
                 </Tooltip>
-                {player.ready ? <CheckIcon /> : <MinusIcon />}
+                {ready ? <CheckIcon /> : <MinusIcon />}
               </div>
               <ListItemText
-                primary={player.name}
-                secondary={player.ready ? 'Ready' : 'Not ready...'}
+                primary={name}
+                secondary={ready ? 'Ready' : 'Not ready...'}
               />
               <div className="ml-auto">
                 <IconButton

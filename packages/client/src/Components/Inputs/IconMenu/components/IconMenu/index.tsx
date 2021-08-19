@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import CloseCircleIcon from '../../../../../assets/icons/CloseCircle';
 import CogIcon from '../../../../../assets/icons/Cog';
 import IconButton from '../../../IconButton/components/IconButton';
@@ -24,18 +25,19 @@ export default function IconMenu({
   const hidden = !isOpen ? 'invisible' : undefined;
   return (
     <div
-      className={`relative block w-14 h-14 ${
-        !isOpen ? 'overflow-hidden hover:overflow-visible' : ''
-      }`}
+      className={clsx(
+        'relative block w-14 h-14',
+        isOpen || 'overflow-hidden hover:overflow-visible'
+      )}
     >
       <ul
-        className={[
+        className={clsx(
           'absolute flex p-1 transition-all duration-75 rounded-full border-2',
           isOpen
             ? 'z-50 bg-gray-300 dark:bg-gray-700 shadow-2xl border-gray-400 dark:border-gray-600'
             : 'border-transparent',
-          menuStyle(),
-        ].join(' ')}
+          menuStyle()
+        )}
       >
         <li>
           <IconButton

@@ -1,4 +1,5 @@
 import React from 'react';
+import clsx from 'clsx';
 import { Card } from '@np-bingo/types';
 import Cell from '../Cell';
 import Logo from '../../../../../../components/Logo';
@@ -21,18 +22,18 @@ export function Board({
 }: BoardProps) {
   return (
     <div
-      className={[
+      className={clsx(
         'space-y-2 border-8 rounded-xl shadow-md overflow-hidden',
         winner
           ? 'bg-green-600 border-green-600'
-          : ' bg-gray-900 dark:bg-gray-800 border-gray-900 dark:border-gray-800',
-      ].join(' ')}
+          : ' bg-gray-900 dark:bg-gray-800 border-gray-900 dark:border-gray-800'
+      )}
     >
       <div
-        className={[
+        className={clsx(
           'p-1 bg-gray-100',
-          winner ? 'dark:bg-gray-700' : 'dark:bg-gray-800',
-        ].join(' ')}
+          winner ? 'dark:bg-gray-700' : 'dark:bg-gray-800'
+        )}
       >
         <Logo winner={winner} />
       </div>
@@ -55,10 +56,10 @@ export function Board({
         })}
       </div>
       <div
-        className={[
+        className={clsx(
           'h-3 text-white dark:text-opacity-90 text-[7px] text-center font-bold align-middle',
-          winner ? 'bg-green-600' : 'bg-gray-900 dark:bg-gray-800',
-        ].join(' ')}
+          winner ? 'bg-green-600' : 'bg-gray-900 dark:bg-gray-800'
+        )}
       >
         {serial}
       </div>
