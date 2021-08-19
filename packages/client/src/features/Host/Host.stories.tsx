@@ -1,11 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Host, { HostProps } from './Host';
-import { BallContext, GameContext } from '../../../context';
-import { initialState as AppState } from '../../../reducers/app.reducer';
-import Container from '../../../components/Layout/Container';
+import Host, { HostProps } from './routes/Host';
+import { BallContext, GameContext } from '../../context';
+import { initialState as AppState } from '../../reducers/app.reducer';
+import Container from '../../components/Layout/Container';
 import { Ball } from '@np-bingo/types';
+import { Socket } from 'socket.io-client';
 
 export default {
   title: 'Pages/Host',
@@ -103,28 +104,28 @@ ReadyList.args = {
       _id: 'adaskdjsahkd',
       uid: 2222,
       name: 'Jane Doe',
-      socket: 'rKsFIdQn_fEDAFjiAAAH',
+      socket: {} as Socket,
       ready: true,
     },
     {
       _id: 'adsjfhskjdfh',
       uid: 2223,
       name: 'Jane Doa',
-      socket: 'rKsFIdQn_fEDAFjiAAAH',
+      socket: {} as Socket,
       ready: false,
     },
     {
       _id: 'fasdiuywqqe',
       uid: 2224,
       name: 'Jane Do',
-      socket: 'rKsFIdQn_fEDAFjiAAAH',
+      socket: {} as Socket,
       ready: false,
     },
     {
       _id: 'damnsbfndbvfw',
       uid: 2225,
       name: 'Jane Doh',
-      socket: 'rKsFIdQn_fEDAFjiAAAH',
+      socket: {} as Socket,
       ready: false,
     },
   ],
