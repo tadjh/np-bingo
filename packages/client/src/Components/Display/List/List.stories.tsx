@@ -1,16 +1,10 @@
-import React from 'react';
-import { Story, Meta } from '@storybook/react';
-import List, { ListProps } from '.';
+import { Meta } from '@storybook/react';
+import List from '.';
+import { Rooms } from '../../../features/join/components/RoomList/RoomList.stories';
 
 export default {
   title: 'Display/List',
   component: List,
 } as Meta;
 
-const Template: Story<ListProps> = (args) => <List {...args} />;
-
-export const Base = Template.bind({});
-Base.args = {
-  children: 'List',
-  title: 'List Title',
-};
+export const Base = Rooms;
