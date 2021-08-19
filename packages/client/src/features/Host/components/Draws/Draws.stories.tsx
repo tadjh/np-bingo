@@ -2,7 +2,7 @@ import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { Draws, DrawsProps } from '.';
 export default {
-  title: 'Features/Draws',
+  title: 'Pages/Host/Draws',
   component: Draws,
 } as Meta;
 

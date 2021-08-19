@@ -28,11 +28,15 @@ export function Draws({
           columnIndex={columnIndex}
           disabled={disabled}
         >
-          {blankColumn.map((item, itemIndex) => (
-            <DrawsItem {...item.key}>
-              {`${letters[columnIndex]}${column[itemIndex]}`}
-            </DrawsItem>
-          ))}
+          {blankColumn.map((item, itemIndex) =>
+            column[itemIndex] ? (
+              <DrawsItem {...item.key}>
+                {`${letters[columnIndex]}${column[itemIndex]}`}
+              </DrawsItem>
+            ) : (
+              item
+            )
+          )}
         </DrawsColumn>
       ))}
     </div>
