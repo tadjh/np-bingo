@@ -1,5 +1,5 @@
 import React from 'react';
-import CloseCircle from '../../../../../assets/icons/CloseCircle';
+import CloseCircleIcon from '../../../../../assets/icons/CloseCircle';
 import CogIcon from '../../../../../assets/icons/Cog';
 import IconButton from '../../../IconButton/components/IconButton';
 import ThemeToggle from '../ThemeToggle';
@@ -44,7 +44,7 @@ export default function IconMenu({
             description={!isOpen ? 'Settings' : 'Close'}
             direction={tooltipStyle()}
           >
-            {!isOpen ? <CogIcon /> : <CloseCircle />}
+            {!isOpen ? <CogIcon /> : <CloseCircleIcon />}
           </IconButton>
         </li>
         <li className={hidden}>

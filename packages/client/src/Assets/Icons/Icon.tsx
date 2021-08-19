@@ -8,21 +8,19 @@ export interface IconProps {
 }
 
 export default function Icon({
-  className = '',
   children,
   size = 'medium',
   viewBox = '0 0 20 20',
+  className = '',
 }: IconProps) {
   function iconSize() {
     switch (size) {
       case 'small':
-        return 'h-5, w-5';
+        return 'h-5 w-5';
       case 'medium':
-        return 'h-7, w-7';
-      case 'medium-2':
-        return 'h-9, w-9';
+        return 'h-7 w-7';
       case 'large':
-        return 'h-10, w-10';
+        return 'h-10 w-10';
       default:
         return 'h-7 w-7';
     }
@@ -31,9 +29,10 @@ export default function Icon({
     <svg
       xmlns="http://www.w3.org/2000/svg"
       className={[
-        'text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60',
         iconSize(),
-        className,
+        className === ''
+          ? 'text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60'
+          : '',
       ].join(' ')}
       fill="currentColor"
       viewBox={viewBox}

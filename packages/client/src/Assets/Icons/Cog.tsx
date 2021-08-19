@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon, { IconProps } from './Icon';
 
-export default function CheckIcon(props: IconProps) {
+export default function CogIcon(props: IconProps) {
   return (
     <Icon {...props}>
       <path

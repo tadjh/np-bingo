@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon, { IconProps } from './Icon';
 
-export default function ChevronRight(props: IconProps) {
+export default function ChevronRightIcon(props: IconProps) {
   return (
     <Icon {...props}>
       <path

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import IconButton from '../../../../components/Inputs/IconButton/components/IconButton';
-import ChevronRight from '../../../../assets/icons/ChevronRight';
+import ChevronRightIcon from '../../../../assets/icons/ChevronRight';
 import Tooltip from '../../../../components/Display/Tooltip';
 import List, {
   ListItem,
   ListItemText,
 } from '../../../../components/Display/List';
+import { useClickHard } from '../../../../assets/sounds';
 
 export interface ListProps {
   rooms?: any[];
@@ -21,6 +22,7 @@ export default function RoomList({
   rooms = [],
   onClick,
 }: RoomListProps): JSX.Element {
+  const [clickHardSfx] = useClickHard();
   if (rooms.length > 0)
     return (
       <List title="Public Rooms">
@@ -44,10 +46,11 @@ export default function RoomList({
                   component={RouterLink}
                   to={`/play/${item.room}`} // TODO Will go even if Room doesn't exist
                   onClick={roomDescription}
+                  onMouseDown={clickHardSfx}
                   description="Join Room"
                   direction="left"
                 >
-                  <ChevronRight className="text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90" />
+                  <ChevronRightIcon />
                 </IconButton>
               </div>
             </ListItem>

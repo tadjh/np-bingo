@@ -1,7 +1,7 @@
 import React from 'react';
 import Icon, { IconProps } from './Icon';
 
-export default function CloseIcon(props: IconProps) {
+export default function CloseCircleIcon(props: IconProps) {
   return (
     <Icon {...props}>
       <path
