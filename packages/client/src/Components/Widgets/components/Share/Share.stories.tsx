@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Share, { ShareProps } from '.';
 
 export default {
-  title: 'Widgets/Share',
+  title: 'Elements/Share',
   component: Share,
   parameters: {
     actions: {

@@ -3,7 +3,7 @@ import { Story, Meta } from '@storybook/react';
 import Logo, { LogoProps } from '.';
 
 export default {
-  title: 'Components/Logo',
+  title: 'Elements/Logo',
   component: Logo,
 } as Meta;
 

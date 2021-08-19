@@ -6,7 +6,7 @@ import features from '../../config/features';
 import * as CodeStories from './components/Code/Code.stories';
 
 export default {
-  title: 'Widgets',
+  title: 'Elements/Widgets',
   component: Widgets,
 } as Meta;
 
