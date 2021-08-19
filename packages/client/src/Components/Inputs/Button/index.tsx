@@ -1,4 +1,5 @@
 import React from 'react';
+import { useClickHard } from '../../../assets/sounds/hooks';
 import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
 
@@ -21,8 +22,8 @@ export default function Button({
   disabled = false,
   ...props
 }: ButtonProps): JSX.Element {
-  const [buttonPressSfx, buttonSyle] = useButton(variant, disabled);
-
+  const [buttonSyle] = useButton(variant, disabled);
+  const [clickHardSfx] = useClickHard();
   const buttonClasses = [
     'relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker',
     buttonSyle(),
@@ -34,7 +35,7 @@ export default function Button({
       <Component
         className={buttonClasses}
         disabled={disabled}
-        onMouseDown={buttonPressSfx}
+        onMouseDown={clickHardSfx}
         {...props}
       >
         <Ripple disabled={disabled} />
@@ -46,7 +47,7 @@ export default function Button({
       className={buttonClasses}
       disabled={disabled}
       type={type}
-      onMouseDown={buttonPressSfx}
+      onMouseDown={clickHardSfx}
       {...props}
     >
       <Ripple disabled={disabled} />

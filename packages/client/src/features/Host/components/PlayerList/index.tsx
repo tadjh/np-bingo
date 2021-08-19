@@ -9,6 +9,7 @@ import CheckIcon from '../../../../assets/icons/Check';
 import CloseCircleIcon from '../../../../assets/icons/CloseCircle';
 import Tooltip from '../../../../components/Display/Tooltip';
 import { Player } from '@np-bingo/types';
+import { useClickHard } from '../../../../assets/sounds/hooks';
 
 export interface ListProps {
   data?: any[];
@@ -24,10 +25,12 @@ export function PlayerList({
   data = [],
   action: onRemove,
 }: PlayerListProps): JSX.Element {
+  const [clickHardSfx] = useClickHard();
   if (data.length !== 0)
     return (
       <List>
         {data.map((player, index) => {
+          const handleRemovePlayer = onRemove && (() => onRemove(player));
           return (
             <ListItem key={`player${index + 1}`}>
               <div
@@ -50,7 +53,8 @@ export function PlayerList({
               <div className="ml-auto">
                 <IconButton
                   className="delete-button"
-                  onClick={onRemove && (() => onRemove(player))}
+                  onClick={handleRemovePlayer}
+                  onMouseDown={clickHardSfx}
                   aria-label="status"
                 >
                   <CloseCircleIcon />

@@ -8,8 +8,8 @@ import light from '../assets/sounds/Light_Switch_On_Off.mp3';
 import scribble from '../assets/sounds/Scribble_Erase.mp3';
 import theme from '../assets/sounds/Bingo_Theme_by_Tadjh_Brooks.mp3';
 
-export const buttonSfx = button;
-export const clickSfx = click;
+export const clickSfx = button;
+export const buttonSfx = click;
 export const connectionSfx = connection;
 export const deniedSfx = denied;
 export const dispenseSfx = dispense;

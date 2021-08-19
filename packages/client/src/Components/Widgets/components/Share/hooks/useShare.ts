@@ -1,30 +1,13 @@
-import { useContext, useState } from 'react';
-import useSound from 'use-sound';
-import { SoundContext } from '../../../../../context';
-import { buttonSfx } from '../../../../../config/sounds';
+import { useState } from 'react';
 
 export function useShare(
   reference: HTMLInputElement | null,
   close: () => void
-): [string, () => void, () => void, () => void] {
-  const { volume, sounds } = useContext(SoundContext);
+): [string, () => void, () => void] {
   const [isCopied, setIsCopied] = useState(false);
   const copyText = isCopied
     ? 'Link copied to clipboard!'
     : 'Click to copy link to clipboard';
-
-  const [playSfx] = useSound(buttonSfx, {
-    volume: volume,
-    sprite: {
-      buttonPress: [1000, 1000],
-    },
-    soundEnabled: sounds,
-    playbackRate: 1.5,
-  });
-
-  const clickSfx = () => {
-    playSfx({ id: 'buttonPress' });
-  };
 
   /**
    * Focus link and copy value to keyboard
@@ -63,5 +46,5 @@ export function useShare(
     clear();
   };
 
-  return [copyText, clickSfx, handleClose, copyToClipboard];
+  return [copyText, handleClose, copyToClipboard];
 }

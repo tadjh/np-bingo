@@ -1,27 +1,5 @@
-import { useContext } from 'react';
-import useSound from 'use-sound';
-import { SoundContext } from '../../../../context';
-import { buttonSfx } from '../../../../config/sounds';
 import { ButtonVariants } from '..';
 export function useButton(variant: ButtonVariants, disabled: boolean) {
-  const { volume, sounds } = useContext(SoundContext);
-
-  const [playSfx] = useSound(buttonSfx, {
-    volume: volume / 2,
-    sprite: {
-      buttonPress: [0, 1000],
-    },
-    soundEnabled: sounds,
-    playbackRate: 1.5,
-  });
-
-  /**
-   * Wrapper for button mouse down event
-   */
-  const buttonPressSfx = () => {
-    playSfx({ id: 'buttonPress' });
-  };
-
   const style = (disabled && 'disabled') || variant;
 
   /**
@@ -40,5 +18,5 @@ export function useButton(variant: ButtonVariants, disabled: boolean) {
     }
   };
 
-  return [buttonPressSfx, buttonStyle];
+  return [buttonStyle];
 }

@@ -11,6 +11,7 @@ import { useToggle } from '../../../../hooks';
 import { Room } from '@np-bingo/types';
 import TextInput from '../../../Form/TextInput';
 import { useShare } from './hooks';
+import { useClickSoft } from '../../../../assets/sounds';
 
 export interface ShareProps {
   room?: Room;
@@ -23,10 +24,11 @@ export default function Share({
 }: ShareProps): JSX.Element {
   const linkRef = useRef<HTMLInputElement>(null);
   const [isOpen, , open, close] = useToggle(isOpenDefault);
-  const [copyText, clickSfx, handleClose, copyToClipboard] = useShare(
+  const [copyText, handleClose, copyToClipboard] = useShare(
     linkRef.current,
     close
   );
+  const [clickSoftSfx] = useClickSoft();
 
   // TODO Hide full URL when config set to Streamer Mode
 
@@ -38,7 +40,7 @@ export default function Share({
         aria-label="share"
         description="Share link"
         direction="top"
-        onMouseDown={clickSfx}
+        onMouseDown={clickSoftSfx}
       >
         <ShareIcon />
       </IconButton>

@@ -1,13 +1,13 @@
 import { useContext } from 'react';
 import useSound from 'use-sound';
 import { FeautresContext, SoundContext } from '../../../../../../context';
-import { clickSfx } from '../../../../../../config/sounds';
+import { buttonSfx } from '../../../../../../config/sounds';
 
 export function useVolumeToggle(): [boolean, () => void, () => void] {
   const { sounds, toggleSounds } = useContext(SoundContext);
   const { defaultVolume } = useContext(FeautresContext);
 
-  const [playVolumeSfx] = useSound(clickSfx, {
+  const [playVolumeSfx] = useSound(buttonSfx, {
     volume: defaultVolume,
     sprite: {
       soundOn: [0, 1000],
