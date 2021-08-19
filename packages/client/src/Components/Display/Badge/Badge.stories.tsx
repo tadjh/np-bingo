@@ -19,7 +19,7 @@ const Template: Story<BadgeProps> = (args) => <Badge {...args} />;
 export const Base = Template.bind({});
 Base.args = {
   children: 75,
-  description: 'Hovered Badge',
+  description: 'Badge',
 };
 
 const Stack: Story<BadgeProps> = (args) => (
@@ -38,8 +38,8 @@ Variants.args = {
   ...Base.args,
 };
 
-export const Hovered = Template.bind({});
-Hovered.args = {
+export const Tooltip = Template.bind({});
+Tooltip.args = {
   ...Base.args,
   isHovered: true,
 };
