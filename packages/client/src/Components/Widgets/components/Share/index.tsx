@@ -29,9 +29,7 @@ export default function Share({
     close
   );
   const [clickSoftSfx] = useClickSoft();
-
   // TODO Hide full URL when config set to Streamer Mode
-
   return (
     <React.Fragment>
       <IconButton
