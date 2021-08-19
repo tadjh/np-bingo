@@ -25,6 +25,7 @@ export default function RoomList({
     return (
       <List title="Public Rooms">
         {rooms.map((item) => {
+          const roomDescription = onClick && (() => onClick(item.room));
           return (
             <ListItem key={item.room}>
               <div className="relative tooltip flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700 shadow-md">
@@ -42,7 +43,7 @@ export default function RoomList({
                   aria-label="play"
                   component={RouterLink}
                   to={`/play/${item.room}`} // TODO Will go even if Room doesn't exist
-                  onClick={onClick && (() => onClick(item.room))}
+                  onClick={roomDescription}
                   description="Join Room"
                   direction="left"
                 >
