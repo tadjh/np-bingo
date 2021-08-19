@@ -36,7 +36,7 @@ export default function IconMenu({
         className={[
           'absolute flex p-1 transition-all duration-75 rounded-full border-2',
           isOpen
-            ? 'z-50 bg-gray-300 dark:bg-gray-700 shadow-2xl border-gray-500 dark:border-gray-600'
+            ? 'z-50 bg-gray-300 dark:bg-gray-700 shadow-2xl border-gray-400 dark:border-gray-600'
             : 'border-transparent',
           menuStyle(),
         ].join(' ')}
