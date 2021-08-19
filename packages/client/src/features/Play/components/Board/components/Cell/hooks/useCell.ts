@@ -6,8 +6,9 @@ import { useToggle } from '../../../../../../../hooks';
 
 export function useCell(
   onClick: React.MouseEventHandler<HTMLDivElement>,
+  disabled: boolean,
   override?: boolean
-): [boolean, () => void, () => void] {
+) {
   const { volume, sounds } = useContext(SoundContext);
   const [isChecked, toggleChecked, , uncheck] = useToggle();
 
@@ -51,5 +52,16 @@ export function useCell(
     uncheck();
   }, [override, uncheck]);
 
-  return [isChecked, toggleChecked, toggleSfx];
+  /**
+   * Click handler
+   * @param event
+   * @returns void
+   */
+  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    if (disabled) return;
+    toggleChecked();
+    onClick(event);
+  };
+
+  return { isChecked, toggleSfx, handleClick };
 }

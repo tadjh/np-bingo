@@ -20,15 +20,11 @@ export default function Cell({
   disabled = false,
   ...props
 }: CellProps): JSX.Element {
-  // const [checked, setChecked] = useState(false);
-  const [isChecked, toggleChecked, toggleSfx] = useCell(onClick, override);
-
-  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    if (disabled) return;
-    toggleChecked();
-    onClick(event);
-  };
-
+  const { isChecked, toggleSfx, handleClick } = useCell(
+    onClick,
+    disabled,
+    override
+  );
   return (
     <div
       className={[
@@ -49,7 +45,7 @@ export default function Cell({
             : 'text-red-600 dark:text-red-500',
         ].join(' ')}
       >
-        <HeavyBallotXIcon size="medium-2" />
+        <HeavyBallotXIcon size="large" className=" " />
       </div>
       <div className="relative z-10">{children}</div>
     </div>
