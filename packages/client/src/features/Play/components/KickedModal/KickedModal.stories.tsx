@@ -21,12 +21,6 @@ export default {
 
 const Template: Story<KickedModalProps> = (args) => <KickedModal {...args} />;
 
-export const Base = Template.bind({});
-Base.args = {
-  open: true,
-  reason: 'none',
-};
-
 export const Banned = Template.bind({});
 Banned.args = {
   open: true,
