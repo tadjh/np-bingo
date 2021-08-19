@@ -4,7 +4,7 @@ import KickedModal, { KickedModalProps } from '.';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 export default {
-  title: 'Modals/Kicked Modal',
+  title: 'Pages/Play/Kicked Modal',
   component: KickedModal,
   decorators: [
     (Story) => (
