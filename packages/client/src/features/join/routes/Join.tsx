@@ -31,7 +31,7 @@ export default function Join({
       <main className="justify-around">
         {allowPublic && <RoomList rooms={publicRooms} onClick={joinRoom} />}
         <div className="flex flex-col items-center gap-y-3">
-          <Button variant="contained" className="join-button" onClick={open}>
+          <Button variant="primary" className="join-button" onClick={open}>
             Private Room
           </Button>
           <CodeModal open={isOpen} onClose={close} onSumbit={joinRoom} />

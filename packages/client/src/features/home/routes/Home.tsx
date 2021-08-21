@@ -20,7 +20,7 @@ export default function Home({ dispatchCreateRoom }: HomeProps): JSX.Element {
       <main className="justify-center">
         <Button
           id="play-button"
-          variant="contained"
+          variant="primary"
           component={RouterLink}
           to="/join"
         >

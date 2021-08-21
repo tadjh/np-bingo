@@ -4,7 +4,7 @@ import { useClickHard } from '../../../assets/sounds/hooks';
 import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
 
-export type ButtonVariants = '' | 'contained';
+export type ButtonVariants = '' | 'primary' | 'success';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

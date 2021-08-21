@@ -11,8 +11,10 @@ export function useButton(variant: ButtonVariants, disabled: boolean) {
     switch (style) {
       case 'disabled':
         return 'disabled:opacity-50 disabled:bg-gray-400 dark:disabled:bg-gray-700 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:translate-y-0';
-      case 'contained':
+      case 'primary':
         return 'bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90';
+      case 'success':
+        return 'bg-green-600 hover:bg-green-700 dark:bg-green-300 dark:hover:bg-green-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90';
       default:
         return 'text-blue-600 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-700 hover:bg-gray-300';
     }

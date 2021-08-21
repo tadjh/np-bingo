@@ -8,6 +8,6 @@ export default {
   component: Ripple,
 } as Meta;
 
-const Template: Story = () => <Button variant="contained">Click me</Button>;
+const Template: Story = () => <Button variant="primary">Click me</Button>;
 
 export const Base = Template.bind({});

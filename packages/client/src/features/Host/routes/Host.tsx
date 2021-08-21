@@ -49,7 +49,7 @@ export default function Host({
     <React.Fragment>
       <header className="gap-3">
         <Button
-          variant="contained"
+          variant="primary"
           color="primary"
           className="w-[132px]"
           onClick={gamestateToggle}
@@ -57,7 +57,7 @@ export default function Host({
           {toggleText}
         </Button>
         <Button
-          variant="contained"
+          variant="primary"
           color="primary"
           disabled={gamestate !== 'validate' && true}
           onClick={checkCard}

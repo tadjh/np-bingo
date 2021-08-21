@@ -14,14 +14,20 @@ Base.args = {
   children: 'Button',
 };
 
-export const Contained = Template.bind({});
-Contained.args = {
+export const Primary = Template.bind({});
+Primary.args = {
   ...Base.args,
-  variant: 'contained',
+  variant: 'primary',
+};
+
+export const Success = Template.bind({});
+Success.args = {
+  ...Base.args,
+  variant: 'success',
 };
 
 export const Disabled = Template.bind({});
 Disabled.args = {
-  ...Contained.args,
+  ...Primary.args,
   disabled: true,
 };
