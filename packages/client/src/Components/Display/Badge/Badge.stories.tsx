@@ -49,3 +49,11 @@ Disabled.args = {
   ...Base.args,
   disabled: true,
 };
+
+export const Gradient = Template.bind({});
+Gradient.args = {
+  ...Base.args,
+  children: 43,
+  offset: 57,
+  color: 'gradient',
+};

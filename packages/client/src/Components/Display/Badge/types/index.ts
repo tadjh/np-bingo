@@ -1,1 +1,1 @@
-export type BadgeColors = 'gray' | 'blue';
+export type BadgeColors = 'gray' | 'blue' | 'gradient' | 'stepped';

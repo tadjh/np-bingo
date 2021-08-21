@@ -15,8 +15,8 @@ const Stack: Story<BallProps> = (args) => (
   <div className="flex gap-5">
     <Ball {...args} column="b" number={3} remainder={73} />
     <Ball {...args} column="i" number={24} remainder={74} />
-    <Ball {...args} column="n" number={43} remainder={54} />
-    <Ball {...args} column="g" number={50} remainder={74} />
+    <Ball {...args} column="n" number={43} remainder={42} />
+    <Ball {...args} column="g" number={50} remainder={22} />
     <Ball {...args} column="o" number={70} remainder={71} />
   </div>
 );

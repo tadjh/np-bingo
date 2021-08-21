@@ -19,7 +19,7 @@ export default function Ball({
   progress = 0,
   disabled = false,
 }: BallProps) {
-  const [background, gradient] = useBall(column, disabled);
+  const { background, gradient, offset } = useBall(column, remainder, disabled);
   return (
     <div className="relative inline-flex">
       <div
@@ -36,7 +36,11 @@ export default function Ball({
             )}
           ></div>
         </div>
-        <Badge description="Balls Remaining" disabled={disabled}>
+        <Badge
+          description="Balls Remaining"
+          disabled={disabled}
+          offset={offset()}
+        >
           {remainder}
         </Badge>
         <div className="leading-4 uppercase relative z-20">{column}</div>

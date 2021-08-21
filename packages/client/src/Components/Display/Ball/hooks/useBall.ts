@@ -1,6 +1,10 @@
 import { Column } from '@np-bingo/types';
 
-export function useBall(column: Column | '', disabled: boolean) {
+export function useBall(
+  column: Column | '',
+  remainder: number,
+  disabled: boolean
+) {
   const ballColumn = (disabled && 'disabled') || column;
 
   /**
@@ -55,5 +59,15 @@ export function useBall(column: Column | '', disabled: boolean) {
     }
   }
 
-  return [background, gradient];
+  /**
+   * Returns percentage of total balls drawn
+   * Used to offset badge background color
+   * @returns number | undefined
+   */
+  const offset = () => {
+    if (remainder === 75) return 0;
+    return Math.round(((75 - remainder) * 100) / 75);
+  };
+
+  return { background, gradient, offset };
 }
