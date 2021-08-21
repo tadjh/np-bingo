@@ -20,6 +20,8 @@ DONE Bug: Multiplayer new ball no sound
 // TODO Check for 'test'
 // TODO Public Room Display busted
 // TODO Move card creation to Server API in multiplayer mode
+// TODO Consider dispatch Contexts
+// TODO Bug: modal bug in storybook removeChild
 
 Vulnerbilities
 // TODO Rest Api has no auth (JWT?)
