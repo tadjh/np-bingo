@@ -19,6 +19,7 @@ DONE Bug: Multiplayer new ball no sound
 // TODO Bug: On leave room Bingo Song continues to play
 // TODO Check for 'test'
 // TODO Public Room Display busted
+// TODO Move card creation to Server API in multiplayer mode
 
 Vulnerbilities
 // TODO Rest Api has no auth (JWT?)
