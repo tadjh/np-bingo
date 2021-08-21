@@ -6,13 +6,13 @@ import { BallContext, GameContext } from '../../../context';
 import { initialState as AppState } from '../../../reducers/app.reducer';
 import Container from '../../../components/Layout/Container';
 import { Ball, Card, Player, Results } from '@np-bingo/types';
+import { useContext } from 'react';
+import { useAppState } from '../../../hooks';
+import Background from '../../../components/Surfaces/Background';
 
 export default {
   title: 'Pages/Play',
   component: Play,
-  argTypes: {
-    joinRoom: { action: 'submit' },
-  },
   decorators: [
     (Story) => {
       return (
@@ -41,6 +41,7 @@ export default {
           >
             <Router>
               <Container>
+                <Background />
                 <Story />
               </Container>
             </Router>
@@ -51,13 +52,13 @@ export default {
   ],
   parameters: {
     layout: 'none',
-    argTypes: {
-      init: { action: 'click' },
-    },
   },
 } as Meta;
 
-const Template: Story<PlayProps> = (args) => <Play {...args} />;
+const Template: Story<PlayProps> = (args) => {
+  const { playDispatchers } = useAppState();
+  return <Play {...args} dispatchers={playDispatchers} />;
+};
 
 const ball = {
   key: 1,

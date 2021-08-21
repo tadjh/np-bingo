@@ -7,6 +7,7 @@ import { initialState as AppState } from '../../reducers/app.reducer';
 import Container from '../../components/Layout/Container';
 import { Ball } from '@np-bingo/types';
 import { Socket } from 'socket.io-client';
+import Background from '../../components/Surfaces/Background';
 
 export default {
   title: 'Pages/Host',
@@ -19,6 +20,7 @@ export default {
       return (
         <Router>
           <Container>
+            <Background />
             <Story />
           </Container>
         </Router>

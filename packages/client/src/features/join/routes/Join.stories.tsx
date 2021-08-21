@@ -6,6 +6,7 @@ import { FeautresContext } from '../../../context';
 import features from '../../../config/features';
 import Container from '../../../components/Layout/Container';
 import { Rooms } from '../components/RoomList/RoomList.stories';
+import Background from '../../../components/Surfaces/Background';
 
 export default {
   title: 'Pages/Join',
@@ -18,6 +19,7 @@ export default {
       return (
         <Router>
           <Container>
+            <Background />
             <Story />
           </Container>
         </Router>
