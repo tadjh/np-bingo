@@ -10,7 +10,7 @@ export function useApp(
   dispatchCheckCardSuccess: (winner: Winner) => void,
   dispatchCheckCardFailure: () => void,
   dispatchNewBall: (ball: Ball, draws: Pool, pool: Pool) => void
-): [() => Ball, () => boolean] {
+): [() => Ball, () => Winner | null] {
   /**
    * Get new ball
    * @param pool
@@ -33,19 +33,19 @@ export function useApp(
 
   /**
    * Checks if input card is a winner
-   * @param mode Game mdoe
+   * @param mode Game mode
    * @param playerCard Input card to be checked and owner of card
    * @param draws Pool of bingo balls that have already been drawn
    * @return boolean
    */
-  const checkCard = useCallback((): boolean => {
+  const checkCard = useCallback((): Winner | null => {
     const { card, owner } = playerCard;
     const [results, methods] = validateCard(card, draws);
 
     // No winning methods
     if (methods.length <= 0) {
       dispatchCheckCardFailure();
-      return false;
+      return null;
     }
 
     const winner = {
@@ -53,10 +53,10 @@ export function useApp(
       results,
       player: owner,
       card: card,
-    } as Winner;
+    };
 
     dispatchCheckCardSuccess(winner);
-    return true;
+    return winner;
   }, [playerCard, draws, dispatchCheckCardFailure, dispatchCheckCardSuccess]);
 
   return [newBall, checkCard];

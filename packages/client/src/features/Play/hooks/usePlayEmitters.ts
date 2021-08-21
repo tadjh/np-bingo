@@ -7,7 +7,7 @@ import { usePlayButton } from '.';
 export function usePlayEmitters() {
   const user = useContext(UserContext);
   const { gamestate, room, host, winner } = useContext(GameContext);
-  const { triggerBallEffects } = usePlayButton();
+  // const { triggerBallEffects } = usePlayButton();
 
   // TODO Consider socket host.socket, user and maybe room into an object
 
@@ -46,9 +46,9 @@ export function usePlayEmitters() {
       emitGameWin();
     }
     // TODO Does this work? MOVE TO LISTNERS
-    socket.on('game-ball', () => {
-      triggerBallEffects();
-    });
+    // socket.on('game-ball', () => {
+    //   triggerBallEffects();
+    // });
   });
   return { emitReadyUp, emitSendCard, emitLeaveRoom, emitGameWin };
 }

@@ -8,9 +8,9 @@ import { apiUpdateRoom } from '../api';
 
 export function useJoin(
   dispatchJoinRoom: (room: string, host: Host) => void
-): [(room: Room) => void] {
+): [(room: Room) => void, () => void] {
   const { user } = useContext(UserContext);
-  const { room, host } = useContext(GameContext);
+  const { room, host, play, mode } = useContext(GameContext);
   let query = useQuery();
   const queryRoom = query.get('r');
   let history = useHistory();
@@ -27,6 +27,11 @@ export function useJoin(
     },
     [dispatchJoinRoom, user]
   );
+
+  const handleSolo = () => {
+    mode('solo');
+    play('ready');
+  };
 
   /**
    * Handles share link
@@ -46,5 +51,5 @@ export function useJoin(
     history.push(`/play?r=${room}`);
   }, [room, host.socket, user, history]);
 
-  return [joinRoom];
+  return [joinRoom, handleSolo];
 }

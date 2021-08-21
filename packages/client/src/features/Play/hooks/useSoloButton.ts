@@ -1,18 +1,29 @@
 import { useContext } from 'react';
-import { usePlaySounds, usePlayButton, useSolo } from '.';
-import { GameContext } from '../../../context';
+import { Card, Player } from '@np-bingo/types';
+import { BallContext, GameContext, UserContext } from '../../../context';
 
-export function useSoloButton() {
+export function useSoloButton(
+  triggerBallEffects: () => void,
+  enableProgress: () => void,
+  pauseProgress: () => void
+) {
+  const { user } = useContext(UserContext);
   const { gamestate, play } = useContext(GameContext);
-  const { triggerBall, enableProgress } = usePlayButton();
-  const { playWinSfxData } = usePlaySounds();
-  const [solo] = useSolo();
+  const { newBall } = useContext(BallContext);
+
+  /**
+   * New Ball w/ Side Effects
+   */
+  const triggerBall = () => {
+    newBall();
+    triggerBallEffects();
+  };
 
   /**
    * Trigger newBall when loop ball animation completes
    * @returns void
    */
-  const soloOnProgressDone = (triggerBall: () => void) => {
+  const soloOnProgressDone = () => {
     if (gamestate === 'start') return triggerBall();
   };
 
@@ -23,17 +34,20 @@ export function useSoloButton() {
    */
   const soloHandlePrimaryButton = () => {
     switch (gamestate) {
-      case 'start':
-        play('pause');
-        break;
       case 'ready':
         triggerBall();
         play('start');
         break;
+      case 'start':
+        play('pause');
+        pauseProgress();
+        break;
+      case 'win':
+        play('ready');
+        break;
       case 'end':
-        playWinSfxData.stop();
-        play('init');
-        solo();
+        // playWinSfxData.stop();
+        play('ready');
         break;
       default:
         play('start');
@@ -42,8 +56,18 @@ export function useSoloButton() {
     }
   };
 
-  const soloHandleSendCard = () => {
-    // sendCard(card, user);
+  /**
+   * Mocks sending card to host
+   * @param card
+   * @param dispatchSendCard
+   */
+  const soloHandleSendCard = (
+    card: Card,
+    dispatchSendCard: (card: Card, user: Player) => void
+  ) => {
+    pauseProgress();
+    dispatchSendCard(card, user);
+    enableProgress();
   };
 
   return {

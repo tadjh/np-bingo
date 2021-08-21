@@ -16,9 +16,11 @@ export function useSoloDisplay(): [() => string, () => boolean] {
       case 'pause':
         return 'Resume';
       case 'win':
-        return 'New Game';
+        return 'Replay';
       case 'failure':
         return 'Resume';
+      case 'end':
+        return 'Replay';
       default:
         return 'Start';
     }
@@ -31,10 +33,12 @@ export function useSoloDisplay(): [() => string, () => boolean] {
    */
   const soloDisablePrimaryButton = (): boolean => {
     switch (gamestate) {
+      case 'ready':
       case 'start':
       case 'pause':
       case 'win':
       case 'failure':
+      case 'end':
         return false;
       default:
         return true;

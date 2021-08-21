@@ -11,15 +11,18 @@ import {
   INIT_CROSSMARKS,
   INIT_GAME,
   NEW_CARD,
+  PLAYER_KICKED,
   UPDATE_CROSSMARKS,
   WINNER_CROSSMARKS,
 } from '../../../config/constants';
 import { winningMethods } from '../../../utils/bingo.validate';
+import { NODE_ENV } from '../../../config';
+import logger from 'use-reducer-logger';
 
 export function usePlayState() {
-  const [{ card, serial, crossmarks }, playDispatch] = useReducer<
+  const [{ card, serial, crossmarks, kicked }, playDispatch] = useReducer<
     (state: PlayerState, action: Action) => PlayerState
-  >(reducer, initialState);
+  >(NODE_ENV === 'development' ? logger(reducer) : reducer, initialState);
 
   const initPlay = () => {
     playDispatch({ type: INIT_GAME });
@@ -31,7 +34,7 @@ export function usePlayState() {
   const setCard = useCallback(() => {
     const [card, serial] = newCard(BINGO);
     playDispatch({ type: NEW_CARD, payload: { card: card, serial: serial } });
-    clearCrossmarks();
+    // clearCrossmarks();
   }, []);
 
   /**
@@ -51,20 +54,21 @@ export function usePlayState() {
    * @param event Click event
    */
   const toggleCrossmark = (event: React.MouseEvent) => {
-    let target = event.target as HTMLDivElement;
-    let value = crossmarks[target.id];
-    let crossmark = { [target.id]: !value };
-    updateCrossmarks(crossmark);
+    return;
+    // let target = event.target as HTMLDivElement;
+    // let value = crossmarks[target.id];
+    // let crossmark = { [target.id]: !value };
+    // updateCrossmarks(crossmark);
   };
 
   /**
    * Sets Winning crossmarks after successful card validations
    * @param results Results of validation check
    */
-  const setWinningCrossmarks = ({ results }: Winner) => {
+  const setWinningCrossmarks = useCallback((results: Results) => {
     const winningCrossmarks = winningCells(results);
     playDispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
-  };
+  }, []);
 
   /**
    * Sets Winning crossmarks after successful card validations
@@ -84,13 +88,30 @@ export function usePlayState() {
     return winningCrossmarks;
   }
 
+  /**
+   * Dispatch room abandoned
+   */
+  const dispatchRoomAbandoned = () => {
+    playDispatch({ type: PLAYER_KICKED, payload: 'abandoned' });
+  };
+
+  /**
+   * Dispatch player kicked
+   */
+  const dispatchPlayerKicked = () => {
+    playDispatch({ type: PLAYER_KICKED, payload: 'banned' });
+  };
+
   return {
     card,
     serial,
     crossmarks,
+    kicked,
     initPlay,
     setCard,
     toggleCrossmark,
     setWinningCrossmarks,
+    dispatchRoomAbandoned,
+    dispatchPlayerKicked,
   };
 }

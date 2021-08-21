@@ -13,7 +13,8 @@ export function usePlayStatus(gamestate: Gamestate, mode: Gamemode) {
         //default
         if (mode !== 'solo') return 'Waiting on host to start the game...';
         // solo
-        return '\u00a0';
+        return 'Click start to begin.';
+      // return '\u00a0';
       case 'ready':
         // default
         if (mode !== 'solo') return 'Click ready, then wait for host to begin.';
@@ -33,6 +34,8 @@ export function usePlayStatus(gamestate: Gamestate, mode: Gamemode) {
         if (mode !== 'solo') return 'A card is being checked for BINGO!';
         // solo
         return 'Game paused.';
+      case 'win':
+        return 'BINGO!';
       case 'failure':
         // let failureText = [
         //   'Jumping the gun. No Bingo...',
@@ -44,8 +47,6 @@ export function usePlayStatus(gamestate: Gamestate, mode: Gamemode) {
         return 'Jumping the gun. No Bingo...';
       case 'end':
         return 'Game Over!';
-      case 'win':
-        return 'BINGO!';
       default:
         throw new Error(`Invalid Gamestate in Player Status`);
     }

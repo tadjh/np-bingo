@@ -32,7 +32,6 @@ export default function App() {
       winner,
       room,
       players,
-      kicked,
       host,
       rules: { mode: gamemode },
     },
@@ -95,19 +94,20 @@ export default function App() {
                       <Route path="/join">
                         <Join dispatchJoinRoom={dispatchJoinRoom} />
                       </Route>
-                      <Route path="/host">
+                      {/* <Route path="/host">
                         <Host
                           dispatchers={hostDispatchers}
                           draws={draws}
                           players={players}
                         />
-                      </Route>
+                      </Route>*/}
                       <Route path="/play/solo">
-                        <Solo kicked={kicked} dispatchers={playerDispatchers} />
+                        <Solo dispatchers={playerDispatchers} />
                       </Route>
+                      {/*
                       <Route path="/play">
-                        <Play kicked={kicked} dispatchers={playerDispatchers} />
-                      </Route>
+                        <Play dispatchers={playerDispatchers} />
+                      </Route> */}
                       <Route path="/">
                         <Home dispatchCreateRoom={dispatchCreateRoom} />
                       </Route>

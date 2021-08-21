@@ -1,7 +1,7 @@
 import React from 'react';
 import { initialState } from '../reducers/app.reducer';
 import features from '../config/features';
-import { Gamemode, Gamestate, Player, Ball } from '@np-bingo/types';
+import { Gamemode, Gamestate, Player, Ball, Winner } from '@np-bingo/types';
 import { Socket } from 'socket.io-client';
 
 export const UserContext = React.createContext<{
@@ -39,7 +39,7 @@ export const GameContext = React.createContext({
   winner: { ...initialState.winner },
   play: (gamestate: Gamestate) => {},
   mode: (gamemode: Gamemode) => {},
-  checkCard: () => false as boolean,
+  checkCard: (): Winner | null => null,
 });
 
 export const BallContext = React.createContext<{

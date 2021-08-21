@@ -32,7 +32,6 @@ import {
   GET_CARD,
   PLAYER_JOINED,
   PLAYER_READY,
-  PLAYER_KICKED,
   SET_BALL,
 } from '../config/constants';
 import { AppState, initialState, reducer } from '../reducers/app.reducer';
@@ -203,20 +202,6 @@ export function useAppState() {
   };
 
   /**
-   * Dispatch room abandoned
-   */
-  const dispatchRoomAbandoned = () => {
-    dispatch({ type: PLAYER_KICKED, payload: 'abandoned' });
-  };
-
-  /**
-   * Dispatch player kicked
-   */
-  const dispatchPlayerKicked = () => {
-    dispatch({ type: PLAYER_KICKED, payload: 'banned' });
-  };
-
-  /**
    * Dispatch new ball
    * @param ball Ball
    */
@@ -234,7 +219,6 @@ export function useAppState() {
     dispatchNewBall,
     dispatchCheckCardSuccess,
     dispatchCheckCardFailure,
-    dispatchPlayerKicked,
     dispatchDispenseBall,
     hostDispatchers: {
       dispatchRemovePlayer,
@@ -243,8 +227,6 @@ export function useAppState() {
       dispatchPlayerReady,
     },
     playerDispatchers: {
-      dispatchRoomAbandoned,
-      dispatchPlayerKicked,
       dispatchDispenseBall,
       dispatchPlayerReady,
       dispatchCheckCardSuccess,

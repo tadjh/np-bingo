@@ -24,7 +24,8 @@ export function usePlayListeners({
   const listenHostAbandoned = useCallback(() => {
     socket.on('host-left', () => {
       logger(`Host left, and you have been removed from the room`);
-      dispatchRoomAbandoned();
+      // TODO Fix
+      dispatchRoomAbandoned && dispatchRoomAbandoned();
     });
   }, [socket, dispatchRoomAbandoned]);
 
@@ -38,7 +39,8 @@ export function usePlayListeners({
   const listenPlayerKicked = useCallback(() => {
     socket.on('player-remove', () => {
       logger(`You have been removed from the room`);
-      dispatchPlayerKicked();
+      // TODO Fix
+      dispatchPlayerKicked && dispatchPlayerKicked();
     });
   }, [socket, dispatchPlayerKicked]);
 

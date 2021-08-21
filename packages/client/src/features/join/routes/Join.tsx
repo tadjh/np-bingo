@@ -20,7 +20,7 @@ export default function Join({
 }: JoinProps) {
   const { allowPublic, allowSolo } = useContext(FeautresContext);
   const [isOpen, , open, close] = useToggle();
-  const [joinRoom] = useJoin(dispatchJoinRoom);
+  const [joinRoom, handleSolo] = useJoin(dispatchJoinRoom);
   return (
     <React.Fragment>
       <header className="flex-1 items-center">
@@ -40,6 +40,7 @@ export default function Join({
               component={RouterLink}
               className="solo-button"
               to="/play/solo"
+              onClick={handleSolo}
             >
               Solo
             </Button>

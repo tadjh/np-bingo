@@ -1,24 +1,18 @@
-import { useCallback, useContext } from 'react';
+import { useContext } from 'react';
 import { BallContext, FeautresContext, GameContext } from '../../../context';
 import { useProgress } from '../../../hooks';
 import { usePlaySounds, useSoloButton, usePlayEmitters } from '.';
+import { Card, Player } from '@np-bingo/types';
 
-export function usePlayButton() {
+export function usePlayButton(
+  card: Card,
+  dispatchSendCard: (card: Card, user: Player) => void
+) {
   const { ballDelay } = useContext(FeautresContext);
   const { gamemode, play } = useContext(GameContext);
-  const { ball, newBall } = useContext(BallContext);
-  const { soloOnProgressDone, soloHandlePrimaryButton, soloHandleSendCard } =
-    useSoloButton();
+  const { ball } = useContext(BallContext);
   const { emitLeaveRoom } = usePlayEmitters();
   const { playRandomSfx } = usePlaySounds();
-
-  /**
-   * New Ball w/ Side Effects
-   */
-  const triggerBall = () => {
-    newBall();
-    triggerBallEffects();
-  };
 
   /**
    * Loop ball animation and trigger newBall in solo mode
@@ -26,7 +20,7 @@ export function usePlayButton() {
    */
   const onProgressDone = () => {
     if (ball.remainder === 0) return play('end');
-    if (gamemode === 'solo') return soloOnProgressDone(triggerBall);
+    if (gamemode === 'solo') return soloOnProgressDone();
   };
 
   const { progress, inProgress, enableProgress, pauseProgress } = useProgress(
@@ -37,13 +31,19 @@ export function usePlayButton() {
   /**
    * New ball side effects
    */
-  const triggerBallEffects = useCallback(() => {
+  const triggerBallEffects = () => {
     playRandomSfx();
     enableProgress();
-  }, [playRandomSfx, enableProgress]);
+  };
+
+  const {
+    soloOnProgressDone,
+    soloHandlePrimaryButton,
+    soloHandleSendCard,
+  } = useSoloButton(triggerBallEffects, enableProgress, pauseProgress);
 
   /**
-   * Sets gamestate based on gamestate
+   * Sets gamestate based on current gamestate
    */
   const handlePrimaryButton = () => {
     if (gamemode === 'solo') return soloHandlePrimaryButton();
@@ -54,10 +54,9 @@ export function usePlayButton() {
    * Wrapper function for sendCard
    */
   const handleSendCard = () => {
-    if (gamemode === 'solo') soloHandleSendCard();
-    // default & solo
-    // TODO is this best way or socket.io emit directly?
+    if (gamemode === 'solo') soloHandleSendCard(card, dispatchSendCard);
     play('validate');
+    // TODO emit send card
   };
 
   const handleLeaveRoom = () => {
@@ -70,8 +69,6 @@ export function usePlayButton() {
     inProgress,
     enableProgress,
     pauseProgress,
-    triggerBall,
-    triggerBallEffects,
     handlePrimaryButton,
     handleSendCard,
     handleLeaveRoom,

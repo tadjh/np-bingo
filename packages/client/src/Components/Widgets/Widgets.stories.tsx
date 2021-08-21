@@ -27,4 +27,9 @@ ShareDisabled.decorators = [
 ];
 ShareDisabled.args = { ...Base.args };
 
+export const Solo = Template.bind({});
+Solo.args = {
+  variant: 'solo',
+};
+
 export const Blank = Template.bind({});

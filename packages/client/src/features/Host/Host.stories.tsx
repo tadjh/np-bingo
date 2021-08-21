@@ -47,7 +47,7 @@ Base.decorators = [
           winner: { ...AppState.winner },
           play: () => {},
           mode: () => {},
-          checkCard: () => false as boolean,
+          checkCard: () => null,
         }}
       >
         <BallContext.Provider
@@ -84,7 +84,7 @@ Waiting.decorators = [
           winner: { ...AppState.winner },
           play: () => {},
           mode: () => {},
-          checkCard: () => false as boolean,
+          checkCard: () => null,
         }}
       >
         <Story />
@@ -144,7 +144,7 @@ GameOver.decorators = [
           winner: { ...AppState.winner },
           play: () => {},
           mode: () => {},
-          checkCard: () => false as boolean,
+          checkCard: () => null,
         }}
       >
         <Story />
