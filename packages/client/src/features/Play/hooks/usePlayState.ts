@@ -34,7 +34,7 @@ export function usePlayState() {
   const setCard = useCallback(() => {
     const [card, serial] = newCard(BINGO);
     playDispatch({ type: NEW_CARD, payload: { card: card, serial: serial } });
-    // clearCrossmarks();
+    clearCrossmarks();
   }, []);
 
   /**
@@ -44,22 +44,23 @@ export function usePlayState() {
     playDispatch({ type: INIT_CROSSMARKS, payload: {} });
   };
 
-  const updateCrossmarks = (crossmark: { [x: string]: boolean }) => {
-    playDispatch({ type: UPDATE_CROSSMARKS, payload: crossmark });
-  };
+  // TODO IS THIS NECESSARY???
+  // const updateCrossmarks = (crossmark: { [x: string]: boolean }) => {
+  //   playDispatch({ type: UPDATE_CROSSMARKS, payload: crossmark });
+  // };
 
   // TODO IS THIS NECESSARY???
   /**
    * Toggle current target's crossmark visibility
    * @param event Click event
    */
-  const toggleCrossmark = (event: React.MouseEvent) => {
-    return;
-    // let target = event.target as HTMLDivElement;
-    // let value = crossmarks[target.id];
-    // let crossmark = { [target.id]: !value };
-    // updateCrossmarks(crossmark);
-  };
+  // const toggleCrossmark = (event: React.MouseEvent) => {
+  //   return;
+  // let target = event.target as HTMLDivElement;
+  // let value = crossmarks[target.id];
+  // let crossmark = { [target.id]: !value };
+  // updateCrossmarks(crossmark);
+  // };
 
   /**
    * Sets Winning crossmarks after successful card validations
@@ -109,7 +110,6 @@ export function usePlayState() {
     kicked,
     initPlay,
     setCard,
-    toggleCrossmark,
     setWinningCrossmarks,
     dispatchRoomAbandoned,
     dispatchPlayerKicked,

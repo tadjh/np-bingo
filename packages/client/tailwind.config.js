@@ -44,6 +44,7 @@ module.exports = {
       gray: colors.gray,
       green: colors.emerald,
       orange: colors.orange,
+      yellow: colors.yellow,
     },
     extend: {
       colors: {
@@ -68,6 +69,11 @@ module.exports = {
         'bingo-dark': "url('/src/assets/img/bg-tranparent-dark.svg')",
         'gradient-radial':
           'radial-gradient(circle at 25% 25%, var(--tw-gradient-stops))',
+        'gradient-linear':
+          'linear-gradient(180deg, rgba(5,150,105,1) 13%, rgba(252,211,77,1) 57%, rgba(220,38,38,1) 90%);',
+      }),
+      backgroundSize: (theme) => ({
+        oversized: 'auto 1000px',
       }),
       width: {
         23.5: '5.875rem',
@@ -92,17 +98,18 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {
-      boxShadow: ['disabled'],
-      textColor: ['disabled'],
-      backgroundColor: ['even', 'active', 'disabled'],
-      borderWidth: ['last'],
-      opacity: ['dark', 'disabled'],
-      backgroundImage: ['dark'],
-      cursor: ['disabled'],
-      translate: ['hover', 'active', 'disabled'],
-    },
-  },
+  variants: {},
+  // variants: {
+  //   extend: {
+  //     boxShadow: ['disabled'],
+  //     textColor: ['disabled'],
+  //     backgroundColor: ['even', 'active', 'disabled'],
+  //     borderWidth: ['last'],
+  //     opacity: ['dark', 'disabled'],
+  //     backgroundImage: ['dark'],
+  //     cursor: ['disabled'],
+  //     translate: ['hover', 'active', 'disabled'],
+  //   },
+  // },
   plugins: [],
 };

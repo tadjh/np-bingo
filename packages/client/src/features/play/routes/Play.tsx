@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import {
   Winner,
   Gamemode,
-  Kicked,
   Card,
   Player,
   Ball as BallType,
@@ -12,13 +11,11 @@ import Ball from '../../../components/Display/Ball';
 import { Board } from '../components/Board';
 import Button from '../../../components/Inputs/Button';
 import Link from '../../../components/Navigation/Link';
-import { initialState as appState } from '../../../reducers/app.reducer';
 import Widgets from '../../../components/Widgets';
 import KickedModal from '../components/KickedModal';
 import Confetti from '../components/Confetti';
 import { usePlay, usePlayButton, usePlayDisplay } from '../hooks';
 import PlayStatus from '../components/PlayStatus';
-import { useToggle } from '../../../hooks';
 
 export interface PlayerDispatchers {
   dispatchRoomAbandoned?: () => void;
@@ -44,15 +41,11 @@ export default function Play({
   const { allowNewCard } = useContext(FeautresContext);
   const { gamestate, room } = useContext(GameContext);
   const { ball } = useContext(BallContext);
-  const {
-    isWinner,
-    card,
-    serial,
-    crossmarks,
-    kicked,
-    setCard,
-    toggleCrossmark,
-  } = usePlay(dispatchers, gamemode, confettiOverride);
+  const { isWinner, card, serial, crossmarks, kicked, setCard } = usePlay(
+    dispatchers,
+    gamemode,
+    confettiOverride
+  );
   const {
     progress,
     inProgress,
@@ -104,7 +97,6 @@ export default function Play({
           serial={serial}
           winner={isWinner}
           crossmarks={crossmarks}
-          onClick={toggleCrossmark}
         />
       </main>
       <footer className="gap-3">

@@ -10,7 +10,6 @@ export interface BoardProps {
   serial: string;
   crossmarks: { [key: string]: boolean };
   winner: boolean;
-  onClick: (event: React.MouseEvent) => void;
 }
 
 export function Board({
@@ -18,7 +17,6 @@ export function Board({
   serial = '',
   crossmarks = {},
   winner = false,
-  onClick,
 }: BoardProps) {
   return (
     <div
@@ -47,7 +45,7 @@ export function Board({
               key={id}
               index={index + 1}
               checked={winner ? crossmarks[id] || false : undefined}
-              onClick={onClick}
+              // onClick={onClick}
               disabled={winner}
             >
               {index !== 12 ? value : 'free'}

@@ -226,7 +226,7 @@ export function useAppState() {
       dispatchPlayerLeft,
       dispatchPlayerReady,
     },
-    playerDispatchers: {
+    playDispatchers: {
       dispatchDispenseBall,
       dispatchPlayerReady,
       dispatchCheckCardSuccess,

@@ -21,7 +21,6 @@ export function usePlay(
     initPlay,
     setCard,
     setWinningCrossmarks,
-    toggleCrossmark,
   } = usePlayState();
   const [isWinner, winnerToggle, winnerStart, winnerStop] = useToggle(
     confettiOverride
@@ -151,7 +150,6 @@ export function usePlay(
     crossmarks,
     kicked,
     setCard,
-    toggleCrossmark,
     validate,
   };
 }

@@ -43,7 +43,7 @@ export default function App() {
     dispatchCheckCardSuccess,
     dispatchCheckCardFailure,
     hostDispatchers,
-    playerDispatchers,
+    playDispatchers,
   } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useToggle(config.sounds);
@@ -102,7 +102,7 @@ export default function App() {
                         />
                       </Route>*/}
                       <Route path="/play/solo">
-                        <Solo dispatchers={playerDispatchers} />
+                        <Solo dispatchers={playDispatchers} />
                       </Route>
                       {/*
                       <Route path="/play">

@@ -4,11 +4,7 @@ import { SoundContext } from '../../../../../../../context';
 import { scribbleSfx } from '../../../../../../../config/sounds';
 import { useToggle } from '../../../../../../../hooks';
 
-export function useCell(
-  onClick: React.MouseEventHandler<HTMLDivElement>,
-  disabled: boolean,
-  override?: boolean
-) {
+export function useCell(disabled: boolean, override?: boolean) {
   const { volume, sounds } = useContext(SoundContext);
   const [isChecked, toggleChecked, , uncheck] = useToggle();
 
@@ -60,7 +56,7 @@ export function useCell(
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (disabled) return;
     toggleChecked();
-    onClick(event);
+    // onClick(event);
   };
 
   return { isChecked, toggleSfx, handleClick };

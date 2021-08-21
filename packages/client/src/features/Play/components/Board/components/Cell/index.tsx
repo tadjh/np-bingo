@@ -9,23 +9,17 @@ export interface CellProps extends React.HTMLAttributes<HTMLDivElement> {
   index: number;
   checked?: boolean;
   disabled?: boolean;
-  onClick: (event: React.MouseEvent) => void;
 }
 
 export default function Cell({
   index = 1,
   children,
   checked: override,
-  onClick,
   winner = false,
   disabled = false,
   ...props
 }: CellProps): JSX.Element {
-  const { isChecked, toggleSfx, handleClick } = useCell(
-    onClick,
-    disabled,
-    override
-  );
+  const { isChecked, toggleSfx, handleClick } = useCell(disabled, override);
   return (
     <div
       className={clsx(
