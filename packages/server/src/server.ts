@@ -10,7 +10,7 @@ dotenv.config();
 
 import { IPlayer } from './Models/player';
 import connectDB from './Config/db';
-import { Ball, Card, Winner } from '@np-bingo/types';
+import { Ball, Card, Gamestate, Winner } from '@np-bingo/types';
 
 // routes
 import game from './Routes/game';
@@ -66,12 +66,12 @@ io.on('connection', (socket: Socket) => {
    * @param host
    * @param player
    */
-  socket.on('join-room', (room: Room, host: SocketId, player: IPlayer) => {
-    // TODO Prevent room join if host is already playing
-    socket.join(room);
-    console.log(`Player joined ${room}`);
-    io.to(host).emit('player-joined', player);
-  });
+  // socket.on('join-room', (room: Room, host: SocketId, player: IPlayer) => {
+  //   // TODO Prevent room join if host is already playing
+  //   socket.join(room);
+  //   console.log(`Player joined ${room}`);
+  //   io.to(host).emit('player-joined', player);
+  // });
 
   /**
    * From Host or Player: Leave room
@@ -98,13 +98,36 @@ io.on('connection', (socket: Socket) => {
   /**
    * From Host: Remove player from room
    */
-  socket.on('remove-player', (player: IPlayer) => {
-    if (player.socket) {
-      io.to(player.socket).emit('player-remove');
-      console.log(`${player.name} removed from room`);
-    } else {
-      console.log(`${player.name} socket not found in remove player`);
+  // socket.on('remove-player', (player: IPlayer) => {
+  //   if (player.socket) {
+  //     io.to(player.socket).emit('player-remove');
+  //     console.log(`${player.name} removed from room`);
+  //   } else {
+  //     console.log(`${player.name} socket not found in remove player`);
+  //   }
+  // });
+
+  /**
+   * Form Host: Gamestate listener
+   */
+  socket.on('host-gamestate', (gamestate: Gamestate, room: Room) => {
+    switch (gamestate) {
+      case 'ready':
+        console.log('Waiting for players to ready up');
+        break;
+      case 'standby':
+        console.log('Game beginning...');
+        break;
+      case 'start':
+        console.log('Game started');
+        break;
+      case 'end':
+        console.log('Game over!');
+        break;
+      default:
+        break;
     }
+    socket.to(room).emit('room-gamestate', gamestate);
   });
 
   /**
@@ -112,47 +135,29 @@ io.on('connection', (socket: Socket) => {
    * @param hostSocketId Host Socket ID
    * @param player IPlayer
    */
-  socket.on('ready-up', (hostSocketId: SocketId, player: IPlayer) => {
-    console.log(`${player.name} is ready`);
-    io.to(hostSocketId).emit('player-ready', player);
-  });
+  // socket.on('ready-up', (hostSocketId: SocketId, player: IPlayer) => {
+  //   console.log(`${player.name} is ready`);
+  //   io.to(hostSocketId).emit('player-ready', player);
+  // });
 
   /**
    * From Host: Ready Check
    * @param room Room
    */
-  socket.on('ready', (room: Room) => {
-    console.log('Waiting for players to ready up');
-    socket.to(room).emit('game-ready');
-  });
-
-  /**
-   * From Host: On Standby
-   * @param room Room
-   */
-  socket.on('standby', (room: Room) => {
-    socket.to(room).emit('game-standby');
-    console.log('Game beginning...');
-  });
-
-  /**
-   * From Host: Game Started
-   * @param room Room
-   */
-  socket.on('start', (room: Room) => {
-    socket.to(room).emit('game-start');
-    console.log('Game started');
-  });
+  // socket.on('ready', (room: Room) => {
+  //   console.log('Waiting for players to ready up');
+  //   socket.to(room).emit('game-ready');
+  // });
 
   /**
    * From Host: Ball dispensed
    * @param room Room
    * @param ball Ball
    */
-  socket.on('ball', (room: Room, ball: Ball) => {
-    socket.to(room).emit('game-ball', ball);
-    console.log(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
-  });
+  // socket.on('ball', (room: Room, ball: Ball) => {
+  //   socket.to(room).emit('game-ball', ball);
+  //   console.log(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
+  // });
 
   /**
    * From Player: Send Card
@@ -161,23 +166,23 @@ io.on('connection', (socket: Socket) => {
    * @param player IPlayer
    *     @param card Card
    */
-  socket.on(
-    'send-card',
-    (room: Room, hostSocketId: SocketId, player: IPlayer, card: Card) => {
-      io.to(hostSocketId).emit('receive-card', room, player, card);
-      console.log(`${player.name} sent card to host`);
-    }
-  );
+  // socket.on(
+  //   'send-card',
+  //   (room: Room, hostSocketId: SocketId, player: IPlayer, card: Card) => {
+  //     io.to(hostSocketId).emit('receive-card', room, player, card);
+  //     console.log(`${player.name} sent card to host`);
+  //   }
+  // );
 
   /**
    * From Host: Checking Card
    * @param room Room
    * @param player IPlayer
    */
-  socket.on('checking-card', (room: Room) => {
-    socket.to(room).emit('game-validation');
-    console.log('Checking card for Bingo...');
-  });
+  // socket.on('checking-card', (room: Room) => {
+  //   socket.to(room).emit('game-validation');
+  //   console.log('Checking card for Bingo...');
+  // });
 
   /**
    * From Host: Winning Card
@@ -186,48 +191,48 @@ io.on('connection', (socket: Socket) => {
    * @param methods string[]
    * @param data Winning Numbers by methods won
    */
-  socket.on('winning-card', (room: Room, winner: Winner) => {
-    if (winner.player.socket) {
-      io.to(winner.player.socket.id).emit('winner', room, winner);
-      console.log('Bingo!');
-    } else {
-      console.log(`${winner.player.name} socket not found in wininng card`);
-    }
-  });
+  // socket.on('winning-card', (room: Room, winner: Winner) => {
+  //   if (winner.player.socket) {
+  //     io.to(winner.player.socket.id).emit('winner', room, winner);
+  //     console.log('Bingo!');
+  //   } else {
+  //     console.log(`${winner.player.name} socket not found in wininng card`);
+  //   }
+  // });
 
   /**
    * From Host: Card not a winner
    * @param room Room
    */
-  socket.on('losing-card', (room: Room, winner: Winner) => {
-    console.log(winner.player.socket);
+  // socket.on('losing-card', (room: Room, winner: Winner) => {
+  //   console.log(winner.player.socket);
 
-    if (winner.player.socket) {
-      socket.to(room).emit('game-continue');
-      // TODO Probably double sends to sender
-      io.to(winner.player.socket.id).emit('loser');
-      console.log('The card is not a winner...');
-    } else {
-    }
-  });
+  //   if (winner.player.socket) {
+  //     socket.to(room).emit('game-continue');
+  //     // TODO Probably double sends to sender
+  //     io.to(winner.player.socket.id).emit('loser');
+  //     console.log('The card is not a winner...');
+  //   } else {
+  //   }
+  // });
 
   /**
    * From Player: Won
    * @param room Room
    * @param name Winner name
    */
-  socket.on('win', (room: Room, name: string) => {
-    socket.to(room).emit('game-win', name);
-  });
+  // socket.on('win', (room: Room, name: string) => {
+  //   socket.to(room).emit('game-win', name);
+  // });
 
   /**
    * From Host: Game Over!
    * @param room Room
    */
-  socket.on('end', (room: Room) => {
-    socket.to(room).emit('game-end');
-    console.log('Game over!');
-  });
+  // socket.on('end', (room: Room) => {
+  //   socket.to(room).emit('game-end');
+  //   console.log('Game over!');
+  // });
 });
 
 const port = process.env.PORT || 8082;
