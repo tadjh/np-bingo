@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
+import { DB_USER, DB_PASS, DB_URL, DB_NAME } from '.';
 
-const db = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_URL}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+const db = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_URL}/${DB_NAME}?retryWrites=true&w=majority`;
 
 const connectDB = async () => {
   try {

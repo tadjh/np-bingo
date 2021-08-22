@@ -14,6 +14,7 @@ import { Ball, Card, Gamestate, Winner } from '@np-bingo/types';
 
 // routes
 import game from './routes/game';
+import { ORIGIN, PORT } from './config';
 
 const app = express();
 const httpServer = createServer(app);
@@ -22,7 +23,7 @@ const httpServer = createServer(app);
  */
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.ORIGIN,
+    origin: ORIGIN,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
@@ -35,7 +36,7 @@ app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 /**
  * REST Api CORS
  */
-app.use(cors({ origin: process.env.ORIGIN, credentials: true }));
+app.use(cors({ origin: ORIGIN, credentials: true }));
 app.use(express.json());
 // use Routes
 app.get('/api/', (req, res) => {
@@ -235,7 +236,7 @@ io.on('connection', (socket: Socket) => {
   // });
 });
 
-const port = process.env.PORT || 8082;
+const port = PORT || 8082;
 
 httpServer.listen(port, () => {
   console.log(`Listening on port ${port}`);
