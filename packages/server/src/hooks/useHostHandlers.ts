@@ -1,9 +1,11 @@
 import { Server, Socket } from 'socket.io';
-import { Gamestate, Room } from '@np-bingo/types';
+import { Gamestate } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
+import { Room, SocketId } from 'socket.io-adapter';
+import { IPlayer } from '../models/player';
 
 export function useHostHandlers(io: Server, socket: Socket) {
-  const { emitRoomGamestate } = useCommonHandlers(io, socket);
+  const { leaveRoom, emitRoomGamestate } = useCommonHandlers(io, socket);
   /**
    * Host: Create room and join it
    * @param room
@@ -11,6 +13,15 @@ export function useHostHandlers(io: Server, socket: Socket) {
   const createRoom = (room: Room) => {
     console.log(`User created room ${room}`);
     socket.join(room);
+  };
+
+  /**
+   * Host: Broadcast host leaveing room, then leave
+   * @param room
+   */
+  const hostLeaveRoom = (room: Room) => {
+    socket.to(room).emit('host:left-game');
+    leaveRoom(room, 'Host');
   };
 
   /**
@@ -40,9 +51,13 @@ export function useHostHandlers(io: Server, socket: Socket) {
 
   /**
    * From Host: Create room
-   * @param room Room
    */
   socket.on('host:create-room', createRoom);
+
+  /**
+   * From Host: Leaving room
+   */
+  socket.on('host:leave-room', hostLeaveRoom);
 
   /**
    * From Host: Gamestate listener
