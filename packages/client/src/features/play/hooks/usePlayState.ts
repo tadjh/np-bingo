@@ -34,8 +34,14 @@ export function usePlayState() {
   const setCard = useCallback(() => {
     const [card, serial] = newCard(BINGO);
     playDispatch({ type: NEW_CARD, payload: { card: card, serial: serial } });
+    // if crossmarks = {}
+    if (
+      Object.keys(crossmarks).length === 0 &&
+      crossmarks.constructor === Object
+    )
+      return;
     clearCrossmarks();
-  }, []);
+  }, [crossmarks]);
 
   /**
    * Resets all crossmarks
