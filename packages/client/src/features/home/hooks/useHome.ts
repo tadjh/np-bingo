@@ -6,11 +6,11 @@ import { apiCreateRoom } from '../api';
 
 export function useHome(
   dispatchCreateRoom: (room: string, host: Host) => void
-): [boolean, () => void] {
-  let history = useHistory();
+) {
   const user = useContext(UserContext);
-  const { gamestate, room, play } = useContext(GameContext);
+  const { gamestate, play } = useContext(GameContext);
   const [isLoading, setIsLoading] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   /**
    * Reset gamestate on visit to home
@@ -23,10 +23,10 @@ export function useHome(
   /**
    * Route after create room
    */
-  useEffect(() => {
-    if (gamestate !== 'init' || room === '') return;
-    history.push(`/host?r=${room}`);
-  }, [gamestate, room, history]);
+  // useEffect(() => {
+  //   if (gamestate !== 'init' || room === '') return;
+  //   history.push(`/host?r=${room}`);
+  // }, [gamestate, room, history]);
 
   /**
    * Create a new game room
@@ -37,8 +37,9 @@ export function useHome(
     apiCreateRoom(user, (res) => {
       dispatchCreateRoom(res.data.game.room, res.data.game.host);
       setIsLoading(false);
+      setRedirect(true);
     });
   }, [isLoading, user, dispatchCreateRoom]);
 
-  return [isLoading, createRoom];
+  return { isLoading, redirect, createRoom };
 }

@@ -1,18 +1,22 @@
 import React from 'react';
 import Button from '../../../components/Inputs/Button';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, Redirect } from 'react-router-dom';
 import Logo from '../../../components/Logo';
 import Credit from '../components/Credit';
 import IconMenu from '../../../components/Inputs/IconMenu';
 import { Host } from '@np-bingo/types';
 import { useHome } from '../hooks';
 import Spinner from '../../../components/Feedback/Spinner';
+import { useContext } from 'react';
+import { GameContext } from '../../../context';
 
 export interface HomeProps {
   dispatchCreateRoom: (room: string, host: Host) => void;
 }
 export default function Home({ dispatchCreateRoom }: HomeProps): JSX.Element {
-  const [isLoading, createRoom] = useHome(dispatchCreateRoom);
+  const { isLoading, redirect, createRoom } = useHome(dispatchCreateRoom);
+  const { room } = useContext(GameContext);
+  if (redirect) return <Redirect to={`/host?r=${room}`} />;
   return (
     <React.Fragment>
       <header className="flex-1 items-center">
