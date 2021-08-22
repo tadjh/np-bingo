@@ -34,7 +34,7 @@ export function PlayerList({
           const { name, ready } = player;
           const handleRemovePlayer = onRemove && (() => onRemove(player));
           return (
-            <ListItem key={`player${index + 1}`}>
+            <ListItem key={`player-${index + 1}`}>
               <div
                 className={clsx(
                   'relative tooltip flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm',
