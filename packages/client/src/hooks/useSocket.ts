@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { Socket } from 'socket.io-client';
 import { Room } from '@np-bingo/types';
 import socketInit from '../lib/socket.io';
@@ -20,6 +20,7 @@ export function useAppSocket() {
    * @param room
    */
   const emitCreateRoom = (room: Room) => {
+    logger(`Creating room: ${room}`);
     socket.emit('host:create-room', room);
   };
 
@@ -40,10 +41,10 @@ export function useAppSocket() {
   /**
    * On Connect event
    */
-  const onConnect = () => {
+  const onConnect = useCallback(() => {
     logger('You have connected');
     logger(socket.id);
-  };
+  }, [socket.id]);
 
   /**
    * On Disconnect event
@@ -53,14 +54,19 @@ export function useAppSocket() {
   };
 
   /**
-   * Connect event listener
+   * Socket.io listeners
    */
-  socket.on('connect', onConnect);
+  useEffect(() => {
+    /**
+     * Connect event listener
+     */
+    socket.on('connect', onConnect);
 
-  /**
-   * Disconnect event listener
-   */
-  socket.on('disconnect', onDisconnect);
+    /**
+     * Disconnect event listener
+     */
+    socket.on('disconnect', onDisconnect);
+  }, [socket, onConnect]);
 
   return {
     socket,
