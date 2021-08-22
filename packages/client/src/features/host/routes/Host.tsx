@@ -48,25 +48,25 @@ export default function Host({
   return (
     <React.Fragment>
       <header className="gap-3">
-        <Button
+        {/* <Button
           variant="primary"
           color="primary"
           className="w-[132px]"
           onClick={gamestateToggle}
         >
           {toggleText}
-        </Button>
-        <Button
+        </Button> */}
+        {/* <Button
           variant="primary"
           color="primary"
           disabled={gamestate !== 'validate' && true}
           onClick={checkCard}
         >
           Check Card
-        </Button>
+        </Button> */}
       </header>
       <main>
-        <HostStatus gamestate={gamestate} count={players.length} />
+        {/* <HostStatus gamestate={gamestate} count={players.length} />
         {gamestate === 'init' || gamestate === 'ready' ? (
           <PlayerList data={players} action={handleRemovePlayer} />
         ) : (
@@ -98,7 +98,7 @@ export default function Host({
             </div>
             <Draws draws={draws} disabled={gamestate === 'end' && true} />
           </React.Fragment>
-        )}
+        )} */}
       </main>
       <footer className="gap-3">
         <Widgets room={room} />

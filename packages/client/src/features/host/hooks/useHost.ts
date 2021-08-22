@@ -114,7 +114,8 @@ export function useHost(dispatchers: HostDispatchers) {
    * @param room Room code
    */
   const handleLeaveRoom = () => {
-    emitLeaveRoom();
+    // emitLeaveRoom();
+    // TODO Deletes room if players[] is empty. Maybe add logic here to prevent unecesssary api trips
     apiDeleteRoom(room);
     // TODO Best way to handle async??
     // setIsDeleteRoom(true);
@@ -127,90 +128,90 @@ export function useHost(dispatchers: HostDispatchers) {
   /**
    * Keep the room in sync with this host's gamestate
    */
-  useEffect(() => {
-    switch (gamestate) {
-      case 'init':
-        // TODO probably unreachable
-        emitCreateRoom();
-        // TODO move play into different useEffect ??
-        play('ready');
-        break;
-      case 'ready':
-        emitHostReady();
-        break;
-      case 'standby':
-        emitHostStandby();
-        break;
-      case 'start':
-        emitHostStartedGame();
-        break;
-      case 'validate':
-        emitHostValidating();
-        break;
-      case 'failure':
-        emitNotAWinner();
-        break;
-      case 'win':
-        emitIsAWinner();
-        saveRoom();
-        break;
-      case 'end':
-        emitHostGameOver();
-        break;
-    }
-  }, [
-    gamestate,
-    play,
-    emitCreateRoom,
-    emitHostReady,
-    emitHostStandby,
-    emitHostStartedGame,
-    emitHostValidating,
-    emitNotAWinner,
-    emitIsAWinner,
-    emitHostGameOver,
-    saveRoom,
-  ]);
+  // useEffect(() => {
+  //   switch (gamestate) {
+  //     case 'init':
+  //       // TODO probably unreachable
+  //       emitCreateRoom();
+  //       // TODO move play into different useEffect ??
+  //       play('ready');
+  //       break;
+  //     case 'ready':
+  //       emitHostReady();
+  //       break;
+  //     case 'standby':
+  //       emitHostStandby();
+  //       break;
+  //     case 'start':
+  //       emitHostStartedGame();
+  //       break;
+  //     case 'validate':
+  //       emitHostValidating();
+  //       break;
+  //     case 'failure':
+  //       emitNotAWinner();
+  //       break;
+  //     case 'win':
+  //       emitIsAWinner();
+  //       saveRoom();
+  //       break;
+  //     case 'end':
+  //       emitHostGameOver();
+  //       break;
+  //   }
+  // }, [
+  //   gamestate,
+  //   play,
+  //   emitCreateRoom,
+  //   emitHostReady,
+  //   emitHostStandby,
+  //   emitHostStartedGame,
+  //   emitHostValidating,
+  //   emitNotAWinner,
+  //   emitIsAWinner,
+  //   emitHostGameOver,
+  //   saveRoom,
+  // ]);
 
   /**
    * Control listeners based on gamestate
    */
-  useEffect(() => {
-    switch (gamestate) {
-      case 'init':
-        break;
-      case 'ready':
-        listenPlayerJoined();
-        listenPlayerLeft();
-        listenPlayerReady();
-        break;
-      case 'standby':
-        deafenPlayerJoined();
-        deafenPlayerReady();
-        break;
-      case 'start':
-        listenReceiveCard();
-        break;
-      case 'validate':
-        deafenReceiveCard();
-        break;
-      default:
-        break;
-    }
-    return () => {
-      deafenPlayerLeft();
-    };
-  }, [
-    gamestate,
-    listenPlayerJoined,
-    deafenPlayerJoined,
-    listenPlayerLeft,
-    deafenPlayerLeft,
-    listenPlayerReady,
-    deafenPlayerReady,
-    listenReceiveCard,
-    deafenReceiveCard,
-  ]);
+  // useEffect(() => {
+  //   switch (gamestate) {
+  //     case 'init':
+  //       break;
+  //     case 'ready':
+  //       listenPlayerJoined();
+  //       listenPlayerLeft();
+  //       listenPlayerReady();
+  //       break;
+  //     case 'standby':
+  //       deafenPlayerJoined();
+  //       deafenPlayerReady();
+  //       break;
+  //     case 'start':
+  //       listenReceiveCard();
+  //       break;
+  //     case 'validate':
+  //       deafenReceiveCard();
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  //   return () => {
+  //     deafenPlayerLeft();
+  //   };
+  // }, [
+  //   gamestate,
+  //   listenPlayerJoined,
+  //   deafenPlayerJoined,
+  //   listenPlayerLeft,
+  //   deafenPlayerLeft,
+  //   listenPlayerReady,
+  //   deafenPlayerReady,
+  //   listenReceiveCard,
+  //   deafenReceiveCard,
+  // ]);
 
   return {
     progress,

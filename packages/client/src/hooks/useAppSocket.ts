@@ -2,7 +2,7 @@ import { Socket } from 'socket.io-client';
 import socket from '../lib/socket.io';
 import { logger } from '../utils';
 
-export function useAppSocket(setUserSocket: (socket: Socket) => void) {
+export function useAppSocket() {
   /**
    * Manual Connect
    */
@@ -23,7 +23,8 @@ export function useAppSocket(setUserSocket: (socket: Socket) => void) {
   const socketOnConnect = () => {
     socket.on('connect', () => {
       logger('You have connected');
-      setUserSocket(socket);
+      // TODO how to do this?
+      // setUserSocket(socket);
       logger(socket.id);
     });
   };
