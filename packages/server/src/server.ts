@@ -5,16 +5,15 @@ import cors from 'cors';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
 import { Room, SocketId } from 'socket.io-adapter';
+import { ORIGIN, PORT } from './config';
 import dotenv from 'dotenv';
 dotenv.config();
 
 import { IPlayer } from './models/player';
 import connectDB from './config/db';
-import { Ball, Card, Gamestate, Winner } from '@np-bingo/types';
-
+import { usePlayerHandlers, useHostHandlers } from './hooks';
 // routes
 import game from './routes/game';
-import { ORIGIN, PORT } from './config';
 
 const app = express();
 const httpServer = createServer(app);
@@ -46,19 +45,13 @@ app.get('/api/', (req, res) => {
 app.use('/api/game/', game);
 
 io.on('connection', (socket: Socket) => {
+  useHostHandlers(io, socket);
+  usePlayerHandlers(io, socket);
+
   console.log('User connected');
 
   socket.on('disconnect', () => {
     console.log('User disconnected');
-  });
-
-  /**
-   * From Host: Create room
-   * @param room Room
-   */
-  socket.on('create-room', (room: Room) => {
-    socket.join(room);
-    console.log(`User created room ${room}`);
   });
 
   /**
@@ -79,22 +72,22 @@ io.on('connection', (socket: Socket) => {
    * @param room
    * @param host (Optional) Socket ID
    */
-  socket.on(
-    'leave-room',
-    (room: Room, hostSocketId?: SocketId, player?: IPlayer) => {
-      socket.leave(room);
+  // socket.on(
+  //   'leave-room',
+  //   (room: Room, hostSocketId?: SocketId, player?: IPlayer) => {
+  //     socket.leave(room);
 
-      // Only resolves true when non-host leaves
-      if (hostSocketId && player) {
-        console.log(`Player left ${room}`);
+  //     // Only resolves true when non-host leaves
+  //     if (hostSocketId && player) {
+  //       console.log(`Player left ${room}`);
 
-        io.to(hostSocketId).emit('player-left', player);
-      } else {
-        console.log(`Host left ${room}`);
-        socket.to(room).emit('host-left');
-      }
-    }
-  );
+  //       io.to(hostSocketId).emit('player-left', player);
+  //     } else {
+  //       console.log(`Host left ${room}`);
+  //       socket.to(room).emit('host-left');
+  //     }
+  //   }
+  // );
 
   /**
    * From Host: Remove player from room
@@ -107,29 +100,6 @@ io.on('connection', (socket: Socket) => {
   //     console.log(`${player.name} socket not found in remove player`);
   //   }
   // });
-
-  /**
-   * Form Host: Gamestate listener
-   */
-  socket.on('host-gamestate', (gamestate: Gamestate, room: Room) => {
-    switch (gamestate) {
-      case 'ready':
-        console.log('Waiting for players to ready up');
-        break;
-      case 'standby':
-        console.log('Game beginning...');
-        break;
-      case 'start':
-        console.log('Game started');
-        break;
-      case 'end':
-        console.log('Game over!');
-        break;
-      default:
-        break;
-    }
-    socket.to(room).emit('room-gamestate', gamestate);
-  });
 
   /**
    * From Player: Player is ready
