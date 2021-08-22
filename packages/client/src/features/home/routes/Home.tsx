@@ -6,12 +6,13 @@ import Credit from '../components/Credit';
 import IconMenu from '../../../components/Inputs/IconMenu';
 import { Host } from '@np-bingo/types';
 import { useHome } from '../hooks';
+import Spinner from '../../../components/Feedback/Spinner';
 
 export interface HomeProps {
   dispatchCreateRoom: (room: string, host: Host) => void;
 }
 export default function Home({ dispatchCreateRoom }: HomeProps): JSX.Element {
-  const [createRoom] = useHome(dispatchCreateRoom);
+  const [isLoading, createRoom] = useHome(dispatchCreateRoom);
   return (
     <React.Fragment>
       <header className="flex-1 items-center">
@@ -27,7 +28,7 @@ export default function Home({ dispatchCreateRoom }: HomeProps): JSX.Element {
           Play
         </Button>
         <Button className="host-button" onClick={createRoom}>
-          Host
+          {!isLoading ? 'Host' : <Spinner className="h-6 w-6" />}
         </Button>
       </main>
       <footer className="flex-1 justify-end">

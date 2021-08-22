@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Host } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
@@ -6,10 +6,11 @@ import { apiCreateRoom } from '../api';
 
 export function useHome(
   dispatchCreateRoom: (room: string, host: Host) => void
-) {
+): [boolean, () => void] {
   let history = useHistory();
   const user = useContext(UserContext);
   const { gamestate, room, play } = useContext(GameContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   /**
    * Reset gamestate on visit to home
@@ -31,10 +32,13 @@ export function useHome(
    * Create a new game room
    */
   const createRoom = useCallback(() => {
+    if (isLoading) return;
+    setIsLoading(true);
     apiCreateRoom(user, (res) => {
       dispatchCreateRoom(res.data.game.room, res.data.game.host);
+      setIsLoading(false);
     });
-  }, [dispatchCreateRoom, user]);
+  }, [isLoading, user, dispatchCreateRoom]);
 
-  return [createRoom];
+  return [isLoading, createRoom];
 }

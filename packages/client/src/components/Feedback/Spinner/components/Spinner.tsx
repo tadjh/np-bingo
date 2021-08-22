@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import SpinnerIcon from '../../../../assets/icons/Spinner';
 
 export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -6,11 +7,12 @@ export interface SpinnerProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export default function SpinnerModal({
   id = 'spinner',
-  isLoading = false,
+  isLoading = true,
+  className = 'h-10 w-10',
   ...props
 }: SpinnerProps): JSX.Element | null {
   if (!isLoading) return null;
   return (
-    <SpinnerIcon className="animate-spin h-10 w-10 text-blue-500 dark:text-blue-300" />
+    <SpinnerIcon className={clsx('animate-spin text-blue-500', className)} />
   );
 }
