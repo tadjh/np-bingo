@@ -53,11 +53,8 @@ export default function Play({
     handleSendCard,
     handleLeaveRoom,
   } = usePlayButton(card, dispatchers.dispatchSendCard);
-  const {
-    primaryButtonText,
-    disablePrimaryButton,
-    disableBallDisplay,
-  } = usePlayDisplay();
+  const { primaryButtonText, disablePrimaryButton, disableBallDisplay } =
+    usePlayDisplay();
   return (
     <React.Fragment>
       <header className="gap-3">
