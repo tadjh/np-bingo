@@ -7,12 +7,10 @@ export type Player = {
   _id?: string;
   uid?: number;
   name?: string;
-  socket?: Socket;
+  socketId?: Socket['id'];
   ready?: boolean;
 };
-export interface Host extends Player {
-  socket: string;
-}
+export interface Host extends Player {}
 export type Ball = {
   key: number;
   number: number;
