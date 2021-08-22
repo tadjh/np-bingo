@@ -16,7 +16,7 @@ export default function generate(
 ): React.ReactElement<any, string | React.JSXElementConstructor<any>>[] {
   return array.map((item, index) =>
     React.cloneElement(element, {
-      key: `${key || 'item'}-${index + 1}`,
+      key: `${key || 'item'}${index + 1}`,
       children: override || item,
     })
   );

@@ -37,7 +37,7 @@ export function Board({
       </div>
       <div className="grid grid-cols-5">
         {card.map((value, index) => {
-          let id = `cell-${index + 1}`;
+          let id = `cell${index + 1}`;
           return (
             <Cell
               id={id}

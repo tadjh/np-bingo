@@ -7,7 +7,7 @@ export interface IconProps {
   size?: 'small' | 'medium' | 'large' | 'x-large';
   viewBox?: string;
 }
-
+// TODO Support disabled styles
 export default function Icon({
   children,
   size = 'medium',

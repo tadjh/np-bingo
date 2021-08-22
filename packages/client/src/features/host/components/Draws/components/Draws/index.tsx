@@ -24,7 +24,7 @@ export function Draws({
     <div className="shadow-xl grid grid-cols-5 rounded-xl font-mono font-bold uppercase text-sm bg-gray-100 dark:bg-gray-800 border-gray-400 border-4 dark:border-gray-800">
       {draws.map((column, columnIndex) => (
         <DrawsColumn
-          key={`column-${columnIndex + 1}`}
+          key={`column${columnIndex + 1}`}
           columnIndex={columnIndex}
           disabled={disabled}
         >

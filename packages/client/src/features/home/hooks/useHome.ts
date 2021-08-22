@@ -38,8 +38,9 @@ export function useHome(
       dispatchCreateRoom(res.data.game.room, res.data.game.host);
       setIsLoading(false);
       setRedirect(true);
+      play('ready'); // kind of hacky
     });
-  }, [isLoading, user, dispatchCreateRoom]);
+  }, [isLoading, user, play, dispatchCreateRoom]);
 
   return { isLoading, redirect, createRoom };
 }

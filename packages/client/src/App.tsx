@@ -101,11 +101,7 @@ export default function App() {
                           <Join dispatchJoinRoom={dispatchJoinRoom} />
                         </Route>
                         <Route path="/host">
-                          <Host
-                            dispatchers={hostDispatchers}
-                            draws={draws}
-                            players={players}
-                          />
+                          <Host dispatchers={hostDispatchers} draws={draws} />
                         </Route>
                         <Route path="/play/solo">
                           <Solo dispatchers={playDispatchers} />

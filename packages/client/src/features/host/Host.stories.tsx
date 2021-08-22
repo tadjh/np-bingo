@@ -21,16 +21,7 @@ export default {
         <Router>
           <Container>
             <Background />
-            <RoomContext.Provider
-              value={{
-                room: 'A1B2',
-                host: { ...AppState.host },
-                winner: { ...AppState.winner },
-                players: [],
-              }}
-            >
-              <Story />
-            </RoomContext.Provider>
+            <Story />
           </Container>
         </Router>
       );
@@ -49,29 +40,38 @@ export const Base = Template.bind({});
 Base.decorators = [
   (Story) => {
     return (
-      <GameContext.Provider
+      <RoomContext.Provider
         value={{
-          gamestate: 'standby',
-          gamemode: AppState.rules.mode,
-          play: () => {},
-          mode: () => {},
-          checkCard: () => null,
+          room: 'A1B2',
+          host: { ...AppState.host },
+          winner: { ...AppState.winner },
+          players: [],
         }}
       >
-        <BallContext.Provider
+        <GameContext.Provider
           value={{
-            ball: {
-              key: 1,
-              number: 24,
-              column: 'i',
-              remainder: 74,
-            },
-            newBall: () => ball,
+            gamestate: 'standby',
+            gamemode: AppState.rules.mode,
+            play: () => {},
+            mode: () => {},
+            checkCard: () => null,
           }}
         >
-          <Story />
-        </BallContext.Provider>
-      </GameContext.Provider>
+          <BallContext.Provider
+            value={{
+              ball: {
+                key: 1,
+                number: 24,
+                column: 'i',
+                remainder: 74,
+              },
+              newBall: () => ball,
+            }}
+          >
+            <Story />
+          </BallContext.Provider>
+        </GameContext.Provider>{' '}
+      </RoomContext.Provider>
     );
   },
 ];
@@ -83,17 +83,26 @@ export const Waiting = Template.bind({});
 Waiting.decorators = [
   (Story) => {
     return (
-      <GameContext.Provider
+      <RoomContext.Provider
         value={{
-          gamestate: 'ready',
-          gamemode: AppState.rules.mode,
-          play: () => {},
-          mode: () => {},
-          checkCard: () => null,
+          room: 'A1B2',
+          host: { ...AppState.host },
+          winner: { ...AppState.winner },
+          players: [],
         }}
       >
-        <Story />
-      </GameContext.Provider>
+        <GameContext.Provider
+          value={{
+            gamestate: 'ready',
+            gamemode: AppState.rules.mode,
+            play: () => {},
+            mode: () => {},
+            checkCard: () => null,
+          }}
+        >
+          <Story />
+        </GameContext.Provider>{' '}
+      </RoomContext.Provider>
     );
   },
 ];
@@ -102,55 +111,86 @@ Waiting.args = {
 };
 
 export const ReadyList = Template.bind({});
-ReadyList.decorators = [...Waiting.decorators];
-ReadyList.args = {
-  players: [
-    {
-      _id: 'adaskdjsahkd',
-      uid: 2222,
-      name: 'Jane Doe',
-      socket: {} as Socket,
-      ready: true,
-    },
-    {
-      _id: 'adsjfhskjdfh',
-      uid: 2223,
-      name: 'Jane Doa',
-      socket: {} as Socket,
-      ready: false,
-    },
-    {
-      _id: 'fasdiuywqqe',
-      uid: 2224,
-      name: 'Jane Do',
-      socket: {} as Socket,
-      ready: false,
-    },
-    {
-      _id: 'damnsbfndbvfw',
-      uid: 2225,
-      name: 'Jane Doh',
-      socket: {} as Socket,
-      ready: false,
-    },
-  ],
-};
+ReadyList.decorators = [
+  (Story) => {
+    return (
+      <RoomContext.Provider
+        value={{
+          room: 'A1B2',
+          host: { ...AppState.host },
+          winner: { ...AppState.winner },
+          players: [
+            {
+              _id: 'adaskdjsahkd',
+              uid: 2222,
+              name: 'Jane Doe',
+              socket: {} as Socket,
+              ready: true,
+            },
+            {
+              _id: 'adsjfhskjdfh',
+              uid: 2223,
+              name: 'Jane Doa',
+              socket: {} as Socket,
+              ready: false,
+            },
+            {
+              _id: 'fasdiuywqqe',
+              uid: 2224,
+              name: 'Jane Do',
+              socket: {} as Socket,
+              ready: false,
+            },
+            {
+              _id: 'damnsbfndbvfw',
+              uid: 2225,
+              name: 'Jane Doh',
+              socket: {} as Socket,
+              ready: false,
+            },
+          ],
+        }}
+      >
+        <GameContext.Provider
+          value={{
+            gamestate: 'ready',
+            gamemode: AppState.rules.mode,
+            play: () => {},
+            mode: () => {},
+            checkCard: () => null,
+          }}
+        >
+          <Story />
+        </GameContext.Provider>{' '}
+      </RoomContext.Provider>
+    );
+  },
+];
 
 export const GameOver = Template.bind({});
 GameOver.decorators = [
   (Story) => {
     return (
-      <GameContext.Provider
+      <RoomContext.Provider
         value={{
-          gamestate: 'end',
-          gamemode: AppState.rules.mode,
-          play: () => {},
-          mode: () => {},
-          checkCard: () => null,
+          room: 'A1B2',
+          host: { ...AppState.host },
+          winner: { ...AppState.winner },
+          players: [],
         }}
       >
-        <Story />
-      </GameContext.Provider>
+        <GameContext.Provider
+          value={{
+            gamestate: 'end',
+            gamemode: AppState.rules.mode,
+            play: () => {},
+            mode: () => {},
+            checkCard: () => null,
+          }}
+        >
+          <Story />
+        </GameContext.Provider>
+      </RoomContext.Provider>
     );
   },
 ];
