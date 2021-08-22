@@ -6,7 +6,8 @@ import { Socket } from 'socket.io-client';
 
 export const UserContext = React.createContext<{
   user: Player;
-  setUserSocket: (socket: Socket) => void;
+  // socket: Socket;
+  // setUserSocket: (socket: Socket) => void;
 }>({
   user: {
     _id: '',
@@ -15,7 +16,8 @@ export const UserContext = React.createContext<{
     socket: {} as Socket,
     ready: false,
   },
-  setUserSocket: () => {},
+  // socket: {} as Socket,
+  // setUserSocket: () => {},
 });
 
 export const FeautresContext = React.createContext({ ...features });
@@ -31,12 +33,16 @@ export const SoundContext = React.createContext({
   toggleSounds: () => {},
 });
 
-export const GameContext = React.createContext({
-  gamestate: initialState.gamestate,
-  gamemode: initialState.rules.mode,
+export const RoomContext = React.createContext({
   room: initialState.room,
   host: { ...initialState.host },
   winner: { ...initialState.winner },
+  players: [] as Player[],
+});
+
+export const GameContext = React.createContext({
+  gamestate: initialState.gamestate,
+  gamemode: initialState.rules.mode,
   play: (gamestate: Gamestate) => {},
   mode: (gamemode: Gamemode) => {},
   checkCard: (): Winner | null => null,

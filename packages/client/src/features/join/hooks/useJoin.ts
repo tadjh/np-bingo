@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Host, Room } from '@np-bingo/types';
-import { GameContext, UserContext } from '../../../context';
+import { GameContext, RoomContext, UserContext } from '../../../context';
 import { useQuery } from '../../../hooks';
 import socket from '../../../lib/socket.io';
 import { apiUpdateRoom } from '../api';
@@ -10,7 +10,8 @@ export function useJoin(
   dispatchJoinRoom: (room: string, host: Host) => void
 ): [(room: Room) => void, () => void] {
   const { user } = useContext(UserContext);
-  const { room, host, play, mode } = useContext(GameContext);
+  const { room, host } = useContext(RoomContext);
+  const { play, mode } = useContext(GameContext);
   let query = useQuery();
   const queryRoom = query.get('r');
   let history = useHistory();

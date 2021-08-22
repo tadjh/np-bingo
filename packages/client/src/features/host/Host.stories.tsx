@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Host, { HostProps } from './routes/Host';
-import { BallContext, GameContext } from '../../context';
+import { BallContext, GameContext, RoomContext } from '../../context';
 import { initialState as AppState } from '../../reducers/app.reducer';
 import Container from '../../components/Layout/Container';
 import { Ball } from '@np-bingo/types';
@@ -21,7 +21,16 @@ export default {
         <Router>
           <Container>
             <Background />
-            <Story />
+            <RoomContext.Provider
+              value={{
+                room: 'A1B2',
+                host: { ...AppState.host },
+                winner: { ...AppState.winner },
+                players: [],
+              }}
+            >
+              <Story />
+            </RoomContext.Provider>
           </Container>
         </Router>
       );
@@ -44,9 +53,6 @@ Base.decorators = [
         value={{
           gamestate: 'standby',
           gamemode: AppState.rules.mode,
-          room: 'A1B2',
-          host: { ...AppState.host },
-          winner: { ...AppState.winner },
           play: () => {},
           mode: () => {},
           checkCard: () => null,
@@ -81,9 +87,6 @@ Waiting.decorators = [
         value={{
           gamestate: 'ready',
           gamemode: AppState.rules.mode,
-          room: 'A1B2',
-          host: { ...AppState.host },
-          winner: { ...AppState.winner },
           play: () => {},
           mode: () => {},
           checkCard: () => null,
@@ -141,9 +144,6 @@ GameOver.decorators = [
         value={{
           gamestate: 'end',
           gamemode: AppState.rules.mode,
-          room: 'A1B2',
-          host: { ...AppState.host },
-          winner: { ...AppState.winner },
           play: () => {},
           mode: () => {},
           checkCard: () => null,

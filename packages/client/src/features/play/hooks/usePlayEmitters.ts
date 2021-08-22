@@ -1,12 +1,13 @@
 import { useContext, useEffect } from 'react';
 import { Card } from '@np-bingo/types';
-import { GameContext, UserContext } from '../../../context';
+import { GameContext, RoomContext, UserContext } from '../../../context';
 import socket from '../../../lib/socket.io';
 import { usePlayButton } from '.';
 
 export function usePlayEmitters() {
   const user = useContext(UserContext);
-  const { gamestate, room, host, winner } = useContext(GameContext);
+  const { room, host, winner } = useContext(RoomContext);
+  const { gamestate } = useContext(GameContext);
   // const { triggerBallEffects } = usePlayButton();
 
   // TODO Consider socket host.socket, user and maybe room into an object

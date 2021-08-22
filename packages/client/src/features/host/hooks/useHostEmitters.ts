@@ -1,12 +1,12 @@
 import { useCallback, useContext } from 'react';
 import { Ball, Player } from '@np-bingo/types';
-import { GameContext, UserContext } from '../../../context';
+import { RoomContext, UserContext } from '../../../context';
 
 export function useHostEmitters() {
   const {
     user: { socket },
   } = useContext(UserContext);
-  const { room, winner } = useContext(GameContext);
+  const { room, winner } = useContext(RoomContext);
 
   /**
    * To player: Kick Player

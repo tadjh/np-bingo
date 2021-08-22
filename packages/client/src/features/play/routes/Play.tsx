@@ -6,7 +6,12 @@ import {
   Player,
   Ball as BallType,
 } from '@np-bingo/types';
-import { BallContext, FeautresContext, GameContext } from '../../../context';
+import {
+  BallContext,
+  FeautresContext,
+  GameContext,
+  RoomContext,
+} from '../../../context';
 import Ball from '../../../components/Display/Ball';
 import { Board } from '../components/Board';
 import Button from '../../../components/Inputs/Button';
@@ -39,7 +44,8 @@ export default function Play({
   confettiOverride = false,
 }: PlayProps) {
   const { allowNewCard } = useContext(FeautresContext);
-  const { gamestate, room } = useContext(GameContext);
+  const { room } = useContext(RoomContext);
+  const { gamestate } = useContext(GameContext);
   const { ball } = useContext(BallContext);
   const { isWinner, card, serial, crossmarks, kicked, setCard } = usePlay(
     dispatchers,

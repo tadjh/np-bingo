@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import Ball from '../../../components/Display/Ball';
-import { BallContext, GameContext } from '../../../context';
+import { BallContext, GameContext, RoomContext } from '../../../context';
 import { Player, Pool } from '@np-bingo/types';
 import Button from '../../../components/Inputs/Button';
 import { Draws } from '../components/Draws';
@@ -30,7 +30,8 @@ export default function Host({
   draws = [[], [], [], [], []],
   players = [],
 }: HostProps) {
-  const { gamestate, room, checkCard } = useContext(GameContext);
+  const { room } = useContext(RoomContext);
+  const { gamestate, checkCard } = useContext(GameContext);
   const {
     ball: { number, column, remainder },
   } = useContext(BallContext);

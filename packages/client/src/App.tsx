@@ -14,6 +14,7 @@ import {
   SoundContext,
   FeautresContext,
   UserContext,
+  RoomContext,
 } from './context';
 import Background from './components/Surfaces/Background';
 import Container from './components/Layout/Container';
@@ -71,51 +72,57 @@ export default function App() {
           <SoundContext.Provider
             value={{ volume: defaultVolume, sounds, toggleSounds }}
           >
-            <GameContext.Provider
+            <RoomContext.Provider
               value={{
-                gamestate,
-                gamemode,
                 room,
                 host,
                 winner,
-                play,
-                mode,
-                checkCard,
+                players,
               }}
             >
-              <BallContext.Provider value={{ ball, newBall }}>
-                <div id="App" className={theme}>
-                  <Container>
-                    <Background />
-                    <Switch>
-                      <Route path="/create">
-                        <Create />
-                      </Route>
-                      <Route path="/join">
-                        <Join dispatchJoinRoom={dispatchJoinRoom} />
-                      </Route>
-                      <Route path="/host">
-                        <Host
-                          dispatchers={hostDispatchers}
-                          draws={draws}
-                          players={players}
-                        />
-                      </Route>
-                      <Route path="/play/solo">
-                        <Solo dispatchers={playDispatchers} />
-                      </Route>
-                      {/*
+              <GameContext.Provider
+                value={{
+                  gamestate,
+                  gamemode,
+                  play,
+                  mode,
+                  checkCard,
+                }}
+              >
+                <BallContext.Provider value={{ ball, newBall }}>
+                  <div id="App" className={theme}>
+                    <Container>
+                      <Background />
+                      <Switch>
+                        <Route path="/create">
+                          <Create />
+                        </Route>
+                        <Route path="/join">
+                          <Join dispatchJoinRoom={dispatchJoinRoom} />
+                        </Route>
+                        <Route path="/host">
+                          <Host
+                            dispatchers={hostDispatchers}
+                            draws={draws}
+                            players={players}
+                          />
+                        </Route>
+                        <Route path="/play/solo">
+                          <Solo dispatchers={playDispatchers} />
+                        </Route>
+                        {/*
                       <Route path="/play">
                         <Play dispatchers={playerDispatchers} />
                       </Route> */}
-                      <Route path="/">
-                        <Home dispatchCreateRoom={dispatchCreateRoom} />
-                      </Route>
-                    </Switch>
-                  </Container>
-                </div>
-              </BallContext.Provider>
-            </GameContext.Provider>
+                        <Route path="/">
+                          <Home dispatchCreateRoom={dispatchCreateRoom} />
+                        </Route>
+                      </Switch>
+                    </Container>
+                  </div>
+                </BallContext.Provider>
+              </GameContext.Provider>
+            </RoomContext.Provider>
           </SoundContext.Provider>
         </ThemeContext.Provider>
       </UserContext.Provider>
