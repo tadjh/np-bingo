@@ -11,7 +11,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * @param room
    */
   const createRoom = (room: Room) => {
-    console.log(`Host created room ${room}`);
+    console.log(`${room}: Host created room`);
     socket.join(room);
   };
 
@@ -20,7 +20,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * @param room
    */
   const hostLeaveRoom = (room: Room) => {
-    socket.to(room).emit('host:left-game');
+    socket.to(room).emit('host:left-room');
     leaveRoom(room, 'Host');
   };
 
@@ -32,16 +32,16 @@ export function useHostHandlers(io: Server, socket: Socket) {
   const hostEmitRoomGamestate = (gamestate: Gamestate, room: Room) => {
     switch (gamestate) {
       case 'ready':
-        console.log('Waiting for players to ready up');
+        console.log(`${room}: Waiting for players to ready up`);
         break;
       case 'standby':
-        console.log('Game beginning...');
+        console.log(`${room}: Game beginning...`);
         break;
       case 'start':
-        console.log('Game started');
+        console.log(`${room}: Game started`);
         break;
       case 'end':
-        console.log('Game over!');
+        console.log(`${room}: Game over!`);
         break;
       default:
         break;

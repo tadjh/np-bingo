@@ -9,7 +9,7 @@ export function useCommonHandlers(io: Server, socket: Socket) {
    */
   const leaveRoom = (room: Room, name: string) => {
     socket.leave(room);
-    console.log(`${name} left room: ${room}`);
+    console.log(`${room}: ${name} left room`);
   };
 
   /**
