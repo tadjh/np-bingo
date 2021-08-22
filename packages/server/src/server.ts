@@ -6,8 +6,6 @@ import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
 import { Room, SocketId } from 'socket.io-adapter';
 import { ORIGIN, PORT } from './config';
-import dotenv from 'dotenv';
-dotenv.config();
 
 import { IPlayer } from './models/player';
 import connectDB from './config/db';
@@ -66,28 +64,6 @@ io.on('connection', (socket: Socket) => {
   //   console.log(`Player joined ${room}`);
   //   io.to(host).emit('player-joined', player);
   // });
-
-  /**
-   * From Host or Player: Leave room
-   * @param room
-   * @param host (Optional) Socket ID
-   */
-  // socket.on(
-  //   'leave-room',
-  //   (room: Room, hostSocketId?: SocketId, player?: IPlayer) => {
-  //     socket.leave(room);
-
-  //     // Only resolves true when non-host leaves
-  //     if (hostSocketId && player) {
-  //       console.log(`Player left ${room}`);
-
-  //       io.to(hostSocketId).emit('player-left', player);
-  //     } else {
-  //       console.log(`Host left ${room}`);
-  //       socket.to(room).emit('host-left');
-  //     }
-  //   }
-  // );
 
   /**
    * From Host: Remove player from room
