@@ -24,7 +24,7 @@ export default function Modal({
   modal.setAttribute('class', '');
   if (!open) return null;
   modal.setAttribute('class', classes);
-  // TODO add event for Escape key
+  // TODO add event for Escape key or react-aria
   // TODO focus?
   return ReactDOM.createPortal(
     <ModalBase onClose={onClose}>{children}</ModalBase>,
