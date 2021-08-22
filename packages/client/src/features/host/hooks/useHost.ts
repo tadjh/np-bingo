@@ -18,29 +18,29 @@ export function useHost(dispatchers: HostDispatchers) {
   const { gamestate, play } = useContext(GameContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
   const { newBall } = useContext(BallContext);
-  const {
-    // emitKickPlayer,
-    // emitSendBall,
-    // emitCreateRoom,
-    // emitLeaveRoom,
-    emitHostReady,
-    emitHostStandby,
-    // emitHostStartedGame,
-    // emitHostValidating,
-    // emitNotAWinner,
-    // emitIsAWinner,
-    emitHostGameOver,
-  } = useHostEmitters();
-  const {
-    listenPlayerJoined,
-    deafenPlayerJoined,
-    listenPlayerLeft,
-    deafenPlayerLeft,
-    listenPlayerReady,
-    deafenPlayerReady,
-    listenReceiveCard,
-    deafenReceiveCard,
-  } = useHostListeners(dispatchers);
+  // const {
+  // emitKickPlayer,
+  // emitSendBall,
+  // emitCreateRoom,
+  // emitLeaveRoom,
+  // emitHostReady,
+  // emitHostStandby,
+  // emitHostStartedGame,
+  // emitHostValidating,
+  // emitNotAWinner,
+  // emitIsAWinner,
+  // emitHostGameOver,
+  // } = useHostEmitters();
+  // const {
+  //   listenPlayerJoined,
+  //   deafenPlayerJoined,
+  //   listenPlayerLeft,
+  //   deafenPlayerLeft,
+  //   listenPlayerReady,
+  //   deafenPlayerReady,
+  //   listenReceiveCard,
+  //   deafenReceiveCard,
+  // } = useHostListeners(dispatchers);
 
   /**
    * Kick player from room
@@ -68,18 +68,6 @@ export function useHost(dispatchers: HostDispatchers) {
       enableProgress();
       // emitSendBall(ball);
     }
-  };
-
-  /**
-   * Leave room by room code
-   * @param room Room code
-   */
-  const handleLeaveRoom = () => {
-    // emitLeaveRoom();
-    // TODO Deletes room if players[] is empty. Maybe add logic here to prevent unecesssary api trips
-    apiDeleteRoom(room);
-    // TODO Best way to handle async??
-    // setIsDeleteRoom(true);
   };
 
   const saveRoom = useCallback(() => {
@@ -179,6 +167,5 @@ export function useHost(dispatchers: HostDispatchers) {
     inProgress,
     handleRemovePlayer,
     handleBall,
-    handleLeaveRoom,
   };
 }

@@ -34,15 +34,15 @@ export default function Host({
   const {
     ball: { number, column, remainder },
   } = useContext(BallContext);
+  const { progress, inProgress, handleRemovePlayer, handleBall } =
+    useHost(dispatchers);
   const {
-    progress,
-    inProgress,
-    handleRemovePlayer,
-    handleBall,
+    gamestateToggle,
+    toggleText,
+    disableCheckCard,
+    setDisabled,
     handleLeaveRoom,
-  } = useHost(dispatchers);
-  const { gamestateToggle, toggleText, disableCheckCard, setDisabled } =
-    useHostButtons();
+  } = useHostButtons();
   const [playRandomSfx] = useHostSounds();
   return (
     <React.Fragment>

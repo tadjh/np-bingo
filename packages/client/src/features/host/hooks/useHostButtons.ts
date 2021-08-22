@@ -1,15 +1,16 @@
 import { useContext } from 'react';
-import { GameContext } from '../../../context';
+import { GameContext, RoomContext } from '../../../context';
+import { apiDeleteRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
 
 export function useHostButtons() {
+  const { room } = useContext(RoomContext);
   const { gamestate, play } = useContext(GameContext);
-  const { emitHostStandby, emitHostReady, emitHostGameOver } =
+  const { emitLeaveRoom, emitHostStandby, emitHostReady, emitHostGameOver } =
     useHostEmitters();
   /**
    * Three way toggle for host main button
    * @param gamestate Gamestate
-   * @param room Room
    */
   const gamestateToggle = () => {
     switch (gamestate) {
@@ -31,7 +32,7 @@ export function useHostButtons() {
   /**
    * Display text for main action button
    * @param gamestate
-   * @returns
+   * @returns string
    */
   const toggleText = (): string => {
     switch (gamestate) {
@@ -68,5 +69,23 @@ export function useHostButtons() {
     }
   };
 
-  return { gamestateToggle, toggleText, disableCheckCard, setDisabled };
+  /**
+   * Leave room by room code
+   * @param room Room code
+   */
+  const handleLeaveRoom = () => {
+    emitLeaveRoom();
+    // TODO Deletes room if players[] is empty. Maybe add logic here to prevent unecesssary api trips
+    apiDeleteRoom(room);
+    // TODO Best way to handle async??
+    // setIsDeleteRoom(true);
+  };
+
+  return {
+    gamestateToggle,
+    toggleText,
+    disableCheckCard,
+    setDisabled,
+    handleLeaveRoom,
+  };
 }
