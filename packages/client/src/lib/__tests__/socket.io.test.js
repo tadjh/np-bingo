@@ -1,11 +1,13 @@
 import { createServer } from 'http';
-import { Server } from 'socket.io';
-import Client from 'socket.io-client';
+import { Server, Socket as ServerSocket } from 'socket.io';
+import Client, { Socket as ClientSocket } from 'socket.io-client';
+import { Gamestate } from '@np-bingo/types';
+import { AddressInfo } from 'net';
 
 // TODO Implement socket.io tests
 
 describe('Basic Socket.io Tests', () => {
-  let io, serverSocket, clientSocket;
+  let io: Server, serverSocket: ServerSocket, clientSocket: ClientSocket;
 
   beforeAll((done) => {
     const httpServer = createServer();
@@ -26,20 +28,20 @@ describe('Basic Socket.io Tests', () => {
   });
 
   test('should work', (done) => {
-    clientSocket.on('hello', (arg) => {
-      expect(arg).toBe('world');
+    clientSocket.on('room-gamestate', (gamestate: Gamestate) => {
+      expect(gamestate).toBe('ready');
       done();
     });
-    serverSocket.emit('hello', 'world');
+    serverSocket.emit('room-gamestate', 'ready');
   });
 
-  test('should work (with ack)', (done) => {
-    serverSocket.on('hi', (cb) => {
-      cb('hola');
-    });
-    clientSocket.emit('hi', (arg) => {
-      expect(arg).toBe('hola');
-      done();
-    });
-  });
+  // test('should work (with ack)', (done) => {
+  //   serverSocket.on('hi', (cb) => {
+  //     cb('hola');
+  //   });
+  //   clientSocket.emit('hi', (arg) => {
+  //     expect(arg).toBe('hola');
+  //     done();
+  //   });
+  // });
 });
