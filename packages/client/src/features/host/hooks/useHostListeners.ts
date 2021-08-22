@@ -9,9 +9,7 @@ export function useHostListeners({
   dispatchPlayerLeft,
   dispatchPlayerReady,
 }: HostDispatchers) {
-  const {
-    user: { socket },
-  } = useContext(UserContext);
+  const { socket } = useContext(UserContext);
   const { play } = useContext(GameContext);
 
   /**

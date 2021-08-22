@@ -1,5 +1,4 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import { Host } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
 import { apiCreateRoom } from '../api';
@@ -7,7 +6,7 @@ import { apiCreateRoom } from '../api';
 export function useHome(
   dispatchCreateRoom: (room: string, host: Host) => void
 ) {
-  const user = useContext(UserContext);
+  const { user, hostConnect } = useContext(UserContext);
   const { gamestate, play } = useContext(GameContext);
   const [isLoading, setIsLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
@@ -21,14 +20,6 @@ export function useHome(
   }, [gamestate, play]);
 
   /**
-   * Route after create room
-   */
-  // useEffect(() => {
-  //   if (gamestate !== 'init' || room === '') return;
-  //   history.push(`/host?r=${room}`);
-  // }, [gamestate, room, history]);
-
-  /**
    * Create a new game room
    */
   const createRoom = useCallback(() => {
@@ -37,10 +28,11 @@ export function useHome(
     apiCreateRoom(user, (res) => {
       dispatchCreateRoom(res.data.game.room, res.data.game.host);
       setIsLoading(false);
+      hostConnect(res.data.game.room);
       setRedirect(true);
       play('ready'); // kind of hacky
     });
-  }, [isLoading, user, play, dispatchCreateRoom]);
+  }, [isLoading, user, play, dispatchCreateRoom, hostConnect]);
 
   return { isLoading, redirect, createRoom };
 }

@@ -12,7 +12,7 @@ import {
   BallContext,
   ThemeContext,
   SoundContext,
-  FeautresContext,
+  FeaturesContext,
   UserContext,
   RoomContext,
 } from './context';
@@ -22,7 +22,7 @@ import { useAppState } from './hooks/useAppState';
 import './App.css';
 import features from './config/features';
 export default function App() {
-  const { user, setUserSocket } = useUser();
+  const { user } = useUser();
   const {
     state: {
       gamestate,
@@ -48,7 +48,7 @@ export default function App() {
   } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useToggle(config.sounds);
-  const { defaultVolume } = useContext(FeautresContext);
+  const { defaultVolume } = useContext(FeaturesContext);
   const [newBall, checkCard] = useApp(
     playerCard,
     pool,
@@ -57,17 +57,11 @@ export default function App() {
     dispatchCheckCardFailure,
     dispatchNewBall
   );
-  const {
-    socket,
-    socketConnect,
-    socketOnConnect,
-    socketDisconnect,
-    socketOnDisconnect,
-  } = useAppSocket();
+  const { socket, hostConnect } = useAppSocket();
 
   return (
-    <FeautresContext.Provider value={features}>
-      <UserContext.Provider value={{ user }}>
+    <FeaturesContext.Provider value={features}>
+      <UserContext.Provider value={{ user, socket, hostConnect }}>
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <SoundContext.Provider
             value={{ volume: defaultVolume, sounds, toggleSounds }}
@@ -122,6 +116,6 @@ export default function App() {
           </SoundContext.Provider>
         </ThemeContext.Provider>
       </UserContext.Provider>
-    </FeautresContext.Provider>
+    </FeaturesContext.Provider>
   );
 }

@@ -3,9 +3,7 @@ import { Ball, Player } from '@np-bingo/types';
 import { RoomContext, UserContext } from '../../../context';
 
 export function useHostEmitters() {
-  const {
-    user: { socket },
-  } = useContext(UserContext);
+  const { socket } = useContext(UserContext);
   const { room, winner } = useContext(RoomContext);
 
   /**
@@ -80,23 +78,23 @@ export function useHostEmitters() {
   }, [socket, room, winner]);
 
   /**
-   * To Room: Card is a winner
+   * To Room: Game over
    */
   const emitHostGameOver = useCallback(() => {
-    socket.emit('end', room);
+    socket.emit('host-gamestate', 'end', room);
   }, [socket, room]);
 
   return {
-    emitKickPlayer,
-    emitSendBall,
-    emitLeaveRoom,
+    // emitKickPlayer,
+    // emitSendBall,
+    // emitLeaveRoom,
     emitCreateRoom,
     emitHostReady,
     emitHostStandby,
-    emitHostStartedGame,
-    emitHostValidating,
-    emitNotAWinner,
-    emitIsAWinner,
+    // emitHostStartedGame,
+    // emitHostValidating,
+    // emitNotAWinner,
+    // emitIsAWinner,
     emitHostGameOver,
   };
 }

@@ -13,9 +13,7 @@ export function usePlayListeners({
   dispatchCheckCardFailure,
   dispatchSendCard,
 }: PlayerDispatchers) {
-  const {
-    user: { socket },
-  } = useContext(UserContext);
+  const { socket } = useContext(UserContext);
   const { gamestate, play } = useContext(GameContext);
   /**
    * To Player: Host left

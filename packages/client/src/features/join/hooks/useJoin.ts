@@ -3,13 +3,12 @@ import { useHistory } from 'react-router-dom';
 import { Host, Room } from '@np-bingo/types';
 import { GameContext, RoomContext, UserContext } from '../../../context';
 import { useQuery } from '../../../hooks';
-import socket from '../../../lib/socket.io';
 import { apiUpdateRoom } from '../api';
 
 export function useJoin(
   dispatchJoinRoom: (room: string, host: Host) => void
 ): [(room: Room) => void, () => void] {
-  const { user } = useContext(UserContext);
+  const { user, socket } = useContext(UserContext);
   const { room, host } = useContext(RoomContext);
   const { play, mode } = useContext(GameContext);
   let query = useQuery();
@@ -48,9 +47,9 @@ export function useJoin(
    */
   useEffect(() => {
     if (room === '') return;
-    socket.emit('join-room', room, host.socket, user);
+    socket.emit('join-room', room, host.socketId, user);
     history.push(`/play?r=${room}`);
-  }, [room, host.socket, user, history]);
+  }, [room, socket, host.socketId, user, history]);
 
   return [joinRoom, handleSolo];
 }

@@ -1,8 +1,11 @@
 import { useContext } from 'react';
 import { GameContext } from '../../../context';
+import { useHostEmitters } from './useHostEmitters';
 
 export function useHostButtons() {
   const { gamestate, play } = useContext(GameContext);
+  const { emitHostStandby, emitHostReady, emitHostGameOver } =
+    useHostEmitters();
   /**
    * Three way toggle for host main button
    * @param gamestate Gamestate
@@ -12,12 +15,15 @@ export function useHostButtons() {
     switch (gamestate) {
       case 'ready':
         play('standby');
+        emitHostStandby();
         break;
       case 'end':
         play('ready');
+        emitHostReady();
         break;
       default:
         play('end');
+        emitHostGameOver();
         break;
     }
   };
