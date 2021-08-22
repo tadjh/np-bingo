@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import {
   Winner,
   Gamemode,
+  Kicked,
   Card,
   Player,
   Ball as BallType,
@@ -11,6 +12,7 @@ import Ball from '../../../components/Display/Ball';
 import { Board } from '../components/Board';
 import Button from '../../../components/Inputs/Button';
 import Link from '../../../components/Navigation/Link';
+import { initialState as appState } from '../../../reducers/app.reducer';
 import Widgets from '../../../components/Widgets';
 import KickedModal from '../components/KickedModal';
 import Confetti from '../components/Confetti';
@@ -18,8 +20,8 @@ import { usePlay, usePlayButton, usePlayDisplay } from '../hooks';
 import PlayStatus from '../components/PlayStatus';
 
 export interface PlayerDispatchers {
-  dispatchRoomAbandoned?: () => void;
-  dispatchPlayerKicked?: () => void;
+  dispatchRoomAbandoned: () => void;
+  dispatchPlayerKicked: () => void;
   dispatchDispenseBall: (ball: BallType) => void;
   dispatchPlayerReady: (player: Player) => void;
   dispatchCheckCardSuccess: (winner: Winner) => void;
@@ -29,35 +31,32 @@ export interface PlayerDispatchers {
 
 export interface PlayProps {
   dispatchers: PlayerDispatchers;
+  winner?: Winner;
+  kicked: Kicked;
   gamemode?: Gamemode;
-  confettiOverride?: boolean;
+  sendCard?: (card: Card, user?: Player) => void;
 }
 
 export default function Play({
   dispatchers,
-  gamemode = 'default',
-  confettiOverride = false,
+  winner = { ...appState.winner },
+  kicked = { status: false, reason: 'none' },
+  gamemode: gamemodeOverride = 'default',
 }: PlayProps) {
-  const { allowNewCard } = useContext(FeautresContext);
-  const { gamestate, room } = useContext(GameContext);
+  const { gamestate, gamemode, room } = useContext(GameContext);
   const { ball } = useContext(BallContext);
-  const { isWinner, card, serial, crossmarks, kicked, setCard } = usePlay(
-    dispatchers,
-    gamemode,
-    confettiOverride
-  );
+  const { allowNewCard } = useContext(FeautresContext);
+  const { isConfetti, card, serial, crossmarks, setCard, toggleCrossmark } =
+    usePlay(dispatchers, gamemodeOverride);
   const {
     progress,
     inProgress,
     handlePrimaryButton,
     handleSendCard,
     handleLeaveRoom,
-  } = usePlayButton(card, dispatchers.dispatchSendCard);
-  const {
-    primaryButtonText,
-    disablePrimaryButton,
-    disableBallDisplay,
-  } = usePlayDisplay();
+  } = usePlayButton();
+  const { primaryButtonText, disablePrimaryButton, disableBallDisplay } =
+    usePlayDisplay();
   return (
     <React.Fragment>
       <header className="gap-3">
@@ -67,15 +66,15 @@ export default function Play({
           </Button>
         )}
         <Button
-          variant="primary"
+          variant="contained"
           disabled={disablePrimaryButton()}
           onClick={handlePrimaryButton}
-          className="w-[108px]"
+          className="w-32"
         >
           {primaryButtonText()}
         </Button>
         <Button
-          variant="success"
+          variant="contained"
           disabled={gamestate !== 'start' && true}
           onClick={handleSendCard}
         >
@@ -95,8 +94,9 @@ export default function Play({
         <Board
           card={[...card]}
           serial={serial}
-          winner={isWinner}
+          winner={winner.methods.length > 0 && true}
           crossmarks={crossmarks}
+          onClick={toggleCrossmark}
         />
       </main>
       <footer className="gap-3">
@@ -108,7 +108,7 @@ export default function Play({
       {gamemode !== 'solo' && (
         <KickedModal open={kicked.status} reason={kicked.reason} />
       )}
-      {isWinner && <Confetti isActive={isWinner} />}
+      {isConfetti && <Confetti isActive={isConfetti} />}
     </React.Fragment>
   );
 }
