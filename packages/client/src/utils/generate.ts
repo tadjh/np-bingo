@@ -8,16 +8,16 @@ import React from 'react';
  * @param override Override children
  * @returns React Element Array
  */
+
 export default function generate(
   array: any[],
   element: React.ReactElement,
-  key?: string,
-  override?: any
+  options?: { key: string; children: any }
 ): React.ReactElement<any, string | React.JSXElementConstructor<any>>[] {
   return array.map((item, index) =>
     React.cloneElement(element, {
-      key: `${key || 'item'}${index + 1}`,
-      children: override || item,
+      key: `${options?.key || 'item-'}${index + 1}`,
+      children: options?.children || item,
     })
   );
 }
