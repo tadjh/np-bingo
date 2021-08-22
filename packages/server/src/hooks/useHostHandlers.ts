@@ -11,7 +11,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * @param room
    */
   const createRoom = (room: Room) => {
-    console.log(`User created room ${room}`);
+    console.log(`Host created room ${room}`);
     socket.join(room);
   };
 
