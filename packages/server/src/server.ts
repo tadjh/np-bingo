@@ -43,7 +43,10 @@ app.get('/api/', (req, res) => {
 app.use('/api/game/', game);
 
 io.on('connection', (socket: Socket) => {
-  useHostHandlers(io, socket);
+  const { createRoom, hostLeaveRoom, hostEmitRoomGamestate } = useHostHandlers(
+    io,
+    socket
+  );
   usePlayerHandlers(io, socket);
 
   console.log('User connected');
@@ -51,6 +54,21 @@ io.on('connection', (socket: Socket) => {
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
+
+  /**
+   * From Host: Create room
+   */
+  socket.on('host:create-room', createRoom);
+
+  /**
+   * From Host: Leaving room
+   */
+  socket.on('host:leave-room', hostLeaveRoom);
+
+  /**
+   * From Host: Gamestate listener
+   */
+  socket.on('host:gamestate', hostEmitRoomGamestate);
 
   /**
    * From Player: Join room

@@ -49,18 +49,5 @@ export function useHostHandlers(io: Server, socket: Socket) {
     emitRoomGamestate(room, gamestate);
   };
 
-  /**
-   * From Host: Create room
-   */
-  socket.on('host:create-room', createRoom);
-
-  /**
-   * From Host: Leaving room
-   */
-  socket.on('host:leave-room', hostLeaveRoom);
-
-  /**
-   * From Host: Gamestate listener
-   */
-  socket.on('host:gamestate', hostEmitRoomGamestate);
+  return { createRoom, hostLeaveRoom, hostEmitRoomGamestate };
 }
