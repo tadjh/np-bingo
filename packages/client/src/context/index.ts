@@ -1,57 +1,109 @@
 import React from 'react';
 import { initialState } from '../reducers/app.reducer';
 import features from '../config/features';
-import { Gamemode, Gamestate, Player, Ball, Winner } from '@np-bingo/types';
+import {
+  Gamemode,
+  Gamestate,
+  Player,
+  Ball,
+  Winner,
+  Room,
+  Theme,
+  Host,
+} from '@np-bingo/types';
 import { Socket } from 'socket.io-client';
+import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
 
-export const UserContext = React.createContext<{
+export interface UserContextProps {
   user: Player;
-  // socket: Socket;
-  // setUserSocket: (socket: Socket) => void;
-}>({
+  socket: Socket<DefaultEventsMap, DefaultEventsMap>;
+  hostConnect: (room: Room) => void;
+}
+
+export interface ThemeContextProps {
+  theme: Theme;
+  toggleTheme: () => void;
+}
+
+export interface SoundContextProps {
+  volume: number;
+  sounds: boolean;
+  toggleSounds: () => void;
+}
+
+export interface RoomContextProps {
+  room: Room;
+  host: Host;
+  winner: Winner;
+  players: Player[];
+}
+
+export interface GameContextProps {
+  gamestate: Gamestate;
+  gamemode: Gamemode;
+  play: (gamestate: Gamestate) => void;
+  mode: (gamemode: Gamemode) => void;
+  checkCard: () => Winner | null;
+}
+
+export interface BallContextProps {
+  ball: Ball;
+  newBall: () => Ball;
+}
+
+export const initialUserContext: UserContextProps = {
   user: {
     _id: '',
     uid: -1,
     name: 'Player',
-    socket: {} as Socket,
+    socketId: '',
     ready: false,
   },
-  // socket: {} as Socket,
-  // setUserSocket: () => {},
-});
+  socket: {} as Socket,
+  hostConnect: () => {},
+};
 
-export const FeautresContext = React.createContext({ ...features });
-
-export const ThemeContext = React.createContext({
+export const inititalThemeContext: ThemeContextProps = {
   theme: features.theme,
   toggleTheme: () => {},
-});
+};
 
-export const SoundContext = React.createContext({
+export const initialSoundContext: SoundContextProps = {
   volume: features.defaultVolume,
   sounds: features.sounds,
   toggleSounds: () => {},
-});
+};
 
-export const RoomContext = React.createContext({
+export const initialRoomContext: RoomContextProps = {
   room: initialState.room,
   host: { ...initialState.host },
   winner: { ...initialState.winner },
   players: [] as Player[],
-});
+};
 
-export const GameContext = React.createContext({
+export const initialGameContext: GameContextProps = {
   gamestate: initialState.gamestate,
   gamemode: initialState.rules.mode,
   play: (gamestate: Gamestate) => {},
   mode: (gamemode: Gamemode) => {},
-  checkCard: (): Winner | null => null,
-});
+  checkCard: () => null,
+};
 
-export const BallContext = React.createContext<{
-  ball: Ball;
-  newBall: () => Ball;
-}>({
+export const initialBallContext: BallContextProps = {
   ball: { ...initialState.ball },
   newBall: () => initialState.ball,
-});
+};
+
+export const UserContext = React.createContext(initialUserContext);
+
+export const FeaturesContext = React.createContext(features);
+
+export const ThemeContext = React.createContext(inititalThemeContext);
+
+export const SoundContext = React.createContext(initialSoundContext);
+
+export const RoomContext = React.createContext(initialRoomContext);
+
+export const GameContext = React.createContext(initialGameContext);
+
+export const BallContext = React.createContext(initialBallContext);
