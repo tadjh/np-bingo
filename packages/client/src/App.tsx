@@ -62,11 +62,11 @@ export default function App() {
     socketOnConnect,
     socketDisconnect,
     socketOnDisconnect,
-  } = useAppSocket(setUserSocket);
+  } = useAppSocket();
 
   return (
     <FeautresContext.Provider value={features}>
-      <UserContext.Provider value={{ user, setUserSocket }}>
+      <UserContext.Provider value={{ user }}>
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <SoundContext.Provider
             value={{ volume: defaultVolume, sounds, toggleSounds }}
@@ -94,13 +94,13 @@ export default function App() {
                       <Route path="/join">
                         <Join dispatchJoinRoom={dispatchJoinRoom} />
                       </Route>
-                      {/* <Route path="/host">
+                      <Route path="/host">
                         <Host
                           dispatchers={hostDispatchers}
                           draws={draws}
                           players={players}
                         />
-                      </Route>*/}
+                      </Route>
                       <Route path="/play/solo">
                         <Solo dispatchers={playDispatchers} />
                       </Route>
