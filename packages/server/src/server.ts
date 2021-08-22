@@ -8,12 +8,12 @@ import { Room, SocketId } from 'socket.io-adapter';
 import dotenv from 'dotenv';
 dotenv.config();
 
-import { IPlayer } from './Models/player';
-import connectDB from './Config/db';
+import { IPlayer } from './models/player';
+import connectDB from './config/db';
 import { Ball, Card, Gamestate, Winner } from '@np-bingo/types';
 
 // routes
-import game from './Routes/game';
+import game from './routes/game';
 
 const app = express();
 const httpServer = createServer(app);

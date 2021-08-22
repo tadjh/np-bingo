@@ -1,6 +1,6 @@
 import express from 'express';
 import { makeID } from '@np-bingo/common';
-import Game from '../Models/game';
+import Game from '../models/game';
 
 const router = express.Router();
 
