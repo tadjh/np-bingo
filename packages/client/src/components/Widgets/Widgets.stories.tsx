@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import Widgets, { WidgetProps } from '.';
-import { FeautresContext } from '../../context';
+import { FeaturesContext } from '../../context';
 import features from '../../config/features';
 import * as CodeStories from './components/Code/Code.stories';
 
@@ -20,9 +20,9 @@ Base.args = {
 export const ShareDisabled = Template.bind({});
 ShareDisabled.decorators = [
   (Story) => (
-    <FeautresContext.Provider value={{ ...features, allowShare: false }}>
+    <FeaturesContext.Provider value={{ ...features, allowShare: false }}>
       <Story />
-    </FeautresContext.Provider>
+    </FeaturesContext.Provider>
   ),
 ];
 ShareDisabled.args = { ...Base.args };

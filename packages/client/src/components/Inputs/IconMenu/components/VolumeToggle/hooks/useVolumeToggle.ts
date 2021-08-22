@@ -1,11 +1,11 @@
 import { useContext } from 'react';
 import useSound from 'use-sound';
-import { FeautresContext, SoundContext } from '../../../../../../context';
+import { FeaturesContext, SoundContext } from '../../../../../../context';
 import { buttonSfx } from '../../../../../../config/sounds';
 
 export function useVolumeToggle(): [boolean, () => void, () => void] {
   const { sounds, toggleSounds } = useContext(SoundContext);
-  const { defaultVolume } = useContext(FeautresContext);
+  const { defaultVolume } = useContext(FeaturesContext);
 
   const [playVolumeSfx] = useSound(buttonSfx, {
     volume: defaultVolume,

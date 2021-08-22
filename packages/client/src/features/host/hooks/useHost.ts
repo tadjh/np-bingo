@@ -2,7 +2,7 @@ import { useCallback, useContext, useEffect } from 'react';
 import { Player } from '@np-bingo/types';
 import {
   BallContext,
-  FeautresContext,
+  FeaturesContext,
   GameContext,
   RoomContext,
 } from '../../../context';
@@ -13,7 +13,7 @@ import { useHostListeners } from './useHostListeners';
 import { HostDispatchers } from '../routes/Host';
 
 export function useHost(dispatchers: HostDispatchers) {
-  const { ballDelay } = useContext(FeautresContext);
+  const { ballDelay } = useContext(FeaturesContext);
   const { room, winner } = useContext(RoomContext);
   const { gamestate, play } = useContext(GameContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);

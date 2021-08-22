@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Join, { JoinProps } from './Join';
-import { FeautresContext } from '../../../context';
+import { FeaturesContext } from '../../../context';
 import features from '../../../config/features';
 import Container from '../../../components/Layout/Container';
 import { Rooms } from '../components/RoomList/RoomList.stories';
@@ -46,9 +46,9 @@ export const PublicRooms = Template.bind({});
 PublicRooms.decorators = [
   (Story) => {
     return (
-      <FeautresContext.Provider value={{ ...features, allowPublic: true }}>
+      <FeaturesContext.Provider value={{ ...features, allowPublic: true }}>
         <Story />
-      </FeautresContext.Provider>
+      </FeaturesContext.Provider>
     );
   },
 ];
@@ -60,9 +60,9 @@ export const NoSoloMode = Template.bind({});
 NoSoloMode.decorators = [
   (Story) => {
     return (
-      <FeautresContext.Provider value={{ ...features, allowSolo: false }}>
+      <FeaturesContext.Provider value={{ ...features, allowSolo: false }}>
         <Story />
-      </FeautresContext.Provider>
+      </FeaturesContext.Provider>
     );
   },
 ];

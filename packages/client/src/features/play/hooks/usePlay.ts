@@ -1,6 +1,6 @@
 import { Gamemode, Results } from '@np-bingo/types';
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { FeautresContext, GameContext } from '../../../context';
+import { FeaturesContext, GameContext } from '../../../context';
 import { usePlayEmitters, usePlaySounds, usePlayState, useSolo } from '.';
 import { handleError, logger } from '../../../utils';
 import { PlayerDispatchers } from '..';
@@ -11,7 +11,7 @@ export function usePlay(
   gamemode: Gamemode,
   confettiOverride: boolean
 ) {
-  const { ballDelay } = useContext(FeautresContext);
+  const { ballDelay } = useContext(FeaturesContext);
   const { gamestate, mode, play, checkCard } = useContext(GameContext);
   const {
     card,
@@ -22,9 +22,8 @@ export function usePlay(
     setCard,
     setWinningCrossmarks,
   } = usePlayState();
-  const [isWinner, winnerToggle, winnerStart, winnerStop] = useToggle(
-    confettiOverride
-  );
+  const [isWinner, winnerToggle, winnerStart, winnerStop] =
+    useToggle(confettiOverride);
   const { playWinSfxData, playWinSfx, playLoseSfx } = usePlaySounds();
   const { emitReadyUp, emitSendCard } = usePlayEmitters();
   // const [, soloSideEffects] = useSolo();

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import Share from '../Share';
 import { Gamemode, Room } from '@np-bingo/types';
 import Code from '../Code';
-import { FeautresContext } from '../../../../context';
+import { FeaturesContext } from '../../../../context';
 import IconMenu from '../../../Inputs/IconMenu';
 
 export interface WidgetProps {
@@ -14,7 +14,7 @@ export default function Widgets({
   variant = 'default',
   room = '',
 }: WidgetProps): JSX.Element {
-  const { allowShare } = useContext(FeautresContext);
+  const { allowShare } = useContext(FeaturesContext);
   if (variant === 'solo') return <IconMenu direction="up" />;
   return (
     <div className="flex gap-4">

@@ -8,7 +8,7 @@ import {
 } from '@np-bingo/types';
 import {
   BallContext,
-  FeautresContext,
+  FeaturesContext,
   GameContext,
   RoomContext,
 } from '../../../context';
@@ -43,7 +43,7 @@ export default function Play({
   gamemode = 'default',
   confettiOverride = false,
 }: PlayProps) {
-  const { allowNewCard } = useContext(FeautresContext);
+  const { allowNewCard } = useContext(FeaturesContext);
   const { room } = useContext(RoomContext);
   const { gamestate } = useContext(GameContext);
   const { ball } = useContext(BallContext);

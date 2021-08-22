@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { useToggle } from '../../../hooks';
 import RoomList from '../components/RoomList';
 import CodeModal from '../components/CodeModal';
-import { FeautresContext } from '../../../context';
+import { FeaturesContext } from '../../../context';
 import Button from '../../../components/Inputs/Button';
 import Link from '../../../components/Navigation/Link';
 import { Link as RouterLink } from 'react-router-dom';
@@ -18,7 +18,7 @@ export default function Join({
   dispatchJoinRoom,
   publicRooms = [],
 }: JoinProps) {
-  const { allowPublic, allowSolo } = useContext(FeautresContext);
+  const { allowPublic, allowSolo } = useContext(FeaturesContext);
   const [isOpen, , open, close] = useToggle();
   const [joinRoom, handleSolo] = useJoin(dispatchJoinRoom);
   return (
