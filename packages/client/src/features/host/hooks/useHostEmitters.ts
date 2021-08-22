@@ -25,28 +25,29 @@ export function useHostEmitters() {
    * To Room: Host left room
    */
   const emitLeaveRoom = () => {
-    socket.emit('leave-room', room);
+    socket.emit('host:leave-room', room);
   };
 
   /**
-   * To Room: Host created room
+   * To Server: Host created room
    */
   const emitCreateRoom = useCallback(() => {
-    socket.emit('create-room', room);
+    socket.emit('host:create-room', room);
   }, [socket, room]);
 
   /**
    * To Room: Host ready
    */
   const emitHostReady = useCallback(() => {
-    socket.emit('ready', room);
+    socket.emit('host-gamestate', 'ready', room);
   }, [socket, room]);
 
   /**
    * To Room: Host on standby
    */
   const emitHostStandby = useCallback(() => {
-    socket.emit('standby', room);
+    console.log(socket);
+    socket.emit('host-gamestate', 'standby', room);
   }, [socket, room]);
 
   /**
