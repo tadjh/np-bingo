@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { Player } from '@np-bingo/types';
 import {
   BallContext,
@@ -31,17 +31,17 @@ export function useHost(dispatchers: HostDispatchers) {
     // emitIsAWinner,
     // emitHostGameOver,
   } = useHostEmitters();
-  // const {
-  //   listenPlayerJoined,
-  //   deafenPlayerJoined,
-  //   listenPlayerLeft,
-  //   deafenPlayerLeft,
-  //   listenPlayerReady,
-  //   deafenPlayerReady,
-  //   listenReceiveCard,
-  //   deafenReceiveCard,
-  // } = useHostListeners(dispatchers);
-
+  const {
+    listenPlayerAction,
+    deafenPlayerAction,
+    //   listenPlayerLeft,
+    //   deafenPlayerLeft,
+    //   listenPlayerReady,
+    //   deafenPlayerReady,
+    //   listenReceiveCard,
+    //   deafenReceiveCard,
+  } = useHostListeners(dispatchers);
+  const [isNewGame, setIsNewGame] = useState(true);
   /**
    * Kick player from room
    * @param player
@@ -72,6 +72,15 @@ export function useHost(dispatchers: HostDispatchers) {
     apiSaveRoom(room, winner);
   }, [room, winner]);
 
+  /**
+   *
+   */
+  useEffect(() => {
+    if (!isNewGame) return;
+    setIsNewGame(false);
+    play('ready');
+    listenPlayerAction();
+  }, [isNewGame, play, listenPlayerAction]);
   /**
    * Keep the room in sync with this host's gamestate
    */

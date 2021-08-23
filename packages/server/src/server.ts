@@ -43,9 +43,11 @@ app.get('/api/', (req, res) => {
 app.use('/api/game/', game);
 
 io.on('connection', (socket: Socket) => {
-  const { createRoom, hostLeaveRoom, hostEmitRoomGamestate, newBall } =
-    useHostHandlers(io, socket);
-  usePlayerHandlers(io, socket);
+  const { createRoom, hostLeaveRoom, hostGamestate, newBall } = useHostHandlers(
+    io,
+    socket
+  );
+  const { playerAction } = usePlayerHandlers(io, socket);
 
   console.log('User connected');
 
@@ -56,38 +58,40 @@ io.on('connection', (socket: Socket) => {
   /**
    * From Host: Create room
    */
-  socket.on('host:create-room', createRoom);
+  socket.on('host:create-room', (room: Room) => {
+    createRoom(room);
+
+    /**
+     * From Host: Gamestate listener
+     */
+    socket.on('host:gamestate', hostGamestate);
+
+    /**
+     * From Host: Ball dispensed
+     * @param room Room
+     * @param ball Ball
+     */
+    socket.on('host:ball', newBall);
+
+    /**
+     * From Host: Leaving room
+     */
+    socket.on('host:leave-room', (room: Room) => {
+      hostLeaveRoom(room);
+      // TODO Does this work??
+      socket.off('host:gamestate', hostGamestate);
+      console.log(`${room}: Deafened Host Gamestate`);
+      socket.off('host:ball', newBall);
+      console.log(`${room}: Deafened New Ball`);
+      socket.off('host:leave-room', hostLeaveRoom);
+      console.log(`${room}: Deafened Host Actions`);
+    });
+  });
 
   /**
-   * From Host: Leaving room
+   * From Player: Player action
    */
-  socket.on('host:leave-room', hostLeaveRoom);
-
-  /**
-   * From Host: Gamestate listener
-   */
-  socket.on('host:gamestate', hostEmitRoomGamestate);
-
-  /**
-   * From Host: Ball dispensed
-   * @param room Room
-   * @param ball Ball
-   */
-  socket.on('host:ball', newBall);
-
-  const joinRoom = (room: Room, host: SocketId, player: IPlayer) => {
-    // TODO Prevent room join if host is already playing
-    socket.join(room);
-    console.log(`Player joined ${room}`);
-    io.to(host).emit('player-joined', player);
-  };
-  /**
-   * From Player: Join room
-   * @param room Room
-   * @param host
-   * @param player
-   */
-  socket.on('player:join-room', joinRoom);
+  socket.on('player:action', playerAction);
 
   /**
    * From Host: Remove player from room

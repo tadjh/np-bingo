@@ -22,6 +22,7 @@ DONE Bug: Multiplayer new ball no sound
 // TODO Move card creation to Server API in multiplayer mode
 // TODO Consider dispatch Contexts
 // TODO Bug: modal bug in storybook removeChild
+// TODO IPlayer & Player need unified types
 
 Vulnerbilities
 // TODO Rest Api has no auth (JWT?)

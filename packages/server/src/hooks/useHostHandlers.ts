@@ -32,7 +32,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * @param gamestate
    * @param room
    */
-  const hostEmitRoomGamestate = (gamestate: Gamestate, room: Room) => {
+  const hostGamestate = (gamestate: Gamestate, room: Room) => {
     switch (gamestate) {
       case 'ready':
         console.log(`Room ${room}: Waiting for players to ready up`);
@@ -64,5 +64,5 @@ export function useHostHandlers(io: Server, socket: Socket) {
     emitRoomNewBall(room, ball);
   };
 
-  return { createRoom, hostLeaveRoom, hostEmitRoomGamestate, newBall };
+  return { createRoom, hostLeaveRoom, hostGamestate, newBall };
 }
