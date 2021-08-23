@@ -7,7 +7,7 @@ export type Player = {
   _id?: string;
   uid?: number;
   name?: string;
-  socketId?: Socket['id'];
+  socketId: Socket['id'];
   ready?: boolean;
 };
 export interface Host extends Player {}

@@ -8,13 +8,14 @@ import { Host } from '@np-bingo/types';
 import { useHome } from '../hooks';
 import Spinner from '../../../components/Feedback/Spinner';
 import { useContext } from 'react';
-import { RoomContext } from '../../../context';
+import { RoomContext, UserContext } from '../../../context';
 
 export interface HomeProps {
   dispatchCreateRoom: (room: string, host: Host) => void;
 }
 export default function Home({ dispatchCreateRoom }: HomeProps): JSX.Element {
-  const { isLoading, redirect, createRoom } = useHome(dispatchCreateRoom);
+  const { isUpdatingUser } = useContext(UserContext);
+  const { redirect, createRoom } = useHome(dispatchCreateRoom);
   const { room } = useContext(RoomContext);
   if (redirect) return <Redirect to={`/host?r=${room}`} />;
   return (
@@ -32,7 +33,7 @@ export default function Home({ dispatchCreateRoom }: HomeProps): JSX.Element {
           Play
         </Button>
         <Button className="host-button" onClick={createRoom}>
-          {!isLoading ? 'Host' : <Spinner className="h-6 w-6" />}
+          {!isUpdatingUser ? 'Host' : <Spinner className="h-6 w-6" />}
         </Button>
       </main>
       <footer className="flex-1 justify-end">

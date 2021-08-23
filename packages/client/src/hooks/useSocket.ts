@@ -1,10 +1,19 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useEffect,
+  useMemo,
+} from 'react';
 import { Socket } from 'socket.io-client';
-import { Room } from '@np-bingo/types';
+import { Player, Room } from '@np-bingo/types';
 import socketInit from '../lib/socket.io';
 import { logger } from '../utils';
 
-export function useAppSocket() {
+export function useSocket(
+  setUser: Dispatch<SetStateAction<Player>>,
+  setIsUpdatingUser: Dispatch<SetStateAction<boolean>>
+) {
   const socket = useMemo(socketInit, [socketInit]);
   /**
    * Host Manual Connect
@@ -44,7 +53,9 @@ export function useAppSocket() {
   const onConnect = useCallback(() => {
     logger('You have connected');
     logger(socket.id);
-  }, [socket.id]);
+    setUser((prevUser) => ({ ...prevUser, socketId: socket.id }));
+    setIsUpdatingUser(true);
+  }, [socket.id, setUser, setIsUpdatingUser]);
 
   /**
    * On Disconnect event
@@ -70,6 +81,7 @@ export function useAppSocket() {
 
   return {
     socket,
+    connect,
     hostConnect,
   };
 }

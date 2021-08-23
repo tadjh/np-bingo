@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { Player } from '@np-bingo/types';
 
 export function useUser(
-  initialValue = {
+  initialValue: Player = {
     name: 'Player',
+    socketId: '',
   }
 ) {
-  const [user, setUser] = useState<Player>(initialValue);
-  return { user, setUser };
+  const [user, setUser] = useState(initialValue);
+  const [isUpdatingUser, setIsUpdatingUser] = useState(false);
+  return { user, isUpdatingUser, setUser, setIsUpdatingUser };
 }

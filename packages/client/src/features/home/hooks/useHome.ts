@@ -6,9 +6,9 @@ import { apiCreateRoom } from '../api';
 export function useHome(
   dispatchCreateRoom: (room: string, host: Host) => void
 ) {
-  const { user, hostConnect } = useContext(UserContext);
+  const { user, isUpdatingUser, setIsUpdatingUser, connect } =
+    useContext(UserContext);
   const { gamestate, play } = useContext(GameContext);
-  const [isLoading, setIsLoading] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
   /**
@@ -23,16 +23,19 @@ export function useHome(
    * Create a new game room
    */
   const createRoom = useCallback(() => {
-    if (isLoading) return;
-    setIsLoading(true);
+    if (isUpdatingUser) return;
+    connect();
+  }, [isUpdatingUser, connect]);
+
+  useEffect(() => {
+    if (!isUpdatingUser || user.socketId === '') return;
+    setIsUpdatingUser(false);
     apiCreateRoom(user, (res) => {
       dispatchCreateRoom(res.data.game.room, res.data.game.host);
-      setIsLoading(false);
-      hostConnect(res.data.game.room);
       setRedirect(true);
       play('ready'); // kind of hacky
     });
-  }, [isLoading, user, play, dispatchCreateRoom, hostConnect]);
+  }, [isUpdatingUser, user, dispatchCreateRoom, play, setIsUpdatingUser]);
 
-  return { isLoading, redirect, createRoom };
+  return { redirect, createRoom };
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import { initialState } from '../reducers/app.reducer';
 import features from '../config/features';
 import {
@@ -16,7 +16,11 @@ import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
 
 export interface UserContextProps {
   user: Player;
+  isUpdatingUser: boolean;
   socket: Socket<DefaultEventsMap, DefaultEventsMap>;
+  setUser: Dispatch<SetStateAction<Player>>;
+  setIsUpdatingUser: Dispatch<SetStateAction<boolean>>;
+  connect: () => void;
   hostConnect: (room: Room) => void;
 }
 
@@ -59,8 +63,12 @@ export const initialUserContext: UserContextProps = {
     socketId: '',
     ready: false,
   },
+  isUpdatingUser: false,
   socket: {} as Socket,
+  setUser: () => {},
+  connect: () => {},
   hostConnect: () => {},
+  setIsUpdatingUser: () => {},
 };
 
 export const inititalThemeContext: ThemeContextProps = {

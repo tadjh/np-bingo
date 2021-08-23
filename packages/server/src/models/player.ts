@@ -4,7 +4,7 @@ import { SocketId } from 'socket.io-adapter';
 export interface IPlayer extends Document<any, {}> {
   // uid: number;
   name: string;
-  socket?: SocketId;
+  socketId: SocketId;
 }
 
 export const PlayerSchema = new Schema({
@@ -13,6 +13,6 @@ export const PlayerSchema = new Schema({
   //   required: true,
   // },
   name: String,
-  socket: Schema.Types.Mixed,
+  socketId: Schema.Types.Mixed,
 });
 export default model<IPlayer>('Player', PlayerSchema);
