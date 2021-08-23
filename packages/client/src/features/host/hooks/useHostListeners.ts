@@ -30,6 +30,11 @@ export function useHostListeners({
     dispatchPlayerLeft(player);
   };
 
+  const playerReadyUp = (player: Player) => {
+    logger(`${player.name} ready`);
+    dispatchPlayerReady(player);
+  };
+
   /**
    * Player Actions Listener Handler
    * @param action
@@ -42,6 +47,9 @@ export function useHostListeners({
         break;
       case 'leave-room':
         playerLeaveRoom(player);
+        break;
+      case 'ready-up':
+        playerReadyUp(player);
         break;
       default:
         throw new Error('Error in Host Player Action');

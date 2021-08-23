@@ -28,12 +28,12 @@ import {
   PLAYER_JOINED,
   PLAYER_LEFT,
   PLAYER_READY,
-  // PLAYER_UNREADY,
   SET_BALL,
   PAUSE,
   CHECK_CARD_FAILURE,
   WIN_GAME,
   UPDATE_GAMEMODE,
+  PLAYER_KICKED,
 } from '../config/constants';
 import { BINGO } from '../utils/bingo';
 
@@ -85,6 +85,7 @@ export type AppActions =
   | { type: typeof JOIN_ROOM; payload: { room: Room; player: Player } }
   | { type: typeof PLAYER_JOINED; payload: Player }
   | { type: typeof PLAYER_LEFT; payload: Player }
+  | { type: typeof PLAYER_KICKED; payload: Player }
   | { type: typeof PLAYER_READY; payload: Player }
   | { type: typeof GET_CARD; payload: { card: Card; owner: Player } }
   | { type: typeof CHECK_CARD_SUCCESS; payload: Winner }
@@ -143,11 +144,21 @@ export function reducer(state: AppState, action: AppActions) {
     case PLAYER_JOINED:
       return { ...state, players: [...state.players, action.payload] };
     case PLAYER_LEFT:
-      // TODO Consider turn on leave flag instead of removing player from array
       const leaveFiltered = state.players.filter((element) => {
-        return element.socketId !== action.payload.socketId;
+        if (element.socketId === action.payload.socketId) {
+          return { ...element, leave: true };
+        }
+        return element;
       });
       return { ...state, players: [...leaveFiltered] };
+    case PLAYER_KICKED:
+      const kickedFiltered = state.players.filter((element) => {
+        if (element.socketId === action.payload.socketId) {
+          return { ...element, kicked: true };
+        }
+        return element;
+      });
+      return { ...state, players: [...kickedFiltered] };
     case PLAYER_READY:
       const readyFiltered = state.players.map((element) => {
         if (element.socketId === action.payload.socketId) {

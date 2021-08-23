@@ -29,6 +29,7 @@ import {
   CHECK_CARD_FAILURE,
   CHECK_CARD_SUCCESS,
   PLAYER_LEFT,
+  PLAYER_KICKED,
   GET_CARD,
   PLAYER_JOINED,
   PLAYER_READY,
@@ -195,7 +196,7 @@ export function useAppState() {
    * @param player Player
    */
   const dispatchRemovePlayer = (player: Player) => {
-    dispatch({ type: PLAYER_LEFT, payload: player });
+    dispatch({ type: PLAYER_KICKED, payload: player });
   };
 
   /**

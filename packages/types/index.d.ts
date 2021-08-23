@@ -4,6 +4,8 @@ export type Player = {
   name: string;
   socketId: string;
   ready?: boolean;
+  kicked?: boolean;
+  leave?: boolean;
 };
 export interface Host extends Player {}
 export type Ball = {

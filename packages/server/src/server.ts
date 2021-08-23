@@ -107,25 +107,6 @@ io.on('connection', (socket: Socket) => {
   // });
 
   /**
-   * From Player: Player is ready
-   * @param hostSocketId Host Socket ID
-   * @param player IPlayer
-   */
-  // socket.on('ready-up', (hostSocketId: SocketId, player: IPlayer) => {
-  //   console.log(`${player.name} is ready`);
-  //   io.to(hostSocketId).emit('player-ready', player);
-  // });
-
-  /**
-   * From Host: Ready Check
-   * @param room Room
-   */
-  // socket.on('ready', (room: Room) => {
-  //   console.log('Waiting for players to ready up');
-  //   socket.to(room).emit('game-ready');
-  // });
-
-  /**
    * From Player: Send Card
    * @param room Room
    * @param hostSocketId Socket ID
@@ -189,15 +170,6 @@ io.on('connection', (socket: Socket) => {
    */
   // socket.on('win', (room: Room, name: string) => {
   //   socket.to(room).emit('game-win', name);
-  // });
-
-  /**
-   * From Host: Game Over!
-   * @param room Room
-   */
-  // socket.on('end', (room: Room) => {
-  //   socket.to(room).emit('game-end');
-  //   console.log('Game over!');
   // });
 });
 

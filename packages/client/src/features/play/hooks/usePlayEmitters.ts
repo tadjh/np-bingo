@@ -12,15 +12,15 @@ export function usePlayEmitters() {
    * To Host: Send user ready
    */
   const emitReadyUp = () => {
-    socket.emit('ready-up', host.socketId, user);
+    socket.emit('player:action', 'ready-up', room, host.socketId, user);
   };
 
   /**
    * To Host & Room: Send user card
    */
-  const emitSendCard = (card: Card) => {
-    socket.emit('send-card', room, host.socketId, user, card);
-  };
+  // const emitSendCard = (card: Card) => {
+  //   socket.emit('send-card', room, host.socketId, user, card);
+  // };
 
   /**
    * To Room: Send player left
@@ -33,15 +33,21 @@ export function usePlayEmitters() {
   /**
    * To Room: Player won the game
    */
-  const emitGameWin = () => {
-    socket.emit('win', room, winner.player.name);
+  // const emitGameWin = () => {
+  //   socket.emit('win', room, winner.player.name);
+  // };
+
+  // TODO ????
+  // useEffect(() => {
+  //   if (gamestate === 'win') {
+  //     emitGameWin();
+  //   }
+  // });
+
+  return {
+    emitReadyUp,
+    // emitSendCard,
+    emitLeaveRoom,
+    // emitGameWin
   };
-
-  useEffect(() => {
-    if (gamestate === 'win') {
-      emitGameWin();
-    }
-  });
-
-  return { emitReadyUp, emitSendCard, emitLeaveRoom, emitGameWin };
 }

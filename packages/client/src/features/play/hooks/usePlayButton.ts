@@ -11,7 +11,7 @@ export function usePlayButton(
   const { ballDelay } = useContext(FeaturesContext);
   const { gamemode, play } = useContext(GameContext);
   const { ball } = useContext(BallContext);
-  const { emitLeaveRoom } = usePlayEmitters();
+  const { emitReadyUp, emitLeaveRoom } = usePlayEmitters();
   const { playRandomSfx } = usePlaySounds();
 
   /**
@@ -44,7 +44,8 @@ export function usePlayButton(
    */
   const handlePrimaryButton = () => {
     if (gamemode === 'solo') return soloHandlePrimaryButton();
-    return play('standby');
+    play('standby');
+    emitReadyUp();
   };
 
   /**

@@ -12,14 +12,14 @@ import Tooltip from '../../../../components/Display/Tooltip';
 import { Player } from '@np-bingo/types';
 import { useClickHard } from '../../../../assets/sounds/hooks';
 
-export interface ListProps {
-  data?: any[];
-  action?: (param?: any) => void;
-}
+// export interface ListProps {
+//   data?: any[];
+//   action?: (param?: any) => void;
+// }
 
-export interface PlayerListProps extends ListProps {
+export interface PlayerListProps {
   data?: Player[];
-  action?: (player: Player) => void;
+  action: (player: Player) => void;
 }
 
 export function PlayerList({
@@ -32,7 +32,8 @@ export function PlayerList({
       <List>
         {data.map((player, index) => {
           const { name, ready } = player;
-          const handleRemovePlayer = onRemove && (() => onRemove(player));
+          const handleRemovePlayer = () => onRemove(player);
+          if (player.kicked || player.leave) return null;
           return (
             <ListItem key={`player-${index + 1}`}>
               <div

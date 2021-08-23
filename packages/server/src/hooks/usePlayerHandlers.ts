@@ -64,7 +64,7 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
   };
 
   /**
-   * To Host: Player Ready Up
+   * To Host: Player is Ready
    * @param room
    * @param hostSocketId
    * @param player
