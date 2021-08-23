@@ -66,4 +66,4 @@ export type Kicked = {
 };
 export type Reason = 'none' | 'banned' | 'abandoned';
 export type PlayerAction = 'join-room' | 'leave-room' | 'ready-up';
-export type HostAction = 'player-kicked';
+export type HostAction = 'player-kicked' | 'left-room';

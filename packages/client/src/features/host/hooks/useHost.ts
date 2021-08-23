@@ -94,6 +94,8 @@ export function useHost(dispatchers: HostDispatchers) {
     play('ready');
     listenPlayerAction();
   }, [isNewGame, play, listenPlayerAction]);
+
+  // TODO deafenPlayerAction
   /**
    * Keep the room in sync with this host's gamestate
    */

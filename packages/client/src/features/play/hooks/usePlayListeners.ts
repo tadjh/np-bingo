@@ -40,8 +40,13 @@ export function usePlayListeners({
    * To Player: Removed from game
    */
   const playerKicked = () => {
-    logger(`You have been removed from the room`);
+    logger(`You have been kicked from the room`);
     dispatchPlayerKicked();
+  };
+
+  const roomAbandoned = () => {
+    logger(`The Host has abandoned the room`);
+    dispatchRoomAbandoned();
   };
 
   /**
@@ -52,6 +57,9 @@ export function usePlayListeners({
     switch (action) {
       case 'player-kicked':
         playerKicked();
+        break;
+      case 'left-room':
+        roomAbandoned();
         break;
       default:
         throw new Error('Error in host action');
