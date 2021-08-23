@@ -1,5 +1,5 @@
 import { Server, Socket } from 'socket.io';
-import { Ball, Gamestate } from '@np-bingo/types';
+import { Ball, Gamestate, Player } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
 import { Room, SocketId } from 'socket.io-adapter';
 
@@ -18,12 +18,12 @@ export function useHostHandlers(io: Server, socket: Socket) {
   };
 
   /**
-   * To Room: Host leaving room
-   * @param room
+   * Host: Kick player from room
+   * @param player
    */
-  const hostLeaveRoom = (room: Room) => {
-    socket.to(room).emit('host:left-room');
-    leaveRoom(room, 'Host');
+  const kickPlayer = (room: Room, player: Player) => {
+    io.to(player.socketId).emit('host:action', 'player-kicked');
+    console.log(`Room ${room}: ${player.name} kicked`);
   };
 
   /**
@@ -63,5 +63,14 @@ export function useHostHandlers(io: Server, socket: Socket) {
     emitRoomNewBall(room, ball);
   };
 
-  return { createRoom, hostLeaveRoom, hostGamestate, newBall };
+  /**
+   * To Room: Host leaving room
+   * @param room
+   */
+  const hostLeaveRoom = (room: Room) => {
+    socket.to(room).emit('host:left-room');
+    leaveRoom(room, 'Host');
+  };
+
+  return { createRoom, kickPlayer, hostGamestate, newBall, hostLeaveRoom };
 }

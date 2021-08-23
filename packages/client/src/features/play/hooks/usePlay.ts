@@ -3,11 +3,12 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { FeaturesContext, GameContext } from '../../../context';
 import { usePlayEmitters, usePlaySounds, usePlayState, useSolo } from '.';
 import { handleError, logger } from '../../../utils';
-import { PlayerDispatchers } from '..';
+import { PlayDispatchers } from '..';
 import { useToggle } from '../../../hooks';
+import { usePlayListeners } from './usePlayListeners';
 
 export function usePlay(
-  dispatchers: PlayerDispatchers,
+  dispatchers: PlayDispatchers,
   gamemode: Gamemode,
   confettiOverride: boolean
 ) {
@@ -21,11 +22,22 @@ export function usePlay(
     initPlay,
     setCard,
     setWinningCrossmarks,
+    dispatchRoomAbandoned,
+    dispatchPlayerKicked,
   } = usePlayState();
   const [isWinner, winnerToggle, winnerStart, winnerStop] =
     useToggle(confettiOverride);
   const { playWinSfxData, playWinSfx, playLoseSfx } = usePlaySounds();
-  const { emitReadyUp, emitSendCard } = usePlayEmitters();
+  const {
+    emitReadyUp,
+    // emitSendCard
+  } = usePlayEmitters();
+  const { listenHostAction } = usePlayListeners({
+    ...dispatchers,
+    dispatchRoomAbandoned,
+    dispatchPlayerKicked,
+  });
+  const [isNewGame, setIsNewGame] = useState(true);
   // const [, soloSideEffects] = useSolo();
 
   /**
@@ -58,10 +70,6 @@ export function usePlay(
   //   play('ready');
   // }, [gamestate, initPlay, play]);
 
-  useEffect(() => {
-    if (gamestate === 'ready') return setCard();
-  }, [gamestate, setCard]);
-
   const handleWinCleanUp = useCallback(
     (isWinner: boolean) => {
       if (!isWinner) return;
@@ -91,6 +99,17 @@ export function usePlay(
   useEffect(() => {
     if (gamestate === 'validate') return validate();
   }, [gamestate, validate]);
+
+  /**
+   * Set new game
+   */
+  useEffect(() => {
+    if (!isNewGame) return;
+    setIsNewGame(false);
+    play('ready');
+    setCard();
+    listenHostAction();
+  }, [isNewGame, play, setCard, listenHostAction]);
 
   // useEffect(() => {
   //   console.log('test ' + gamestate);

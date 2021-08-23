@@ -3,9 +3,9 @@ export type Player = {
   uid?: number;
   name: string;
   socketId: string;
-  ready?: boolean;
-  kicked?: boolean;
-  leave?: boolean;
+  ready: boolean;
+  kicked: boolean;
+  leave: boolean;
 };
 export interface Host extends Player {}
 export type Ball = {
@@ -66,3 +66,4 @@ export type Kicked = {
 };
 export type Reason = 'none' | 'banned' | 'abandoned';
 export type PlayerAction = 'join-room' | 'leave-room' | 'ready-up';
+export type HostAction = 'player-kicked';

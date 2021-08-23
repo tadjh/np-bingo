@@ -217,7 +217,6 @@ export function useAppState() {
 
   return {
     state,
-    dispatch,
     play,
     mode,
     dispatchCreateRoom,

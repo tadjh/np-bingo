@@ -144,7 +144,7 @@ export function reducer(state: AppState, action: AppActions) {
     case PLAYER_JOINED:
       return { ...state, players: [...state.players, action.payload] };
     case PLAYER_LEFT:
-      const leaveFiltered = state.players.filter((element) => {
+      const leaveFiltered = state.players.map((element) => {
         if (element.socketId === action.payload.socketId) {
           return { ...element, leave: true };
         }
@@ -152,7 +152,7 @@ export function reducer(state: AppState, action: AppActions) {
       });
       return { ...state, players: [...leaveFiltered] };
     case PLAYER_KICKED:
-      const kickedFiltered = state.players.filter((element) => {
+      const kickedFiltered = state.players.map((element) => {
         if (element.socketId === action.payload.socketId) {
           return { ...element, kicked: true };
         }

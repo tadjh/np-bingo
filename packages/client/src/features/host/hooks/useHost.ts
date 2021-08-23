@@ -14,12 +14,13 @@ import { HostDispatchers } from '../routes/Host';
 
 export function useHost(dispatchers: HostDispatchers) {
   const { ballDelay } = useContext(FeaturesContext);
-  const { room, winner } = useContext(RoomContext);
+  const { room, winner, players } = useContext(RoomContext);
   const { gamestate, play } = useContext(GameContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
   const { newBall } = useContext(BallContext);
+  const [isNewGame, setIsNewGame] = useState(true);
   const {
-    // emitKickPlayer,
+    emitKickPlayer,
     emitSendBall,
     // emitCreateRoom,
     // emitLeaveRoom,
@@ -41,13 +42,12 @@ export function useHost(dispatchers: HostDispatchers) {
     //   listenReceiveCard,
     //   deafenReceiveCard,
   } = useHostListeners(dispatchers);
-  const [isNewGame, setIsNewGame] = useState(true);
   /**
    * Kick player from room
    * @param player
    */
   const handleRemovePlayer = (player: Player) => {
-    // emitKickPlayer(player);
+    emitKickPlayer(player);
     dispatchers.dispatchRemovePlayer(player);
   };
 
@@ -68,12 +68,25 @@ export function useHost(dispatchers: HostDispatchers) {
     emitSendBall(ball);
   };
 
+  /**
+   * Save Room
+   */
   const saveRoom = useCallback(() => {
     apiSaveRoom(room, winner);
   }, [room, winner]);
 
   /**
-   *
+   * Filters out kicked and leaver players and returns player count.
+   * @returns number
+   */
+  const activePlayerCount = (): number => {
+    const activePlayers = players.filter((item) => !item.kicked && !item.leave);
+    console.log(activePlayers);
+    return activePlayers.length;
+  };
+
+  /**
+   * Set new game
    */
   useEffect(() => {
     if (!isNewGame) return;
@@ -157,6 +170,7 @@ export function useHost(dispatchers: HostDispatchers) {
   return {
     progress,
     inProgress,
+    activePlayerCount,
     handleRemovePlayer,
     handleBall,
   };

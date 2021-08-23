@@ -42,10 +42,8 @@ app.get('/api/', (req, res) => {
 app.use('/api/game/', game);
 
 io.on('connection', (socket: Socket) => {
-  const { createRoom, hostLeaveRoom, hostGamestate, newBall } = useHostHandlers(
-    io,
-    socket
-  );
+  const { createRoom, kickPlayer, hostLeaveRoom, hostGamestate, newBall } =
+    useHostHandlers(io, socket);
   const { playerAction } = usePlayerHandlers(io, socket);
 
   console.log('User connected');
@@ -59,6 +57,11 @@ io.on('connection', (socket: Socket) => {
    */
   socket.on('host:create-room', (room: Room) => {
     createRoom(room);
+
+    /**
+     * From Host: Remove player from room
+     */
+    socket.on('host:kick-player', kickPlayer);
 
     /**
      * From Host: Gamestate listener
@@ -77,7 +80,10 @@ io.on('connection', (socket: Socket) => {
      */
     socket.on('host:leave-room', (room: Room) => {
       hostLeaveRoom(room);
-      // TODO Does this work??
+
+      socket.off('host:kick-player', kickPlayer);
+      console.log(`${room}: Deafened Kick Player`);
+
       socket.off('host:gamestate', hostGamestate);
       console.log(`${room}: Deafened Host Gamestate`);
 
@@ -97,7 +103,7 @@ io.on('connection', (socket: Socket) => {
   /**
    * From Host: Remove player from room
    */
-  // socket.on('remove-player', (player: IPlayer) => {
+  // socket.on('host:kick-player', (player: Player) => {
   //   if (player.socket) {
   //     io.to(player.socket).emit('player-remove');
   //     console.log(`${player.name} removed from room`);

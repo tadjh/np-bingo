@@ -22,9 +22,7 @@ import Confetti from '../components/Confetti';
 import { usePlay, usePlayButton, usePlayDisplay } from '../hooks';
 import PlayStatus from '../components/PlayStatus';
 
-export interface PlayerDispatchers {
-  dispatchRoomAbandoned?: () => void;
-  dispatchPlayerKicked?: () => void;
+export interface PlayDispatchers {
   dispatchDispenseBall: (ball: BallType) => void;
   dispatchPlayerReady: (player: Player) => void;
   dispatchCheckCardSuccess: (winner: Winner) => void;
@@ -33,7 +31,7 @@ export interface PlayerDispatchers {
 }
 
 export interface PlayProps {
-  dispatchers: PlayerDispatchers;
+  dispatchers: PlayDispatchers;
   gamemode?: Gamemode;
   confettiOverride?: boolean;
 }

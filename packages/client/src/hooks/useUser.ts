@@ -5,6 +5,9 @@ export function useUser(
   initialValue: Player = {
     name: 'Player',
     socketId: '',
+    ready: false,
+    kicked: false,
+    leave: false,
   }
 ) {
   const [user, setUser] = useState(initialValue);

@@ -34,8 +34,13 @@ export default function Host({
   const {
     ball: { number, column, remainder },
   } = useContext(BallContext);
-  const { progress, inProgress, handleRemovePlayer, handleBall } =
-    useHost(dispatchers);
+  const {
+    progress,
+    inProgress,
+    activePlayerCount,
+    handleRemovePlayer,
+    handleBall,
+  } = useHost(dispatchers);
   const {
     gamestateToggle,
     toggleText,
@@ -63,7 +68,7 @@ export default function Host({
         </Button>
       </header>
       <main>
-        <HostStatus gamestate={gamestate} count={players.length} />
+        <HostStatus gamestate={gamestate} count={activePlayerCount()} />
         {gamestate === 'init' || gamestate === 'ready' ? (
           <PlayerList data={players} action={handleRemovePlayer} />
         ) : (
