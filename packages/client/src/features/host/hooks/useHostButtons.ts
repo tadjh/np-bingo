@@ -25,7 +25,8 @@ export function useHostButtons() {
       default:
         play('end');
         emitHostEnd();
-        apiSaveRoom(room, winner);
+        // TODO When to save?
+        // apiSaveRoom(room, winner);
         break;
     }
   };
