@@ -2,17 +2,18 @@ import { useCallback } from 'react';
 import { BINGO, newCard } from '../../../utils/bingo';
 import {
   initialState,
-  PlayerState,
+  PlayActions,
+  PlayState,
   reducer,
 } from '../../../reducers/play.reducer';
 import { useReducer } from 'react';
-import { Action, Results, Winner } from '@np-bingo/types';
+import { Results, Winner } from '@np-bingo/types';
 import {
   INIT_CROSSMARKS,
   INIT_GAME,
   NEW_CARD,
   PLAYER_KICKED,
-  UPDATE_CROSSMARKS,
+  // UPDATE_CROSSMARKS,
   WINNER_CROSSMARKS,
 } from '../../../config/constants';
 import { winningMethods } from '../../../utils/bingo.validate';
@@ -21,7 +22,7 @@ import logger from 'use-reducer-logger';
 
 export function usePlayState() {
   const [{ card, serial, crossmarks, kicked }, playDispatch] = useReducer<
-    (state: PlayerState, action: Action) => PlayerState
+    (state: PlayState, action: PlayActions) => PlayState
   >(NODE_ENV === 'development' ? logger(reducer) : reducer, initialState);
 
   const initPlay = () => {
@@ -47,7 +48,7 @@ export function usePlayState() {
    * Resets all crossmarks
    */
   const clearCrossmarks = () => {
-    playDispatch({ type: INIT_CROSSMARKS, payload: {} });
+    playDispatch({ type: INIT_CROSSMARKS });
   };
 
   // TODO IS THIS NECESSARY???
