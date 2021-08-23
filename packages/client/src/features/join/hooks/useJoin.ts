@@ -47,7 +47,7 @@ export function useJoin(
    */
   useEffect(() => {
     if (room === '') return;
-    socket.emit('join-room', room, host.socketId, user);
+    socket.emit('player:join-room', room, host.socketId, user);
     history.push(`/play?r=${room}`);
   }, [room, socket, host.socketId, user, history]);
 

@@ -6,7 +6,7 @@ import {
   GameContext,
   RoomContext,
 } from '../../../context';
-import { apiDeleteRoom, apiSaveRoom } from '../api';
+import { apiSaveRoom } from '../api';
 import { useProgress } from '../../../hooks';
 import { useHostEmitters } from '.';
 import { useHostListeners } from './useHostListeners';
@@ -18,19 +18,19 @@ export function useHost(dispatchers: HostDispatchers) {
   const { gamestate, play } = useContext(GameContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
   const { newBall } = useContext(BallContext);
-  // const {
-  // emitKickPlayer,
-  // emitSendBall,
-  // emitCreateRoom,
-  // emitLeaveRoom,
-  // emitHostReady,
-  // emitHostStandby,
-  // emitHostStartedGame,
-  // emitHostValidating,
-  // emitNotAWinner,
-  // emitIsAWinner,
-  // emitHostGameOver,
-  // } = useHostEmitters();
+  const {
+    // emitKickPlayer,
+    emitSendBall,
+    // emitCreateRoom,
+    // emitLeaveRoom,
+    // emitHostReady,
+    // emitHostStandby,
+    emitHostStart,
+    // emitHostValidating,
+    // emitNotAWinner,
+    // emitIsAWinner,
+    // emitHostGameOver,
+  } = useHostEmitters();
   // const {
   //   listenPlayerJoined,
   //   deafenPlayerJoined,
@@ -60,14 +60,12 @@ export function useHost(dispatchers: HostDispatchers) {
     // If gamestate isn't already 'start', set it when a ball is drawn
     if (gamestate === 'standby' || gamestate === 'failure') {
       play('start');
+      emitHostStart();
     }
     const ball = newBall();
-    if (ball.number === 0) {
-      play('end');
-    } else {
-      enableProgress();
-      // emitSendBall(ball);
-    }
+    if (ball.number === 0) return play('end');
+    enableProgress();
+    emitSendBall(ball);
   };
 
   const saveRoom = useCallback(() => {
@@ -79,21 +77,6 @@ export function useHost(dispatchers: HostDispatchers) {
    */
   // useEffect(() => {
   //   switch (gamestate) {
-  //     case 'init':
-  //       // TODO probably unreachable
-  //       emitCreateRoom();
-  //       // TODO move play into different useEffect ??
-  //       play('ready');
-  //       break;
-  //     case 'ready':
-  //       emitHostReady();
-  //       break;
-  //     case 'standby':
-  //       emitHostStandby();
-  //       break;
-  //     case 'start':
-  //       emitHostStartedGame();
-  //       break;
   //     case 'validate':
   //       emitHostValidating();
   //       break;

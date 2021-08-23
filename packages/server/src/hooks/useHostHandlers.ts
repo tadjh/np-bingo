@@ -1,17 +1,20 @@
 import { Server, Socket } from 'socket.io';
-import { Gamestate } from '@np-bingo/types';
+import { Ball, Gamestate } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
 import { Room, SocketId } from 'socket.io-adapter';
 import { IPlayer } from '../models/player';
 
 export function useHostHandlers(io: Server, socket: Socket) {
-  const { leaveRoom, emitRoomGamestate } = useCommonHandlers(io, socket);
+  const { leaveRoom, emitRoomGamestate, emitRoomNewBall } = useCommonHandlers(
+    io,
+    socket
+  );
   /**
    * Host: Create room and join it
    * @param room
    */
   const createRoom = (room: Room) => {
-    console.log(`${room}: Host created room`);
+    console.log(`Room ${room}: Host created room`);
     socket.join(room);
   };
 
@@ -32,16 +35,16 @@ export function useHostHandlers(io: Server, socket: Socket) {
   const hostEmitRoomGamestate = (gamestate: Gamestate, room: Room) => {
     switch (gamestate) {
       case 'ready':
-        console.log(`${room}: Waiting for players to ready up`);
+        console.log(`Room ${room}: Waiting for players to ready up`);
         break;
       case 'standby':
-        console.log(`${room}: Game beginning...`);
+        console.log(`Room ${room}: Game beginning...`);
         break;
       case 'start':
-        console.log(`${room}: Game started`);
+        console.log(`Room ${room}: Game started`);
         break;
       case 'end':
-        console.log(`${room}: Game over!`);
+        console.log(`Room ${room}: Game over!`);
         break;
       default:
         break;
@@ -49,5 +52,17 @@ export function useHostHandlers(io: Server, socket: Socket) {
     emitRoomGamestate(room, gamestate);
   };
 
-  return { createRoom, hostLeaveRoom, hostEmitRoomGamestate };
+  /**
+   * Host: new ball dispensed
+   * @param room
+   * @param ball
+   */
+  const newBall = (room: Room, ball: Ball) => {
+    console.log(
+      `Room ${room}: Ball ${ball.column.toUpperCase()}${ball.number} dispensed`
+    );
+    emitRoomNewBall(room, ball);
+  };
+
+  return { createRoom, hostLeaveRoom, hostEmitRoomGamestate, newBall };
 }

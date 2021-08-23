@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io';
 import { Room, SocketId } from 'socket.io-adapter';
-import { Gamestate } from '@np-bingo/types';
+import { Ball, Gamestate } from '@np-bingo/types';
 
 export function useCommonHandlers(io: Server, socket: Socket) {
   /**
@@ -9,7 +9,7 @@ export function useCommonHandlers(io: Server, socket: Socket) {
    */
   const leaveRoom = (room: Room, name: string) => {
     socket.leave(room);
-    console.log(`${room}: ${name} left room`);
+    console.log(`Room ${room}: ${name} left room`);
   };
 
   /**
@@ -21,5 +21,14 @@ export function useCommonHandlers(io: Server, socket: Socket) {
     socket.to(room).emit('room:gamestate', gamestate);
   };
 
-  return { leaveRoom, emitRoomGamestate };
+  /**
+   * Send new ball to room
+   * @param room
+   * @param ball
+   */
+  const emitRoomNewBall = (room: Room, ball: Ball) => {
+    socket.to(room).emit('room:new-ball', ball);
+  };
+
+  return { leaveRoom, emitRoomGamestate, emitRoomNewBall };
 }

@@ -43,10 +43,8 @@ app.get('/api/', (req, res) => {
 app.use('/api/game/', game);
 
 io.on('connection', (socket: Socket) => {
-  const { createRoom, hostLeaveRoom, hostEmitRoomGamestate } = useHostHandlers(
-    io,
-    socket
-  );
+  const { createRoom, hostLeaveRoom, hostEmitRoomGamestate, newBall } =
+    useHostHandlers(io, socket);
   usePlayerHandlers(io, socket);
 
   console.log('User connected');
@@ -71,17 +69,25 @@ io.on('connection', (socket: Socket) => {
   socket.on('host:gamestate', hostEmitRoomGamestate);
 
   /**
+   * From Host: Ball dispensed
+   * @param room Room
+   * @param ball Ball
+   */
+  socket.on('host:ball', newBall);
+
+  const joinRoom = (room: Room, host: SocketId, player: IPlayer) => {
+    // TODO Prevent room join if host is already playing
+    socket.join(room);
+    console.log(`Player joined ${room}`);
+    io.to(host).emit('player-joined', player);
+  };
+  /**
    * From Player: Join room
    * @param room Room
    * @param host
    * @param player
    */
-  // socket.on('join-room', (room: Room, host: SocketId, player: IPlayer) => {
-  //   // TODO Prevent room join if host is already playing
-  //   socket.join(room);
-  //   console.log(`Player joined ${room}`);
-  //   io.to(host).emit('player-joined', player);
-  // });
+  socket.on('player:join-room', joinRoom);
 
   /**
    * From Host: Remove player from room
@@ -112,16 +118,6 @@ io.on('connection', (socket: Socket) => {
   // socket.on('ready', (room: Room) => {
   //   console.log('Waiting for players to ready up');
   //   socket.to(room).emit('game-ready');
-  // });
-
-  /**
-   * From Host: Ball dispensed
-   * @param room Room
-   * @param ball Ball
-   */
-  // socket.on('ball', (room: Room, ball: Ball) => {
-  //   socket.to(room).emit('game-ball', ball);
-  //   console.log(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
   // });
 
   /**

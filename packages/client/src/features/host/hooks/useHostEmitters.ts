@@ -14,14 +14,6 @@ export function useHostEmitters() {
   // };
 
   /**
-   * To Room: Send new ball
-   * @param ball
-   */
-  // const emitSendBall = (ball: Ball) => {
-  //   socket.emit('ball', room, ball);
-  // };
-
-  /**
    * To Server: Host created room
    */
   const emitCreateRoom = useCallback(() => {
@@ -36,6 +28,14 @@ export function useHostEmitters() {
   };
 
   /**
+   * To Room: Send new ball
+   * @param ball
+   */
+  const emitSendBall = (ball: Ball) => {
+    socket.emit('host:ball', room, ball);
+  };
+
+  /**
    * To Room: Host ready
    */
   const emitHostReady = useCallback(() => {
@@ -46,16 +46,15 @@ export function useHostEmitters() {
    * To Room: Host on standby
    */
   const emitHostStandby = useCallback(() => {
-    console.log(socket);
     socket.emit('host:gamestate', 'standby', room);
   }, [socket, room]);
 
   /**
    * To Room: Host started game
    */
-  // const emitHostStart = useCallback(() => {
-  //   socket.emit('start', room);
-  // }, [socket, room]);
+  const emitHostStart = useCallback(() => {
+    socket.emit('host:gamestate', 'start', room);
+  }, [socket, room]);
 
   /**
    * To Room: Validating Card
@@ -87,15 +86,15 @@ export function useHostEmitters() {
 
   return {
     // emitKickPlayer,
-    // emitSendBall,
-    emitLeaveRoom,
     emitCreateRoom,
+    emitLeaveRoom,
+    emitSendBall,
     emitHostReady,
     emitHostStandby,
-    // emitHostStartedGame,
+    emitHostStart,
     // emitHostValidating,
     // emitNotAWinner,
     // emitIsAWinner,
-    emitHostGameOver: emitHostEnd,
+    emitHostEnd,
   };
 }

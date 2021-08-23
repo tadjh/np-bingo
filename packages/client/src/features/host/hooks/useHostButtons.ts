@@ -1,12 +1,12 @@
 import { useContext } from 'react';
 import { GameContext, RoomContext } from '../../../context';
-import { apiDeleteRoom } from '../api';
+import { apiDeleteRoom, apiSaveRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
 
 export function useHostButtons() {
-  const { room } = useContext(RoomContext);
+  const { room, winner } = useContext(RoomContext);
   const { gamestate, play } = useContext(GameContext);
-  const { emitLeaveRoom, emitHostStandby, emitHostReady, emitHostGameOver } =
+  const { emitLeaveRoom, emitHostStandby, emitHostReady, emitHostEnd } =
     useHostEmitters();
   /**
    * Three way toggle for host main button
@@ -24,7 +24,8 @@ export function useHostButtons() {
         break;
       default:
         play('end');
-        emitHostGameOver();
+        emitHostEnd();
+        apiSaveRoom(room, winner);
         break;
     }
   };

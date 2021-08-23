@@ -5,7 +5,7 @@ import Play, { Solo } from './features/play';
 import Home from './features/home';
 import Join from './features/join';
 import Create from './features/create';
-import { useUser, useTheme, useToggle, useApp, useAppSocket } from './hooks';
+import { useUser, useTheme, useToggle, useApp, useSocket } from './hooks';
 import config from './config/features';
 import {
   GameContext,
@@ -22,7 +22,7 @@ import { useAppState } from './hooks/useAppState';
 import './App.css';
 import features from './config/features';
 export default function App() {
-  const { user } = useUser();
+  const { user, isUpdatingUser, setUser, setIsUpdatingUser } = useUser();
   const {
     state: {
       gamestate,
@@ -57,11 +57,24 @@ export default function App() {
     dispatchCheckCardFailure,
     dispatchNewBall
   );
-  const { socket, hostConnect } = useAppSocket();
+  const { socket, connect, hostConnect } = useSocket(
+    setUser,
+    setIsUpdatingUser
+  );
 
   return (
     <FeaturesContext.Provider value={features}>
-      <UserContext.Provider value={{ user, socket, hostConnect }}>
+      <UserContext.Provider
+        value={{
+          user,
+          isUpdatingUser,
+          socket,
+          setUser,
+          connect,
+          hostConnect,
+          setIsUpdatingUser,
+        }}
+      >
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <SoundContext.Provider
             value={{ volume: defaultVolume, sounds, toggleSounds }}
@@ -100,10 +113,9 @@ export default function App() {
                         <Route path="/play/solo">
                           <Solo dispatchers={playDispatchers} />
                         </Route>
-                        {/*
-                      <Route path="/play">
-                        <Play dispatchers={playerDispatchers} />
-                      </Route> */}
+                        <Route path="/play">
+                          <Play dispatchers={playDispatchers} />
+                        </Route>
                         <Route path="/">
                           <Home dispatchCreateRoom={dispatchCreateRoom} />
                         </Route>
