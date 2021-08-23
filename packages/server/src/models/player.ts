@@ -1,11 +1,8 @@
 import { Schema, model, Document } from 'mongoose';
-import { SocketId } from 'socket.io-adapter';
+import { Player } from '@np-bingo/types';
 
-export interface IPlayer extends Document<any, {}> {
-  // uid: number;
-  name: string;
-  socketId: SocketId;
-}
+// TODO Does this work?
+export type IPlayer = Player & Document;
 
 export const PlayerSchema = new Schema({
   // uid: {
@@ -13,6 +10,6 @@ export const PlayerSchema = new Schema({
   //   required: true,
   // },
   name: String,
-  socketId: Schema.Types.Mixed,
+  socketId: String,
 });
 export default model<IPlayer>('Player', PlayerSchema);

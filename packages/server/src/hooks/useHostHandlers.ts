@@ -2,7 +2,6 @@ import { Server, Socket } from 'socket.io';
 import { Ball, Gamestate } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
 import { Room, SocketId } from 'socket.io-adapter';
-import { IPlayer } from '../models/player';
 
 export function useHostHandlers(io: Server, socket: Socket) {
   const { leaveRoom, emitRoomGamestate, emitRoomNewBall } = useCommonHandlers(
@@ -19,7 +18,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
   };
 
   /**
-   * Host: Broadcast host leaveing room, then leave
+   * To Room: Host leaving room
    * @param room
    */
   const hostLeaveRoom = (room: Room) => {
@@ -28,7 +27,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
   };
 
   /**
-   * Host: emit gamestate to room
+   * To Room: New Gamestate
    * @param gamestate
    * @param room
    */
@@ -53,7 +52,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
   };
 
   /**
-   * Host: new ball dispensed
+   * To Room: New ball dispensed
    * @param room
    * @param ball
    */

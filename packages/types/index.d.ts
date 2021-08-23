@@ -1,9 +1,8 @@
-import { Socket } from 'socket.io-client';
 export type Player = {
   _id?: string;
   uid?: number;
-  name?: string;
-  socketId: Socket['id'];
+  name: string;
+  socketId: string;
   ready?: boolean;
 };
 export interface Host extends Player {}
@@ -64,4 +63,4 @@ export type Kicked = {
   reason: Reason;
 };
 export type Reason = 'none' | 'banned' | 'abandoned';
-export type PlayerAction = 'join-room' | 'leave-room';
+export type PlayerAction = 'join-room' | 'leave-room' | 'ready-up';

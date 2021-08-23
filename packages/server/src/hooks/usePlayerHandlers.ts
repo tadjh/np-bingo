@@ -1,7 +1,6 @@
 import { Server, Socket } from 'socket.io';
 import { Room, SocketId } from 'socket.io-adapter';
-import { Card, PlayerAction } from '@np-bingo/types';
-import { IPlayer } from '../models/player';
+import { Card, Player, PlayerAction } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
 
 export function usePlayerHandlers(io: Server, socket: Socket) {
@@ -19,7 +18,7 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
     action: PlayerAction,
     room: Room,
     hostSocketId: SocketId,
-    player: IPlayer,
+    player: Player,
     card?: Card
   ) => {
     switch (action) {
@@ -29,25 +28,28 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
       case 'leave-room':
         playerLeaveRoom(room, hostSocketId, player);
         break;
+      case 'ready-up':
+        readyUp(room, hostSocketId, player);
+        break;
       default:
         throw new Error('Invalid player action');
     }
   };
 
   /**
-   * Player: Leave rooms
+   * To Host: Player Join room
    * @param room
    * @param hostSocketId
    * @param player
    */
-  const joinRoom = (room: Room, hostSocketId: SocketId, player: IPlayer) => {
+  const joinRoom = (room: Room, hostSocketId: SocketId, player: Player) => {
     socket.join(room);
     console.log(`Room ${room}: Player joined`);
     io.to(hostSocketId).emit('host:player-action', 'join-room', player);
   };
 
   /**
-   * Player: Notifiy host of player leaving room, then leave room.
+   * To Host: Player Leave Room
    * @param room
    * @param hostSocketId
    * @param player
@@ -55,10 +57,21 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
   const playerLeaveRoom = (
     room: Room,
     hostSocketId: SocketId,
-    player: IPlayer
+    player: Player
   ) => {
     io.to(hostSocketId).emit('host:player-action', 'leave-room', player);
     leaveRoom(room, player.name);
+  };
+
+  /**
+   * To Host: Player Ready Up
+   * @param room
+   * @param hostSocketId
+   * @param player
+   */
+  const readyUp = (room: Room, hostSocketId: SocketId, player: Player) => {
+    console.log(`Room ${room}: ${player.name} is ready`);
+    io.to(hostSocketId).emit('host:player-action', 'ready-up', player);
   };
 
   return { playerAction, playerLeaveRoom };

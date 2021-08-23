@@ -6,8 +6,7 @@ import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
 import { Room, SocketId } from 'socket.io-adapter';
 import { ORIGIN, PORT } from './config';
-
-import { IPlayer } from './models/player';
+import { Player } from '@np-bingo/types';
 import connectDB from './config/db';
 import { usePlayerHandlers, useHostHandlers } from './hooks';
 // routes
@@ -81,8 +80,10 @@ io.on('connection', (socket: Socket) => {
       // TODO Does this work??
       socket.off('host:gamestate', hostGamestate);
       console.log(`${room}: Deafened Host Gamestate`);
+
       socket.off('host:ball', newBall);
       console.log(`${room}: Deafened New Ball`);
+
       socket.off('host:leave-room', hostLeaveRoom);
       console.log(`${room}: Deafened Host Actions`);
     });
