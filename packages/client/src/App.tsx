@@ -57,10 +57,7 @@ export default function App() {
     dispatchCheckCardFailure,
     dispatchNewBall
   );
-  const { socket, connect, hostConnect } = useSocket(
-    setUser,
-    setIsUpdatingUser
-  );
+  const { socket, connect } = useSocket(setUser, setIsUpdatingUser);
 
   return (
     <FeaturesContext.Provider value={features}>
@@ -70,9 +67,8 @@ export default function App() {
           isUpdatingUser,
           socket,
           setUser,
-          connect,
-          hostConnect,
           setIsUpdatingUser,
+          connect,
         }}
       >
         <ThemeContext.Provider value={{ theme, toggleTheme }}>

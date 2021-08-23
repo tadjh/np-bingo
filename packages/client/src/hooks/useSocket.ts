@@ -15,23 +15,6 @@ export function useSocket(
   setIsUpdatingUser: Dispatch<SetStateAction<boolean>>
 ) {
   const socket = useMemo(socketInit, [socketInit]);
-  /**
-   * Host Manual Connect
-   */
-  const hostConnect = (room: Room) => {
-    if (socket.id) return;
-    connect();
-    emitCreateRoom(room);
-  };
-
-  /**
-   * Host: Emit create room
-   * @param room
-   */
-  const emitCreateRoom = (room: Room) => {
-    logger(`Creating room: ${room}`);
-    socket.emit('host:create-room', room);
-  };
 
   /**
    * Connect
@@ -82,6 +65,5 @@ export function useSocket(
   return {
     socket,
     connect,
-    hostConnect,
   };
 }
