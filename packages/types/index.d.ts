@@ -1,8 +1,4 @@
 import { Socket } from 'socket.io-client';
-export type Action = {
-  type: string;
-  payload?: any;
-};
 export type Player = {
   _id?: string;
   uid?: number;

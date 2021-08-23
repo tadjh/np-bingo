@@ -1,5 +1,4 @@
 import {
-  Action,
   Gamestate,
   Gamemode,
   Ball,
@@ -9,6 +8,8 @@ import {
   Pool,
   Rules,
   Winner,
+  Room,
+  Card,
 } from '@np-bingo/types';
 import {
   INIT_GAME,
@@ -17,7 +18,7 @@ import {
   END_GAME,
   CHECK_CARD_SUCCESS,
   NEW_BALL,
-  UPDATE_POOL,
+  // UPDATE_POOL,
   STANDBY,
   VALIDATE,
   GET_CARD,
@@ -27,8 +28,8 @@ import {
   PLAYER_JOINED,
   PLAYER_LEFT,
   PLAYER_READY,
+  // PLAYER_UNREADY,
   SET_BALL,
-  PLAYER_UNREADY,
   PAUSE,
   CHECK_CARD_FAILURE,
   WIN_GAME,
@@ -52,25 +53,54 @@ export interface AppState {
 export const initialState: AppState = {
   gamestate: 'init' as Gamestate,
   room: '',
-  host: { _id: '', uid: 0, name: '', socket: '' },
+  host: { _id: '', uid: 0, name: '', socketId: '' },
   ball: { key: 0, number: 0, column: '', remainder: 75 },
   players: [],
   pool: BINGO,
   draws: [[], [], [], [], []],
   playerCard: {
     card: new Array(25),
-    owner: { _id: '', uid: 0, name: '', socket: {} as Player['socket'] },
+    owner: { _id: '', uid: 0, name: '', socketId: '' },
   },
   winner: {
     methods: [],
     results: {},
-    player: { _id: '', uid: 0, name: '', socket: {} as Player['socket'] },
+    player: { _id: '', uid: 0, name: '', socketId: '' },
     card: new Array(25),
   },
   rules: { mode: 'default' as Gamemode, special: [] },
 };
 
-export function reducer(state: AppState, action: Action) {
+export type AppActions =
+  | { type: typeof INIT_GAME }
+  | { type: typeof READY_CHECK }
+  | { type: typeof STANDBY }
+  | { type: typeof START_GAME }
+  | { type: typeof VALIDATE }
+  | { type: typeof PAUSE }
+  | { type: typeof FAILURE }
+  | { type: typeof WIN_GAME }
+  | { type: typeof END_GAME }
+  | { type: typeof SET_ROOM; payload: { room: Room; host: Host } }
+  | { type: typeof JOIN_ROOM; payload: { room: Room; player: Player } }
+  | { type: typeof PLAYER_JOINED; payload: Player }
+  | { type: typeof PLAYER_LEFT; payload: Player }
+  | { type: typeof PLAYER_READY; payload: Player }
+  | { type: typeof GET_CARD; payload: { card: Card; owner: Player } }
+  | { type: typeof CHECK_CARD_SUCCESS; payload: Winner }
+  | { type: typeof CHECK_CARD_FAILURE }
+  | {
+      type: typeof NEW_BALL;
+      payload: {
+        ball: Ball;
+        draws: Pool;
+        pool: Pool;
+      };
+    }
+  | { type: typeof SET_BALL; payload: Ball }
+  | { type: typeof UPDATE_GAMEMODE; payload: Gamemode };
+
+export function reducer(state: AppState, action: AppActions) {
   switch (action.type) {
     case INIT_GAME:
       return initialState;
@@ -108,28 +138,29 @@ export function reducer(state: AppState, action: Action) {
       return {
         ...state,
         room: action.payload.room,
-        host: { ...action.payload.host },
+        host: { ...action.payload.player },
       };
     case PLAYER_JOINED:
       return { ...state, players: [...state.players, action.payload] };
     case PLAYER_LEFT:
+      // TODO Consider turn on leave flag instead of removing player from array
       const leaveFiltered = state.players.filter((element) => {
-        return element.socket !== action.payload.socket;
+        return element.socketId !== action.payload.socketId;
       });
       return { ...state, players: [...leaveFiltered] };
     case PLAYER_READY:
       const readyFiltered = state.players.map((element) => {
-        if (element.socket === action.payload.socket) {
+        if (element.socketId === action.payload.socketId) {
           return { ...element, ready: true };
         }
         return element;
       });
       return { ...state, players: [...readyFiltered] };
-    case PLAYER_UNREADY:
-      const unreadyFiltered = state.players.map((element) => {
-        return { ...element, ready: false };
-      });
-      return { ...state, players: [...unreadyFiltered] };
+    // case PLAYER_UNREADY:
+    //   const unreadyFiltered = state.players.map((element) => {
+    //     return { ...element, ready: false };
+    //   });
+    //   return { ...state, players: [...unreadyFiltered] };
     case GET_CARD:
       return {
         ...state,
@@ -156,13 +187,13 @@ export function reducer(state: AppState, action: Action) {
       return {
         ...state,
         ball: { ...action.payload.ball },
-        draws: [...action.payload.draws],
-        pool: [...action.payload.pool],
+        draws: action.payload.draws.map((item) => item.slice()),
+        pool: action.payload.pool.map((item) => item.slice()),
       };
     case SET_BALL:
       return { ...state, ball: { ...action.payload } };
-    case UPDATE_POOL:
-      return { ...state, ball: { ...state.ball, remainder: action.payload } };
+    // case UPDATE_POOL:
+    //   return { ...state, ball: { ...state.ball, remainder: action.payload } };
     case UPDATE_GAMEMODE:
       return { ...state, rules: { ...state.rules, mode: action.payload } };
     default:

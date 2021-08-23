@@ -21,7 +21,6 @@ export interface UserContextProps {
   setUser: Dispatch<SetStateAction<Player>>;
   setIsUpdatingUser: Dispatch<SetStateAction<boolean>>;
   connect: () => void;
-  hostConnect: (room: Room) => void;
 }
 
 export interface ThemeContextProps {
@@ -67,7 +66,6 @@ export const initialUserContext: UserContextProps = {
   socket: {} as Socket,
   setUser: () => {},
   connect: () => {},
-  hostConnect: () => {},
   setIsUpdatingUser: () => {},
 };
 

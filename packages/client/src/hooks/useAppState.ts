@@ -1,5 +1,4 @@
 import {
-  Action,
   Ball,
   Card,
   Gamemode,
@@ -7,6 +6,7 @@ import {
   Host,
   Player,
   Pool,
+  Room,
   Winner,
 } from '@np-bingo/types';
 import { useCallback, useReducer } from 'react';
@@ -34,11 +34,16 @@ import {
   PLAYER_READY,
   SET_BALL,
 } from '../config/constants';
-import { AppState, initialState, reducer } from '../reducers/app.reducer';
+import {
+  AppState,
+  initialState,
+  reducer,
+  AppActions,
+} from '../reducers/app.reducer';
 
 export function useAppState() {
   const [state, dispatch] = useReducer<
-    (state: AppState, action: Action) => AppState
+    (state: AppState, action: AppActions) => AppState
   >(NODE_ENV === 'development' ? logger(reducer) : reducer, initialState);
 
   /**
@@ -107,10 +112,10 @@ export function useAppState() {
    * @param room
    * @param host
    */
-  const dispatchCreateRoom = (room: string, host: Host) => {
+  const dispatchCreateRoom = (room: Room, host: Host) => {
     dispatch({
       type: SET_ROOM,
-      payload: { room: room, host: host },
+      payload: { room, host },
     });
   };
 
@@ -119,10 +124,10 @@ export function useAppState() {
    * @param room
    * @param host
    */
-  const dispatchJoinRoom = (room: string, host: Host) => {
+  const dispatchJoinRoom = (room: Room, player: Player) => {
     dispatch({
       type: JOIN_ROOM,
-      payload: { room: room, host: host },
+      payload: { room, player },
     });
   };
 
