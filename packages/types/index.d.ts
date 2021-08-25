@@ -2,7 +2,7 @@ export type Player = {
   _id?: string;
   uid?: number;
   name: string;
-  socketId: string;
+  socketId: string | null;
   ready: boolean;
   kicked: boolean;
   leave: boolean;
@@ -23,6 +23,7 @@ export type Room = string;
 export type Methods = string[];
 export type Serial = string;
 export type Card = number[];
+export type Draws = Pool;
 export type Pool = number[][];
 export type Theme = 'light' | 'dark';
 export type Results = {
@@ -34,6 +35,7 @@ export type Winner = {
   player: Player;
   card: Card;
 };
+export type CurrentBall = { ball: Ball; draws: Draws; pool: Pool };
 export type Gamestate =
   | 'init'
   | 'ready'
