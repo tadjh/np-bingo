@@ -10,7 +10,7 @@ export interface DrawsProps {
   disabled?: boolean;
 }
 
-export function Draws({
+export default function Draws({
   draws = [[], [], [], [], []],
   disabled,
 }: DrawsProps): JSX.Element {

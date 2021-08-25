@@ -1,6 +1,6 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
-import { Draws, DrawsProps } from '.';
+import Draws, { DrawsProps } from '.';
 export default {
   title: 'Pages/Host/Draws',
   component: Draws,
