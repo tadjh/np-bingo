@@ -7,7 +7,7 @@ export type Player = {
   kicked: boolean;
   leave: boolean;
 };
-export interface Host extends Player {}
+export type Host = Player;
 export type Ball = {
   key: number;
   number: number;
@@ -17,7 +17,7 @@ export type Ball = {
 export type Column = 'b' | 'i' | 'n' | 'g' | 'o';
 export type PlayerCard = {
   card: Card;
-  owner: Player;
+  owner: Player; // TODO consider Pick<Player, "_id" | "socketId">;
 };
 export type Room = string;
 export type Methods = string[];
@@ -69,3 +69,9 @@ export type Kicked = {
 export type Reason = 'none' | 'banned' | 'abandoned';
 export type PlayerAction = 'join-room' | 'leave-room' | 'ready-up';
 export type HostAction = 'player-kicked' | 'left-room';
+
+export interface CreateRoom {
+  room: Room;
+  host: Host;
+  message: string;
+}
