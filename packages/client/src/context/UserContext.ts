@@ -7,7 +7,6 @@ import { UserActions } from '../reducers/user.reducer';
 
 export interface UserContextProps {
   user: Player;
-  isUpdatingUser: boolean;
   socket: Socket<DefaultEventsMap, DefaultEventsMap>;
   userDispatch: Dispatch<UserActions>;
   connect: () => void;
@@ -16,7 +15,6 @@ export interface UserContextProps {
 export const initialUserContext: UserContextProps = {
   user: initalPlayer,
   socket: {} as Socket,
-  isUpdatingUser: false,
   userDispatch: () => {},
   connect: () => {},
 };
