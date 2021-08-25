@@ -29,10 +29,18 @@ router.post('/', (req, res) => {
   let room = makeID(4);
   // TODO check unique ID against previous game IDs
   Game.create({ host: req.body, room: room })
-    .then((doc) => res.json({ game: doc, msg: `Created game room ${room}` }))
-    .catch((err) =>
-      res.status(400).json({ error: 'Unable to create a game room' })
-    );
+    .then((doc) =>
+      res.json({
+        room: doc.room,
+        host: doc.host,
+        msg: `Created game room ${room}`,
+      })
+    )
+    .catch((err) => {
+      console.log(err);
+
+      res.status(400).json({ error: 'Unable to create a game room' });
+    });
 });
 
 /**
