@@ -1,5 +1,5 @@
 import { Gamemode, Gamestate } from '@np-bingo/types';
-import Status from '../../../../components/Display/Status';
+import Typography from '../../../../components/Display/Typography';
 import { usePlayStatus } from './hooks';
 
 export interface PlayStatusProps {
@@ -12,5 +12,5 @@ export default function PlayStatus({
   gamemode = 'default',
 }: PlayStatusProps): JSX.Element {
   const [playStatus] = usePlayStatus(gamestate, gamemode);
-  return <Status>{playStatus()}</Status>;
+  return <Typography>{playStatus()}</Typography>;
 }

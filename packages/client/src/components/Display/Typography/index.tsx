@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface StatusProps extends React.HtmlHTMLAttributes<HTMLDivElement> {}
 
-export default function Status({
+export default function Typography({
   children,
   ...props
 }: StatusProps): JSX.Element {
