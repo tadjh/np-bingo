@@ -15,27 +15,30 @@ export function useHome() {
     '/api/game'
   );
 
+  // TODO handle this better
   /**
    * Reset gamestate on visit to home
    */
-  useEffect(() => {
-    if (gamestate === 'init') return;
-    dispatch({ type: INIT });
-  }, [gamestate, dispatch]);
+  // useEffect(() => {
+  //   if (gamestate === 'init') return;
+  //   dispatch({ type: INIT });
+  // }, [gamestate, dispatch]);
 
   /**
    * Create a new game room
    */
   const createRoom = () => {
     setCreatingRoom(true);
+    // Don't reconnect if already connected
+    if (socket.connected === true) return;
     connect();
   };
 
   /**
-   * Trigger Fetch once socket has loaded
+   * Trigger Fetch once socket is loaded
    */
   useEffect(() => {
-    if (user.socketId === null || !creatingRoom) return; // TODO Does this work?
+    if (user.socketId === null || !creatingRoom) return;
     setBody(user);
   }, [user, creatingRoom, setBody]);
 
