@@ -57,8 +57,8 @@ export type AppActions =
   | { type: typeof CHECK_CARD }
   | { type: typeof PAUSE }
   | { type: typeof GAME_OVER }
-  | { type: typeof CREATE_ROOM; payload: { room: Room; host: Host } }
-  | { type: typeof JOIN_ROOM; payload: { room: Room; host: Player } }
+  | { type: typeof CREATE_ROOM; payload: { room: Room; host: Partial<Host> } }
+  | { type: typeof JOIN_ROOM; payload: { room: Room; host: Partial<Player> } }
   | { type: typeof PLAYER_JOIN; payload: Player }
   | { type: typeof PLAYER_LEAVE; payload: Player }
   | { type: typeof PLAYER_KICK; payload: Player }
@@ -118,6 +118,19 @@ export function appReducer(state: AppState, action: AppActions): AppState {
       return { ...state, gamestate: 'start' as Gamestate };
     case CHECK_CARD:
       return { ...state, gamestate: 'validate' as Gamestate };
+    case CHECK_CARD_SUCCESS:
+      return {
+        ...state,
+        gamestate: 'win' as Gamestate,
+        winner: { ...action.payload },
+      };
+    case CHECK_CARD_FAILURE:
+      return {
+        ...state,
+        gamestate: 'failure' as Gamestate,
+        winner: { ...initialAppState.winner },
+        playerCard: { ...initialAppState.playerCard },
+      };
     case PAUSE:
       return { ...state, gamestate: 'pause' as Gamestate };
     case GAME_OVER:
@@ -127,14 +140,14 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         ...state,
         gamestate: 'ready' as Gamestate,
         room: action.payload.room,
-        host: { ...action.payload.host },
+        host: { ...state.host, ...action.payload.host },
       };
     case JOIN_ROOM: // TODO Might need to wipe all game state like READY_CHECK if INIT_GAME isn't called before joining a new room
       return {
         ...state,
         gamestate: 'ready' as Gamestate,
         room: action.payload.room,
-        host: { ...action.payload.host },
+        host: { ...state.host, ...action.payload.host },
       };
     case PLAYER_JOIN:
       return { ...state, players: [...state.players, action.payload] };
@@ -170,19 +183,6 @@ export function appReducer(state: AppState, action: AppActions): AppState {
           card: [...action.payload.card],
           owner: { ...action.payload.owner },
         },
-      };
-    case CHECK_CARD_SUCCESS:
-      return {
-        ...state,
-        gamestate: 'win' as Gamestate,
-        winner: { ...action.payload },
-      };
-    case CHECK_CARD_FAILURE:
-      return {
-        ...state,
-        gamestate: 'failure' as Gamestate,
-        winner: { ...initialAppState.winner },
-        playerCard: { ...initialAppState.playerCard },
       };
     case NEW_BALL: // TODO moved setting start here
       return {
