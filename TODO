@@ -21,6 +21,7 @@ DONE Bug: On leave room Bingo Song continues to play
 // TODO Bug: modal bug in storybook removeChild
 
 Vulnerbilities
+// TODO Prevent kicked player from rejoining (API & Socket)
 // TODO Move card creation to Server API in multiplayer mode
 // TODO Rest Api has no auth (JWT?)
 // TODO Max active Games
