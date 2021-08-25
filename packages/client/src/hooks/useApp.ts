@@ -1,34 +1,23 @@
 import { useCallback } from 'react';
-import { Ball, PlayerCard, Pool, Winner } from '@np-bingo/types';
+import { Ball, Draws, PlayerCard, Pool, Winner } from '@np-bingo/types';
 import { getBall, removeBall, updateDraws } from '../utils/bingo';
 import { validateCard } from '../utils/bingo.validate';
 
-export function useApp(
-  playerCard: PlayerCard,
-  pool: Pool,
-  draws: Pool,
-  dispatchCheckCardSuccess: (winner: Winner) => void,
-  dispatchCheckCardFailure: () => void,
-  dispatchNewBall: (ball: Ball, draws: Pool, pool: Pool) => void
-): [() => Ball, () => Winner | null] {
+export function useApp(playerCard: PlayerCard, pool: Pool, draws: Draws) {
   /**
    * Get new ball
    * @param pool
    * @param draws
    * @returns Ball
    */
-  const newBall = (): Ball => {
+  const newBall = (): { ball: Ball; draws: Draws; pool: Pool } => {
     const ball = getBall(pool);
-    if (ball.number === 0) return ball;
-
+    if (ball.number === 0) return { ball, draws: [], pool: [] };
     // safely clone multidimenional array
     const drawsArray = draws.map((array) => array.slice());
     const newDraws = updateDraws(drawsArray, ball);
     const filteredPool = removeBall(pool, ball);
-
-    dispatchNewBall(ball, newDraws, filteredPool);
-
-    return ball;
+    return { ball, draws: newDraws, pool: filteredPool };
   };
 
   /**
@@ -43,21 +32,15 @@ export function useApp(
     const [results, methods] = validateCard(card, draws);
 
     // No winning methods
-    if (methods.length <= 0) {
-      dispatchCheckCardFailure();
-      return null;
-    }
+    if (methods.length <= 0) return null;
 
-    const winner = {
+    return {
       methods,
       results,
       player: owner,
       card: card,
     };
+  }, [playerCard, draws]);
 
-    dispatchCheckCardSuccess(winner);
-    return winner;
-  }, [playerCard, draws, dispatchCheckCardFailure, dispatchCheckCardSuccess]);
-
-  return [newBall, checkCard];
+  return { newBall, checkCard };
 }
