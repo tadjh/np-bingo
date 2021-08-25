@@ -1,61 +1,70 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
-import { Host, Room } from '@np-bingo/types';
+import { useContext, useEffect, useState } from 'react';
+import { CreateRoom, Player, Room } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
-import { apiCreateRoom } from '../api';
 import { logger } from '../../../utils';
+import { INIT, CREATE_ROOM } from '../../../config/constants';
+import { useFetch } from '../../../hooks';
 
-export function useHome(
-  dispatchCreateRoom: (room: string, host: Host) => void
-) {
-  const { user, socket, isUpdatingUser, setIsUpdatingUser, connect } =
-    useContext(UserContext);
-  const { gamestate, play } = useContext(GameContext);
-  const [redirect, setRedirect] = useState(false);
+export function useHome() {
+  const { user, socket, connect } = useContext(UserContext);
+  const { gamestate, dispatch } = useContext(GameContext);
+  const [isRedirect, setIsRedirect] = useState(false);
+  const [creatingRoom, setCreatingRoom] = useState(false);
+  const { result, isLoading, isError, setBody } = useFetch<Player, CreateRoom>(
+    'POST',
+    '/api/game'
+  );
 
   /**
    * Reset gamestate on visit to home
    */
   useEffect(() => {
     if (gamestate === 'init') return;
-    play('init');
-  }, [gamestate, play]);
+    dispatch({ type: INIT });
+  }, [gamestate, dispatch]);
 
   /**
    * Create a new game room
    */
   const createRoom = () => {
-    if (isUpdatingUser) return;
+    setCreatingRoom(true);
     connect();
   };
 
   /**
-   * Host: Emit create room
-   * @param room
+   * Trigger Fetch once socket has loaded
    */
-  const emitCreateRoom = useCallback(
-    (room: Room) => {
+  useEffect(() => {
+    if (user.socketId === null || !creatingRoom) return; // TODO Does this work?
+    setBody(user);
+  }, [user, creatingRoom, setBody]);
+
+  /**
+   * After Successful Fetch
+   */
+  useEffect(() => {
+    if (result === null) return;
+
+    /**
+     * Host: Emit create room
+     * @param room
+     */
+    const emitCreateRoom = (room: Room) => {
       logger(`Room ${room}: Room created`);
       socket.emit('host:create-room', room);
-    },
-    [socket]
-  );
+    };
 
-  useEffect(() => {
-    if (!isUpdatingUser || user.socketId === '') return;
-    setIsUpdatingUser(false);
-    apiCreateRoom(user, (res) => {
-      dispatchCreateRoom(res.data.game.room, res.data.game.host);
-      emitCreateRoom(res.data.game.room);
-      setRedirect(true);
+    dispatch({
+      type: CREATE_ROOM,
+      payload: { room: result.data.room, host: result.data.host },
     });
-  }, [
-    isUpdatingUser,
-    user,
-    dispatchCreateRoom,
-    play,
-    setIsUpdatingUser,
-    emitCreateRoom,
-  ]);
 
-  return { redirect, createRoom };
+    emitCreateRoom(result.data.room);
+
+    setCreatingRoom(false);
+
+    setIsRedirect(true);
+  }, [result, socket, dispatch]);
+
+  return { isLoading, isError, isRedirect, createRoom };
 }
