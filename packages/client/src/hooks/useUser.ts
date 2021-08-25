@@ -1,4 +1,4 @@
-import { useReducer } from 'react';
+import { Dispatch, useReducer } from 'react';
 import { Player } from '@np-bingo/types';
 import { NODE_ENV } from '../config';
 import logger from 'use-reducer-logger';
@@ -14,17 +14,19 @@ export const initalPlayer: Player = {
   leave: false,
 };
 
-export function useUser(initialUser: Player = initalPlayer) {
+export function useUser(
+  initialUser: Player = initalPlayer
+): [Player, Dispatch<UserActions>] {
   const userInititalState: UserState = {
     user: initialUser,
-    isUpdatingUser: false,
+    isLoading: false,
     isError: false,
   };
-  const [userState, userDispatch] = useReducer<
+  const [{ user }, userDispatch] = useReducer<
     (state: UserState, action: UserActions) => UserState
   >(
     NODE_ENV === 'development' ? logger(userReducer) : userReducer,
     userInititalState
   );
-  return { userState, userDispatch };
+  return [user, userDispatch];
 }
