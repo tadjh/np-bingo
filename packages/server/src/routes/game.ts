@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
       res.json({
         room: doc.room,
         host: doc.host,
-        msg: `Created game room ${room}`,
+        message: `Created game room ${room}`,
       })
     )
     .catch((err) => {
