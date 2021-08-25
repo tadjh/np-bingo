@@ -1,4 +1,4 @@
-import { Pool, Card, Results, Methods } from '@np-bingo/types';
+import { Card, Results, Methods, Draws } from '@np-bingo/types';
 import { findElementInArray } from '.';
 
 /**
@@ -7,7 +7,7 @@ import { findElementInArray } from '.';
  * @param draws
  * @returns Tuple of Results, Methods
  */
-export function validateCard(card: Card, draws: Pool): [Results, Methods] {
+export function validateCard(card: Card, draws: Draws): [Results, Methods] {
   const results = checkCard(card, draws);
   const methods = winningMethods(results);
   return [results, methods];
@@ -19,7 +19,7 @@ export function validateCard(card: Card, draws: Pool): [Results, Methods] {
  * @param draws
  * @returns Results object
  */
-export function checkCard(card: Card, draws: Pool): Results {
+export function checkCard(card: Card, draws: Draws): Results {
   const row = checkRows(card, draws);
   const column = checkColumns(card, draws);
   const diagonal = checkDiagonals(card, draws);
@@ -32,7 +32,7 @@ export function checkCard(card: Card, draws: Pool): Results {
  * @param draws Pool of currently drawn Bingo balls
  * @returns Array of winning index positions on card or otherwise an empty array
  */
-export function checkRows(card: Card, draws: Pool) {
+export function checkRows(card: Card, draws: Draws) {
   let result: number[] = [];
   for (let i = 0; i < 5; i++) {
     if (i === 2) {
@@ -53,7 +53,7 @@ export function checkRows(card: Card, draws: Pool) {
  */
 export function checkCellsInRow(
   card: Card,
-  draws: Pool,
+  draws: Draws,
   { offset = 0, flag = false } = {}
 ): number[] {
   let result = [];
@@ -80,7 +80,7 @@ export function checkCellsInRow(
  * @param draws Pool of currently drawn Bingo balls
  *  @returns Array of winning index positions on card or otherwise an empty array
  */
-export function checkColumns(card: Card, draws: Pool): number[] {
+export function checkColumns(card: Card, draws: Draws): number[] {
   let result: number[] = [];
   for (let i = 0; i < 5; i++) {
     if (i === 2) {
@@ -102,7 +102,7 @@ export function checkColumns(card: Card, draws: Pool): number[] {
  */
 export function checkCellsInColumn(
   card: Card,
-  draws: Pool,
+  draws: Draws,
   { offset = 0, flag = false } = {}
 ): number[] {
   let result = [];
@@ -129,7 +129,7 @@ export function checkCellsInColumn(
  * @param draws Pool of currently drawn Bingo balls
  * @returns Array of winning index positions on card or otherwise an empty array
  */
-export function checkDiagonals(card: Card, draws: Pool): number[] {
+export function checkDiagonals(card: Card, draws: Draws): number[] {
   const falling = checkFallingDiagonal(card, draws);
   const rising = checkRisingDiagonal(card, draws);
   return [...falling, ...rising];
@@ -141,7 +141,7 @@ export function checkDiagonals(card: Card, draws: Pool): number[] {
  * @param draws Pool of currently drawn Bingo balls
  * @returns Array of winning index positions on card or otherwise an empty array
  */
-export function checkFallingDiagonal(card: Card, draws: Pool): number[] {
+export function checkFallingDiagonal(card: Card, draws: Draws): number[] {
   let result = [];
   for (let i = 0; i < 5; i++) {
     // Skip free spot
@@ -166,7 +166,7 @@ export function checkFallingDiagonal(card: Card, draws: Pool): number[] {
  * @param draws Pool of currently drawn Bingo balls
  * @returns Array of winning index positions on card or otherwise an empty array
  */
-export function checkRisingDiagonal(card: Card, draws: Pool): number[] {
+export function checkRisingDiagonal(card: Card, draws: Draws): number[] {
   let result = [];
   const offset = [4, 3, 2, 1, 0];
   for (let i = 0; i < 5; i++) {

@@ -1,5 +1,5 @@
 import lz from 'lz-string';
-import { Pool, Ball, Card, Serial, Column } from '@np-bingo/types';
+import { Pool, Ball, Card, Serial, Column, Draws } from '@np-bingo/types';
 import { randomIndex } from '.';
 
 // Standard Bingo Number Distribution (USA)
@@ -166,7 +166,7 @@ export function removeBall(pool: Pool, ball: Ball): Pool {
  * @param ball
  * @returns draws Pool
  */
-export function updateDraws(draws: Pool, ball: Ball): Pool {
+export function updateDraws(draws: Draws, ball: Ball): Pool {
   return draws.map((item: number[], index) => {
     if (index === ball.key) {
       return [...item, ball.number];
