@@ -1,6 +1,14 @@
 import { useContext } from 'react';
-import { Card, Player } from '@np-bingo/types';
+import { Card } from '@np-bingo/types';
 import { BallContext, GameContext, UserContext } from '../../../context';
+import {
+  GET_CARD,
+  NEW_BALL,
+  PAUSE,
+  READY_CHECK,
+  START,
+} from '../../../config/constants';
+import { PlayContext } from '../../../context/PlayContext';
 
 export function useSoloButton(
   triggerBallEffects: () => void,
@@ -8,14 +16,19 @@ export function useSoloButton(
   pauseProgress: () => void
 ) {
   const { user } = useContext(UserContext);
-  const { gamestate, play } = useContext(GameContext);
+  const { gamestate, dispatch } = useContext(GameContext);
+  const { card } = useContext(PlayContext);
   const { newBall } = useContext(BallContext);
 
   /**
    * New Ball w/ Side Effects
    */
   const triggerBall = () => {
-    newBall();
+    const currentBall = newBall();
+    dispatch({
+      type: NEW_BALL,
+      payload: currentBall,
+    });
     triggerBallEffects();
   };
 
@@ -36,21 +49,20 @@ export function useSoloButton(
     switch (gamestate) {
       case 'ready':
         triggerBall();
-        play('start');
         break;
       case 'start':
-        play('pause');
+        dispatch({ type: PAUSE });
         pauseProgress();
         break;
       case 'win':
-        play('ready');
+        dispatch({ type: READY_CHECK });
         break;
       case 'end':
-        // playWinSfxData.stop();
-        play('ready');
+        dispatch({ type: READY_CHECK });
+        // playWinSfxData.stop(); // TODO ??
         break;
       default:
-        play('start');
+        dispatch({ type: START });
         enableProgress();
         break;
     }
@@ -61,12 +73,9 @@ export function useSoloButton(
    * @param card
    * @param dispatchSendCard
    */
-  const soloHandleSendCard = (
-    card: Card,
-    dispatchSendCard: (card: Card, user: Player) => void
-  ) => {
+  const soloHandleSendCard = () => {
     pauseProgress();
-    dispatchSendCard(card, user);
+    dispatch({ type: GET_CARD, payload: { card: card, owner: user } });
     enableProgress();
   };
 

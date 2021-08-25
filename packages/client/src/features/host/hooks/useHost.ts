@@ -10,12 +10,17 @@ import { apiSaveRoom } from '../api';
 import { useProgress } from '../../../hooks';
 import { useHostEmitters } from '.';
 import { useHostListeners } from './useHostListeners';
-import { HostDispatchers } from '../routes/Host';
+import {
+  GAME_OVER,
+  NEW_BALL,
+  PLAYER_KICK,
+  READY_CHECK,
+} from '../../../config/constants';
 
-export function useHost(dispatchers: HostDispatchers) {
+export function useHost() {
   const { ballDelay } = useContext(FeaturesContext);
   const { room, winner, players } = useContext(RoomContext);
-  const { gamestate, play } = useContext(GameContext);
+  const { gamestate, dispatch } = useContext(GameContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
   const { newBall } = useContext(BallContext);
   const [isNewGame, setIsNewGame] = useState(true);
@@ -32,23 +37,14 @@ export function useHost(dispatchers: HostDispatchers) {
     // emitIsAWinner,
     // emitHostGameOver,
   } = useHostEmitters();
-  const {
-    listenPlayerAction,
-    deafenPlayerAction,
-    //   listenPlayerLeft,
-    //   deafenPlayerLeft,
-    //   listenPlayerReady,
-    //   deafenPlayerReady,
-    //   listenReceiveCard,
-    //   deafenReceiveCard,
-  } = useHostListeners(dispatchers);
+  const { listenPlayerAction, deafenPlayerAction } = useHostListeners();
   /**
    * Kick player from room
    * @param player
    */
   const handleRemovePlayer = (player: Player) => {
+    dispatch({ type: PLAYER_KICK, payload: player });
     emitKickPlayer(player);
-    dispatchers.dispatchRemovePlayer(player);
   };
 
   /**
@@ -59,13 +55,17 @@ export function useHost(dispatchers: HostDispatchers) {
   const handleBall = () => {
     // If gamestate isn't already 'start', set it when a ball is drawn
     if (gamestate === 'standby' || gamestate === 'failure') {
-      play('start');
+      // TODO How to make sure this isn't necessary??
       emitHostStart();
     }
-    const ball = newBall();
-    if (ball.number === 0) return play('end');
+    const currentBall = newBall();
+    if (currentBall.ball.number === 0) return dispatch({ type: GAME_OVER });
     enableProgress();
-    emitSendBall(ball);
+    emitSendBall(currentBall.ball);
+    dispatch({
+      type: NEW_BALL,
+      payload: currentBall,
+    });
   };
 
   /**
@@ -91,9 +91,8 @@ export function useHost(dispatchers: HostDispatchers) {
   useEffect(() => {
     if (!isNewGame) return;
     setIsNewGame(false);
-    play('ready');
     listenPlayerAction();
-  }, [isNewGame, play, listenPlayerAction]);
+  }, [isNewGame, dispatch, listenPlayerAction]);
 
   // TODO deafenPlayerAction
   /**

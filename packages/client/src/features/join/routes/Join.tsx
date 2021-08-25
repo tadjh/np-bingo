@@ -7,20 +7,15 @@ import Button from '../../../components/Inputs/Button';
 import Link from '../../../components/Navigation/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import { useJoin } from '../hooks';
-import { Host } from '@np-bingo/types';
 
 export interface JoinProps {
-  dispatchJoinRoom: (room: string, host: Host) => void;
   publicRooms?: any[];
 }
 
-export default function Join({
-  dispatchJoinRoom,
-  publicRooms = [],
-}: JoinProps) {
+export default function Join({ publicRooms = [] }: JoinProps) {
   const { allowPublic, allowSolo } = useContext(FeaturesContext);
   const [isOpen, , open, close] = useToggle();
-  const [joinRoom, handleSolo] = useJoin(dispatchJoinRoom);
+  const [joinRoom, handleSolo] = useJoin();
   return (
     <React.Fragment>
       <header className="flex-1 items-center">

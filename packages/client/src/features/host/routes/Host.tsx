@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import clsx from 'clsx';
 import Ball from '../../../components/Display/Ball';
 import { BallContext, GameContext, RoomContext } from '../../../context';
-import { Player, Pool } from '@np-bingo/types';
+import { Draws as DrawsType } from '@np-bingo/types';
 import Button from '../../../components/Inputs/Button';
-import { Draws } from '../components/Draws';
+import Draws from '../components/Draws';
 import { PlayerList } from '../components/PlayerList';
 import IconButton from '../../../components/Inputs/IconButton/components/IconButton';
 import PlusCircleIcon from '../../../assets/icons/PlusCircle';
@@ -13,22 +13,11 @@ import Link from '../../../components/Navigation/Link';
 import { useHost, useHostButtons, useHostSounds } from '../hooks';
 import HostStatus from '../components/HostStatus';
 
-export interface HostDispatchers {
-  dispatchRemovePlayer: (player: Player) => void;
-  dispatchPlayerJoined: (player: Player) => void;
-  dispatchPlayerLeft: (player: Player) => void;
-  dispatchPlayerReady: (player: Player) => void;
-}
-
 export interface HostProps {
-  dispatchers: HostDispatchers;
-  draws: Pool;
+  draws: DrawsType;
 }
 
-export default function Host({
-  dispatchers,
-  draws = [[], [], [], [], []],
-}: HostProps) {
+export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
   const { room, players } = useContext(RoomContext);
   const { gamestate, checkCard } = useContext(GameContext);
   const {
@@ -40,7 +29,7 @@ export default function Host({
     activePlayerCount,
     handleRemovePlayer,
     handleBall,
-  } = useHost(dispatchers);
+  } = useHost();
   const {
     gamestateToggle,
     toggleText,

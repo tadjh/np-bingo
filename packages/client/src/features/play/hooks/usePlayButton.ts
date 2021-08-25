@@ -2,14 +2,11 @@ import { useContext } from 'react';
 import { BallContext, FeaturesContext, GameContext } from '../../../context';
 import { useProgress } from '../../../hooks';
 import { usePlaySounds, useSoloButton, usePlayEmitters } from '.';
-import { Card, Player } from '@np-bingo/types';
+import { GAME_OVER, STANDBY, CHECK_CARD } from '../../../config/constants';
 
-export function usePlayButton(
-  card: Card,
-  dispatchSendCard: (card: Card, user: Player) => void
-) {
+export function usePlayButton() {
   const { ballDelay } = useContext(FeaturesContext);
-  const { gamemode, play } = useContext(GameContext);
+  const { gamemode, dispatch } = useContext(GameContext);
   const { ball } = useContext(BallContext);
   const { emitReadyUp, emitLeaveRoom } = usePlayEmitters();
   const { playRandomSfx } = usePlaySounds();
@@ -19,7 +16,7 @@ export function usePlayButton(
    * @returns When ball number is 0
    */
   const onProgressDone = () => {
-    if (ball.remainder === 0) return play('end');
+    if (ball.remainder === 0) return dispatch({ type: GAME_OVER });
     if (gamemode === 'solo') return soloOnProgressDone();
   };
 
@@ -36,15 +33,18 @@ export function usePlayButton(
     enableProgress();
   };
 
-  const { soloOnProgressDone, soloHandlePrimaryButton, soloHandleSendCard } =
-    useSoloButton(triggerBallEffects, enableProgress, pauseProgress);
+  const {
+    soloOnProgressDone,
+    soloHandlePrimaryButton,
+    soloHandleSendCard,
+  } = useSoloButton(triggerBallEffects, enableProgress, pauseProgress);
 
   /**
    * Sets gamestate based on current gamestate
    */
   const handlePrimaryButton = () => {
     if (gamemode === 'solo') return soloHandlePrimaryButton();
-    play('standby');
+    dispatch({ type: STANDBY });
     emitReadyUp();
   };
 
@@ -52,8 +52,8 @@ export function usePlayButton(
    * Wrapper function for sendCard
    */
   const handleSendCard = () => {
-    if (gamemode === 'solo') soloHandleSendCard(card, dispatchSendCard);
-    play('validate');
+    if (gamemode === 'solo') soloHandleSendCard();
+    dispatch({ type: CHECK_CARD });
     // TODO emit send card
   };
 

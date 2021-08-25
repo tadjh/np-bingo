@@ -1,29 +1,25 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { Host, Room } from '@np-bingo/types';
-import { GameContext, RoomContext, UserContext } from '../../../context';
+import { Room } from '@np-bingo/types';
+import { GameContext, UserContext } from '../../../context';
 import { useQuery } from '../../../hooks';
 import { apiUpdateRoom } from '../api';
 import { Socket } from 'socket.io-client';
+import { JOIN_ROOM, CHANGE_GAMEMODE } from '../../../config/constants';
 
-export function useJoin(
-  dispatchJoinRoom: (room: string, host: Host) => void
-): [(room: Room) => void, () => void] {
-  const { user, socket, isUpdatingUser, setIsUpdatingUser, connect } =
-    useContext(UserContext);
-  const { room, host } = useContext(RoomContext);
-  const { play, mode } = useContext(GameContext);
+export function useJoin(): [(room: Room) => void, () => void] {
+  const { user, socket, connect } = useContext(UserContext);
+  const { dispatch } = useContext(GameContext);
   let query = useQuery();
-  const queryRoom = query.get('r');
   let history = useHistory();
   const [currentRoom, setCurrentRoom] = useState('');
+  const [isUpdatingUser, setIsUpdatingUser] = useState(false);
 
   /**
    * Handle Solo Button
    */
   const handleSolo = () => {
-    mode('solo');
-    play('ready');
+    dispatch({ type: CHANGE_GAMEMODE, payload: 'solo' });
   };
 
   /**
@@ -52,19 +48,23 @@ export function useJoin(
   /**
    * Call Api Update Room
    */
+  // TODO IS A MESS
   const updateRoom = useCallback(() => {
     // TODO Prevent room join if host is already playing (throw error if gamestate not 'ready')
     apiUpdateRoom(currentRoom, user, (res) => {
-      dispatchJoinRoom(currentRoom, res.data.host);
+      dispatch({
+        type: JOIN_ROOM,
+        payload: { room: currentRoom, host: res.data.host },
+      });
       emitJoinRoom(currentRoom, res.data.host.socketId, user);
       history.push(`/play?r=${currentRoom}`);
-      play('ready'); // TODO Move inside Play
     });
-  }, [currentRoom, user, history, dispatchJoinRoom, emitJoinRoom, play]);
+  }, [currentRoom, user, history, emitJoinRoom, dispatch]);
 
   /**
    * Call api Update room once user socketId has been set
    */
+  // TODO IS A MESS
   useEffect(() => {
     if (!isUpdatingUser || user.socketId === '') return;
     setIsUpdatingUser(false);
@@ -75,9 +75,10 @@ export function useJoin(
    * Handles share link
    */
   useEffect(() => {
+    const queryRoom = query.get('r');
     if (queryRoom === null) return;
     joinRoom(queryRoom);
-  }, [queryRoom, joinRoom]);
+  }, [query, joinRoom]);
 
   return [joinRoom, handleSolo];
 }

@@ -1,13 +1,18 @@
 import { useContext } from 'react';
+import { GAME_OVER, READY_CHECK, STANDBY } from '../../../config/constants';
 import { GameContext, RoomContext } from '../../../context';
 import { apiDeleteRoom, apiSaveRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
 
 export function useHostButtons() {
   const { room, winner } = useContext(RoomContext);
-  const { gamestate, play } = useContext(GameContext);
-  const { emitLeaveRoom, emitHostStandby, emitHostReady, emitHostEnd } =
-    useHostEmitters();
+  const { gamestate, dispatch } = useContext(GameContext);
+  const {
+    emitLeaveRoom,
+    emitHostStandby,
+    emitHostReady,
+    emitHostEnd,
+  } = useHostEmitters();
   /**
    * Three way toggle for host main button
    * @param gamestate Gamestate
@@ -15,15 +20,15 @@ export function useHostButtons() {
   const gamestateToggle = () => {
     switch (gamestate) {
       case 'ready':
-        play('standby');
+        dispatch({ type: STANDBY });
         emitHostStandby();
         break;
       case 'end':
-        play('ready');
+        dispatch({ type: READY_CHECK });
         emitHostReady();
         break;
       default:
-        play('end');
+        dispatch({ type: GAME_OVER });
         emitHostEnd();
         // TODO When to save?
         // apiSaveRoom(room, winner);

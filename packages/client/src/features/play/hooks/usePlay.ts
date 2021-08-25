@@ -1,64 +1,89 @@
-import { Gamemode, Results } from '@np-bingo/types';
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { Gamemode, Results, Winner } from '@np-bingo/types';
+import { useCallback, useContext, useEffect } from 'react';
 import { FeaturesContext, GameContext } from '../../../context';
-import { usePlayEmitters, usePlaySounds, usePlayState, useSolo } from '.';
-import { handleError, logger } from '../../../utils';
-import { PlayDispatchers } from '..';
-import { useToggle } from '../../../hooks';
+import { usePlayEmitters, usePlaySounds } from '.';
 import { usePlayListeners } from './usePlayListeners';
+import {
+  CHECK_CARD_FAILURE,
+  CHECK_CARD_SUCCESS,
+  NEW_CARD,
+  NOT_WINNER,
+  READY_CHECK,
+  WINNER_CROSSMARKS,
+} from '../../../config/constants';
+import { winningMethods } from '../../../utils/bingo.validate';
+import { PlayContext } from '../../../context/PlayContext';
+import { BINGO, newCard } from '../../../utils/bingo';
 
-export function usePlay(
-  dispatchers: PlayDispatchers,
-  gamemode: Gamemode,
-  confettiOverride: boolean
-) {
+export function usePlay(gamemode: Gamemode, confettiOverride: boolean) {
   const { ballDelay } = useContext(FeaturesContext);
-  const { gamestate, mode, play, checkCard } = useContext(GameContext);
-  const {
-    card,
-    serial,
-    crossmarks,
-    kicked,
-    initPlay,
-    setCard,
-    setWinningCrossmarks,
-    dispatchRoomAbandoned,
-    dispatchPlayerKicked,
-  } = usePlayState();
-  const [isWinner, winnerToggle, winnerStart, winnerStop] =
-    useToggle(confettiOverride);
+  const { gamestate, dispatch, checkCard } = useContext(GameContext);
+  const { isWinner, isNewGame, playDispatch } = useContext(PlayContext);
   const { playWinSfxData, playWinSfx, playLoseSfx } = usePlaySounds();
   const {
     emitReadyUp,
     // emitSendCard
   } = usePlayEmitters();
-  const { listenHostAction } = usePlayListeners({
-    ...dispatchers,
-    dispatchRoomAbandoned,
-    dispatchPlayerKicked,
-  });
-  const [isNewGame, setIsNewGame] = useState(true);
+  const { listenHostAction } = usePlayListeners();
   // const [, soloSideEffects] = useSolo();
+
+  /**
+   * Creates a new card and stores it in state
+   */
+  const setCard = useCallback(() => {
+    const [card, serial] = newCard(BINGO);
+    playDispatch({ type: NEW_CARD, payload: { card: card, serial: serial } });
+  }, [playDispatch]);
+
+  /**
+   * Sets Winning crossmarks after successful card validations
+   * @param results Results of validation check
+   * @retuns Object of winning crossmarks
+   */
+  function winningCells(results: Results): { [key: string]: boolean } {
+    const methods = winningMethods(results);
+    let winningCrossmarks = {};
+    for (let i = 0; i < methods.length; i++) {
+      let marks = (results[methods[i]] as number[]).map(function (item) {
+        let id = `cell-${item + 1}`;
+        return { [id]: true };
+      });
+      winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
+    }
+    return winningCrossmarks;
+  }
+
+  /**
+   * Sets Winning crossmarks after successful card validations
+   * @param results Results of validation check
+   */
+  const setWinningCrossmarks = useCallback(
+    (results: Results) => {
+      const winningCrossmarks = winningCells(results);
+      playDispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
+    },
+    [playDispatch]
+  );
 
   /**
    * Handles win
    */
   const handleWin = useCallback(
-    (results: Results) => {
-      // TODO if (winner.methods.length <= 0) return;
-      setWinningCrossmarks(results);
+    (winner: Winner) => {
+      dispatch({ type: CHECK_CARD_SUCCESS, payload: winner });
+      setWinningCrossmarks(winner.results);
       playWinSfx();
-      winnerStart();
     },
-    [setWinningCrossmarks, playWinSfx, winnerStart]
+    [setWinningCrossmarks, playWinSfx, dispatch]
   );
 
   /**
    * Handles lose
    */
   const handleLose = useCallback(() => {
+    dispatch({ type: CHECK_CARD_FAILURE });
     playLoseSfx();
-  }, [playLoseSfx]);
+  }, [dispatch, playLoseSfx]);
 
   /**
    * Sync Play gamestate with App gamestate
@@ -70,19 +95,16 @@ export function usePlay(
   //   play('ready');
   // }, [gamestate, initPlay, play]);
 
-  const handleWinCleanUp = useCallback(
-    (isWinner: boolean) => {
-      if (!isWinner) return;
-      // TODO maybe useMemo playWinSfxData, expensive?
-      playWinSfxData.stop();
-      winnerStop();
-    },
-    [playWinSfxData, winnerStop]
-  );
+  const handleWinCleanUp = useCallback(() => {
+    // TODO maybe useMemo playWinSfxData, expensive?
+    playWinSfxData.stop();
+    playDispatch({ type: NOT_WINNER });
+  }, [playWinSfxData, playDispatch]);
 
+  // TODO IMPROVE
   useEffect(() => {
     if (gamestate !== 'ready') return;
-    if (isWinner) return handleWinCleanUp(isWinner);
+    if (isWinner) return handleWinCleanUp();
   }, [gamestate, isWinner, handleWinCleanUp]);
 
   /**
@@ -92,7 +114,7 @@ export function usePlay(
   const validate = useCallback(() => {
     setTimeout(() => {
       const winner = checkCard();
-      winner !== null ? handleWin(winner.results) : handleLose();
+      winner !== null ? handleWin(winner) : handleLose();
     }, ballDelay);
   }, [ballDelay, checkCard, handleWin, handleLose]);
 
@@ -104,12 +126,11 @@ export function usePlay(
    * Set new game
    */
   useEffect(() => {
-    if (!isNewGame) return;
-    setIsNewGame(false);
-    play('ready');
+    if (!isNewGame) return; // TODO REDO IMPLEMENTATION
+    dispatch({ type: READY_CHECK });
     setCard();
     listenHostAction();
-  }, [isNewGame, play, setCard, listenHostAction]);
+  }, [isNewGame, setCard, listenHostAction, dispatch]);
 
   // TODO deafenPlayerAction
 
@@ -165,10 +186,6 @@ export function usePlay(
 
   return {
     isWinner,
-    card,
-    serial,
-    crossmarks,
-    kicked,
     setCard,
     validate,
   };

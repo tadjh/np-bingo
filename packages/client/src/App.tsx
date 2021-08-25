@@ -8,21 +8,23 @@ import Create from './features/create';
 import { useUser, useTheme, useToggle, useApp, useSocket } from './hooks';
 import config from './config/features';
 import {
-  GameContext,
   BallContext,
-  ThemeContext,
-  SoundContext,
   FeaturesContext,
-  UserContext,
+  GameContext,
+  PlayContext,
   RoomContext,
+  SoundContext,
+  ThemeContext,
+  UserContext,
 } from './context';
 import Background from './components/Surfaces/Background';
 import Container from './components/Layout/Container';
-import { useAppState } from './hooks/useAppState';
+import { useAppState, usePlayState } from './hooks';
 import './App.css';
 import features from './config/features';
 export default function App() {
-  const { user, isUpdatingUser, setUser, setIsUpdatingUser } = useUser();
+  const [user, userDispatch] = useUser();
+  const { socket, connect } = useSocket(userDispatch);
   const {
     state: {
       gamestate,
@@ -36,38 +38,24 @@ export default function App() {
       host,
       rules: { mode: gamemode },
     },
-    play,
-    mode,
-    dispatchCreateRoom,
-    dispatchJoinRoom,
-    dispatchNewBall,
-    dispatchCheckCardSuccess,
-    dispatchCheckCardFailure,
-    hostDispatchers,
-    playDispatchers,
+    dispatch,
   } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useToggle(config.sounds);
   const { defaultVolume } = useContext(FeaturesContext);
-  const [newBall, checkCard] = useApp(
-    playerCard,
-    pool,
-    draws,
-    dispatchCheckCardSuccess,
-    dispatchCheckCardFailure,
-    dispatchNewBall
-  );
-  const { socket, connect } = useSocket(setUser, setIsUpdatingUser);
+  const { newBall, checkCard } = useApp(playerCard, pool, draws);
+  const {
+    playState: { card, serial, crossmarks, kicked, isWinner, isNewGame },
+    playDispatch,
+  } = usePlayState();
 
   return (
     <FeaturesContext.Provider value={features}>
       <UserContext.Provider
         value={{
           user,
-          isUpdatingUser,
           socket,
-          setUser,
-          setIsUpdatingUser,
+          userDispatch,
           connect,
         }}
       >
@@ -87,8 +75,7 @@ export default function App() {
                 value={{
                   gamestate,
                   gamemode,
-                  play,
-                  mode,
+                  dispatch,
                   checkCard,
                 }}
               >
@@ -97,24 +84,36 @@ export default function App() {
                     <Container>
                       <Background />
                       <Switch>
+                        <Route exact path="/">
+                          <Home />
+                        </Route>
                         <Route path="/create">
                           <Create />
                         </Route>
                         <Route path="/join">
-                          <Join dispatchJoinRoom={dispatchJoinRoom} />
+                          <Join />
                         </Route>
                         <Route path="/host">
-                          <Host dispatchers={hostDispatchers} draws={draws} />
+                          <Host draws={draws} />
                         </Route>
-                        <Route path="/play/solo">
-                          <Solo dispatchers={playDispatchers} />
-                        </Route>
-                        <Route path="/play">
-                          <Play dispatchers={playDispatchers} />
-                        </Route>
-                        <Route path="/">
-                          <Home dispatchCreateRoom={dispatchCreateRoom} />
-                        </Route>
+                        <PlayContext.Provider
+                          value={{
+                            card,
+                            serial,
+                            crossmarks,
+                            kicked,
+                            isWinner,
+                            isNewGame,
+                            playDispatch,
+                          }}
+                        >
+                          <Route path="/play/solo">
+                            <Solo />
+                          </Route>
+                          <Route path="/play">
+                            <Play />
+                          </Route>
+                        </PlayContext.Provider>
                       </Switch>
                     </Container>
                   </div>

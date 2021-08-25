@@ -1,16 +1,16 @@
-import { useCallback, useContext } from 'react';
-import { Card, Player, Room, PlayerAction } from '@np-bingo/types';
+import { useContext } from 'react';
+import { Player, PlayerAction } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
-import { HostDispatchers } from '..';
+import {
+  PLAYER_JOIN,
+  PLAYER_LEAVE,
+  PLAYER_READY,
+} from '../../../config/constants';
 
-export function useHostListeners({
-  dispatchPlayerJoined,
-  dispatchPlayerLeft,
-  dispatchPlayerReady,
-}: HostDispatchers) {
+export function useHostListeners() {
   const { socket } = useContext(UserContext);
-  const { play } = useContext(GameContext);
+  const { dispatch } = useContext(GameContext);
 
   /**
    * From Player: Player Join Room
@@ -18,7 +18,7 @@ export function useHostListeners({
    */
   const playerJoinRoom = (player: Player) => {
     logger(`${player.name} joined`);
-    dispatchPlayerJoined(player);
+    dispatch({ type: PLAYER_JOIN, payload: player });
   };
 
   /**
@@ -27,12 +27,12 @@ export function useHostListeners({
    */
   const playerLeaveRoom = (player: Player) => {
     logger(`${player.name} left`);
-    dispatchPlayerLeft(player);
+    dispatch({ type: PLAYER_LEAVE, payload: player });
   };
 
   const playerReadyUp = (player: Player) => {
     logger(`${player.name} ready`);
-    dispatchPlayerReady(player);
+    dispatch({ type: PLAYER_READY, payload: player });
   };
 
   /**

@@ -1,11 +1,5 @@
 import React, { useContext } from 'react';
-import {
-  Winner,
-  Gamemode,
-  Card,
-  Player,
-  Ball as BallType,
-} from '@np-bingo/types';
+import { Gamemode } from '@np-bingo/types';
 import {
   BallContext,
   FeaturesContext,
@@ -21,23 +15,14 @@ import KickedModal from '../components/KickedModal';
 import Confetti from '../components/Confetti';
 import { usePlay, usePlayButton, usePlayDisplay } from '../hooks';
 import PlayStatus from '../components/PlayStatus';
-
-export interface PlayDispatchers {
-  dispatchDispenseBall: (ball: BallType) => void;
-  dispatchPlayerReady: (player: Player) => void;
-  dispatchCheckCardSuccess: (winner: Winner) => void;
-  dispatchCheckCardFailure: () => void;
-  dispatchSendCard: (card: Card, user: Player) => void;
-}
+import { PlayContext } from '../../../context/PlayContext';
 
 export interface PlayProps {
-  dispatchers: PlayDispatchers;
   gamemode?: Gamemode;
   confettiOverride?: boolean;
 }
 
 export default function Play({
-  dispatchers,
   gamemode = 'default',
   confettiOverride = false,
 }: PlayProps) {
@@ -45,18 +30,20 @@ export default function Play({
   const { room } = useContext(RoomContext);
   const { gamestate } = useContext(GameContext);
   const { ball } = useContext(BallContext);
-  const { isWinner, card, serial, crossmarks, kicked, setCard } = usePlay(
-    dispatchers,
-    gamemode,
-    confettiOverride
-  );
+  const {
+    card,
+    serial,
+    crossmarks,
+    kicked: { status, reason },
+  } = useContext(PlayContext);
+  const { isWinner, setCard } = usePlay(gamemode, confettiOverride);
   const {
     progress,
     inProgress,
     handlePrimaryButton,
     handleSendCard,
     handleLeaveRoom,
-  } = usePlayButton(card, dispatchers.dispatchSendCard);
+  } = usePlayButton();
   const { primaryButtonText, disablePrimaryButton, disableBallDisplay } =
     usePlayDisplay();
   return (
@@ -106,9 +93,7 @@ export default function Play({
           Leave Room
         </Link>
       </footer>
-      {gamemode !== 'solo' && (
-        <KickedModal open={kicked.status} reason={kicked.reason} />
-      )}
+      {gamemode !== 'solo' && <KickedModal open={status} reason={reason} />}
       {isWinner && <Confetti isActive={isWinner} />}
     </React.Fragment>
   );

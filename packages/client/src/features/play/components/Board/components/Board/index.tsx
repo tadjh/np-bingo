@@ -3,7 +3,7 @@ import clsx from 'clsx';
 import { Card } from '@np-bingo/types';
 import Cell from '../Cell';
 import Logo from '../../../../../../components/Logo';
-import { initialState } from '../../../../../../reducers/play.reducer';
+import { initialPlayState } from '../../../../../../reducers/play.reducer';
 
 export interface BoardProps {
   card: Card;
@@ -13,7 +13,7 @@ export interface BoardProps {
 }
 
 export function Board({
-  card = [...initialState.card],
+  card = [...initialPlayState.card],
   serial = '',
   crossmarks = {},
   winner = false,

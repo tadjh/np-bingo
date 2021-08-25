@@ -3,10 +3,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Host, { HostProps } from './routes/Host';
 import { BallContext, GameContext, RoomContext } from '../../context';
-import { initialState as AppState } from '../../reducers/app.reducer';
+import { initialAppState as AppState } from '../../reducers/app.reducer';
 import Container from '../../components/Layout/Container';
-import { Ball } from '@np-bingo/types';
-import { Socket } from 'socket.io-client';
+import { Ball, CurrentBall } from '@np-bingo/types';
 import Background from '../../components/Surfaces/Background';
 
 export default {
@@ -34,7 +33,7 @@ export default {
 
 const Template: Story<HostProps> = (args) => <Host {...args} />;
 
-const ball = {} as Ball;
+const ball = {} as CurrentBall;
 
 export const Base = Template.bind({});
 Base.decorators = [
@@ -52,8 +51,7 @@ Base.decorators = [
           value={{
             gamestate: 'standby',
             gamemode: AppState.rules.mode,
-            play: () => {},
-            mode: () => {},
+            dispatch: () => {},
             checkCard: () => null,
           }}
         >
@@ -95,13 +93,12 @@ Waiting.decorators = [
           value={{
             gamestate: 'ready',
             gamemode: AppState.rules.mode,
-            play: () => {},
-            mode: () => {},
+            dispatch: () => {},
             checkCard: () => null,
           }}
         >
           <Story />
-        </GameContext.Provider>{' '}
+        </GameContext.Provider>
       </RoomContext.Provider>
     );
   },
@@ -126,6 +123,8 @@ ReadyList.decorators = [
               name: 'Jane Doe',
               socketId: '',
               ready: true,
+              kicked: false,
+              leave: false,
             },
             {
               _id: 'adsjfhskjdfh',
@@ -133,6 +132,8 @@ ReadyList.decorators = [
               name: 'Jane Doa',
               socketId: '',
               ready: false,
+              kicked: false,
+              leave: false,
             },
             {
               _id: 'fasdiuywqqe',
@@ -140,6 +141,8 @@ ReadyList.decorators = [
               name: 'Jane Do',
               socketId: '',
               ready: false,
+              kicked: false,
+              leave: false,
             },
             {
               _id: 'damnsbfndbvfw',
@@ -147,6 +150,8 @@ ReadyList.decorators = [
               name: 'Jane Doh',
               socketId: '',
               ready: false,
+              kicked: false,
+              leave: false,
             },
           ],
         }}
@@ -155,13 +160,12 @@ ReadyList.decorators = [
           value={{
             gamestate: 'ready',
             gamemode: AppState.rules.mode,
-            play: () => {},
-            mode: () => {},
+            dispatch: () => {},
             checkCard: () => null,
           }}
         >
           <Story />
-        </GameContext.Provider>{' '}
+        </GameContext.Provider>
       </RoomContext.Provider>
     );
   },
@@ -183,8 +187,7 @@ GameOver.decorators = [
           value={{
             gamestate: 'end',
             gamemode: AppState.rules.mode,
-            play: () => {},
-            mode: () => {},
+            dispatch: () => {},
             checkCard: () => null,
           }}
         >

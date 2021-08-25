@@ -1,25 +1,14 @@
-import { useCallback, useContext, useEffect } from 'react';
-import { PlayDispatchers } from '..';
+import { Dispatch, useCallback, useContext, useEffect } from 'react';
 import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
 import { Ball, HostAction, Room, Winner } from '@np-bingo/types';
+import { PLAYER_KICK } from '../../../config/constants';
+import { PlayContext } from '../../../context/PlayContext';
 
-export interface PlayListenerDispatchers extends PlayDispatchers {
-  dispatchRoomAbandoned: () => void;
-  dispatchPlayerKicked: () => void;
-}
-
-export function usePlayListeners({
-  dispatchRoomAbandoned,
-  dispatchPlayerKicked,
-  dispatchDispenseBall,
-  dispatchPlayerReady,
-  dispatchCheckCardSuccess,
-  dispatchCheckCardFailure,
-  dispatchSendCard,
-}: PlayListenerDispatchers) {
+export function usePlayListeners() {
   const { socket } = useContext(UserContext);
-  const { gamestate, play } = useContext(GameContext);
+  // const { gamestate, dispatch } = useContext(GameContext);
+  const { playDispatch } = useContext(PlayContext);
   /**
    * To Player: Host left
    */
@@ -41,12 +30,12 @@ export function usePlayListeners({
    */
   const playerKicked = () => {
     logger(`You have been kicked from the room`);
-    dispatchPlayerKicked();
+    playDispatch({ type: PLAYER_KICK, payload: 'banned' });
   };
 
   const roomAbandoned = () => {
     logger(`The Host has abandoned the room`);
-    dispatchRoomAbandoned();
+    playDispatch({ type: PLAYER_KICK, payload: 'abandoned' });
   };
 
   /**
