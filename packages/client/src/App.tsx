@@ -110,7 +110,7 @@ export default function App() {
                           <Route path="/play/solo">
                             <Solo />
                           </Route>
-                          <Route path="/play">
+                          <Route exact path="/play">
                             <Play />
                           </Route>
                         </PlayContext.Provider>
