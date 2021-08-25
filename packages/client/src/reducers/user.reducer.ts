@@ -7,7 +7,7 @@ import {
 
 export interface UserState {
   user: Player;
-  isUpdatingUser: boolean;
+  isLoading: boolean;
   isError: boolean;
 }
 
@@ -19,17 +19,18 @@ export type UserActions =
 export function userReducer(state: UserState, action: UserActions): UserState {
   switch (action.type) {
     case SOCKET_INIT:
-      return { ...state, isUpdatingUser: true };
+      return { ...state, isLoading: true, isError: false };
     case SOCKET_SUCCESS:
       return {
         ...state,
         user: { ...state.user, socketId: action.payload },
-        isUpdatingUser: false,
+        isLoading: false,
+        isError: false,
       };
     case SOCKET_FAILURE:
       return {
         ...state,
-        isUpdatingUser: false,
+        isLoading: false,
         isError: true,
       };
     default:
