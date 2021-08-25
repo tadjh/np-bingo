@@ -39,19 +39,19 @@ export function handleError(error: any) {
   if (error.response) {
     // The request was made and the server responded with a status code
     // that falls out of the range of 2xx
-    console.log(error.response.data);
-    console.log(error.response.status);
-    console.log(error.response.headers);
+    logger(error.response.data);
+    logger(error.response.status);
+    logger(error.response.headers);
   } else if (error.request) {
     // The request was made but no response was received
     // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
     // http.ClientRequest in node.js
-    console.log(error.request);
+    logger(error.request);
   } else {
     // Something happened in setting up the request that triggered an Error
-    console.log('Error', error.message);
+    logger('Error', error.message);
   }
-  console.log(error.config);
+  logger(error.config);
 }
 
 /**
@@ -71,8 +71,7 @@ export function toSlug(text?: string): string | undefined {
  * Console log (Development Only)
  * @param message string
  */
-export function logger(message: string) {
-  if (NODE_ENV === 'development') {
-    console.log(message);
-  }
+export function logger(message?: any, ...optionalParams: any[]): void {
+  if (NODE_ENV !== 'development') return;
+  console.log(message, ...optionalParams);
 }
