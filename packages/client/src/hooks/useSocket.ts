@@ -2,7 +2,7 @@ import { Dispatch, useEffect, useMemo } from 'react';
 import socketInit from '../lib/socket.io';
 import { logger } from '../utils';
 import { UserActions } from '../reducers/user.reducer';
-import { SOCKET_INIT, SOCKET_SUCCESS } from '../config/constants';
+import { SOCKET_SUCCESS } from '../config/constants';
 
 export function useSocket(userDispatch: Dispatch<UserActions>) {
   const socket = useMemo(socketInit, [socketInit]);
@@ -12,7 +12,6 @@ export function useSocket(userDispatch: Dispatch<UserActions>) {
    */
   const connect = () => {
     socket.connect();
-    // userDispatch({ type: SOCKET_INIT });
   };
 
   /**
