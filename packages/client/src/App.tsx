@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import clsx from 'clsx';
 import { Switch, Route } from 'react-router-dom';
 import Host from './features/host';
 import Play, { Solo } from './features/play';
@@ -23,7 +24,7 @@ import { useAppState, usePlayState } from './hooks';
 import './App.css';
 import features from './config/features';
 export default function App() {
-  const [user, userDispatch] = useUser();
+  const [{ user, isSocketLoading }, userDispatch] = useUser();
   const { socket, connect } = useSocket(userDispatch);
   const {
     state: {
@@ -55,6 +56,7 @@ export default function App() {
         value={{
           user,
           socket,
+          isSocketLoading,
           userDispatch,
           connect,
         }}
@@ -80,9 +82,17 @@ export default function App() {
                 }}
               >
                 <BallContext.Provider value={{ ball, newBall }}>
-                  <div id="App" className={theme}>
+                  <div
+                    id="App"
+                    className={clsx(
+                      'relative flex justify-center items-center min-h-screen',
+                      theme
+                    )}
+                  >
+                    <Background variant="phone" />
                     <Container>
                       <Background />
+                      <Background variant="top" />
                       <Switch>
                         <Route exact path="/">
                           <Home />
