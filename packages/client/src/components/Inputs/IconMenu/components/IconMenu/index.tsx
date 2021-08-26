@@ -26,15 +26,15 @@ export default function IconMenu({
   return (
     <div
       className={clsx(
-        'relative block w-14 h-14',
+        'relative block w-[44px] h-[44px]',
         isOpen || 'overflow-hidden hover:overflow-visible'
       )}
     >
       <ul
         className={clsx(
-          'absolute flex p-1 transition-all duration-75 rounded-full border-2',
+          'absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1',
           isOpen
-            ? 'z-50 bg-gray-300 dark:bg-gray-700 shadow-2xl border-gray-400 dark:border-gray-600'
+            ? 'z-50 bg-gray-200 dark:bg-gray-700 shadow-2xl border-gray-300 dark:border-gray-600'
             : 'border-transparent',
           menuStyle()
         )}
