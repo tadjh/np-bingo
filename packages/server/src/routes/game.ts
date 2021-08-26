@@ -100,8 +100,9 @@ router.put('/join/:id', async (req, res) => {
         }
         if (doc) {
           res.json({
+            room: doc.room,
             host: doc.host,
-            msg: `Joined game room ${req.params.id}`,
+            message: `Joined game room ${req.params.id}`,
           });
         }
         if (!doc) {
