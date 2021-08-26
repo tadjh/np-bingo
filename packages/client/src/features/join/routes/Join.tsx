@@ -1,31 +1,42 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { useToggle } from '../../../hooks';
 import RoomList from '../components/RoomList';
 import CodeModal from '../components/CodeModal';
-import { FeaturesContext } from '../../../context';
+import { FeaturesContext, UserContext } from '../../../context';
 import Button from '../../../components/Inputs/Button';
 import Link from '../../../components/Navigation/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import { useJoin } from '../hooks';
+import PlayerName from '../../../components/Display/PlayerName';
+import IconMenu from '../../../components/Inputs/IconMenu';
+import IconButton from '../../../components/Inputs/IconButton';
+import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
 
 export interface JoinProps {
   publicRooms?: any[];
 }
 
 export default function Join({ publicRooms = [] }: JoinProps) {
+  const { user, socket, isSocketLoading } = useContext(UserContext);
   const { allowPublic, allowSolo } = useContext(FeaturesContext);
+  const { joinRoom, handleSolo } = useJoin();
   const [isOpen, , open, close] = useToggle();
-  const [joinRoom, handleSolo] = useJoin();
   return (
-    <React.Fragment>
-      <header className="flex-1 items-center">
-        <h1 className="text-center text-3xl text-black dark:text-white text-opacity-60 dark:text-opacity-60">
+    <Fragment>
+      <header className="flex-1 justify-between">
+        <RouterLink to="/">
+          <IconButton description="Back">
+            <ChevronLeftIcon />
+          </IconButton>
+        </RouterLink>
+        <h1 className="text-center text-3xl text-black dark:text-white text-opacity-60 dark:text-opacity-60 self-center">
           Join
         </h1>
+        <div className="w-[40px]"></div>
       </header>
-      <main className="justify-around">
+      <main className="justify-evenly">
         {allowPublic && <RoomList rooms={publicRooms} onClick={joinRoom} />}
-        <div className="flex flex-col items-center gap-y-3">
+        <div className="flex flex-col items-center gap-3">
           <Button variant="primary" className="join-button" onClick={open}>
             Private Room
           </Button>
@@ -42,11 +53,18 @@ export default function Join({ publicRooms = [] }: JoinProps) {
           )}
         </div>
       </main>
-      <footer className="flex-1 justify-center">
-        <Link className="nav-button hover:underline" to="/">
+      <footer className="flex-1 justify-end gap-1">
+        {/* <Link className="nav-button hover:underline" to="/">
           &larr; Back
-        </Link>
+        </Link> */}
+        <div>{'\xa0'}</div>
+        <IconMenu direction="up" />
+        <PlayerName
+          status={socket.connected}
+          name={user.name}
+          isLoading={isSocketLoading}
+        />
       </footer>
-    </React.Fragment>
+    </Fragment>
   );
 }
