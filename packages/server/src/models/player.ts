@@ -16,5 +16,8 @@ export const PlayerSchema = new Schema({
   // },
   name: String,
   socketId: String,
+  ready: Boolean,
+  kicked: Boolean,
+  leave: Boolean,
 });
 export default model<IPlayer>('Player', PlayerSchema);
