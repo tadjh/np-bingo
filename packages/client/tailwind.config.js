@@ -71,6 +71,8 @@ module.exports = {
           'radial-gradient(circle at 25% 25%, var(--tw-gradient-stops))',
         'gradient-linear':
           'linear-gradient(180deg, rgba(5,150,105,1) 13%, rgba(252,211,77,1) 57%, rgba(220,38,38,1) 90%);',
+        iphone: "url('/src/assets/img/bg-iphone.png')",
+        'iphone-top': "url('/src/assets/img/bg-iphone-top.png')",
       }),
       backgroundSize: (theme) => ({
         oversized: 'auto 1000px',
