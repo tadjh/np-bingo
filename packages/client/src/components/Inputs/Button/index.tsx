@@ -4,7 +4,7 @@ import { useClickHard } from '../../../assets/sounds/hooks';
 import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
 
-export type ButtonVariants = '' | 'primary' | 'success';
+export type ButtonVariants = 'default' | 'primary' | 'success';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -15,7 +15,7 @@ export interface ButtonProps
 }
 
 export default function Button({
-  variant = '',
+  variant = 'default',
   component: Component,
   className,
   children,
@@ -26,7 +26,7 @@ export default function Button({
   const [buttonSyle] = useButton(variant, disabled);
   const [clickHardSfx] = useClickHard();
   const buttonClasses = clsx(
-    'relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker',
+    'relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center',
     buttonSyle(),
     className
   );
