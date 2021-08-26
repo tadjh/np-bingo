@@ -44,11 +44,11 @@ export function useHostButtons() {
   const toggleText = (): string => {
     switch (gamestate) {
       case 'ready':
-        return 'Start Game';
+        return 'Start';
       case 'end':
-        return 'New Game';
+        return 'Replay';
       default:
-        return 'End Game';
+        return 'End';
     }
   };
 

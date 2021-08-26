@@ -1,7 +1,12 @@
 import React, { useContext } from 'react';
 import clsx from 'clsx';
 import Ball from '../../../components/Display/Ball';
-import { BallContext, GameContext, RoomContext } from '../../../context';
+import {
+  BallContext,
+  GameContext,
+  RoomContext,
+  UserContext,
+} from '../../../context';
 import { Draws as DrawsType } from '@np-bingo/types';
 import Button from '../../../components/Inputs/Button';
 import Draws from '../components/Draws';
@@ -9,15 +14,19 @@ import { PlayerList } from '../components/PlayerList';
 import IconButton from '../../../components/Inputs/IconButton/components/IconButton';
 import PlusCircleIcon from '../../../assets/icons/PlusCircle';
 import Widgets from '../../../components/Widgets';
-import Link from '../../../components/Navigation/Link';
+import { Link as RouterLink } from 'react-router-dom';
+// import Link from '../../../components/Navigation/Link';
 import { useHost, useHostButtons, useHostSounds } from '../hooks';
 import HostStatus from '../components/HostStatus';
+import PlayerName from '../../../components/Display/PlayerName';
+import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
 
 export interface HostProps {
   draws: DrawsType;
 }
 
 export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
+  const { user, socket, isSocketLoading } = useContext(UserContext);
   const { room, players } = useContext(RoomContext);
   const { gamestate, checkCard } = useContext(GameContext);
   const {
@@ -40,21 +49,27 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
   const [playRandomSfx] = useHostSounds();
   return (
     <React.Fragment>
-      <header className="gap-3">
-        <Button
-          variant="primary"
-          className="w-[132px]"
-          onClick={gamestateToggle}
-        >
-          {toggleText()}
-        </Button>
-        <Button
-          variant="success"
-          disabled={disableCheckCard()}
-          onClick={checkCard}
-        >
-          Check Card
-        </Button>
+      <header className="flex gap-2 items-center justify-between">
+        <RouterLink to="/">
+          <IconButton description="Back">
+            <ChevronLeftIcon />
+          </IconButton>
+        </RouterLink>
+        <div className="flex gap-2">
+          <div className="w-[108px] text-center">
+            <Button variant="primary" onClick={gamestateToggle}>
+              {toggleText()}
+            </Button>
+          </div>
+          <Button
+            variant="success"
+            disabled={disableCheckCard()}
+            onClick={checkCard}
+          >
+            Validate
+          </Button>
+        </div>
+        <div className="w-[40px]" />
       </header>
       <main>
         <HostStatus gamestate={gamestate} count={activePlayerCount()} />
@@ -92,11 +107,16 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
           </React.Fragment>
         )}
       </main>
-      <footer className="gap-3">
+      <footer className="gap-1">
         <Widgets room={room} />
-        <Link className="hover:underline" onClick={handleLeaveRoom} to="/">
+        <PlayerName
+          status={socket.connected}
+          name={user.name}
+          isLoading={isSocketLoading}
+        />
+        {/* <Link className="hover:underline" onClick={handleLeaveRoom} to="/">
           Leave Room
-        </Link>
+        </Link> */}
       </footer>
     </React.Fragment>
   );

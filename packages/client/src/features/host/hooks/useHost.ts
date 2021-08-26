@@ -81,7 +81,6 @@ export function useHost() {
    */
   const activePlayerCount = (): number => {
     const activePlayers = players.filter((item) => !item.kicked && !item.leave);
-    console.log(activePlayers);
     return activePlayers.length;
   };
 
