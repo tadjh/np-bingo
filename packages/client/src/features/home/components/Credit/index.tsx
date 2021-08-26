@@ -13,7 +13,7 @@ export default function Credit({
   text = undefined,
 }: CreditProps): JSX.Element {
   return (
-    <React.Fragment>
+    <div className="text-center">
       <div className="text-black dark:text-white text-opacity-60 dark:text-opacity-40">
         {`Made by ${author}`}
       </div>
@@ -25,6 +25,6 @@ export default function Credit({
       >
         {text || link}
       </a>
-    </React.Fragment>
+    </div>
   );
 }
