@@ -5,7 +5,7 @@ type Alerts = 'success' | 'caution' | 'failure' | 'none';
 export interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
   status: Alerts;
 }
-
+// TODO Alert.stories
 export default function Alert({
   status = 'success',
   className,
