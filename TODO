@@ -20,6 +20,7 @@ DONE Bug: On leave room Bingo Song continues to play
 // TODO Consider dispatch Contexts
 // TODO Bug: modal bug in storybook removeChild
 // TODO Bug: Back button no sound
+// TODO Make app responsive again
 
 Vulnerbilities
 // TODO Prevent kicked player from rejoining (API & Socket)
