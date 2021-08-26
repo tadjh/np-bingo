@@ -72,6 +72,12 @@ export type HostAction = 'player-kicked' | 'left-room';
 
 export interface CreateRoom {
   room: Room;
-  host: Pick<Host, '_id' | 'name' | 'socketId'>;
+  host: Host;
+  message: string;
+}
+
+export interface JoinRoom {
+  room: Room;
+  host: Host;
   message: string;
 }
