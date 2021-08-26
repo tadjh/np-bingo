@@ -2,7 +2,7 @@ import React from 'react';
 import clsx from 'clsx';
 
 export interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
-
+// TODO make responsive
 export default function Container({
   className = '',
   children,
