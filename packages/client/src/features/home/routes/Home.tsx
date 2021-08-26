@@ -7,13 +7,22 @@ import IconMenu from '../../../components/Inputs/IconMenu';
 import { useHome } from '../hooks';
 import Spinner from '../../../components/Feedback/Spinner';
 import { useContext } from 'react';
-import { RoomContext } from '../../../context';
+import { FeaturesContext, RoomContext, UserContext } from '../../../context';
 import Typography from '../../../components/Display/Typography';
+import PlayerName from '../../../components/Display/PlayerName';
 
 export interface HomeProps {}
 export default function Home(): JSX.Element {
+  const { showCredit } = useContext(FeaturesContext);
   const { room } = useContext(RoomContext);
-  const { isLoading, isError, isRedirect, createRoom } = useHome();
+  const { user, socket } = useContext(UserContext);
+  const {
+    isLoading,
+    isError,
+    isRedirect,
+    isSocketLoading,
+    createRoom,
+  } = useHome();
   if (isRedirect) return <Redirect to={`/host?r=${room}`} />;
   return (
     <Fragment>
@@ -24,6 +33,7 @@ export default function Home(): JSX.Element {
         <Typography>{'\xa0'}</Typography>
         <Button
           id="play-button"
+          className="w-[83px]"
           variant="primary"
           component={RouterLink}
           to="/join"
@@ -35,15 +45,20 @@ export default function Home(): JSX.Element {
         </Button>
         <Typography>{isError ? 'Something went wrong...' : '\xa0'}</Typography>
       </main>
-      <footer className="flex-1 justify-end">
-        <Credit
-          author="Tadjh Brooks"
-          link="https://github.com/TadjhBrooks/np-bingo/"
-          text="github.com/TadjhBrooks/np-bingo"
+      <footer className="flex-1 justify-end gap-1">
+        {showCredit && (
+          <Credit
+            author="Tadjh Brooks"
+            link="https://github.com/TadjhBrooks/np-bingo/"
+            text="github.com/TadjhBrooks/np-bingo"
+          />
+        )}
+        <IconMenu direction="up" />
+        <PlayerName
+          status={socket.connected}
+          name={user.name}
+          isLoading={isSocketLoading}
         />
-        <div className="flex">
-          <IconMenu direction="up" />
-        </div>
       </footer>
     </Fragment>
   );

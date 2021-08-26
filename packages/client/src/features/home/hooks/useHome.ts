@@ -2,14 +2,16 @@ import { useContext, useEffect, useState } from 'react';
 import { CreateRoom, Player, Room } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
-import { INIT, CREATE_ROOM } from '../../../config/constants';
+import { CREATE_ROOM, INIT, SOCKET_INIT } from '../../../config/constants';
 import { useFetch } from '../../../hooks';
 
 export function useHome() {
-  const { user, socket, connect } = useContext(UserContext);
+  const { user, socket, isSocketLoading, connect, userDispatch } = useContext(
+    UserContext
+  );
   const { gamestate, dispatch } = useContext(GameContext);
   const [isRedirect, setIsRedirect] = useState(false);
-  const [creatingRoom, setCreatingRoom] = useState(false);
+  // const [isHome, setIsHome] = useState(true);
   const { result, isLoading, isError, setBody } = useFetch<Player, CreateRoom>(
     'POST',
     '/api/game'
@@ -25,22 +27,34 @@ export function useHome() {
   // }, [gamestate, dispatch]);
 
   /**
+   * Connect to socket.io
+   */
+  useEffect(() => {
+    // Don't reconnect if already connected
+    if (socket.connected === true || isSocketLoading) return;
+    userDispatch({ type: SOCKET_INIT });
+    connect();
+  }, [socket, isSocketLoading, connect, userDispatch]);
+
+  /**
    * Create a new game room
+   * Trigger Fetch only if socket is loaded
    */
   const createRoom = () => {
-    setCreatingRoom(true);
-    // Don't reconnect if already connected
-    if (socket.connected === true) return;
-    connect();
+    if (user.socketId === null) return; //  || !creatingRoom
+    setBody(user);
+    // setCreatingRoom(true);
   };
+
+  // TODO Move socket delegation to App
 
   /**
    * Trigger Fetch once socket is loaded
    */
-  useEffect(() => {
-    if (user.socketId === null || !creatingRoom) return;
-    setBody(user);
-  }, [user, creatingRoom, setBody]);
+  // useEffect(() => {
+  //   if (user.socketId === null || !creatingRoom) return;
+  //   setBody(user);
+  // }, [user, creatingRoom, setBody]);
 
   /**
    * After Successful Fetch
@@ -64,10 +78,8 @@ export function useHome() {
 
     emitCreateRoom(result.data.room);
 
-    setCreatingRoom(false);
-
     setIsRedirect(true);
   }, [result, socket, dispatch]);
 
-  return { isLoading, isError, isRedirect, createRoom };
+  return { isLoading, isError, isRedirect, isSocketLoading, createRoom };
 }
