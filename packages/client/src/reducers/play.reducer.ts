@@ -18,7 +18,7 @@ export interface PlayState {
 }
 
 export const initialPlayState: PlayState = {
-  card: [],
+  card: new Array(25),
   serial: '',
   crossmarks: {},
   kicked: { status: false, reason: 'none' },
