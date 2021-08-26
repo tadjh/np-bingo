@@ -127,7 +127,6 @@ export function usePlay(gamemode: Gamemode, confettiOverride: boolean) {
    */
   useEffect(() => {
     if (!isNewGame) return; // TODO REDO IMPLEMENTATION
-    dispatch({ type: READY_CHECK });
     setCard();
     listenHostAction();
   }, [isNewGame, setCard, listenHostAction, dispatch]);

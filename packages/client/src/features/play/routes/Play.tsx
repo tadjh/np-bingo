@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import { Gamemode } from '@np-bingo/types';
+import { Link as RouterLink } from 'react-router-dom';
 import {
   BallContext,
-  FeaturesContext,
+  // FeaturesContext,
   GameContext,
   RoomContext,
+  UserContext,
 } from '../../../context';
 import Ball from '../../../components/Display/Ball';
 import { Board } from '../components/Board';
@@ -16,6 +18,10 @@ import Confetti from '../components/Confetti';
 import { usePlay, usePlayButton, usePlayDisplay } from '../hooks';
 import PlayStatus from '../components/PlayStatus';
 import { PlayContext } from '../../../context/PlayContext';
+import PlayerName from '../../../components/Display/PlayerName';
+import IconButton from '../../../components/Inputs/IconButton';
+import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
+import IconMenu from '../../../components/Inputs/IconMenu';
 
 export interface PlayProps {
   gamemode?: Gamemode;
@@ -26,7 +32,8 @@ export default function Play({
   gamemode = 'default',
   confettiOverride = false,
 }: PlayProps) {
-  const { allowNewCard } = useContext(FeaturesContext);
+  const { user, socket, isSocketLoading } = useContext(UserContext);
+  // const { allowNewCard } = useContext(FeaturesContext);
   const { room } = useContext(RoomContext);
   const { gamestate } = useContext(GameContext);
   const { ball } = useContext(BallContext);
@@ -44,31 +51,45 @@ export default function Play({
     handleSendCard,
     handleLeaveRoom,
   } = usePlayButton();
-  const { primaryButtonText, disablePrimaryButton, disableBallDisplay } =
-    usePlayDisplay();
+  const {
+    primaryButtonText,
+    disablePrimaryButton,
+    disableBallDisplay,
+  } = usePlayDisplay();
   return (
-    <React.Fragment>
-      <header className="gap-3">
-        {allowNewCard && (
+    <Fragment>
+      <header className="flex gap-2 items-center justify-between">
+        <RouterLink to="/">
+          <IconButton description="Back">
+            <ChevronLeftIcon />
+          </IconButton>
+        </RouterLink>
+        {/* {allowNewCard && (
           <Button disabled={gamestate !== 'ready' && true} onClick={setCard}>
             New Card
           </Button>
-        )}
-        <Button
-          variant="primary"
-          disabled={disablePrimaryButton()}
-          onClick={handlePrimaryButton}
-          className="w-[108px]"
-        >
-          {primaryButtonText()}
-        </Button>
-        <Button
-          variant="success"
-          disabled={gamestate !== 'start' && true}
-          onClick={handleSendCard}
-        >
-          Bingo
-        </Button>
+        )} */}
+        <div className="flex gap-2">
+          <div className="w-[108px] text-center">
+            <Button
+              variant="primary"
+              disabled={disablePrimaryButton()}
+              onClick={handlePrimaryButton}
+              // className="w-[94px]"
+            >
+              {primaryButtonText()}
+            </Button>
+          </div>
+          <Button
+            variant="success"
+            disabled={gamestate !== 'start' && true}
+            onClick={handleSendCard}
+            // className="w-[94px]"
+          >
+            Bingo
+          </Button>
+        </div>
+        <div className="w-[40px]" />
       </header>
       <main>
         <PlayStatus gamestate={gamestate} gamemode={gamemode} />
@@ -87,14 +108,23 @@ export default function Play({
           crossmarks={crossmarks}
         />
       </main>
-      <footer className="gap-3">
-        <Widgets variant={gamemode} room={room} />
-        <Link className="hover:underline" onClick={handleLeaveRoom} to="/">
+      <footer className="gap-1">
+        {gamemode === 'solo' ? (
+          <IconMenu direction="up" />
+        ) : (
+          <Widgets room={room} />
+        )}
+        <PlayerName
+          status={socket.connected}
+          name={user.name}
+          isLoading={isSocketLoading}
+        />
+        {/* <Link className="hover:underline" onClick={handleLeaveRoom} to="/">
           Leave Room
-        </Link>
+        </Link> */}
       </footer>
       {gamemode !== 'solo' && <KickedModal open={status} reason={reason} />}
       {isWinner && <Confetti isActive={isWinner} />}
-    </React.Fragment>
+    </Fragment>
   );
 }
