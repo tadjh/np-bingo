@@ -9,6 +9,7 @@ export interface Config {
   defaultVolume: number;
   maxActiveGames: number;
   maxRoomSize: number;
+  showCredit: boolean;
   sounds: boolean;
   specialRules: Special[];
   streamerMode: boolean;
@@ -24,6 +25,7 @@ const config = {
   defaultVolume: 0.25, // Default sound volume
   maxActiveGames: 5, // TODO
   maxRoomSize: 30, // TODO
+  showCredit: false,
   sounds: true, // default sounds enabled
   specialRules: [], // TODO Array of valid special rules
   streamerMode: false, // TODO Streamer mode default
