@@ -4,7 +4,7 @@ import clsx from 'clsx';
 export interface IconProps {
   className?: string;
   children?: React.ReactNode;
-  size?: 'small' | 'medium' | 'large' | 'x-large';
+  size?: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
   viewBox?: string;
 }
 // TODO Support disabled styles
@@ -16,6 +16,8 @@ export default function Icon({
 }: IconProps) {
   function iconSize() {
     switch (size) {
+      case 'x-small':
+        return 'h-4 w-4';
       case 'small':
         return 'h-5 w-5';
       case 'medium':
