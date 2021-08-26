@@ -75,3 +75,12 @@ export function logger(message?: any, ...optionalParams: any[]): void {
   if (NODE_ENV !== 'development') return;
   console.log(message, ...optionalParams);
 }
+
+/**
+ * Generate four random digits as a string
+ * @returns
+ */
+export function fourRandomDigits(): string {
+  const randomDigits = randomNumber(9999) + '';
+  return ('0000' + randomDigits).substring(randomDigits.length);
+}
