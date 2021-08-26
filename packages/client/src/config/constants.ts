@@ -7,10 +7,10 @@ export const CHECK_CARD = 'CHECK CARD';
 export const CHECK_CARD_SUCCESS = 'CHECK CARD SUCCESS';
 export const CHECK_CARD_FAILURE = 'CHECK CARD FAILURE';
 export const PAUSE = 'PAUSE';
-// export const FAILURE = 'FAILURE';
-// export const WIN_GAME = 'WIN GAME';
+export const FAILURE = 'FAILURE';
+export const WIN_GAME = 'WIN GAME';
 export const GAME_OVER = 'GAME OVER';
-// export const NEW_GAME = 'NEW GAME';
+export const NEW_GAME = 'NEW GAME';
 // App events
 
 // Host & Player events
