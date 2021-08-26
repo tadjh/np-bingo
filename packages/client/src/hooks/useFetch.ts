@@ -19,6 +19,7 @@ import {
 import { handleError } from '../utils';
 
 export interface UseFetchProps<T, R> extends FetchState<R> {
+  body: T | null;
   setBody: Dispatch<SetStateAction<T | null>>;
 }
 
@@ -59,5 +60,5 @@ export function useFetch<T, R>(
     };
   }, [body, initalMethod, initalUrl, dispatch]);
 
-  return { result, isLoading, isError, setBody };
+  return { result, isLoading, isError, body, setBody };
 }
