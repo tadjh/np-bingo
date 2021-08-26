@@ -1,5 +1,5 @@
 import { Server, Socket } from 'socket.io';
-import { Ball, Gamestate, Player } from '@np-bingo/types';
+import { Ball, Gamestate, Host, Player } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
 import { Room, SocketId } from 'socket.io-adapter';
 
@@ -12,8 +12,8 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * Host: Create room and join it
    * @param room
    */
-  const createRoom = (room: Room) => {
-    console.log(`Room ${room}: Host created room`);
+  const createRoom = (room: Room, name: Host['name']) => {
+    console.log(`Room ${room}: ${name} created room`);
     socket.join(room);
   };
 

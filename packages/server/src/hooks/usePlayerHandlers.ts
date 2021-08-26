@@ -44,7 +44,7 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
    */
   const joinRoom = (room: Room, hostSocketId: SocketId, player: Player) => {
     socket.join(room);
-    console.log(`Room ${room}: Player joined`);
+    console.log(`Room ${room}: ${player.name} joined`);
     io.to(hostSocketId).emit('host:player-action', 'join-room', player);
   };
 

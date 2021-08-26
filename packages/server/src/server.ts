@@ -6,7 +6,7 @@ import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
 import { Room, SocketId } from 'socket.io-adapter';
 import { ORIGIN, PORT } from './config';
-import { Player } from '@np-bingo/types';
+import { Host, Player } from '@np-bingo/types';
 import connectDB from './config/db';
 import { usePlayerHandlers, useHostHandlers } from './hooks';
 // routes
@@ -42,8 +42,13 @@ app.get('/api/', (req, res) => {
 app.use('/api/game/', game);
 
 io.on('connection', (socket: Socket) => {
-  const { createRoom, kickPlayer, hostLeaveRoom, hostGamestate, newBall } =
-    useHostHandlers(io, socket);
+  const {
+    createRoom,
+    kickPlayer,
+    hostLeaveRoom,
+    hostGamestate,
+    newBall,
+  } = useHostHandlers(io, socket);
   const { playerAction } = usePlayerHandlers(io, socket);
 
   console.log('User connected');
@@ -55,8 +60,8 @@ io.on('connection', (socket: Socket) => {
   /**
    * From Host: Create room
    */
-  socket.on('host:create-room', (room: Room) => {
-    createRoom(room);
+  socket.on('host:create-room', (room: Room, name: Host['name']) => {
+    createRoom(room, name);
 
     /**
      * From Host: Remove player from room
