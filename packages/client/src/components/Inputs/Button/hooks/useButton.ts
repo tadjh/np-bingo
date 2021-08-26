@@ -16,7 +16,7 @@ export function useButton(variant: ButtonVariants, disabled: boolean) {
       case 'success':
         return 'bg-green-600 hover:bg-green-700 dark:bg-green-300 dark:hover:bg-green-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90';
       default:
-        return 'text-blue-600 hover:text-blue-700 dark:text-blue-300 dark:hover:text-blue-700 hover:bg-gray-300';
+        return 'text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400';
     }
   };
 
