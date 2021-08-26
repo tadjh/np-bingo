@@ -11,7 +11,7 @@ export default function Container({
   return (
     <div
       className={clsx(
-        'max-w-md mx-auto relative flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 shadow-md',
+        'min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]', // min-h-screen mt-[30px]
         className
       )}
       {...props}
