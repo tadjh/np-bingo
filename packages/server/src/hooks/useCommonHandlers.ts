@@ -18,7 +18,7 @@ export function useCommonHandlers(io: Server, socket: Socket) {
    * @param gamestate
    */
   const emitRoomGamestate = (room: Room, gamestate: Gamestate) => {
-    socket.to(room).emit('room:action', 'sync-gamestate', gamestate);
+    socket.to(room).emit('room:event', 'sync-gamestate', gamestate);
   };
 
   /**
@@ -27,7 +27,7 @@ export function useCommonHandlers(io: Server, socket: Socket) {
    * @param ball
    */
   const emitRoomNewBall = (room: Room, ball: Ball) => {
-    socket.to(room).emit('room:action', 'ball-dispensed', ball);
+    socket.to(room).emit('room:event', 'ball-dispensed', ball);
   };
 
   return { leaveRoom, emitRoomGamestate, emitRoomNewBall };
