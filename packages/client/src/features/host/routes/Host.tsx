@@ -50,7 +50,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
   return (
     <React.Fragment>
       <header className="flex gap-2 items-center justify-between">
-        <RouterLink to="/">
+        <RouterLink to="/" onClick={handleLeaveRoom}>
           <IconButton description="Back">
             <ChevronLeftIcon />
           </IconButton>
