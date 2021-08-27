@@ -1,13 +1,10 @@
 {
   "name": "@np-bingo/types",
   "description": "TypeScript definitions for np-bingo",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "main": "",
   "types": "index.d.ts",
   "license": "MIT",
   "author": "Tadjh Brooks",
-  "typeScriptVersion": "4.2",
-  "devDependencies": {
-    "socket.io-client": "^4.0.0"
-  }
+  "typeScriptVersion": "4.2"
 }
