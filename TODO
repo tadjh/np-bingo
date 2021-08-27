@@ -22,6 +22,7 @@ DONE Bug: On leave room Bingo Song continues to play
 // TODO Bug: Back button no sound
 // TODO Make app responsive again including app margin top below certain screen sizes
 // TODO Bug: Home doesn't init broken
+// TOOD Bug: Modal isn't iside of phone
 
 Vulnerbilities
 // TODO Prevent kicked player from rejoining (API & Socket)
