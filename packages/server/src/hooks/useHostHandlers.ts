@@ -26,7 +26,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
       return console.log(
         `Room ${room}: ${player.name} could not be kicked. Invalid socket.`
       );
-    io.to(player.socketId).emit('host:action', 'player-kicked');
+    io.to(player.socketId).emit('host:event', 'player-kicked');
     console.log(`Room ${room}: ${player.name} kicked`);
   };
 
@@ -72,7 +72,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * @param room
    */
   const hostLeaveRoom = (room: Room) => {
-    socket.to(room).emit('host:action', 'left-room');
+    socket.to(room).emit('host:event', 'left-room');
     leaveRoom(room, 'Host');
   };
 
