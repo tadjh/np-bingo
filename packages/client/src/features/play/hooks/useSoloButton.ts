@@ -8,16 +8,15 @@ import {
   READY_CHECK,
   START,
 } from '../../../config/constants';
-import { PlayContext } from '../../../context/PlayContext';
 
 export function useSoloButton(
   triggerBallEffects: () => void,
   enableProgress: () => void,
-  pauseProgress: () => void
+  pauseProgress: () => void,
+  card: Card
 ) {
   const { user } = useContext(UserContext);
   const { gamestate, dispatch } = useContext(GameContext);
-  const { card } = useContext(PlayContext);
   const { newBall } = useContext(BallContext);
 
   /**

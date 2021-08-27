@@ -4,7 +4,7 @@ import { GameContext } from '../../../context';
 import { usePlayButton } from './usePlayButton';
 
 export function useSolo() {
-  const { gamestate, play, mode, checkCard } = useContext(GameContext);
+  const { gamestate, checkCard } = useContext(GameContext);
   // const { pauseProgress } = usePlayButton();
   /**
    * Set Gamemode to solo

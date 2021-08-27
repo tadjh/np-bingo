@@ -3,8 +3,9 @@ import { BallContext, FeaturesContext, GameContext } from '../../../context';
 import { useProgress } from '../../../hooks';
 import { usePlaySounds, useSoloButton, usePlayEmitters } from '.';
 import { GAME_OVER, STANDBY, CHECK_CARD } from '../../../config/constants';
+import { Card } from '@np-bingo/types';
 
-export function usePlayButton() {
+export function usePlayButton(card: Card) {
   const { ballDelay } = useContext(FeaturesContext);
   const { gamemode, dispatch } = useContext(GameContext);
   const { ball } = useContext(BallContext);
@@ -37,7 +38,7 @@ export function usePlayButton() {
     soloOnProgressDone,
     soloHandlePrimaryButton,
     soloHandleSendCard,
-  } = useSoloButton(triggerBallEffects, enableProgress, pauseProgress);
+  } = useSoloButton(triggerBallEffects, enableProgress, pauseProgress, card);
 
   /**
    * Sets gamestate based on current gamestate
