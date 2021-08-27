@@ -192,8 +192,12 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         draws: action.payload.draws.map((item) => item.slice()),
         pool: action.payload.pool.map((item) => item.slice()),
       };
-    case SET_BALL:
-      return { ...state, ball: { ...action.payload } };
+    case SET_BALL: // TODO DO we need this?
+      return {
+        ...state,
+        gamestate: 'start' as Gamestate,
+        ball: { ...action.payload },
+      };
     case CHANGE_GAMEMODE: // TODO Might need to wipe all game state like READY_CHECK if INIT_GAME isn't called before switching gamemmodes
       return {
         ...state,
