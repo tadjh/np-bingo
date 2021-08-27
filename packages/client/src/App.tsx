@@ -12,7 +12,6 @@ import {
   BallContext,
   FeaturesContext,
   GameContext,
-  PlayContext,
   RoomContext,
   SoundContext,
   ThemeContext,
@@ -20,7 +19,7 @@ import {
 } from './context';
 import Background from './components/Surfaces/Background';
 import Container from './components/Layout/Container';
-import { useAppState, usePlayState } from './hooks';
+import { useAppState } from './hooks';
 import './App.css';
 import features from './config/features';
 export default function App() {
@@ -45,11 +44,6 @@ export default function App() {
   const [sounds, toggleSounds] = useToggle(config.sounds);
   const { defaultVolume } = useContext(FeaturesContext);
   const { newBall, checkCard } = useApp(playerCard, pool, draws);
-  const {
-    playState: { card, serial, crossmarks, kicked, isWinner, isNewGame },
-    playDispatch,
-  } = usePlayState();
-
   return (
     <FeaturesContext.Provider value={features}>
       <UserContext.Provider
@@ -106,24 +100,12 @@ export default function App() {
                         <Route path="/host">
                           <Host draws={draws} />
                         </Route>
-                        <PlayContext.Provider
-                          value={{
-                            card,
-                            serial,
-                            crossmarks,
-                            kicked,
-                            isWinner,
-                            isNewGame,
-                            playDispatch,
-                          }}
-                        >
-                          <Route path="/play/solo">
-                            <Solo />
-                          </Route>
-                          <Route exact path="/play">
-                            <Play />
-                          </Route>
-                        </PlayContext.Provider>
+                        <Route path="/play/solo">
+                          <Solo />
+                        </Route>
+                        <Route exact path="/play">
+                          <Play />
+                        </Route>
                       </Switch>
                     </Container>
                   </div>
