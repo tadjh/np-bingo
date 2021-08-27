@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { CreateRoom, Player, Room } from '@np-bingo/types';
+import { CreateRoom, Host, Player, Room } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
 import { CREATE_ROOM, INIT, SOCKET_INIT } from '../../../config/constants';
@@ -11,20 +11,20 @@ export function useHome() {
   );
   const { gamestate, dispatch } = useContext(GameContext);
   const [isRedirect, setIsRedirect] = useState(false);
-  // const [isHome, setIsHome] = useState(true);
+  const [didInit, setDidInit] = useState(false);
   const { result, isLoading, isError, setBody } = useFetch<Player, CreateRoom>(
     'POST',
     '/api/game'
   );
 
-  // TODO handle this better
   /**
    * Reset gamestate on visit to home
    */
-  // useEffect(() => {
-  //   if (gamestate === 'init') return;
-  //   dispatch({ type: INIT });
-  // }, [gamestate, dispatch]);
+  useEffect(() => {
+    if (didInit) return;
+    if (gamestate === 'init') return setDidInit(true);
+    dispatch({ type: INIT });
+  }, [gamestate, didInit, dispatch]);
 
   /**
    * Connect to socket.io
@@ -46,16 +46,6 @@ export function useHome() {
     // setCreatingRoom(true);
   };
 
-  // TODO Move socket delegation to App
-
-  /**
-   * Trigger Fetch once socket is loaded
-   */
-  // useEffect(() => {
-  //   if (user.socketId === null || !creatingRoom) return;
-  //   setBody(user);
-  // }, [user, creatingRoom, setBody]);
-
   /**
    * After Successful Fetch
    */
@@ -66,9 +56,9 @@ export function useHome() {
      * Host: Emit create room
      * @param room
      */
-    const emitCreateRoom = (room: Room) => {
-      logger(`Room ${room}: Room created`);
-      socket.emit('host:create-room', room);
+    const emitCreateRoom = (room: Room, name: Host['name']) => {
+      logger(`Room ${room}: ${name} created a new room`);
+      socket.emit('host:create-room', room, name);
     };
 
     dispatch({
@@ -76,7 +66,7 @@ export function useHome() {
       payload: { room: result.data.room, host: result.data.host },
     });
 
-    emitCreateRoom(result.data.room);
+    emitCreateRoom(result.data.room, result.data.host.name);
 
     setIsRedirect(true);
   }, [result, socket, dispatch]);
