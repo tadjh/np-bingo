@@ -37,7 +37,7 @@ export function createCard(pool: Pool): Card {
       card[offset] = column[j];
     }
   }
-  // Note: Remove 13th cell and replace with a free spot on display
+  // Note: On display output, remove 13th cell and replace with a free spot
   // cell[12] = 'free';
   return card;
 }
