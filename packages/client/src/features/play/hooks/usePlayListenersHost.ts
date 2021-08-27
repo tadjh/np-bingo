@@ -3,46 +3,37 @@ import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
 import { Ball, HostAction, Room, Winner } from '@np-bingo/types';
 import { PLAYER_KICK } from '../../../config/constants';
-import { PlayContext } from '../../../context/PlayContext';
+import { PlayActions } from '../../../reducers/play.reducer';
+import { Socket } from 'socket.io-client';
 
-export function usePlayListeners() {
-  const { socket } = useContext(UserContext);
-  // const { gamestate, dispatch } = useContext(GameContext);
-  const { playDispatch } = useContext(PlayContext);
+export function usePlayListenersHost(
+  socket: Socket,
+  playDispatch: Dispatch<PlayActions>
+): [() => void, () => void] {
   /**
-   * To Player: Host left
-   */
-  // TODO Dialog when host leaves
-  // const listenHostAbandoned = useCallback(() => {
-  //   socket.on('host-left', () => {
-  //     logger(`Host left, and you have been removed from the room`);
-  //     // TODO Fix
-  //     dispatchRoomAbandoned && dispatchRoomAbandoned();
-  //   });
-  // }, [socket, dispatchRoomAbandoned]);
-
-  // const deafenHostAbandoned = useCallback(() => {
-  //   socket.off('host-left');
-  // }, [socket]);
-
-  /**
-   * To Player: Removed from game
+   * To Player: Removed from game room
    */
   const playerKicked = () => {
     logger(`You have been kicked from the room`);
     playDispatch({ type: PLAYER_KICK, payload: 'banned' });
   };
 
+  /**
+   * To Player: Game room abandoned
+   */
   const roomAbandoned = () => {
     logger(`The Host has abandoned the room`);
     playDispatch({ type: PLAYER_KICK, payload: 'abandoned' });
   };
 
   /**
-   * Host Action Handler
+   * Host Actions Handler
    * @param action
    */
-  const hostAction = (action: HostAction) => {
+  const hostListener = (
+    action: HostAction,
+    optionalParams: { ball?: Ball }
+  ) => {
     switch (action) {
       case 'player-kicked':
         playerKicked();
@@ -56,18 +47,32 @@ export function usePlayListeners() {
   };
 
   /**
-   * Listen for Host Action
+   * Subscribe to host events
    */
-  const listenHostAction = () => {
-    socket.on('host:action', hostAction);
+  const subscribeToHost = () => {
+    logger('Listening for host actions...');
+    socket.on('host:event', hostListener);
   };
 
   /**
-   * Deafen Host Action
+   * Unsubscribe to host events
    */
-  const deafenHostAction = () => {
-    socket.off('host:action', hostAction);
+  const unsubscribeToHost = () => {
+    logger('No longer listening for host actions.');
+    socket.off('host:event', hostListener);
   };
+
+  // const ballDispensed = (ball: Ball) => {
+  //   logger(`Ball: ${ball.column.toUpperCase()}${ball.number}`);
+  // };
+
+  // const listenRoomAction = () => {
+  //   socket.on('room:action', roomAction);
+  // }
+
+  // const listenRoomAction = () => {
+  //   socket.on('room:action', roomAction);
+  // }
 
   /**
    * To Room: Ready check
@@ -272,5 +277,5 @@ export function usePlayListeners() {
   //       break;
   //   }
   // });
-  return { listenHostAction, deafenHostAction };
+  return [subscribeToHost, unsubscribeToHost];
 }
