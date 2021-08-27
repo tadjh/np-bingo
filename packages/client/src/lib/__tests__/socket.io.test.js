@@ -1,8 +1,6 @@
 import { createServer } from 'http';
 import { Server, Socket as ServerSocket } from 'socket.io';
 import Client, { Socket as ClientSocket } from 'socket.io-client';
-import { Gamestate } from '@np-bingo/types';
-import { AddressInfo } from 'net';
 
 // TODO Implement socket.io tests
 
@@ -28,7 +26,7 @@ describe('Basic Socket.io Tests', () => {
   });
 
   test('should work', (done) => {
-    clientSocket.on('room-gamestate', (gamestate: Gamestate) => {
+    clientSocket.on('room-gamestate', (gamestate) => {
       expect(gamestate).toBe('ready');
       done();
     });
