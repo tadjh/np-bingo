@@ -7,7 +7,7 @@ import {
   useReducer,
   useState,
 } from 'react';
-import logger from 'use-reducer-logger';
+// import logger from 'use-reducer-logger';
 import { NODE_ENV } from '../config';
 import { FETCH_FAILURE, FETCH_INIT, FETCH_SUCCESS } from '../config/constants';
 import {
@@ -17,6 +17,7 @@ import {
   FetchState,
 } from '../reducers/fetch.reducer';
 import { handleError } from '../utils';
+import { ReducerLogger } from './useReducerLogger';
 
 export interface UseFetchProps<T, R> extends FetchState<R> {
   body: T | null;
@@ -30,7 +31,7 @@ export function useFetch<T, R>(
   const [{ result, isLoading, isError }, dispatch] = useReducer<
     (state: FetchState<R>, action: FetchActions<R>) => FetchState<R>
   >(
-    NODE_ENV === 'development' ? logger(fetchReducer) : fetchReducer,
+    NODE_ENV === 'development' ? ReducerLogger(fetchReducer) : fetchReducer,
     fetchInititalState
   );
   const [body, setBody] = useState<T | null>(null);

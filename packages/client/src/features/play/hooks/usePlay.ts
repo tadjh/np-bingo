@@ -19,8 +19,9 @@ import {
   playReducer,
   PlayState,
 } from '../../../reducers/play.reducer';
-import logger from 'use-reducer-logger';
+// import logger from 'use-reducer-logger';
 import { NODE_ENV } from '../../../config';
+import { ReducerLogger } from '../../../hooks/useReducerLogger';
 
 export function usePlay(gamemode: Gamemode, confettiOverride: boolean) {
   const { socket } = useContext(UserContext);
@@ -30,7 +31,7 @@ export function usePlay(gamemode: Gamemode, confettiOverride: boolean) {
     { card, serial, crossmarks, kicked, isWinner, isNewGame },
     playDispatch,
   ] = useReducer<(state: PlayState, action: PlayActions) => PlayState>(
-    NODE_ENV === 'development' ? logger(playReducer) : playReducer,
+    NODE_ENV === 'development' ? ReducerLogger(playReducer) : playReducer,
     initialPlayState
   );
 

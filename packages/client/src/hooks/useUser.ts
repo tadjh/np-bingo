@@ -1,9 +1,10 @@
 import { Dispatch, useMemo, useReducer } from 'react';
 import { Player } from '@np-bingo/types';
 import { NODE_ENV } from '../config';
-import logger from 'use-reducer-logger';
+// import logger from 'use-reducer-logger';
 import { UserActions, UserState, userReducer } from '../reducers/user.reducer';
 import { fourRandomDigits } from '../utils';
+import { ReducerLogger } from './useReducerLogger';
 
 // TODO Add unique string to end of player name #4140
 export const initalPlayer: Player = {
@@ -33,7 +34,7 @@ export function useUser(
   const [userState, userDispatch] = useReducer<
     (state: UserState, action: UserActions) => UserState
   >(
-    NODE_ENV === 'development' ? logger(userReducer) : userReducer,
+    NODE_ENV === 'development' ? ReducerLogger(userReducer) : userReducer,
     userInititalState
   );
   return [userState, userDispatch];

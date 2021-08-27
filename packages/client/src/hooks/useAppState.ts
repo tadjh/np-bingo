@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import logger from 'use-reducer-logger';
+// import logger from 'use-reducer-logger';
 import { NODE_ENV } from '../config';
 import {
   AppState,
@@ -7,12 +7,13 @@ import {
   AppActions,
   initialAppState,
 } from '../reducers/app.reducer';
+import { ReducerLogger } from './useReducerLogger';
 
 export function useAppState() {
   const [state, dispatch] = useReducer<
     (state: AppState, action: AppActions) => AppState
   >(
-    NODE_ENV === 'development' ? logger(appReducer) : appReducer,
+    NODE_ENV === 'development' ? ReducerLogger(appReducer) : appReducer,
     initialAppState
   );
 
