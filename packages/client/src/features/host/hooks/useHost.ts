@@ -5,6 +5,7 @@ import {
   FeaturesContext,
   GameContext,
   RoomContext,
+  UserContext,
 } from '../../../context';
 import { apiSaveRoom } from '../api';
 import { useProgress } from '../../../hooks';
@@ -18,6 +19,7 @@ import {
 } from '../../../config/constants';
 
 export function useHost() {
+  const { socket } = useContext(UserContext);
   const { ballDelay } = useContext(FeaturesContext);
   const { room, winner, players } = useContext(RoomContext);
   const { gamestate, dispatch } = useContext(GameContext);
@@ -37,7 +39,10 @@ export function useHost() {
     // emitIsAWinner,
     // emitHostGameOver,
   } = useHostEmitters();
-  const { listenPlayerAction, deafenPlayerAction } = useHostListeners();
+  const { listenPlayerAction, deafenPlayerAction } = useHostListeners(
+    socket,
+    dispatch
+  );
   /**
    * Kick player from room
    * @param player
@@ -54,18 +59,19 @@ export function useHost() {
    */
   const handleBall = () => {
     // If gamestate isn't already 'start', set it when a ball is drawn
-    if (gamestate === 'standby' || gamestate === 'failure') {
-      // TODO How to make sure this isn't necessary??
-      emitHostStart();
-    }
+    // if (gamestate === 'standby' || gamestate === 'failure') {
+    //   // TODO How to make sure this isn't necessary??
+    //   emitHostStart();
+    // }
     const currentBall = newBall();
     if (currentBall.ball.number === 0) return dispatch({ type: GAME_OVER });
-    enableProgress();
+
     emitSendBall(currentBall.ball);
     dispatch({
       type: NEW_BALL,
       payload: currentBall,
     });
+    enableProgress();
   };
 
   /**

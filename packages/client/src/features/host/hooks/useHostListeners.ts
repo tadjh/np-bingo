@@ -1,17 +1,18 @@
-import { useContext } from 'react';
+import { Dispatch } from 'react';
 import { Player, PlayerAction } from '@np-bingo/types';
-import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
 import {
   PLAYER_JOIN,
   PLAYER_LEAVE,
   PLAYER_READY,
 } from '../../../config/constants';
+import { Socket } from 'socket.io-client';
+import { AppActions } from '../../../reducers/app.reducer';
 
-export function useHostListeners() {
-  const { socket } = useContext(UserContext);
-  const { dispatch } = useContext(GameContext);
-
+export function useHostListeners(
+  socket: Socket,
+  dispatch: Dispatch<AppActions>
+) {
   /**
    * From Player: Player Join Room
    * @param player
@@ -30,6 +31,10 @@ export function useHostListeners() {
     dispatch({ type: PLAYER_LEAVE, payload: player });
   };
 
+  /**
+   * From Player: Payer is ready
+   * @param player
+   */
   const playerReadyUp = (player: Player) => {
     logger(`${player.name} ready`);
     dispatch({ type: PLAYER_READY, payload: player });
@@ -101,8 +106,5 @@ export function useHostListeners() {
   //   socket.off('receive-card');
   // }, [socket]);
 
-  return {
-    listenPlayerAction,
-    deafenPlayerAction,
-  };
+  return { listenPlayerAction, deafenPlayerAction };
 }

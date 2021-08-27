@@ -7,13 +7,6 @@ export function useHostEmitters() {
   const { room, winner } = useContext(RoomContext);
 
   /**
-   * To Server: Host created room
-   */
-  const emitCreateRoom = useCallback(() => {
-    socket.emit('host:create-room', room);
-  }, [socket, room]);
-
-  /**
    * To Room: Host left room
    */
   const emitLeaveRoom = () => {
@@ -53,6 +46,7 @@ export function useHostEmitters() {
    * @param ball
    */
   const emitSendBall = (ball: Ball) => {
+    // TODO set player gamestate on new ball
     socket.emit('host:ball', room, ball);
   };
 
@@ -85,7 +79,7 @@ export function useHostEmitters() {
   }, [socket, room]);
 
   return {
-    emitCreateRoom,
+    // emitCreateRoom,
     emitLeaveRoom,
     emitKickPlayer,
     emitHostReady,
