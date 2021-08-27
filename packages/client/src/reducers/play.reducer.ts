@@ -42,7 +42,7 @@ export type PlayActions =
     }
   | { type: typeof NOT_WINNER };
 
-export function reducer(state: PlayState, action: PlayActions): PlayState {
+export function playReducer(state: PlayState, action: PlayActions): PlayState {
   switch (action.type) {
     case INIT:
       return { ...initialPlayState };
