@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { Gamemode } from '@np-bingo/types';
+import { Card, Gamemode } from '@np-bingo/types';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   BallContext,
@@ -25,11 +25,13 @@ import IconMenu from '../../../components/Inputs/IconMenu';
 export interface PlayProps {
   gamemode?: Gamemode;
   confettiOverride?: boolean;
+  staticCard?: Card;
 }
 
 export default function Play({
   gamemode = 'default',
   confettiOverride = false,
+  staticCard,
 }: PlayProps) {
   const { user, socket, isSocketLoading } = useContext(UserContext);
   const { allowNewCard } = useContext(FeaturesContext);
@@ -51,11 +53,8 @@ export default function Play({
     handleSendCard,
     handleLeaveRoom,
   } = usePlayButton(card);
-  const {
-    primaryButtonText,
-    disablePrimaryButton,
-    disableBallDisplay,
-  } = usePlayDisplay();
+  const { primaryButtonText, disablePrimaryButton, disableBallDisplay } =
+    usePlayDisplay();
   return (
     <Fragment>
       <header className="flex gap-2 items-center justify-between">
@@ -105,7 +104,7 @@ export default function Play({
           disabled={disableBallDisplay()}
         />
         <Board
-          card={[...card]}
+          card={staticCard || [...card]}
           serial={serial}
           winner={isWinner}
           crossmarks={crossmarks}

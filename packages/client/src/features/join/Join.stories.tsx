@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Join, { JoinProps } from './Join';
-import { FeaturesContext } from '../../../context';
-import features from '../../../config/features';
-import Container from '../../../components/Layout/Container';
-import { Rooms } from '../components/RoomList/RoomList.stories';
-import Background from '../../../components/Surfaces/Background';
+import Join, { JoinProps } from './routes/Join';
+import { FeaturesContext } from '../../context';
+import features from '../../config/features';
+import Container from '../../components/Layout/Container';
+import { Rooms } from './components/RoomList/RoomList.stories';
+import Background from '../../components/Surfaces/Background';
 
 export default {
   title: 'Pages/Join',

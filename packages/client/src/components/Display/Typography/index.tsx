@@ -2,7 +2,7 @@ import React from 'react';
 
 export interface TypographyProps
   extends React.HtmlHTMLAttributes<HTMLDivElement> {}
-
+// Add Typography.stories
 export default function Typography({
   className,
   children,

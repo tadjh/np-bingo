@@ -2,11 +2,19 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Host, { HostProps } from './routes/Host';
-import { BallContext, GameContext, RoomContext } from '../../context';
-import { initialAppState as AppState } from '../../reducers/app.reducer';
+import {
+  BallContext,
+  GameContext,
+  initialBallContext,
+  initialGameContext,
+  initialRoomContext,
+  initialUserContext,
+  RoomContext,
+  UserContext,
+} from '../../context';
 import Container from '../../components/Layout/Container';
-import { Ball, CurrentBall } from '@np-bingo/types';
 import Background from '../../components/Surfaces/Background';
+import socketInit from '../../lib/socket.io';
 
 export default {
   title: 'Pages/Host',
@@ -16,12 +24,15 @@ export default {
   },
   decorators: [
     (Story) => {
+      const socket = socketInit();
       return (
         <Router>
-          <Container>
-            <Background />
-            <Story />
-          </Container>
+          <UserContext.Provider value={{ ...initialUserContext, socket }}>
+            <Container>
+              <Background />
+              <Story />
+            </Container>
+          </UserContext.Provider>
         </Router>
       );
     },
@@ -33,42 +44,28 @@ export default {
 
 const Template: Story<HostProps> = (args) => <Host {...args} />;
 
-const ball = {} as CurrentBall;
-
 export const Base = Template.bind({});
 Base.decorators = [
   (Story) => {
     return (
-      <RoomContext.Provider
-        value={{
-          room: 'A1B2',
-          host: { ...AppState.host },
-          winner: { ...AppState.winner },
-          players: [],
-        }}
-      >
+      <RoomContext.Provider value={{ ...initialRoomContext, room: 'A1B2' }}>
         <GameContext.Provider
-          value={{
-            gamestate: 'standby',
-            gamemode: AppState.rules.mode,
-            dispatch: () => {},
-            checkCard: () => null,
-          }}
+          value={{ ...initialGameContext, gamestate: 'standby' }}
         >
           <BallContext.Provider
             value={{
+              ...initialBallContext,
               ball: {
                 key: 1,
                 number: 24,
                 column: 'i',
                 remainder: 74,
               },
-              newBall: () => ball,
             }}
           >
             <Story />
           </BallContext.Provider>
-        </GameContext.Provider>{' '}
+        </GameContext.Provider>
       </RoomContext.Provider>
     );
   },
@@ -81,21 +78,9 @@ export const Waiting = Template.bind({});
 Waiting.decorators = [
   (Story) => {
     return (
-      <RoomContext.Provider
-        value={{
-          room: 'A1B2',
-          host: { ...AppState.host },
-          winner: { ...AppState.winner },
-          players: [],
-        }}
-      >
+      <RoomContext.Provider value={{ ...initialRoomContext, room: 'A1B2' }}>
         <GameContext.Provider
-          value={{
-            gamestate: 'ready',
-            gamemode: AppState.rules.mode,
-            dispatch: () => {},
-            checkCard: () => null,
-          }}
+          value={{ ...initialGameContext, gamestate: 'ready' }}
         >
           <Story />
         </GameContext.Provider>
@@ -113,9 +98,8 @@ ReadyList.decorators = [
     return (
       <RoomContext.Provider
         value={{
+          ...initialRoomContext,
           room: 'A1B2',
-          host: { ...AppState.host },
-          winner: { ...AppState.winner },
           players: [
             {
               _id: 'adaskdjsahkd',
@@ -157,12 +141,7 @@ ReadyList.decorators = [
         }}
       >
         <GameContext.Provider
-          value={{
-            gamestate: 'ready',
-            gamemode: AppState.rules.mode,
-            dispatch: () => {},
-            checkCard: () => null,
-          }}
+          value={{ ...initialGameContext, gamestate: 'ready' }}
         >
           <Story />
         </GameContext.Provider>
@@ -175,21 +154,9 @@ export const GameOver = Template.bind({});
 GameOver.decorators = [
   (Story) => {
     return (
-      <RoomContext.Provider
-        value={{
-          room: 'A1B2',
-          host: { ...AppState.host },
-          winner: { ...AppState.winner },
-          players: [],
-        }}
-      >
+      <RoomContext.Provider value={{ ...initialRoomContext, room: 'A1B2' }}>
         <GameContext.Provider
-          value={{
-            gamestate: 'end',
-            gamemode: AppState.rules.mode,
-            dispatch: () => {},
-            checkCard: () => null,
-          }}
+          value={{ ...initialGameContext, gamestate: 'end' }}
         >
           <Story />
         </GameContext.Provider>

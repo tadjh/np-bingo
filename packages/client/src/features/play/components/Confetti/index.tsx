@@ -9,11 +9,10 @@ export interface ConfettiProps extends React.HTMLAttributes<HTMLDivElement> {
   isActive?: boolean;
   onClose?: () => void;
 }
-
+// TODO write storybook story
 export default function Coneftti({
   isActive = false,
   onClose,
-  children,
 }: ConfettiProps): JSX.Element | null {
   const appRoot = useRef(document.getElementById('root'));
   const app = useRef(document.getElementById('App'));

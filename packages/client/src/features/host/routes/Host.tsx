@@ -38,7 +38,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
     activePlayerCount,
     handleRemovePlayer,
     handleBall,
-  } = useHost();
+  } = useHost(socket);
   const {
     gamestateToggle,
     toggleText,

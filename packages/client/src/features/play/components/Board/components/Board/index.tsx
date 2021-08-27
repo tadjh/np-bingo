@@ -45,7 +45,6 @@ export function Board({
               key={id}
               index={index + 1}
               checked={winner ? crossmarks[id] || false : undefined}
-              // onClick={onClick}
               disabled={winner}
             >
               {index !== 12 ? value : 'free'}

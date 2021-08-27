@@ -2,55 +2,55 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Play, { PlayProps } from './routes/Play';
-import { BallContext, GameContext, RoomContext } from '../../context';
-import { initialAppState as AppState } from '../../reducers/app.reducer';
+import {
+  BallContext,
+  GameContext,
+  initialBallContext,
+  initialGameContext,
+  initialRoomContext,
+  initialUserContext,
+  RoomContext,
+  UserContext,
+} from '../../context';
 import Container from '../../components/Layout/Container';
-import { CurrentBall } from '@np-bingo/types';
 import Background from '../../components/Surfaces/Background';
+import socketInit from '../../lib/socket.io';
 
 export default {
   title: 'Pages/Play',
   component: Play,
   decorators: [
     (Story) => {
-      const ball = {} as CurrentBall;
+      const socket = socketInit();
       return (
-        <RoomContext.Provider
-          value={{
-            room: 'A1B2',
-            host: { ...AppState.host },
-            winner: { ...AppState.winner },
-            players: [],
-          }}
-        >
-          <GameContext.Provider
-            value={{
-              gamestate: 'start',
-              gamemode: AppState.rules.mode,
-              dispatch: () => {},
-              checkCard: () => null,
-            }}
-          >
-            <BallContext.Provider
-              value={{
-                ball: {
-                  key: 1,
-                  number: 24,
-                  column: 'i',
-                  remainder: 74,
-                },
-                newBall: () => ball,
-              }}
+        <Router>
+          <UserContext.Provider value={{ ...initialUserContext, socket }}>
+            <RoomContext.Provider
+              value={{ ...initialRoomContext, room: 'A1B2' }}
             >
-              <Router>
-                <Container>
-                  <Background />
-                  <Story />
-                </Container>
-              </Router>
-            </BallContext.Provider>
-          </GameContext.Provider>
-        </RoomContext.Provider>
+              <GameContext.Provider
+                value={{ ...initialGameContext, gamestate: 'start' }}
+              >
+                <BallContext.Provider
+                  value={{
+                    ...initialBallContext,
+                    ball: {
+                      key: 1,
+                      number: 24,
+                      column: 'i',
+                      remainder: 74,
+                    },
+                  }}
+                >
+                  <Container>
+                    <Background />
+                    <Story />
+                  </Container>
+                </BallContext.Provider>
+              </GameContext.Provider>
+            </RoomContext.Provider>
+          </UserContext.Provider>
+        </Router>
       );
     },
   ],
@@ -62,8 +62,15 @@ export default {
 const Template: Story<PlayProps> = (args) => <Play {...args} />;
 
 export const Base = Template.bind({});
+Base.args = {
+  staticCard: [
+    2, 26, 41, 47, 66, 5, 19, 37, 59, 74, 10, 25, 42, 55, 62, 13, 29, 33, 53,
+    72, 1, 20, 43, 51, 71,
+  ],
+};
 
 export const Win = Template.bind({});
 Win.args = {
+  ...Base.args,
   confettiOverride: true,
 };

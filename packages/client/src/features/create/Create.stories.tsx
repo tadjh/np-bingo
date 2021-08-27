@@ -1,8 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
-import Create, { CreateProps } from './Create';
-import Container from '../../../components/Layout/Container';
+import Create, { CreateProps } from './routes/Create';
+import Container from '../../components/Layout/Container';
 
 export default {
   title: 'Pages/Create',

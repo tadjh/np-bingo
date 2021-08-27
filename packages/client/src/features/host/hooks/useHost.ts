@@ -17,9 +17,9 @@ import {
   PLAYER_KICK,
   READY_CHECK,
 } from '../../../config/constants';
+import { Socket } from 'socket.io-client';
 
-export function useHost() {
-  const { socket } = useContext(UserContext);
+export function useHost(socket: Socket) {
   const { ballDelay } = useContext(FeaturesContext);
   const { room, winner, players } = useContext(RoomContext);
   const { gamestate, dispatch } = useContext(GameContext);

@@ -13,7 +13,7 @@ function BadgeTest({ offset = 50 }) {
     ></div>
   );
 }
-
+// TODO Decprecate
 export default {
   title: 'Display/Badge Test',
   component: BadgeTest,
