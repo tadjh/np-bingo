@@ -3,7 +3,7 @@ import { Gamemode } from '@np-bingo/types';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   BallContext,
-  // FeaturesContext,
+  FeaturesContext,
   GameContext,
   RoomContext,
   UserContext,
@@ -17,7 +17,6 @@ import KickedModal from '../components/KickedModal';
 import Confetti from '../components/Confetti';
 import { usePlay, usePlayButton, usePlayDisplay } from '../hooks';
 import PlayStatus from '../components/PlayStatus';
-import { PlayContext } from '../../../context/PlayContext';
 import PlayerName from '../../../components/Display/PlayerName';
 import IconButton from '../../../components/Inputs/IconButton';
 import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
@@ -33,7 +32,7 @@ export default function Play({
   confettiOverride = false,
 }: PlayProps) {
   const { user, socket, isSocketLoading } = useContext(UserContext);
-  // const { allowNewCard } = useContext(FeaturesContext);
+  const { allowNewCard } = useContext(FeaturesContext);
   const { room } = useContext(RoomContext);
   const { gamestate } = useContext(GameContext);
   const { ball } = useContext(BallContext);
@@ -42,15 +41,16 @@ export default function Play({
     serial,
     crossmarks,
     kicked: { status, reason },
-  } = useContext(PlayContext);
-  const { isWinner, setCard } = usePlay(gamemode, confettiOverride);
+    isWinner,
+    handleNewCard,
+  } = usePlay(gamemode, confettiOverride);
   const {
     progress,
     inProgress,
     handlePrimaryButton,
     handleSendCard,
     handleLeaveRoom,
-  } = usePlayButton();
+  } = usePlayButton(card);
   const {
     primaryButtonText,
     disablePrimaryButton,
@@ -59,16 +59,19 @@ export default function Play({
   return (
     <Fragment>
       <header className="flex gap-2 items-center justify-between">
-        <RouterLink to="/">
+        <RouterLink to="/" onClick={handleLeaveRoom}>
           <IconButton description="Back">
             <ChevronLeftIcon />
           </IconButton>
         </RouterLink>
-        {/* {allowNewCard && (
-          <Button disabled={gamestate !== 'ready' && true} onClick={setCard}>
+        {allowNewCard && (
+          <Button
+            disabled={gamestate !== 'ready' && true}
+            onClick={handleNewCard}
+          >
             New Card
           </Button>
-        )} */}
+        )}
         <div className="flex gap-2">
           <div className="w-[108px] text-center">
             <Button
@@ -119,7 +122,7 @@ export default function Play({
           name={user.name}
           isLoading={isSocketLoading}
         />
-        {/* <Link className="hover:underline" onClick={handleLeaveRoom} to="/">
+        {/* <Link className="hover:underline" to="/">
           Leave Room
         </Link> */}
       </footer>
