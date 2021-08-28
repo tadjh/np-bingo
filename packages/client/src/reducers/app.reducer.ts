@@ -44,7 +44,7 @@ export interface AppState {
   ball: Ball;
   pool: Pool;
   draws: Draws;
-  playerCard: PlayerCard;
+  playerCard: PlayerCard | null;
   winner: Winner;
   rules: Rules;
 }
@@ -85,10 +85,7 @@ export const initialAppState: AppState = {
   players: [],
   pool: BINGO,
   draws: [[], [], [], [], []],
-  playerCard: {
-    card: new Array(25),
-    owner: { ...initialPlayer },
-  },
+  playerCard: null,
   winner: {
     methods: [],
     results: {},
@@ -109,15 +106,24 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         ball: { ...initialAppState.ball },
         pool: [...initialAppState.pool],
         draws: [...initialAppState.draws],
-        playerCard: { ...initialAppState.playerCard },
+        playerCard: null,
         winner: { ...initialAppState.winner },
       };
     case STANDBY:
       return { ...state, gamestate: 'standby' as Gamestate };
     case START:
       return { ...state, gamestate: 'start' as Gamestate };
-    case CHECK_CARD:
+    case CHECK_CARD: // TODO Potentially deprecate
       return { ...state, gamestate: 'validate' as Gamestate };
+    case GET_CARD:
+      return {
+        ...state,
+        gamestate: 'validate' as Gamestate,
+        playerCard: {
+          card: [...action.payload.card],
+          owner: { ...action.payload.owner },
+        },
+      };
     case CHECK_CARD_SUCCESS:
       return {
         ...state,
@@ -129,7 +135,7 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         ...state,
         gamestate: 'failure' as Gamestate,
         winner: { ...initialAppState.winner },
-        playerCard: { ...initialAppState.playerCard },
+        playerCard: null,
       };
     case PAUSE:
       return { ...state, gamestate: 'pause' as Gamestate };
@@ -175,15 +181,6 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         return element;
       });
       return { ...state, players: [...readyFiltered] };
-    case GET_CARD:
-      return {
-        ...state,
-        playerCard: {
-          ...state.playerCard,
-          card: [...action.payload.card],
-          owner: { ...action.payload.owner },
-        },
-      };
     case NEW_BALL: // TODO moved setting start here
       return {
         ...state,
