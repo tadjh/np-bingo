@@ -42,14 +42,8 @@ app.get('/api/', (req, res) => {
 app.use('/api/game/', game);
 
 io.on('connection', (socket: Socket) => {
-  const {
-    createRoom,
-    kickPlayer,
-    hostLeaveRoom,
-    hostGamestate,
-    newBall,
-  } = useHostHandlers(io, socket);
-  const { playerAction } = usePlayerHandlers(io, socket);
+  const { hostEventsListener } = useHostHandlers(io, socket);
+  const { playerEventsListener } = usePlayerHandlers(io, socket);
 
   console.log('User connected');
 
@@ -58,79 +52,14 @@ io.on('connection', (socket: Socket) => {
   });
 
   /**
-   * From Host: Create room
+   * From Host: Host event
    */
-  socket.on('host:create-room', (room: Room, name: Host['name']) => {
-    createRoom(room, name);
-
-    /**
-     * From Host: Remove player from room
-     */
-    socket.on('host:kick-player', kickPlayer);
-
-    /**
-     * From Host: Gamestate listener
-     */
-    socket.on('host:gamestate', hostGamestate);
-
-    /**
-     * From Host: Ball dispensed
-     * @param room Room
-     * @param ball Ball
-     */
-    socket.on('host:ball', newBall);
-
-    /**
-     * From Host: Leaving room
-     */
-    socket.on('host:leave-room', (room: Room) => {
-      hostLeaveRoom(room);
-
-      socket.off('host:kick-player', kickPlayer);
-      console.log(`${room}: Deafened Kick Player`);
-
-      socket.off('host:gamestate', hostGamestate);
-      console.log(`${room}: Deafened Host Gamestate`);
-
-      socket.off('host:ball', newBall);
-      console.log(`${room}: Deafened New Ball`);
-
-      socket.off('host:leave-room', hostLeaveRoom);
-      console.log(`${room}: Deafened Host Actions`);
-    });
-  });
+  socket.on('host:event', hostEventsListener);
 
   /**
-   * From Player: Player action
+   * From Player: Player event
    */
-  socket.on('player:action', playerAction);
-
-  /**
-   * From Host: Remove player from room
-   */
-  // socket.on('host:kick-player', (player: Player) => {
-  //   if (player.socket) {
-  //     io.to(player.socket).emit('player-remove');
-  //     console.log(`${player.name} removed from room`);
-  //   } else {
-  //     console.log(`${player.name} socket not found in remove player`);
-  //   }
-  // });
-
-  /**
-   * From Player: Send Card
-   * @param room Room
-   * @param hostSocketId Socket ID
-   * @param player IPlayer
-   *     @param card Card
-   */
-  // socket.on(
-  //   'send-card',
-  //   (room: Room, hostSocketId: SocketId, player: IPlayer, card: Card) => {
-  //     io.to(hostSocketId).emit('receive-card', room, player, card);
-  //     console.log(`${player.name} sent card to host`);
-  //   }
-  // );
+  socket.on('player:event', playerEventsListener);
 
   /**
    * From Host: Checking Card
