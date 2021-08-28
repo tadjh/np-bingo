@@ -1,20 +1,27 @@
 import { Server, Socket } from 'socket.io';
-import { Ball, Gamestate, Host, Player } from '@np-bingo/types';
+import { Ball, Gamestate, Host, HostEvent, Player } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
 import { Room, SocketId } from 'socket.io-adapter';
 
 export function useHostHandlers(io: Server, socket: Socket) {
-  const { leaveRoom, emitRoomGamestate, emitRoomNewBall } = useCommonHandlers(
-    io,
-    socket
-  );
+  const { emitLeaveRoom, emitRoomGamestate, emitRoomNewBall } =
+    useCommonHandlers(io, socket);
   /**
    * Host: Create room and join it
    * @param room
    */
-  const createRoom = (room: Room, name: Host['name']) => {
-    console.log(`Room ${room}: ${name} created room`);
+  const createRoom = (room: Room, user: Host) => {
+    console.log(`Room ${room}: ${user} created room`);
     socket.join(room);
+  };
+
+  /**
+   * To Room: Host leaving room
+   * @param room
+   */
+  const hostLeaveRoom = (room: Room) => {
+    socket.to(room).emit('host:event', 'left-room');
+    emitLeaveRoom(room, 'Host');
   };
 
   /**
@@ -35,7 +42,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * @param gamestate
    * @param room
    */
-  const hostGamestate = (gamestate: Gamestate, room: Room) => {
+  const hostGamestate = (room: Room, gamestate: Gamestate) => {
     switch (gamestate) {
       case 'ready':
         console.log(`Room ${room}: Waiting for players to ready up`);
@@ -60,7 +67,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * @param room
    * @param ball
    */
-  const newBall = (room: Room, ball: Ball) => {
+  const dispenseBall = (room: Room, ball: Ball) => {
     console.log(
       `Room ${room}: Ball ${ball.column.toUpperCase()}${ball.number} dispensed`
     );
@@ -68,13 +75,38 @@ export function useHostHandlers(io: Server, socket: Socket) {
   };
 
   /**
-   * To Room: Host leaving room
+   * Host Events Listener
+   * @param event
    * @param room
+   * @param payload
    */
-  const hostLeaveRoom = (room: Room) => {
-    socket.to(room).emit('host:event', 'left-room');
-    leaveRoom(room, 'Host');
+  const hostEventsListener = (
+    event: HostEvent,
+    room: Room,
+    payload: Player | Gamestate | Ball
+  ) => {
+    switch (event) {
+      case 'create-room':
+        createRoom(room, payload as Player);
+        break;
+      case 'leave-room':
+        hostLeaveRoom(room);
+        break;
+      case 'kick-player':
+        kickPlayer(room, payload as Player);
+        break;
+      case 'sync-gamestate':
+        hostGamestate(room, payload as Gamestate);
+        break;
+      case 'dispense-ball':
+        dispenseBall(room, payload as Ball);
+        break;
+      default:
+        throw new Error('Invalid Host Event');
+    }
   };
 
-  return { createRoom, kickPlayer, hostGamestate, newBall, hostLeaveRoom };
+  return {
+    hostEventsListener,
+  };
 }
