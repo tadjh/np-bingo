@@ -113,7 +113,7 @@ export function appReducer(state: AppState, action: AppActions): AppState {
       return { ...state, gamestate: 'standby' as Gamestate };
     case START:
       return { ...state, gamestate: 'start' as Gamestate };
-    case CHECK_CARD: // TODO Potentially deprecate
+    case CHECK_CARD:
       return { ...state, gamestate: 'validate' as Gamestate };
     case GET_CARD:
       return {
