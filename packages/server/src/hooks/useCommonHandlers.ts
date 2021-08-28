@@ -27,7 +27,7 @@ export function useCommonHandlers(io: Server, socket: Socket) {
    * @param ball
    */
   const emitRoomNewBall = (room: Room, ball: Ball) => {
-    socket.to(room).emit('room:event', 'ball-dispensed', ball);
+    socket.to(room).emit('room:event', 'dispense-ball', ball);
   };
 
   /**
