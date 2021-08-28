@@ -7,7 +7,7 @@ import {
   RoomContext,
   UserContext,
 } from '../../../context';
-import { Draws as DrawsType } from '@np-bingo/types';
+import { Draws as DrawsType, Gamestate, Player } from '@np-bingo/types';
 import Button from '../../../components/Inputs/Button';
 import Draws from '../components/Draws';
 import { PlayerList } from '../components/PlayerList';
@@ -21,7 +21,12 @@ import HostStatus from '../components/HostStatus';
 import PlayerName from '../../../components/Display/PlayerName';
 import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
 
-export interface HostProps {
+interface HostStoriesContext {
+  players?: Player[];
+  gamestate?: Gamestate;
+}
+
+export interface HostProps extends HostStoriesContext {
   draws: DrawsType;
 }
 

@@ -15,6 +15,8 @@ import {
 import Container from '../../components/Layout/Container';
 import Background from '../../components/Surfaces/Background';
 import socketInit from '../../lib/socket.io';
+import { initialPlayer } from '../../hooks';
+const socket = socketInit();
 
 export default {
   title: 'Pages/Host',
@@ -23,15 +25,40 @@ export default {
     joinRoom: { action: 'submit' },
   },
   decorators: [
-    (Story) => {
-      const socket = socketInit();
+    (Story, { args }) => {
       return (
         <Router>
-          <UserContext.Provider value={{ ...initialUserContext, socket }}>
-            <Container>
-              <Background />
-              <Story />
-            </Container>
+          <UserContext.Provider
+            value={{ ...initialUserContext, user: initialPlayer, socket }}
+          >
+            <RoomContext.Provider
+              value={{
+                ...initialRoomContext,
+                room: 'A1B2',
+                players: args.players || [],
+              }}
+            >
+              <GameContext.Provider
+                value={{ ...initialGameContext, gamestate: args.gamestate }}
+              >
+                <BallContext.Provider
+                  value={{
+                    ...initialBallContext,
+                    ball: {
+                      key: 1,
+                      number: 24,
+                      column: 'i',
+                      remainder: 74,
+                    },
+                  }}
+                >
+                  <Container>
+                    <Background />
+                    <Story {...args} />
+                  </Container>
+                </BallContext.Provider>
+              </GameContext.Provider>
+            </RoomContext.Provider>
           </UserContext.Provider>
         </Router>
       );
@@ -45,125 +72,60 @@ export default {
 const Template: Story<HostProps> = (args) => <Host {...args} />;
 
 export const Base = Template.bind({});
-Base.decorators = [
-  (Story) => {
-    return (
-      <RoomContext.Provider value={{ ...initialRoomContext, room: 'A1B2' }}>
-        <GameContext.Provider
-          value={{ ...initialGameContext, gamestate: 'standby' }}
-        >
-          <BallContext.Provider
-            value={{
-              ...initialBallContext,
-              ball: {
-                key: 1,
-                number: 24,
-                column: 'i',
-                remainder: 74,
-              },
-            }}
-          >
-            <Story />
-          </BallContext.Provider>
-        </GameContext.Provider>
-      </RoomContext.Provider>
-    );
-  },
-];
 Base.args = {
   draws: [[], [24], [], [], []],
 };
 
 export const Waiting = Template.bind({});
-Waiting.decorators = [
-  (Story) => {
-    return (
-      <RoomContext.Provider value={{ ...initialRoomContext, room: 'A1B2' }}>
-        <GameContext.Provider
-          value={{ ...initialGameContext, gamestate: 'ready' }}
-        >
-          <Story />
-        </GameContext.Provider>
-      </RoomContext.Provider>
-    );
-  },
-];
 Waiting.args = {
   draws: [[], [], [], [], []],
+  gamestate: 'ready',
 };
 
 export const ReadyList = Template.bind({});
-ReadyList.decorators = [
-  (Story) => {
-    return (
-      <RoomContext.Provider
-        value={{
-          ...initialRoomContext,
-          room: 'A1B2',
-          players: [
-            {
-              _id: 'adaskdjsahkd',
-              uid: 2222,
-              name: 'Jane Doe',
-              socketId: '',
-              ready: true,
-              kicked: false,
-              leave: false,
-            },
-            {
-              _id: 'adsjfhskjdfh',
-              uid: 2223,
-              name: 'Jane Doa',
-              socketId: '',
-              ready: false,
-              kicked: false,
-              leave: false,
-            },
-            {
-              _id: 'fasdiuywqqe',
-              uid: 2224,
-              name: 'Jane Do',
-              socketId: '',
-              ready: false,
-              kicked: false,
-              leave: false,
-            },
-            {
-              _id: 'damnsbfndbvfw',
-              uid: 2225,
-              name: 'Jane Doh',
-              socketId: '',
-              ready: false,
-              kicked: false,
-              leave: false,
-            },
-          ],
-        }}
-      >
-        <GameContext.Provider
-          value={{ ...initialGameContext, gamestate: 'ready' }}
-        >
-          <Story />
-        </GameContext.Provider>
-      </RoomContext.Provider>
-    );
-  },
-];
+ReadyList.args = {
+  players: [
+    {
+      _id: 'adaskdjsahkd',
+      uid: 2222,
+      name: 'Jane Doe',
+      socketId: '',
+      ready: true,
+      kicked: false,
+      leave: false,
+    },
+    {
+      _id: 'adsjfhskjdfh',
+      uid: 2223,
+      name: 'Jane Doa',
+      socketId: '',
+      ready: false,
+      kicked: false,
+      leave: false,
+    },
+    {
+      _id: 'fasdiuywqqe',
+      uid: 2224,
+      name: 'Jane Do',
+      socketId: '',
+      ready: false,
+      kicked: false,
+      leave: false,
+    },
+    {
+      _id: 'damnsbfndbvfw',
+      uid: 2225,
+      name: 'Jane Doh',
+      socketId: '',
+      ready: false,
+      kicked: false,
+      leave: false,
+    },
+  ],
+  gamestate: 'ready',
+};
 
 export const GameOver = Template.bind({});
-GameOver.decorators = [
-  (Story) => {
-    return (
-      <RoomContext.Provider value={{ ...initialRoomContext, room: 'A1B2' }}>
-        <GameContext.Provider
-          value={{ ...initialGameContext, gamestate: 'end' }}
-        >
-          <Story />
-        </GameContext.Provider>
-      </RoomContext.Provider>
-    );
-  },
-];
-// GameOver.args = {
-//   draws: [...DrawStories.Disabled.args.draws]
-// }
+GameOver.args = {
+  gamestate: 'end',
+};

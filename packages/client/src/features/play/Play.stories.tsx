@@ -15,16 +15,19 @@ import {
 import Container from '../../components/Layout/Container';
 import Background from '../../components/Surfaces/Background';
 import socketInit from '../../lib/socket.io';
+import { initialPlayer } from '../../hooks';
+const socket = socketInit();
 
 export default {
   title: 'Pages/Play',
   component: Play,
   decorators: [
     (Story) => {
-      const socket = socketInit();
       return (
         <Router>
-          <UserContext.Provider value={{ ...initialUserContext, socket }}>
+          <UserContext.Provider
+            value={{ ...initialUserContext, user: initialPlayer, socket }}
+          >
             <RoomContext.Provider
               value={{ ...initialRoomContext, room: 'A1B2' }}
             >
@@ -72,5 +75,5 @@ Base.args = {
 export const Win = Template.bind({});
 Win.args = {
   ...Base.args,
-  confettiOverride: true,
+  winOverride: true,
 };

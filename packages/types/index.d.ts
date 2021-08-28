@@ -11,10 +11,10 @@ export type Host = Player;
 export type Ball = {
   key: number;
   number: number;
-  column: Column | '';
+  column: Column;
   remainder: number;
 };
-export type Column = 'b' | 'i' | 'n' | 'g' | 'o';
+export type Column = '' | 'b' | 'i' | 'n' | 'g' | 'o';
 // TODO consider Pick<Player, "_id" | "socketId">;
 export type PlayerCard = {
   card: Card;

@@ -12,7 +12,11 @@ import IconMenu from '../../../components/Inputs/IconMenu';
 import IconButton from '../../../components/Inputs/IconButton';
 import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
 
-export interface JoinProps {
+interface JoinStoriesContext {
+  allowPublic?: boolean;
+}
+
+export interface JoinProps extends JoinStoriesContext {
   publicRooms?: any[];
 }
 

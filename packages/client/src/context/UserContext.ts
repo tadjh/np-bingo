@@ -2,8 +2,8 @@ import React, { Dispatch } from 'react';
 import { Player } from '@np-bingo/types';
 import { Socket } from 'socket.io-client';
 import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
-import { initialPlayer } from '../hooks';
 import { UserActions } from '../reducers/user.reducer';
+import { initialPlayer } from '../hooks';
 
 export interface UserContextProps {
   user: Player;

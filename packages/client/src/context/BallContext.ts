@@ -1,6 +1,6 @@
 import React from 'react';
-import { initialAppState } from '../reducers/app.reducer';
 import { Ball, CurrentBall } from '@np-bingo/types';
+import { initialBall } from '../reducers/app.reducer';
 
 export interface BallContextProps {
   ball: Ball;
@@ -10,7 +10,7 @@ export interface BallContextProps {
 const ball = {} as CurrentBall;
 
 export const initialBallContext: BallContextProps = {
-  ball: { ...initialAppState.ball },
+  ball: { ...initialBall },
   newBall: () => ball,
 };
 

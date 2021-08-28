@@ -36,6 +36,20 @@ import {
 import { initialPlayer } from '../hooks';
 import { BINGO } from '../utils/bingo';
 
+export const initialBall: Ball = {
+  key: 0,
+  number: 0,
+  column: '',
+  remainder: 75,
+};
+
+export const initialWinner: Winner = {
+  methods: [],
+  results: {},
+  player: { ...initialPlayer },
+  card: new Array(25),
+};
+
 export interface AppState {
   gamestate: Gamestate;
   room: string;
@@ -78,21 +92,16 @@ export type AppActions =
   | { type: typeof CHANGE_GAMEMODE; payload: Gamemode };
 
 export const initialAppState: AppState = {
-  gamestate: 'init' as Gamestate,
+  gamestate: 'init',
   room: '',
   host: { ...initialPlayer },
-  ball: { key: 0, number: 0, column: '', remainder: 75 },
+  ball: { ...initialBall },
   players: [],
   pool: BINGO,
   draws: [[], [], [], [], []],
   playerCard: null,
-  winner: {
-    methods: [],
-    results: {},
-    player: { ...initialPlayer },
-    card: new Array(25),
-  },
-  rules: { mode: 'default' as Gamemode, special: [] },
+  winner: { ...initialWinner },
+  rules: { mode: 'default', special: [] },
 };
 
 export function appReducer(state: AppState, action: AppActions): AppState {

@@ -23,7 +23,7 @@ import {
 import { NODE_ENV } from '../../../config';
 import { ReducerLogger } from '../../../hooks/useReducerLogger';
 
-export function usePlay(gamemode: Gamemode, confettiOverride: boolean) {
+export function usePlay(gamemode: Gamemode) {
   const { socket } = useContext(UserContext);
   const { ballDelay } = useContext(FeaturesContext);
   const { gamestate, dispatch, checkCard } = useContext(GameContext);

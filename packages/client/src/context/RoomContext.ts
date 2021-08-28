@@ -1,6 +1,7 @@
 import React from 'react';
-import { initialAppState } from '../reducers/app.reducer';
+import { initialWinner } from '../reducers/app.reducer';
 import { Player, Winner, Room, Host } from '@np-bingo/types';
+import { initialPlayer } from '../hooks';
 
 export interface RoomContextProps {
   room: Room;
@@ -10,9 +11,9 @@ export interface RoomContextProps {
 }
 
 export const initialRoomContext: RoomContextProps = {
-  room: initialAppState.room,
-  host: { ...initialAppState.host },
-  winner: { ...initialAppState.winner },
+  room: '',
+  host: { ...initialPlayer },
+  winner: { ...initialWinner },
   players: [] as Player[],
 };
 

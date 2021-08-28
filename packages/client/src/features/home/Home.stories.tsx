@@ -3,6 +3,11 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Home, { HomeProps } from './routes/Home';
 import Container from '../../components/Layout/Container';
+import { initialUserContext, UserContext } from '../../context';
+import socketInit from '../../lib/socket.io';
+import { initialPlayer } from '../../hooks';
+
+const socket = socketInit();
 
 export default {
   title: 'Pages/Home',
@@ -15,9 +20,13 @@ export default {
     (Story) => {
       return (
         <Router>
-          <Container>
-            <Story />
-          </Container>
+          <UserContext.Provider
+            value={{ ...initialUserContext, user: initialPlayer, socket }}
+          >
+            <Container>
+              <Story />
+            </Container>
+          </UserContext.Provider>
         </Router>
       );
     },

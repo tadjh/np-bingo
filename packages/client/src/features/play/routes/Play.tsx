@@ -24,13 +24,13 @@ import IconMenu from '../../../components/Inputs/IconMenu';
 
 export interface PlayProps {
   gamemode?: Gamemode;
-  confettiOverride?: boolean;
+  winOverride?: boolean;
   staticCard?: Card;
 }
 
 export default function Play({
   gamemode = 'default',
-  confettiOverride = false,
+  winOverride = false,
   staticCard,
 }: PlayProps) {
   const { user, socket, isSocketLoading } = useContext(UserContext);
@@ -45,7 +45,7 @@ export default function Play({
     kicked: { status, reason },
     isWinner,
     handleNewCard,
-  } = usePlay(gamemode, confettiOverride);
+  } = usePlay(gamemode);
   const {
     progress,
     inProgress,
@@ -126,7 +126,9 @@ export default function Play({
         </Link> */}
       </footer>
       {gamemode !== 'solo' && <KickedModal open={status} reason={reason} />}
-      {isWinner && <Confetti isActive={isWinner} />}
+      {(winOverride || isWinner) && (
+        <Confetti isActive={winOverride || isWinner} />
+      )}
     </Fragment>
   );
 }
