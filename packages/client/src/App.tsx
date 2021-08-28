@@ -1,4 +1,3 @@
-import { useContext } from 'react';
 import clsx from 'clsx';
 import { Switch, Route } from 'react-router-dom';
 import Host from './features/host';
@@ -22,6 +21,7 @@ import Container from './components/Layout/Container';
 import { useAppState } from './hooks';
 import './App.css';
 import features from './config/features';
+import { useState } from 'react';
 export default function App() {
   const [{ user, isSocketLoading }, userDispatch] = useUser();
   const { socket, connect } = useSocket(userDispatch);
@@ -42,7 +42,8 @@ export default function App() {
   } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useToggle(config.sounds);
-  const { defaultVolume } = useContext(FeaturesContext);
+  const [volume, setVolume] = useState(config.defaultVolume);
+  // const { defaultVolume } = useContext(FeaturesContext);
   const { newBall, checkCard } = useApp(playerCard, pool, draws);
   return (
     <FeaturesContext.Provider value={features}>
@@ -57,7 +58,7 @@ export default function App() {
       >
         <ThemeContext.Provider value={{ theme, toggleTheme }}>
           <SoundContext.Provider
-            value={{ volume: defaultVolume, sounds, toggleSounds }}
+            value={{ volume, sounds, setVolume, toggleSounds }}
           >
             <RoomContext.Provider
               value={{
@@ -71,6 +72,7 @@ export default function App() {
                 value={{
                   gamestate,
                   gamemode,
+                  playerCard,
                   dispatch,
                   checkCard,
                 }}
