@@ -54,7 +54,7 @@ export function Board({
       </div>
       <div
         className={clsx(
-          'h-3 text-white dark:text-opacity-90 text-[7px] text-center font-bold align-middle',
+          'h-3 text-white dark:text-opacity-90 text-[6.5px] text-center font-bold align-middle',
           winner ? 'bg-green-600' : 'bg-gray-900 dark:bg-gray-800'
         )}
       >
