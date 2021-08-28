@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Link as RouterLink, LinkProps } from 'react-router-dom';
-import { useClickSoft } from '../../../assets/sounds';
+import { useClickSoft } from '../../../hooks';
 
 export default function Link({
   className = '',

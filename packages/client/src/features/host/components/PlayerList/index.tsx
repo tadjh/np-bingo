@@ -10,7 +10,7 @@ import CheckIcon from '../../../../assets/icons/Check';
 import CloseCircleIcon from '../../../../assets/icons/CloseCircle';
 import Tooltip from '../../../../components/Display/Tooltip';
 import { Player } from '@np-bingo/types';
-import { useClickHard } from '../../../../assets/sounds/hooks';
+import { useClickHard } from '../../../../hooks';
 
 // export interface ListProps {
 //   data?: any[];

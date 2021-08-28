@@ -1,6 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
-import { useClickHard } from '../../../assets/sounds/hooks';
+import { useClickHard } from '../../../hooks';
 import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
 

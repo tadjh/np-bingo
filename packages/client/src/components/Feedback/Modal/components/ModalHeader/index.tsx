@@ -1,7 +1,7 @@
 import React from 'react';
 import CloseIcon from '../../../../../assets/icons/Close';
 import IconButton from '../../../../Inputs/IconButton/components/IconButton';
-import { useClickSoft } from '../../../../../assets/sounds';
+import { useClickSoft } from '../../../../../hooks';
 
 export interface ModalHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;

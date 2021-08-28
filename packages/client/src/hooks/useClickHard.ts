@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import useSound from 'use-sound';
-import { clickSfx } from '../../../config/sounds';
-import { SoundContext } from '../../../context';
+import { clickSfx } from '../config/sounds';
+import { SoundContext } from '../context';
 
 export function useClickHard() {
   const { volume, sounds } = useContext(SoundContext);

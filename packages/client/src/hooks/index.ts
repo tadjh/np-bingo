@@ -1,5 +1,7 @@
 export * from './useApp';
 export * from './useAppState';
+export * from './useClickHard';
+export * from './useClickSoft';
 export * from './useFetch';
 export * from './useForm';
 export * from './usePortal';

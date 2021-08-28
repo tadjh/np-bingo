@@ -7,7 +7,7 @@ import List, {
   ListItem,
   ListItemText,
 } from '../../../../components/Display/List';
-import { useClickHard } from '../../../../assets/sounds';
+import { useClickHard } from '../../../../hooks';
 
 export interface ListProps {
   rooms?: any[];
