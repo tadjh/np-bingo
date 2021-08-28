@@ -33,7 +33,7 @@ import {
   CHANGE_GAMEMODE,
   PLAYER_KICK,
 } from '../config/constants';
-import { initalPlayer } from '../hooks';
+import { initialPlayer } from '../hooks';
 import { BINGO } from '../utils/bingo';
 
 export interface AppState {
@@ -80,19 +80,19 @@ export type AppActions =
 export const initialAppState: AppState = {
   gamestate: 'init' as Gamestate,
   room: '',
-  host: { ...initalPlayer },
+  host: { ...initialPlayer },
   ball: { key: 0, number: 0, column: '', remainder: 75 },
   players: [],
   pool: BINGO,
   draws: [[], [], [], [], []],
   playerCard: {
     card: new Array(25),
-    owner: { ...initalPlayer },
+    owner: { ...initialPlayer },
   },
   winner: {
     methods: [],
     results: {},
-    player: { ...initalPlayer },
+    player: { ...initialPlayer },
     card: new Array(25),
   },
   rules: { mode: 'default' as Gamemode, special: [] },

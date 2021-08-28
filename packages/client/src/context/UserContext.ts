@@ -2,7 +2,7 @@ import React, { Dispatch } from 'react';
 import { Player } from '@np-bingo/types';
 import { Socket } from 'socket.io-client';
 import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
-import { initalPlayer } from '../hooks';
+import { initialPlayer } from '../hooks';
 import { UserActions } from '../reducers/user.reducer';
 
 export interface UserContextProps {
@@ -14,7 +14,7 @@ export interface UserContextProps {
 }
 
 export const initialUserContext: UserContextProps = {
-  user: initalPlayer,
+  user: initialPlayer,
   socket: {} as Socket,
   isSocketLoading: false,
   userDispatch: () => {},

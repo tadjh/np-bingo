@@ -7,7 +7,7 @@ import { fourRandomDigits } from '../utils';
 import { ReducerLogger } from './useReducerLogger';
 
 // TODO Add unique string to end of player name #4140
-export const initalPlayer: Player = {
+export const initialPlayer: Player = {
   uid: -1,
   name: 'Player',
   socketId: null,
@@ -17,7 +17,7 @@ export const initalPlayer: Player = {
 };
 
 export function useUser(
-  initialUser: Player = initalPlayer
+  initialUser: Player = initialPlayer
 ): [UserState, Dispatch<UserActions>] {
   const memoNumber = useMemo(() => fourRandomDigits(), []);
 
