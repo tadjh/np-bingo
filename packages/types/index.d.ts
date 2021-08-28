@@ -68,11 +68,16 @@ export type Kicked = {
   reason: Reason;
 };
 export type Reason = 'none' | 'banned' | 'abandoned';
-export type PlayerAction = 'join-room' | 'leave-room' | 'ready-up';
-export type HostAction = 'player-kicked' | 'left-room';
-export type RoomAction =
+export type PlayerEvent = 'join-room' | 'leave-room' | 'ready-up' | 'send-card';
+export type HostEvent =
+  | 'create-room'
+  | 'leave-room'
+  | 'kick-player'
+  | RoomEvent;
+export type RoomEvent =
   | 'sync-gamestate'
-  | 'ball-dispensed'
+  | 'dispense-ball'
+  | 'send-card'
   | 'win-game'
   | 'lose-game';
 
