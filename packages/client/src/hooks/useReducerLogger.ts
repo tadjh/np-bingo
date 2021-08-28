@@ -1,6 +1,6 @@
 import { Reducer, useCallback } from 'react';
 
-// Hackmsolution: export as Component. Done to avoid using hooks conditionally in pure functions.
+// Hack solution: export as Component. Done to avoid using hooks conditionally in pure functions.
 export function ReducerLogger<S, A>(reducer: Reducer<S, A>) {
   const reducerWithLogger = useCallback(
     (state: S, action: A) => {

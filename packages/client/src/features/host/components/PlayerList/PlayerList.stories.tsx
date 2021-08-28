@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { PlayerList, PlayerListProps } from '.';
-import { Socket } from 'socket.io-client';
+import { initialPlayer } from '../../../../hooks';
 
 export default {
   title: 'Pages/Host/Player List',
@@ -29,11 +29,9 @@ export const SingleItem = Template.bind({});
 SingleItem.args = {
   data: [
     {
-      _id: 'adaskdjsahkd',
+      ...initialPlayer,
       uid: 2222,
       name: 'Jane Doe',
-      socketId: '',
-      ready: false,
     },
   ],
 };
@@ -42,10 +40,8 @@ export const SingleItemReady = Template.bind({});
 SingleItemReady.args = {
   data: [
     {
-      _id: 'adaskdjsahkd',
-      uid: 2222,
+      ...initialPlayer,
       name: 'Jane Doe',
-      socketId: '',
       ready: true,
     },
   ],
@@ -55,31 +51,23 @@ export const ManyItems = Template.bind({});
 ManyItems.args = {
   data: [
     {
-      _id: 'adaskdjsahkd',
-      uid: 2222,
+      ...initialPlayer,
       name: 'Jane Doe',
-      socketId: '',
       ready: true,
     },
     {
-      _id: 'adsjfhskjdfh',
-      uid: 2223,
+      ...initialPlayer,
       name: 'Jane Doa',
-      socketId: '',
       ready: false,
     },
     {
-      _id: 'fasdiuywqqe',
-      uid: 2224,
+      ...initialPlayer,
       name: 'Jane Do',
-      socketId: '',
       ready: false,
     },
     {
-      _id: 'damnsbfndbvfw',
-      uid: 2225,
+      ...initialPlayer,
       name: 'Jane Doh',
-      socketId: '',
       ready: false,
     },
   ],
