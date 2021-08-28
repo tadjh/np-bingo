@@ -1,5 +1,5 @@
 import { useCallback, useContext } from 'react';
-import { Ball, Player, Winner } from '@np-bingo/types';
+import { Ball, HostEvent, Player, Winner } from '@np-bingo/types';
 import { RoomContext, UserContext } from '../../../context';
 
 export function useHostEmitters() {
@@ -10,28 +10,28 @@ export function useHostEmitters() {
    * To Room: Host left room
    */
   const emitLeaveRoom = () => {
-    socket.emit('host:leave-room', room);
+    socket.emit('host:event', 'leave-room', room);
   };
 
   /**
    * To player: Kick Player
    */
   const emitKickPlayer = (player: Player) => {
-    socket.emit('host:kick-player', room, player);
+    socket.emit('host:event', 'kick-player', room, player);
   };
 
   /**
    * To Room: Host ready
    */
   const emitHostReady = () => {
-    socket.emit('host:gamestate', 'ready', room);
+    socket.emit('host:event', 'sync-gamestate', room, 'ready');
   };
 
   /**
    * To Room: Host on standby
    */
   const emitHostStandby = () => {
-    socket.emit('host:gamestate', 'standby', room);
+    socket.emit('host:event', 'sync-gamestate', room, 'standby');
   };
 
   /**
@@ -46,8 +46,7 @@ export function useHostEmitters() {
    * @param ball
    */
   const emitSendBall = (ball: Ball) => {
-    // TODO set player gamestate on new ball
-    socket.emit('host:ball', room, ball);
+    socket.emit('host:event', 'dispense-ball', room, ball);
   };
 
   /**
@@ -75,7 +74,7 @@ export function useHostEmitters() {
    * To Room: Game over
    */
   const emitHostEnd = () => {
-    socket.emit('host:gamestate', 'end', room);
+    socket.emit('host:event', 'sync-gamestate', room, 'end');
   };
 
   return {
