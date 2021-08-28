@@ -1,5 +1,5 @@
-import { useCallback, useContext } from 'react';
-import { Ball, HostEvent, Player, Winner } from '@np-bingo/types';
+import { useContext } from 'react';
+import { Ball, Player } from '@np-bingo/types';
 import { RoomContext, UserContext } from '../../../context';
 
 export function useHostEmitters() {

@@ -57,15 +57,15 @@ export function useHostListeners(
 
   /**
    * Player Actions Listener Handler
-   * @param action
+   * @param event
    * @param player
    */
   const playerEventsListener = (
-    action: PlayerEvent,
+    event: PlayerEvent,
     player: Player,
     card?: Card
   ) => {
-    switch (action) {
+    switch (event) {
       case 'join-room':
         playerJoinRoom(player);
         break;

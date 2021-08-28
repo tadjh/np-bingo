@@ -28,13 +28,13 @@ export function usePlayListenersHost(
 
   /**
    * Host Actions Handler
-   * @param action
+   * @param event
    */
   const hostEventListener = (
-    action: HostEvent,
+    event: HostEvent,
     optionalParams: { ball?: Ball }
   ) => {
-    switch (action) {
+    switch (event) {
       case 'kick-player':
         playerKicked();
         break;

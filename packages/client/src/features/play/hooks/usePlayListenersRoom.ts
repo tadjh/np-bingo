@@ -101,13 +101,13 @@ export function usePlayListenersRoom(
 
   /**
    * Room Actions Handler
-   * @param action
+   * @param event
    */
   const roomEventsListener = (
-    action: RoomEvent,
+    event: RoomEvent,
     payload: Ball | Gamestate | Winner | Player['name']
   ) => {
-    switch (action) {
+    switch (event) {
       case 'sync-gamestate':
         syncGamestate(payload as Gamestate);
         break;
