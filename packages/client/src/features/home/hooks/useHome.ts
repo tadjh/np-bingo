@@ -6,9 +6,8 @@ import { CREATE_ROOM, INIT, SOCKET_INIT } from '../../../config/constants';
 import { useFetch } from '../../../hooks';
 
 export function useHome() {
-  const { user, socket, isSocketLoading, connect, userDispatch } = useContext(
-    UserContext
-  );
+  const { user, socket, isSocketLoading, connect, userDispatch } =
+    useContext(UserContext);
   const { gamestate, dispatch } = useContext(GameContext);
   const [isRedirect, setIsRedirect] = useState(false);
   const [didInit, setDidInit] = useState(false);
@@ -56,9 +55,9 @@ export function useHome() {
      * Host: Emit create room
      * @param room
      */
-    const emitCreateRoom = (room: Room, name: Host['name']) => {
-      logger(`Room ${room}: ${name} created a new room`);
-      socket.emit('host:create-room', room, name);
+    const emitCreateRoom = (room: Room, user: Host) => {
+      logger(`Room ${room}: ${user.name} created a new room`);
+      socket.emit('host:event', 'create-room', room, user);
     };
 
     dispatch({
@@ -66,7 +65,7 @@ export function useHome() {
       payload: { room: result.data.room, host: result.data.host },
     });
 
-    emitCreateRoom(result.data.room, result.data.host.name);
+    emitCreateRoom(result.data.room, result.data.host);
 
     setIsRedirect(true);
   }, [result, socket, dispatch]);

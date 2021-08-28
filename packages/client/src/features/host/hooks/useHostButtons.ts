@@ -1,16 +1,26 @@
 import { useContext } from 'react';
-import { GAME_OVER, READY_CHECK, STANDBY } from '../../../config/constants';
+import {
+  CHECK_CARD_FAILURE,
+  CHECK_CARD_SUCCESS,
+  GAME_OVER,
+  READY_CHECK,
+  STANDBY,
+} from '../../../config/constants';
 import { GameContext, RoomContext } from '../../../context';
 import { apiDeleteRoom, apiSaveRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
+import { Player, Winner } from '@np-bingo/types';
 
 export function useHostButtons() {
   const { room, winner } = useContext(RoomContext);
-  const { gamestate, dispatch } = useContext(GameContext);
+  const { gamestate, playerCard, checkCard, dispatch } =
+    useContext(GameContext);
   const {
     emitLeaveRoom,
     emitHostStandby,
     emitHostReady,
+    emitWinner,
+    emitNotWinner,
     emitHostEnd,
   } = useHostEmitters();
   /**
@@ -53,6 +63,35 @@ export function useHostButtons() {
   };
 
   /**
+   * Card is a winner
+   * @param winner
+   */
+  const validateWinner = (winner: Winner, owner: Player) => {
+    dispatch({ type: CHECK_CARD_SUCCESS, payload: winner });
+    emitWinner(owner);
+  };
+
+  /**
+   * Card is not a winner
+   * @param winner
+   */
+  const validateNotWinner = (owner: Player) => {
+    dispatch({ type: CHECK_CARD_FAILURE });
+    emitNotWinner(owner);
+  };
+
+  /**
+   * Validates card
+   * @returns void
+   */
+  const handleValidate = () => {
+    if (playerCard === null) return;
+    const { owner } = playerCard;
+    const winner = checkCard();
+    winner ? validateWinner(winner, owner) : validateNotWinner(owner);
+  };
+
+  /**
    * Disabled check card unless gamestate is currenly validate
    * @returns boolean
    */
@@ -91,6 +130,7 @@ export function useHostButtons() {
   return {
     gamestateToggle,
     toggleText,
+    handleValidate,
     disableCheckCard,
     setDisabled,
     handleLeaveRoom,

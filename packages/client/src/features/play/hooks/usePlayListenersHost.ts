@@ -1,7 +1,7 @@
 import { Dispatch, useCallback, useContext, useEffect } from 'react';
 import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
-import { Ball, HostAction, Room, Winner } from '@np-bingo/types';
+import { Ball, HostEvent, Room, Winner } from '@np-bingo/types';
 import { PLAYER_KICK } from '../../../config/constants';
 import { PlayActions } from '../../../reducers/play.reducer';
 import { Socket } from 'socket.io-client';
@@ -30,15 +30,15 @@ export function usePlayListenersHost(
    * Host Actions Handler
    * @param action
    */
-  const hostListener = (
-    action: HostAction,
+  const hostEventListener = (
+    action: HostEvent,
     optionalParams: { ball?: Ball }
   ) => {
     switch (action) {
-      case 'player-kicked':
+      case 'kick-player':
         playerKicked();
         break;
-      case 'left-room':
+      case 'leave-room':
         roomAbandoned();
         break;
       default:
@@ -51,15 +51,15 @@ export function usePlayListenersHost(
    */
   const subscribeToHost = () => {
     logger('Listening for host actions...');
-    socket.on('host:event', hostListener);
+    socket.on('host:event', hostEventListener);
   };
 
   /**
    * Unsubscribe to host events
    */
-  const unsubscribeToHost = () => {
+  const unsubscribeFromHost = () => {
     logger('No longer listening for host actions.');
-    socket.off('host:event', hostListener);
+    socket.off('host:event', hostEventListener);
   };
 
   // const ballDispensed = (ball: Ball) => {
@@ -277,5 +277,5 @@ export function usePlayListenersHost(
   //       break;
   //   }
   // });
-  return [subscribeToHost, unsubscribeToHost];
+  return [subscribeToHost, unsubscribeFromHost];
 }

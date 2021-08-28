@@ -1,5 +1,5 @@
 import { useCallback, useContext } from 'react';
-import { Ball, Player } from '@np-bingo/types';
+import { Ball, Player, Winner } from '@np-bingo/types';
 import { RoomContext, UserContext } from '../../../context';
 
 export function useHostEmitters() {
@@ -23,23 +23,23 @@ export function useHostEmitters() {
   /**
    * To Room: Host ready
    */
-  const emitHostReady = useCallback(() => {
+  const emitHostReady = () => {
     socket.emit('host:gamestate', 'ready', room);
-  }, [socket, room]);
+  };
 
   /**
    * To Room: Host on standby
    */
-  const emitHostStandby = useCallback(() => {
+  const emitHostStandby = () => {
     socket.emit('host:gamestate', 'standby', room);
-  }, [socket, room]);
+  };
 
   /**
    * To Room: Host started game
    */
-  const emitHostStart = useCallback(() => {
-    socket.emit('host:gamestate', 'start', room);
-  }, [socket, room]);
+  // const emitHostStart = useCallback(() => {
+  //   socket.emit('host:gamestate', 'start', room);
+  // }, [socket, room]);
 
   /**
    * To Room: Send new ball
@@ -53,30 +53,30 @@ export function useHostEmitters() {
   /**
    * To Room: Validating Card
    */
-  // const emitHostValidate = useCallback(() => {
-  //   socket.emit('checking-card', room);
-  // }, [socket, room]);
-
-  /**
-   * To Room: Card is not a winner
-   */
-  // const emitNotAWinner = useCallback(() => {
-  //   socket.emit('losing-card', room, winner);
-  // }, [socket, room, winner]);
+  const emitValidate = (player: Player) => {
+    socket.emit('host:event', 'check-card', room, player);
+  };
 
   /**
    * To Room: Card is a winner
    */
-  // const emitIsAWinner = useCallback(() => {
-  //   socket.emit('winning-card', room, winner);
-  // }, [socket, room, winner]);
+  const emitWinner = (owner: Player) => {
+    socket.emit('host:event', 'winning-card', room, owner);
+  };
+
+  /**
+   * To Room: Card is not a winner
+   */
+  const emitNotWinner = (owner: Player) => {
+    socket.emit('host:event', 'losing-card', room, owner);
+  };
 
   /**
    * To Room: Game over
    */
-  const emitHostEnd = useCallback(() => {
+  const emitHostEnd = () => {
     socket.emit('host:gamestate', 'end', room);
-  }, [socket, room]);
+  };
 
   return {
     // emitCreateRoom,
@@ -84,11 +84,11 @@ export function useHostEmitters() {
     emitKickPlayer,
     emitHostReady,
     emitHostStandby,
-    emitHostStart,
+    // emitHostStart,
     emitSendBall,
-    // emitHostValidating,
-    // emitNotAWinner,
-    // emitIsAWinner,
+    emitValidate,
+    emitWinner,
+    emitNotWinner,
     emitHostEnd,
   };
 }

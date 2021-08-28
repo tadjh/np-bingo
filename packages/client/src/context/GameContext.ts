@@ -1,10 +1,11 @@
 import React, { Dispatch } from 'react';
 import { AppActions, initialAppState } from '../reducers/app.reducer';
-import { Gamemode, Gamestate, Winner } from '@np-bingo/types';
+import { Gamemode, Gamestate, PlayerCard, Winner } from '@np-bingo/types';
 
 export interface GameContextProps {
   gamestate: Gamestate;
   gamemode: Gamemode;
+  playerCard: PlayerCard | null;
   dispatch: Dispatch<AppActions>;
   checkCard: () => Winner | null;
 }
@@ -12,9 +13,8 @@ export interface GameContextProps {
 export const initialGameContext: GameContextProps = {
   gamestate: initialAppState.gamestate,
   gamemode: initialAppState.rules.mode,
+  playerCard: null,
   dispatch: () => {},
-  // play: (gamestate: Gamestate) => {},
-  // mode: (gamemode: Gamemode) => {},
   checkCard: () => null,
 };
 

@@ -65,7 +65,7 @@ export function useJoin() {
      * To Room: Player joined
      */
     const emitJoinRoom = (room: Room, hostSocketId: string, user: Player) => {
-      socket.emit('player:action', 'join-room', room, hostSocketId, user);
+      socket.emit('player:event', 'join-room', room, hostSocketId, user);
     };
 
     emitJoinRoom(result.data.room, result.data.host.socketId!, body!);

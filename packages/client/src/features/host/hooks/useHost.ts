@@ -33,16 +33,14 @@ export function useHost(socket: Socket) {
     // emitLeaveRoom,
     // emitHostReady,
     // emitHostStandby,
-    emitHostStart,
+    // emitHostStart,
     // emitHostValidating,
     // emitNotAWinner,
     // emitIsAWinner,
     // emitHostGameOver,
   } = useHostEmitters();
-  const { listenPlayerAction, deafenPlayerAction } = useHostListeners(
-    socket,
-    dispatch
-  );
+  const { subscribeToPlayerEvents, unsubscribeFromPlayerEvents } =
+    useHostListeners(socket, dispatch);
   /**
    * Kick player from room
    * @param player
@@ -96,8 +94,8 @@ export function useHost(socket: Socket) {
   useEffect(() => {
     if (!isNewGame) return;
     setIsNewGame(false);
-    listenPlayerAction();
-  }, [isNewGame, dispatch, listenPlayerAction]);
+    subscribeToPlayerEvents();
+  }, [isNewGame, dispatch, subscribeToPlayerEvents]);
 
   // TODO deafenPlayerAction
   /**

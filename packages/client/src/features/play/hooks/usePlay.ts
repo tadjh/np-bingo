@@ -40,11 +40,11 @@ export function usePlay(gamemode: Gamemode, confettiOverride: boolean) {
     emitReadyUp,
     // emitSendCard
   } = usePlayEmitters();
-  const [subscribeToHost, unsubscribeToHost] = usePlayListenersHost(
+  const [subscribeToHost, unsubscribeFromHost] = usePlayListenersHost(
     socket,
     playDispatch
   );
-  const [subscribeToRoom, unsubscribeToRoom] = usePlayListenersRoom(
+  const [subscribeToRoom, unsubscribeFromRoom] = usePlayListenersRoom(
     socket,
     dispatch
   );
