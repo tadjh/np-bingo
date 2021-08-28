@@ -1,4 +1,5 @@
 import { Dispatch, useEffect, useMemo } from 'react';
+import { Socket } from 'socket.io-client';
 import socketInit from '../lib/socket.io';
 import { logger } from '../utils';
 import { UserActions } from '../reducers/user.reducer';
@@ -37,8 +38,26 @@ export function useSocket(userDispatch: Dispatch<UserActions>) {
     /**
      * On Disconnect event
      */
-    const onDisconnect = () => {
-      logger('You have disconnected');
+    const onDisconnect = (reason: Socket.DisconnectReason) => {
+      switch (reason) {
+        case 'io server disconnect':
+          logger('You have been forcefully disconnected from the server.');
+          break;
+        case 'io client disconnect':
+          logger('You have been manually disconnected from the server.');
+          break;
+        case 'ping timeout':
+          logger('Server timeout. You have been disconnected.');
+          break;
+        case 'transport close':
+          logger('You have lost connection to the server.');
+          break;
+        case 'transport error':
+          logger('Connection error. You have been disconnected.');
+          break;
+        default:
+          throw new Error('Invalid disconnection reason provided');
+      }
     };
 
     /**
