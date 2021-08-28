@@ -9,7 +9,7 @@ export function usePlayButton(card: Card) {
   const { ballDelay } = useContext(FeaturesContext);
   const { gamemode, dispatch } = useContext(GameContext);
   const { ball } = useContext(BallContext);
-  const { emitReadyUp, emitLeaveRoom } = usePlayEmitters();
+  const { emitReadyUp, emitLeaveRoom, emitSendCard } = usePlayEmitters();
   const { playRandomSfx } = usePlaySounds();
 
   /**
@@ -34,11 +34,8 @@ export function usePlayButton(card: Card) {
     enableProgress();
   };
 
-  const {
-    soloOnProgressDone,
-    soloHandlePrimaryButton,
-    soloHandleSendCard,
-  } = useSoloButton(triggerBallEffects, enableProgress, pauseProgress, card);
+  const { soloOnProgressDone, soloHandlePrimaryButton, soloHandleSendCard } =
+    useSoloButton(triggerBallEffects, enableProgress, pauseProgress, card);
 
   /**
    * Sets gamestate based on current gamestate
@@ -53,9 +50,9 @@ export function usePlayButton(card: Card) {
    * Wrapper function for sendCard
    */
   const handleSendCard = () => {
-    if (gamemode === 'solo') soloHandleSendCard();
+    if (gamemode === 'solo') return soloHandleSendCard();
     dispatch({ type: CHECK_CARD });
-    // TODO emit send card
+    emitSendCard(card);
   };
 
   const handleLeaveRoom = () => {

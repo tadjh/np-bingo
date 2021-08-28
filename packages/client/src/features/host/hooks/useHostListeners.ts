@@ -1,18 +1,22 @@
-import { Dispatch } from 'react';
-import { Player, PlayerAction } from '@np-bingo/types';
+import { Dispatch, useContext } from 'react';
+import { Card, Player, PlayerEvent } from '@np-bingo/types';
 import { logger } from '../../../utils';
 import {
+  GET_CARD,
   PLAYER_JOIN,
   PLAYER_LEAVE,
   PLAYER_READY,
 } from '../../../config/constants';
 import { Socket } from 'socket.io-client';
 import { AppActions } from '../../../reducers/app.reducer';
+import { GameContext, RoomContext } from '../../../context';
 
 export function useHostListeners(
   socket: Socket,
   dispatch: Dispatch<AppActions>
 ) {
+  const { playerCard } = useContext(GameContext);
+  const { room } = useContext(RoomContext);
   /**
    * From Player: Player Join Room
    * @param player
@@ -32,7 +36,7 @@ export function useHostListeners(
   };
 
   /**
-   * From Player: Payer is ready
+   * From Player: Player is ready
    * @param player
    */
   const playerReadyUp = (player: Player) => {
@@ -41,11 +45,26 @@ export function useHostListeners(
   };
 
   /**
+   * From Player: Player sent a card
+   * @param player
+   * @param card
+   */
+  const playerSendCard = (player: Player, card: Card) => {
+    if (playerCard == null) return;
+    logger(`${player.name} sent a card to you.`);
+    dispatch({ type: GET_CARD, payload: { card: card, owner: player } });
+  };
+
+  /**
    * Player Actions Listener Handler
    * @param action
    * @param player
    */
-  const playerAction = (action: PlayerAction, player: Player) => {
+  const playerEventsListener = (
+    action: PlayerEvent,
+    player: Player,
+    card?: Card
+  ) => {
     switch (action) {
       case 'join-room':
         playerJoinRoom(player);
@@ -56,6 +75,10 @@ export function useHostListeners(
       case 'ready-up':
         playerReadyUp(player);
         break;
+      case 'send-card':
+        if (!card) return;
+        playerSendCard(player, card);
+        break;
       default:
         throw new Error('Error in Host Player Action');
     }
@@ -64,47 +87,18 @@ export function useHostListeners(
   /**
    * Listener for Player Actions
    */
-  const listenPlayerAction = () => {
+  const subscribeToPlayerEvents = () => {
     logger('Listening for player actions...');
-    socket.on('host:player-action', playerAction);
+    socket.on('host:player-event', playerEventsListener);
   };
 
   /**
    * Deafen Player Actions Listener
    */
-  const deafenPlayerAction = () => {
+  const unsubscribeFromPlayerEvents = () => {
     logger('No longer listening for player actions.');
-    socket.off('host:player-action', playerAction);
+    socket.off('host:player-event', playerEventsListener);
   };
 
-  /**
-   * To Host: Player is ready
-   */
-  // const listenPlayerReady = useCallback(() => {
-  //   socket.on('player-ready', (player: Player) => {
-  //     logger(`${player.name} ready`);
-  //     dispatchPlayerReady(player);
-  //   });
-  // }, [socket, dispatchPlayerReady]);
-
-  // const deafenPlayerReady = useCallback(() => {
-  //   socket.off('player-ready');
-  // }, [socket]);
-
-  /**
-   * To Host: Receive Card
-   */
-  // const listenReceiveCard = useCallback(() => {
-  //   socket.on('receive-card', (room: Room, player: Player, card: Card) => {
-  //     logger(`${player.name} sent a card to you.`);
-  //     play('validate');
-  //     // dispatch({ type: GET_CARD, payload: { card: card, owner: player } });
-  //   });
-  // }, [socket, play]);
-
-  // const deafenReceiveCard = useCallback(() => {
-  //   socket.off('receive-card');
-  // }, [socket]);
-
-  return { listenPlayerAction, deafenPlayerAction };
+  return { subscribeToPlayerEvents, unsubscribeFromPlayerEvents };
 }

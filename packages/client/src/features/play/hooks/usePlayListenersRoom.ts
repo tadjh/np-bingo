@@ -4,9 +4,10 @@ import { logger } from '../../../utils';
 import {
   Ball,
   Gamestate,
-  HostAction,
+  HostEvent,
+  Player,
   Room,
-  RoomAction,
+  RoomEvent,
   Winner,
 } from '@np-bingo/types';
 import {
@@ -80,6 +81,11 @@ export function usePlayListenersRoom(
     dispatch({ type: SET_BALL, payload: ball });
   };
 
+  const sendCard = (playerName: Player['name']) => {
+    logger(`${playerName} has sent their card to the host`);
+    dispatch({ type: PAUSE });
+  };
+
   /**
    * To Room Winner: Win Game
    * @param winner
@@ -97,17 +103,19 @@ export function usePlayListenersRoom(
    * Room Actions Handler
    * @param action
    */
-  // TODO Improve typing
-  const roomListener = (
-    action: RoomAction,
-    payload: Ball | Gamestate | Winner
+  const roomEventsListener = (
+    action: RoomEvent,
+    payload: Ball | Gamestate | Winner | Player['name']
   ) => {
     switch (action) {
       case 'sync-gamestate':
         syncGamestate(payload as Gamestate);
         break;
-      case 'ball-dispensed':
+      case 'dispense-ball':
         ballDispensed(payload as Ball);
+        break;
+      case 'send-card':
+        sendCard(payload as Player['name']);
         break;
       // case 'win-game':
       //   winGame(payload as Winner);
@@ -124,15 +132,15 @@ export function usePlayListenersRoom(
    */
   const subscribeToRoom = () => {
     logger('Listening for room actions...');
-    socket.on('room:event', roomListener);
+    socket.on('room:event', roomEventsListener);
   };
 
   /**
    * Unsubscribe to Room events
    */
-  const unsubscribeToRoom = () => {
+  const unsubscribeFromRoom = () => {
     logger('No longer listening for room actions.');
-    socket.off('room:event', roomListener);
+    socket.off('room:event', roomEventsListener);
   };
 
   /**
@@ -192,5 +200,5 @@ export function usePlayListenersRoom(
   //       break;
   //   }
   // });
-  return [subscribeToRoom, unsubscribeToRoom];
+  return [subscribeToRoom, unsubscribeFromRoom];
 }

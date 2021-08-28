@@ -12,21 +12,21 @@ export function usePlayEmitters() {
    * To Host: Send user ready
    */
   const emitReadyUp = () => {
-    socket.emit('player:action', 'ready-up', room, host.socketId, user);
+    socket.emit('player:event', 'ready-up', room, host.socketId, user);
   };
 
   /**
    * To Host & Room: Send user card
    */
-  // const emitSendCard = (card: Card) => {
-  //   socket.emit('send-card', room, host.socketId, user, card);
-  // };
+  const emitSendCard = (card: Card) => {
+    socket.emit('player:event', 'send-card', room, host.socketId, user, card);
+  };
 
   /**
    * To Room: Send player left
    */
   const emitLeaveRoom = () => {
-    socket.emit('player:action', 'leave-room', room, host.socketId, user);
+    socket.emit('player:event', 'leave-room', room, host.socketId, user);
   };
 
   // TODO Is this necessary?
@@ -46,7 +46,7 @@ export function usePlayEmitters() {
 
   return {
     emitReadyUp,
-    // emitSendCard,
+    emitSendCard,
     emitLeaveRoom,
     // emitGameWin
   };

@@ -28,7 +28,7 @@ export interface HostProps {
 export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
   const { user, socket, isSocketLoading } = useContext(UserContext);
   const { room, players } = useContext(RoomContext);
-  const { gamestate, checkCard } = useContext(GameContext);
+  const { gamestate } = useContext(GameContext);
   const {
     ball: { number, column, remainder },
   } = useContext(BallContext);
@@ -42,6 +42,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
   const {
     gamestateToggle,
     toggleText,
+    handleValidate,
     disableCheckCard,
     setDisabled,
     handleLeaveRoom,
@@ -64,7 +65,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
           <Button
             variant="success"
             disabled={disableCheckCard()}
-            onClick={checkCard}
+            onClick={handleValidate}
           >
             Validate
           </Button>
