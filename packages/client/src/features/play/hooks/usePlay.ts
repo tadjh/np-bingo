@@ -1,6 +1,18 @@
-import { Card, Gamemode, Results, Serial, Winner } from '@np-bingo/types';
+import {
+  Card,
+  Gamemode,
+  Player,
+  Results,
+  Serial,
+  Winner,
+} from '@np-bingo/types';
 import { useCallback, useContext, useEffect, useReducer } from 'react';
-import { FeaturesContext, GameContext, UserContext } from '../../../context';
+import {
+  FeaturesContext,
+  GameContext,
+  RoomContext,
+  UserContext,
+} from '../../../context';
 import { usePlayEmitters, usePlayListenersRoom, usePlaySounds } from '.';
 import { usePlayListenersHost } from './usePlayListenersHost';
 import {
@@ -11,7 +23,7 @@ import {
   READY_CHECK,
   WINNER_CROSSMARKS,
 } from '../../../config/constants';
-import { winningMethods } from '../../../utils/bingo.validate';
+import { winningCells, winningMethods } from '../../../utils/bingo.validate';
 import { BINGO, newCard } from '../../../utils/bingo';
 import {
   initialPlayState,
@@ -23,11 +35,16 @@ import {
 import { NODE_ENV } from '../../../config';
 import { ReducerLogger } from '../../../hooks/useReducerLogger';
 
-export function usePlay(gamemode: Gamemode) {
-  const { socket } = useContext(UserContext);
+export function usePlay() {
+  const {
+    user: { socketId },
+    socket,
+  } = useContext(UserContext);
   const { ballDelay } = useContext(FeaturesContext);
-  const { gamestate, playerCards, dispatch, checkCard } =
-    useContext(GameContext);
+  const { winners } = useContext(RoomContext);
+  const { gamestate, gamemode, playerCards, dispatch, checkCard } = useContext(
+    GameContext
+  );
   const [
     { card, serial, crossmarks, kicked, isWinner, isNewGame },
     playDispatch,
@@ -85,24 +102,6 @@ export function usePlay(gamemode: Gamemode) {
   /**
    * Sets Winning crossmarks after successful card validations
    * @param results Results of validation check
-   * @retuns Object of winning crossmarks
-   */
-  function winningCells(results: Results): { [key: string]: boolean } {
-    const methods = winningMethods(results);
-    let winningCrossmarks = {};
-    for (let i = 0; i < methods.length; i++) {
-      let marks = (results[methods[i]] as number[]).map(function (item) {
-        let id = `cell-${item + 1}`;
-        return { [id]: true };
-      });
-      winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
-    }
-    return winningCrossmarks;
-  }
-
-  /**
-   * Sets Winning crossmarks after successful card validations
-   * @param results Results of validation check
    */
   const setWinningCrossmarks = (winningCrossmarks: {
     [key: string]: boolean;
@@ -126,11 +125,53 @@ export function usePlay(gamemode: Gamemode) {
     playDispatch({ type: NOT_WINNER });
   }, [playWinSfxData, playDispatch]);
 
+  const isCurrentWinner = (
+    winners: Winner[],
+    socketId: Player['name'] | null
+  ): Winner | undefined => {
+    return winners.find((winner) => winner.player.socketId === socketId);
+  };
+
   // TODO IMPROVE
   useEffect(() => {
     if (gamestate !== 'ready') return;
     if (isWinner) return handleWinCleanUp();
   }, [gamestate, isWinner, handleWinCleanUp]);
+
+  useEffect(() => {
+    if (gamemode === 'solo') return;
+    if (gamestate !== 'win') return;
+
+    /**
+     * Handles win
+     */
+    const handleWin = (winner: Winner) => {
+      const winningCrossmarks = winningCells(winner.results);
+      playWinSfx();
+      setWinningCrossmarks(winningCrossmarks);
+    };
+
+    const winner = isCurrentWinner(winners, socketId);
+    if (!winner) return;
+    handleWin(winner);
+  }, [gamestate, gamemode, socketId, winners, dispatch, playWinSfx]);
+
+  // TODO deafenHostAction
+  // TODO deafenRomAction
+
+  // useEffect(() => {
+  //   console.log('test ' + gamestate);Î
+  //   if (gamestate === 'win') return handleWin();
+  // }, [gamestate, handleWin]);
+
+  /**
+   * Set/Reset Play on Ready
+   */
+  // useEffect(() => {
+  //   if (gamestate !== 'ready') return;
+  //   setCard();
+  //   confettiStop();
+  // }, [gamestate, setCard]);
 
   /**
    * Solo: On Validation
@@ -176,59 +217,6 @@ export function usePlay(gamemode: Gamemode) {
     playWinSfx,
     playLoseSfx,
   ]);
-
-  // TODO deafenHostAction
-  // TODO deafenRomAction
-
-  // useEffect(() => {
-  //   console.log('test ' + gamestate);Î
-  //   if (gamestate === 'win') return handleWin();
-  // }, [gamestate, handleWin]);
-
-  /**
-   * Set/Reset Play on Ready
-   */
-  // useEffect(() => {
-  //   if (gamestate !== 'ready') return;
-  //   setCard();
-  //   confettiStop();
-  // }, [gamestate, setCard]);
-
-  /**
-   * Multiplayer Side-effects
-   */
-  // useEffect(() => {
-  //   if (gamemode === 'solo') return soloSideEffects(handleWin, handleLose);
-  //   switch (gamestate) {
-  //     case 'standby':
-  //       emitReadyUp();
-  //       break;
-  //     case 'validate':
-  //       emitSendCard(card);
-  //       break;
-  //     case 'win':
-  //       handleWin();
-  //       play('end');
-  //       break;
-  //     case 'failure':
-  //       handleLose();
-  //       play('standby');
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }, [
-  //   gamestate,
-  //   gamemode,
-  //   card,
-  //   winner,
-  //   handleWin,
-  //   handleLose,
-  //   play,
-  //   emitReadyUp,
-  //   emitSendCard,
-  //   soloSideEffects,
-  // ]);
 
   return {
     card,
