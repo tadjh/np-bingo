@@ -81,7 +81,7 @@ export default function App() {
                   <div
                     id="App"
                     className={clsx(
-                      'relative flex justify-center items-center min-h-screen',
+                      'sm:relative sm:flex sm:justify-center sm:items-center sm:min-h-screen overflow-hidden',
                       theme
                     )}
                   >
