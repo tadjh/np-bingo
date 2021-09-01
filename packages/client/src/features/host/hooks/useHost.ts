@@ -1,5 +1,5 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
-import { Player } from '@np-bingo/types';
+import { Ball, Player } from '@np-bingo/types';
 import {
   BallContext,
   FeaturesContext,
@@ -18,14 +18,16 @@ import {
   READY_CHECK,
 } from '../../../config/constants';
 import { Socket } from 'socket.io-client';
+import { initialBall } from '../../../reducers/app.reducer';
 
 export function useHost(socket: Socket) {
   const { ballDelay } = useContext(FeaturesContext);
-  const { room, winner, players } = useContext(RoomContext);
+  const { room, winners, players } = useContext(RoomContext);
   const { gamestate, dispatch } = useContext(GameContext);
   const { progress, inProgress, enableProgress } = useProgress(ballDelay);
-  const { newBall } = useContext(BallContext);
+  const { ball, newBall } = useContext(BallContext);
   const [isNewGame, setIsNewGame] = useState(true);
+  const [prevBall, setPrevBall] = useState<Ball>(initialBall);
   const {
     emitKickPlayer,
     emitSendBall,
@@ -39,8 +41,10 @@ export function useHost(socket: Socket) {
     // emitIsAWinner,
     // emitHostGameOver,
   } = useHostEmitters();
-  const { subscribeToPlayerEvents, unsubscribeFromPlayerEvents } =
-    useHostListeners(socket, dispatch);
+  const {
+    subscribeToPlayerEvents,
+    unsubscribeFromPlayerEvents,
+  } = useHostListeners(socket, dispatch);
   /**
    * Kick player from room
    * @param player
@@ -56,11 +60,6 @@ export function useHost(socket: Socket) {
    * @param room
    */
   const handleBall = () => {
-    // If gamestate isn't already 'start', set it when a ball is drawn
-    // if (gamestate === 'standby' || gamestate === 'failure') {
-    //   // TODO How to make sure this isn't necessary??
-    //   emitHostStart();
-    // }
     const currentBall = newBall();
     if (currentBall.ball.number === 0) return dispatch({ type: GAME_OVER });
 
@@ -76,8 +75,8 @@ export function useHost(socket: Socket) {
    * Save Room
    */
   const saveRoom = useCallback(() => {
-    apiSaveRoom(room, winner);
-  }, [room, winner]);
+    apiSaveRoom(room, winners);
+  }, [room, winners]);
 
   /**
    * Filters out kicked and leaver players and returns player count.

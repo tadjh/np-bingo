@@ -7,7 +7,8 @@ import { handleError, logger } from '../../../utils';
  * @param room Room code
  * @param body Winner
  */
-export async function apiSaveRoom(room: Room, body: Winner) {
+// TODO handle array
+export async function apiSaveRoom(room: Room, body: Winner[]) {
   await axios
     .put(`/api/game/${room}`, body)
     .then(() => {
