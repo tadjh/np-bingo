@@ -11,7 +11,6 @@ import {
 import Ball from '../../../components/Display/Ball';
 import { Board } from '../components/Board';
 import Button from '../../../components/Inputs/Button';
-import Link from '../../../components/Navigation/Link';
 import Widgets from '../../../components/Widgets';
 import KickedModal from '../components/KickedModal';
 import Confetti from '../components/Confetti';
@@ -52,6 +51,7 @@ export default function Play({
     handlePrimaryButton,
     handleSendCard,
     handleLeaveRoom,
+    disableSendCard,
   } = usePlayButton(card);
   const { primaryButtonText, disablePrimaryButton, disableBallDisplay } =
     usePlayDisplay();
@@ -77,16 +77,14 @@ export default function Play({
               variant="primary"
               disabled={disablePrimaryButton()}
               onClick={handlePrimaryButton}
-              // className="w-[94px]"
             >
               {primaryButtonText()}
             </Button>
           </div>
           <Button
             variant="success"
-            disabled={gamestate !== 'start' && true}
+            disabled={disableSendCard()}
             onClick={handleSendCard}
-            // className="w-[94px]"
           >
             Bingo
           </Button>
@@ -121,9 +119,6 @@ export default function Play({
           name={user.name}
           isLoading={isSocketLoading}
         />
-        {/* <Link className="hover:underline" to="/">
-          Leave Room
-        </Link> */}
       </footer>
       {gamemode !== 'solo' && <KickedModal open={status} reason={reason} />}
       {(winOverride || isWinner) && (
