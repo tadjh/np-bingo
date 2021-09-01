@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { useClickSoft, useToggle } from '../../../hooks';
+import { useToggle } from '../../../hooks';
 import RoomList from '../components/RoomList';
 import CodeModal from '../components/CodeModal';
 import { FeaturesContext, UserContext } from '../../../context';
@@ -8,8 +8,6 @@ import { Link as RouterLink } from 'react-router-dom';
 import { useJoin } from '../hooks';
 import PlayerName from '../../../components/Display/PlayerName';
 import IconMenu from '../../../components/Inputs/IconMenu';
-import IconButton from '../../../components/Inputs/IconButton';
-import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
 import Back from '../../../components/Navigation/Back';
 
 interface JoinStoriesContext {
@@ -58,9 +56,6 @@ export default function Join({ publicRooms = [] }: JoinProps) {
         </div>
       </main>
       <footer className="flex-1 justify-end gap-1">
-        {/* <Link className="nav-button hover:underline" to="/">
-          &larr; Back
-        </Link> */}
         <div>{'\xa0'}</div>
         <IconMenu direction="up" />
         <PlayerName
