@@ -19,8 +19,13 @@ export default function Home(): JSX.Element {
     user: { name },
     socket,
   } = useContext(UserContext);
-  const { isLoading, isError, isRedirect, isSocketLoading, createRoom } =
-    useHome();
+  const {
+    isLoading,
+    isError,
+    isRedirect,
+    isSocketLoading,
+    createRoom,
+  } = useHome();
   if (isRedirect) return <Redirect to={`/host?r=${room}`} />;
   return (
     <Fragment>
@@ -38,8 +43,11 @@ export default function Home(): JSX.Element {
         >
           Play
         </Button>
-        <Button className="host-button w-[83px]" onClick={createRoom}>
-          {!isLoading ? 'Host' : <Spinner className="h-6 w-6" />}
+        <Button
+          className="host-button w-[83px] flex justify-center"
+          onClick={createRoom}
+        >
+          {!isLoading ? 'Host' : <Spinner className="h-6 w-6" color="white" />}
         </Button>
         <Typography>{isError ? 'Something went wrong...' : '\xa0'}</Typography>
       </main>
