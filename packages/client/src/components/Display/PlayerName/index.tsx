@@ -9,6 +9,7 @@ export interface PlayerNameProps extends React.HTMLAttributes<HTMLDivElement> {
   status?: boolean;
   isLoading: boolean;
   name: string;
+  editable: boolean;
 }
 // TODO PlayerName.stories.tsx
 // TODO Rename PlayerName
@@ -16,6 +17,7 @@ export default function PlayerName({
   status,
   name = 'Player#0000',
   isLoading = false,
+  editable = false,
   ...props
 }: PlayerNameProps) {
   const playerNameAlertStyle = () => {
@@ -55,9 +57,11 @@ export default function PlayerName({
             {'#' + randomId}
           </span>
         </div>
-        <IconButton className="invisible group-hover:visible">
-          <PencilIcon size="x-small" />
-        </IconButton>
+        {editable && (
+          <IconButton className="invisible group-hover:visible">
+            <PencilIcon size="x-small" />
+          </IconButton>
+        )}
       </Typography>
     </div>
   );
