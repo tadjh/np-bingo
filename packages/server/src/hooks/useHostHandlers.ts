@@ -23,8 +23,8 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * Host: Create room and join it
    * @param room
    */
-  const createRoom = (room: Room, user: Host) => {
-    console.log(`Room ${room}: ${user} created room`);
+  const createRoom = (room: Room, username: Host['name']) => {
+    console.log(`Room ${room}: ${username} created room`);
     socket.join(room);
   };
 
@@ -121,7 +121,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
   ) => {
     switch (event) {
       case 'create-room':
-        createRoom(room, payload as Player);
+        createRoom(room, payload as Player['name']);
         break;
       case 'leave-room':
         hostLeaveRoom(room);
