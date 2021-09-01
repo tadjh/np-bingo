@@ -198,3 +198,21 @@ export function winningMethods(results: Results) {
     return results[method];
   });
 }
+
+/**
+ * Sets Winning crossmarks after successful card validations
+ * @param results Results of validation check
+ * @retuns Object of winning crossmarks
+ */
+export function winningCells(results: Results): { [key: string]: boolean } {
+  const methods = winningMethods(results);
+  let winningCrossmarks = {};
+  for (let i = 0; i < methods.length; i++) {
+    let marks = (results[methods[i]] as number[]).map(function (item) {
+      let id = `cell-${item + 1}`;
+      return { [id]: true };
+    });
+    winningCrossmarks = Object.assign(winningCrossmarks, ...marks);
+  }
+  return winningCrossmarks;
+}
