@@ -28,12 +28,12 @@ export function useHome() {
   /**
    * Connect to socket.io
    */
-  useEffect(() => {
-    // Don't reconnect if already connected
-    if (socket.connected === true || isSocketLoading) return;
-    userDispatch({ type: SOCKET_INIT });
-    connect();
-  }, [socket, isSocketLoading, connect, userDispatch]);
+  // useEffect(() => {
+  //   // Don't reconnect if already connected
+  //   if (socket.connected === true || isSocketLoading) return;
+  //   userDispatch({ type: SOCKET_INIT });
+  //   connect();
+  // }, [socket, isSocketLoading, connect, userDispatch]);
 
   /**
    * Create a new game room

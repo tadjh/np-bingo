@@ -5,7 +5,7 @@ const socket = () => {
   return io(API_URL, {
     withCredentials: true,
     reconnectionAttempts: 10,
-    autoConnect: false,
+    // autoConnect: false,
   });
 };
 
