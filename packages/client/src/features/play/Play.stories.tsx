@@ -70,6 +70,7 @@ Base.args = {
     2, 26, 41, 47, 66, 5, 19, 37, 59, 74, 10, 25, 42, 55, 62, 13, 29, 33, 53,
     72, 1, 20, 43, 51, 71,
   ],
+  staticSerial: 'CwZgDCIKxgbATI+0oE5YHZYEZbE8KvGMGFLHtlPLCKlNhvEA',
 };
 
 export const Win = Template.bind({});

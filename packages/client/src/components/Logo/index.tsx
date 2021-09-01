@@ -3,12 +3,16 @@ import clsx from 'clsx';
 import { letters } from '../../utils/bingo';
 import { useLogo } from './useLogo';
 
-export interface LogoProps {
+export interface LogoProps extends React.HtmlHTMLAttributes<HTMLDivElement> {
   home?: boolean;
   winner?: boolean;
 }
 
-export default function Logo({ home = false, winner }: LogoProps): JSX.Element {
+export default function Logo({
+  home = false,
+  winner,
+  ...props
+}: LogoProps): JSX.Element {
   const [logoStyle, logoStyleInner] = useLogo();
   return (
     <div
@@ -16,6 +20,7 @@ export default function Logo({ home = false, winner }: LogoProps): JSX.Element {
         'flex',
         home ? '-space-x-4 justify-center' : 'justify-around'
       )}
+      {...props}
     >
       {letters.map((item, index) => {
         return (

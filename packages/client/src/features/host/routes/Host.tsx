@@ -31,7 +31,11 @@ export interface HostProps extends HostStoriesContext {
 }
 
 export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
-  const { user, socket, isSocketLoading } = useContext(UserContext);
+  const {
+    user: { name },
+    socket,
+    isSocketLoading,
+  } = useContext(UserContext);
   const { room, players } = useContext(RoomContext);
   const { gamestate } = useContext(GameContext);
   const {
@@ -78,7 +82,11 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
         <div className="w-[40px]" />
       </header>
       <main>
-        <HostStatus gamestate={gamestate} count={activePlayerCount()} />
+        <HostStatus
+          gamestate={gamestate}
+          count={activePlayerCount()}
+          data-testid="host-status"
+        />
         {gamestate === 'init' || gamestate === 'ready' ? (
           <PlayerList data={players} action={handleRemovePlayer} />
         ) : (
@@ -117,7 +125,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
         <Widgets room={room} />
         <PlayerName
           status={socket.connected}
-          name={user.name}
+          name={name}
           isLoading={isSocketLoading}
         />
         {/* <Link className="hover:underline" onClick={handleLeaveRoom} to="/">

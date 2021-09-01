@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { Card, Gamemode } from '@np-bingo/types';
+import { Card, Gamemode, Serial } from '@np-bingo/types';
 import { Link as RouterLink } from 'react-router-dom';
 import {
   BallContext,
@@ -25,14 +25,20 @@ export interface PlayProps {
   gamemode?: Gamemode;
   winOverride?: boolean;
   staticCard?: Card;
+  staticSerial?: Serial;
 }
 
 export default function Play({
   gamemode = 'default',
   winOverride = false,
   staticCard,
+  staticSerial,
 }: PlayProps) {
-  const { user, socket, isSocketLoading } = useContext(UserContext);
+  const {
+    user: { name },
+    socket,
+    isSocketLoading,
+  } = useContext(UserContext);
   const { allowNewCard } = useContext(FeaturesContext);
   const { room } = useContext(RoomContext);
   const { gamestate } = useContext(GameContext);
@@ -92,7 +98,11 @@ export default function Play({
         <div className="w-[40px]" />
       </header>
       <main>
-        <PlayStatus gamestate={gamestate} gamemode={gamemode} />
+        <PlayStatus
+          gamestate={gamestate}
+          gamemode={gamemode}
+          data-testid="play-status"
+        />
         <Ball
           number={ball.number}
           column={ball.column}
@@ -103,7 +113,7 @@ export default function Play({
         />
         <Board
           card={staticCard || [...card]}
-          serial={serial}
+          serial={staticSerial || serial}
           winner={isWinner}
           crossmarks={crossmarks}
         />
@@ -116,7 +126,7 @@ export default function Play({
         )}
         <PlayerName
           status={socket.connected}
-          name={user.name}
+          name={name}
           isLoading={isSocketLoading}
         />
       </footer>

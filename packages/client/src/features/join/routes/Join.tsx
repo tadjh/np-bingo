@@ -4,7 +4,6 @@ import RoomList from '../components/RoomList';
 import CodeModal from '../components/CodeModal';
 import { FeaturesContext, UserContext } from '../../../context';
 import Button from '../../../components/Inputs/Button';
-import Link from '../../../components/Navigation/Link';
 import { Link as RouterLink } from 'react-router-dom';
 import { useJoin } from '../hooks';
 import PlayerName from '../../../components/Display/PlayerName';
@@ -21,7 +20,11 @@ export interface JoinProps extends JoinStoriesContext {
 }
 
 export default function Join({ publicRooms = [] }: JoinProps) {
-  const { user, socket, isSocketLoading } = useContext(UserContext);
+  const {
+    user: { name },
+    socket,
+    isSocketLoading,
+  } = useContext(UserContext);
   const { allowPublic, allowSolo } = useContext(FeaturesContext);
   const { joinRoom, handleSolo } = useJoin();
   const [isOpen, , open, close] = useToggle();
@@ -65,7 +68,7 @@ export default function Join({ publicRooms = [] }: JoinProps) {
         <IconMenu direction="up" />
         <PlayerName
           status={socket.connected}
-          name={user.name}
+          name={name}
           isLoading={isSocketLoading}
         />
       </footer>

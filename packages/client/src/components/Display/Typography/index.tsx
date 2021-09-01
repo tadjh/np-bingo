@@ -14,6 +14,7 @@ export default function Typography({
         className ||
         'text-black dark:text-white text-opacity-90 dark:text-opacity-90'
       }
+      {...props}
     >
       {children}
     </div>

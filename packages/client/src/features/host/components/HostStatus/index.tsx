@@ -10,7 +10,8 @@ export interface HostStatusProps {
 export default function HostStatus({
   gamestate = 'init',
   count = -1,
+  ...props
 }: HostStatusProps): JSX.Element {
   const [hostStatus] = useHostStatus(gamestate, count);
-  return <Typography>{hostStatus()}</Typography>;
+  return <Typography {...props}>{hostStatus()}</Typography>;
 }

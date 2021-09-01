@@ -10,7 +10,8 @@ export interface PlayStatusProps {
 export default function PlayStatus({
   gamestate = 'init',
   gamemode = 'default',
+  ...props
 }: PlayStatusProps): JSX.Element {
   const [playStatus] = usePlayStatus(gamestate, gamemode);
-  return <Typography>{playStatus()}</Typography>;
+  return <Typography {...props}>{playStatus()}</Typography>;
 }
