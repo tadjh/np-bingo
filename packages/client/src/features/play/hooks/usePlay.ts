@@ -100,16 +100,6 @@ export function usePlay() {
   }, [isNewGame, gamemode, subscribeToHost, subscribeToRoom]);
 
   /**
-   * Sets Winning crossmarks after successful card validations
-   * @param results Results of validation check
-   */
-  const setWinningCrossmarks = (winningCrossmarks: {
-    [key: string]: boolean;
-  }) => {
-    playDispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
-  };
-
-  /**
    * Sync Play gamestate with App gamestate
    */
   // useEffect(() => {
@@ -138,6 +128,9 @@ export function usePlay() {
     if (isWinner) return handleWinCleanUp();
   }, [gamestate, isWinner, handleWinCleanUp]);
 
+  /**
+   * Multiplayer Win
+   */
   useEffect(() => {
     if (gamemode === 'solo') return;
     if (gamestate !== 'win') return;
@@ -148,7 +141,7 @@ export function usePlay() {
     const handleWin = (winner: Winner) => {
       const winningCrossmarks = winningCells(winner.results);
       playWinSfx();
-      setWinningCrossmarks(winningCrossmarks);
+      playDispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
     };
 
     const winner = isCurrentWinner(winners, socketId);
@@ -188,7 +181,7 @@ export function usePlay() {
       const winningCrossmarks = winningCells(winner.results);
       playWinSfx();
       dispatch({ type: CHECK_CARD_SUCCESS, payload: [winner] });
-      setWinningCrossmarks(winningCrossmarks);
+      playDispatch({ type: WINNER_CROSSMARKS, payload: winningCrossmarks });
     };
 
     /**
