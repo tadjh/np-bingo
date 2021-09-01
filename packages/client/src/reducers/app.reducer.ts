@@ -109,6 +109,9 @@ export function appReducer(state: AppState, action: AppActions): AppState {
     case INIT:
       return initialAppState;
     case READY_CHECK:
+      const unreadyPlayers = state.players.map((player) => {
+        return { ...player, ready: false };
+      });
       return {
         ...state,
         gamestate: 'ready' as Gamestate,
@@ -117,6 +120,7 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         draws: initialAppState.draws.map((array) => array.slice()),
         playerCards: [],
         winners: [],
+        players: [...unreadyPlayers],
       };
     case STANDBY:
       return { ...state, gamestate: 'standby' as Gamestate };
