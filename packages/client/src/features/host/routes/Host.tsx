@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { Fragment, useContext } from 'react';
 import clsx from 'clsx';
 import Ball from '../../../components/Display/Ball';
 import {
@@ -14,12 +14,10 @@ import { PlayerList } from '../components/PlayerList';
 import IconButton from '../../../components/Inputs/IconButton/components/IconButton';
 import PlusCircleIcon from '../../../assets/icons/PlusCircle';
 import Widgets from '../../../components/Widgets';
-import { Link as RouterLink } from 'react-router-dom';
-// import Link from '../../../components/Navigation/Link';
 import { useHost, useHostButtons, useHostSounds } from '../hooks';
 import HostStatus from '../components/HostStatus';
 import PlayerName from '../../../components/Display/PlayerName';
-import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
+import Back from '../../../components/Navigation/Back';
 
 interface HostStoriesContext {
   players?: Player[];
@@ -58,13 +56,9 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
   } = useHostButtons();
   const [playRandomSfx] = useHostSounds();
   return (
-    <React.Fragment>
+    <Fragment>
       <header className="flex gap-2 items-center justify-between">
-        <RouterLink to="/" onClick={handleLeaveRoom}>
-          <IconButton description="Back">
-            <ChevronLeftIcon />
-          </IconButton>
-        </RouterLink>
+        <Back to="/" onClick={handleLeaveRoom} />
         <div className="flex gap-2">
           <div className="w-[108px] text-center">
             <Button variant="primary" onClick={gamestateToggle}>
@@ -128,10 +122,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
           name={name}
           isLoading={isSocketLoading}
         />
-        {/* <Link className="hover:underline" onClick={handleLeaveRoom} to="/">
-          Leave Room
-        </Link> */}
       </footer>
-    </React.Fragment>
+    </Fragment>
   );
 }

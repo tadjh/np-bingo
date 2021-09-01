@@ -1,6 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { Card, Gamemode, Serial } from '@np-bingo/types';
-import { Link as RouterLink } from 'react-router-dom';
+import { Card, Serial } from '@np-bingo/types';
 import {
   BallContext,
   FeaturesContext,
@@ -17,9 +16,8 @@ import Confetti from '../components/Confetti';
 import { usePlay, usePlayButton, usePlayDisplay } from '../hooks';
 import PlayStatus from '../components/PlayStatus';
 import PlayerName from '../../../components/Display/PlayerName';
-import IconButton from '../../../components/Inputs/IconButton';
-import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
 import IconMenu from '../../../components/Inputs/IconMenu';
+import Back from '../../../components/Navigation/Back';
 
 export interface PlayProps {
   winOverride?: boolean;
@@ -65,11 +63,7 @@ export default function Play({
   return (
     <Fragment>
       <header className="flex gap-2 items-center justify-between">
-        <RouterLink to="/" onClick={handleLeaveRoom}>
-          <IconButton description="Back">
-            <ChevronLeftIcon />
-          </IconButton>
-        </RouterLink>
+        <Back to="/" onClick={handleLeaveRoom} />
         {allowNewCard && (
           <Button
             disabled={gamestate !== 'ready' && true}

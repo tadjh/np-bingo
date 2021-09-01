@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { useToggle } from '../../../hooks';
+import { useClickSoft, useToggle } from '../../../hooks';
 import RoomList from '../components/RoomList';
 import CodeModal from '../components/CodeModal';
 import { FeaturesContext, UserContext } from '../../../context';
@@ -10,6 +10,7 @@ import PlayerName from '../../../components/Display/PlayerName';
 import IconMenu from '../../../components/Inputs/IconMenu';
 import IconButton from '../../../components/Inputs/IconButton';
 import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
+import Back from '../../../components/Navigation/Back';
 
 interface JoinStoriesContext {
   allowPublic?: boolean;
@@ -31,11 +32,7 @@ export default function Join({ publicRooms = [] }: JoinProps) {
   return (
     <Fragment>
       <header className="flex-1 justify-between">
-        <RouterLink to="/">
-          <IconButton description="Back">
-            <ChevronLeftIcon />
-          </IconButton>
-        </RouterLink>
+        <Back to="/" />
         <h1 className="text-center text-3xl text-black dark:text-white text-opacity-60 dark:text-opacity-60 self-center">
           Join
         </h1>
