@@ -8,21 +8,23 @@ DONE Bug: SOLO first ball empty
 DONE Bug: On win, Play Again button 
 DONE Bug: SOLO On win, Sound disabled retriggers confetti and song
 DONE Bug: SOLO On win, Failure sounds retriggers
-// TODO Bug: On no bingo, failure state (multiplayer)
-// TODO Bug: On no bingo, failure for game room
-// TODO Bug: On send card, card sender shouldn’t get “A card being checked for bingo” TEST
-// TODO Refresh Play: breaks page, set game mode solo
+DONE Bug: On no bingo, failure state (multiplayer)
+DONE Bug: On no bingo, failure for game room
+DONE Bug: On send card, card sender shouldn’t get “A card being checked for bingo”
+DONE Refresh Play: breaks page, set game mode solo
 DONE Bug: Multiplayer show progress indicator after host pushes ball
 DONE Bug: Multiplayer new ball no sound
-// TODO Snapshot update
+DONE Snapshot update
 DONE Bug: On leave room Bingo Song continues to play
 // TODO Public Room Display busted
-// TODO Consider dispatch Contexts
 // TODO Bug: modal bug in storybook removeChild
-// TODO Bug: Back button no sound
-// TODO Make app responsive again including app margin top below certain screen sizes
-// TODO Bug: Home doesn't init broken
+DONE Bug: Back button no sound
+DONE Make app responsive again including app margin top below certain screen sizes
+DONE Bug: Home doesn't init broken
 // TOOD Bug: Modal isn't iside of phone
+DONE Bug: Home loader not centered
+// TODO On game save, put winners into an array on server. Game 1, Game 2, etc.
+// TODO Copy link is broken
 
 Vulnerbilities
 // TODO Prevent kicked player from rejoining (API & Socket)
