@@ -3,11 +3,7 @@ import { Ball, Draws, PlayerCard, Pool, Winner } from '@np-bingo/types';
 import { getBall, removeBall, updateDraws } from '../utils/bingo';
 import { validateCard } from '../utils/bingo.validate';
 
-export function useApp(
-  playerCard: PlayerCard | null,
-  pool: Pool,
-  draws: Draws
-) {
+export function useApp(pool: Pool, draws: Draws) {
   /**
    * Get new ball
    * @param pool
@@ -31,21 +27,24 @@ export function useApp(
    * @param draws Pool of bingo balls that have already been drawn
    * @return boolean
    */
-  const checkCard = useCallback((): Winner | null => {
-    if (playerCard === null) return null;
-    const { card, owner } = playerCard;
-    const [results, methods] = validateCard(card, draws);
+  const checkCard = useCallback(
+    (playerCard: PlayerCard): Winner | null => {
+      // if (playerCard.length === 1) return null;
+      const { card, owner } = playerCard;
+      const [results, methods] = validateCard(card, draws);
 
-    // No winning methods
-    if (methods.length <= 0) return null;
+      // No winning methods
+      if (methods.length <= 0) return null;
 
-    return {
-      methods,
-      results,
-      player: owner,
-      card: card,
-    };
-  }, [playerCard, draws]);
+      return {
+        methods,
+        results,
+        player: owner,
+        card: card,
+      };
+    },
+    [draws]
+  );
 
   return { newBall, checkCard };
 }

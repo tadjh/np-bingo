@@ -1,9 +1,9 @@
 import { Schema, model, Document } from 'mongoose';
-import { Card, Methods, Results, Winner } from '@np-bingo/types';
+import { Card, Method, Results } from '@np-bingo/types';
 import { IPlayer, PlayerSchema } from './player';
 
 export interface IWinner extends Document {
-  methods: Methods;
+  methods: Method[];
   data: Results;
   player: IPlayer;
   card: Card;

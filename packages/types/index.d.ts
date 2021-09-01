@@ -21,17 +21,17 @@ export type PlayerCard = {
   owner: Player;
 };
 export type Room = string;
-export type Methods = string[];
+export type Method = 'row' | 'column' | 'diagonal';
 export type Serial = string;
 export type Card = number[];
 export type Draws = Pool;
 export type Pool = number[][];
 export type Theme = 'light' | 'dark';
 export type Results = {
-  [key: string]: number[];
+  [key in Method]: number[];
 };
 export type Winner = {
-  methods: Methods;
+  methods: Method[];
   results: Results;
   player: Player;
   card: Card;
@@ -62,7 +62,7 @@ export type Gamemode = 'default' | 'solo' | 'death' | 'blackout';
  * Roving L - A 'L' shape (b1, b2, b3, b4, b5, i5, n5, g5, o5) or inverted 'L' (o1, o2, o3, o4, o5, g5, n5, i5, b5) count as a valid bingo.
  */
 export type Special = 'postage' | 'corners' | 'roving l';
-export type Rules = { mode: Gamemode; special?: Special[] };
+export type Rules = { mode: Gamemode; special?: Special[]; split: boolean };
 export type Kicked = {
   status: boolean;
   reason: Reason;
@@ -78,8 +78,8 @@ export type RoomEvent =
   | 'sync-gamestate'
   | 'dispense-ball'
   | 'send-card'
-  | 'win-game'
-  | 'lose-game';
+  | 'winning-cards'
+  | 'losing-cards';
 
 export interface CreateRoom {
   room: Room;

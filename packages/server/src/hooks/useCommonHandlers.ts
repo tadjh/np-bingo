@@ -39,10 +39,33 @@ export function useCommonHandlers(io: Server, socket: Socket) {
     socket.to(room).emit('room:event', 'send-card', playerName);
   };
 
+  /**
+   * Notify the room that the player's card is a winner
+   * @param room
+   * @param playerName
+   */
+  const emitRoomWinners = (
+    room: Room,
+    winningPlayers: Pick<Player, 'name' | 'socketId'>[]
+  ) => {
+    socket.to(room).emit('room:event', 'winning-cards', winningPlayers);
+  };
+
+  /**
+   * Notify the room that the player's card is not a winner
+   * @param room
+   * @param playerName
+   */
+  const emitRoomLosers = (room: Room, playerNames: Player['name'][]) => {
+    socket.to(room).emit('room:event', 'losing-cards', playerNames);
+  };
+
   return {
     emitLeaveRoom,
     emitRoomGamestate,
     emitRoomNewBall,
     emitRoomCheckCard,
+    emitRoomWinners,
+    emitRoomLosers,
   };
 }

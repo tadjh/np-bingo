@@ -9,18 +9,18 @@ import {
 import { GameContext, RoomContext } from '../../../context';
 import { apiDeleteRoom, apiSaveRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
-import { Player, Winner } from '@np-bingo/types';
+import { Player, PlayerCard, Winner } from '@np-bingo/types';
 
 export function useHostButtons() {
-  const { room, winner } = useContext(RoomContext);
-  const { gamestate, playerCard, checkCard, dispatch } =
+  const { room, winners } = useContext(RoomContext);
+  const { gamestate, playerCards, split, checkCard, dispatch } =
     useContext(GameContext);
   const {
     emitLeaveRoom,
     emitHostStandby,
     emitHostReady,
-    emitWinner,
-    emitNotWinner,
+    emitWinners,
+    emitLosers,
     emitHostEnd,
   } = useHostEmitters();
   /**
@@ -63,21 +63,42 @@ export function useHostButtons() {
   };
 
   /**
-   * Card is a winner
+   * Card(s) a winner
    * @param winner
    */
-  const validateWinner = (winner: Winner, owner: Player) => {
-    dispatch({ type: CHECK_CARD_SUCCESS, payload: winner });
-    emitWinner(owner);
+  const validateWinners = (winners: Winner[]) => {
+    dispatch({ type: CHECK_CARD_SUCCESS, payload: winners });
+    emitWinners(winners);
   };
 
   /**
-   * Card is not a winner
+   * Card(s) not a winner
    * @param winner
    */
-  const validateNotWinner = (owner: Player) => {
+  const validateLosers = (losers: Player[]) => {
     dispatch({ type: CHECK_CARD_FAILURE });
-    emitNotWinner(owner);
+    emitLosers(losers);
+  };
+
+  const multipleWinners = (playerCards: PlayerCard[]) => {
+    const winners: Winner[] = [];
+    const losers: Player[] = [];
+    for (let i = 0; i < playerCards.length; i++) {
+      const { owner } = playerCards[i];
+      const winner = checkCard(playerCards[i]);
+      if (winner) return [...winners, winner];
+      return [...losers, owner];
+    }
+
+    // No winners
+    if (winners.length === 0) return validateLosers(losers);
+
+    validateWinners(winners);
+    if (losers.length > 0) {
+      emitLosers(losers);
+    }
+
+    // winner ? validateWinner(winner) : validateNotWinner(owner);
   };
 
   /**
@@ -85,10 +106,11 @@ export function useHostButtons() {
    * @returns void
    */
   const handleValidate = () => {
-    if (playerCard === null) return;
-    const { owner } = playerCard;
-    const winner = checkCard();
-    winner ? validateWinner(winner, owner) : validateNotWinner(owner);
+    if (split) return multipleWinners(playerCards);
+    // single
+    const { owner } = playerCards[0];
+    const winner = checkCard(playerCards[0]);
+    winner ? validateWinners([winner]) : validateLosers([owner]);
   };
 
   /**

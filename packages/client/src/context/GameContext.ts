@@ -5,15 +5,17 @@ import { Gamemode, Gamestate, PlayerCard, Winner } from '@np-bingo/types';
 export interface GameContextProps {
   gamestate: Gamestate;
   gamemode: Gamemode;
-  playerCard: PlayerCard | null;
+  playerCards: PlayerCard[];
+  split: boolean;
   dispatch: Dispatch<AppActions>;
-  checkCard: () => Winner | null;
+  checkCard: (playerCard: PlayerCard) => Winner | null;
 }
 
 export const initialGameContext: GameContextProps = {
   gamestate: 'init',
   gamemode: 'default',
-  playerCard: null,
+  playerCards: [],
+  split: false,
   dispatch: () => {},
   checkCard: () => null,
 };

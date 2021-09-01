@@ -25,7 +25,8 @@ import {
 } from '../../../config/constants';
 import { PlayActions } from '../../../reducers/play.reducer';
 import { Socket } from 'socket.io-client';
-import { AppActions } from '../../../reducers/app.reducer';
+import { AppActions, initialWinner } from '../../../reducers/app.reducer';
+import { initialPlayer } from '../../../hooks';
 //playDispatch: Dispatch<PlayActions>
 export function usePlayListenersRoom(
   socket: Socket,
@@ -81,6 +82,10 @@ export function usePlayListenersRoom(
     dispatch({ type: SET_BALL, payload: ball });
   };
 
+  /**
+   * To Room: Player sent a card
+   * @param playerName
+   */
   const sendCard = (playerName: Player['name']) => {
     logger(`${playerName} has sent their card to the host`);
     dispatch({ type: PAUSE });
@@ -90,14 +95,37 @@ export function usePlayListenersRoom(
    * To Room Winner: Win Game
    * @param winner
    */
-  // const winGame = (winner: Winner) => {
-  //   logger(`You won the game!`);
-  //   dispatch({ type: CHECK_CARD_SUCCESS, payload: winner });
-  // };
+  const winningCards = (
+    winningPlayers: Pick<Player, 'name' | 'socketId'>[]
+  ) => {
+    let sender = false;
+    // let winners = [] as Winner[];
+    for (let i = 0; i < winningPlayers.length; i++) {
+      if (winningPlayers[i].socketId === socket.id) {
+        sender = true;
+        break;
+      }
+      logger(`${winningPlayers[i].name} won the game!`);
+      // winners = [
+      //   ...winners,
+      //   {
+      //     ...initialWinner,
+      //     player: {
+      //       ...initialPlayer,
+      //       name: winningPlayers[i].name,
+      //       socketId: winningPlayers[i].socketId,
+      //     },
+      //   },
+      // ];
+    }
+    if (sender) return;
+    dispatch({ type: GAME_OVER });
+  };
 
-  // const loseGame =()=>{
-
-  // }
+  const losingCards = () => {
+    logger(`No winners...`);
+    dispatch({ type: CHECK_CARD_FAILURE });
+  };
 
   /**
    * Room Actions Handler
@@ -105,7 +133,12 @@ export function usePlayListenersRoom(
    */
   const roomEventsListener = (
     event: RoomEvent,
-    payload: Ball | Gamestate | Winner | Player['name']
+    payload:
+      | Ball
+      | Gamestate
+      | Winner
+      | Player['name']
+      | Pick<Player, 'name' | 'socketId'>[]
   ) => {
     switch (event) {
       case 'sync-gamestate':
@@ -117,11 +150,12 @@ export function usePlayListenersRoom(
       case 'send-card':
         sendCard(payload as Player['name']);
         break;
-      // case 'win-game':
-      //   winGame(payload as Winner);
-      //   break;
-      // case 'lose-game':
-      //   break;
+      case 'winning-cards':
+        winningCards(payload as Pick<Player, 'name' | 'socketId'>[]);
+        break;
+      case 'losing-cards':
+        losingCards();
+        break;
       default:
         throw new Error('Error in room action');
     }
@@ -157,48 +191,5 @@ export function usePlayListenersRoom(
   //   socket.off('loser');
   // }, [socket]);
 
-  // TODO Turn state changes into ONE socket subscription that sends state change strings
-  /**
-   * Socket.io Side-effects
-   */
-  // useEffect(() => {
-  //   switch (gamestate) {
-  //     case 'init':
-  //       listenGameReady();
-  //       break;
-  //     case 'ready':
-  //       deafenGameReady();
-  //       listGameStandby();
-  //       break;
-  //     case 'standby':
-  //       deafenGameStandby();
-  //       listenGameStart();
-  //       break;
-  //     case 'start':
-  //       deafenGameStart();
-  //       listenDispeneBall();
-  //       deafenGameContinue();
-  //       break;
-  //     case 'validate':
-  //       deafenDispenseBall();
-  //       listenGameValidation();
-  //       listenGameWinner();
-  //       listenGameLoser();
-  //       break;
-  //     case 'pause':
-  //       deafenGameValidation();
-  //       listGameRoomWinner();
-  //       listenGameContinue();
-  //       listenGameEnd();
-  //       break;
-  //     case 'end':
-  //       deafenGameWinner();
-  //       deafenGameRoomWinner();
-  //       deafenGameLoser();
-  //       deafenGameValidation();
-  //       deafenGameEnd();
-  //       break;
-  //   }
-  // });
   return [subscribeToRoom, unsubscribeFromRoom];
 }

@@ -1,5 +1,5 @@
 import { Dispatch, useContext } from 'react';
-import { Card, Player, PlayerEvent } from '@np-bingo/types';
+import { Card, Player, PlayerCard, PlayerEvent } from '@np-bingo/types';
 import { logger } from '../../../utils';
 import {
   GET_CARD,
@@ -15,7 +15,7 @@ export function useHostListeners(
   socket: Socket,
   dispatch: Dispatch<AppActions>
 ) {
-  const { playerCard } = useContext(GameContext);
+  const { split, playerCards } = useContext(GameContext);
   const { room } = useContext(RoomContext);
   /**
    * From Player: Player Join Room
@@ -46,13 +46,14 @@ export function useHostListeners(
 
   /**
    * From Player: Player sent a card
-   * @param player
-   * @param card
+   * @param playerCard
    */
-  const playerSendCard = (player: Player, card: Card) => {
-    if (playerCard == null) return;
-    logger(`${player.name} sent a card to you.`);
-    dispatch({ type: GET_CARD, payload: { card: card, owner: player } });
+  const playerSendCard = (playerCard: PlayerCard) => {
+    // If winnings are not a split pot and
+    // playerCards already has a card don't store additional cards
+    if (!split && playerCards.length > 0) return;
+    logger(`${playerCard.owner.name} sent a card to you.`);
+    dispatch({ type: GET_CARD, payload: playerCard });
   };
 
   /**
@@ -62,22 +63,20 @@ export function useHostListeners(
    */
   const playerEventsListener = (
     event: PlayerEvent,
-    player: Player,
-    card?: Card
+    payload: Player | PlayerCard
   ) => {
     switch (event) {
       case 'join-room':
-        playerJoinRoom(player);
+        playerJoinRoom(payload as Player);
         break;
       case 'leave-room':
-        playerLeaveRoom(player);
+        playerLeaveRoom(payload as Player);
         break;
       case 'ready-up':
-        playerReadyUp(player);
+        playerReadyUp(payload as Player);
         break;
       case 'send-card':
-        if (!card) return;
-        playerSendCard(player, card);
+        playerSendCard(payload as PlayerCard);
         break;
       default:
         throw new Error('Error in Host Player Action');

@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io';
 import { Room, SocketId } from 'socket.io-adapter';
-import { Card, Player, PlayerEvent } from '@np-bingo/types';
+import { Card, Player, PlayerCard, PlayerEvent } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
 
 export function usePlayerHandlers(io: Server, socket: Socket) {
@@ -54,12 +54,11 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
   const sendCard = (
     room: Room,
     hostSocketId: SocketId,
-    player: Player,
-    card: Card
+    playerCard: PlayerCard
   ) => {
-    console.log(`Room ${room}: ${player.name} sent a card`);
-    io.to(hostSocketId).emit('host:player-event', 'send-card', player, card);
-    emitRoomCheckCard(room, player.name);
+    console.log(`Room ${room}: ${playerCard.owner.name} sent a card`);
+    io.to(hostSocketId).emit('host:player-event', 'send-card', playerCard);
+    emitRoomCheckCard(room, playerCard.owner.name);
   };
 
   /**
@@ -74,22 +73,21 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
     event: PlayerEvent,
     room: Room,
     hostSocketId: SocketId,
-    player: Player,
-    card?: Card
+    payload: Player | PlayerCard
   ) => {
     switch (event) {
       case 'join-room':
-        joinRoom(room, hostSocketId, player);
+        joinRoom(room, hostSocketId, payload as Player);
         break;
       case 'leave-room':
-        playerLeaveRoom(room, hostSocketId, player);
+        playerLeaveRoom(room, hostSocketId, payload as Player);
         break;
       case 'ready-up':
-        readyUp(room, hostSocketId, player);
+        readyUp(room, hostSocketId, payload as Player);
         break;
       case 'send-card':
-        if (!card) return;
-        sendCard(room, hostSocketId, player, card);
+        sendCard(room, hostSocketId, payload as PlayerCard);
+        break;
       default:
         throw new Error('Invalid player event');
     }

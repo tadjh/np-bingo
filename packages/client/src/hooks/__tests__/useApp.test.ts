@@ -1,5 +1,4 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { initialAppState } from '../../reducers/app.reducer';
 import { BINGO } from '../../utils/bingo';
 import { useApp } from '../useApp';
 import { initialPlayer } from '../useUser';
@@ -23,9 +22,7 @@ describe('new ball', () => {
       [61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75],
     ];
 
-    const { result } = renderHook(() =>
-      useApp(initialAppState.playerCard, mockPool, mockDraws)
-    );
+    const { result } = renderHook(() => useApp(mockPool, mockDraws));
 
     act(() => {
       result.current.newBall();
@@ -50,9 +47,7 @@ describe('new ball', () => {
   it('should return no more balls', () => {
     const mockPool = [[], [], [], [], []];
     const mockDraws = BINGO;
-    const { result } = renderHook(() =>
-      useApp(initialAppState.playerCard, mockPool, mockDraws)
-    );
+    const { result } = renderHook(() => useApp(mockPool, mockDraws));
 
     act(() => {
       result.current.newBall();
@@ -79,27 +74,27 @@ describe('check card', () => {
     const playerCard = { card: mockCard, owner: initialPlayer };
     const mockPool = [[], [], [], [], []];
     const mockDraws = BINGO;
-    const { result } = renderHook(() =>
-      useApp(playerCard, mockPool, mockDraws)
-    );
+    const { result } = renderHook(() => useApp(mockPool, mockDraws));
 
     act(() => {
-      result.current.checkCard();
+      result.current.checkCard(playerCard);
     });
 
-    expect(result.current.checkCard()).not.toBe(null);
-    expect(result.current.checkCard()?.methods).toStrictEqual([
+    expect(result.current.checkCard(playerCard)).not.toBe(null);
+    expect(result.current.checkCard(playerCard)?.methods).toStrictEqual([
       'row',
       'column',
       'diagonal',
     ]);
-    expect(result.current.checkCard()?.results).toStrictEqual({
+    expect(result.current.checkCard(playerCard)?.results).toStrictEqual({
       column: [0, 5, 10, 15, 20],
       diagonal: [0, 6, 12, 18, 24, 20, 16, 12, 8, 4],
       row: [0, 1, 2, 3, 4],
     });
-    expect(result.current.checkCard()?.player).toStrictEqual(playerCard.owner);
-    expect(result.current.checkCard()?.card).toStrictEqual(mockCard);
+    expect(result.current.checkCard(playerCard)?.player).toStrictEqual(
+      playerCard.owner
+    );
+    expect(result.current.checkCard(playerCard)?.card).toStrictEqual(mockCard);
   });
 
   it('check card failure', () => {
@@ -107,14 +102,12 @@ describe('check card', () => {
     const mockPool = BINGO;
     const mockDraws = [[], [], [], [], []];
 
-    const { result } = renderHook(() =>
-      useApp(playerCard, mockPool, mockDraws)
-    );
+    const { result } = renderHook(() => useApp(mockPool, mockDraws));
 
     act(() => {
-      result.current.checkCard();
+      result.current.checkCard(playerCard);
     });
 
-    expect(result.current.checkCard()).toBeNull();
+    expect(result.current.checkCard(playerCard)).toBeNull();
   });
 });

@@ -1,13 +1,13 @@
-import { Card, Results, Methods, Draws } from '@np-bingo/types';
+import { Card, Results, Draws, Method } from '@np-bingo/types';
 import { findElementInArray } from '.';
 
 /**
  * Check if card is a winner and return the winning methods
  * @param card
  * @param draws
- * @returns Tuple of Results, Methods
+ * @returns Tuple of Results, Method[]
  */
-export function validateCard(card: Card, draws: Draws): [Results, Methods] {
+export function validateCard(card: Card, draws: Draws): [Results, Method[]] {
   const results = checkCard(card, draws);
   const methods = winningMethods(results);
   return [results, methods];
@@ -191,8 +191,9 @@ export function checkRisingDiagonal(card: Card, draws: Draws): number[] {
  * @param results
  * @returns Array of winning methods
  */
-export function winningMethods(results: Results): string[] {
-  return Object.keys(results).filter((method) => {
+export function winningMethods(results: Results) {
+  const keys = Object.keys(results) as Method[];
+  return keys.filter((method) => {
     if (results[method].length <= 0) return undefined;
     return results[method];
   });

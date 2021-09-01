@@ -62,48 +62,6 @@ io.on('connection', (socket: Socket) => {
   socket.on('player:event', playerEventsListener);
 
   /**
-   * From Host: Checking Card
-   * @param room Room
-   * @param player IPlayer
-   */
-  // socket.on('checking-card', (room: Room) => {
-  //   socket.to(room).emit('game-validation');
-  //   console.log('Checking card for Bingo...');
-  // });
-
-  /**
-   * From Host: Winning Card
-   * @param card Card
-   * @param player IPlayer
-   * @param methods string[]
-   * @param data Winning Numbers by methods won
-   */
-  // socket.on('winning-card', (room: Room, winner: Winner) => {
-  //   if (winner.player.socket) {
-  //     io.to(winner.player.socket.id).emit('winner', room, winner);
-  //     console.log('Bingo!');
-  //   } else {
-  //     console.log(`${winner.player.name} socket not found in wininng card`);
-  //   }
-  // });
-
-  /**
-   * From Host: Card not a winner
-   * @param room Room
-   */
-  // socket.on('losing-card', (room: Room, winner: Winner) => {
-  //   console.log(winner.player.socket);
-
-  //   if (winner.player.socket) {
-  //     socket.to(room).emit('game-continue');
-  //     // TODO Probably double sends to sender
-  //     io.to(winner.player.socket.id).emit('loser');
-  //     console.log('The card is not a winner...');
-  //   } else {
-  //   }
-  // });
-
-  /**
    * From Player: Won
    * @param room Room
    * @param name Winner name

@@ -45,7 +45,7 @@ export const initialBall: Ball = {
 
 export const initialWinner: Winner = {
   methods: [],
-  results: {},
+  results: { row: [], column: [], diagonal: [] },
   player: { ...initialPlayer },
   card: new Array(25),
 };
@@ -58,8 +58,8 @@ export interface AppState {
   ball: Ball;
   pool: Pool;
   draws: Draws;
-  playerCard: PlayerCard | null;
-  winner: Winner;
+  playerCards: PlayerCard[];
+  winners: Winner[];
   rules: Rules;
 }
 
@@ -78,7 +78,7 @@ export type AppActions =
   | { type: typeof PLAYER_KICK; payload: Player }
   | { type: typeof PLAYER_READY; payload: Player }
   | { type: typeof GET_CARD; payload: { card: Card; owner: Player } }
-  | { type: typeof CHECK_CARD_SUCCESS; payload: Winner }
+  | { type: typeof CHECK_CARD_SUCCESS; payload: Winner[] }
   | { type: typeof CHECK_CARD_FAILURE }
   | {
       type: typeof NEW_BALL;
@@ -99,9 +99,9 @@ export const initialAppState: AppState = {
   players: [],
   pool: BINGO,
   draws: [[], [], [], [], []],
-  playerCard: null,
-  winner: { ...initialWinner },
-  rules: { mode: 'default', special: [] },
+  playerCards: [],
+  winners: [],
+  rules: { mode: 'default', special: [], split: false },
 };
 
 export function appReducer(state: AppState, action: AppActions): AppState {
@@ -112,11 +112,11 @@ export function appReducer(state: AppState, action: AppActions): AppState {
       return {
         ...state,
         gamestate: 'ready' as Gamestate,
-        ball: { ...initialAppState.ball },
-        pool: [...initialAppState.pool],
-        draws: [...initialAppState.draws],
-        playerCard: null,
-        winner: { ...initialAppState.winner },
+        ball: { ...initialBall },
+        pool: BINGO.map((array) => array.slice()),
+        draws: initialAppState.draws.map((array) => array.slice()),
+        playerCards: [],
+        winners: [],
       };
     case STANDBY:
       return { ...state, gamestate: 'standby' as Gamestate };
@@ -128,23 +128,19 @@ export function appReducer(state: AppState, action: AppActions): AppState {
       return {
         ...state,
         gamestate: 'validate' as Gamestate,
-        playerCard: {
-          card: [...action.payload.card],
-          owner: { ...action.payload.owner },
-        },
+        playerCards: [...state.playerCards, { ...action.payload }],
       };
     case CHECK_CARD_SUCCESS:
       return {
         ...state,
         gamestate: 'win' as Gamestate,
-        winner: { ...action.payload },
+        winners: [...state.winners, ...action.payload],
       };
     case CHECK_CARD_FAILURE:
       return {
         ...state,
         gamestate: 'failure' as Gamestate,
-        winner: { ...initialAppState.winner },
-        playerCard: null,
+        playerCards: [],
       };
     case PAUSE:
       return { ...state, gamestate: 'pause' as Gamestate };

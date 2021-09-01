@@ -18,14 +18,13 @@ Host events
     host:event          dispense-ball   room    ball
         -> room:event   dispense-ball   ball
     
-    host:event          check-card      room    player
-        -> 
-
     host:event          winning-card    room    owner
-        ->
+        -> host:event   winning-card    winner[]
+        -> room:event   winning-card    playerName
 
     host:event          losing-card     room    owner
-        ->
+        -> host:event   losing-card
+        -> room:event   losing-card     playerName
 
 Player events
 
@@ -36,8 +35,8 @@ Player events
         -> host:player-event    leave-room      player      => PLAYER_LEAVE
 
     player:event        ready-up        room    hostSocketId    user
-        -> host:player-event    ready-up    player      => PLAYER_READY
+        -> host:player-event    ready-up        player      => PLAYER_READY
 
-    player:event        send-card       room    hostSocketId    user    card
-        -> host:player-event    send-card   player      card    => GET_CARD
-        -> room:event           send-card   playerName
+    player:event        send-card       room    hostSocketId    playerCard
+        -> host:player-event    send-card   playerCard      => GET_CARD
+        -> room:player-event    sned-card   playerName      => PAUSE

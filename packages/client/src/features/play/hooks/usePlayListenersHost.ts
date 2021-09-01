@@ -2,13 +2,19 @@ import { Dispatch, useCallback, useContext, useEffect } from 'react';
 import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
 import { Ball, HostEvent, Room, Winner } from '@np-bingo/types';
-import { PLAYER_KICK } from '../../../config/constants';
+import {
+  CHECK_CARD_FAILURE,
+  CHECK_CARD_SUCCESS,
+  PLAYER_KICK,
+} from '../../../config/constants';
 import { PlayActions } from '../../../reducers/play.reducer';
 import { Socket } from 'socket.io-client';
+import { AppActions } from '../../../reducers/app.reducer';
 
 export function usePlayListenersHost(
   socket: Socket,
-  playDispatch: Dispatch<PlayActions>
+  playDispatch: Dispatch<PlayActions>,
+  dispatch: Dispatch<AppActions>
 ): [() => void, () => void] {
   /**
    * To Player: Removed from game room
@@ -27,19 +33,39 @@ export function usePlayListenersHost(
   };
 
   /**
+   * To Player: You have BINGO!
+   * @param winner
+   */
+  const winningCards = (winner: Winner) => {
+    logger(`Your card is a BINGO!`);
+    dispatch({ type: CHECK_CARD_SUCCESS, payload: [winner] });
+  };
+
+  /**
+   * Top Player: No BINGO!
+   */
+  const losingCards = () => {
+    logger(`Your card is not a winner...`);
+    dispatch({ type: CHECK_CARD_FAILURE });
+  };
+
+  /**
    * Host Actions Handler
    * @param event
    */
-  const hostEventListener = (
-    event: HostEvent,
-    optionalParams: { ball?: Ball }
-  ) => {
+  const hostEventListener = (event: HostEvent, payload?: Winner) => {
     switch (event) {
       case 'kick-player':
         playerKicked();
         break;
       case 'leave-room':
         roomAbandoned();
+        break;
+      case 'winning-cards':
+        winningCards(payload as Winner);
+        break;
+      case 'losing-cards':
+        losingCards();
         break;
       default:
         throw new Error('Error in host action');
@@ -129,37 +155,6 @@ export function usePlayListenersHost(
 
   // const deafenDispenseBall = useCallback(() => {
   //   socket.off('game-ball');
-  // }, [socket]);
-
-  /**
-   * To Room: Notify a card is being checked
-   */
-  // const listenGameValidation = useCallback(() => {
-  //   socket.on('game-validation', () => {
-  //     logger(`A card has been sent to the host. Checking if it's a winner!`);
-  //     // Card sender should be in validate state
-  //     // TODO FIX
-  //     play('pause');
-  //   });
-  // }, [socket, play]);
-
-  // const deafenGameValidation = useCallback(() => {
-  //   socket.off('game-validation');
-  // }, [socket]);
-
-  /**
-   * To Player: Winner
-   * @param winner Winner
-   */
-  // const listenGameWinner = useCallback(() => {
-  //   socket.on('winner', (room: Room, winner: Winner) => {
-  //     logger(`You won the game!`);
-  //     dispatchCheckCardSuccess(winner);
-  //   });
-  // }, [socket, dispatchCheckCardSuccess]);
-
-  // const deafenGameWinner = useCallback(() => {
-  //   socket.off('winner');
   // }, [socket]);
 
   /**

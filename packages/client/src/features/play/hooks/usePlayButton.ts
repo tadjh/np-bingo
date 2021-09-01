@@ -7,7 +7,7 @@ import { Card } from '@np-bingo/types';
 
 export function usePlayButton(card: Card) {
   const { ballDelay } = useContext(FeaturesContext);
-  const { gamemode, dispatch } = useContext(GameContext);
+  const { gamestate, gamemode, split, dispatch } = useContext(GameContext);
   const { ball } = useContext(BallContext);
   const { emitReadyUp, emitLeaveRoom, emitSendCard } = usePlayEmitters();
   const { playRandomSfx } = usePlaySounds();
@@ -55,9 +55,22 @@ export function usePlayButton(card: Card) {
     emitSendCard(card);
   };
 
+  /**
+   * Leave room
+   */
   const handleLeaveRoom = () => {
     if (gamemode === 'solo') return;
     emitLeaveRoom();
+  };
+
+  /**
+   * Disabled validate button based on gamestate and rule set
+   * @returns boolean
+   */
+  const disableSendCard = () => {
+    if (gamestate === 'start') return false;
+    if (split && gamestate === 'pause') return false;
+    return true;
   };
 
   return {
@@ -68,5 +81,6 @@ export function usePlayButton(card: Card) {
     handlePrimaryButton,
     handleSendCard,
     handleLeaveRoom,
+    disableSendCard,
   };
 }

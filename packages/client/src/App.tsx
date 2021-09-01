@@ -31,20 +31,19 @@ export default function App() {
       ball,
       draws,
       pool,
-      playerCard,
-      winner,
+      playerCards,
+      winners,
       room,
       players,
       host,
-      rules: { mode: gamemode },
+      rules: { mode: gamemode, split },
     },
     dispatch,
   } = useAppState();
   const [theme, toggleTheme] = useTheme(config.theme);
   const [sounds, toggleSounds] = useToggle(config.sounds);
   const [volume, setVolume] = useState(config.defaultVolume);
-  // const { defaultVolume } = useContext(FeaturesContext);
-  const { newBall, checkCard } = useApp(playerCard, pool, draws);
+  const { newBall, checkCard } = useApp(pool, draws);
   return (
     <FeaturesContext.Provider value={features}>
       <UserContext.Provider
@@ -64,7 +63,7 @@ export default function App() {
               value={{
                 room,
                 host,
-                winner,
+                winners,
                 players,
               }}
             >
@@ -72,7 +71,8 @@ export default function App() {
                 value={{
                   gamestate,
                   gamemode,
-                  playerCard,
+                  playerCards,
+                  split,
                   dispatch,
                   checkCard,
                 }}

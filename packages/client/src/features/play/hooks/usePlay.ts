@@ -26,7 +26,8 @@ import { ReducerLogger } from '../../../hooks/useReducerLogger';
 export function usePlay(gamemode: Gamemode) {
   const { socket } = useContext(UserContext);
   const { ballDelay } = useContext(FeaturesContext);
-  const { gamestate, dispatch, checkCard } = useContext(GameContext);
+  const { gamestate, playerCards, dispatch, checkCard } =
+    useContext(GameContext);
   const [
     { card, serial, crossmarks, kicked, isWinner, isNewGame },
     playDispatch,
@@ -42,7 +43,8 @@ export function usePlay(gamemode: Gamemode) {
   } = usePlayEmitters();
   const [subscribeToHost, unsubscribeFromHost] = usePlayListenersHost(
     socket,
-    playDispatch
+    playDispatch,
+    dispatch
   );
   const [subscribeToRoom, unsubscribeFromRoom] = usePlayListenersRoom(
     socket,
@@ -144,7 +146,7 @@ export function usePlay(gamemode: Gamemode) {
     const handleWin = (winner: Winner) => {
       const winningCrossmarks = winningCells(winner.results);
       playWinSfx();
-      dispatch({ type: CHECK_CARD_SUCCESS, payload: winner });
+      dispatch({ type: CHECK_CARD_SUCCESS, payload: [winner] });
       setWinningCrossmarks(winningCrossmarks);
     };
 
@@ -156,7 +158,7 @@ export function usePlay(gamemode: Gamemode) {
       playLoseSfx();
     };
 
-    const winner = checkCard();
+    const winner = checkCard(playerCards[0]);
 
     // Delay showing result
     const validateDelay = setTimeout(() => {
@@ -168,6 +170,7 @@ export function usePlay(gamemode: Gamemode) {
     gamestate,
     gamemode,
     ballDelay,
+    playerCards,
     checkCard,
     dispatch,
     playWinSfx,

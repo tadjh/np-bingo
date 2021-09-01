@@ -1,10 +1,10 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { Card } from '@np-bingo/types';
 import { GameContext, RoomContext, UserContext } from '../../../context';
 
 export function usePlayEmitters() {
   const { user, socket } = useContext(UserContext);
-  const { room, host, winner } = useContext(RoomContext);
+  const { room, host } = useContext(RoomContext);
   const { gamestate } = useContext(GameContext);
 
   // TODO Consider socket host.socket, user and maybe room into an object
@@ -19,7 +19,10 @@ export function usePlayEmitters() {
    * To Host & Room: Send user card
    */
   const emitSendCard = (card: Card) => {
-    socket.emit('player:event', 'send-card', room, host.socketId, user, card);
+    socket.emit('player:event', 'send-card', room, host.socketId, {
+      card,
+      owner: user,
+    });
   };
 
   /**

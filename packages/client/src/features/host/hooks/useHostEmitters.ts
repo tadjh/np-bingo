@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { Ball, Player } from '@np-bingo/types';
+import { Ball, Player, Winner } from '@np-bingo/types';
 import { RoomContext, UserContext } from '../../../context';
 
 export function useHostEmitters() {
   const { socket } = useContext(UserContext);
-  const { room, winner } = useContext(RoomContext);
+  const { room } = useContext(RoomContext);
 
   /**
    * To Room: Host left room
@@ -52,22 +52,22 @@ export function useHostEmitters() {
   /**
    * To Room: Validating Card
    */
-  const emitValidate = (player: Player) => {
-    socket.emit('host:event', 'check-card', room, player);
+  // const emitValidate = (player: Player) => {
+  //   socket.emit('host:event', 'check-card', room, player);
+  // };
+
+  /**
+   * To Room: Card(s) is a winner
+   */
+  const emitWinners = (winners: Winner[]) => {
+    socket.emit('host:event', 'winning-cards', room, winners);
   };
 
   /**
-   * To Room: Card is a winner
+   * To Room: Card(s) not a winner
    */
-  const emitWinner = (owner: Player) => {
-    socket.emit('host:event', 'winning-card', room, owner);
-  };
-
-  /**
-   * To Room: Card is not a winner
-   */
-  const emitNotWinner = (owner: Player) => {
-    socket.emit('host:event', 'losing-card', room, owner);
+  const emitLosers = (losers: Player[]) => {
+    socket.emit('host:event', 'losing-cards', room, losers);
   };
 
   /**
@@ -85,9 +85,9 @@ export function useHostEmitters() {
     emitHostStandby,
     // emitHostStart,
     emitSendBall,
-    emitValidate,
-    emitWinner,
-    emitNotWinner,
+    // emitValidate,
+    emitWinners,
+    emitLosers,
     emitHostEnd,
   };
 }
