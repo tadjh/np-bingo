@@ -4041,7 +4041,7 @@ exports[`Storyshots Pages/Home Base 1`] = `
       Play
     </a>
     <button
-      class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 host-button w-[83px]"
+      class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 host-button w-[83px] flex justify-center"
       type="button"
     >
       <span
@@ -10009,7 +10009,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
       >
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-1"
-          id="cell1"
+          id="cell-1"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10036,7 +10036,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-2"
-          id="cell2"
+          id="cell-2"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10063,7 +10063,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-3"
-          id="cell3"
+          id="cell-3"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10090,7 +10090,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-4"
-          id="cell4"
+          id="cell-4"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10117,7 +10117,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-5"
-          id="cell5"
+          id="cell-5"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10144,7 +10144,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-6"
-          id="cell6"
+          id="cell-6"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10171,7 +10171,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-7"
-          id="cell7"
+          id="cell-7"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10198,7 +10198,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-8"
-          id="cell8"
+          id="cell-8"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10225,7 +10225,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-9"
-          id="cell9"
+          id="cell-9"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10252,7 +10252,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-10"
-          id="cell10"
+          id="cell-10"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10279,7 +10279,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-11"
-          id="cell11"
+          id="cell-11"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10306,7 +10306,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-12"
-          id="cell12"
+          id="cell-12"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10333,7 +10333,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-13 text-base"
-          id="cell13"
+          id="cell-13"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10360,7 +10360,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-14"
-          id="cell14"
+          id="cell-14"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10387,7 +10387,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-15"
-          id="cell15"
+          id="cell-15"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10414,7 +10414,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-16"
-          id="cell16"
+          id="cell-16"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10441,7 +10441,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-17"
-          id="cell17"
+          id="cell-17"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10468,7 +10468,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-18"
-          id="cell18"
+          id="cell-18"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10495,7 +10495,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-19"
-          id="cell19"
+          id="cell-19"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10522,7 +10522,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-20"
-          id="cell20"
+          id="cell-20"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10549,7 +10549,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-21"
-          id="cell21"
+          id="cell-21"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10576,7 +10576,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-22"
-          id="cell22"
+          id="cell-22"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10603,7 +10603,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-23"
-          id="cell23"
+          id="cell-23"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10630,7 +10630,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-24"
-          id="cell24"
+          id="cell-24"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -10657,7 +10657,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-25"
-          id="cell25"
+          id="cell-25"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11167,7 +11167,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
       >
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-1"
-          id="cell1"
+          id="cell-1"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11194,7 +11194,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-2"
-          id="cell2"
+          id="cell-2"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11221,7 +11221,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-3"
-          id="cell3"
+          id="cell-3"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11248,7 +11248,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-4"
-          id="cell4"
+          id="cell-4"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11275,7 +11275,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-5"
-          id="cell5"
+          id="cell-5"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11302,7 +11302,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-6"
-          id="cell6"
+          id="cell-6"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11329,7 +11329,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-7"
-          id="cell7"
+          id="cell-7"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11356,7 +11356,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-8"
-          id="cell8"
+          id="cell-8"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11383,7 +11383,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-9"
-          id="cell9"
+          id="cell-9"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11410,7 +11410,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-10"
-          id="cell10"
+          id="cell-10"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11437,7 +11437,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-11"
-          id="cell11"
+          id="cell-11"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11464,7 +11464,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-12"
-          id="cell12"
+          id="cell-12"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11491,7 +11491,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-13 text-base"
-          id="cell13"
+          id="cell-13"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11518,7 +11518,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-14"
-          id="cell14"
+          id="cell-14"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11545,7 +11545,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-15"
-          id="cell15"
+          id="cell-15"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11572,7 +11572,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-16"
-          id="cell16"
+          id="cell-16"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11599,7 +11599,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-17"
-          id="cell17"
+          id="cell-17"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11626,7 +11626,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-18"
-          id="cell18"
+          id="cell-18"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11653,7 +11653,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-19"
-          id="cell19"
+          id="cell-19"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11680,7 +11680,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-20"
-          id="cell20"
+          id="cell-20"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11707,7 +11707,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-21"
-          id="cell21"
+          id="cell-21"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11734,7 +11734,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-22"
-          id="cell22"
+          id="cell-22"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11761,7 +11761,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-23"
-          id="cell23"
+          id="cell-23"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11788,7 +11788,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-24"
-          id="cell24"
+          id="cell-24"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -11815,7 +11815,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
         </div>
         <div
           class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-25"
-          id="cell25"
+          id="cell-25"
         >
           <span
             class="ripple w-full h-full absolute top-0 left-0"
@@ -12204,7 +12204,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
   >
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-1"
-      id="cell1"
+      id="cell-1"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12231,7 +12231,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-2"
-      id="cell2"
+      id="cell-2"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12258,7 +12258,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-3"
-      id="cell3"
+      id="cell-3"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12285,7 +12285,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-4"
-      id="cell4"
+      id="cell-4"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12312,7 +12312,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-5"
-      id="cell5"
+      id="cell-5"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12339,7 +12339,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-6"
-      id="cell6"
+      id="cell-6"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12366,7 +12366,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-7"
-      id="cell7"
+      id="cell-7"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12393,7 +12393,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-8"
-      id="cell8"
+      id="cell-8"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12420,7 +12420,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-9"
-      id="cell9"
+      id="cell-9"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12447,7 +12447,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-10"
-      id="cell10"
+      id="cell-10"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12474,7 +12474,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-11"
-      id="cell11"
+      id="cell-11"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12501,7 +12501,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-12"
-      id="cell12"
+      id="cell-12"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12528,7 +12528,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-13 text-base"
-      id="cell13"
+      id="cell-13"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12555,7 +12555,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-14"
-      id="cell14"
+      id="cell-14"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12582,7 +12582,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-15"
-      id="cell15"
+      id="cell-15"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12609,7 +12609,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-16"
-      id="cell16"
+      id="cell-16"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12636,7 +12636,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-17"
-      id="cell17"
+      id="cell-17"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12663,7 +12663,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-18"
-      id="cell18"
+      id="cell-18"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12690,7 +12690,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-19"
-      id="cell19"
+      id="cell-19"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12717,7 +12717,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-20"
-      id="cell20"
+      id="cell-20"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12744,7 +12744,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-21"
-      id="cell21"
+      id="cell-21"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12771,7 +12771,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-22"
-      id="cell22"
+      id="cell-22"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12798,7 +12798,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-23"
-      id="cell23"
+      id="cell-23"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12825,7 +12825,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-24"
-      id="cell24"
+      id="cell-24"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12852,7 +12852,7 @@ exports[`Storyshots Pages/Play/Board Base 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-25"
-      id="cell25"
+      id="cell-25"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -12983,7 +12983,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
   >
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-1"
-      id="cell1"
+      id="cell-1"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13008,7 +13008,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-2"
-      id="cell2"
+      id="cell-2"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13033,7 +13033,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-3"
-      id="cell3"
+      id="cell-3"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13058,7 +13058,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-4"
-      id="cell4"
+      id="cell-4"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13083,7 +13083,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-5"
-      id="cell5"
+      id="cell-5"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13108,7 +13108,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-6"
-      id="cell6"
+      id="cell-6"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13133,7 +13133,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-7"
-      id="cell7"
+      id="cell-7"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13158,7 +13158,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-8"
-      id="cell8"
+      id="cell-8"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13183,7 +13183,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-9"
-      id="cell9"
+      id="cell-9"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13208,7 +13208,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-10"
-      id="cell10"
+      id="cell-10"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13233,7 +13233,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-11"
-      id="cell11"
+      id="cell-11"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13258,7 +13258,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-12"
-      id="cell12"
+      id="cell-12"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13283,7 +13283,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-13 text-base"
-      id="cell13"
+      id="cell-13"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13310,7 +13310,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-14"
-      id="cell14"
+      id="cell-14"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13335,7 +13335,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-15"
-      id="cell15"
+      id="cell-15"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13360,7 +13360,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-16"
-      id="cell16"
+      id="cell-16"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13385,7 +13385,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-17"
-      id="cell17"
+      id="cell-17"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13410,7 +13410,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-18"
-      id="cell18"
+      id="cell-18"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13435,7 +13435,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-19"
-      id="cell19"
+      id="cell-19"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13460,7 +13460,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-20"
-      id="cell20"
+      id="cell-20"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13485,7 +13485,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-21"
-      id="cell21"
+      id="cell-21"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13510,7 +13510,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-22"
-      id="cell22"
+      id="cell-22"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13535,7 +13535,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-23"
-      id="cell23"
+      id="cell-23"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13560,7 +13560,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-24"
-      id="cell24"
+      id="cell-24"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13585,7 +13585,7 @@ exports[`Storyshots Pages/Play/Board Blank 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-25"
-      id="cell25"
+      id="cell-25"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13712,7 +13712,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
   >
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-1"
-      id="cell1"
+      id="cell-1"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13739,13 +13739,13 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-2"
-      id="cell2"
+      id="cell-2"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
       <div
-        class="absolute"
+        class="hidden"
       >
         <svg
           class="h-12 w-12 text-green-600 dark:text-green-500"
@@ -13766,7 +13766,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-3"
-      id="cell3"
+      id="cell-3"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13793,7 +13793,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-4"
-      id="cell4"
+      id="cell-4"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13820,7 +13820,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-5"
-      id="cell5"
+      id="cell-5"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13847,7 +13847,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-6"
-      id="cell6"
+      id="cell-6"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13874,13 +13874,13 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-7"
-      id="cell7"
+      id="cell-7"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
       <div
-        class="absolute"
+        class="hidden"
       >
         <svg
           class="h-12 w-12 text-green-600 dark:text-green-500"
@@ -13901,7 +13901,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-8"
-      id="cell8"
+      id="cell-8"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13928,7 +13928,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-9"
-      id="cell9"
+      id="cell-9"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13955,7 +13955,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-10"
-      id="cell10"
+      id="cell-10"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -13982,13 +13982,13 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-11"
-      id="cell11"
+      id="cell-11"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
       <div
-        class="absolute"
+        class="hidden"
       >
         <svg
           class="h-12 w-12 text-green-600 dark:text-green-500"
@@ -14009,13 +14009,13 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-12"
-      id="cell12"
+      id="cell-12"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
       <div
-        class="absolute"
+        class="hidden"
       >
         <svg
           class="h-12 w-12 text-green-600 dark:text-green-500"
@@ -14036,13 +14036,13 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-13 text-base"
-      id="cell13"
+      id="cell-13"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
       <div
-        class="absolute"
+        class="hidden"
       >
         <svg
           class="h-12 w-12 text-green-600 dark:text-green-500"
@@ -14063,13 +14063,13 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-14"
-      id="cell14"
+      id="cell-14"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
       <div
-        class="absolute"
+        class="hidden"
       >
         <svg
           class="h-12 w-12 text-green-600 dark:text-green-500"
@@ -14090,13 +14090,13 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-15"
-      id="cell15"
+      id="cell-15"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
       <div
-        class="absolute"
+        class="hidden"
       >
         <svg
           class="h-12 w-12 text-green-600 dark:text-green-500"
@@ -14117,7 +14117,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-16"
-      id="cell16"
+      id="cell-16"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -14144,13 +14144,13 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-17"
-      id="cell17"
+      id="cell-17"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
       <div
-        class="absolute"
+        class="hidden"
       >
         <svg
           class="h-12 w-12 text-green-600 dark:text-green-500"
@@ -14171,7 +14171,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-18"
-      id="cell18"
+      id="cell-18"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -14198,7 +14198,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-19"
-      id="cell19"
+      id="cell-19"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -14225,7 +14225,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-20"
-      id="cell20"
+      id="cell-20"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -14252,7 +14252,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-21"
-      id="cell21"
+      id="cell-21"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -14279,13 +14279,13 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-22"
-      id="cell22"
+      id="cell-22"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
       <div
-        class="absolute"
+        class="hidden"
       >
         <svg
           class="h-12 w-12 text-green-600 dark:text-green-500"
@@ -14306,7 +14306,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-23"
-      id="cell23"
+      id="cell-23"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -14333,7 +14333,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-24"
-      id="cell24"
+      id="cell-24"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
@@ -14360,7 +14360,7 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
     </div>
     <div
       class="flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell-25"
-      id="cell25"
+      id="cell-25"
     >
       <span
         class="ripple w-full h-full absolute top-0 left-0"
