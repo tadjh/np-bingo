@@ -45,7 +45,7 @@ export function useIconMenu(isOpen: boolean, direction: MenuDirection) {
   const menuStyle = (): string => {
     switch (direction) {
       case 'up':
-        return 'flex-col-reverse bottom-0';
+        return 'flex-col-reverse -bottom-1';
       case 'down':
         return 'flex-col';
       case 'left':

@@ -32,7 +32,7 @@ export default function IconMenu({
     >
       <ul
         className={clsx(
-          'absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 -bottom-1',
+          'absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1',
           isOpen
             ? 'z-50 bg-gray-200 dark:bg-gray-700 shadow-2xl border-gray-300 dark:border-gray-600'
             : 'border-transparent',

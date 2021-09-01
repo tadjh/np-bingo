@@ -1518,10 +1518,10 @@ exports[`Storyshots Elements/Widgets Base 1`] = `
     class="flex justify-center items-center w-14"
   >
     <div
-      class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+      class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
     >
       <ul
-        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
       >
         <li>
           <div
@@ -1712,10 +1712,10 @@ exports[`Storyshots Elements/Widgets Blank 1`] = `
     class="flex justify-center items-center w-14"
   >
     <div
-      class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+      class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
     >
       <ul
-        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
       >
         <li>
           <div
@@ -1875,10 +1875,10 @@ exports[`Storyshots Elements/Widgets Share Disabled 1`] = `
     class="flex justify-center items-center w-14"
   >
     <div
-      class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+      class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
     >
       <ul
-        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
       >
         <li>
           <div
@@ -2198,7 +2198,7 @@ exports[`Storyshots Inputs/Icon Menu Down 1`] = `
   class="light"
 >
   <div
-    class="relative block w-[44px] h-[44px]"
+    class="relative block w-[44px] h-[44px] flex justify-center"
   >
     <ul
       class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 z-50 bg-gray-200 dark:bg-gray-700 shadow-2xl border-gray-300 dark:border-gray-600 flex-col"
@@ -2312,7 +2312,7 @@ exports[`Storyshots Inputs/Icon Menu Left 1`] = `
   class="light"
 >
   <div
-    class="relative block w-[44px] h-[44px]"
+    class="relative block w-[44px] h-[44px] flex justify-center"
   >
     <ul
       class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 z-50 bg-gray-200 dark:bg-gray-700 shadow-2xl border-gray-300 dark:border-gray-600 flex-row-reverse right-0"
@@ -2426,7 +2426,7 @@ exports[`Storyshots Inputs/Icon Menu Right 1`] = `
   class="light"
 >
   <div
-    class="relative block w-[44px] h-[44px]"
+    class="relative block w-[44px] h-[44px] flex justify-center"
   >
     <ul
       class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 z-50 bg-gray-200 dark:bg-gray-700 shadow-2xl border-gray-300 dark:border-gray-600 flex-row"
@@ -2540,10 +2540,10 @@ exports[`Storyshots Inputs/Icon Menu Up 1`] = `
   class="light"
 >
   <div
-    class="relative block w-[44px] h-[44px]"
+    class="relative block w-[44px] h-[44px] flex justify-center"
   >
     <ul
-      class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 z-50 bg-gray-200 dark:bg-gray-700 shadow-2xl border-gray-300 dark:border-gray-600 flex-col-reverse bottom-0"
+      class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 z-50 bg-gray-200 dark:bg-gray-700 shadow-2xl border-gray-300 dark:border-gray-600 flex-col-reverse -bottom-1"
     >
       <li>
         <div
@@ -4059,10 +4059,10 @@ exports[`Storyshots Pages/Home Base 1`] = `
     class="flex-1 justify-end gap-1"
   >
     <div
-      class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+      class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
     >
       <ul
-        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
       >
         <li>
           <div
@@ -4875,10 +4875,10 @@ exports[`Storyshots Pages/Host Base 1`] = `
         class="flex justify-center items-center w-14"
       >
         <div
-          class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+          class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
         >
           <ul
-            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
           >
             <li>
               <div
@@ -5673,10 +5673,10 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
         class="flex justify-center items-center w-14"
       >
         <div
-          class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+          class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
         >
           <ul
-            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
           >
             <li>
               <div
@@ -6289,10 +6289,10 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
         class="flex justify-center items-center w-14"
       >
         <div
-          class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+          class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
         >
           <ul
-            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
           >
             <li>
               <div
@@ -6634,10 +6634,10 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
         class="flex justify-center items-center w-14"
       >
         <div
-          class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+          class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
         >
           <ul
-            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
           >
             <li>
               <div
@@ -8555,10 +8555,10 @@ exports[`Storyshots Pages/Join Base 1`] = `
        
     </div>
     <div
-      class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+      class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
     >
       <ul
-        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
       >
         <li>
           <div
@@ -8815,10 +8815,10 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
        
     </div>
     <div
-      class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+      class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
     >
       <ul
-        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
       >
         <li>
           <div
@@ -9336,10 +9336,10 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
        
     </div>
     <div
-      class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+      class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
     >
       <ul
-        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+        class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
       >
         <li>
           <div
@@ -10774,10 +10774,10 @@ exports[`Storyshots Pages/Play Base 1`] = `
         class="flex justify-center items-center w-14"
       >
         <div
-          class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+          class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
         >
           <ul
-            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
           >
             <li>
               <div
@@ -11932,10 +11932,10 @@ exports[`Storyshots Pages/Play Win 1`] = `
         class="flex justify-center items-center w-14"
       >
         <div
-          class="relative block w-[44px] h-[44px] overflow-hidden hover:overflow-visible"
+          class="relative block w-[44px] h-[44px] flex justify-center overflow-hidden hover:overflow-visible"
         >
           <ul
-            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse bottom-0"
+            class="absolute flex p-1 transition-all duration-75 rounded-full border-2 gap-1 border-transparent flex-col-reverse -bottom-1"
           >
             <li>
               <div
