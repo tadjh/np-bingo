@@ -60,7 +60,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
       <header className="flex gap-2 items-center justify-between">
         <Back to="/" onClick={handleLeaveRoom} />
         <div className="flex gap-2">
-          <div className="w-[108px] text-center">
+          <div className="w-[98px] text-center">
             <Button variant="primary" onClick={gamestateToggle}>
               {toggleText()}
             </Button>
