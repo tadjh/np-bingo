@@ -16,10 +16,9 @@ export default function Modal({
   children,
 }: ModalProps): JSX.Element | null {
   const appRoot = useRef(document.getElementById('root'));
-  const app = useRef(document.getElementById('App'));
+  const app = useRef(document.getElementById('container'));
   const target = app.current || appRoot.current;
-  const classes =
-    'absolute w-screen h-screen top-0 left-0 flex justify-center items-center';
+  const classes = 'absolute w-full h-full flex justify-center items-center'; // top-0 left-0 right-0 bottom-0
   const modal = usePortal(target, id, classes);
   modal.setAttribute('class', '');
   if (!open) return null;

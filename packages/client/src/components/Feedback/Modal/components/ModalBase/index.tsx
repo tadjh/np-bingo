@@ -10,11 +10,11 @@ export default function ModalBase({
   return (
     <React.Fragment>
       <div
-        className="absolute w-screen h-screen bg-gray-500 dark:bg-black bg-opacity-90 dark:bg-opacity-90 z-40 top-0"
+        className="absolute w-full h-full bg-gray-500 dark:bg-black bg-opacity-90 dark:bg-opacity-60 z-40" // w-screen h-screen top-0
         onClick={onClose}
       ></div>
       <div
-        className={`absolute z-50 w-11/12 max-w-sm rounded-md flex flex-col gap-5 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 overflow-hidden shadow-md ${className}`}
+        className={`absolute z-50 w-11/12 rounded-md flex flex-col gap-5 bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 overflow-hidden shadow-md ${className}`}
       >
         {children}
       </div>

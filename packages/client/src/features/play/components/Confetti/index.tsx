@@ -15,12 +15,12 @@ export default function Coneftti({
   onClose,
 }: ConfettiProps): JSX.Element | null {
   const appRoot = useRef(document.getElementById('root'));
-  const app = useRef(document.getElementById('App'));
+  const app = useRef(document.getElementById('container'));
   const myCanvas = useRef(document.createElement('canvas'));
   myCanvas.current.setAttribute('id', 'canvas-confetti');
   myCanvas.current.setAttribute(
     'class',
-    'absolute top-0 left-0 bottom-0 right-0 max-w-md mx-auto min-h-screen'
+    'absolute w-full h-full' // top-0 left-0 bottom-0 right-0 max-w-[96%] sm:max-w-sm mx-auto min-h-screen
   );
   const canvas = myCanvas.current;
   const target = app.current || appRoot.current;
