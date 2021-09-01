@@ -22,14 +22,12 @@ import ChevronLeftIcon from '../../../assets/icons/ChevronLeft';
 import IconMenu from '../../../components/Inputs/IconMenu';
 
 export interface PlayProps {
-  gamemode?: Gamemode;
   winOverride?: boolean;
   staticCard?: Card;
   staticSerial?: Serial;
 }
 
 export default function Play({
-  gamemode = 'default',
   winOverride = false,
   staticCard,
   staticSerial,
@@ -41,7 +39,7 @@ export default function Play({
   } = useContext(UserContext);
   const { allowNewCard } = useContext(FeaturesContext);
   const { room } = useContext(RoomContext);
-  const { gamestate } = useContext(GameContext);
+  const { gamestate, gamemode } = useContext(GameContext);
   const { ball } = useContext(BallContext);
   const {
     card,
@@ -50,7 +48,7 @@ export default function Play({
     kicked: { status, reason },
     isWinner,
     handleNewCard,
-  } = usePlay(gamemode);
+  } = usePlay();
   const {
     progress,
     inProgress,
@@ -59,8 +57,11 @@ export default function Play({
     handleLeaveRoom,
     disableSendCard,
   } = usePlayButton(card);
-  const { primaryButtonText, disablePrimaryButton, disableBallDisplay } =
-    usePlayDisplay();
+  const {
+    primaryButtonText,
+    disablePrimaryButton,
+    disableBallDisplay,
+  } = usePlayDisplay();
   return (
     <Fragment>
       <header className="flex gap-2 items-center justify-between">
