@@ -4,6 +4,7 @@ import { Story, Meta } from '@storybook/react';
 import Join, { JoinProps } from './routes/Join';
 import {
   FeaturesContext,
+  initialPlayer,
   initialUserContext,
   UserContext,
 } from '../../context';
@@ -11,7 +12,6 @@ import features from '../../config/features';
 import Container from '../../components/Layout/Container';
 import { Rooms } from './components/RoomList/RoomList.stories';
 import Background from '../../components/Surfaces/Background';
-import { initialPlayer } from '../../hooks';
 import socketInit from '../../lib/socket.io';
 
 const socket = socketInit();

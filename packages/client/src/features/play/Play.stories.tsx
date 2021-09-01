@@ -7,6 +7,7 @@ import {
   GameContext,
   initialBallContext,
   initialGameContext,
+  initialPlayer,
   initialRoomContext,
   initialUserContext,
   RoomContext,
@@ -15,7 +16,6 @@ import {
 import Container from '../../components/Layout/Container';
 import Background from '../../components/Surfaces/Background';
 import socketInit from '../../lib/socket.io';
-import { initialPlayer } from '../../hooks';
 const socket = socketInit();
 
 export default {

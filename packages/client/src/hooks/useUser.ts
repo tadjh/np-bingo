@@ -5,16 +5,7 @@ import { NODE_ENV } from '../config';
 import { UserActions, UserState, userReducer } from '../reducers/user.reducer';
 import { fourRandomDigits } from '../utils';
 import { ReducerLogger } from './useReducerLogger';
-
-// TODO Add unique string to end of player name #4140
-export const initialPlayer: Player = {
-  uid: -1,
-  name: 'Player',
-  socketId: null,
-  ready: false,
-  kicked: false,
-  leave: false,
-};
+import { initialPlayer } from '../context';
 
 export function useUser(
   initialUser: Player = initialPlayer

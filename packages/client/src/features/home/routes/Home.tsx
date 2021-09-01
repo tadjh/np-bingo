@@ -15,19 +15,17 @@ export interface HomeProps {}
 export default function Home(): JSX.Element {
   const { showCredit } = useContext(FeaturesContext);
   const { room } = useContext(RoomContext);
-  const { user, socket } = useContext(UserContext);
   const {
-    isLoading,
-    isError,
-    isRedirect,
-    isSocketLoading,
-    createRoom,
-  } = useHome();
+    user: { name },
+    socket,
+  } = useContext(UserContext);
+  const { isLoading, isError, isRedirect, isSocketLoading, createRoom } =
+    useHome();
   if (isRedirect) return <Redirect to={`/host?r=${room}`} />;
   return (
     <Fragment>
       <header className="flex-1 items-center">
-        <Logo home={true} />
+        <Logo home={true} data-testid="home-logo" />
       </header>
       <main className="justify-center">
         <Typography>{'\xa0'}</Typography>
@@ -56,7 +54,7 @@ export default function Home(): JSX.Element {
         <IconMenu direction="up" />
         <PlayerName
           status={socket.connected}
-          name={user.name}
+          name={name}
           isLoading={isSocketLoading}
         />
       </footer>

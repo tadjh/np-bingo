@@ -3,9 +3,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Home, { HomeProps } from './routes/Home';
 import Container from '../../components/Layout/Container';
-import { initialUserContext, UserContext } from '../../context';
+import { initialPlayer, initialUserContext, UserContext } from '../../context';
 import socketInit from '../../lib/socket.io';
-import { initialPlayer } from '../../hooks';
 
 const socket = socketInit();
 

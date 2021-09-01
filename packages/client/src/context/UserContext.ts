@@ -3,7 +3,6 @@ import { Player } from '@np-bingo/types';
 import { Socket } from 'socket.io-client';
 import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
 import { UserActions } from '../reducers/user.reducer';
-import { initialPlayer } from '../hooks';
 
 export interface UserContextProps {
   user: Player;
@@ -12,6 +11,15 @@ export interface UserContextProps {
   userDispatch: Dispatch<UserActions>;
   connect: () => void;
 }
+
+export const initialPlayer: Player = {
+  uid: -1,
+  name: 'Player',
+  socketId: null,
+  ready: false,
+  kicked: false,
+  leave: false,
+};
 
 export const initialUserContext: UserContextProps = {
   user: initialPlayer,

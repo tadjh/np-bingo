@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react';
 import { PlayerList, PlayerListProps } from '.';
-import { initialPlayer } from '../../../../hooks';
+import { initialPlayer } from '../../../../context';
 
 export default {
   title: 'Pages/Host/Player List',

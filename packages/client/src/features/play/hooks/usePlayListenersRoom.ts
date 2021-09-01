@@ -26,7 +26,6 @@ import {
 import { PlayActions } from '../../../reducers/play.reducer';
 import { Socket } from 'socket.io-client';
 import { AppActions, initialWinner } from '../../../reducers/app.reducer';
-import { initialPlayer } from '../../../hooks';
 //playDispatch: Dispatch<PlayActions>
 export function usePlayListenersRoom(
   socket: Socket,

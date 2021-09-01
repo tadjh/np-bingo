@@ -33,7 +33,7 @@ import {
   CHANGE_GAMEMODE,
   PLAYER_KICK,
 } from '../config/constants';
-import { initialPlayer } from '../hooks';
+import { initialPlayer } from '../context';
 import { BINGO } from '../utils/bingo';
 
 export const initialBall: Ball = {

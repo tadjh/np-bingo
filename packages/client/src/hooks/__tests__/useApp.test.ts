@@ -1,7 +1,7 @@
 import { renderHook, act } from '@testing-library/react-hooks';
+import { initialPlayer } from '../../context';
 import { BINGO } from '../../utils/bingo';
 import { useApp } from '../useApp';
-import { initialPlayer } from '../useUser';
 
 describe('new ball', () => {
   beforeEach(() => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Player, Winner, Room, Host } from '@np-bingo/types';
-import { initialPlayer } from '../hooks';
+import { initialPlayer } from '.';
 
 export interface RoomContextProps {
   room: Room;
