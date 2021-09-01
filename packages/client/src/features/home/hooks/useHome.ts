@@ -6,8 +6,9 @@ import { CREATE_ROOM, INIT, SOCKET_INIT } from '../../../config/constants';
 import { useFetch } from '../../../hooks';
 
 export function useHome() {
-  const { user, socket, isSocketLoading, connect, userDispatch } =
-    useContext(UserContext);
+  const { user, socket, isSocketLoading, connect, userDispatch } = useContext(
+    UserContext
+  );
   const { gamestate, dispatch } = useContext(GameContext);
   const [isRedirect, setIsRedirect] = useState(false);
   const [didInit, setDidInit] = useState(false);
@@ -28,12 +29,12 @@ export function useHome() {
   /**
    * Connect to socket.io
    */
-  // useEffect(() => {
-  //   // Don't reconnect if already connected
-  //   if (socket.connected === true || isSocketLoading) return;
-  //   userDispatch({ type: SOCKET_INIT });
-  //   connect();
-  // }, [socket, isSocketLoading, connect, userDispatch]);
+  useEffect(() => {
+    // Don't reconnect if already connected
+    if (socket.connected === true || isSocketLoading) return;
+    userDispatch({ type: SOCKET_INIT });
+    connect();
+  }, [socket, isSocketLoading, connect, userDispatch]);
 
   /**
    * Create a new game room
@@ -57,7 +58,7 @@ export function useHome() {
      */
     const emitCreateRoom = (room: Room, user: Host) => {
       logger(`Room ${room}: ${user.name} created a new room`);
-      socket.emit('host:event', 'create-room', room, user);
+      socket.emit('host:event', 'create-room', room, user.name);
     };
 
     dispatch({
