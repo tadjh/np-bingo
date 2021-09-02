@@ -15,7 +15,7 @@ export default function KickedModal({
   open,
   reason,
   ...props
-}: KickedModalProps): JSX.Element {
+}: KickedModalProps) {
   let history = useHistory();
 
   /**
@@ -41,7 +41,7 @@ export default function KickedModal({
   const exit = () => {
     history.push('/');
   };
-
+  if (!open) return null;
   return (
     <Modal
       id="leave-modal"
