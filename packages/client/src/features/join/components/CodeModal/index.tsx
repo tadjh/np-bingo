@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { MutableRefObject, useRef } from 'react';
 import Modal, {
   ModalHeader,
   ModalContent,
@@ -7,6 +7,7 @@ import Modal, {
 import Button from '../../../../components/Inputs/Button';
 import { useForm } from '../../../../hooks';
 import { roomChar } from '@np-bingo/common';
+import { useEffect } from 'react';
 
 export interface CodeModalProps {
   open: boolean;
@@ -25,11 +26,15 @@ export default function CodeModal({
   open = false,
   onClose,
   onSumbit,
-}: CodeModalProps): JSX.Element {
+}: CodeModalProps) {
   const [inputs, errors, handleChange, handleSubmit, handlePaste] = useForm(
     initialState,
     onSubmitCallback
   );
+  const input1 = useRef<HTMLInputElement>(null);
+  const input2 = useRef<HTMLInputElement>(null);
+  const input3 = useRef<HTMLInputElement>(null);
+  const input4 = useRef<HTMLInputElement>(null);
 
   /**
    * Action on form submit
@@ -46,11 +51,12 @@ export default function CodeModal({
     event.target.value = event.target.value.toUpperCase();
     handleChange(event);
 
-    if (event.target.value.length < event.target.maxLength) {
-      if (!event.target.previousSibling) return;
-      let target = event.target.previousSibling as HTMLInputElement;
-      target.focus();
-    }
+    // Value blank
+    // if (event.target.value.length < event.target.maxLength) {
+    //   if (!event.target.previousSibling) return;
+    //   let target = event.target.previousSibling as HTMLInputElement;
+    //   target.focus();
+    // }
 
     if (event.target.value.length === event.target.maxLength) {
       if (!event.target.nextSibling) return;
@@ -59,15 +65,27 @@ export default function CodeModal({
     }
   };
 
-  // const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
-  //   if (event.keyCode === 8 || event.keyCode === 46) {
-  //     if (!event.currentTarget.previousSibling) return;
-  //     let target = event.currentTarget.previousSibling as HTMLInputElement;
-  //     target.focus();
-  //   }
-  // };
-  // onKeyDown={handleKeyDown}
+  const handleKeyDown = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+    self: MutableRefObject<HTMLInputElement | null>['current'],
+    next: MutableRefObject<HTMLInputElement | null>['current']
+  ) => {
+    if (event.repeat) return;
+    if (event.key === 'Backspace' || event.key === 'Delete') {
+      if (self && self.value.length === 0) {
+        if (!next) return;
+        next.focus();
+      }
+    }
+  };
 
+  useEffect(() => {
+    if (!open) return;
+    if (input1.current === null) return;
+    input1.current.focus();
+  }, [open]);
+
+  if (!open) return null;
   return (
     <Modal
       id="code-modal"
@@ -88,6 +106,7 @@ export default function CodeModal({
             <input
               name="code1"
               type="text"
+              ref={input1}
               pattern={roomChar}
               maxLength={1}
               className="text-center font-bold bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner"
@@ -96,39 +115,54 @@ export default function CodeModal({
               value={inputs.code1}
               onPaste={(event) => handlePaste(event, 'code', 4)}
               onChange={handleChangeText}
+              onKeyDown={(event) =>
+                handleKeyDown(event, input1.current, input1.current)
+              }
               required
             />
             <input
               name="code2"
               type="text"
+              ref={input2}
               pattern={roomChar}
               maxLength={1}
               className="text-center font-bold bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner"
               autoCapitalize="characters"
               value={inputs.code2}
               onChange={handleChangeText}
+              onKeyDown={(event) =>
+                handleKeyDown(event, input2.current, input1.current)
+              }
               required
             />
             <input
               name="code3"
               type="text"
+              ref={input3}
               pattern={roomChar}
               maxLength={1}
               className="text-center font-bold bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner"
               autoCapitalize="characters"
               value={inputs.code3}
               onChange={handleChangeText}
+              onKeyDown={(event) =>
+                handleKeyDown(event, input3.current, input2.current)
+              }
               required
             />
             <input
               name="code4"
               type="text"
+              ref={input4}
               pattern={roomChar}
               maxLength={1}
               className="text-center font-bold bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner"
               autoCapitalize="characters"
               value={inputs.code4}
               onChange={handleChangeText}
+              onKeyDown={(event) =>
+                handleKeyDown(event, input4.current, input3.current)
+              }
               required
             />
           </fieldset>
