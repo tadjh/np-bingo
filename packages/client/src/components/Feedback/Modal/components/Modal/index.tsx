@@ -20,8 +20,8 @@ export default function Modal({
   const target = app.current || appRoot.current;
   const classes = 'absolute w-full h-full flex justify-center items-center'; // top-0 left-0 right-0 bottom-0
   const modal = usePortal(target, id, classes);
+  // if (!open) return null;
   modal.setAttribute('class', '');
-  if (!open) return null;
   modal.setAttribute('class', classes);
   // TODO add event for Escape key or react-aria
   // TODO focus?
