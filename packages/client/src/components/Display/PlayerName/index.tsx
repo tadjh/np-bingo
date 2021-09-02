@@ -9,7 +9,7 @@ export interface PlayerNameProps extends React.HTMLAttributes<HTMLDivElement> {
   status?: boolean;
   isLoading: boolean;
   name: string;
-  editable: boolean;
+  editable?: boolean;
 }
 // TODO PlayerName.stories.tsx
 // TODO Rename PlayerName
