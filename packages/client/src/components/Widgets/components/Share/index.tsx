@@ -42,32 +42,34 @@ export default function Share({
       >
         <ShareIcon />
       </IconButton>
-      <Modal
-        id="share-modal"
-        open={isOpen}
-        aria-labelledby="share-dialog-title"
-        onClose={handleClose}
-      >
-        <ModalHeader id="share-dialog-title" onClose={handleClose}>
-          Share Game
-        </ModalHeader>
-        <ModalContent>
-          <p className="text-black dark:text-white text-opacity-60 dark:text-opacity-60">
-            {copyText}
-          </p>
-          <TextInput
-            id="room-link"
-            ref={linkRef}
-            value={`${window.location.protocol}//${window.location.host}/join?r=${room}`}
-            readOnly
-          />
-        </ModalContent>
-        <ModalFooter>
-          <Button className="copy-button" onClick={copyToClipboard} autoFocus>
-            Copy
-          </Button>
-        </ModalFooter>
-      </Modal>
+      {isOpen && (
+        <Modal
+          id="share-modal"
+          open={isOpen}
+          aria-labelledby="share-dialog-title"
+          onClose={handleClose}
+        >
+          <ModalHeader id="share-dialog-title" onClose={handleClose}>
+            Share Game
+          </ModalHeader>
+          <ModalContent>
+            <p className="text-black dark:text-white text-opacity-60 dark:text-opacity-60">
+              {copyText}
+            </p>
+            <TextInput
+              id="room-link"
+              ref={linkRef}
+              value={`${window.location.protocol}//${window.location.host}/join?r=${room}`}
+              readOnly
+            />
+          </ModalContent>
+          <ModalFooter>
+            <Button className="copy-button" onClick={copyToClipboard} autoFocus>
+              Copy
+            </Button>
+          </ModalFooter>
+        </Modal>
+      )}
     </React.Fragment>
   );
 }
