@@ -14,7 +14,7 @@ export async function apiUpdateRoom(
   body: Player,
   callback: (res: AxiosResponse) => void
 ) {
-  axios
+  await axios
     .put(`/api/game/join/${room}`, body)
     .then((res) => {
       callback(res);
