@@ -39,7 +39,7 @@ export default function Join({ publicRooms = [] }: JoinProps) {
       <main className="justify-evenly">
         {allowPublic && <RoomList rooms={publicRooms} onClick={joinRoom} />}
         <div className="flex flex-col items-center gap-3">
-          <Button variant="primary" className="join-button" onClick={open}>
+          <Button variant="primary" className="join-button" onPress={open}>
             Private Room
           </Button>
           <CodeModal open={isOpen} onClose={close} onSumbit={joinRoom} />
@@ -48,7 +48,7 @@ export default function Join({ publicRooms = [] }: JoinProps) {
               component={RouterLink}
               className="solo-button"
               to="/play/solo"
-              onClick={handleSolo}
+              onPress={handleSolo}
             >
               Solo
             </Button>

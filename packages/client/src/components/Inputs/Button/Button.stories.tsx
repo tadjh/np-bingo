@@ -29,5 +29,5 @@ Success.args = {
 export const Disabled = Template.bind({});
 Disabled.args = {
   ...Primary.args,
-  disabled: true,
+  isDisabled: true,
 };

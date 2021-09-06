@@ -64,7 +64,7 @@ export default function Share({
             />
           </ModalContent>
           <ModalFooter>
-            <Button className="copy-button" onClick={copyToClipboard} autoFocus>
+            <Button className="copy-button" onPress={copyToClipboard} autoFocus>
               Copy
             </Button>
           </ModalFooter>

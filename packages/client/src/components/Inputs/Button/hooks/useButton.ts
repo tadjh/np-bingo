@@ -1,5 +1,6 @@
 import { ButtonVariants } from '..';
-export function useButton(variant: ButtonVariants, disabled: boolean) {
+
+export function useButton(variant: ButtonVariants, disabled?: boolean) {
   const style = (disabled && 'disabled') || variant;
 
   /**

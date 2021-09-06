@@ -66,8 +66,8 @@ export default function Play({
         <Back to="/" onClick={handleLeaveRoom} />
         {allowNewCard && (
           <Button
-            disabled={gamestate !== 'ready' && true}
-            onClick={handleNewCard}
+            isDisabled={gamestate !== 'ready' && true}
+            onPress={handleNewCard}
           >
             New Card
           </Button>
@@ -76,16 +76,16 @@ export default function Play({
           <div className="w-[108px] text-center">
             <Button
               variant="primary"
-              disabled={disablePrimaryButton()}
-              onClick={handlePrimaryButton}
+              isDisabled={disablePrimaryButton()}
+              onPress={handlePrimaryButton}
             >
               {primaryButtonText()}
             </Button>
           </div>
           <Button
             variant="success"
-            disabled={disableSendCard()}
-            onClick={handleSendCard}
+            isDisabled={disableSendCard()}
+            onPress={handleSendCard}
           >
             Bingo
           </Button>
