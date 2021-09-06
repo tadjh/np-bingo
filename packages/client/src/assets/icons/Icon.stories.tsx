@@ -14,6 +14,9 @@ import ShareIcon from './Share';
 import SunIcon from './Sun';
 import VolumeOffIcon from './VolumeOff';
 import VolumeUpIcon from './VolumeUp';
+import ChevronLeftIcon from './ChevronLeft';
+import PencilIcon from './Pencil';
+import SpinnerIcon from './Spinner';
 
 export default {
   title: 'Inputs/Icons',
@@ -24,6 +27,7 @@ const Template: Story<IconProps> = (args) => (
   <div className="flex flex-col gap-8">
     <div className="grid grid-cols-5 gap-2">
       <CheckIcon {...args} />
+      <ChevronLeftIcon {...args} />
       <ChevronRightIcon {...args} />
       <CloseIcon {...args} />
       <MinusIcon {...args} />
@@ -44,6 +48,10 @@ const Template: Story<IconProps> = (args) => (
     <div className="grid grid-cols-5 gap-2">
       <HeavyBallotXIcon {...args} />
       <ShareIcon {...args} />
+      <PencilIcon {...args} />
+    </div>
+    <div className="grid grid-cols-5 gap-2">
+      <SpinnerIcon {...args} />
     </div>
   </div>
 );

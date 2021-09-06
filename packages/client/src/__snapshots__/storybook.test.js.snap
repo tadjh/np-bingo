@@ -2025,10 +2025,10 @@ exports[`Storyshots Feedback/Ripple Base 1`] = `
   class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90"
   type="button"
 >
+  Click me
   <span
     class="ripple w-full h-full absolute top-0 left-0"
   />
-  Click me
 </button>
 `;
 
@@ -2060,10 +2060,10 @@ exports[`Storyshots Inputs/Button Base 1`] = `
   class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400"
   type="button"
 >
+  Button
   <span
     class="ripple w-full h-full absolute top-0 left-0"
   />
-  Button
 </button>
 `;
 
@@ -2082,10 +2082,10 @@ exports[`Storyshots Inputs/Button Primary 1`] = `
   class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90"
   type="button"
 >
+  Button
   <span
     class="ripple w-full h-full absolute top-0 left-0"
   />
-  Button
 </button>
 `;
 
@@ -2094,10 +2094,10 @@ exports[`Storyshots Inputs/Button Success 1`] = `
   class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-green-600 hover:bg-green-700 dark:bg-green-300 dark:hover:bg-green-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90"
   type="button"
 >
+  Button
   <span
     class="ripple w-full h-full absolute top-0 left-0"
   />
-  Button
 </button>
 `;
 
@@ -2748,6 +2748,18 @@ exports[`Storyshots Inputs/Icons Large 1`] = `
     >
       <path
         clip-rule="evenodd"
+        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        fill-rule="evenodd"
+      />
+    </svg>
+    <svg
+      class="h-10 w-10 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
+      fill="currentColor"
+      viewBox="4 4 12 12"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        clip-rule="evenodd"
         d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
         fill-rule="evenodd"
       />
@@ -2892,6 +2904,39 @@ exports[`Storyshots Inputs/Icons Large 1`] = `
     >
       <path
         d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"
+      />
+    </svg>
+    <svg
+      class="h-10 w-10 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+      />
+    </svg>
+  </div>
+  <div
+    class="grid grid-cols-5 gap-2"
+  >
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"
+      />
+      <path
+        class="opacity-75"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        fill="currentColor"
       />
     </svg>
   </div>
@@ -2925,6 +2970,18 @@ exports[`Storyshots Inputs/Icons Medium 1`] = `
     >
       <path
         clip-rule="evenodd"
+        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        fill-rule="evenodd"
+      />
+    </svg>
+    <svg
+      class="h-7 w-7 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
+      fill="currentColor"
+      viewBox="4 4 12 12"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        clip-rule="evenodd"
         d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
         fill-rule="evenodd"
       />
@@ -3069,6 +3126,39 @@ exports[`Storyshots Inputs/Icons Medium 1`] = `
     >
       <path
         d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"
+      />
+    </svg>
+    <svg
+      class="h-7 w-7 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+      />
+    </svg>
+  </div>
+  <div
+    class="grid grid-cols-5 gap-2"
+  >
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"
+      />
+      <path
+        class="opacity-75"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        fill="currentColor"
       />
     </svg>
   </div>
@@ -3102,6 +3192,18 @@ exports[`Storyshots Inputs/Icons Small 1`] = `
     >
       <path
         clip-rule="evenodd"
+        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
+        fill-rule="evenodd"
+      />
+    </svg>
+    <svg
+      class="h-5 w-5 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
+      fill="currentColor"
+      viewBox="4 4 12 12"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        clip-rule="evenodd"
         d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
         fill-rule="evenodd"
       />
@@ -3248,6 +3350,39 @@ exports[`Storyshots Inputs/Icons Small 1`] = `
         d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"
       />
     </svg>
+    <svg
+      class="h-5 w-5 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+      />
+    </svg>
+  </div>
+  <div
+    class="grid grid-cols-5 gap-2"
+  >
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"
+      />
+      <path
+        class="opacity-75"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        fill="currentColor"
+      />
+    </svg>
   </div>
 </div>
 `;
@@ -3268,6 +3403,18 @@ exports[`Storyshots Inputs/Icons X Large 1`] = `
       <path
         clip-rule="evenodd"
         d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+        fill-rule="evenodd"
+      />
+    </svg>
+    <svg
+      class="h-12 w-12 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
+      fill="currentColor"
+      viewBox="4 4 12 12"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        clip-rule="evenodd"
+        d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"
         fill-rule="evenodd"
       />
     </svg>
@@ -3423,6 +3570,39 @@ exports[`Storyshots Inputs/Icons X Large 1`] = `
     >
       <path
         d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z"
+      />
+    </svg>
+    <svg
+      class="h-12 w-12 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
+      />
+    </svg>
+  </div>
+  <div
+    class="grid grid-cols-5 gap-2"
+  >
+    <svg
+      fill="none"
+      viewBox="0 0 24 24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"
+      />
+      <path
+        class="opacity-75"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        fill="currentColor"
       />
     </svg>
   </div>
@@ -3473,7 +3653,8 @@ exports[`Storyshots Inputs/Text Input Read Only 1`] = `
 
 exports[`Storyshots Layout/Container Base 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div>
     Text
@@ -3492,7 +3673,8 @@ exports[`Storyshots Navigation/Link Base 1`] = `
 
 exports[`Storyshots Pages/Create Base 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <header>
     <h1
@@ -3931,7 +4113,8 @@ exports[`Storyshots Pages/Create Base 1`] = `
 
 exports[`Storyshots Pages/Home Base 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <header
     class="flex-1 items-center"
@@ -4034,20 +4217,21 @@ exports[`Storyshots Pages/Home Base 1`] = `
       class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90 w-[83px]"
       href="/join"
       id="play-button"
+      type="button"
     >
+      Play
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
-      Play
     </a>
     <button
       class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 host-button w-[83px] flex justify-center"
       type="button"
     >
+      Host
       <span
         class="ripple w-full h-full absolute top-0 left-0"
       />
-      Host
     </button>
     <div
       class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
@@ -4171,31 +4355,35 @@ exports[`Storyshots Pages/Home Base 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -4204,27 +4392,6 @@ exports[`Storyshots Pages/Home Base 1`] = `
           >
             #undefined
           </span>
-        </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
@@ -4254,10 +4421,11 @@ exports[`Storyshots Pages/Home/Credit Base 1`] = `
 
 exports[`Storyshots Pages/Host Base 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
   <header
     class="flex gap-2 items-center justify-between"
@@ -4301,16 +4469,16 @@ exports[`Storyshots Pages/Host Base 1`] = `
       class="flex gap-2"
     >
       <div
-        class="w-[108px] text-center"
+        class="w-[98px] text-center"
       >
         <button
           class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90"
           type="button"
         >
+          End
           <span
             class="ripple w-full h-full absolute top-0 left-0"
           />
-          End
         </button>
       </div>
       <button
@@ -4989,31 +5157,35 @@ exports[`Storyshots Pages/Host Base 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -5023,27 +5195,6 @@ exports[`Storyshots Pages/Host Base 1`] = `
             #undefined
           </span>
         </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
-        </div>
       </div>
     </div>
   </footer>
@@ -5052,10 +5203,11 @@ exports[`Storyshots Pages/Host Base 1`] = `
 
 exports[`Storyshots Pages/Host Game Over 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
   <header
     class="flex gap-2 items-center justify-between"
@@ -5099,16 +5251,16 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
       class="flex gap-2"
     >
       <div
-        class="w-[108px] text-center"
+        class="w-[98px] text-center"
       >
         <button
           class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90"
           type="button"
         >
+          Replay
           <span
             class="ripple w-full h-full absolute top-0 left-0"
           />
-          Replay
         </button>
       </div>
       <button
@@ -5787,31 +5939,35 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -5821,27 +5977,6 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
             #undefined
           </span>
         </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
-        </div>
       </div>
     </div>
   </footer>
@@ -5850,10 +5985,11 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
 
 exports[`Storyshots Pages/Host Ready List 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
   <header
     class="flex gap-2 items-center justify-between"
@@ -5897,16 +6033,16 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
       class="flex gap-2"
     >
       <div
-        class="w-[108px] text-center"
+        class="w-[98px] text-center"
       >
         <button
           class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90"
           type="button"
         >
+          Start
           <span
             class="ripple w-full h-full absolute top-0 left-0"
           />
-          Start
         </button>
       </div>
       <button
@@ -6403,31 +6539,35 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -6437,27 +6577,6 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
             #undefined
           </span>
         </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
-        </div>
       </div>
     </div>
   </footer>
@@ -6466,10 +6585,11 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
 
 exports[`Storyshots Pages/Host Waiting 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
   <header
     class="flex gap-2 items-center justify-between"
@@ -6513,16 +6633,16 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
       class="flex gap-2"
     >
       <div
-        class="w-[108px] text-center"
+        class="w-[98px] text-center"
       >
         <button
           class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90"
           type="button"
         >
+          Start
           <span
             class="ripple w-full h-full absolute top-0 left-0"
           />
-          Start
         </button>
       </div>
       <button
@@ -6748,31 +6868,35 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -6781,27 +6905,6 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
           >
             #undefined
           </span>
-        </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
@@ -8470,10 +8573,11 @@ exports[`Storyshots Pages/Host/Player List Single Item Ready 1`] = `
 
 exports[`Storyshots Pages/Join Base 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
   <header
     class="flex-1 justify-between"
@@ -8532,19 +8636,20 @@ exports[`Storyshots Pages/Join Base 1`] = `
         class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90 join-button"
         type="button"
       >
+        Private Room
         <span
           class="ripple w-full h-full absolute top-0 left-0"
         />
-        Private Room
       </button>
       <a
         class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 solo-button"
         href="/play/solo"
+        type="button"
       >
+        Solo
         <span
           class="ripple w-full h-full absolute top-0 left-0"
         />
-        Solo
       </a>
     </div>
   </main>
@@ -8667,31 +8772,35 @@ exports[`Storyshots Pages/Join Base 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -8700,27 +8809,6 @@ exports[`Storyshots Pages/Join Base 1`] = `
           >
             #undefined
           </span>
-        </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
@@ -8730,10 +8818,11 @@ exports[`Storyshots Pages/Join Base 1`] = `
 
 exports[`Storyshots Pages/Join No Solo Mode 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
   <header
     class="flex-1 justify-between"
@@ -8792,19 +8881,20 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
         class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90 join-button"
         type="button"
       >
+        Private Room
         <span
           class="ripple w-full h-full absolute top-0 left-0"
         />
-        Private Room
       </button>
       <a
         class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 solo-button"
         href="/play/solo"
+        type="button"
       >
+        Solo
         <span
           class="ripple w-full h-full absolute top-0 left-0"
         />
-        Solo
       </a>
     </div>
   </main>
@@ -8927,31 +9017,35 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -8961,27 +9055,6 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
             #undefined
           </span>
         </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
-        </div>
       </div>
     </div>
   </footer>
@@ -8990,10 +9063,11 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
 
 exports[`Storyshots Pages/Join Public Rooms 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
   <header
     class="flex-1 justify-between"
@@ -9313,19 +9387,20 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
         class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90 join-button"
         type="button"
       >
+        Private Room
         <span
           class="ripple w-full h-full absolute top-0 left-0"
         />
-        Private Room
       </button>
       <a
         class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 solo-button"
         href="/play/solo"
+        type="button"
       >
+        Solo
         <span
           class="ripple w-full h-full absolute top-0 left-0"
         />
-        Solo
       </a>
     </div>
   </main>
@@ -9448,31 +9523,35 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -9481,27 +9560,6 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
           >
             #undefined
           </span>
-        </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
@@ -9793,10 +9851,11 @@ exports[`Storyshots Pages/Join/Room List Rooms 1`] = `
 
 exports[`Storyshots Pages/Play Base 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
   <header
     class="flex gap-2 items-center justify-between"
@@ -9854,10 +9913,10 @@ exports[`Storyshots Pages/Play Base 1`] = `
         class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-green-600 hover:bg-green-700 dark:bg-green-300 dark:hover:bg-green-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90"
         type="button"
       >
+        Bingo
         <span
           class="ripple w-full h-full absolute top-0 left-0"
         />
-        Bingo
       </button>
     </div>
     <div
@@ -9867,7 +9926,6 @@ exports[`Storyshots Pages/Play Base 1`] = `
   <main>
     <div
       class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
-      data-testid="play-status"
     >
       Click a number to cross it out.
     </div>
@@ -10888,31 +10946,35 @@ exports[`Storyshots Pages/Play Base 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -10921,27 +10983,6 @@ exports[`Storyshots Pages/Play Base 1`] = `
           >
             #undefined
           </span>
-        </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
@@ -10951,10 +10992,11 @@ exports[`Storyshots Pages/Play Base 1`] = `
 
 exports[`Storyshots Pages/Play Win 1`] = `
 <div
-  class="min-w-[375px] min-h-[810px] relative flex flex-col bg-gray-100 dark:bg-gray-900 shadow-md rounded-[38px]"
+  class="min-h-screen overflow-hidden sm:min-w-[375px] sm:min-h-[810px] sm:rounded-[38px] relative flex flex-col bg-gray-100 dark:bg-gray-900"
+  id="container"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
   <header
     class="flex gap-2 items-center justify-between"
@@ -11012,10 +11054,10 @@ exports[`Storyshots Pages/Play Win 1`] = `
         class="relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center bg-green-600 hover:bg-green-700 dark:bg-green-300 dark:hover:bg-green-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90"
         type="button"
       >
+        Bingo
         <span
           class="ripple w-full h-full absolute top-0 left-0"
         />
-        Bingo
       </button>
     </div>
     <div
@@ -11025,7 +11067,6 @@ exports[`Storyshots Pages/Play Win 1`] = `
   <main>
     <div
       class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
-      data-testid="play-status"
     >
       Click a number to cross it out.
     </div>
@@ -12046,31 +12087,35 @@ exports[`Storyshots Pages/Play Win 1`] = `
       class="flex flex-row items-center gap-2 group"
     >
       <div
-        class="w-4 h4"
-      >
-         
-      </div>
-      <div
-        class="w-[86px] flex justify-end"
+        class="flex"
       >
         <div
-          class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
+          class="w-4 h4"
+        >
+           
+        </div>
+        <div
+          class="w-[86px] flex justify-end"
         >
           <div
-            class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
-          />
-          <div
-            class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            class="flex flex-row justify-between items-center gap-1 rounded-xl bg-gray-300 dark:bg-gray-800 px-1 py-0.5 transition duration-500 opacity-50"
           >
-            Offline
+            <div
+              class="rounded-full w-2 h-2 bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
+            />
+            <div
+              class="text-black dark:text-white text-opacity-40 dark:text-opacity-40 text-xs"
+            >
+              Offline
+            </div>
+            <div />
           </div>
-          <div />
         </div>
       </div>
-      <div
-        class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
-      >
-        <div>
+      <div>
+        <div
+          class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+        >
           <span>
             Player
           </span>
@@ -12079,27 +12124,6 @@ exports[`Storyshots Pages/Play Win 1`] = `
           >
             #undefined
           </span>
-        </div>
-        <div
-          class="relative tooltip"
-        >
-          <button
-            class="relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl invisible group-hover:visible"
-          >
-            <span
-              class="ripple w-full h-full absolute top-0 left-0"
-            />
-            <svg
-              class="h-4 w-4 text-black dark:text-white text-opacity-40 dark:text-opacity-40 group-hover:text-opacity-60"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"
-              />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
@@ -14567,7 +14591,7 @@ exports[`Storyshots Surfaces/Background Base 1`] = `
   class="relative w-screen h-screen max-w-md"
 >
   <div
-    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full rounded-[38px]"
+    class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
   />
 </div>
 `;

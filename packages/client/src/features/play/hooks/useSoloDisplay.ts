@@ -1,9 +1,8 @@
-import { useContext } from 'react';
-import { GameContext } from '../../../context';
+import { Gamestate } from '@np-bingo/types';
 
-export function useSoloDisplay(): [() => string, () => boolean] {
-  const { gamestate } = useContext(GameContext);
-
+export function useSoloDisplay(
+  gamestate: Gamestate
+): [() => string, () => boolean] {
   /**
    * Solo mode primary button text strings
    * @param gamestate

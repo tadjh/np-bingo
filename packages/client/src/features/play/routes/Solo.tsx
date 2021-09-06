@@ -12,5 +12,5 @@ export function Solo({ ...props }: SoloProps) {
     if (gamemode === 'solo') return;
     dispatch({ type: CHANGE_GAMEMODE, payload: 'solo' });
   }, [gamemode, dispatch]);
-  return <Play {...props} />;
+  return <Play gamemodeOverride="solo" {...props} />;
 }

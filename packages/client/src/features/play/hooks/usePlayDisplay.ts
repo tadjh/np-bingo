@@ -1,10 +1,10 @@
-import { useContext } from 'react';
 import { useSoloDisplay } from '.';
-import { GameContext } from '../../../context';
+import { Gamemode, Gamestate } from '@np-bingo/types';
 
-export function usePlayDisplay() {
-  const { gamestate, gamemode } = useContext(GameContext);
-  const [soloPrimaryButtonText, soloDisablePrimaryButton] = useSoloDisplay();
+export function usePlayDisplay(gamemode: Gamemode, gamestate: Gamestate) {
+  const [soloPrimaryButtonText, soloDisablePrimaryButton] = useSoloDisplay(
+    gamestate
+  );
 
   /**
    * Text to display on primary button

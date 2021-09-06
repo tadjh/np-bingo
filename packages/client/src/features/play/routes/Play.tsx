@@ -1,5 +1,5 @@
 import React, { Fragment, useContext } from 'react';
-import { Card, Serial } from '@np-bingo/types';
+import { Card, Gamemode, Serial } from '@np-bingo/types';
 import {
   BallContext,
   FeaturesContext,
@@ -23,12 +23,14 @@ export interface PlayProps {
   winOverride?: boolean;
   staticCard?: Card;
   staticSerial?: Serial;
+  gamemodeOverride?: Gamemode;
 }
 
 export default function Play({
   winOverride = false,
   staticCard,
   staticSerial,
+  gamemodeOverride,
 }: PlayProps) {
   const {
     user: { name },
@@ -59,7 +61,7 @@ export default function Play({
     primaryButtonText,
     disablePrimaryButton,
     disableBallDisplay,
-  } = usePlayDisplay();
+  } = usePlayDisplay(gamemodeOverride || gamemode, gamestate);
   return (
     <Fragment>
       <header className="flex gap-2 items-center justify-between">
@@ -95,8 +97,7 @@ export default function Play({
       <main>
         <PlayStatus
           gamestate={gamestate}
-          gamemode={gamemode}
-          data-testid="play-status"
+          gamemode={gamemodeOverride || gamemode}
         />
         <Ball
           number={ball.number}
