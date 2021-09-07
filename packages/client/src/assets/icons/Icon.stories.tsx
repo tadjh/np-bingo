@@ -56,9 +56,12 @@ const Template: Story<IconProps> = (args) => (
   </div>
 );
 
+export const XSmall = Template.bind({});
+XSmall.args = { size: 'x-small' };
 export const Small = Template.bind({});
 Small.args = { size: 'small' };
 export const Medium = Template.bind({});
+Medium.args = { size: 'medium' };
 export const Large = Template.bind({});
 Large.args = { size: 'large' };
 export const XLarge = Template.bind({});
