@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { HTMLAttributes } from 'react';
+import clsx from 'clsx';
 
-export interface RippleProps {
+export interface RippleProps extends HTMLAttributes<HTMLSpanElement> {
   disabled?: boolean;
+  className?: string;
 }
 
-export default function Ripple({ disabled }: RippleProps): JSX.Element | null {
+export default function Ripple({
+  disabled,
+  className,
+  ...props
+}: RippleProps): JSX.Element | null {
   if (disabled) return null;
-  return <span className="ripple w-full h-full absolute top-0 left-0"></span>;
+  return (
+    <span
+      {...props}
+      className={clsx(
+        'animate-ripple absolute w-5 h-5 bg-white rounded-full blur-[0.5px]',
+        className
+      )}
+    />
+  );
 }
