@@ -1,4 +1,4 @@
-import React from 'react';
+import { Fragment } from 'react';
 export interface ModalBaseProps extends React.HTMLAttributes<HTMLDivElement> {
   onClose?: () => void;
 }
@@ -8,7 +8,7 @@ export default function ModalBase({
   children,
 }: ModalBaseProps): JSX.Element {
   return (
-    <React.Fragment>
+    <Fragment>
       <div
         className="absolute w-full h-full bg-gray-500 dark:bg-black bg-opacity-90 dark:bg-opacity-60 z-40" // w-screen h-screen top-0
         onClick={onClose}
@@ -18,6 +18,6 @@ export default function ModalBase({
       >
         {children}
       </div>
-    </React.Fragment>
+    </Fragment>
   );
 }
