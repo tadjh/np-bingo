@@ -1,8 +1,7 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { Story, Meta } from '@storybook/react';
 import CircularProgress, { CircularProgressProps } from '.';
 import { useProgress } from '../../../hooks';
-import { useEffect } from 'react';
 
 export default {
   title: 'Feedback/Circular Progress',
