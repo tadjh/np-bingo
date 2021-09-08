@@ -110,52 +110,56 @@ module.exports = {
         },
         'slide-top': {
           from: {
-            bottom: '0%',
+            bottom: '50%',
             opacity: 0,
           },
           to: {
             bottom: '100%',
             opacity: 1,
+            zIndex: 10,
           },
         },
         'slide-right': {
           from: {
-            left: '0%',
+            left: '50%',
             opacity: 0,
           },
           to: {
             left: '100%',
             opacity: 1,
+            zIndex: 10,
           },
         },
         'slide-bottom': {
           from: {
-            top: '0%',
+            top: '50%',
             opacity: 0,
           },
           to: {
             top: '100%',
             opacity: 1,
+            zIndex: 10,
           },
         },
         'slide-left': {
           from: {
-            right: '0%',
+            right: '50%',
             opacity: 0,
           },
           to: {
             right: '100%',
             opacity: 1,
+            zIndex: 10,
           },
         },
       },
       animation: {
         bounce: 'bounce 1500ms infinite',
         ripple: 'ripple 750ms ease forwards',
-        'slide-top': 'slide-top 300ms ease-out forwards',
-        'slide-right': 'slide-right 300ms ease-out forwards',
-        'slide-bottom': 'slide-bottom 300ms ease-out forwards',
-        'slide-left': 'slide-left 300ms ease-out forwards',
+        'slide-top': 'slide-top 300ms ease-out 500ms forwards',
+        'slide-right': 'slide-right 300ms ease-out 500ms forwards',
+        'slide-bottom': 'slide-bottom 300ms ease-out 500ms forwards',
+        'slide-left': 'slide-left 300ms ease-out 500ms forwards',
       },
     },
   },
