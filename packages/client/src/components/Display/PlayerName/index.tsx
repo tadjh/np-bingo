@@ -56,7 +56,7 @@ export default function PlayerName({
         <Typography className="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1">
           <span>{playerName}</span>
           <span className="text-black dark:text-white text-opacity-40 dark:text-opacity-40">
-            {'#' + randomId}
+            {`#${randomId ? randomId : '0000'}`}
           </span>
         </Typography>
         {editable && (
