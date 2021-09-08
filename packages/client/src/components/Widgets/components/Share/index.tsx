@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef, Fragment } from 'react';
 import ShareIcon from '../../../../assets/icons/Share';
 import IconButton from '../../../Inputs/IconButton/components/IconButton';
 import Modal, {
@@ -24,14 +24,11 @@ export default function Share({
 }: ShareProps): JSX.Element {
   const linkRef = useRef<HTMLInputElement>(null);
   const [isOpen, , open, close] = useToggle(isOpenDefault);
-  const [copyText, handleClose, copyToClipboard] = useShare(
-    linkRef.current,
-    close
-  );
+  const [copyText, handleClose, copyToClipboard] = useShare(linkRef, close);
   const clickSoftSfx = useClickSoft();
   // TODO Hide full URL when config set to Streamer Mode
   return (
-    <React.Fragment>
+    <Fragment>
       <IconButton
         className="share-button group"
         onClick={open}
@@ -60,6 +57,7 @@ export default function Share({
               id="room-link"
               ref={linkRef}
               value={`${window.location.protocol}//${window.location.host}/join?r=${room}`}
+              onClick={copyToClipboard}
               readOnly
             />
           </ModalContent>
@@ -70,6 +68,6 @@ export default function Share({
           </ModalFooter>
         </Modal>
       )}
-    </React.Fragment>
+    </Fragment>
   );
 }

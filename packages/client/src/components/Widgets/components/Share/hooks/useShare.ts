@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, RefObject } from 'react';
 
 export function useShare(
-  reference: HTMLInputElement | null,
+  linkRef: RefObject<HTMLInputElement | null>,
   close: () => void
 ): [string, () => void, () => void] {
   const [isCopied, setIsCopied] = useState(false);
@@ -14,8 +14,8 @@ export function useShare(
    * @returns
    */
   const copyToClipboard = () => {
-    if (reference === null) return;
-    reference.select();
+    if (linkRef.current === null) return;
+    linkRef.current.select();
     try {
       document.execCommand('copy');
       copy();
