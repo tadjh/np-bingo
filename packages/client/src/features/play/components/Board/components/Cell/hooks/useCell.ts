@@ -1,10 +1,15 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, MouseEvent } from 'react';
 import useSound from 'use-sound';
 import { SoundContext } from '../../../../../../../context';
 import { scribbleSfx } from '../../../../../../../config/sounds';
 import { useToggle } from '../../../../../../../hooks';
 
-export function useCell(disabled: boolean, override?: boolean) {
+export function useCell(
+  disabled: boolean,
+  handleSetCoordinates: (event: MouseEvent<Element>) => void,
+  winner: boolean,
+  override?: boolean
+) {
   const { volume, sounds } = useContext(SoundContext);
   const [isChecked, toggleChecked, , uncheck] = useToggle();
 
@@ -40,6 +45,12 @@ export function useCell(disabled: boolean, override?: boolean) {
     !isChecked ? scribble() : erase();
   };
 
+  const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
+    if (winner) return;
+    handleSetCoordinates(event);
+    toggleSfx();
+  };
+
   /**
    * Force cells unchecked on win with override
    */
@@ -59,5 +70,5 @@ export function useCell(disabled: boolean, override?: boolean) {
     // onClick(event);
   };
 
-  return { isChecked, toggleSfx, handleClick };
+  return { isChecked, handleClick, handleMouseDown };
 }

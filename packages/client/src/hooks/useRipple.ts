@@ -19,9 +19,7 @@ export type RippleActions =
   | { type: typeof INIT }
   | { type: typeof DO_RIPPLE; payload: Coordinates };
 
-export function useRipple(
-  buttonRef: MutableRefObject<HTMLButtonElement | null>
-) {
+export function useRipple(buttonRef: MutableRefObject<Element | null>) {
   function rippleReducer(
     state: RippleState,
     action: RippleActions
@@ -57,7 +55,7 @@ export function useRipple(
    * @param event
    * @returns
    */
-  const handleSetCoordinates = (event: MouseEvent<HTMLButtonElement>) => {
+  const handleSetCoordinates = (event: MouseEvent<Element>) => {
     if (buttonRef.current === null) return;
     const rect = buttonRef.current.getBoundingClientRect();
     const coordinateX = Math.round(event.clientX - rect.left - 10);
