@@ -16,6 +16,8 @@ export default {
         setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
       };
       const [sounds, setSounds] = useState(true);
+      const [volume, setVolume] = useState(defaultVolume);
+
       const toggleSounds = () => {
         setSounds((prevSounds) => !prevSounds);
       };
@@ -28,9 +30,10 @@ export default {
         >
           <SoundContext.Provider
             value={{
-              volume: defaultVolume,
-              sounds: sounds,
-              toggleSounds: toggleSounds,
+              volume,
+              sounds,
+              setVolume,
+              toggleSounds,
             }}
           >
             <div className={theme}>
