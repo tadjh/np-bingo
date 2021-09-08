@@ -40,12 +40,10 @@ export function Board({
           let id = `cell-${index + 1}`;
           return (
             <Cell
-              id={id}
               winner={winner}
               key={id}
-              index={index + 1}
+              className={id}
               checked={winner ? crossmarks[id] || false : undefined}
-              disabled={winner}
             >
               {index !== 12 ? value : 'free'}
             </Cell>

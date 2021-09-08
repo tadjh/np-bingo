@@ -5,7 +5,6 @@ import { scribbleSfx } from '../../../../../../../config/sounds';
 import { useToggle } from '../../../../../../../hooks';
 
 export function useCell(
-  disabled: boolean,
   handleSetCoordinates: (event: MouseEvent<Element>) => void,
   winner: boolean,
   override?: boolean
@@ -45,6 +44,11 @@ export function useCell(
     !isChecked ? scribble() : erase();
   };
 
+  /**
+   * Mouse Down handler
+   * @param event
+   * @returns
+   */
   const handleMouseDown = (event: MouseEvent<HTMLDivElement>) => {
     if (winner) return;
     handleSetCoordinates(event);
@@ -65,7 +69,7 @@ export function useCell(
    * @returns void
    */
   const handleClick = () => {
-    if (disabled) return;
+    if (winner) return;
     toggleChecked();
     // onClick(event);
   };

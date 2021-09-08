@@ -18,15 +18,9 @@ const Stack: Story<CellProps> = (args) => (
   <React.Fragment>
     <Cell {...args} />
     <Cell {...args} children={15} />
-    <Cell {...args} index={13} children={'free'} />
+    <Cell {...args} children={'free'} />
     <Cell {...args} children={15} checked={true} />
-    <Cell
-      {...args}
-      children={15}
-      checked={true}
-      winner={true}
-      disabled={true}
-    />
+    <Cell {...args} children={15} checked={true} winner={true} />
   </React.Fragment>
 );
 
