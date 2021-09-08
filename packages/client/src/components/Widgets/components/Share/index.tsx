@@ -27,6 +27,7 @@ export default function Share({
   const [copyText, handleClose, copyToClipboard] = useShare(linkRef, close);
   const clickSoftSfx = useClickSoft();
   // TODO Hide full URL when config set to Streamer Mode
+  // TODO Share test
   return (
     <Fragment>
       <IconButton

@@ -7,7 +7,7 @@ export interface CodeProps extends React.HTMLAttributes<HTMLDivElement> {
   room?: Room;
   isHovered?: boolean;
 }
-
+// TODO tests
 export default function Code({
   room = '',
   isHovered = false,
