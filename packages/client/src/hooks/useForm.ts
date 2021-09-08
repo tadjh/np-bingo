@@ -3,17 +3,7 @@ import { useState } from 'react';
 export function useForm(
   initialState: { [key: string]: string },
   callback?: (inputs: any) => void
-): [
-  { [key: string]: string },
-  string,
-  (event: React.ChangeEvent<HTMLInputElement>) => void,
-  () => void,
-  (
-    event: React.ClipboardEvent<HTMLInputElement>,
-    key: string,
-    maxStringLength?: number | undefined
-  ) => void
-] {
+) {
   const [inputs, setInputs] = useState(initialState);
   const [errors, setErrors] = useState('');
 
@@ -81,11 +71,11 @@ export function useForm(
    * Updates error
    * @param error
    */
-  const handleError = (error: Error) => {
+  const handleError = (error: any) => {
     setErrors(error.message);
     // TODO removed return, test this
     // return
   };
 
-  return [inputs, errors, handleChange, handleSubmit, handlePaste];
+  return { inputs, errors, handleChange, handleSubmit, handlePaste };
 }
