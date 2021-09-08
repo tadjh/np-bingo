@@ -7,6 +7,7 @@ export * from './useForm';
 export * from './usePortal';
 export * from './useProgress';
 export * from './useQuery';
+export * from './useRipple';
 export * from './useSocket';
 export * from './useTheme';
 export * from './useTitle';
