@@ -3,7 +3,7 @@ import useSound from 'use-sound';
 import { clickSfx } from '../config/sounds';
 import { SoundContext } from '../context';
 
-export function useClickHard() {
+export function useClickHard(): () => void {
   const { volume, sounds } = useContext(SoundContext);
 
   const [playSfx] = useSound(clickSfx, {
@@ -18,9 +18,7 @@ export function useClickHard() {
   /**
    * Wrapper for button mouse down event
    */
-  const clickHardSfx = () => {
-    playSfx({ id: 'clickHard' });
-  };
+  const clickHardSfx = () => playSfx({ id: 'clickHard' });
 
-  return [clickHardSfx];
+  return clickHardSfx;
 }
