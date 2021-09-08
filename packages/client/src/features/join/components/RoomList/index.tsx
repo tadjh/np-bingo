@@ -7,7 +7,7 @@ import List, {
   ListItem,
   ListItemText,
 } from '../../../../components/Display/List';
-import { useClickHard } from '../../../../hooks';
+import { useClickHard } from '../../../../hooks/useClickHard';
 
 export interface ListProps {
   rooms?: any[];
@@ -22,7 +22,7 @@ export default function RoomList({
   rooms = [],
   onClick,
 }: RoomListProps): JSX.Element {
-  const [clickHardSfx] = useClickHard();
+  const clickHardSfx = useClickHard();
   if (rooms.length > 0)
     return (
       <List title="Public Rooms">

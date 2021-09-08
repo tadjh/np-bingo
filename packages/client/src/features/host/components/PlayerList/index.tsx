@@ -10,7 +10,7 @@ import CheckIcon from '../../../../assets/icons/Check';
 import CloseCircleIcon from '../../../../assets/icons/CloseCircle';
 import Tooltip from '../../../../components/Display/Tooltip';
 import { Player } from '@np-bingo/types';
-import { useClickHard } from '../../../../hooks';
+import { useClickHard } from '../../../../hooks/useClickHard';
 
 // export interface ListProps {
 //   data?: any[];
@@ -26,7 +26,7 @@ export function PlayerList({
   data = [],
   action: onRemove,
 }: PlayerListProps): JSX.Element {
-  const [clickHardSfx] = useClickHard();
+  const clickHardSfx = useClickHard();
   if (data.length !== 0)
     return (
       <List>

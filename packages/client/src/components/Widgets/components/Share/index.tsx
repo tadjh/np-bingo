@@ -11,7 +11,7 @@ import { useToggle } from '../../../../hooks';
 import { Room } from '@np-bingo/types';
 import TextInput from '../../../Inputs/TextInput';
 import { useShare } from './hooks';
-import { useClickSoft } from '../../../../hooks';
+import { useClickSoft } from '../../../../hooks/useClickSoft';
 
 export interface ShareProps {
   room?: Room;
@@ -28,7 +28,7 @@ export default function Share({
     linkRef.current,
     close
   );
-  const [clickSoftSfx] = useClickSoft();
+  const clickSoftSfx = useClickSoft();
   // TODO Hide full URL when config set to Streamer Mode
   return (
     <React.Fragment>
@@ -64,7 +64,7 @@ export default function Share({
             />
           </ModalContent>
           <ModalFooter>
-            <Button className="copy-button" onPress={copyToClipboard} autoFocus>
+            <Button className="copy-button" onClick={copyToClipboard} autoFocus>
               Copy
             </Button>
           </ModalFooter>

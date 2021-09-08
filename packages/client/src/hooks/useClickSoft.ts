@@ -3,7 +3,7 @@ import useSound from 'use-sound';
 import { clickSfx } from '../config/sounds';
 import { SoundContext } from '../context';
 
-export function useClickSoft() {
+export function useClickSoft(): () => void {
   const { volume, sounds } = useContext(SoundContext);
 
   const [playSfx] = useSound(clickSfx, {
@@ -22,5 +22,5 @@ export function useClickSoft() {
     playSfx({ id: 'clickSoft' });
   };
 
-  return [clickSoftSfx];
+  return clickSoftSfx;
 }

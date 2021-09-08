@@ -1,14 +1,14 @@
 import React from 'react';
 import clsx from 'clsx';
 import { Link as RouterLink, LinkProps } from 'react-router-dom';
-import { useClickSoft } from '../../../hooks';
+import { useClickSoft } from '../../../hooks/useClickSoft';
 
 export default function Link({
   className = '',
   children,
   ...props
 }: LinkProps) {
-  const [clickSoftSfx] = useClickSoft();
+  const clickSoftSfx = useClickSoft();
   return (
     <RouterLink
       className={clsx(
