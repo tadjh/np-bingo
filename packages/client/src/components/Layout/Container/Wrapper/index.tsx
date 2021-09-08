@@ -1,6 +1,8 @@
 import React, { HTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { Theme } from '@np-bingo/types';
+import Background from '../../../Surfaces/Background';
+import Container from '..';
 export interface WrapperProps extends HTMLAttributes<HTMLDivElement> {
   theme: Theme;
 }
@@ -17,7 +19,12 @@ export function Wrapper({
         theme
       )}
     >
-      {children}
+      <Background variant="phone" />
+      <Container>
+        <Background />
+        <Background variant="top" />
+        {children}
+      </Container>
     </div>
   );
 }
