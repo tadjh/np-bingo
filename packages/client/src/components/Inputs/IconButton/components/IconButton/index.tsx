@@ -1,16 +1,17 @@
-import React from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import IconButtonBase from '../IconButtonBase';
-import Ripple from '../../../../Feedback/Ripple';
 import Tooltip, { TooltipDirection } from '../../../../Display/Tooltip';
 
 export interface IconButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends ButtonHTMLAttributes<HTMLButtonElement> {
   description?: string;
   direction?: TooltipDirection;
   isHovered?: boolean;
-  component?: React.ComponentType<any>;
+  component?: any;
   to?: string;
+  className?: string;
+  disabled?: boolean;
 }
 // TODO Improve typing for handling router link
 
@@ -21,7 +22,6 @@ export default function IconButton({
   description,
   direction,
   isHovered,
-  component: Component,
   ...props
 }: IconButtonProps): JSX.Element {
   return (
@@ -46,7 +46,6 @@ export default function IconButton({
         disabled={disabled}
         {...props}
       >
-        <Ripple disabled={disabled} />
         {children}
       </IconButtonBase>
     </div>

@@ -1,24 +1,13 @@
-import { MouseEvent, useEffect, useRef, useState } from 'react';
-import { ButtonVariants } from '..';
-import { useClickHard } from '../../../../hooks';
+import { MouseEvent } from 'react';
+import { ButtonVariant } from '..';
+import { useClickHard } from '../../../../hooks/useClickHard';
 
-export interface ButtonState {
-  isRippling: boolean;
-  coordinates: { x: number; y: number };
-}
-
-export const initialButtonState = {
-  isRippling: false,
-  coordinates: { x: -1, y: -1 },
-};
-
-export function useButton(variant: ButtonVariants, disabled?: boolean) {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-
-  const [{ isRippling, coordinates }, setButtonState] =
-    useState<ButtonState>(initialButtonState);
+export function useButton(
+  variant: ButtonVariant,
+  disabled: boolean,
+  handleSetCoordinates: (event: MouseEvent<HTMLButtonElement>) => void
+) {
   const clickHardSfx = useClickHard();
-
   const style = (disabled && 'disabled') || variant;
 
   /**
@@ -40,41 +29,6 @@ export function useButton(variant: ButtonVariants, disabled?: boolean) {
   };
 
   /**
-   * Change coordinates if they have changed
-   * @param coordinateX
-   * @param coordinateY
-   */
-  const setCoordinates = (coordinateX: number, coordinateY: number) => {
-    setButtonState((prevButtonState) => {
-      if (
-        prevButtonState.coordinates.x === coordinateX ||
-        prevButtonState.coordinates.y === coordinateY
-      )
-        return prevButtonState;
-      return {
-        isRippling: true,
-        coordinates: {
-          x: coordinateX,
-          y: coordinateY,
-        },
-      };
-    });
-  };
-
-  /**
-   * Handle set coordinates
-   * @param event
-   * @returns
-   */
-  const handleSetCoordinates = (event: MouseEvent<HTMLButtonElement>) => {
-    if (buttonRef.current === null) return;
-    const rect = buttonRef.current.getBoundingClientRect();
-    const coordinateX = Math.round(event.clientX - rect.left - 10);
-    const coordinateY = Math.round(event.clientY - rect.top - 10);
-    setCoordinates(coordinateX, coordinateY);
-  };
-
-  /**
    * Mouse Down handler
    * @param event
    */
@@ -83,19 +37,7 @@ export function useButton(variant: ButtonVariants, disabled?: boolean) {
     handleSetCoordinates(event);
   };
 
-  /**
-   * Remove ripple after animation completes
-   */
-  useEffect(() => {
-    if (!isRippling) return;
-    const timer = setTimeout(() => setButtonState(initialButtonState), 750);
-    return () => clearTimeout(timer);
-  }, [isRippling, coordinates]);
-
   return {
-    isRippling,
-    coordinates,
-    buttonRef,
     buttonStyle,
     handleMouseDown,
   };

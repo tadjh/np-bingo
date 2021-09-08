@@ -1,13 +1,14 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import React, { ButtonHTMLAttributes, useRef } from 'react';
 import clsx from 'clsx';
 import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
+import { useRipple } from '../../../hooks/useRipple';
 
-export type ButtonVariants = 'default' | 'primary' | 'success';
-// AriaButtonProps<'button' | 'a'>
+export type ButtonVariant = 'default' | 'primary' | 'success';
+
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
-  variant?: ButtonVariants;
+  variant?: ButtonVariant;
   component?: any;
   className?: string;
   to?: string;
@@ -20,11 +21,17 @@ export default function Button({
   className,
   children,
   to,
-  disabled,
+  disabled = false,
   ...props
 }: ButtonProps): JSX.Element {
-  const { isRippling, buttonRef, coordinates, buttonStyle, handleMouseDown } =
-    useButton(variant, disabled);
+  const buttonRef = useRef<HTMLButtonElement | null>(null);
+  const { isRippling, coordinates, handleSetCoordinates } =
+    useRipple(buttonRef);
+  const { buttonStyle, handleMouseDown } = useButton(
+    variant,
+    disabled,
+    handleSetCoordinates
+  );
   if (Component)
     return (
       <Component

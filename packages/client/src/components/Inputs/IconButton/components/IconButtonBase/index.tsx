@@ -1,17 +1,48 @@
-import React from 'react';
+import {
+  HTMLAttributes,
+  MouseEventHandler,
+  MouseEvent,
+  ReactNode,
+  useRef,
+} from 'react';
+import { useRipple } from '../../../../../hooks/useRipple';
+import Ripple from '../../../../Feedback/Ripple';
 
-export interface IconButtonbaseProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children?: React.ReactNode;
-  component?: React.ComponentType<any>;
+export interface IconButtonbaseProps extends HTMLAttributes<HTMLButtonElement> {
+  children?: ReactNode;
   disabled?: boolean;
+  className?: string;
+  onMouseDown?: MouseEventHandler<HTMLButtonElement>;
 }
 
 export default function IconButtonBase({
-  component: Component,
   children,
+  disabled,
+  onMouseDown,
   ...props
 }: IconButtonbaseProps): JSX.Element {
-  if (Component) return <Component {...props}></Component>;
-  return <button {...props}>{children}</button>;
+  const iconButtonRef = useRef<HTMLButtonElement | null>(null);
+  const { isRippling, coordinates, handleSetCoordinates } =
+    useRipple(iconButtonRef);
+
+  /**
+   * Mouse Down handler
+   * @param event
+   */
+  const handleMouseDown = (event: MouseEvent<HTMLButtonElement>) => {
+    handleSetCoordinates(event);
+    onMouseDown && onMouseDown(event);
+  };
+
+  return (
+    <button {...props} ref={iconButtonRef} onMouseDown={handleMouseDown}>
+      {isRippling && (
+        <Ripple
+          style={{ top: `${coordinates.y}px`, left: `${coordinates.x}px` }}
+          disabled={disabled}
+        />
+      )}
+      {children}
+    </button>
+  );
 }
