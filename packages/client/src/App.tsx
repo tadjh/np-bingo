@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import { Switch, Route } from 'react-router-dom';
 import Host from './features/host';
 import Play, { Solo } from './features/play';
@@ -16,12 +15,11 @@ import {
   ThemeContext,
   UserContext,
 } from './context';
-import Background from './components/Surfaces/Background';
-import Container from './components/Layout/Container';
 import { useAppState } from './hooks';
 import './App.css';
 import features from './config/features';
 import { useState } from 'react';
+import { Wrapper } from './components/Layout/Container/Wrapper';
 export default function App() {
   const [{ user, isSocketLoading }, userDispatch] = useUser();
   const { socket, connect } = useSocket(userDispatch);
@@ -78,39 +76,28 @@ export default function App() {
                 }}
               >
                 <BallContext.Provider value={{ ball, newBall }}>
-                  <div
-                    id="App"
-                    className={clsx(
-                      'sm:relative sm:flex sm:justify-center sm:items-center sm:min-h-screen overflow-hidden',
-                      theme
-                    )}
-                  >
-                    <Background variant="phone" />
-                    <Container>
-                      <Background />
-                      <Background variant="top" />
-                      <Switch>
-                        <Route exact path="/">
-                          <Home />
-                        </Route>
-                        <Route path="/create">
-                          <Create />
-                        </Route>
-                        <Route path="/join">
-                          <Join />
-                        </Route>
-                        <Route path="/host">
-                          <Host draws={draws} />
-                        </Route>
-                        <Route path="/play/solo">
-                          <Solo />
-                        </Route>
-                        <Route exact path="/play">
-                          <Play />
-                        </Route>
-                      </Switch>
-                    </Container>
-                  </div>
+                  <Wrapper theme={theme}>
+                    <Switch>
+                      <Route exact path="/">
+                        <Home />
+                      </Route>
+                      <Route path="/create">
+                        <Create />
+                      </Route>
+                      <Route path="/join">
+                        <Join />
+                      </Route>
+                      <Route path="/host">
+                        <Host draws={draws} />
+                      </Route>
+                      <Route path="/play/solo">
+                        <Solo />
+                      </Route>
+                      <Route exact path="/play">
+                        <Play />
+                      </Route>
+                    </Switch>
+                  </Wrapper>
                 </BallContext.Provider>
               </GameContext.Provider>
             </RoomContext.Provider>

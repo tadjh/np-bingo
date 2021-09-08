@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Host, { HostProps } from './routes/Host';
@@ -11,12 +11,12 @@ import {
   initialRoomContext,
   initialUserContext,
   RoomContext,
+  ThemeContext,
   UserContext,
 } from '../../context';
 import Container from '../../components/Layout/Container';
 import Background from '../../components/Surfaces/Background';
-import socketInit from '../../lib/socket.io';
-const socket = socketInit();
+import { Theme } from '@np-bingo/types';
 
 export default {
   title: 'Pages/Host',
@@ -26,40 +26,55 @@ export default {
   },
   decorators: [
     (Story, { args }) => {
+      const [theme, setTheme] = useState<Theme>('dark');
+      const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+      };
       return (
         <Router>
-          <UserContext.Provider
-            value={{ ...initialUserContext, user: initialPlayer, socket }}
+          <ThemeContext.Provider
+            value={{
+              theme: theme,
+              toggleTheme: toggleTheme,
+            }}
           >
-            <RoomContext.Provider
+            <UserContext.Provider
               value={{
-                ...initialRoomContext,
-                room: 'A1B2',
-                players: args.players || [],
+                ...initialUserContext,
+                user: initialPlayer,
+                socket: { on: () => {}, emit: () => {} } as any,
               }}
             >
-              <GameContext.Provider
-                value={{ ...initialGameContext, gamestate: args.gamestate }}
+              <RoomContext.Provider
+                value={{
+                  ...initialRoomContext,
+                  room: 'A1B2',
+                  players: args.players || [],
+                }}
               >
-                <BallContext.Provider
-                  value={{
-                    ...initialBallContext,
-                    ball: {
-                      key: 1,
-                      number: 24,
-                      column: 'i',
-                      remainder: 74,
-                    },
-                  }}
+                <GameContext.Provider
+                  value={{ ...initialGameContext, gamestate: args.gamestate }}
                 >
-                  <Container>
-                    <Background />
-                    <Story {...args} />
-                  </Container>
-                </BallContext.Provider>
-              </GameContext.Provider>
-            </RoomContext.Provider>
-          </UserContext.Provider>
+                  <BallContext.Provider
+                    value={{
+                      ...initialBallContext,
+                      ball: {
+                        key: 1,
+                        number: 24,
+                        column: 'i',
+                        remainder: 74,
+                      },
+                    }}
+                  >
+                    <Container>
+                      <Background />
+                      <Story {...args} />
+                    </Container>
+                  </BallContext.Provider>
+                </GameContext.Provider>
+              </RoomContext.Provider>
+            </UserContext.Provider>
+          </ThemeContext.Provider>
         </Router>
       );
     },

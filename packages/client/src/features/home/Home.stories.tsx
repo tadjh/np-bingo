@@ -1,12 +1,16 @@
-import React from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Home, { HomeProps } from './routes/Home';
-import Container from '../../components/Layout/Container';
-import { initialPlayer, initialUserContext, UserContext } from '../../context';
-import socketInit from '../../lib/socket.io';
-
-const socket = socketInit();
+import {
+  initialPlayer,
+  initialUserContext,
+  ThemeContext,
+  UserContext,
+} from '../../context';
+import { Socket } from 'socket.io-client';
+import { Wrapper } from '../../components/Layout/Container/Wrapper';
+import { Theme } from '@np-bingo/types';
 
 export default {
   title: 'Pages/Home',
@@ -17,15 +21,30 @@ export default {
   },
   decorators: [
     (Story) => {
+      const [theme, setTheme] = useState<Theme>('dark');
+      const toggleTheme = () => {
+        setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
+      };
       return (
         <Router>
-          <UserContext.Provider
-            value={{ ...initialUserContext, user: initialPlayer, socket }}
+          <ThemeContext.Provider
+            value={{
+              theme: theme,
+              toggleTheme: toggleTheme,
+            }}
           >
-            <Container>
-              <Story />
-            </Container>
-          </UserContext.Provider>
+            <UserContext.Provider
+              value={{
+                ...initialUserContext,
+                user: initialPlayer,
+                socket: {} as Socket,
+              }}
+            >
+              <Wrapper theme={theme}>
+                <Story />
+              </Wrapper>
+            </UserContext.Provider>
+          </ThemeContext.Provider>
         </Router>
       );
     },
