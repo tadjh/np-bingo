@@ -38,7 +38,7 @@ export function PlayerList({
             <ListItem key={`player-${index + 1}`}>
               <div
                 className={clsx(
-                  'relative tooltip flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm',
+                  'relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm',
                   ready
                     ? 'bg-green-200 group-hover:bg-green-300 dark:bg-green-800 dark:group-hover:bg-green-700'
                     : 'bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700'

@@ -23,10 +23,10 @@ export default function Tooltip({
     <span
       className={clsx(
         box(),
-        'absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal transition-opacity delay-500 whitespace-nowrap box-content z-50',
-        !isHovered && 'opacity-0 invisible',
+        'absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal delay-500 whitespace-nowrap box-content z-50',
+        !isHovered && 'opacity-0', // invisible
         className
-      )}
+      )} // transition-opacity
     >
       <span
         className={clsx(

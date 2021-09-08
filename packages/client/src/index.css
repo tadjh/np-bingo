@@ -27,30 +27,4 @@
   .animation-delay-1200 {
     animation-delay: 1200ms;
   }
-  /* @variants dark { */
-  /* .ripple-lighter > .ripple,
-    .ripple-darker > .ripple {
-      background-position: center;
-      transition: background 0.5s;
-      background-size: 100%;
-    }
-    .ripple-lighter:active > .ripple,
-    .ripple-darker:active > .ripple {
-      background-image: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.15) 1%,
-        transparent 1.5%
-      );
-      background-size: 10000%;
-    } */
-  /* } */
-  @variants hover {
-    .tooltip:hover > .tooltip-t,
-    .tooltip:hover > .tooltip-r,
-    .tooltip:hover > .tooltip-d,
-    .tooltip:hover > .tooltip-l {
-      opacity: 100%;
-      visibility: visible;
-    }
-  }
 }

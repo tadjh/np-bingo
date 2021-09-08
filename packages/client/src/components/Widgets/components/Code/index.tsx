@@ -15,7 +15,7 @@ export default function Code({
   const formattedRoom: string[] =
     room !== '' ? Object.assign([], room) : [' ', ' ', ' ', ' '];
   return (
-    <div className="relative tooltip">
+    <div className="relative group">
       <Tooltip isHovered={isHovered} direction="top">
         Room Code
       </Tooltip>

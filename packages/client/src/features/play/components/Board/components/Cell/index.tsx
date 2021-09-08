@@ -34,7 +34,7 @@ export default function Cell({
       {...props}
       ref={cellRef}
       className={clsx(
-        'flex justify-center items-center relative w-[54px] h-[48px] ripple-lighter dark:ripple-darker select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden',
+        'flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden',
         `cell-${index}`,
         `${index === 13 ? 'text-base' : ''}`
       )}

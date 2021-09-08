@@ -25,7 +25,7 @@ export default function Badge({
   return (
     <div
       className={clsx(
-        'absolute w-7 h-5 -top-2 -right-1 z-20 rounded-full text-opacity-90 text-xs text-center font-mono font-bold leading-normal shadow-md hover:shadow-lg tooltip',
+        'absolute w-7 h-5 -top-2 -right-1 z-20 rounded-full text-opacity-90 text-xs text-center font-mono font-bold leading-normal shadow-md hover:shadow-lg group',
         backgroundColor()
       )}
       style={{ backgroundPositionY: `${offset}%` }}

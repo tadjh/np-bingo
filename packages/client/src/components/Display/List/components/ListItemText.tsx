@@ -17,13 +17,13 @@ export function ListItemText({
 }: ListItemTextProps): JSX.Element {
   return (
     <div>
-      <span className="relative tooltip font-bold font-mono text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90">
+      <span className="relative group font-bold font-mono text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90">
         {primaryInfo !== '' && (
           <Tooltip direction="right">{primaryInfo}</Tooltip>
         )}
         {primary}
       </span>
-      <p className="relative tooltip text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90">
+      <p className="relative group text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90">
         {secondaryInfo !== '' && (
           <Tooltip direction="right">{secondaryInfo}</Tooltip>
         )}

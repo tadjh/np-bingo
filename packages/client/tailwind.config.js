@@ -108,10 +108,54 @@ module.exports = {
             opacity: 0,
           },
         },
+        'slide-top': {
+          from: {
+            bottom: '0%',
+            opacity: 0,
+          },
+          to: {
+            bottom: '100%',
+            opacity: 1,
+          },
+        },
+        'slide-right': {
+          from: {
+            left: '0%',
+            opacity: 0,
+          },
+          to: {
+            left: '100%',
+            opacity: 1,
+          },
+        },
+        'slide-bottom': {
+          from: {
+            top: '0%',
+            opacity: 0,
+          },
+          to: {
+            top: '100%',
+            opacity: 1,
+          },
+        },
+        'slide-left': {
+          from: {
+            right: '0%',
+            opacity: 0,
+          },
+          to: {
+            right: '100%',
+            opacity: 1,
+          },
+        },
       },
       animation: {
         bounce: 'bounce 1500ms infinite',
         ripple: 'ripple 750ms ease forwards',
+        'slide-top': 'slide-top 300ms ease-out forwards',
+        'slide-right': 'slide-right 300ms ease-out forwards',
+        'slide-bottom': 'slide-bottom 300ms ease-out forwards',
+        'slide-left': 'slide-left 300ms ease-out forwards',
       },
     },
   },

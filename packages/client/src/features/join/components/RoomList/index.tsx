@@ -30,7 +30,7 @@ export default function RoomList({
           const roomDescription = onClick && (() => onClick(item.room));
           return (
             <ListItem key={item.room}>
-              <div className="relative tooltip flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700 shadow-md">
+              <div className="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700 shadow-md">
                 <Tooltip direction="right">{`${item.players.length} players in room`}</Tooltip>
                 {item.players.length}
               </div>

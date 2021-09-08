@@ -8,13 +8,13 @@ export function useTooltip(direction: TooltipDirection) {
   function box(): string {
     switch (direction) {
       case 'top':
-        return 'tooltip-t left-2/4 -translate-x-2/4 bottom-full mb-1.5';
+        return 'left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top';
       case 'right':
-        return 'tooltip-r top-2/4 -translate-y-2/4 left-full ml-1.5';
+        return 'top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right';
       case 'bottom':
-        return 'tooltip-b left-2/4 -translate-x-2/4 top-full mt-1.5';
+        return 'left-2/4 -translate-x-2/4 top-full mt-1.5 group-hover:animate-slide-bottom';
       case 'left':
-        return 'tooltip-l top-2/4 -translate-y-2/4 right-full mr-1.5';
+        return 'top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left';
       default:
         throw new Error('Error in tooltip switch');
     }

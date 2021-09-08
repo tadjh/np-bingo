@@ -7,7 +7,7 @@ export default {
   component: Tooltip,
   decorators: [
     (Story) => (
-      <div className="relative tooltip">
+      <div className="relative group">
         <Story />
       </div>
     ),

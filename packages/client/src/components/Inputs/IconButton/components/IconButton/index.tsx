@@ -25,7 +25,7 @@ export default function IconButton({
   ...props
 }: IconButtonProps): JSX.Element {
   return (
-    <div className="relative tooltip">
+    <div className="relative group">
       {description && (
         <Tooltip
           isHovered={isHovered}
@@ -37,7 +37,7 @@ export default function IconButton({
       )}
       <IconButtonBase
         className={clsx(
-          'relative tooltip bg-transparent rounded-full p-1.5 transition ripple-lighter dark:ripple-darker focus:outline-none overflow-hidden',
+          'relative bg-transparent rounded-full p-1.5 transition focus:outline-none overflow-hidden',
           !disabled
             ? 'hover:bg-gray-900 dark:hover:bg-white hover:bg-opacity-10 dark:hover:bg-opacity-10 hover:shadow-xl dark:hover:shadow-xl'
             : 'cursor-default',
