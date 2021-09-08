@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import { HTMLAttributes } from 'react';
 import clsx from 'clsx';
 
 export interface RippleProps extends HTMLAttributes<HTMLSpanElement> {
