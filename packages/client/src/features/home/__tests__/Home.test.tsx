@@ -10,8 +10,7 @@ import Home from '../routes/Home';
 
 it('loads and displays Play button', () => {
   render(<Home />, { wrapper: MemoryRouter });
-  const joinButton = screen.getByText('Play');
-  expect(joinButton).toBeInTheDocument();
+  expect(screen.getByText('Play')).toBeInTheDocument();
 
   // TODO join button routes to /join
 });
