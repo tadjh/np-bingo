@@ -57,19 +57,16 @@ export default function Play({
     handleLeaveRoom,
     disableSendCard,
   } = usePlayButton(card);
-  const {
-    primaryButtonText,
-    disablePrimaryButton,
-    disableBallDisplay,
-  } = usePlayDisplay(gamemodeOverride || gamemode, gamestate);
+  const { primaryButtonText, disablePrimaryButton, disableBallDisplay } =
+    usePlayDisplay(gamemodeOverride || gamemode, gamestate);
   return (
     <Fragment>
       <header className="flex gap-2 items-center justify-between">
         <Back to="/" onClick={handleLeaveRoom} />
         {allowNewCard && (
           <Button
-            isDisabled={gamestate !== 'ready' && true}
-            onPress={handleNewCard}
+            disabled={gamestate !== 'ready' && true}
+            onClick={handleNewCard}
           >
             New Card
           </Button>
@@ -78,16 +75,16 @@ export default function Play({
           <div className="w-[108px] text-center">
             <Button
               variant="primary"
-              isDisabled={disablePrimaryButton()}
-              onPress={handlePrimaryButton}
+              disabled={disablePrimaryButton()}
+              onClick={handlePrimaryButton}
             >
               {primaryButtonText()}
             </Button>
           </div>
           <Button
             variant="success"
-            isDisabled={disableSendCard()}
-            onPress={handleSendCard}
+            disabled={disableSendCard()}
+            onClick={handleSendCard}
           >
             Bingo
           </Button>

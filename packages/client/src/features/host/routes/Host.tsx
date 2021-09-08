@@ -61,14 +61,14 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
         <Back to="/" onClick={handleLeaveRoom} />
         <div className="flex gap-2">
           <div className="w-[98px] text-center">
-            <Button variant="primary" onPress={gamestateToggle}>
+            <Button variant="primary" onClick={gamestateToggle}>
               {toggleText()}
             </Button>
           </div>
           <Button
             variant="success"
-            isDisabled={disableCheckCard()}
-            onPress={handleValidate}
+            disabled={disableCheckCard()}
+            onClick={handleValidate}
           >
             Validate
           </Button>
