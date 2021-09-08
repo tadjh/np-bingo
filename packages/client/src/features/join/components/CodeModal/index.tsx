@@ -1,4 +1,5 @@
-import React, { MutableRefObject, useRef } from 'react';
+import React, { MutableRefObject, useRef, useEffect } from 'react';
+import { roomChar } from '@np-bingo/common';
 import Modal, {
   ModalHeader,
   ModalContent,
@@ -6,8 +7,6 @@ import Modal, {
 } from '../../../../components/Feedback/Modal';
 import Button from '../../../../components/Inputs/Button';
 import { useForm } from '../../../../hooks';
-import { roomChar } from '@np-bingo/common';
-import { useEffect } from 'react';
 
 export interface CodeModalProps {
   open: boolean;
@@ -27,7 +26,7 @@ export default function CodeModal({
   onClose,
   onSumbit,
 }: CodeModalProps) {
-  const [inputs, errors, handleChange, handleSubmit, handlePaste] = useForm(
+  const { inputs, errors, handleChange, handleSubmit, handlePaste } = useForm(
     initialState,
     onSubmitCallback
   );

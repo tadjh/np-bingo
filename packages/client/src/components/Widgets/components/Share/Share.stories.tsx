@@ -13,7 +13,7 @@ export default {
 } as Meta;
 
 const Template: Story<ShareProps> = (args) => <Share {...args} />;
-
+// TODO fix
 export const Default = Template.bind({});
 Default.args = {
   isOpenDefault: true,

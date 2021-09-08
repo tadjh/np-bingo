@@ -53,7 +53,7 @@ export function useCell(disabled: boolean, override?: boolean) {
    * @param event
    * @returns void
    */
-  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleClick = () => {
     if (disabled) return;
     toggleChecked();
     // onClick(event);

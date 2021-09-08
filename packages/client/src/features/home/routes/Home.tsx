@@ -19,13 +19,8 @@ export default function Home(): JSX.Element {
     user: { name },
     socket,
   } = useContext(UserContext);
-  const {
-    isLoading,
-    isError,
-    isRedirect,
-    isSocketLoading,
-    createRoom,
-  } = useHome();
+  const { isLoading, isError, isRedirect, isSocketLoading, createRoom } =
+    useHome();
   if (isRedirect) return <Redirect to={`/host?r=${room}`} />;
   return (
     <Fragment>

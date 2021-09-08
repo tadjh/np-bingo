@@ -41,10 +41,8 @@ export function useHost(socket: Socket) {
     // emitIsAWinner,
     // emitHostGameOver,
   } = useHostEmitters();
-  const {
-    subscribeToPlayerEvents,
-    unsubscribeFromPlayerEvents,
-  } = useHostListeners(socket, dispatch);
+  const { subscribeToPlayerEvents, unsubscribeFromPlayerEvents } =
+    useHostListeners(socket, dispatch);
   /**
    * Kick player from room
    * @param player
