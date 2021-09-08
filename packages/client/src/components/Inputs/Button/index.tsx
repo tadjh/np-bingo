@@ -1,17 +1,17 @@
-import React, { useRef } from 'react';
+import React, { ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
-import { useClickHard } from '../../../hooks';
 import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
-import { ButtonAria, useButton as useAriaButton } from '@react-aria/button';
-import { AriaButtonProps } from '@react-types/button';
 
 export type ButtonVariants = 'default' | 'primary' | 'success';
-export interface ButtonProps extends AriaButtonProps<'button' | 'a'> {
+// AriaButtonProps<'button' | 'a'>
+export interface ButtonProps
+  extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   variant?: ButtonVariants;
   component?: any;
   className?: string;
   to?: string;
+  disabled?: boolean;
 }
 
 export default function Button({
@@ -20,70 +20,53 @@ export default function Button({
   className,
   children,
   to,
+  disabled,
   ...props
 }: ButtonProps): JSX.Element {
-  const buttonRef = useRef<HTMLButtonElement | null>(null);
-  const {
-    buttonProps,
-  }: ButtonAria<React.HTMLAttributes<HTMLElement>> = useAriaButton(
-    props,
-    buttonRef
-  );
-  const [buttonSyle] = useButton(variant, props.isDisabled);
-  const [clickHardSfx] = useClickHard();
-
-  // TODO useRipple
-  // function createRipple(event) {
-  //   const button = event.currentTarget;
-
-  //   const circle = document.createElement("span");
-  //   const diameter = Math.max(button.clientWidth, button.clientHeight);
-  //   const radius = diameter / 2;
-
-  //   circle.style.width = circle.style.height = `${diameter}px`;
-  //   circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
-  //   circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
-  //   circle.classList.add("ripple");
-
-  //   const ripple = button.getElementsByClassName("ripple")[0];
-
-  //   if (ripple) {
-  //     ripple.remove();
-  //   }
-
-  //   button.appendChild(circle);
-  // }
-
+  const { isRippling, buttonRef, coordinates, buttonStyle, handleMouseDown } =
+    useButton(variant, disabled);
   if (Component)
     return (
       <Component
-        {...buttonProps}
+        {...props}
         ref={buttonRef}
         to={to}
         className={clsx(
-          'relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center',
-          buttonSyle(),
+          'relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center',
+          buttonStyle(),
           className
         )}
-        onMouseDown={clickHardSfx}
+        onMouseDown={handleMouseDown}
+        disabled={disabled}
       >
-        {children}
-        <Ripple disabled={props.isDisabled} />
+        {isRippling && (
+          <Ripple
+            style={{ top: `${coordinates.y}px`, left: `${coordinates.x}px` }}
+            disabled={disabled}
+          />
+        )}
+        <span className="relative z-10">{children}</span>
       </Component>
     );
   return (
     <button
-      {...buttonProps}
+      {...props}
       ref={buttonRef}
       className={clsx(
-        'relative px-6 py-2 rounded-full transition focus:outline-none hover:shadow-xl overflow-hidden ripple-lighter dark:ripple-darker text-center',
-        buttonSyle(),
+        'relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center',
+        buttonStyle(),
         className
       )}
-      onMouseDown={clickHardSfx}
+      onMouseDown={handleMouseDown}
+      disabled={disabled}
     >
-      {children}
-      <Ripple disabled={props.isDisabled} />
+      {isRippling && (
+        <Ripple
+          style={{ top: `${coordinates.y}px`, left: `${coordinates.x}px` }}
+          disabled={disabled}
+        />
+      )}
+      <span className="relative z-10">{children}</span>
     </button>
   );
 }

@@ -27,8 +27,8 @@
   .animation-delay-1200 {
     animation-delay: 1200ms;
   }
-  @variants dark {
-    .ripple-lighter > .ripple,
+  /* @variants dark { */
+  /* .ripple-lighter > .ripple,
     .ripple-darker > .ripple {
       background-position: center;
       transition: background 0.5s;
@@ -42,8 +42,8 @@
         transparent 1.5%
       );
       background-size: 10000%;
-    }
-  }
+    } */
+  /* } */
   @variants hover {
     .tooltip:hover > .tooltip-t,
     .tooltip:hover > .tooltip-r,

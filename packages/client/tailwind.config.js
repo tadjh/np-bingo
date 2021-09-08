@@ -94,9 +94,24 @@ module.exports = {
             animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
           },
         },
+        ripple: {
+          '0%': {
+            transform: 'scale(1)',
+            opacity: 0.375,
+          },
+          '33%': {
+            transform: 'scale(10)',
+            opacity: 0.15,
+          },
+          '100%': {
+            transform: 'scale(35)',
+            opacity: 0,
+          },
+        },
       },
       animation: {
         bounce: 'bounce 1500ms infinite',
+        ripple: 'ripple 750ms ease forwards',
       },
     },
   },
