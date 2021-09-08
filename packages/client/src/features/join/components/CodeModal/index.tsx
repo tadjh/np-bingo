@@ -45,7 +45,6 @@ export default function CodeModal({
   }
 
   // TODO Improve logic
-  // TODO Handle Backspace
   const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.target.value = event.target.value.toUpperCase();
     handleChange(event);
@@ -79,8 +78,7 @@ export default function CodeModal({
   };
 
   useEffect(() => {
-    if (!open) return;
-    if (input1.current === null) return;
+    if (!open || input1.current === null) return;
     input1.current.focus();
   }, [open]);
 

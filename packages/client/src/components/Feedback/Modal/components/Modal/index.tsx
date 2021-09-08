@@ -18,7 +18,8 @@ export default function Modal({
   const appRoot = useRef(document.getElementById('root'));
   const app = useRef(document.getElementById('container'));
   const target = app.current || appRoot.current;
-  const classes = 'absolute w-full h-full flex justify-center items-center'; // top-0 left-0 right-0 bottom-0
+  const classes =
+    'absolute w-full h-full flex justify-center items-center top-0 left-0'; // top-0 left-0 right-0 bottom-0
   const modal = usePortal(target, id, classes);
   // if (!open) return null;
   modal.setAttribute('class', '');
