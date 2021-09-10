@@ -1,21 +1,21 @@
-import { useState } from 'react';
+import { useState, ChangeEvent, FormEvent, ClipboardEvent } from 'react';
 
-export function useForm(
-  initialState: { [key: string]: string },
-  callback?: (inputs: any) => void
+export function useForm<S>(
+  initialFormState: S,
+  callback?: (inputs: S) => void
 ) {
-  const [inputs, setInputs] = useState(initialState);
+  const [inputs, setInputs] = useState(initialFormState);
   const [errors, setErrors] = useState('');
 
   /**
    * Handles input change
    * @param event Change event
    */
-  function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    event.persist();
-    setInputs((inputs: any) => ({
-      ...inputs,
-      [event.target.name]: event.target.value,
+  function handleChange(event: ChangeEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+    setInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
     }));
   }
 
@@ -23,12 +23,25 @@ export function useForm(
    * Handles form submit and returns useForm callback function
    * @param event Submit Event
    */
-  function handleSubmit(event?: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event?: FormEvent<HTMLFormElement>) {
     if (event) {
       event.preventDefault();
     }
     callback && callback(inputs);
   }
+
+  /**
+   * Format inputs
+   * @param array
+   * @param key
+   * @returns
+   */
+  const formatInputs = (array: string[], key: string): S => {
+    const formattedInputs = array.map((item, index) => {
+      return { [`${key}${index + 1}`]: item };
+    });
+    return Object.assign({}, ...formattedInputs);
+  };
 
   /**
    * Handles clipboard paste
@@ -37,30 +50,22 @@ export function useForm(
    * @param maxStringLength Clipboard max string length
    */
   const handlePaste = (
-    event: React.ClipboardEvent<HTMLInputElement>,
+    event: ClipboardEvent<HTMLInputElement>,
     key: string,
     maxStringLength?: number
   ) => {
-    let paste = event.clipboardData.getData('text');
+    const paste = event.clipboardData.getData('text');
 
     try {
       if (maxStringLength && paste.length > maxStringLength) {
         throw new Error('Clipboard paste is too long');
       }
 
-      let pasteArray = paste.split('');
-      let i: number;
-      let data: { [key: string]: string };
-      let pastedInput: { [key: string]: string } = {};
+      const formattedInputs = formatInputs(paste.split(''), key);
 
-      for (i = 0; i < pasteArray.length; i++) {
-        data = { [`${key}${i + 1}`]: pasteArray[i] };
-        pastedInput = { ...pastedInput, ...data };
-      }
-
-      setInputs((inputs: any) => ({
-        ...inputs,
-        ...pastedInput,
+      setInputs((prevInputs) => ({
+        ...prevInputs,
+        ...formattedInputs,
       }));
     } catch (error) {
       handleError(error);
@@ -77,5 +82,12 @@ export function useForm(
     // return
   };
 
-  return { inputs, errors, handleChange, handleSubmit, handlePaste };
+  /**
+   * Reset form state
+   */
+  const clearForm = () => {
+    setInputs(initialFormState);
+  };
+
+  return { inputs, errors, handleChange, handleSubmit, handlePaste, clearForm };
 }
