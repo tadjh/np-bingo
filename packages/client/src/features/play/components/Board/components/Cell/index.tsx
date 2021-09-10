@@ -18,7 +18,9 @@ export default function Cell({
   ...props
 }: CellProps): JSX.Element {
   const cellRef = useRef<HTMLDivElement | null>(null);
-  const { isRippling, coordinates, handleSetCoordinates } = useRipple(cellRef);
+  const { isRippling, coordinates, handleSetCoordinates } = useRipple(
+    cellRef.current
+  );
   const { isChecked, handleClick, handleMouseDown } = useCell(
     handleSetCoordinates,
     winner,

@@ -1,4 +1,4 @@
-import { MouseEvent, MutableRefObject, useEffect, useReducer } from 'react';
+import { MouseEvent, useEffect, useReducer } from 'react';
 import { INIT } from '../config/constants';
 
 const DO_RIPPLE = 'DO RIPPLE';
@@ -19,7 +19,7 @@ export type RippleActions =
   | { type: typeof INIT }
   | { type: typeof DO_RIPPLE; payload: Coordinates };
 
-export function useRipple(buttonRef: MutableRefObject<Element | null>) {
+export function useRipple(button: Element | null) {
   function rippleReducer(
     state: RippleState,
     action: RippleActions
@@ -56,10 +56,10 @@ export function useRipple(buttonRef: MutableRefObject<Element | null>) {
    * @returns
    */
   const handleSetCoordinates = (event: MouseEvent<Element>) => {
-    if (buttonRef.current === null) return;
-    const rect = buttonRef.current.getBoundingClientRect();
-    const coordinateX = Math.round(event.clientX - rect.left - 10);
-    const coordinateY = Math.round(event.clientY - rect.top - 10);
+    if (button === null) return;
+    const { top, left } = button.getBoundingClientRect();
+    const coordinateX = Math.round(event.clientX - left - 10);
+    const coordinateY = Math.round(event.clientY - top - 10);
     setCoordinates(coordinateX, coordinateY);
   };
 

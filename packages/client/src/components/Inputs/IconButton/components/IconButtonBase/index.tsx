@@ -21,9 +21,10 @@ export default function IconButtonBase({
   onMouseDown,
   ...props
 }: IconButtonbaseProps): JSX.Element {
-  const iconButtonRef = useRef<HTMLButtonElement | null>(null);
-  const { isRippling, coordinates, handleSetCoordinates } =
-    useRipple(iconButtonRef);
+  const iconButtonRef = useRef<HTMLButtonElement>(null);
+  const { isRippling, coordinates, handleSetCoordinates } = useRipple(
+    iconButtonRef.current
+  );
 
   /**
    * Mouse Down handler
