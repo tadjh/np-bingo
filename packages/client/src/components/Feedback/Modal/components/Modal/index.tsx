@@ -5,15 +5,15 @@ import ModalBase from '../ModalBase';
 
 export interface ModalProps extends React.HTMLAttributes<HTMLDivElement> {
   id: string;
-  open?: boolean;
   onClose?: () => void;
+  noPortal?: boolean;
 }
 
 export default function Modal({
   id,
-  open = false,
   onClose,
   children,
+  noPortal,
 }: ModalProps): JSX.Element | null {
   const appRoot = useRef(document.getElementById('root'));
   const app = useRef(document.getElementById('container'));
@@ -26,6 +26,7 @@ export default function Modal({
   modal.setAttribute('class', classes);
   // TODO add event for Escape key or react-aria
   // TODO focus?
+  if (noPortal) return <ModalBase onClose={onClose}>{children}</ModalBase>;
   return ReactDOM.createPortal(
     <ModalBase onClose={onClose}>{children}</ModalBase>,
     modal
