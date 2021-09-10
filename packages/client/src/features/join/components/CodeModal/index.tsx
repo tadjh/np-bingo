@@ -12,6 +12,7 @@ export interface CodeModalProps {
   open: boolean;
   onClose: () => void;
   onSumbit?: (room: string) => void;
+  noPortal?: boolean;
 }
 
 const initialState = {
@@ -25,6 +26,7 @@ export default function CodeModal({
   open = false,
   onClose,
   onSumbit,
+  noPortal,
 }: CodeModalProps) {
   const { inputs, errors, handleChange, handleSubmit, handlePaste } = useForm(
     initialState,
@@ -89,6 +91,7 @@ export default function CodeModal({
       open={open}
       onClose={onClose}
       aria-labelledby="join-dialog-title"
+      noPortal={noPortal}
     >
       <ModalHeader id="join-dialog-title" onClose={onClose}>
         Input Room Code
