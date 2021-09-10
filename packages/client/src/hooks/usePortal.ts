@@ -5,16 +5,17 @@ export function usePortal(
   id: string,
   classes: string
 ): HTMLDivElement {
-  // lazy load portal
-  const portalRef = useRef<HTMLDivElement | null>(null);
+  const portalRef = useRef<HTMLDivElement>(null);
   const portal = setPortal(portalRef);
 
   function setPortal(
     portalRef: React.MutableRefObject<HTMLDivElement | null>
   ): HTMLDivElement {
     if (portalRef.current !== null) return portalRef.current;
-    portalRef.current = document.createElement('div');
-    return portalRef.current;
+    const portalDiv = document.createElement('div');
+    portalDiv.setAttribute('id', id);
+    portalDiv.setAttribute('class', classes);
+    return (portalRef.current = portalDiv);
   }
 
   useEffect(() => {
@@ -24,7 +25,7 @@ export function usePortal(
       if (!target.contains(portal)) return;
       target.removeChild(portal);
     };
-  }, [portal, target, id, classes]);
+  }, [portal, target]);
 
   return portal;
 }

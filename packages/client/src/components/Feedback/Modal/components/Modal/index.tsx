@@ -21,11 +21,8 @@ export default function Modal({
   const classes =
     'absolute w-full h-full flex justify-center items-center top-0 left-0'; // top-0 left-0 right-0 bottom-0
   const modal = usePortal(target, id, classes);
-  // if (!open) return null;
-  modal.setAttribute('class', '');
-  modal.setAttribute('class', classes);
   // TODO add event for Escape key or react-aria
-  // TODO focus?
+
   if (noPortal) return <ModalBase onClose={onClose}>{children}</ModalBase>;
   return ReactDOM.createPortal(
     <ModalBase onClose={onClose}>{children}</ModalBase>,
