@@ -47,6 +47,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
     handleBall,
   } = useHost(socket);
   const {
+    disableDraws,
     gamestateToggle,
     toggleText,
     handleValidate,
@@ -111,7 +112,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
                 disabled={setDisabled()}
               />
             </div>
-            <Draws draws={draws} disabled={gamestate === 'end' && true} />
+            <Draws draws={draws} disabled={disableDraws} />
           </Fragment>
         )}
       </main>

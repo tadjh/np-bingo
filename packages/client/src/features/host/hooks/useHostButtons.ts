@@ -149,7 +149,10 @@ export function useHostButtons() {
     // setIsDeleteRoom(true);
   };
 
+  const disableDraws = gamestate === 'end' && true;
+
   return {
+    disableDraws,
     gamestateToggle,
     toggleText,
     handleValidate,
