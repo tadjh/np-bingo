@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, Fragment, ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
 import FormControl from '@material-ui/core/FormControl';
@@ -28,18 +28,18 @@ export default function Create({ title }: CreateProps) {
     visible: false,
   });
 
-  const handleRadio = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleRadio = (event: ChangeEvent<HTMLInputElement>) => {
     setType((event.target as HTMLInputElement).value);
   };
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
   const { postage, corners, rovingl, visible } = state;
 
   return (
-    <React.Fragment>
+    <Fragment>
       <header>
         <Typography variant="h4" component="h1">
           Create
@@ -80,7 +80,7 @@ export default function Create({ title }: CreateProps) {
           </RadioGroup>
         </FormControl>
         {(type === 'default' || type === 'housey') && (
-          <React.Fragment>
+          <Fragment>
             <FormControl component="fieldset">
               <FormLabel component="legend">Special Rules</FormLabel>
               <FormGroup>
@@ -117,7 +117,7 @@ export default function Create({ title }: CreateProps) {
               </FormGroup>
               <FormHelperText>Optional</FormHelperText>
             </FormControl>
-          </React.Fragment>
+          </Fragment>
         )}
         <FormControl component="fieldset">
           <FormLabel component="legend">Visibility</FormLabel>
@@ -143,6 +143,6 @@ export default function Create({ title }: CreateProps) {
           &larr; Back
         </Link>
       </footer>
-    </React.Fragment>
+    </Fragment>
   );
 }

@@ -29,14 +29,14 @@ export default function Join({ publicRooms = [] }: JoinProps) {
   const [isOpen, , open, close] = useToggle();
   return (
     <Fragment>
-      <header className="flex-1 justify-between">
+      <header className="flex-auto justify-between">
         <Back to="/" />
         <h1 className="text-center text-3xl text-black dark:text-white text-opacity-60 dark:text-opacity-60 self-center">
           Join
         </h1>
         <div className="w-[40px]"></div>
       </header>
-      <main className="justify-evenly">
+      <main className="flex-auto justify-evenly">
         {allowPublic && <RoomList rooms={publicRooms} onClick={joinRoom} />}
         <div className="flex flex-col items-center gap-3">
           <Button variant="primary" className="join-button" onClick={open}>
@@ -55,7 +55,7 @@ export default function Join({ publicRooms = [] }: JoinProps) {
           )}
         </div>
       </main>
-      <footer className="flex-1 justify-end gap-1">
+      <footer className="flex-auto">
         <div>{'\xa0'}</div>
         <IconMenu direction="up" />
         <PlayerName

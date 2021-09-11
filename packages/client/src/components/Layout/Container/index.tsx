@@ -14,7 +14,7 @@ export default function Container({
       className={clsx(
         'min-h-screen overflow-hidden',
         'sm:min-w-[376px] sm:min-h-[810px] sm:rounded-[38px]',
-        'relative flex flex-col bg-gray-100 dark:bg-gray-900', // min-h-screen mt-[30px]
+        'relative flex flex-col px-3 bg-gray-100 dark:bg-gray-900', // min-h-screen mt-[30px]
         className
       )}
       {...props}

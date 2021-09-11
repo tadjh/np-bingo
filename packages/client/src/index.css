@@ -3,14 +3,19 @@
 @tailwind utilities;
 
 @layer base {
+  header,
+  main,
+  footer {
+    @apply flex z-10;
+  }
   header {
-    @apply flex justify-center z-10 px-3 py-4 mt-[30px];
+    @apply py-4 mt-[30px] gap-1;
   }
   main {
-    @apply flex flex-1 flex-col items-center z-10 px-3 py-1 gap-y-4;
+    @apply flex-col items-center gap-y-4;
   }
   footer {
-    @apply flex flex-col items-center z-10 px-3 py-4;
+    @apply flex-col justify-end items-center py-4 gap-1;
   }
 }
 

@@ -57,7 +57,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
   const [playRandomSfx] = useHostSounds();
   return (
     <Fragment>
-      <header className="flex gap-2 items-center justify-between">
+      <header className="justify-between">
         <Back to="/" onClick={handleLeaveRoom} />
         <div className="flex gap-2">
           <div className="w-[98px] text-center">
@@ -75,7 +75,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
         </div>
         <div className="w-[40px]" />
       </header>
-      <main>
+      <main className="flex-auto">
         <HostStatus
           gamestate={gamestate}
           count={activePlayerCount()}
@@ -115,7 +115,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
           </React.Fragment>
         )}
       </main>
-      <footer className="gap-1">
+      <footer>
         <Widgets room={room} />
         <PlayerName
           status={socket.connected}

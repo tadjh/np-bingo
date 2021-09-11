@@ -61,7 +61,7 @@ export default function Play({
     usePlayDisplay(gamemodeOverride || gamemode, gamestate);
   return (
     <Fragment>
-      <header className="flex gap-2 items-center justify-between">
+      <header className="justify-between">
         <Back to="/" onClick={handleLeaveRoom} />
         {allowNewCard && (
           <Button
@@ -71,7 +71,7 @@ export default function Play({
             New Card
           </Button>
         )}
-        <div className="flex gap-2">
+        <div className="flex gap-1">
           <div className="w-[108px] text-center">
             <Button
               variant="primary"
@@ -91,7 +91,7 @@ export default function Play({
         </div>
         <div className="w-[40px]" />
       </header>
-      <main>
+      <main className="flex-auto">
         <PlayStatus
           gamestate={gamestate}
           gamemode={gamemodeOverride || gamemode}
@@ -111,7 +111,7 @@ export default function Play({
           crossmarks={crossmarks}
         />
       </main>
-      <footer className="gap-1">
+      <footer>
         {gamemode === 'solo' ? (
           <IconMenu direction="up" />
         ) : (

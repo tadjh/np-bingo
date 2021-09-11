@@ -24,10 +24,10 @@ export default function Home(): JSX.Element {
   if (isRedirect) return <Redirect to={`/host?r=${room}`} />;
   return (
     <Fragment>
-      <header className="flex-1 items-center">
+      <header className="flex-auto items-center justify-center">
         <Logo home={true} data-testid="home-logo" />
       </header>
-      <main className="justify-center">
+      <main className="flex-auto justify-center">
         <Typography>{'\xa0'}</Typography>
         <Button
           id="play-button"
@@ -46,7 +46,7 @@ export default function Home(): JSX.Element {
         </Button>
         <Typography>{isError ? 'Something went wrong...' : '\xa0'}</Typography>
       </main>
-      <footer className="flex-1 justify-end gap-1">
+      <footer className="flex-auto">
         {showCredit && (
           <Credit
             author="Tadjh Brooks"
