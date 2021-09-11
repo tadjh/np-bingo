@@ -16,7 +16,7 @@ export interface Config {
   theme: Theme;
 }
 
-const config = {
+const config: Config = {
   allowNewCard: false, // Allow players to draw a new random card
   allowPublic: true, // TODO Allow public game rooms
   allowShare: true, // Allow shareable room links
@@ -30,6 +30,6 @@ const config = {
   specialRules: [], // TODO Array of valid special rules
   streamerMode: false, // TODO Streamer mode default
   theme: 'dark', // Set default theme 'light' or 'dark'
-} as Config;
+};
 
 export default config;
