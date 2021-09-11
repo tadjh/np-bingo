@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { SVGProps } from 'react';
 import clsx from 'clsx';
 
-export interface IconProps {
+export interface IconProps extends SVGProps<SVGSVGElement> {
   className?: string;
   children?: React.ReactNode;
   size?: 'x-small' | 'small' | 'medium' | 'large' | 'x-large';
@@ -13,6 +13,7 @@ export default function Icon({
   size = 'medium',
   viewBox = '0 0 20 20',
   className,
+  ...props
 }: IconProps) {
   function iconSize() {
     switch (size) {
@@ -40,6 +41,7 @@ export default function Icon({
       )}
       fill="currentColor"
       viewBox={viewBox}
+      {...props}
     >
       {children}
     </svg>
