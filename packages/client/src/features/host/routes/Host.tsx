@@ -84,19 +84,19 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
         {gamestate === 'init' || gamestate === 'ready' ? (
           <PlayerList data={players} action={handleRemovePlayer} />
         ) : (
-          <React.Fragment>
+          <Fragment>
             <div className="flex items-center gap-x-3">
               <IconButton
-                disabled={(setDisabled() || inProgress) && true}
                 onClick={handleBall}
                 onMouseDown={playRandomSfx}
                 description="New Ball"
                 direction="left"
+                disabled={inProgress || setDisabled()}
               >
                 <PlusCircleIcon
                   className={clsx(
-                    'text-opacity-90 dark:text-opacity-90 group-hover:text-opacity-60',
-                    setDisabled() || inProgress
+                    'text-opacity-90 dark:text-opacity-90',
+                    inProgress || setDisabled()
                       ? 'text-gray-300 dark:text-gray-500 cursor-default'
                       : 'text-blue-700 dark:text-blue-300'
                   )}
@@ -112,7 +112,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
               />
             </div>
             <Draws draws={draws} disabled={gamestate === 'end' && true} />
-          </React.Fragment>
+          </Fragment>
         )}
       </main>
       <footer>
