@@ -110,7 +110,7 @@ module.exports = {
         },
         'slide-top': {
           from: {
-            bottom: '50%',
+            bottom: '75%',
             opacity: 0,
           },
           to: {
@@ -121,7 +121,7 @@ module.exports = {
         },
         'slide-right': {
           from: {
-            left: '50%',
+            left: '75%',
             opacity: 0,
           },
           to: {
@@ -132,7 +132,7 @@ module.exports = {
         },
         'slide-bottom': {
           from: {
-            top: '50%',
+            top: '75%',
             opacity: 0,
           },
           to: {
@@ -143,7 +143,7 @@ module.exports = {
         },
         'slide-left': {
           from: {
-            right: '50%',
+            right: '75%',
             opacity: 0,
           },
           to: {
@@ -164,17 +164,5 @@ module.exports = {
     },
   },
   variants: {},
-  // variants: {
-  //   extend: {
-  //     boxShadow: ['disabled'],
-  //     textColor: ['disabled'],
-  //     backgroundColor: ['even', 'active', 'disabled'],
-  //     borderWidth: ['last'],
-  //     opacity: ['dark', 'disabled'],
-  //     backgroundImage: ['dark'],
-  //     cursor: ['disabled'],
-  //     translate: ['hover', 'active', 'disabled'],
-  //   },
-  // },
   plugins: [],
 };
