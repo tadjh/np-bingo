@@ -12,7 +12,7 @@ import {
 import features from '../../config/features';
 import { Rooms } from './components/RoomList/RoomList.stories';
 import { Socket } from 'socket.io-client';
-import { Wrapper } from '../../components/Layout/Container/Wrapper';
+import { Wrapper } from '../../components/Layout/Wrapper';
 import { Theme } from '@np-bingo/types';
 
 export default {

@@ -1,8 +1,8 @@
 import React, { HTMLAttributes } from 'react';
 import clsx from 'clsx';
 import { Theme } from '@np-bingo/types';
-import Background from '../../../Surfaces/Background';
-import Container from '..';
+import Background from '../../Surfaces/Background';
+import Container from '../Container';
 export interface WrapperProps extends HTMLAttributes<HTMLDivElement> {
   theme: Theme;
 }

@@ -15,7 +15,7 @@ import {
   UserContext,
 } from '../../context';
 import { Theme } from '@np-bingo/types';
-import { Wrapper } from '../../components/Layout/Container/Wrapper';
+import { Wrapper } from '../../components/Layout/Wrapper';
 
 export default {
   title: 'Pages/Play',

@@ -9,7 +9,7 @@ import {
   UserContext,
 } from '../../context';
 import { Socket } from 'socket.io-client';
-import { Wrapper } from '../../components/Layout/Container/Wrapper';
+import { Wrapper } from '../../components/Layout/Wrapper';
 import { Theme } from '@np-bingo/types';
 
 export default {

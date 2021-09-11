@@ -19,7 +19,7 @@ import { useAppState } from './hooks';
 import './App.css';
 import features from './config/features';
 import { useState } from 'react';
-import { Wrapper } from './components/Layout/Container/Wrapper';
+import { Wrapper } from './components/Layout/Wrapper';
 export default function App() {
   const [{ user, isSocketLoading }, userDispatch] = useUser();
   const { socket, connect } = useSocket(userDispatch);
