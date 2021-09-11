@@ -1,6 +1,6 @@
 Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
-// TODO Bug: Modal no dark mode on refresh
+DONE Bug: Modal no dark mode on refresh
 DONE Bug: SOLO & MULTI No Bingo doesn’t play sound
 DONE Bug: Tooltips are broken
 DONE Bug: On Win, Scribble sound still plays
@@ -16,15 +16,14 @@ DONE Bug: Multiplayer show progress indicator after host pushes ball
 DONE Bug: Multiplayer new ball no sound
 DONE Snapshot update
 DONE Bug: On leave room Bingo Song continues to play
-// TODO Public Room Display busted
-// TODO Bug: modal bug in storybook removeChild
+DONE Public Room Display busted
+DONE Bug: modal bug in storybook removeChild
 DONE Bug: Back button no sound
 DONE Make app responsive again including app margin top below certain screen sizes
 DONE Bug: Home doesn't init broken
 // TOOD Bug: Modal isn't iside of phone
 DONE Bug: Home loader not centered
 // TODO On game save, put winners into an array on server. Game 1, Game 2, etc.
-// TODO Copy link is broken
 
 Vulnerbilities
 // TODO Prevent kicked player from rejoining (API & Socket)
@@ -36,7 +35,6 @@ Vulnerbilities
 // TODO Timeout socket.io connection with reconnect popup
 
 Development
-// TODO Adding Serial to Card
 // TODO Remove material-ui from Create view
 // TODO Config Husky
 // TODO add @socket.io/admin-ui
@@ -58,11 +56,11 @@ heroku logs -t --remote heroku-web-client
 
 QOL
 // TODO Update Favicon
-// TODO Persist Solo Mode
+// TODO Persist Solo Mode?
 // TODO Game in progress try again later on disconnect
 // TODO Add: Player join sound for host
 // TODO Add: Sound for send card
-// TODO React ARIA for screen readers
+// TODO React ARIA for screen readers?
 // TODO Create users?
 // TODO Implement useTitle
 // TODO Improve room input behavior for typos
