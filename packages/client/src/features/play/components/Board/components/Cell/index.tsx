@@ -41,7 +41,6 @@ export default function Cell({
       {isRippling && (
         <Ripple
           style={{ top: `${coordinates.y}px`, left: `${coordinates.x}px` }}
-          // disabled={winner}
         />
       )}
       {(override || isChecked) && (
