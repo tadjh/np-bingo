@@ -1,17 +1,12 @@
 import { HTMLAttributes } from 'react';
 import clsx from 'clsx';
 
-export interface RippleProps extends HTMLAttributes<HTMLSpanElement> {
-  disabled?: boolean;
-  className?: string;
-}
+export interface RippleProps extends HTMLAttributes<HTMLSpanElement> {}
 
 export default function Ripple({
-  disabled,
   className,
   ...props
 }: RippleProps): JSX.Element | null {
-  if (disabled) return null;
   return (
     <span
       {...props}
