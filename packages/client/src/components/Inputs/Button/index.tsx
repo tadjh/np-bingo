@@ -1,15 +1,14 @@
-import { ButtonHTMLAttributes, forwardRef, useRef } from 'react';
+import { ButtonHTMLAttributes, forwardRef, useRef, ComponentType } from 'react';
 import clsx from 'clsx';
 import Ripple from '../../Feedback/Ripple';
 import { useButton } from './hooks';
 import { useRipple } from '../../../hooks/useRipple';
-
 export type ButtonVariant = 'default' | 'primary' | 'success';
 
 export interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement | HTMLAnchorElement> {
   variant?: ButtonVariant;
-  component?: any;
+  component?: ComponentType<any>;
   className?: string;
   to?: string;
   disabled?: boolean;
