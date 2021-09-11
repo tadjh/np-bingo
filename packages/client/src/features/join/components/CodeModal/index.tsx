@@ -1,4 +1,10 @@
-import React, { MutableRefObject, useRef, useEffect } from 'react';
+import {
+  MutableRefObject,
+  useRef,
+  useEffect,
+  ChangeEvent,
+  KeyboardEvent,
+} from 'react';
 import { roomChar } from '@np-bingo/common';
 import Modal, {
   ModalHeader,
@@ -15,7 +21,14 @@ export interface CodeModalProps {
   noPortal?: boolean;
 }
 
-const initialState = {
+interface codeModalState {
+  code1: string;
+  code2: string;
+  code3: string;
+  code4: string;
+}
+
+const initialState: codeModalState = {
   code1: '',
   code2: '',
   code3: '',
@@ -28,50 +41,74 @@ export default function CodeModal({
   onSumbit,
   noPortal,
 }: CodeModalProps) {
-  const { inputs, errors, handleChange, handleSubmit, handlePaste } = useForm(
-    initialState,
-    onSubmitCallback
-  );
-  const input1 = useRef<HTMLInputElement>(null);
-  const input2 = useRef<HTMLInputElement>(null);
-  const input3 = useRef<HTMLInputElement>(null);
-  const input4 = useRef<HTMLInputElement>(null);
+  const submitRef = useRef<HTMLButtonElement>(null);
+  const input1Ref = useRef<HTMLInputElement>(null);
+  const input2Ref = useRef<HTMLInputElement>(null);
+  const input3Ref = useRef<HTMLInputElement>(null);
+  const input4Ref = useRef<HTMLInputElement>(null);
 
   /**
    * Action on form submit
-   * @param formInputs
+   * @param inputs
    */
-  function onSubmitCallback(formInputs: typeof inputs) {
-    let room = Object.values(formInputs).join('').toUpperCase();
+  const onSubmitCallback = (inputs: codeModalState) => {
+    let room = Object.values(inputs).join('').toUpperCase();
     onSumbit && onSumbit(room);
-  }
-
-  // TODO Improve logic
-  const handleChangeText = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.target.value = event.target.value.toUpperCase();
-    handleChange(event);
-
-    // Value blank
-    // if (event.target.value.length < event.target.maxLength) {
-    //   if (!event.target.previousSibling) return;
-    //   let target = event.target.previousSibling as HTMLInputElement;
-    //   target.focus();
-    // }
-
-    if (event.target.value.length === event.target.maxLength) {
-      if (!event.target.nextSibling) return;
-      let target = event.target.nextSibling as HTMLInputElement;
-      target.focus();
-    }
   };
 
+  const { inputs, errors, handleChange, handleSubmit, handlePaste, clearForm } =
+    useForm<codeModalState>(initialState, onSubmitCallback);
+
+  /**
+   * Force all inputs to be capital letters
+   * @param value
+   * @returns
+   */
+  const forceCaps = (value: string) => value.toUpperCase();
+
+  /**
+   * Focuses next html element
+   * @param next
+   * @returns void
+   */
+  const focusNext = (next: HTMLElement | null) => {
+    if (!next) return;
+    next.focus();
+  };
+
+  /**
+   * Change event handler
+   * @param event
+   */
+  const handleChangeText = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value, maxLength, name, nextSibling } = event.target;
+
+    const formattedValue = forceCaps(value);
+
+    handleChange({
+      ...event,
+      target: { ...event.target, name, value: formattedValue },
+    });
+
+    if (formattedValue.length === maxLength)
+      focusNext(nextSibling as HTMLElement);
+  };
+
+  /**
+   * Key Down event handler
+   * @param event
+   * @param self
+   * @param next
+   * @returns void
+   */
   const handleKeyDown = (
-    event: React.KeyboardEvent<HTMLInputElement>,
+    event: KeyboardEvent<HTMLInputElement>,
     self: MutableRefObject<HTMLInputElement | null>['current'],
     next: MutableRefObject<HTMLInputElement | null>['current']
   ) => {
-    if (event.repeat) return;
-    if (event.key === 'Backspace' || event.key === 'Delete') {
+    const { key, repeat } = event;
+    if (repeat) return;
+    if (key === 'Backspace' || key === 'Delete') {
       if (self && self.value.length === 0) {
         if (!next) return;
         next.focus();
@@ -79,21 +116,55 @@ export default function CodeModal({
     }
   };
 
+  /**
+   * Turn off sumbit button when code is empty
+   * @returns boolean
+   */
+  const disableSubmit =
+    inputs.code1 !== '' &&
+    inputs.code2 !== '' &&
+    inputs.code3 !== '' &&
+    inputs.code4 !== ''
+      ? false
+      : true;
+
+  /**
+   * On Close event handler
+   */
+  const handleOnClose = () => {
+    clearForm();
+    onClose();
+  };
+
+  /**
+   * Defualts to input1 focus on page load
+   */
   useEffect(() => {
-    if (!open || input1.current === null) return;
-    input1.current.focus();
+    if (!open || input1Ref.current === null) return;
+    input1Ref.current.focus();
   }, [open]);
 
+  /**
+   * Focus sumbit when form full
+   */
+  useEffect(() => {
+    if (
+      inputs.code1 !== '' &&
+      inputs.code2 !== '' &&
+      inputs.code3 !== '' &&
+      inputs.code4 !== ''
+    ) {
+    }
+  }, [inputs]);
   if (!open) return null;
   return (
     <Modal
       id="code-modal"
-      open={open}
-      onClose={onClose}
+      onClose={handleOnClose}
       aria-labelledby="join-dialog-title"
       noPortal={noPortal}
     >
-      <ModalHeader id="join-dialog-title" onClose={onClose}>
+      <ModalHeader id="join-dialog-title" onClose={handleOnClose}>
         Input Room Code
       </ModalHeader>
       <form onSubmit={handleSubmit} autoComplete="off">
@@ -105,8 +176,9 @@ export default function CodeModal({
             {/* <label htmlFor="code-input">Room Code</label> */}
             <input
               name="code1"
+              aria-label="code1"
               type="text"
-              ref={input1}
+              ref={input1Ref}
               pattern={roomChar}
               maxLength={1}
               className="text-center font-bold bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner"
@@ -116,14 +188,15 @@ export default function CodeModal({
               onPaste={(event) => handlePaste(event, 'code', 4)}
               onChange={handleChangeText}
               onKeyDown={(event) =>
-                handleKeyDown(event, input1.current, input1.current)
+                handleKeyDown(event, input1Ref.current, input1Ref.current)
               }
               required
             />
             <input
               name="code2"
+              aria-label="code2"
               type="text"
-              ref={input2}
+              ref={input2Ref}
               pattern={roomChar}
               maxLength={1}
               className="text-center font-bold bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner"
@@ -131,14 +204,15 @@ export default function CodeModal({
               value={inputs.code2}
               onChange={handleChangeText}
               onKeyDown={(event) =>
-                handleKeyDown(event, input2.current, input1.current)
+                handleKeyDown(event, input2Ref.current, input1Ref.current)
               }
               required
             />
             <input
               name="code3"
+              aria-label="code3"
               type="text"
-              ref={input3}
+              ref={input3Ref}
               pattern={roomChar}
               maxLength={1}
               className="text-center font-bold bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner"
@@ -146,14 +220,15 @@ export default function CodeModal({
               value={inputs.code3}
               onChange={handleChangeText}
               onKeyDown={(event) =>
-                handleKeyDown(event, input3.current, input2.current)
+                handleKeyDown(event, input3Ref.current, input2Ref.current)
               }
               required
             />
             <input
               name="code4"
+              aria-label="code4"
               type="text"
-              ref={input4}
+              ref={input4Ref}
               pattern={roomChar}
               maxLength={1}
               className="text-center font-bold bg-gradient-to-b from-gray-200 dark:from-gray-500 to-gray-300 dark:to-gray-700 rounded-md w-9 h-12 shadow-inner"
@@ -161,14 +236,16 @@ export default function CodeModal({
               value={inputs.code4}
               onChange={handleChangeText}
               onKeyDown={(event) =>
-                handleKeyDown(event, input4.current, input3.current)
+                handleKeyDown(event, input4Ref.current, input3Ref.current)
               }
               required
             />
           </fieldset>
         </ModalContent>
         <ModalFooter>
-          <Button type="submit">Join</Button>
+          <Button ref={submitRef} type="submit" disabled={disableSubmit}>
+            Join
+          </Button>
         </ModalFooter>
       </form>
     </Modal>
