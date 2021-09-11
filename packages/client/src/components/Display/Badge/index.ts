@@ -1,4 +1,3 @@
-import Badge from './components/Badge';
+export { default } from './Badge';
 export * from './types';
-export * from './components/Badge';
-export default Badge;
+export * from './Badge';

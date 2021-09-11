@@ -1,16 +1,8 @@
 import React from 'react';
 import clsx from 'clsx';
-import { BadgeColors } from '..';
-import Tooltip from '../../Tooltip';
-import { useBadge } from '../hooks';
-
-export interface BadgeProps extends React.HTMLAttributes<HTMLDivElement> {
-  color?: BadgeColors;
-  description?: string;
-  isHovered?: boolean;
-  disabled?: boolean;
-  offset?: number;
-}
+import { BadgeProps } from '.';
+import Tooltip from '../Tooltip';
+import { useBadge } from './hooks';
 
 export default function Badge({
   color = 'gray',
