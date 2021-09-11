@@ -48,9 +48,11 @@ export default function Ball({
           {number !== 0 && number}
         </div>
       </div>
-      {inProgress && (
-        <CircularProgress className="absolute" progress={progress} />
-      )}
+      <CircularProgress
+        inProgress={inProgress}
+        className="absolute"
+        progress={progress}
+      />
     </div>
   );
 }

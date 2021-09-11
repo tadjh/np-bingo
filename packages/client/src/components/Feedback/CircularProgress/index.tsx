@@ -5,16 +5,18 @@ import CircularProgressSVG from './CircularProgress';
 export interface CircularProgressProps
   extends React.SVGProps<SVGCircleElement> {
   progress?: number;
+  inProgress: boolean;
 }
 
 export default function CircularProgress({
+  inProgress = false,
   progress = 0,
   className = '',
-}: CircularProgressProps): JSX.Element {
+}: CircularProgressProps): JSX.Element | null {
+  if (!inProgress) return null;
+
   const svgDashArray = 126.92;
-
   const dashOffset = svgDashArray - (svgDashArray * progress) / 100;
-
   return (
     <div
       className={clsx(

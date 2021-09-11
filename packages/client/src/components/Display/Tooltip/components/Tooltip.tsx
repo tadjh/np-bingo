@@ -18,7 +18,7 @@ export default function Tooltip({
 }: TooltipProps): JSX.Element | null {
   const [box, arrow] = useTooltip(direction);
 
-  if (disabled) return null;
+  if (disabled || children === '') return null;
   return (
     <span
       className={clsx(

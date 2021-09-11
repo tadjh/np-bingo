@@ -157,10 +157,10 @@ export default function CodeModal({
       submitRef.current?.focus();
     }
   }, [inputs]);
-  if (!open) return null;
   return (
     <Modal
       id="code-modal"
+      open={open}
       onClose={handleOnClose}
       aria-labelledby="join-dialog-title"
       noPortal={noPortal}

@@ -1,4 +1,4 @@
-import React, { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 import clsx from 'clsx';
 import IconButtonBase from '../IconButtonBase';
 import Tooltip, { TooltipDirection } from '../../../../Display/Tooltip';
@@ -19,22 +19,16 @@ export default function IconButton({
   className = '',
   children,
   disabled = false,
-  description,
+  description = '',
   direction,
   isHovered,
   ...props
 }: IconButtonProps): JSX.Element {
   return (
     <div className="relative group">
-      {description && (
-        <Tooltip
-          isHovered={isHovered}
-          direction={direction}
-          disabled={disabled}
-        >
-          {description}
-        </Tooltip>
-      )}
+      <Tooltip isHovered={isHovered} direction={direction} disabled={disabled}>
+        {description}
+      </Tooltip>
       <IconButtonBase
         className={clsx(
           'relative bg-transparent rounded-full p-1.5 transition focus:outline-none overflow-hidden',

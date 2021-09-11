@@ -29,11 +29,9 @@ export default function Badge({
           alert()
         )}
       />
-      {description !== '' && (
-        <Tooltip isHovered={isHovered} disabled={disabled}>
-          {description}
-        </Tooltip>
-      )}
+      <Tooltip isHovered={isHovered} disabled={disabled}>
+        {description}
+      </Tooltip>
       {children}
     </div>
   );
