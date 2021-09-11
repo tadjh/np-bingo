@@ -140,8 +140,8 @@ export default function CodeModal({
    * Defualts to input1 focus on page load
    */
   useEffect(() => {
-    if (!open || input1Ref.current === null) return;
-    input1Ref.current.focus();
+    if (!open) return;
+    input1Ref.current?.focus();
   }, [open]);
 
   /**
@@ -154,6 +154,7 @@ export default function CodeModal({
       inputs.code3 !== '' &&
       inputs.code4 !== ''
     ) {
+      submitRef.current?.focus();
     }
   }, [inputs]);
   if (!open) return null;
