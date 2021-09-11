@@ -36,11 +36,15 @@ export default function IconButtonBase({
   };
 
   return (
-    <button {...props} ref={iconButtonRef} onMouseDown={handleMouseDown}>
+    <button
+      {...props}
+      disabled={disabled}
+      ref={iconButtonRef}
+      onMouseDown={handleMouseDown}
+    >
       {isRippling && (
         <Ripple
           style={{ top: `${coordinates.y}px`, left: `${coordinates.x}px` }}
-          disabled={disabled}
         />
       )}
       {children}

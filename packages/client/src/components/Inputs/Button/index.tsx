@@ -54,7 +54,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           {isRippling && (
             <Ripple
               style={{ top: `${coordinates.y}px`, left: `${coordinates.x}px` }}
-              disabled={disabled}
             />
           )}
           <span ref={childRef} className="relative z-10">
@@ -78,7 +77,6 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {isRippling && (
           <Ripple
             style={{ top: `${coordinates.y}px`, left: `${coordinates.x}px` }}
-            disabled={disabled}
           />
         )}
         <span ref={childRef} className="relative z-10">
