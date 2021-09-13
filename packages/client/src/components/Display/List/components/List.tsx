@@ -1,24 +1,10 @@
-import React, { useMemo } from 'react';
-import { toSlug } from '../../../../utils';
+import React from 'react';
 import { ListBase } from './ListBase';
+import { ListBaseWithTitle } from './ListBaseWithTitle';
 
 export interface ListProps extends React.HTMLAttributes<HTMLUListElement> {}
 
 export default function List({ title, children }: ListProps): JSX.Element {
-  const id = useMemo(() => toSlug(title), [title]);
-
-  if (title) {
-    return (
-      <div className="w-full h-full flex flex-col gap-y-1.5">
-        <h3
-          className="text-lg text-center text-black dark:text-white text-opacity-90 dark:text-opacity-90"
-          id={id}
-        >
-          {title}
-        </h3>
-        <ListBase aria-labelledby={id}>{children}</ListBase>
-      </div>
-    );
-  }
+  if (title) return <ListBaseWithTitle title={title} />;
   return <ListBase>{children}</ListBase>;
 }
