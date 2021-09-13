@@ -6,12 +6,13 @@ import { useCell } from './hooks';
 import { useRipple } from '../../../../../../hooks/useRipple';
 
 export interface CellProps extends React.HTMLAttributes<HTMLDivElement> {
+  index: number;
   winner: boolean;
   checked?: boolean;
 }
 
 export default function Cell({
-  className,
+  index,
   checked: override,
   winner = false,
   children,
@@ -32,8 +33,12 @@ export default function Cell({
       {...props}
       ref={cellRef}
       className={clsx(
-        'flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden',
-        className === 'cell-13' ? 'cell-13 text-base' : className
+        'flex justify-center items-center relative w-[54px] h-[48px] select-none',
+        'bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90',
+        'border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden',
+        'cell',
+        index === 13 && 'cell-13 text-base',
+        (override || isChecked) && 'active'
       )}
       onClick={handleClick}
       onMouseDown={handleMouseDown}
@@ -44,7 +49,6 @@ export default function Cell({
         />
       )}
       {(override || isChecked) && (
-        // <div className={clsx(override || isChecked ? 'absolute' : 'hidden')}>
         <span className="absolute" data-testid="crossmark">
           <HeavyBallotXIcon
             size="x-large"
@@ -55,7 +59,6 @@ export default function Cell({
             )}
           />
         </span>
-        // </div>
       )}
       <span className="relative z-10">{children}</span>
     </div>

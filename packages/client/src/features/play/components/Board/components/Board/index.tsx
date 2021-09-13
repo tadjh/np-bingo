@@ -37,15 +37,16 @@ export function Board({
       </div>
       <div className="grid grid-cols-5">
         {card.map((value, index) => {
-          let id = `cell-${index + 1}`;
+          let cellId = index + 1;
+          let id = `cell-${cellId}`;
           return (
             <Cell
+              index={cellId}
               winner={winner}
               key={id}
-              className={id}
               checked={winner ? crossmarks[id] || false : undefined}
             >
-              {index !== 12 ? value : 'free'}
+              {cellId !== 13 ? value : 'free'}
             </Cell>
           );
         })}
