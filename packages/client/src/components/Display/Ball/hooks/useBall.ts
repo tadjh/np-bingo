@@ -64,10 +64,8 @@ export function useBall(
    * Used to offset badge background color
    * @returns number | undefined
    */
-  const offset = () => {
-    if (remainder === 75) return 0;
-    return Math.round(((75 - remainder) * 100) / 75);
-  };
+  const offset =
+    remainder === 75 ? 0 : Math.round(((75 - remainder) * 100) / 75);
 
-  return { background, gradient, offset };
+  return { offset, background, gradient };
 }
