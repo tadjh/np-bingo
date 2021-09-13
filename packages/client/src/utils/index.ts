@@ -1,20 +1,30 @@
 import { NODE_ENV } from '../config';
 
 /**
- * Search if number exists in the array
- * @param search Number to be queried
+ * Search if element exists in the array
+ * @param search Element to be queried
  * @param set Array of search set
  * @returns True or false depending on match
  */
-export function findElementInArray(search: number, set: number[]): boolean {
+export function findElementInArray<T>(search: T, set: T[]): boolean {
   return set.some((element) => search === element);
+}
+
+/**
+ * Search for element in array and return its index
+ * @param search Element to be queried
+ * @param set Array of search set
+ * @returns Index position of first found element or -1
+ */
+export function findElementIndex<T>(search: T, set: T[]): number {
+  return set.findIndex((element) => search === element);
 }
 
 /**
  * Takes an array and returns a random element.
  * @param array
  */
-export function randomElement(array: any[]) {
+export function randomElement<T>(array: T[]) {
   return array[randomIndex(array)];
 }
 
@@ -35,6 +45,10 @@ export function randomNumber(range: number): number {
   return Math.floor(Math.random() * range + 1);
 }
 
+/**
+ * Error handler function
+ * @param error
+ */
 export function handleError(error: any) {
   if (error.response) {
     // The request was made and the server responded with a status code
@@ -59,8 +73,7 @@ export function handleError(error: any) {
  * @param text
  * @returns slug
  */
-export function toSlug(text?: string): string | undefined {
-  if (!text) return undefined;
+export function toSlug(text: string): string {
   return text
     .toLowerCase()
     .replace(/ /g, '-')
