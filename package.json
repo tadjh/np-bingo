@@ -20,7 +20,9 @@
     "publish-types": "yarn workspace @np-bingo/types publish",
     "publish-common": "yarn workspace @np-bingo/common publish",
     "publish-deps": "run-s publish-types publish-common",
-    "storybook": "yarn workspace @np-bingo/client storybook"
+    "storybook": "yarn workspace @np-bingo/client storybook",
+    "cypress:open": "yarn workspace @np-bingo/client cypress:open",
+    "cypress:run": "yarn workspace @np-bingo/client cypress:run"
   },
   "repository": {
     "type": "git",
