@@ -32,7 +32,7 @@ export function checkCard(card: Card, draws: Draws): Results {
  * @param draws Pool of currently drawn Bingo balls
  * @returns Array of winning index positions on card or otherwise an empty array
  */
-export function checkRows(card: Card, draws: Draws) {
+export function checkRows(card: Card, draws: Draws): number[] {
   let result: number[] = [];
   for (let i = 0; i < 5; i++) {
     if (i === 2) {
@@ -191,7 +191,7 @@ export function checkRisingDiagonal(card: Card, draws: Draws): number[] {
  * @param results
  * @returns Array of winning methods
  */
-export function winningMethods(results: Results) {
+export function winningMethods(results: Results): Method[] {
   const keys = Object.keys(results) as Method[];
   return keys.filter((method) => {
     if (results[method].length <= 0) return undefined;
