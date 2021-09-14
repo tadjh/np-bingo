@@ -44,12 +44,7 @@ export default function Ball({
         >
           {remainder}
         </Badge>
-        <div
-          data-testid="ball-letter"
-          className="leading-4 uppercase relative z-20"
-        >
-          {column}
-        </div>
+        <div className="leading-4 uppercase relative z-20">{column}</div>
         <div
           data-testid="ball-number"
           className="text-3xl leading-7 relative z-20"
