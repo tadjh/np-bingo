@@ -1,4 +1,4 @@
-import { AxiosResponse, Method } from 'axios';
+import { AxiosResponse, Method, AxiosError, AxiosRequestConfig } from 'axios';
 import axios from '../lib/axios';
 import {
   Dispatch,
@@ -39,21 +39,22 @@ export function useFetch<T, R>(
   useEffect(() => {
     if (body === null) return;
     let didCancel = false;
-    const fetchData = async () => {
+    const fetchData = () => {
       dispatch({ type: FETCH_INIT });
-      try {
-        const result: AxiosResponse<R> = await axios({
-          method: initalMethod,
-          url: initalUrl,
-          data: body,
+      axios({
+        method: initalMethod,
+        url: initalUrl,
+        data: body,
+      } as AxiosRequestConfig)
+        .then((result: AxiosResponse<R>) => {
+          if (didCancel) return;
+          dispatch({ type: FETCH_SUCCESS, payload: result });
+        })
+        .catch((error: AxiosError<R>) => {
+          if (didCancel) return;
+          dispatch({ type: FETCH_FAILURE });
+          handleError(error);
         });
-        if (didCancel) return;
-        dispatch({ type: FETCH_SUCCESS, payload: result });
-      } catch (error) {
-        if (didCancel) return;
-        dispatch({ type: FETCH_FAILURE });
-        handleError(error);
-      }
     };
     fetchData();
     return () => {
