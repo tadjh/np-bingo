@@ -31,7 +31,6 @@ import {
   playReducer,
   PlayState,
 } from '../../../reducers/play.reducer';
-// import logger from 'use-reducer-logger';
 import { NODE_ENV } from '../../../config';
 import { ReducerLogger } from '../../../hooks/useReducerLogger';
 
@@ -42,8 +41,9 @@ export function usePlay() {
   } = useContext(UserContext);
   const { ballDelay } = useContext(FeaturesContext);
   const { winners } = useContext(RoomContext);
-  const { gamestate, gamemode, playerCards, dispatch, checkCard } =
-    useContext(GameContext);
+  const { gamestate, gamemode, playerCards, dispatch, checkCard } = useContext(
+    GameContext
+  );
   const [
     { card, serial, crossmarks, kicked, isWinner, isNewGame },
     playDispatch,
