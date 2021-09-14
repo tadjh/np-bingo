@@ -10,30 +10,29 @@ export function usePlayStatus(gamestate: Gamestate, mode: Gamemode) {
   function playStatus(): string {
     switch (gamestate) {
       case 'init':
+        // solo
+        if (mode === 'solo') return 'Click start to begin.';
         //default
-        if (mode !== 'solo') return 'Waiting on host to start the game...';
-        // solo
-        return 'Click start to begin.';
-      // return '\u00a0';
+        return 'Waiting on host to start the game...';
       case 'ready':
-        // default
-        if (mode !== 'solo') return 'Click ready, then wait for host to begin.';
         // solo
-        return 'Click start to begin.';
+        if (mode === 'solo') return 'Click start to begin.';
+        // default
+        return 'Click ready, then wait for host to begin.';
       case 'standby':
         return 'Waiting for host to dispense a ball...';
       case 'start':
         return 'Click a number to cross it out.';
       case 'validate':
-        // default
-        if (mode !== 'solo') return 'Sending card to host...';
         // solo
-        return 'Checking card for Bingo...';
+        if (mode === 'solo') return 'Checking card for Bingo...';
+        // default
+        return 'Sending card to host...';
       case 'pause':
-        // default
-        if (mode !== 'solo') return 'A card is being checked for BINGO!';
         // solo
-        return 'Game paused.';
+        if (mode === 'solo') return 'Game paused.';
+        // default
+        return 'A card is being checked for BINGO!';
       case 'win':
         return 'BINGO!';
       case 'failure':
