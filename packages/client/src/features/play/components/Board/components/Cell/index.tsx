@@ -37,7 +37,7 @@ export default function Cell({
         'bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90',
         'border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden',
         'cell',
-        index === 13 && 'cell-13 text-base',
+        index === 13 ? 'cell-13 text-base' : `cell-${index}`,
         (override || isChecked) && 'active'
       )}
       onClick={handleClick}
