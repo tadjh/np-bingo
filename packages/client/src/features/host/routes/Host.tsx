@@ -89,6 +89,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
                 description="New Ball"
                 direction="left"
                 disabled={inProgress || setDisabled()}
+                data-testid="new-ball"
               >
                 <PlusCircleIcon
                   className={clsx(
