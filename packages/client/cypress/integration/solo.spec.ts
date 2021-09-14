@@ -185,21 +185,21 @@ describe('solo', () => {
         .then((ball) => parseInt(ball.text()))
         .then((number) => findElementIndex(number, card))
         .then((index) => {
+          if (loop === 75) {
+            cy.findByText(/game over!/i).should('exist');
+            cy.findByRole('button', {
+              name: /replay/i,
+            }).should('be.enabled');
+            cy.findByRole('button', {
+              name: /bingo/i,
+            }).should('not.be.enabled');
+            return;
+          }
           if (index >= 0) {
             return cy
               .get(`.cell-${index + 1}`)
               .click()
               .then(() => {
-                if (loop === 75) {
-                  cy.findByText(/game over!/i).should('exist');
-                  cy.findByRole('button', {
-                    name: /replay/i,
-                  }).should('be.enabled');
-                  cy.findByRole('button', {
-                    name: /bingo/i,
-                  }).should('not.be.enabled');
-                  return;
-                }
                 return waitForNextBall(loop).then(() => solo(loop));
               });
           } else {
