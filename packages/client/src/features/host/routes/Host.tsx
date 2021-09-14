@@ -42,7 +42,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
   const {
     progress,
     inProgress,
-    activePlayerCount,
+    playerCount,
     handleRemovePlayer,
     handleBall,
   } = useHost(socket);
@@ -77,7 +77,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
         <div className="w-[40px]" />
       </header>
       <main className="flex-auto">
-        <HostStatus gamestate={gamestate} count={activePlayerCount()} />
+        <HostStatus gamestate={gamestate} count={playerCount} />
         {gamestate === 'init' || gamestate === 'ready' ? (
           <PlayerList data={players} action={handleRemovePlayer} />
         ) : (
