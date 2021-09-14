@@ -57,8 +57,11 @@ export default function Play({
     handleLeaveRoom,
     disableSendCard,
   } = usePlayButton(card);
-  const { primaryButtonText, disablePrimaryButton, disableBallDisplay } =
-    usePlayDisplay(gamemodeOverride || gamemode, gamestate);
+  const {
+    primaryButtonText,
+    disablePrimaryButton,
+    disableBallDisplay,
+  } = usePlayDisplay(gamemodeOverride || gamemode, gamestate);
   return (
     <Fragment>
       <header className="justify-between">
