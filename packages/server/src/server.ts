@@ -4,9 +4,7 @@ import path from 'path';
 import cors from 'cors';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
-import { Room, SocketId } from 'socket.io-adapter';
 import { ORIGIN, PORT } from './config';
-import { Host, Player } from '@np-bingo/types';
 import connectDB from './config/db';
 import { usePlayerHandlers, useHostHandlers } from './hooks';
 // routes
