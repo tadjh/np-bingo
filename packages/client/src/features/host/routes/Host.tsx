@@ -77,11 +77,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
         <div className="w-[40px]" />
       </header>
       <main className="flex-auto">
-        <HostStatus
-          gamestate={gamestate}
-          count={activePlayerCount()}
-          data-testid="host-status"
-        />
+        <HostStatus gamestate={gamestate} count={activePlayerCount()} />
         {gamestate === 'init' || gamestate === 'ready' ? (
           <PlayerList data={players} action={handleRemovePlayer} />
         ) : (
