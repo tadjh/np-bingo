@@ -79,7 +79,7 @@ describe('solo', () => {
     const play = (prevLoop = 0) => {
       let loop = prevLoop + 1;
       cy.get('[data-testid=ball-number]')
-        .then((text) => parseInt(text.text()))
+        .then((ball) => parseInt(ball.text()))
         .then((number) => findElementIndex(number, card))
         .then((index) => {
           if (index >= 0) {
@@ -94,6 +94,116 @@ describe('solo', () => {
                   return waitForNextBall(loop).then(() => play(loop));
                 }
               });
+          } else {
+            return waitForNextBall(loop).then(() => play(loop));
+          }
+        });
+    };
+
+    play();
+  });
+
+  it('no bingo', () => {
+    cy.visit('/');
+    cy.findByRole('link', {
+      name: /play/i,
+    }).click();
+    cy.findByRole('link', {
+      name: /solo/i,
+    }).click();
+
+    let card: Card = [];
+
+    cy.get('.cell').each((element) => card.push(parseInt(element.text())));
+
+    cy.findByRole('button', {
+      name: /start/i,
+    }).click();
+
+    cy.findByText(/free/i).click();
+
+    let draws: Draws = [[], [], [], [], []];
+
+    /**
+     * Recursive game loop
+     * @param prevLoop iterator
+     */
+    const play = (prevLoop = 0) => {
+      let loop = prevLoop + 1;
+      cy.get('[data-testid=ball-number]')
+        .then((ball) => parseInt(ball.text()))
+        .then((number) => findElementIndex(number, card))
+        .then((index) => {
+          if (loop === 4) {
+            return cy
+              .findByRole('button', { name: /bingo/i })
+              .click()
+              .then(() => {
+                cy.findByText(/jumping the gun\. no bingo\.\.\./i);
+              });
+          } else if (index >= 0) {
+            cy.get(`.cell-${index + 1}`).click();
+            return updateValidDraws(card[index], draws)
+              .then((draws) => checkForWin(card, draws))
+              .then(() => {
+                return waitForNextBall(loop).then(() => play(loop));
+              });
+          } else {
+            return waitForNextBall(loop).then(() => play(loop));
+          }
+        });
+    };
+
+    play();
+  });
+
+  it('loses game', () => {
+    cy.visit('/');
+    cy.findByRole('link', {
+      name: /play/i,
+    }).click();
+    cy.findByRole('link', {
+      name: /solo/i,
+    }).click();
+
+    let card: Card = [];
+
+    cy.get('.cell').each((element) => card.push(parseInt(element.text())));
+
+    cy.findByRole('button', {
+      name: /start/i,
+    }).click();
+
+    cy.findByText(/free/i).click();
+
+    /**
+     * Recursive game loop
+     * @param prevLoop iterator
+     */
+    const play = (prevLoop = 0) => {
+      let loop = prevLoop + 1;
+
+      if (loop === 75) {
+        cy.findByText(/game over!/i).should('exist');
+        cy.findByRole('button', {
+          name: /replay/i,
+        }).should('be.enabled');
+        cy.findByRole('button', {
+          name: /bingo/i,
+        }).should('not.be.enabled');
+        return;
+      }
+
+      return cy
+        .get('[data-testid=ball-number]')
+        .then((ball) => parseInt(ball.text()))
+        .then((number) => findElementIndex(number, card))
+        .then((index) => {
+          if (index >= 0) {
+            return cy
+              .get(`.cell-${index + 1}`)
+              .click()
+              .then(() => waitForNextBall(loop).then(() => play(loop)));
           } else {
             return waitForNextBall(loop).then(() => play(loop));
           }
