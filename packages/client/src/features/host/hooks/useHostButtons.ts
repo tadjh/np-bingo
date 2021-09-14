@@ -13,8 +13,9 @@ import { Player, PlayerCard, Winner } from '@np-bingo/types';
 
 export function useHostButtons() {
   const { room, winners } = useContext(RoomContext);
-  const { gamestate, playerCards, split, checkCard, dispatch } =
-    useContext(GameContext);
+  const { gamestate, playerCards, split, checkCard, dispatch } = useContext(
+    GameContext
+  );
   const {
     emitLeaveRoom,
     emitHostStandby,
@@ -97,8 +98,6 @@ export function useHostButtons() {
     if (losers.length > 0) {
       emitLosers(losers);
     }
-
-    // winner ? validateWinner(winner) : validateNotWinner(owner);
   };
 
   /**
