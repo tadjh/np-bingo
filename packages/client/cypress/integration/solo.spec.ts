@@ -77,7 +77,7 @@ describe('solo', () => {
      * @param prevLoop iterator
      */
     const play = (prevLoop = 0) => {
-      let loop = prevLoop + 1;
+      let loop = ++prevLoop;
       cy.get('[data-testid=ball-number]')
         .then((ball) => parseInt(ball.text()))
         .then((number) => findElementIndex(number, card))
@@ -88,8 +88,7 @@ describe('solo', () => {
               .then((draws) => checkForWin(card, draws))
               .then((success) => {
                 if (success) {
-                  cy.findByRole('button', { name: /bingo/i }).click();
-                  return;
+                  return cy.findByRole('button', { name: /bingo/i }).click();
                 } else {
                   return waitForNextBall(loop).then(() => play(loop));
                 }
@@ -128,8 +127,8 @@ describe('solo', () => {
      * Recursive game loop
      * @param prevLoop iterator
      */
-    const play = (prevLoop = 0) => {
-      let loop = prevLoop + 1;
+    const solo = (prevLoop = 0) => {
+      let loop = ++prevLoop;
       cy.get('[data-testid=ball-number]')
         .then((ball) => parseInt(ball.text()))
         .then((number) => findElementIndex(number, card))
@@ -146,15 +145,15 @@ describe('solo', () => {
             return updateValidDraws(card[index], draws)
               .then((draws) => checkForWin(card, draws))
               .then(() => {
-                return waitForNextBall(loop).then(() => play(loop));
+                return waitForNextBall(loop).then(() => solo(loop));
               });
           } else {
-            return waitForNextBall(loop).then(() => play(loop));
+            return waitForNextBall(loop).then(() => solo(loop));
           }
         });
     };
 
-    play();
+    solo();
   });
 
   it('loses game', () => {
@@ -180,22 +179,9 @@ describe('solo', () => {
      * Recursive game loop
      * @param prevLoop iterator
      */
-    const play = (prevLoop = 0) => {
-      let loop = prevLoop + 1;
-
-      if (loop === 75) {
-        cy.findByText(/game over!/i).should('exist');
-        cy.findByRole('button', {
-          name: /replay/i,
-        }).should('be.enabled');
-        cy.findByRole('button', {
-          name: /bingo/i,
-        }).should('not.be.enabled');
-        return;
-      }
-
-      return cy
-        .get('[data-testid=ball-number]')
+    const solo = (prevLoop = 0) => {
+      let loop = ++prevLoop;
+      cy.get('[data-testid=ball-number]')
         .then((ball) => parseInt(ball.text()))
         .then((number) => findElementIndex(number, card))
         .then((index) => {
@@ -203,13 +189,25 @@ describe('solo', () => {
             return cy
               .get(`.cell-${index + 1}`)
               .click()
-              .then(() => waitForNextBall(loop).then(() => play(loop)));
+              .then(() => {
+                if (loop === 75) {
+                  cy.findByText(/game over!/i).should('exist');
+                  cy.findByRole('button', {
+                    name: /replay/i,
+                  }).should('be.enabled');
+                  cy.findByRole('button', {
+                    name: /bingo/i,
+                  }).should('not.be.enabled');
+                  return;
+                }
+                return waitForNextBall(loop).then(() => solo(loop));
+              });
           } else {
-            return waitForNextBall(loop).then(() => play(loop));
+            return waitForNextBall(loop).then(() => solo(loop));
           }
         });
     };
 
-    play();
+    solo();
   });
 });
