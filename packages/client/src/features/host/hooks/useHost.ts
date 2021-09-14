@@ -17,8 +17,7 @@ export function useHost(socket: Socket) {
   const { ballDelay } = useContext(FeaturesContext);
   const { room, winners, players } = useContext(RoomContext);
   const { dispatch } = useContext(GameContext);
-  const { progress, inProgress, enableProgress } = useProgress(ballDelay);
-  const { newBall } = useContext(BallContext);
+  const { ball, newBall } = useContext(BallContext);
   const [isNewGame, setIsNewGame] = useState(true);
   const { emitKickPlayer, emitSendBall } = useHostEmitters();
   const {
@@ -35,14 +34,24 @@ export function useHost(socket: Socket) {
   };
 
   /**
+   * Handle Gameover
+   */
+  const gameOver = () => {
+    if (ball.remainder === 0) return dispatch({ type: GAME_OVER });
+  };
+
+  const { progress, inProgress, enableProgress } = useProgress(
+    ballDelay,
+    gameOver
+  );
+
+  /**
    * Trigger gamestate start, queue new ball and show ball progress animation
    * @param gamestate
    * @param room
    */
   const handleBall = () => {
     const currentBall = newBall();
-    if (currentBall.ball.remainder === 0) return dispatch({ type: GAME_OVER });
-
     emitSendBall(currentBall.ball);
     dispatch({
       type: NEW_BALL,
@@ -73,7 +82,7 @@ export function useHost(socket: Socket) {
     if (!isNewGame) return;
     setIsNewGame(false);
     subscribeToPlayerEvents();
-  }, [isNewGame, dispatch, subscribeToPlayerEvents]);
+  }, [isNewGame, subscribeToPlayerEvents]);
 
   // TODO deafenPlayerAction
 
