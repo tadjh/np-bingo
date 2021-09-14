@@ -9,15 +9,18 @@ interface ModifiedPlayer extends PlayerOmit {
 // TODO Does this work?
 export type IPlayer = ModifiedPlayer & Document;
 
-export const PlayerSchema = new Schema({
-  // uid: {
-  //   type: Number,
-  //   required: true,
-  // },
-  name: String,
-  socketId: String,
-  ready: Boolean,
-  kicked: Boolean,
-  leave: Boolean,
-});
+export const PlayerSchema = new Schema(
+  {
+    // uid: {
+    //   type: Number,
+    //   required: true,
+    // },
+    name: String,
+    socketId: String,
+    ready: Boolean,
+    kicked: Boolean,
+    leave: Boolean,
+  },
+  { timestamps: true }
+);
 export default model<IPlayer>('Player', PlayerSchema);

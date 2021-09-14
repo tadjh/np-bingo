@@ -8,12 +8,17 @@ export interface IGame extends Document {
   host: IPlayer;
   players: IPlayer[];
   winner: IWinner;
+  active: boolean;
 }
 
-const GameSchema = new Schema({
-  room: String,
-  host: PlayerSchema,
-  players: [PlayerSchema],
-  winners: [WinnerSchema],
-});
+const GameSchema = new Schema(
+  {
+    room: String,
+    active: Boolean,
+    host: PlayerSchema,
+    players: [PlayerSchema],
+    winners: [WinnerSchema],
+  },
+  { timestamps: true }
+);
 export default model<IGame>('Game', GameSchema);

@@ -9,14 +9,17 @@ export interface IWinner extends Document {
   card: Card;
 }
 
-export const WinnerSchema = new Schema({
-  methods: [String],
-  data: {
-    column: Schema.Types.Mixed,
-    diagonal: Schema.Types.Mixed,
-    row: Schema.Types.Mixed,
+export const WinnerSchema = new Schema(
+  {
+    methods: [String],
+    data: {
+      column: Schema.Types.Mixed,
+      diagonal: Schema.Types.Mixed,
+      row: Schema.Types.Mixed,
+    },
+    player: PlayerSchema,
+    card: [Number],
   },
-  player: PlayerSchema,
-  card: [Number],
-});
+  { timestamps: true }
+);
 export default model<IWinner>('Winner', WinnerSchema);
