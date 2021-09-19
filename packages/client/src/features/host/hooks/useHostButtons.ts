@@ -116,10 +116,7 @@ export function useHostButtons() {
    * Disabled check card unless gamestate is currenly validate
    * @returns boolean
    */
-  const disableCheckCard = (): boolean => {
-    if (gamestate === 'validate') return false;
-    return true;
-  };
+  const disableCheckCard = gamestate === 'validate' ? false : true;
 
   /**
    * Disable during certian gamestates
@@ -152,10 +149,10 @@ export function useHostButtons() {
 
   return {
     disableDraws,
+    disableCheckCard,
     gamestateToggle,
     toggleText,
     handleValidate,
-    disableCheckCard,
     setDisabled,
     handleLeaveRoom,
   };

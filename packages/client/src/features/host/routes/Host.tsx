@@ -68,7 +68,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
           </div>
           <Button
             variant="success"
-            disabled={disableCheckCard()}
+            disabled={disableCheckCard}
             onClick={handleValidate}
           >
             Validate

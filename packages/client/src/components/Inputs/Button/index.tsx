@@ -46,6 +46,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             'relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center',
             'disabled:opacity-50 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:pointer-events-none',
             buttonStyle(),
+            !disabled && 'active',
             className
           )}
           onMouseDown={handleMouseDown}
