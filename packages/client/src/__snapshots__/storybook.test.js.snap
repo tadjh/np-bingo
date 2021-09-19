@@ -171,7 +171,6 @@ exports[`Storyshots Display/Ball Base 1`] = `
     </div>
     <div
       class="leading-4 uppercase relative z-20"
-      data-testid="ball-letter"
     />
     <div
       class="text-3xl leading-7 relative z-20"
@@ -207,7 +206,6 @@ exports[`Storyshots Display/Ball Disabled 1`] = `
     </div>
     <div
       class="leading-4 uppercase relative z-20"
-      data-testid="ball-letter"
     />
     <div
       class="text-3xl leading-7 relative z-20"
@@ -251,7 +249,6 @@ exports[`Storyshots Display/Ball Progress 1`] = `
     </div>
     <div
       class="leading-4 uppercase relative z-20"
-      data-testid="ball-letter"
     >
       i
     </div>
@@ -323,7 +320,6 @@ exports[`Storyshots Display/Ball Variants 1`] = `
       </div>
       <div
         class="leading-4 uppercase relative z-20"
-        data-testid="ball-letter"
       >
         b
       </div>
@@ -368,7 +364,6 @@ exports[`Storyshots Display/Ball Variants 1`] = `
       </div>
       <div
         class="leading-4 uppercase relative z-20"
-        data-testid="ball-letter"
       >
         i
       </div>
@@ -413,7 +408,6 @@ exports[`Storyshots Display/Ball Variants 1`] = `
       </div>
       <div
         class="leading-4 uppercase relative z-20"
-        data-testid="ball-letter"
       >
         n
       </div>
@@ -458,7 +452,6 @@ exports[`Storyshots Display/Ball Variants 1`] = `
       </div>
       <div
         class="leading-4 uppercase relative z-20"
-        data-testid="ball-letter"
       >
         g
       </div>
@@ -503,7 +496,6 @@ exports[`Storyshots Display/Ball Variants 1`] = `
       </div>
       <div
         class="leading-4 uppercase relative z-20"
-        data-testid="ball-letter"
       >
         o
       </div>
@@ -4386,7 +4378,6 @@ exports[`Storyshots Pages/Host Base 1`] = `
   >
     <div
       class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
-      data-testid="host-status"
     >
        
     </div>
@@ -4398,6 +4389,7 @@ exports[`Storyshots Pages/Host Base 1`] = `
       >
         <button
           class="relative bg-transparent rounded-full p-1.5 transition focus:outline-none overflow-hidden cursor-default"
+          data-testid="new-ball"
           disabled=""
         >
           <svg
@@ -4439,7 +4431,6 @@ exports[`Storyshots Pages/Host Base 1`] = `
           </div>
           <div
             class="leading-4 uppercase relative z-20"
-            data-testid="ball-letter"
           >
             i
           </div>
@@ -5159,7 +5150,6 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
   >
     <div
       class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
-      data-testid="host-status"
     >
       Game Over!
     </div>
@@ -5171,6 +5161,7 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
       >
         <button
           class="relative bg-transparent rounded-full p-1.5 transition focus:outline-none overflow-hidden cursor-default"
+          data-testid="new-ball"
           disabled=""
         >
           <svg
@@ -5212,7 +5203,6 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
           </div>
           <div
             class="leading-4 uppercase relative z-20"
-            data-testid="ball-letter"
           >
             i
           </div>
@@ -5932,7 +5922,6 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
   >
     <div
       class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
-      data-testid="host-status"
     >
       4 players have joined...
     </div>
@@ -6508,7 +6497,6 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
   >
     <div
       class="text-black dark:text-white text-opacity-90 dark:text-opacity-90"
-      data-testid="host-status"
     >
       Waiting for player(s) to join...
     </div>
@@ -9293,7 +9281,6 @@ exports[`Storyshots Pages/Play Base 1`] = `
           </div>
           <div
             class="leading-4 uppercase relative z-20"
-            data-testid="ball-letter"
           >
             i
           </div>
@@ -9986,7 +9973,6 @@ exports[`Storyshots Pages/Play Win 1`] = `
           </div>
           <div
             class="leading-4 uppercase relative z-20"
-            data-testid="ball-letter"
           >
             i
           </div>
