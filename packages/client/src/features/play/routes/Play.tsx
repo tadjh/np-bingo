@@ -122,6 +122,7 @@ export default function Play({
         )}
         <PlayerName
           status={socket.connected}
+          socketId={socket.id}
           name={name}
           isLoading={isSocketLoading}
         />

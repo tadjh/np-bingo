@@ -19,8 +19,13 @@ export default function Home(): JSX.Element {
     user: { name },
     socket,
   } = useContext(UserContext);
-  const { isLoading, isError, isRedirect, isSocketLoading, createRoom } =
-    useHome();
+  const {
+    isLoading,
+    isError,
+    isRedirect,
+    isSocketLoading,
+    createRoom,
+  } = useHome();
   if (isRedirect) return <Redirect to={`/host?r=${room}`} />;
   return (
     <Fragment>
@@ -58,6 +63,7 @@ export default function Home(): JSX.Element {
         <PlayerName
           status={socket.connected}
           name={name}
+          socketId={socket.id}
           isLoading={isSocketLoading}
         />
       </footer>

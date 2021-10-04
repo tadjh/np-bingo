@@ -117,6 +117,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
         <Widgets room={room} />
         <PlayerName
           status={socket.connected}
+          socketId={socket.id}
           name={name}
           isLoading={isSocketLoading}
         />

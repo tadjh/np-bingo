@@ -60,6 +60,7 @@ export default function Join({ publicRooms = [] }: JoinProps) {
         <IconMenu direction="up" />
         <PlayerName
           status={socket.connected}
+          socketId={socket.id}
           name={name}
           isLoading={isSocketLoading}
         />

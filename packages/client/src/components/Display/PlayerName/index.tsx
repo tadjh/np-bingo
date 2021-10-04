@@ -10,6 +10,7 @@ export interface PlayerNameProps extends React.HTMLAttributes<HTMLDivElement> {
   isLoading: boolean;
   name: string;
   editable?: boolean;
+  socketId: string;
 }
 // TODO PlayerName.stories.tsx
 // TODO Rename PlayerName
@@ -18,6 +19,7 @@ export default function PlayerName({
   name = 'Player#0000',
   isLoading = false,
   editable = false,
+  socketId = '',
   ...props
 }: PlayerNameProps) {
   const playerNameAlertStyle = () => {
@@ -53,7 +55,12 @@ export default function PlayerName({
         </div>
       </div>
       <div>
-        <Typography className="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1">
+        <Typography
+          className="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+          data-testid="player-name"
+          data-playername={name}
+          data-socketid={socketId}
+        >
           <span>{playerName}</span>
           <span className="text-black dark:text-white text-opacity-40 dark:text-opacity-40">
             {`#${randomId ? randomId : '0000'}`}
