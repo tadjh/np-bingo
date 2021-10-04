@@ -10,10 +10,10 @@ describe('multiplayer winner', () => {
     cy.findByRole('button', {
       name: /private room/i,
     }).click();
-    // cy.task('waitForCheckpoint', 'waiting for players to join');
     cy.findByRole('textbox', {
       name: /code1/i,
     }).type('AAAA');
+    // TODO get actual host socket
     cy.intercept('PUT', '/api/game/join/AAAA', {
       statusCode: 200,
       body: {
@@ -30,49 +30,56 @@ describe('multiplayer winner', () => {
       name: /join/i,
     }).click();
 
-    let card: Card = [];
-
-    cy.get('.cell').each((element) => card.push(parseInt(element.text())));
-
     cy.findByRole('button', {
       name: /ready/i,
     }).click();
 
-    cy.task('checkpoint', 'winner has joined');
+    const makeCard = () => {
+      return cy.get('.cell').then(($cells) => {
+        let card: Card = Array.from($cells, (cell) => parseInt(cell.innerText));
 
-    cy.findByText(/free/i).click();
+        card[12] = 0;
 
-    let draws: Draws = [[], [], [], [], []];
+        cy.task('checkpoint', 'winner has joined');
 
-    /**
-     * Recursive game loop
-     * @param prevLoop iterator
-     */
-    const play = (prevLoop = 0) => {
-      let loop = ++prevLoop;
-      cy.get('[data-testid=ball-number]')
-        .then((ball) => parseInt(ball.text()))
-        .then((number) => findElementIndex(number, card))
-        .then((index) => {
-          if (index >= 0) {
-            cy.get(`.cell-${index + 1}`).click();
-            return cy.updateValidDraws(card[index], draws).then((draws) =>
-              cy.checkForWin(card, draws).then((success) => {
-                if (success) {
-                  cy.findByRole('button', { name: /bingo/i }).click();
-                  cy.task('waitForCheckpoint', 'card winner');
-                  return cy.findByText(/bingo!/i);
-                } else {
-                  return cy.waitForNextBall(loop).then(() => play(loop));
-                }
-              })
-            );
-          } else {
-            return cy.waitForNextBall(loop).then(() => play(loop));
-          }
-        });
+        cy.findByText(/free/i).click();
+
+        let draws: Draws = [[], [], [], [], []];
+
+        /**
+         * Recursive game loop
+         * @param prevLoop iterator
+         */
+        const play = (prevLoop = 0) => {
+          let loop = ++prevLoop;
+          cy.get('[data-testid=ball-number]')
+            .then((ball) => parseInt(ball.text()))
+            .then((number) => findElementIndex(number, card))
+            .then((index) => {
+              if (index >= 0) {
+                cy.get(`.cell-${index + 1}`).click();
+                return cy.updateValidDraws(card[index], draws).then((draws) =>
+                  cy.checkForWin(card, draws).then((success) => {
+                    if (success) {
+                      cy.findByRole('button', { name: /bingo/i }).click();
+                      // TODO needs host socket
+                      // cy.task('waitForCheckpoint', 'card winner');
+                      // return cy.findByText(/bingo!/i);
+                    } else {
+                      return cy.waitForNextBall(loop).then(() => play(loop));
+                    }
+                  })
+                );
+              } else {
+                return cy.waitForNextBall(loop).then(() => play(loop));
+              }
+            });
+        };
+
+        play();
+      });
     };
 
-    play();
+    makeCard();
   });
 });
