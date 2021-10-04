@@ -13,12 +13,14 @@ import Modal, {
 } from '../../../../components/Feedback/Modal';
 import Button from '../../../../components/Inputs/Button';
 import { useForm } from '../../../../hooks';
+import { ApiError } from '@np-bingo/types';
 
 export interface CodeModalProps {
   open: boolean;
+  noPortal?: boolean;
+  errors: ApiError | null;
   onClose: () => void;
   onSumbit?: (room: string) => void;
-  noPortal?: boolean;
 }
 
 interface codeModalState {
@@ -37,9 +39,10 @@ const initialState: codeModalState = {
 
 export default function CodeModal({
   open = false,
+  noPortal,
+  errors: serverErrors,
   onClose,
   onSumbit,
-  noPortal,
 }: CodeModalProps) {
   const submitRef = useRef<HTMLButtonElement>(null);
   const input1Ref = useRef<HTMLInputElement>(null);
@@ -56,8 +59,14 @@ export default function CodeModal({
     onSumbit && onSumbit(room);
   };
 
-  const { inputs, errors, handleChange, handleSubmit, handlePaste, clearForm } =
-    useForm<codeModalState>(initialState, onSubmitCallback);
+  const {
+    inputs,
+    errors,
+    handleChange,
+    handleSubmit,
+    handlePaste,
+    clearForm,
+  } = useForm<codeModalState>(initialState, onSubmitCallback);
 
   /**
    * Force all inputs to be capital letters
@@ -157,6 +166,7 @@ export default function CodeModal({
       submitRef.current?.focus();
     }
   }, [inputs]);
+
   return (
     <Modal
       id="code-modal"
@@ -172,6 +182,7 @@ export default function CodeModal({
         <ModalContent>
           <p className="text-black dark:text-white text-opacity-60 dark:text-opacity-60">
             {errors && errors}
+            {serverErrors !== null ? serverErrors.error : '\xa0'}
           </p>
           <fieldset className="flex justify-center font-mono text-3xl space-x-2 text-gray-900 dark:text-white dark:text-opacity-90">
             {/* <label htmlFor="code-input">Room Code</label> */}

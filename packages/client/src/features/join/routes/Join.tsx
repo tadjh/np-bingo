@@ -25,7 +25,7 @@ export default function Join({ publicRooms = [] }: JoinProps) {
     isSocketLoading,
   } = useContext(UserContext);
   const { allowPublic, allowSolo } = useContext(FeaturesContext);
-  const { joinRoom, handleSolo } = useJoin();
+  const { errors, joinRoom, handleSolo } = useJoin();
   const [isOpen, , open, close] = useToggle();
   return (
     <Fragment>
@@ -42,7 +42,12 @@ export default function Join({ publicRooms = [] }: JoinProps) {
           <Button variant="primary" className="join-button" onClick={open}>
             Private Room
           </Button>
-          <CodeModal open={isOpen} onClose={close} onSumbit={joinRoom} />
+          <CodeModal
+            open={isOpen}
+            onClose={close}
+            onSumbit={joinRoom}
+            errors={errors}
+          />
           {allowSolo && (
             <Button
               component={RouterLink}

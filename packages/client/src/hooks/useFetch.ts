@@ -19,17 +19,17 @@ import {
 import { handleError } from '../utils';
 import { ReducerLogger } from './useReducerLogger';
 
-export interface UseFetchProps<T, R> extends FetchState<R> {
+export interface UseFetchProps<T, R, E> extends FetchState<R, E> {
   body: T | null;
   setBody: Dispatch<SetStateAction<T | null>>;
 }
 
-export function useFetch<T, R>(
+export function useFetch<T, R, E>(
   initalMethod: Method,
   initalUrl: string
-): UseFetchProps<T, R> {
-  const [{ result, isLoading, isError }, dispatch] = useReducer<
-    (state: FetchState<R>, action: FetchActions<R>) => FetchState<R>
+): UseFetchProps<T, R, E> {
+  const [{ result, isLoading, isError, errors }, dispatch] = useReducer<
+    (state: FetchState<R, E>, action: FetchActions<R, E>) => FetchState<R, E>
   >(
     NODE_ENV === 'development' ? ReducerLogger(fetchReducer) : fetchReducer,
     fetchInititalState
@@ -50,10 +50,15 @@ export function useFetch<T, R>(
           if (didCancel) return;
           dispatch({ type: FETCH_SUCCESS, payload: result });
         })
-        .catch((error: AxiosError<R>) => {
+        .catch((error: AxiosError<E>) => {
           if (didCancel) return;
-          dispatch({ type: FETCH_FAILURE });
-          handleError(error);
+          // handleError(error);
+
+          if (error.response) {
+            dispatch({ type: FETCH_FAILURE, payload: error.response.data });
+          } else {
+            dispatch({ type: FETCH_FAILURE, payload: null });
+          }
         });
     };
     fetchData();
@@ -62,5 +67,5 @@ export function useFetch<T, R>(
     };
   }, [body, initalMethod, initalUrl, dispatch]);
 
-  return { result, isLoading, isError, body, setBody };
+  return { result, isLoading, isError, errors, body, setBody };
 }

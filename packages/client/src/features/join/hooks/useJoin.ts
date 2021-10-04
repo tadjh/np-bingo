@@ -1,6 +1,6 @@
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { JoinRoom, Player, Room } from '@np-bingo/types';
+import { ApiError, JoinRoom, Player, Room } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
 import { useFetch, useQuery } from '../../../hooks';
 import { JOIN_ROOM, CHANGE_GAMEMODE, INIT } from '../../../config/constants';
@@ -12,9 +12,10 @@ export function useJoin() {
   let history = useHistory();
   const [joiningRoom, setJoiningRoom] = useState(false);
   const [currentRoom, setCurrentRoom] = useState<Room>('');
-  const { result, isLoading, isError, body, setBody } = useFetch<
+  const { result, isLoading, isError, errors, body, setBody } = useFetch<
     Player,
-    JoinRoom
+    JoinRoom,
+    ApiError
   >('PUT', `/api/game/join/${currentRoom}`);
   /**
    * Handle Solo Button
@@ -91,5 +92,5 @@ export function useJoin() {
     joinRoom(queryRoom);
   }, [query, joinRoom]);
 
-  return { isLoading, isError, joinRoom, handleSolo };
+  return { isLoading, isError, errors, joinRoom, handleSolo };
 }
