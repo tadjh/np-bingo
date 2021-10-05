@@ -16,7 +16,7 @@ import {
   fetchReducer,
   FetchState,
 } from '../reducers/fetch.reducer';
-import { handleError } from '../utils';
+// import { handleError } from '../utils';
 import { ReducerLogger } from './useReducerLogger';
 
 export interface UseFetchProps<T, R, E> extends FetchState<R, E> {
