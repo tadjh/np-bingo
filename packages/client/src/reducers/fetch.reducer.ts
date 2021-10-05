@@ -1,4 +1,4 @@
-import { AxiosError, AxiosResponse } from 'axios';
+import { AxiosResponse } from 'axios';
 import { FETCH_FAILURE, FETCH_INIT, FETCH_SUCCESS } from '../config/constants';
 
 export interface FetchState<R, E> {
