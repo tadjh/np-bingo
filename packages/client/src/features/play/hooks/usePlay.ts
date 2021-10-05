@@ -1,29 +1,21 @@
-import {
-  Card,
-  Gamemode,
-  Player,
-  Results,
-  Serial,
-  Winner,
-} from '@np-bingo/types';
-import { useCallback, useContext, useEffect, useReducer } from 'react';
+import { Card, Player, Serial, Winner } from '@np-bingo/types';
+import { useContext, useEffect, useReducer } from 'react';
 import {
   FeaturesContext,
   GameContext,
   RoomContext,
   UserContext,
 } from '../../../context';
-import { usePlayEmitters, usePlayListenersRoom, usePlaySounds } from '.';
+import { usePlayListenersRoom, usePlaySounds } from '.';
 import { usePlayListenersHost } from './usePlayListenersHost';
 import {
   CHECK_CARD_FAILURE,
   CHECK_CARD_SUCCESS,
+  CLEAR_CROSSMARKS,
   NEW_CARD,
-  NOT_WINNER,
-  READY_CHECK,
   WINNER_CROSSMARKS,
 } from '../../../config/constants';
-import { winningCells, winningMethods } from '../../../utils/bingo.validate';
+import { winningCells } from '../../../utils/bingo.validate';
 import { BINGO, newCard } from '../../../utils/bingo';
 import {
   initialPlayState,
@@ -53,10 +45,10 @@ export function usePlay() {
   );
 
   const { playWinSfxData, playWinSfx, playLoseSfx } = usePlaySounds();
-  const {
-    emitReadyUp,
-    // emitSendCard
-  } = usePlayEmitters();
+  // const {
+  //   emitReadyUp,
+  //   // emitSendCard
+  // } = usePlayEmitters();
   const [subscribeToHost, unsubscribeFromHost] = usePlayListenersHost(
     socket,
     playDispatch,
@@ -94,7 +86,7 @@ export function usePlay() {
     setNewCard(card, serial);
     if (gamemode !== 'solo') {
       subscribeToHost();
-      subscribeToRoom(); // TODO is this best location?
+      subscribeToRoom();
     }
   }, [isNewGame, gamemode, subscribeToHost, subscribeToRoom]);
 
@@ -108,12 +100,6 @@ export function usePlay() {
   //   play('ready');
   // }, [gamestate, initPlay, play]);
 
-  const handleWinCleanUp = useCallback(() => {
-    // TODO maybe useMemo playWinSfxData, expensive?
-    playWinSfxData.stop();
-    playDispatch({ type: NOT_WINNER });
-  }, [playWinSfxData, playDispatch]);
-
   const isCurrentWinner = (
     winners: Winner[],
     socketId: Player['name'] | null
@@ -121,11 +107,22 @@ export function usePlay() {
     return winners.find((winner) => winner.player.socketId === socketId);
   };
 
-  // TODO IMPROVE
+  /**
+   * Game board reset for Solo and Multiplayer
+   */
   useEffect(() => {
     if (gamestate !== 'ready') return;
-    if (isWinner) return handleWinCleanUp();
-  }, [gamestate, isWinner, handleWinCleanUp]);
+    if (!isWinner) return;
+    if (isNewGame) return;
+
+    const handleWinCleanUp = () => {
+      playDispatch({ type: CLEAR_CROSSMARKS });
+
+      playWinSfxData.stop();
+    };
+
+    handleWinCleanUp();
+  }, [gamestate, isWinner, isNewGame, playWinSfxData]);
 
   /**
    * Multiplayer Win

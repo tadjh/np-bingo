@@ -161,4 +161,62 @@ describe('solo', () => {
     };
     solo();
   });
+
+  it('replays', () => {
+    cy.visit('/');
+    cy.findByRole('link', {
+      name: /play/i,
+    }).click();
+    cy.findByRole('link', {
+      name: /solo/i,
+    }).click();
+
+    let card: Card = [];
+
+    cy.get('.cell').each((element) => card.push(parseInt(element.text())));
+
+    cy.findByRole('button', {
+      name: /start/i,
+    }).click();
+
+    cy.findByText(/free/i).click();
+
+    let draws: Draws = [[], [], [], [], []];
+
+    /**
+     * Recursive game loop
+     * @param prevLoop iterator
+     */
+    const solo = (prevLoop = 0) => {
+      let loop = ++prevLoop;
+      cy.get('[data-testid=ball-number]')
+        .then((ball) => parseInt(ball.text()))
+        .then((number) => findElementIndex(number, card))
+        .then((index) => {
+          if (index >= 0) {
+            return cy
+              .get(`.cell-${index + 1}`)
+              .click()
+              .updateValidDraws(card[index], draws)
+              .then((draws) =>
+                cy
+                  .checkForWin(card, draws)
+                  .then((success) =>
+                    success
+                      ? replay()
+                      : cy.waitForNextBall(loop).then(() => solo(loop))
+                  )
+              );
+          } else {
+            return cy.waitForNextBall(loop).then(() => solo(loop));
+          }
+        });
+    };
+    solo();
+
+    const replay = () => {
+      cy.findByRole('button', { name: /bingo/i }).click();
+      cy.findByRole('button', { name: /replay/i }).click();
+    };
+  });
 });

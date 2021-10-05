@@ -58,7 +58,6 @@ export function useSoloButton(
         break;
       case 'end':
         dispatch({ type: READY_CHECK });
-        // playWinSfxData.stop(); // TODO ??
         break;
       default:
         dispatch({ type: START });

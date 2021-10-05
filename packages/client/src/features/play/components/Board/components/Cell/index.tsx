@@ -8,12 +8,12 @@ import { useRipple } from '../../../../../../hooks/useRipple';
 export interface CellProps extends React.HTMLAttributes<HTMLDivElement> {
   index: number;
   winner: boolean;
-  checked?: boolean;
+  override?: boolean;
 }
 
 export default function Cell({
   index,
-  checked: override,
+  override,
   winner = false,
   children,
   ...props

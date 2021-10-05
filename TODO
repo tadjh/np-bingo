@@ -21,11 +21,12 @@ DONE Bug: modal bug in storybook removeChild
 DONE Bug: Back button no sound
 DONE Make app responsive again including app margin top below certain screen sizes
 DONE Bug: Home doesn't init broken
-// TOOD Bug: Modal isn't iside of phone
+DONE Bug: Modal isn't iside of phone
 DONE Bug: Home loader not centered
 // TODO On game save, put winners into an array on server. Game 1, Game 2, etc.
-// TODO SOLO: clear crossmarks doesn't work on replay
-// TODO Room doesn't exist failure show on screen
+DONE SOLO: clear crossmarks doesn't work on replay
+DONE Room doesn't exist failure show on screen
+// TODO sticky options menu
 
 Vulnerbilities
 // TODO Prevent kicked player from rejoining (API & Socket)

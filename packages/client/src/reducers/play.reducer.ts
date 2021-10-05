@@ -56,7 +56,7 @@ export function playReducer(state: PlayState, action: PlayActions): PlayState {
         isWinner: false,
       };
     case CLEAR_CROSSMARKS:
-      return { ...state, crossmarks: {} };
+      return { ...state, crossmarks: {}, isNewGame: true };
     case WINNER_CROSSMARKS:
       return {
         ...state,

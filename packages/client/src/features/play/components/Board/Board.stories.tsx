@@ -41,42 +41,19 @@ Base.args = {
   serial: 'EzDsBZwVig2BmAjCeqpiogDI0daaIAcSmsiAnMAsFFrMEA==',
 };
 
-// export const Checked = Template.bind({});
-// Checked.args = {
-//   ...Default.args,
-//   crossmarks: {
-//     cell11: true,
-//     cell12: true,
-//     cell13: true,
-//     cell14: true,
-//     cell15: true,
-//     cell2: true,
-//     cell7: true,
-//     cell17: true,
-//     cell22: true,
-//     cell9: true,
-//     cell8: true,
-//     cell19: false,
-//     cell24: true,
-//     cell18: true,
-//     cell4: true,
-//     cell16: true,
-//   },
-// };
-
 export const Winner = Template.bind({});
 Winner.args = {
   ...Base.args,
   crossmarks: {
-    cell11: true,
-    cell12: true,
-    cell13: true,
-    cell14: true,
-    cell15: true,
-    cell2: true,
-    cell7: true,
-    cell17: true,
-    cell22: true,
+    'cell-2': true,
+    'cell-7': true,
+    'cell-11': true,
+    'cell-12': true,
+    'cell-13': true,
+    'cell-14': true,
+    'cell-15': true,
+    'cell-17': true,
+    'cell-22': true,
   },
   winner: true,
 };

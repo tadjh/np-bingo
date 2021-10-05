@@ -44,7 +44,7 @@ export function Board({
               index={cellId}
               winner={winner}
               key={id}
-              checked={winner ? crossmarks[id] || false : undefined}
+              override={winner ? crossmarks[id] || false : undefined}
             >
               {cellId !== 13 ? value : 'free'}
             </Cell>

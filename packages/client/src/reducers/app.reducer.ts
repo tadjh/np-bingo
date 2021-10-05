@@ -114,7 +114,7 @@ export function appReducer(state: AppState, action: AppActions): AppState {
       });
       return {
         ...state,
-        gamestate: 'ready' as Gamestate,
+        gamestate: 'ready',
         ball: { ...initialBall },
         pool: BINGO.map((array) => array.slice()),
         draws: initialAppState.draws.map((array) => array.slice()),
@@ -123,44 +123,44 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         players: [...unreadyPlayers],
       };
     case STANDBY:
-      return { ...state, gamestate: 'standby' as Gamestate };
+      return { ...state, gamestate: 'standby' };
     case START:
-      return { ...state, gamestate: 'start' as Gamestate };
+      return { ...state, gamestate: 'start' };
     case CHECK_CARD:
-      return { ...state, gamestate: 'validate' as Gamestate };
+      return { ...state, gamestate: 'validate' };
     case GET_CARD:
       return {
         ...state,
-        gamestate: 'validate' as Gamestate,
+        gamestate: 'validate',
         playerCards: [...state.playerCards, { ...action.payload }],
       };
     case CHECK_CARD_SUCCESS:
       return {
         ...state,
-        gamestate: 'win' as Gamestate,
+        gamestate: 'win',
         winners: [...state.winners, ...action.payload],
       };
     case CHECK_CARD_FAILURE:
       return {
         ...state,
-        gamestate: 'failure' as Gamestate,
+        gamestate: 'failure',
         playerCards: [],
       };
     case PAUSE:
-      return { ...state, gamestate: 'pause' as Gamestate };
+      return { ...state, gamestate: 'pause' };
     case GAME_OVER:
-      return { ...state, gamestate: 'end' as Gamestate };
+      return { ...state, gamestate: 'end' };
     case CREATE_ROOM:
       return {
         ...state,
-        gamestate: 'ready' as Gamestate,
+        gamestate: 'ready',
         room: action.payload.room,
         host: { ...state.host, ...action.payload.host },
       };
     case JOIN_ROOM: // TODO Might need to wipe all game state like READY_CHECK if INIT_GAME isn't called before joining a new room
       return {
         ...state,
-        gamestate: 'ready' as Gamestate,
+        gamestate: 'ready',
         room: action.payload.room,
         host: { ...state.host, ...action.payload.host },
       };
@@ -193,7 +193,7 @@ export function appReducer(state: AppState, action: AppActions): AppState {
     case NEW_BALL: // TODO moved setting start here
       return {
         ...state,
-        gamestate: 'start' as Gamestate,
+        gamestate: 'start',
         ball: { ...action.payload.ball },
         draws: action.payload.draws.map((item) => item.slice()),
         pool: action.payload.pool.map((item) => item.slice()),
@@ -201,13 +201,13 @@ export function appReducer(state: AppState, action: AppActions): AppState {
     case SET_BALL: // TODO DO we need this?
       return {
         ...state,
-        gamestate: 'start' as Gamestate,
+        gamestate: 'start',
         ball: { ...action.payload },
       };
     case CHANGE_GAMEMODE: // TODO Might need to wipe all game state like READY_CHECK if INIT_GAME isn't called before switching gamemmodes
       return {
         ...state,
-        gamestate: 'ready' as Gamestate,
+        gamestate: 'ready',
         rules: { ...state.rules, mode: action.payload },
       };
     default:

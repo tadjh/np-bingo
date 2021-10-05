@@ -19,8 +19,8 @@ const Stack: Story<CellProps> = (args) => (
     <Cell {...args} />
     <Cell {...args} children={15} />
     <Cell {...args} children={'free'} />
-    <Cell {...args} children={15} checked={true} />
-    <Cell {...args} children={15} checked={true} winner={true} />
+    <Cell {...args} children={15} override={true} />
+    <Cell {...args} children={15} override={true} winner={true} />
   </React.Fragment>
 );
 

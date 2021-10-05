@@ -59,9 +59,10 @@ export function useCell(
    * Force cells unchecked on win with override
    */
   useEffect(() => {
+    if (!winner) return;
     if (override !== false) return;
     uncheck();
-  }, [override, uncheck]);
+  }, [winner, override, uncheck]);
 
   /**
    * Click handler
