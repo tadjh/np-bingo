@@ -6,15 +6,11 @@ interface ModifiedPlayer extends PlayerOmit {
   socketId: string;
 }
 
-// TODO Does this work?
 export type IPlayer = ModifiedPlayer & Document;
 
 export const PlayerSchema = new Schema(
   {
-    // uid: {
-    //   type: Number,
-    //   required: true,
-    // },
+    uid: Number,
     name: String,
     socketId: String,
     ready: Boolean,
