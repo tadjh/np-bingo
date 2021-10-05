@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { CreateRoom, Host, Player, Room } from '@np-bingo/types';
+import { ApiError, CreateRoom, Host, Player, Room } from '@np-bingo/types';
 import { GameContext, UserContext } from '../../../context';
 import { logger } from '../../../utils';
 import { CREATE_ROOM, INIT, SOCKET_INIT } from '../../../config/constants';
@@ -12,10 +12,11 @@ export function useHome() {
   const { gamestate, dispatch } = useContext(GameContext);
   const [isRedirect, setIsRedirect] = useState(false);
   const [didInit, setDidInit] = useState(false);
-  const { result, isLoading, isError, setBody } = useFetch<Player, CreateRoom>(
-    'POST',
-    '/api/game'
-  );
+  const { result, isLoading, isError, setBody } = useFetch<
+    Player,
+    CreateRoom,
+    ApiError
+  >('POST', '/api/game');
 
   /**
    * Reset gamestate on visit to home
