@@ -20,5 +20,4 @@ it('loads and displays correctly', () => {
       name: /play/i,
     })
   ).toBeInTheDocument();
-  // TODO join button routes to /join
 });

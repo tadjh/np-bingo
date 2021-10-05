@@ -1,5 +1,4 @@
 import React from 'react';
-// TODO Add story
 
 export interface BackgroundProps {
   variant?: 'default' | 'phone' | 'top';

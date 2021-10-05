@@ -15,7 +15,6 @@ export type Ball = {
   remainder: number;
 };
 export type Column = '' | 'b' | 'i' | 'n' | 'g' | 'o';
-// TODO consider Pick<Player, "_id" | "socketId">;
 export type PlayerCard = {
   card: Card;
   owner: Player;

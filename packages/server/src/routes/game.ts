@@ -27,7 +27,6 @@ router.get('/:id', (req, res) => {
  */
 router.post('/', (req, res) => {
   let room = makeID(4);
-  // TODO check unique ID against previous game IDs
   Game.create({ host: req.body, room: room })
     .then((doc) =>
       res.json({
