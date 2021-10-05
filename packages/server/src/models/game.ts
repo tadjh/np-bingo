@@ -8,16 +8,18 @@ export interface IGame extends Document {
   host: IPlayer;
   players: IPlayer[];
   winner: IWinner;
-  active: boolean;
+  private: boolean;
+  joinable: boolean;
 }
 
 const GameSchema = new Schema(
   {
     room: String,
-    active: Boolean,
     host: PlayerSchema,
     players: [PlayerSchema],
     winners: [WinnerSchema],
+    private: Boolean,
+    joinable: Boolean,
   },
   { timestamps: true }
 );

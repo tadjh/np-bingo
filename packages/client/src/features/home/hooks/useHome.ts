@@ -64,7 +64,11 @@ export function useHome() {
 
     dispatch({
       type: CREATE_ROOM,
-      payload: { room: result.data.room, host: result.data.host },
+      payload: {
+        id: result.data.id,
+        room: result.data.room,
+        host: result.data.host,
+      },
     });
 
     emitCreateRoom(result.data.room, result.data.host);

@@ -1,6 +1,7 @@
 import express from 'express';
 import { makeID } from '@np-bingo/common';
 import Game from '../models/game';
+import Active from '../models/active';
 
 const router = express.Router();
 
@@ -27,14 +28,28 @@ router.get('/:id', (req, res) => {
  */
 router.post('/', (req, res) => {
   let room = makeID(4);
+
   Game.create({ host: req.body, room: room })
-    .then((doc) =>
-      res.json({
+    .then((doc) => {
+      Active.create({
         room: doc.room,
-        host: doc.host,
-        message: `Created game room ${room}`,
+        name: doc.host.name,
+        joinable: true,
       })
-    )
+        .then(() => {
+          res.json({
+            id: doc._id,
+            room: doc.room,
+            host: doc.host,
+            message: `Created game room ${room}`,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+
+          res.status(400).json({ error: 'Unable to add active game room' });
+        });
+    })
     .catch((err) => {
       console.log(err);
 

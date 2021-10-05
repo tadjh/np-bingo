@@ -52,6 +52,7 @@ export const initialWinner: Winner = {
 
 export interface AppState {
   gamestate: Gamestate;
+  gameId: string;
   room: string;
   host: Host;
   players: Player[];
@@ -71,7 +72,10 @@ export type AppActions =
   | { type: typeof CHECK_CARD }
   | { type: typeof PAUSE }
   | { type: typeof GAME_OVER }
-  | { type: typeof CREATE_ROOM; payload: { room: Room; host: Partial<Host> } }
+  | {
+      type: typeof CREATE_ROOM;
+      payload: { id: string; room: Room; host: Partial<Host> };
+    }
   | { type: typeof JOIN_ROOM; payload: { room: Room; host: Partial<Player> } }
   | { type: typeof PLAYER_JOIN; payload: Player }
   | { type: typeof PLAYER_LEAVE; payload: Player }
@@ -93,6 +97,7 @@ export type AppActions =
 
 export const initialAppState: AppState = {
   gamestate: 'init',
+  gameId: '',
   room: '',
   host: { ...initialPlayer },
   ball: { ...initialBall },
@@ -154,6 +159,7 @@ export function appReducer(state: AppState, action: AppActions): AppState {
       return {
         ...state,
         gamestate: 'ready',
+        gameId: action.payload.id,
         room: action.payload.room,
         host: { ...state.host, ...action.payload.host },
       };

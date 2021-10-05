@@ -81,6 +81,7 @@ export type RoomEvent =
   | 'losing-cards';
 
 export interface CreateRoom {
+  id: string;
   room: Room;
   host: Host;
   message: string;
