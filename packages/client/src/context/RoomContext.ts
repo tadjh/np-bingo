@@ -4,6 +4,7 @@ import { initialPlayer } from '.';
 
 export interface RoomContextProps {
   room: Room;
+  gameId: string;
   host: Host;
   winners: Winner[];
   players: Player[];
@@ -11,6 +12,7 @@ export interface RoomContextProps {
 
 export const initialRoomContext: RoomContextProps = {
   room: '',
+  gameId: '',
   host: { ...initialPlayer },
   winners: [],
   players: [],

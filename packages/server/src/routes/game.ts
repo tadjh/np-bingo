@@ -27,9 +27,11 @@ router.get('/:id', (req, res) => {
  * @access Public
  */
 router.post('/', (req, res) => {
-  let room = makeID(4);
+  // TODO Check active room ids first
+  const room = makeID(4);
+  const document = { host: req.body, room: room };
 
-  Game.create({ host: req.body, room: room })
+  Game.create(document)
     .then((doc) => {
       Active.create({
         room: doc.room,
@@ -63,29 +65,26 @@ router.post('/', (req, res) => {
  * @access Public
  */
 router.put('/:id', async (req, res) => {
+  const filter = { room: req.params.id };
+  const update = { $addToSet: { winners: req.body } };
   try {
-    await Game.findOneAndUpdate(
-      { room: req.params.id },
-      { $addToSet: { winners: req.body } },
-      {},
-      function (err, doc) {
-        if (err) {
-          res
-            .status(400)
-            .json({ error: `Error while finding game room ${req.params.id}` });
-        }
-        if (doc) {
-          res.json({
-            msg: `Game room ${req.params.id} saved`,
-          });
-        }
-        if (!doc) {
-          res
-            .status(404)
-            .json({ error: `Game room ${req.params.id} does not exist` });
-        }
+    await Game.findOneAndUpdate(filter, update, {}, function (err, doc) {
+      if (err) {
+        res
+          .status(400)
+          .json({ error: `Error while finding game room ${req.params.id}` });
       }
-    );
+      if (doc) {
+        res.json({
+          msg: `Game room ${req.params.id} saved`,
+        });
+      }
+      if (!doc) {
+        res
+          .status(404)
+          .json({ error: `Game room ${req.params.id} does not exist` });
+      }
+    });
   } catch (err) {
     res
       .status(400)
@@ -101,31 +100,28 @@ router.put('/:id', async (req, res) => {
  * @access Public
  */
 router.put('/join/:id', async (req, res) => {
+  const filter = { room: req.params.id, joinable: true };
+  const update = { $addToSet: { players: req.body } };
   try {
-    await Game.findOneAndUpdate(
-      { room: req.params.id },
-      { $addToSet: { players: req.body } },
-      {},
-      function (err, doc) {
-        if (err) {
-          res
-            .status(400)
-            .json({ error: `Unable to find game room ${req.params.id}` });
-        }
-        if (doc) {
-          res.json({
-            room: doc.room,
-            host: doc.host,
-            message: `Joined game room ${req.params.id}`,
-          });
-        }
-        if (!doc) {
-          res
-            .status(404)
-            .json({ error: `Game room ${req.params.id} does not exist` });
-        }
+    await Game.findOneAndUpdate(filter, update, {}, function (err, doc) {
+      if (err) {
+        res
+          .status(400)
+          .json({ error: `Unable to find game room ${req.params.id}` });
       }
-    );
+      if (doc) {
+        res.json({
+          room: doc.room,
+          host: doc.host,
+          message: `Joined game room ${req.params.id}`,
+        });
+      }
+      if (!doc) {
+        res
+          .status(404)
+          .json({ error: `Game room ${req.params.id} does not exist` });
+      }
+    });
   } catch (err) {
     res
       .status(400)
@@ -160,27 +156,28 @@ router.put('/join/:id', async (req, res) => {
 
 /**
  * @route DELETE api/game/:id
- * @description End game by ID
+ * @description Remove empty game by ID
  * @access Public
  */
 router.delete('/:id', async (req, res) => {
   try {
-    const game = await Game.findOne({ room: req.params.id }).exec();
-    if (game && game.players.length < 1) {
-      Game.deleteOne({ _id: game._id }, {}, function (err) {
-        if (err) {
-          res
-            .status(400)
-            .json({ error: `Unable to delete game room ${game.room}` });
-        } else {
-          res.json({ msg: `Game room ${game.room} deleted` });
-        }
-      });
-    }
+    Game.findByIdAndDelete(req.params.id).then(() => {
+      Active.findOneAndDelete({ room: req.body.room })
+        .then(() => {
+          res.json({
+            message: `Room ${req.body} deleted`,
+          });
+        })
+        .catch((err) => {
+          console.log(err);
+
+          res.status(400).json({ error: 'Unable to delete active game room' });
+        });
+    });
   } catch (err) {
     res
       .status(400)
-      .json({ error: `Unable to find game room ${req.params.id} to delete` });
+      .json({ error: `Unable to find game room ${req.body} to delete` });
   }
 });
 

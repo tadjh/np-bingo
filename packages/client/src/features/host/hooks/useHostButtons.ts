@@ -7,12 +7,13 @@ import {
   STANDBY,
 } from '../../../config/constants';
 import { GameContext, RoomContext } from '../../../context';
-import { apiDeleteRoom, apiSaveRoom } from '../api';
+import { apiDeleteRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
 import { Player, PlayerCard, Winner } from '@np-bingo/types';
+// import { useFetch } from '../../../hooks';
 
 export function useHostButtons() {
-  const { room, winners } = useContext(RoomContext);
+  const { gameId, room, players } = useContext(RoomContext);
   const { gamestate, playerCards, split, checkCard, dispatch } = useContext(
     GameContext
   );
@@ -24,6 +25,7 @@ export function useHostButtons() {
     emitLosers,
     emitHostEnd,
   } = useHostEmitters();
+
   /**
    * Three way toggle for host main button
    * @param gamestate Gamestate
@@ -140,9 +142,12 @@ export function useHostButtons() {
   const handleLeaveRoom = () => {
     emitLeaveRoom();
     // TODO Deletes room if players[] is empty. Maybe add logic here to prevent unecesssary api trips
-    apiDeleteRoom(room);
-    // TODO Best way to handle async??
-    // setIsDeleteRoom(true);
+
+    if (players.length < 1) {
+      apiDeleteRoom(gameId, room);
+      // TODO Best way to handle async??
+      // setIsDeleteRoom(true);
+    }
   };
 
   const disableDraws = gamestate === 'end' && true;

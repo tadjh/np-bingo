@@ -22,11 +22,12 @@ export async function apiSaveRoom(room: Room, body: Winner[]) {
 
 /**
  * Delete room from server (if no players have joined)
+ * @param id
  * @param room
  */
-export async function apiDeleteRoom(room: Room) {
+export async function apiDeleteRoom(id: string, room: Room) {
   await axios
-    .delete(`/api/game/${room}`)
+    .delete(`/api/game/${id}`, { data: { room } })
     .then(() => {
       logger('Leaving room');
     })

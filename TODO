@@ -1,5 +1,6 @@
 Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
+// TODO active games only gets updated when host clicks back butotn
 DONE Bug: Modal no dark mode on refresh
 DONE Bug: SOLO & MULTI No Bingo doesn’t play sound
 DONE Bug: Tooltips are broken

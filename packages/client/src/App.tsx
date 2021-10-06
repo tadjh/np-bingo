@@ -26,6 +26,7 @@ export default function App() {
   const {
     state: {
       gamestate,
+      gameId,
       ball,
       draws,
       pool,
@@ -60,6 +61,7 @@ export default function App() {
             <RoomContext.Provider
               value={{
                 room,
+                gameId,
                 host,
                 winners,
                 players,

@@ -92,6 +92,7 @@ export interface JoinRoom {
   host: Host;
   message: string;
 }
+
 export interface ApiError {
   error: string;
 }
