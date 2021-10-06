@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
  * @access Public
  */
 router.post('/', (req, res) => {
-  // TODO Check active room ids first
+  // TODO Check active room ids first ?
   const room = makeID(4);
   const document = { host: req.body, room: room };
   Game.create(document)

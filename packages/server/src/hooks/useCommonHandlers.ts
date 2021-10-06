@@ -57,6 +57,7 @@ export function useCommonHandlers(io: Server, socket: Socket) {
    * @param playerName
    */
   const emitRoomLosers = (room: Room, playerNames: Player['name'][]) => {
+    // TODO Nothing being done with these names
     socket.to(room).emit('room:event', 'losing-cards', playerNames);
   };
 

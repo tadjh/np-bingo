@@ -105,7 +105,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
       // io.to(loser.socketId).emit('host:event', 'losing-cards');
       return loser.name;
     });
-    emitRoomLosers(room, loserNames); // TODO Nothing being done with these names
+    emitRoomLosers(room, loserNames);
   };
 
   /**

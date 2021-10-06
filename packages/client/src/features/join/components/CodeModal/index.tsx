@@ -18,7 +18,7 @@ import { ApiError } from '@np-bingo/types';
 export interface CodeModalProps {
   open: boolean;
   noPortal?: boolean;
-  errors: ApiError | null;
+  errors?: ApiError;
   onClose: () => void;
   onSumbit?: (room: string) => void;
 }
@@ -182,7 +182,7 @@ export default function CodeModal({
         <ModalContent>
           <p className="text-black dark:text-white text-opacity-60 dark:text-opacity-60">
             {errors && errors}
-            {serverErrors !== null ? serverErrors.error : '\xa0'}
+            {serverErrors ? serverErrors.error : '\xa0'}
           </p>
           <fieldset className="flex justify-center font-mono text-3xl space-x-2 text-gray-900 dark:text-white dark:text-opacity-90">
             {/* <label htmlFor="code-input">Room Code</label> */}

@@ -13,7 +13,6 @@ export interface PlayerNameProps extends React.HTMLAttributes<HTMLDivElement> {
   socketId: string;
 }
 // TODO PlayerName.stories.tsx
-// TODO Rename PlayerName
 export default function PlayerName({
   status,
   name = 'Player#0000',

@@ -1,32 +1,6 @@
 Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
-// TODO active games only gets updated when host clicks back butotn
-DONE Bug: Modal no dark mode on refresh
-DONE Bug: SOLO & MULTI No Bingo doesn’t play sound
-DONE Bug: Tooltips are broken
-DONE Bug: On Win, Scribble sound still plays
-DONE Bug: SOLO first ball empty
-DONE Bug: On win, Play Again button 
-DONE Bug: SOLO On win, Sound disabled retriggers confetti and song
-DONE Bug: SOLO On win, Failure sounds retriggers
-DONE Bug: On no bingo, failure state (multiplayer)
-DONE Bug: On no bingo, failure for game room
-DONE Bug: On send card, card sender shouldn’t get “A card being checked for bingo”
-DONE Refresh Play: breaks page, set game mode solo
-DONE Bug: Multiplayer show progress indicator after host pushes ball
-DONE Bug: Multiplayer new ball no sound
-DONE Snapshot update
-DONE Bug: On leave room Bingo Song continues to play
-DONE Public Room Display busted
-DONE Bug: modal bug in storybook removeChild
-DONE Bug: Back button no sound
-DONE Make app responsive again including app margin top below certain screen sizes
-DONE Bug: Home doesn't init broken
-DONE Bug: Modal isn't iside of phone
-DONE Bug: Home loader not centered
-// TODO On game save, put winners into an array on server. Game 1, Game 2, etc.
-DONE SOLO: clear crossmarks doesn't work on replay
-DONE Room doesn't exist failure show on screen
+// TODO active games only gets updated when host clicks back button
 // TODO sticky options menu
 
 Vulnerbilities
@@ -41,10 +15,10 @@ Vulnerbilities
 Development
 // TODO Remove material-ui from Create view
 // TODO Config Husky
+// TODO Add GitHub Actions for cypress
 // TODO add @socket.io/admin-ui
-// TODO Rest api use game "_id" instead of room id?
-// TODO MongoDB model timestamps?
 // TODO Socket.io error handling?
+// TODO Error Boundaries
 // TODO Migrate to React Router v6
 // TODO Add profiler tracing?
 // TODO Socket.io Tests https://socket.io/docs/v4/testing/#Example-with-jest
@@ -59,19 +33,16 @@ heroku restart --remote heroku-api
 heroku logs -t --remote heroku-web-client
 
 QOL
-// TODO Update Favicon
 // TODO Persist Solo Mode?
 // TODO Game in progress try again later on disconnect
 // TODO Add: Player join sound for host
 // TODO Add: Sound for send card
+// TODO Add: Sound for player joined
 // TODO React ARIA for screen readers?
 // TODO Create users?
 // TODO Implement useTitle
-// TODO Improve room input behavior for typos
 // TODO Popup when user submits card for host and user
 // TODO Show winner name on win?
-// TODO Error Boundaries
-// TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
 
 Future Features
 // TODO Public Rooms
