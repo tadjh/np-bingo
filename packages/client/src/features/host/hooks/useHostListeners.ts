@@ -1,5 +1,5 @@
 import { Dispatch, useContext } from 'react';
-import { Card, Player, PlayerCard, PlayerEvent } from '@np-bingo/types';
+import { Player, PlayerCard, PlayerEvent } from '@np-bingo/types';
 import { logger } from '../../../utils';
 import {
   GET_CARD,
@@ -9,14 +9,13 @@ import {
 } from '../../../config/constants';
 import { Socket } from 'socket.io-client';
 import { AppActions } from '../../../reducers/app.reducer';
-import { GameContext, RoomContext } from '../../../context';
+import { GameContext } from '../../../context';
 
 export function useHostListeners(
   socket: Socket,
   dispatch: Dispatch<AppActions>
 ) {
   const { split, playerCards } = useContext(GameContext);
-  const { room } = useContext(RoomContext);
   /**
    * From Player: Player Join Room
    * @param player

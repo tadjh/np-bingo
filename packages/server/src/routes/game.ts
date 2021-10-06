@@ -30,10 +30,10 @@ router.post('/', (req, res) => {
   // TODO Check active room ids first
   const room = makeID(4);
   const document = { host: req.body, room: room };
-
   Game.create(document)
     .then((doc) => {
       Active.create({
+        gameId: doc._id,
         room: doc.room,
         name: doc.host.name,
         joinable: true,
@@ -60,73 +60,67 @@ router.post('/', (req, res) => {
 });
 
 /**
+ * @route PUT api/game/join/:room
+ * @description Join game by room ID
+ * @access Public
+ */
+router.put('/join/:room', async (req, res) => {
+  const filter = { room: req.params.room };
+  const update = { $addToSet: { players: req.body } };
+  try {
+    const activeGame = await Active.findOne(filter);
+    if (activeGame) {
+      Game.findByIdAndUpdate(activeGame.gameId, update, {}, (err, doc) => {
+        if (err) {
+          res
+            .status(400)
+            .json({ error: `Unable to update game room ${req.params.room}` });
+        }
+        if (doc) {
+          res.json({
+            room: doc.room,
+            host: doc.host,
+            message: `Joined game room ${req.params.room}`,
+          });
+        }
+        if (!doc) {
+          res
+            .status(404)
+            .json({ error: `Game room ${req.params.room} does not exist` });
+        }
+      });
+    }
+  } catch (err) {
+    res
+      .status(404)
+      .json({ error: `Unable to find active game room ${req.params.room}` });
+  }
+});
+
+/**
  * @route PUT api/game/:id
  * @description Update game winner by room ID
  * @access Public
  */
-router.put('/:id', async (req, res) => {
-  const filter = { room: req.params.id };
+router.put('/:id', (req, res) => {
   const update = { $addToSet: { winners: req.body } };
-  try {
-    await Game.findOneAndUpdate(filter, update, {}, function (err, doc) {
-      if (err) {
-        res
-          .status(400)
-          .json({ error: `Error while finding game room ${req.params.id}` });
-      }
-      if (doc) {
-        res.json({
-          msg: `Game room ${req.params.id} saved`,
-        });
-      }
-      if (!doc) {
-        res
-          .status(404)
-          .json({ error: `Game room ${req.params.id} does not exist` });
-      }
-    });
-  } catch (err) {
-    res
-      .status(400)
-      .json({ error: `Unable to update game room ${req.params.id} ` });
-  }
-});
-
-// TODO hinges on ID being unique, otherwise grabs first document with this ID
-// TODO Will add a subdoc every time user exits and rejoins...
-/**
- * @route PUT api/game/join/:id
- * @description Join game by room ID
- * @access Public
- */
-router.put('/join/:id', async (req, res) => {
-  const filter = { room: req.params.id, joinable: true };
-  const update = { $addToSet: { players: req.body } };
-  try {
-    await Game.findOneAndUpdate(filter, update, {}, function (err, doc) {
-      if (err) {
-        res
-          .status(400)
-          .json({ error: `Unable to find game room ${req.params.id}` });
-      }
-      if (doc) {
-        res.json({
-          room: doc.room,
-          host: doc.host,
-          message: `Joined game room ${req.params.id}`,
-        });
-      }
-      if (!doc) {
-        res
-          .status(404)
-          .json({ error: `Game room ${req.params.id} does not exist` });
-      }
-    });
-  } catch (err) {
-    res
-      .status(400)
-      .json({ error: `Unable to join game room ${req.params.id} ` });
-  }
+  Game.findByIdAndUpdate(req.params.id, update, (err, doc) => {
+    if (err) {
+      res
+        .status(400)
+        .json({ error: `Error while finding game room ${req.params.id}` });
+    }
+    if (doc) {
+      res.json({
+        message: `Game room ${req.params.id} saved`,
+      });
+    }
+    if (!doc) {
+      res
+        .status(404)
+        .json({ error: `Game room ${req.params.id} does not exist` });
+    }
+  });
 });
 
 // router.put('/leave/:id', async (req, res) => {
@@ -159,9 +153,9 @@ router.put('/join/:id', async (req, res) => {
  * @description Remove empty game by ID
  * @access Public
  */
-router.delete('/:id', async (req, res) => {
-  try {
-    Game.findByIdAndDelete(req.params.id).then(() => {
+router.delete('/:id', (req, res) => {
+  Game.findByIdAndDelete(req.params.id)
+    .then(() => {
       Active.findOneAndDelete({ room: req.body.room })
         .then(() => {
           res.json({
@@ -173,12 +167,12 @@ router.delete('/:id', async (req, res) => {
 
           res.status(400).json({ error: 'Unable to delete active game room' });
         });
+    })
+    .catch((err) => {
+      res
+        .status(400)
+        .json({ error: `Unable to find game room ${req.body} to delete` });
     });
-  } catch (err) {
-    res
-      .status(400)
-      .json({ error: `Unable to find game room ${req.body} to delete` });
-  }
 });
 
 export default router;

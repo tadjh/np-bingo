@@ -9,7 +9,8 @@ import {
 import { GameContext, RoomContext } from '../../../context';
 import { apiDeleteRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
-import { Player, PlayerCard, Winner } from '@np-bingo/types';
+import { ApiError, Player, PlayerCard, Winner } from '@np-bingo/types';
+import { useFetch } from '../../../hooks';
 // import { useFetch } from '../../../hooks';
 
 export function useHostButtons() {
@@ -25,6 +26,10 @@ export function useHostButtons() {
     emitLosers,
     emitHostEnd,
   } = useHostEmitters();
+  const { setBody } = useFetch<Winner[], { message: string }, ApiError>(
+    'PUT',
+    `/api/game/${gameId}`
+  );
 
   /**
    * Three way toggle for host main button
@@ -43,8 +48,6 @@ export function useHostButtons() {
       default:
         dispatch({ type: GAME_OVER });
         emitHostEnd();
-        // TODO When to save?
-        // apiSaveRoom(room, winner);
         break;
     }
   };
@@ -72,6 +75,7 @@ export function useHostButtons() {
   const validateWinners = (winners: Winner[]) => {
     dispatch({ type: CHECK_CARD_SUCCESS, payload: winners });
     emitWinners(winners);
+    setBody(winners);
   };
 
   /**
@@ -141,12 +145,9 @@ export function useHostButtons() {
    */
   const handleLeaveRoom = () => {
     emitLeaveRoom();
-    // TODO Deletes room if players[] is empty. Maybe add logic here to prevent unecesssary api trips
 
     if (players.length < 1) {
       apiDeleteRoom(gameId, room);
-      // TODO Best way to handle async??
-      // setIsDeleteRoom(true);
     }
   };
 

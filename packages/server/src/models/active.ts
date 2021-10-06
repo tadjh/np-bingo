@@ -2,6 +2,7 @@ import { Room } from '@np-bingo/types';
 import { Schema, model, Document } from 'mongoose';
 
 export interface IActive extends Document {
+  gameId: string;
   room: Room;
   name: string;
   // count: number;
@@ -10,6 +11,7 @@ export interface IActive extends Document {
 }
 const ActiveSchema = new Schema(
   {
+    gameId: String,
     room: String,
     name: String,
     // count: Number,
