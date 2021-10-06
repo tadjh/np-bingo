@@ -1,7 +1,7 @@
 {
   "name": "np-bingo",
   "private": true,
-  "version": "1.4.0",
+  "version": "1.4.3",
   "description": "http://dev.tadjhbrooks.com/np-bingo/",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
     "server-start": "yarn workspace @np-bingo/server start",
     "client-start": "yarn workspace @np-bingo/client start",
     "start": "run-p server-start client-start",
+    "start-dev": "run-p server-dev client-start",
     "common-build": "yarn workspace @np-bingo/common build",
     "server-build": "yarn workspace @np-bingo/server build",
     "client-build": "yarn workspace @np-bingo/client build",
@@ -19,7 +20,9 @@
     "publish-types": "yarn workspace @np-bingo/types publish",
     "publish-common": "yarn workspace @np-bingo/common publish",
     "publish-deps": "run-s publish-types publish-common",
-    "storybook": "yarn workspace @np-bingo/client storybook"
+    "storybook": "yarn workspace @np-bingo/client storybook",
+    "cypress:open": "yarn workspace @np-bingo/client cypress:open",
+    "cypress:test": "yarn workspace @np-bingo/client cypress:test"
   },
   "repository": {
     "type": "git",
@@ -33,7 +36,8 @@
   },
   "homepage": "https://github.com/TadjhBrooks/np-bingo#readme",
   "devDependencies": {
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "prettier": "2.3.2"
   },
   "workspaces": [
     "packages/*"
@@ -44,5 +48,8 @@
   "engines": {
     "node": "14.16.1",
     "npm": "6.14.12"
+  },
+  "dependencies": {
+    "cypress": "8.4.0"
   }
 }

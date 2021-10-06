@@ -1,0 +1,12 @@
+{
+  "fixturesFolder": false,
+  "integrationFolder": "cypress/multiplayer/integration",
+  "baseUrl": "http://localhost:3000/",
+  "viewportWidth": 650,
+  "viewportHeight": 1000,
+  "defaultCommandTimeout": 15000,
+  "videosFolder": "cypress/multiplayer/videos",
+  "screenshotsFolder": "cypress/multiplayer/screenshots",
+  "pluginsFile": "cypress/multiplayer/plugins",
+  "headed": true
+}

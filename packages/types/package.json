@@ -1,7 +1,7 @@
 {
   "name": "@np-bingo/types",
   "description": "TypeScript definitions for np-bingo",
-  "version": "1.4.0",
+  "version": "1.4.3",
   "main": "",
   "types": "index.d.ts",
   "license": "MIT",

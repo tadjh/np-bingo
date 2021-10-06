@@ -1,0 +1,42 @@
+Host events
+
+    host:event          create-room     room    player
+        -> createRoom()
+
+    host:event          leave-room      room
+        -> hostLeaveRoom(room)
+
+    host:event          sync-gamestate  room    ready           
+        -> room:event   sync-gamestate  ready
+    
+    host:events         sync-gamestate  room    standby
+        -> room:event   sync-gamestate  standby
+
+    host:event          sync-gamestate  room    end
+        -> room:event   sync-gamestate  end
+
+    host:event          dispense-ball   room    ball
+        -> room:event   dispense-ball   ball
+    
+    host:event          winning-card    room    owner
+        -> host:event   winning-card    winner[]
+        -> room:event   winning-card    playerName
+
+    host:event          losing-card     room    owner
+        -> host:event   losing-card
+        -> room:event   losing-card     playerName
+
+Player events
+
+    player:event        join-room       room    hostSocketId    user
+        -> host:player-event    join-room       player      => PLAYER_JOIN
+
+    player:event        leave-room      room    hostSocketId    user
+        -> host:player-event    leave-room      player      => PLAYER_LEAVE
+
+    player:event        ready-up        room    hostSocketId    user
+        -> host:player-event    ready-up        player      => PLAYER_READY
+
+    player:event        send-card       room    hostSocketId    playerCard
+        -> host:player-event    send-card   playerCard      => GET_CARD
+        -> room:player-event    sned-card   playerName      => PAUSE

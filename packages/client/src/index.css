@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  header,
+  main,
+  footer {
+    @apply flex z-10;
+  }
+  header {
+    @apply py-4 mt-[30px] gap-1;
+  }
+  main {
+    @apply flex-col items-center gap-y-4;
+  }
+  footer {
+    @apply flex-col justify-end items-center py-4 gap-1;
+  }
+}
+
 @layer utilities {
   .animation-delay-300 {
     animation-delay: 300ms;
@@ -14,37 +31,5 @@
   }
   .animation-delay-1200 {
     animation-delay: 1200ms;
-  }
-  .text-xxs {
-    font-size: 7px;
-  }
-  .border-bl {
-    border-width: 0 0 1px 1px;
-  }
-  @variants dark {
-    .ripple-lighter > .ripple,
-    .ripple-darker > .ripple {
-      background-position: center;
-      transition: background 0.5s;
-      background-size: 100%;
-    }
-    .ripple-lighter:active > .ripple,
-    .ripple-darker:active > .ripple {
-      background-image: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.15) 1%,
-        transparent 1.5%
-      );
-      background-size: 10000%;
-    }
-  }
-  @variants hover {
-    .tooltip:hover > .tooltip-t,
-    .tooltip:hover > .tooltip-r,
-    .tooltip:hover > .tooltip-d,
-    .tooltip:hover > .tooltip-l {
-      opacity: 100%;
-      visibility: visible;
-    }
   }
 }

@@ -3,7 +3,7 @@ const colors = require('tailwindcss/colors');
 module.exports = {
   mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: 'class', // or 'media' or 'class'
+  darkMode: 'class',
   theme: {
     fontFamily: {
       sans: [
@@ -44,6 +44,7 @@ module.exports = {
       gray: colors.gray,
       green: colors.emerald,
       orange: colors.orange,
+      yellow: colors.yellow,
     },
     extend: {
       colors: {
@@ -64,10 +65,17 @@ module.exports = {
         },
       },
       backgroundImage: (theme) => ({
-        'bingo-light': "url('/src/Assets/bg-tranparent-light.svg')",
-        'bingo-dark': "url('/src/Assets/bg-tranparent-dark.svg')",
+        'bingo-light': "url('/src/assets//img/bg-tranparent-light.svg')",
+        'bingo-dark': "url('/src/assets/img/bg-tranparent-dark.svg')",
         'gradient-radial':
           'radial-gradient(circle at 25% 25%, var(--tw-gradient-stops))',
+        'gradient-linear':
+          'linear-gradient(180deg, rgba(5,150,105,1) 13%, rgba(252,211,77,1) 57%, rgba(220,38,38,1) 90%);',
+        iphone: "url('/src/assets/img/bg-iphone.png')",
+        'iphone-top': "url('/src/assets/img/bg-iphone-top.png')",
+      }),
+      backgroundSize: (theme) => ({
+        oversized: 'auto 1000px',
       }),
       width: {
         23.5: '5.875rem',
@@ -86,23 +94,75 @@ module.exports = {
             animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)',
           },
         },
+        ripple: {
+          '0%': {
+            transform: 'scale(1)',
+            opacity: 0.375,
+          },
+          '33%': {
+            transform: 'scale(10)',
+            opacity: 0.15,
+          },
+          '100%': {
+            transform: 'scale(35)',
+            opacity: 0,
+          },
+        },
+        'slide-top': {
+          from: {
+            bottom: '75%',
+            opacity: 0,
+          },
+          to: {
+            bottom: '100%',
+            opacity: 1,
+            zIndex: 10,
+          },
+        },
+        'slide-right': {
+          from: {
+            left: '75%',
+            opacity: 0,
+          },
+          to: {
+            left: '100%',
+            opacity: 1,
+            zIndex: 10,
+          },
+        },
+        'slide-bottom': {
+          from: {
+            top: '75%',
+            opacity: 0,
+          },
+          to: {
+            top: '100%',
+            opacity: 1,
+            zIndex: 10,
+          },
+        },
+        'slide-left': {
+          from: {
+            right: '75%',
+            opacity: 0,
+          },
+          to: {
+            right: '100%',
+            opacity: 1,
+            zIndex: 10,
+          },
+        },
       },
       animation: {
         bounce: 'bounce 1500ms infinite',
+        ripple: 'ripple 750ms ease forwards',
+        'slide-top': 'slide-top 300ms ease-out 500ms forwards',
+        'slide-right': 'slide-right 300ms ease-out 500ms forwards',
+        'slide-bottom': 'slide-bottom 300ms ease-out 500ms forwards',
+        'slide-left': 'slide-left 300ms ease-out 500ms forwards',
       },
     },
   },
-  variants: {
-    extend: {
-      boxShadow: ['disabled'],
-      textColor: ['disabled'],
-      backgroundColor: ['even', 'active', 'disabled'],
-      borderWidth: ['last'],
-      opacity: ['dark', 'disabled'],
-      backgroundImage: ['dark'],
-      cursor: ['disabled'],
-      translate: ['hover', 'active', 'disabled'],
-    },
-  },
+  variants: {},
   plugins: [],
 };

@@ -1,7 +1,11 @@
 Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
+// TODO active games only gets updated when host clicks back button
+// TODO sticky options menu
 
 Vulnerbilities
+// TODO Prevent kicked player from rejoining (API & Socket)
+// TODO Move card creation to Server API in multiplayer mode
 // TODO Rest Api has no auth (JWT?)
 // TODO Max active Games
 // TODO Max room size 
@@ -9,15 +13,16 @@ Vulnerbilities
 // TODO Timeout socket.io connection with reconnect popup
 
 Development
+// TODO Remove material-ui from Create view ?
+// TODO Implement unsubscribe listeners
+// TODO Config Husky
+// TODO Add GitHub Actions for cypress
 // TODO add @socket.io/admin-ui
-// TODO Rest api use game "_id" instead of room id
-// TODO MongoDB model timestamps?
 // TODO Socket.io error handling?
+// TODO Error Boundaries
 // TODO Migrate to React Router v6
-// TODO Make List generation generic
 // TODO Add profiler tracing?
 // TODO Socket.io Tests https://socket.io/docs/v4/testing/#Example-with-jest
-// TODO Remove material-ui from Create view
 
 Environment
 // TODO Use copyfiles or webpack(?) to move server favicon from 'Public' to 'dist/Public' or something
@@ -29,24 +34,20 @@ heroku restart --remote heroku-api
 heroku logs -t --remote heroku-web-client
 
 QOL
-// TODO React ARIA for screen readers
+// TODO Persist Solo Mode?
+// TODO Game in progress try again later on disconnect
+// TODO Add: Player join sound for host
+// TODO Add: Sound for send card
+// TODO Add: Sound for player joined
+// TODO React ARIA for screen readers?
 // TODO Create users?
 // TODO Implement useTitle
-// TODO Improve room input behavior for typos
 // TODO Popup when user submits card for host and user
-// TODO Host has left game popup notification
 // TODO Show winner name on win?
-// TODO Error Boundaries
-// TODO Cleanup consoles
-// TODO Remove used cards from set of all possible cards so two people cant have same cards using serial
 
 Future Features
 // TODO Public Rooms
 // TODO Streamer Mode
-// TODO Balls remaining color based on amount??
-            * Bright Green  - @ 75 (default)
-            * Yellow-Green  - when 5 balls have been drawn in each column (Earliest possible bingo)
-            * Red  - below 42 avg bingo
 // TODO Death Bingo!!!
 // TODO Blackout Bingo
 // TODO Postage Stamp Rule
