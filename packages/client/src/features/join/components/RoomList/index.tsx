@@ -44,7 +44,7 @@ export default function RoomList({
                 <IconButton
                   aria-label="play"
                   component={RouterLink}
-                  to={`/play/${item.room}`} // TODO Will go even if Room doesn't exist
+                  to={`/play/${item.room}`}
                   onClick={roomDescription}
                   onMouseDown={clickHardSfx}
                   description="Join Room"

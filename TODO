@@ -13,7 +13,8 @@ Vulnerbilities
 // TODO Timeout socket.io connection with reconnect popup
 
 Development
-// TODO Remove material-ui from Create view
+// TODO Remove material-ui from Create view ?
+// TODO Implement unsubscribe listeners
 // TODO Config Husky
 // TODO Add GitHub Actions for cypress
 // TODO add @socket.io/admin-ui

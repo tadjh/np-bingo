@@ -46,7 +46,6 @@ export function useProgress(
    */
   const pauseProgress = useCallback(() => {
     cancelAnimationFrame(requestRef.current as number);
-    // TODO should elapsed callback trigger based on startTime plus pause delay?
     // Reset progress due to startTime still triggering callback once animation re-enabled
     resetProgress();
   }, [resetProgress]);

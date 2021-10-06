@@ -15,7 +15,6 @@ export default {
   ],
   argTypes: {
     onClose: { action: 'click' },
-    // callback: { action: 'callback' },
   },
 } as Meta;
 

@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import { useToggle } from '../../../hooks';
 import RoomList from '../components/RoomList';
 import CodeModal from '../components/CodeModal';
@@ -46,7 +46,7 @@ export default function Join({ publicRooms = [] }: JoinProps) {
             open={isOpen}
             onClose={close}
             onSumbit={joinRoom}
-            errors={errors}
+            errors={errors || undefined}
           />
           {allowSolo && (
             <Button

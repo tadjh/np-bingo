@@ -11,7 +11,6 @@ import { apiDeleteRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
 import { ApiError, Player, PlayerCard, Winner } from '@np-bingo/types';
 import { useFetch } from '../../../hooks';
-// import { useFetch } from '../../../hooks';
 
 export function useHostButtons() {
   const { gameId, room, players } = useContext(RoomContext);

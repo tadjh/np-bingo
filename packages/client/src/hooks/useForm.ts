@@ -78,8 +78,6 @@ export function useForm<S>(
    */
   const handleError = (error: any) => {
     setErrors(error.message);
-    // TODO removed return, test this
-    // return
   };
 
   /**

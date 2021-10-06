@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Player } from '@np-bingo/types';
 import {
   BallContext,
@@ -6,7 +6,6 @@ import {
   GameContext,
   RoomContext,
 } from '../../../context';
-import { apiSaveRoom } from '../api';
 import { useProgress } from '../../../hooks';
 import { useHostEmitters } from '.';
 import { useHostListeners } from './useHostListeners';
@@ -15,15 +14,12 @@ import { Socket } from 'socket.io-client';
 
 export function useHost(socket: Socket) {
   const { ballDelay } = useContext(FeaturesContext);
-  const { room, winners, players } = useContext(RoomContext);
+  const { players } = useContext(RoomContext);
   const { dispatch } = useContext(GameContext);
   const { ball, newBall } = useContext(BallContext);
   const [isNewGame, setIsNewGame] = useState(true);
   const { emitKickPlayer, emitSendBall } = useHostEmitters();
-  const {
-    subscribeToPlayerEvents,
-    unsubscribeFromPlayerEvents,
-  } = useHostListeners(socket, dispatch);
+  const { subscribeToPlayerEvents } = useHostListeners(socket, dispatch);
   /**
    * Kick player from room
    * @param player
@@ -59,14 +55,6 @@ export function useHost(socket: Socket) {
     });
     enableProgress();
   };
-
-  /**
-   * Save Room
-   */
-  // TODO SAVE ROOM
-  const saveRoom = useCallback(() => {
-    apiSaveRoom(room, winners);
-  }, [room, winners]);
 
   /**
    * Filters out kicked and leaver players and returns player count.

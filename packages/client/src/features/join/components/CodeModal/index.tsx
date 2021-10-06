@@ -185,7 +185,6 @@ export default function CodeModal({
             {serverErrors ? serverErrors.error : '\xa0'}
           </p>
           <fieldset className="flex justify-center font-mono text-3xl space-x-2 text-gray-900 dark:text-white dark:text-opacity-90">
-            {/* <label htmlFor="code-input">Room Code</label> */}
             <input
               name="code1"
               aria-label="code1"

@@ -163,7 +163,7 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         room: action.payload.room,
         host: { ...state.host, ...action.payload.host },
       };
-    case JOIN_ROOM: // TODO Might need to wipe all game state like READY_CHECK if INIT_GAME isn't called before joining a new room
+    case JOIN_ROOM:
       return {
         ...state,
         gamestate: 'ready',
@@ -196,7 +196,7 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         return element;
       });
       return { ...state, players: [...readyFiltered] };
-    case NEW_BALL: // TODO moved setting start here
+    case NEW_BALL:
       return {
         ...state,
         gamestate: 'start',
@@ -204,13 +204,13 @@ export function appReducer(state: AppState, action: AppActions): AppState {
         draws: action.payload.draws.map((item) => item.slice()),
         pool: action.payload.pool.map((item) => item.slice()),
       };
-    case SET_BALL: // TODO DO we need this?
+    case SET_BALL:
       return {
         ...state,
         gamestate: 'start',
         ball: { ...action.payload },
       };
-    case CHANGE_GAMEMODE: // TODO Might need to wipe all game state like READY_CHECK if INIT_GAME isn't called before switching gamemmodes
+    case CHANGE_GAMEMODE:
       return {
         ...state,
         gamestate: 'ready',

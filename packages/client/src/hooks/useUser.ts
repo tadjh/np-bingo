@@ -1,7 +1,6 @@
 import { Dispatch, useMemo, useReducer } from 'react';
 import { Player } from '@np-bingo/types';
 import { NODE_ENV } from '../config';
-// import logger from 'use-reducer-logger';
 import { UserActions, UserState, userReducer } from '../reducers/user.reducer';
 import { fourRandomDigits } from '../utils';
 import { ReducerLogger } from './useReducerLogger';

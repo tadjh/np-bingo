@@ -1,13 +1,11 @@
 import { useContext } from 'react';
 import { Card } from '@np-bingo/types';
-import { GameContext, RoomContext, UserContext } from '../../../context';
+import { RoomContext, UserContext } from '../../../context';
 
 export function usePlayEmitters() {
   const { user, socket } = useContext(UserContext);
   const { room, host } = useContext(RoomContext);
-  const { gamestate } = useContext(GameContext);
 
-  // TODO Consider socket host.socket, user and maybe room into an object
   /**
    * To Host: Send user ready
    */
@@ -32,25 +30,9 @@ export function usePlayEmitters() {
     socket.emit('player:event', 'leave-room', room, host.socketId, user);
   };
 
-  // TODO Is this necessary?
-  /**
-   * To Room: Player won the game
-   */
-  // const emitGameWin = () => {
-  //   socket.emit('win', room, winner.player.name);
-  // };
-
-  // TODO ????
-  // useEffect(() => {
-  //   if (gamestate === 'win') {
-  //     emitGameWin();
-  //   }
-  // });
-
   return {
     emitReadyUp,
     emitSendCard,
     emitLeaveRoom,
-    // emitGameWin
   };
 }

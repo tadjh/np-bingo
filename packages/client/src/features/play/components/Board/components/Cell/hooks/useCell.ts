@@ -72,7 +72,6 @@ export function useCell(
   const handleClick = () => {
     if (winner) return;
     toggleChecked();
-    // onClick(event);
   };
 
   return { isChecked, handleClick, handleMouseDown };

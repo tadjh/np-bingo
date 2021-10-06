@@ -11,7 +11,6 @@ export const FAILURE = 'FAILURE';
 export const WIN_GAME = 'WIN GAME';
 export const GAME_OVER = 'GAME OVER';
 export const NEW_GAME = 'NEW GAME';
-// App events
 
 // Host & Player events
 export const CREATE_ROOM = 'CREATE ROOM';

@@ -45,20 +45,12 @@ export function usePlay() {
   );
 
   const { playWinSfxData, playWinSfx, playLoseSfx } = usePlaySounds();
-  // const {
-  //   emitReadyUp,
-  //   // emitSendCard
-  // } = usePlayEmitters();
-  const [subscribeToHost, unsubscribeFromHost] = usePlayListenersHost(
+  const [subscribeToHost] = usePlayListenersHost(
     socket,
     playDispatch,
     dispatch
   );
-  const [subscribeToRoom, unsubscribeFromRoom] = usePlayListenersRoom(
-    socket,
-    dispatch
-  );
-  // const [, soloSideEffects] = useSolo();
+  const [subscribeToRoom] = usePlayListenersRoom(socket, dispatch);
 
   /**
    * Creates a new card and stores it in state
@@ -91,15 +83,11 @@ export function usePlay() {
   }, [isNewGame, gamemode, subscribeToHost, subscribeToRoom]);
 
   /**
-   * Sync Play gamestate with App gamestate
+   * If current user is a winner
+   * @param winners
+   * @param socketId
+   * @returns Winner
    */
-  // useEffect(() => {
-  //   if (gamestate !== 'init') return;
-  //   // Syncing Player View with Host Game State.
-  //   initPlay();
-  //   play('ready');
-  // }, [gamestate, initPlay, play]);
-
   const isCurrentWinner = (
     winners: Winner[],
     socketId: Player['name'] | null
@@ -145,26 +133,8 @@ export function usePlay() {
     handleWin(winner);
   }, [gamestate, gamemode, socketId, winners, dispatch, playWinSfx]);
 
-  // TODO deafenHostAction
-  // TODO deafenRomAction
-
-  // useEffect(() => {
-  //   console.log('test ' + gamestate);Î
-  //   if (gamestate === 'win') return handleWin();
-  // }, [gamestate, handleWin]);
-
-  /**
-   * Set/Reset Play on Ready
-   */
-  // useEffect(() => {
-  //   if (gamestate !== 'ready') return;
-  //   setCard();
-  //   confettiStop();
-  // }, [gamestate, setCard]);
-
   /**
    * Solo: On Validation
-   * // TODO Move to useSolo
    */
   useEffect(() => {
     if (gamemode !== 'solo') return;

@@ -1,7 +1,6 @@
-import { Dispatch, useCallback, useContext, useEffect } from 'react';
-import { GameContext, UserContext } from '../../../context';
+import { Dispatch } from 'react';
 import { logger } from '../../../utils';
-import { Ball, HostEvent, Room, Winner } from '@np-bingo/types';
+import { HostEvent, Winner } from '@np-bingo/types';
 import {
   CHECK_CARD_FAILURE,
   CHECK_CARD_SUCCESS,

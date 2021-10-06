@@ -7,7 +7,6 @@ import {
   useReducer,
   useState,
 } from 'react';
-// import logger from 'use-reducer-logger';
 import { NODE_ENV } from '../config';
 import { FETCH_FAILURE, FETCH_INIT, FETCH_SUCCESS } from '../config/constants';
 import {
@@ -16,7 +15,6 @@ import {
   fetchReducer,
   FetchState,
 } from '../reducers/fetch.reducer';
-// import { handleError } from '../utils';
 import { ReducerLogger } from './useReducerLogger';
 
 export interface UseFetchProps<T, R, E> extends FetchState<R, E> {
@@ -52,7 +50,6 @@ export function useFetch<T, R, E>(
         })
         .catch((error: AxiosError<E>) => {
           if (didCancel) return;
-          // handleError(error);
 
           if (error.response) {
             dispatch({ type: FETCH_FAILURE, payload: error.response.data });

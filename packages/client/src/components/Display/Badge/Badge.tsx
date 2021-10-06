@@ -23,7 +23,7 @@ export default function Badge({
       style={{ backgroundPositionY: `${offset}%` }}
       {...props}
     >
-      <div // TODO replace with Alert component
+      <div
         className={clsx(
           'absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow',
           alert()

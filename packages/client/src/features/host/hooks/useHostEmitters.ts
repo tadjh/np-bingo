@@ -35,26 +35,12 @@ export function useHostEmitters() {
   };
 
   /**
-   * To Room: Host started game
-   */
-  // const emitHostStart = useCallback(() => {
-  //   socket.emit('host:gamestate', 'start', room);
-  // }, [socket, room]);
-
-  /**
    * To Room: Send new ball
    * @param ball
    */
   const emitSendBall = (ball: Ball) => {
     socket.emit('host:event', 'dispense-ball', room, ball);
   };
-
-  /**
-   * To Room: Validating Card
-   */
-  // const emitValidate = (player: Player) => {
-  //   socket.emit('host:event', 'check-card', room, player);
-  // };
 
   /**
    * To Room: Card(s) is a winner
@@ -78,14 +64,11 @@ export function useHostEmitters() {
   };
 
   return {
-    // emitCreateRoom,
     emitLeaveRoom,
     emitKickPlayer,
     emitHostReady,
     emitHostStandby,
-    // emitHostStart,
     emitSendBall,
-    // emitValidate,
     emitWinners,
     emitLosers,
     emitHostEnd,

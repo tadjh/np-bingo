@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import { Card, Gamemode, Serial } from '@np-bingo/types';
 import {
   BallContext,

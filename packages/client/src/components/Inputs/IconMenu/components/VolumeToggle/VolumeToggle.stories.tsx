@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Story, Meta } from '@storybook/react';
 import VolumeToggle, { VolumeToggleProps } from '.';
 import { SoundContext } from '../../../../../context';
@@ -20,6 +20,7 @@ export default {
             volume: defaultVolume,
             sounds: sounds,
             toggleSounds: toggleSounds,
+            setVolume: () => {},
           }}
         >
           <Story />

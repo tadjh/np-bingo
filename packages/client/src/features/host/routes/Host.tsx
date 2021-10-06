@@ -1,4 +1,4 @@
-import React, { Fragment, useContext } from 'react';
+import { Fragment, useContext } from 'react';
 import clsx from 'clsx';
 import Ball from '../../../components/Display/Ball';
 import {

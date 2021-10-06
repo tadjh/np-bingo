@@ -7,7 +7,6 @@ export default {
   component: CodeModal,
   argTypes: {
     onClose: { action: 'click' },
-    // callback: { action: 'callback' },
   },
 } as Meta;
 

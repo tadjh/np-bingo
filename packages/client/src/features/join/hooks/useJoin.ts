@@ -46,8 +46,6 @@ export function useJoin() {
     [socket, connect]
   );
 
-  // TODO Move socket delegation to App
-
   /**
    * Trigger Fetch once socket is loaded
    */

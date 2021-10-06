@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Story, Meta } from '@storybook/react';
 import Play, { PlayProps } from './routes/Play';
@@ -80,8 +80,31 @@ const Template: Story<PlayProps> = (args) => <Play {...args} />;
 export const Base = Template.bind({});
 Base.args = {
   staticCard: [
-    2, 26, 41, 47, 66, 5, 19, 37, 59, 74, 10, 25, 42, 55, 62, 13, 29, 33, 53,
-    72, 1, 20, 43, 51, 71,
+    2,
+    26,
+    41,
+    47,
+    66,
+    5,
+    19,
+    37,
+    59,
+    74,
+    10,
+    25,
+    42,
+    55,
+    62,
+    13,
+    29,
+    33,
+    53,
+    72,
+    1,
+    20,
+    43,
+    51,
+    71,
   ],
   staticSerial: 'CwZgDCIKxgbATI+0oE5YHZYEZbE8KvGMGFLHtlPLCKlNhvEA',
 };

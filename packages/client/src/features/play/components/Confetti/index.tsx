@@ -3,7 +3,6 @@ import React, { useRef } from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import ReactDOM from 'react-dom';
-// import { usePortal } from '../../Utils/custom-hooks';
 
 export interface ConfettiProps extends React.HTMLAttributes<HTMLDivElement> {
   isActive?: boolean;
@@ -18,17 +17,12 @@ export default function Coneftti({
   const app = useRef(document.getElementById('container'));
   const myCanvas = useRef(document.createElement('canvas'));
   myCanvas.current.setAttribute('id', 'canvas-confetti');
-  myCanvas.current.setAttribute(
-    'class',
-    'absolute w-full h-full' // top-0 left-0 bottom-0 right-0 max-w-[96%] sm:max-w-sm mx-auto min-h-screen
-  );
+  myCanvas.current.setAttribute('class', 'absolute w-full h-full');
   const canvas = myCanvas.current;
   const target = app.current || appRoot.current;
   const duration = 15 * 1000; // theme song is 15 seconds
 
   const [played, setPlayed] = useState(false);
-
-  // const canvas = usePortal(target);
 
   useEffect(() => {
     if (!isActive || target === null) return;
