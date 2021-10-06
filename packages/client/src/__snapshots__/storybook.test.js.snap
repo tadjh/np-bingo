@@ -4102,7 +4102,7 @@ exports[`Storyshots Pages/Home Base 1`] = `
          
       </div>
       <a
-        class="relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center disabled:opacity-50 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:pointer-events-none bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90 hover:shadow-xl disabled:bg-gray-400 dark:disabled:bg-gray-700 w-[83px]"
+        class="relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center disabled:opacity-50 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:pointer-events-none bg-blue-600 hover:bg-blue-700 dark:bg-blue-300 dark:hover:bg-blue-400 text-white dark:text-black text-opacity-90 dark:text-opacity-90 hover:shadow-xl disabled:bg-gray-400 dark:disabled:bg-gray-700 active w-[83px]"
         href="/join"
         id="play-button"
       >
@@ -4262,6 +4262,9 @@ exports[`Storyshots Pages/Home Base 1`] = `
         <div>
           <div
             class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+            data-playername="Player"
+            data-socketid=""
+            data-testid="player-name"
           >
             <span>
               Player
@@ -5055,6 +5058,9 @@ exports[`Storyshots Pages/Host Base 1`] = `
       <div>
         <div
           class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+          data-playername="Player"
+          data-socketid=""
+          data-testid="player-name"
         >
           <span>
             Player
@@ -5827,6 +5833,9 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
       <div>
         <div
           class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+          data-playername="Player"
+          data-socketid=""
+          data-testid="player-name"
         >
           <span>
             Player
@@ -6402,6 +6411,9 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
       <div>
         <div
           class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+          data-playername="Player"
+          data-socketid=""
+          data-testid="player-name"
         >
           <span>
             Player
@@ -6718,6 +6730,9 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
       <div>
         <div
           class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+          data-playername="Player"
+          data-socketid=""
+          data-testid="player-name"
         >
           <span>
             Player
@@ -8453,7 +8468,7 @@ exports[`Storyshots Pages/Join Base 1`] = `
           </span>
         </button>
         <a
-          class="relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center disabled:opacity-50 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:pointer-events-none text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 hover:shadow-xl solo-button"
+          class="relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center disabled:opacity-50 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:pointer-events-none text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 hover:shadow-xl active solo-button"
           href="/play/solo"
         >
           <span
@@ -8602,6 +8617,9 @@ exports[`Storyshots Pages/Join Base 1`] = `
         <div>
           <div
             class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+            data-playername="Player"
+            data-socketid=""
+            data-testid="player-name"
           >
             <span>
               Player
@@ -8697,7 +8715,7 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
           </span>
         </button>
         <a
-          class="relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center disabled:opacity-50 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:pointer-events-none text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 hover:shadow-xl solo-button"
+          class="relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center disabled:opacity-50 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:pointer-events-none text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 hover:shadow-xl active solo-button"
           href="/play/solo"
         >
           <span
@@ -8846,6 +8864,9 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
         <div>
           <div
             class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+            data-playername="Player"
+            data-socketid=""
+            data-testid="player-name"
           >
             <span>
               Player
@@ -8955,7 +8976,7 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
           </span>
         </button>
         <a
-          class="relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center disabled:opacity-50 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:pointer-events-none text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 hover:shadow-xl solo-button"
+          class="relative px-6 py-2 rounded-full transition focus:outline-none overflow-hidden text-center disabled:opacity-50 disabled:text-gray-800 dark:disabled:text-gray-400 disabled:shadow-none disabled:cursor-default disabled:pointer-events-none text-blue-600 dark:text-blue-300 hover:text-white dark:hover:text-black hover:text-opacity-90 dark:hover:text-opacity-90 hover:bg-blue-700 dark:hover:bg-blue-400 hover:shadow-xl active solo-button"
           href="/play/solo"
         >
           <span
@@ -9104,6 +9125,9 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
         <div>
           <div
             class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+            data-playername="Player"
+            data-socketid=""
+            data-testid="player-name"
           >
             <span>
               Player
@@ -9831,6 +9855,9 @@ exports[`Storyshots Pages/Play Base 1`] = `
         <div>
           <div
             class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+            data-playername="Player"
+            data-socketid=""
+            data-testid="player-name"
           >
             <span>
               Player
@@ -10523,6 +10550,9 @@ exports[`Storyshots Pages/Play Win 1`] = `
         <div>
           <div
             class="flex flex-row items-center text-black dark:text-white text-opacity-90 dark:text-opacity-90 gap-x-1"
+            data-playername="Player"
+            data-socketid=""
+            data-testid="player-name"
           >
             <span>
               Player
@@ -11253,8 +11283,23 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
       </span>
     </div>
     <div
-      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-2"
+      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-2 active"
     >
+      <span
+        class="absolute"
+        data-testid="crossmark"
+      >
+        <svg
+          class="h-12 w-12 text-green-600 dark:text-green-500"
+          fill="currentColor"
+          viewBox="0 0 352 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352,99.11a52.43,52.43,0,0,1-3.74,7.2,60.63,60.63,0,0,1-4.57,6.37l-.83,3.6q-34.07,33.79-65.36,69.24t-59.82,72.56q19.95,26.58,40.71,53T301,363.59q-5,15.8-10.52,23T277,394.89a22.83,22.83,0,0,0-4.85,7.2,21.39,21.39,0,0,0-1.8,8.59v1.1q-1.94,1.67-6.92,5.82t-7.76,6.65a54.18,54.18,0,0,1-8.58-4.44,57.59,57.59,0,0,1-8.87-6.92,50.69,50.69,0,0,1-8.16,9.83,66.67,66.67,0,0,1-10.67,8.17l-7.48-1.11q-16.61-19.38-32.26-41.12T149,343.1q-26.33,33-49,62.59t-42.93,57.6l-8.58.56L37.94,451.39l2.22-9.14-3.6-2.77a34,34,0,0,0-5.26,1.66,56.66,56.66,0,0,0-7.76,4.15A82.82,82.82,0,0,1,10.8,431.86a73.61,73.61,0,0,1-9.14-15.92,94.78,94.78,0,0,1,4.43-9.83q2.78-5.4,2.77-6.24,0-2.49-3.46-10t-5.4-13q22.16-27.42,46.8-56.36t52.35-60.24a770.61,770.61,0,0,1-36.7-74.5,809.74,809.74,0,0,1-28.66-78.1,97.16,97.16,0,0,1,9-11.77,87.37,87.37,0,0,1,10.38-9.83q5,3.6,7.34,5.54c1.57,1.3,3.09,2.68,4.57,4.16a30.08,30.08,0,0,0,4.57-2.5,42.83,42.83,0,0,0,4-3,30.35,30.35,0,0,1,1-8.17,15.32,15.32,0,0,1,3.46-6.23l10.8-2.77q10.51,7.2,42.65,57.05,21.6,33.51,35.73,54,32.4-37.11,66.05-71t68.82-64.94a45.36,45.36,0,0,1,12.74,8,46.69,46.69,0,0,1,9.42,11.91L321,74.74A22.91,22.91,0,0,0,324.86,80a25.75,25.75,0,0,0,5,3.88h10.79Z"
+          />
+        </svg>
+      </span>
       <span
         class="relative z-10"
       >
@@ -11298,8 +11343,23 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
       </span>
     </div>
     <div
-      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-7"
+      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-7 active"
     >
+      <span
+        class="absolute"
+        data-testid="crossmark"
+      >
+        <svg
+          class="h-12 w-12 text-green-600 dark:text-green-500"
+          fill="currentColor"
+          viewBox="0 0 352 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352,99.11a52.43,52.43,0,0,1-3.74,7.2,60.63,60.63,0,0,1-4.57,6.37l-.83,3.6q-34.07,33.79-65.36,69.24t-59.82,72.56q19.95,26.58,40.71,53T301,363.59q-5,15.8-10.52,23T277,394.89a22.83,22.83,0,0,0-4.85,7.2,21.39,21.39,0,0,0-1.8,8.59v1.1q-1.94,1.67-6.92,5.82t-7.76,6.65a54.18,54.18,0,0,1-8.58-4.44,57.59,57.59,0,0,1-8.87-6.92,50.69,50.69,0,0,1-8.16,9.83,66.67,66.67,0,0,1-10.67,8.17l-7.48-1.11q-16.61-19.38-32.26-41.12T149,343.1q-26.33,33-49,62.59t-42.93,57.6l-8.58.56L37.94,451.39l2.22-9.14-3.6-2.77a34,34,0,0,0-5.26,1.66,56.66,56.66,0,0,0-7.76,4.15A82.82,82.82,0,0,1,10.8,431.86a73.61,73.61,0,0,1-9.14-15.92,94.78,94.78,0,0,1,4.43-9.83q2.78-5.4,2.77-6.24,0-2.49-3.46-10t-5.4-13q22.16-27.42,46.8-56.36t52.35-60.24a770.61,770.61,0,0,1-36.7-74.5,809.74,809.74,0,0,1-28.66-78.1,97.16,97.16,0,0,1,9-11.77,87.37,87.37,0,0,1,10.38-9.83q5,3.6,7.34,5.54c1.57,1.3,3.09,2.68,4.57,4.16a30.08,30.08,0,0,0,4.57-2.5,42.83,42.83,0,0,0,4-3,30.35,30.35,0,0,1,1-8.17,15.32,15.32,0,0,1,3.46-6.23l10.8-2.77q10.51,7.2,42.65,57.05,21.6,33.51,35.73,54,32.4-37.11,66.05-71t68.82-64.94a45.36,45.36,0,0,1,12.74,8,46.69,46.69,0,0,1,9.42,11.91L321,74.74A22.91,22.91,0,0,0,324.86,80a25.75,25.75,0,0,0,5,3.88h10.79Z"
+          />
+        </svg>
+      </span>
       <span
         class="relative z-10"
       >
@@ -11334,8 +11394,23 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
       </span>
     </div>
     <div
-      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-11"
+      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-11 active"
     >
+      <span
+        class="absolute"
+        data-testid="crossmark"
+      >
+        <svg
+          class="h-12 w-12 text-green-600 dark:text-green-500"
+          fill="currentColor"
+          viewBox="0 0 352 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352,99.11a52.43,52.43,0,0,1-3.74,7.2,60.63,60.63,0,0,1-4.57,6.37l-.83,3.6q-34.07,33.79-65.36,69.24t-59.82,72.56q19.95,26.58,40.71,53T301,363.59q-5,15.8-10.52,23T277,394.89a22.83,22.83,0,0,0-4.85,7.2,21.39,21.39,0,0,0-1.8,8.59v1.1q-1.94,1.67-6.92,5.82t-7.76,6.65a54.18,54.18,0,0,1-8.58-4.44,57.59,57.59,0,0,1-8.87-6.92,50.69,50.69,0,0,1-8.16,9.83,66.67,66.67,0,0,1-10.67,8.17l-7.48-1.11q-16.61-19.38-32.26-41.12T149,343.1q-26.33,33-49,62.59t-42.93,57.6l-8.58.56L37.94,451.39l2.22-9.14-3.6-2.77a34,34,0,0,0-5.26,1.66,56.66,56.66,0,0,0-7.76,4.15A82.82,82.82,0,0,1,10.8,431.86a73.61,73.61,0,0,1-9.14-15.92,94.78,94.78,0,0,1,4.43-9.83q2.78-5.4,2.77-6.24,0-2.49-3.46-10t-5.4-13q22.16-27.42,46.8-56.36t52.35-60.24a770.61,770.61,0,0,1-36.7-74.5,809.74,809.74,0,0,1-28.66-78.1,97.16,97.16,0,0,1,9-11.77,87.37,87.37,0,0,1,10.38-9.83q5,3.6,7.34,5.54c1.57,1.3,3.09,2.68,4.57,4.16a30.08,30.08,0,0,0,4.57-2.5,42.83,42.83,0,0,0,4-3,30.35,30.35,0,0,1,1-8.17,15.32,15.32,0,0,1,3.46-6.23l10.8-2.77q10.51,7.2,42.65,57.05,21.6,33.51,35.73,54,32.4-37.11,66.05-71t68.82-64.94a45.36,45.36,0,0,1,12.74,8,46.69,46.69,0,0,1,9.42,11.91L321,74.74A22.91,22.91,0,0,0,324.86,80a25.75,25.75,0,0,0,5,3.88h10.79Z"
+          />
+        </svg>
+      </span>
       <span
         class="relative z-10"
       >
@@ -11343,8 +11418,23 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
       </span>
     </div>
     <div
-      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-12"
+      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-12 active"
     >
+      <span
+        class="absolute"
+        data-testid="crossmark"
+      >
+        <svg
+          class="h-12 w-12 text-green-600 dark:text-green-500"
+          fill="currentColor"
+          viewBox="0 0 352 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352,99.11a52.43,52.43,0,0,1-3.74,7.2,60.63,60.63,0,0,1-4.57,6.37l-.83,3.6q-34.07,33.79-65.36,69.24t-59.82,72.56q19.95,26.58,40.71,53T301,363.59q-5,15.8-10.52,23T277,394.89a22.83,22.83,0,0,0-4.85,7.2,21.39,21.39,0,0,0-1.8,8.59v1.1q-1.94,1.67-6.92,5.82t-7.76,6.65a54.18,54.18,0,0,1-8.58-4.44,57.59,57.59,0,0,1-8.87-6.92,50.69,50.69,0,0,1-8.16,9.83,66.67,66.67,0,0,1-10.67,8.17l-7.48-1.11q-16.61-19.38-32.26-41.12T149,343.1q-26.33,33-49,62.59t-42.93,57.6l-8.58.56L37.94,451.39l2.22-9.14-3.6-2.77a34,34,0,0,0-5.26,1.66,56.66,56.66,0,0,0-7.76,4.15A82.82,82.82,0,0,1,10.8,431.86a73.61,73.61,0,0,1-9.14-15.92,94.78,94.78,0,0,1,4.43-9.83q2.78-5.4,2.77-6.24,0-2.49-3.46-10t-5.4-13q22.16-27.42,46.8-56.36t52.35-60.24a770.61,770.61,0,0,1-36.7-74.5,809.74,809.74,0,0,1-28.66-78.1,97.16,97.16,0,0,1,9-11.77,87.37,87.37,0,0,1,10.38-9.83q5,3.6,7.34,5.54c1.57,1.3,3.09,2.68,4.57,4.16a30.08,30.08,0,0,0,4.57-2.5,42.83,42.83,0,0,0,4-3,30.35,30.35,0,0,1,1-8.17,15.32,15.32,0,0,1,3.46-6.23l10.8-2.77q10.51,7.2,42.65,57.05,21.6,33.51,35.73,54,32.4-37.11,66.05-71t68.82-64.94a45.36,45.36,0,0,1,12.74,8,46.69,46.69,0,0,1,9.42,11.91L321,74.74A22.91,22.91,0,0,0,324.86,80a25.75,25.75,0,0,0,5,3.88h10.79Z"
+          />
+        </svg>
+      </span>
       <span
         class="relative z-10"
       >
@@ -11352,8 +11442,23 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
       </span>
     </div>
     <div
-      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-13 text-base"
+      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-13 text-base active"
     >
+      <span
+        class="absolute"
+        data-testid="crossmark"
+      >
+        <svg
+          class="h-12 w-12 text-green-600 dark:text-green-500"
+          fill="currentColor"
+          viewBox="0 0 352 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352,99.11a52.43,52.43,0,0,1-3.74,7.2,60.63,60.63,0,0,1-4.57,6.37l-.83,3.6q-34.07,33.79-65.36,69.24t-59.82,72.56q19.95,26.58,40.71,53T301,363.59q-5,15.8-10.52,23T277,394.89a22.83,22.83,0,0,0-4.85,7.2,21.39,21.39,0,0,0-1.8,8.59v1.1q-1.94,1.67-6.92,5.82t-7.76,6.65a54.18,54.18,0,0,1-8.58-4.44,57.59,57.59,0,0,1-8.87-6.92,50.69,50.69,0,0,1-8.16,9.83,66.67,66.67,0,0,1-10.67,8.17l-7.48-1.11q-16.61-19.38-32.26-41.12T149,343.1q-26.33,33-49,62.59t-42.93,57.6l-8.58.56L37.94,451.39l2.22-9.14-3.6-2.77a34,34,0,0,0-5.26,1.66,56.66,56.66,0,0,0-7.76,4.15A82.82,82.82,0,0,1,10.8,431.86a73.61,73.61,0,0,1-9.14-15.92,94.78,94.78,0,0,1,4.43-9.83q2.78-5.4,2.77-6.24,0-2.49-3.46-10t-5.4-13q22.16-27.42,46.8-56.36t52.35-60.24a770.61,770.61,0,0,1-36.7-74.5,809.74,809.74,0,0,1-28.66-78.1,97.16,97.16,0,0,1,9-11.77,87.37,87.37,0,0,1,10.38-9.83q5,3.6,7.34,5.54c1.57,1.3,3.09,2.68,4.57,4.16a30.08,30.08,0,0,0,4.57-2.5,42.83,42.83,0,0,0,4-3,30.35,30.35,0,0,1,1-8.17,15.32,15.32,0,0,1,3.46-6.23l10.8-2.77q10.51,7.2,42.65,57.05,21.6,33.51,35.73,54,32.4-37.11,66.05-71t68.82-64.94a45.36,45.36,0,0,1,12.74,8,46.69,46.69,0,0,1,9.42,11.91L321,74.74A22.91,22.91,0,0,0,324.86,80a25.75,25.75,0,0,0,5,3.88h10.79Z"
+          />
+        </svg>
+      </span>
       <span
         class="relative z-10"
       >
@@ -11361,8 +11466,23 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
       </span>
     </div>
     <div
-      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-14"
+      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-14 active"
     >
+      <span
+        class="absolute"
+        data-testid="crossmark"
+      >
+        <svg
+          class="h-12 w-12 text-green-600 dark:text-green-500"
+          fill="currentColor"
+          viewBox="0 0 352 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352,99.11a52.43,52.43,0,0,1-3.74,7.2,60.63,60.63,0,0,1-4.57,6.37l-.83,3.6q-34.07,33.79-65.36,69.24t-59.82,72.56q19.95,26.58,40.71,53T301,363.59q-5,15.8-10.52,23T277,394.89a22.83,22.83,0,0,0-4.85,7.2,21.39,21.39,0,0,0-1.8,8.59v1.1q-1.94,1.67-6.92,5.82t-7.76,6.65a54.18,54.18,0,0,1-8.58-4.44,57.59,57.59,0,0,1-8.87-6.92,50.69,50.69,0,0,1-8.16,9.83,66.67,66.67,0,0,1-10.67,8.17l-7.48-1.11q-16.61-19.38-32.26-41.12T149,343.1q-26.33,33-49,62.59t-42.93,57.6l-8.58.56L37.94,451.39l2.22-9.14-3.6-2.77a34,34,0,0,0-5.26,1.66,56.66,56.66,0,0,0-7.76,4.15A82.82,82.82,0,0,1,10.8,431.86a73.61,73.61,0,0,1-9.14-15.92,94.78,94.78,0,0,1,4.43-9.83q2.78-5.4,2.77-6.24,0-2.49-3.46-10t-5.4-13q22.16-27.42,46.8-56.36t52.35-60.24a770.61,770.61,0,0,1-36.7-74.5,809.74,809.74,0,0,1-28.66-78.1,97.16,97.16,0,0,1,9-11.77,87.37,87.37,0,0,1,10.38-9.83q5,3.6,7.34,5.54c1.57,1.3,3.09,2.68,4.57,4.16a30.08,30.08,0,0,0,4.57-2.5,42.83,42.83,0,0,0,4-3,30.35,30.35,0,0,1,1-8.17,15.32,15.32,0,0,1,3.46-6.23l10.8-2.77q10.51,7.2,42.65,57.05,21.6,33.51,35.73,54,32.4-37.11,66.05-71t68.82-64.94a45.36,45.36,0,0,1,12.74,8,46.69,46.69,0,0,1,9.42,11.91L321,74.74A22.91,22.91,0,0,0,324.86,80a25.75,25.75,0,0,0,5,3.88h10.79Z"
+          />
+        </svg>
+      </span>
       <span
         class="relative z-10"
       >
@@ -11370,8 +11490,23 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
       </span>
     </div>
     <div
-      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-15"
+      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-15 active"
     >
+      <span
+        class="absolute"
+        data-testid="crossmark"
+      >
+        <svg
+          class="h-12 w-12 text-green-600 dark:text-green-500"
+          fill="currentColor"
+          viewBox="0 0 352 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352,99.11a52.43,52.43,0,0,1-3.74,7.2,60.63,60.63,0,0,1-4.57,6.37l-.83,3.6q-34.07,33.79-65.36,69.24t-59.82,72.56q19.95,26.58,40.71,53T301,363.59q-5,15.8-10.52,23T277,394.89a22.83,22.83,0,0,0-4.85,7.2,21.39,21.39,0,0,0-1.8,8.59v1.1q-1.94,1.67-6.92,5.82t-7.76,6.65a54.18,54.18,0,0,1-8.58-4.44,57.59,57.59,0,0,1-8.87-6.92,50.69,50.69,0,0,1-8.16,9.83,66.67,66.67,0,0,1-10.67,8.17l-7.48-1.11q-16.61-19.38-32.26-41.12T149,343.1q-26.33,33-49,62.59t-42.93,57.6l-8.58.56L37.94,451.39l2.22-9.14-3.6-2.77a34,34,0,0,0-5.26,1.66,56.66,56.66,0,0,0-7.76,4.15A82.82,82.82,0,0,1,10.8,431.86a73.61,73.61,0,0,1-9.14-15.92,94.78,94.78,0,0,1,4.43-9.83q2.78-5.4,2.77-6.24,0-2.49-3.46-10t-5.4-13q22.16-27.42,46.8-56.36t52.35-60.24a770.61,770.61,0,0,1-36.7-74.5,809.74,809.74,0,0,1-28.66-78.1,97.16,97.16,0,0,1,9-11.77,87.37,87.37,0,0,1,10.38-9.83q5,3.6,7.34,5.54c1.57,1.3,3.09,2.68,4.57,4.16a30.08,30.08,0,0,0,4.57-2.5,42.83,42.83,0,0,0,4-3,30.35,30.35,0,0,1,1-8.17,15.32,15.32,0,0,1,3.46-6.23l10.8-2.77q10.51,7.2,42.65,57.05,21.6,33.51,35.73,54,32.4-37.11,66.05-71t68.82-64.94a45.36,45.36,0,0,1,12.74,8,46.69,46.69,0,0,1,9.42,11.91L321,74.74A22.91,22.91,0,0,0,324.86,80a25.75,25.75,0,0,0,5,3.88h10.79Z"
+          />
+        </svg>
+      </span>
       <span
         class="relative z-10"
       >
@@ -11388,8 +11523,23 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
       </span>
     </div>
     <div
-      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-17"
+      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-17 active"
     >
+      <span
+        class="absolute"
+        data-testid="crossmark"
+      >
+        <svg
+          class="h-12 w-12 text-green-600 dark:text-green-500"
+          fill="currentColor"
+          viewBox="0 0 352 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352,99.11a52.43,52.43,0,0,1-3.74,7.2,60.63,60.63,0,0,1-4.57,6.37l-.83,3.6q-34.07,33.79-65.36,69.24t-59.82,72.56q19.95,26.58,40.71,53T301,363.59q-5,15.8-10.52,23T277,394.89a22.83,22.83,0,0,0-4.85,7.2,21.39,21.39,0,0,0-1.8,8.59v1.1q-1.94,1.67-6.92,5.82t-7.76,6.65a54.18,54.18,0,0,1-8.58-4.44,57.59,57.59,0,0,1-8.87-6.92,50.69,50.69,0,0,1-8.16,9.83,66.67,66.67,0,0,1-10.67,8.17l-7.48-1.11q-16.61-19.38-32.26-41.12T149,343.1q-26.33,33-49,62.59t-42.93,57.6l-8.58.56L37.94,451.39l2.22-9.14-3.6-2.77a34,34,0,0,0-5.26,1.66,56.66,56.66,0,0,0-7.76,4.15A82.82,82.82,0,0,1,10.8,431.86a73.61,73.61,0,0,1-9.14-15.92,94.78,94.78,0,0,1,4.43-9.83q2.78-5.4,2.77-6.24,0-2.49-3.46-10t-5.4-13q22.16-27.42,46.8-56.36t52.35-60.24a770.61,770.61,0,0,1-36.7-74.5,809.74,809.74,0,0,1-28.66-78.1,97.16,97.16,0,0,1,9-11.77,87.37,87.37,0,0,1,10.38-9.83q5,3.6,7.34,5.54c1.57,1.3,3.09,2.68,4.57,4.16a30.08,30.08,0,0,0,4.57-2.5,42.83,42.83,0,0,0,4-3,30.35,30.35,0,0,1,1-8.17,15.32,15.32,0,0,1,3.46-6.23l10.8-2.77q10.51,7.2,42.65,57.05,21.6,33.51,35.73,54,32.4-37.11,66.05-71t68.82-64.94a45.36,45.36,0,0,1,12.74,8,46.69,46.69,0,0,1,9.42,11.91L321,74.74A22.91,22.91,0,0,0,324.86,80a25.75,25.75,0,0,0,5,3.88h10.79Z"
+          />
+        </svg>
+      </span>
       <span
         class="relative z-10"
       >
@@ -11433,8 +11583,23 @@ exports[`Storyshots Pages/Play/Board Winner 1`] = `
       </span>
     </div>
     <div
-      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-22"
+      class="flex justify-center items-center relative w-[54px] h-[48px] select-none bg-gray-100 hover:bg-gray-300 dark:bg-gray-700 dark:hover:bg-gray-600 text-black dark:text-white text-opacity-90 dark:text-opacity-90 border-2 border-gray-900 dark:border-white dark:border-opacity-5 font-mono font-bold text-xl uppercase transition-colors cursor-pointer overflow-hidden cell cell-22 active"
     >
+      <span
+        class="absolute"
+        data-testid="crossmark"
+      >
+        <svg
+          class="h-12 w-12 text-green-600 dark:text-green-500"
+          fill="currentColor"
+          viewBox="0 0 352 512"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M352,99.11a52.43,52.43,0,0,1-3.74,7.2,60.63,60.63,0,0,1-4.57,6.37l-.83,3.6q-34.07,33.79-65.36,69.24t-59.82,72.56q19.95,26.58,40.71,53T301,363.59q-5,15.8-10.52,23T277,394.89a22.83,22.83,0,0,0-4.85,7.2,21.39,21.39,0,0,0-1.8,8.59v1.1q-1.94,1.67-6.92,5.82t-7.76,6.65a54.18,54.18,0,0,1-8.58-4.44,57.59,57.59,0,0,1-8.87-6.92,50.69,50.69,0,0,1-8.16,9.83,66.67,66.67,0,0,1-10.67,8.17l-7.48-1.11q-16.61-19.38-32.26-41.12T149,343.1q-26.33,33-49,62.59t-42.93,57.6l-8.58.56L37.94,451.39l2.22-9.14-3.6-2.77a34,34,0,0,0-5.26,1.66,56.66,56.66,0,0,0-7.76,4.15A82.82,82.82,0,0,1,10.8,431.86a73.61,73.61,0,0,1-9.14-15.92,94.78,94.78,0,0,1,4.43-9.83q2.78-5.4,2.77-6.24,0-2.49-3.46-10t-5.4-13q22.16-27.42,46.8-56.36t52.35-60.24a770.61,770.61,0,0,1-36.7-74.5,809.74,809.74,0,0,1-28.66-78.1,97.16,97.16,0,0,1,9-11.77,87.37,87.37,0,0,1,10.38-9.83q5,3.6,7.34,5.54c1.57,1.3,3.09,2.68,4.57,4.16a30.08,30.08,0,0,0,4.57-2.5,42.83,42.83,0,0,0,4-3,30.35,30.35,0,0,1,1-8.17,15.32,15.32,0,0,1,3.46-6.23l10.8-2.77q10.51,7.2,42.65,57.05,21.6,33.51,35.73,54,32.4-37.11,66.05-71t68.82-64.94a45.36,45.36,0,0,1,12.74,8,46.69,46.69,0,0,1,9.42,11.91L321,74.74A22.91,22.91,0,0,0,324.86,80a25.75,25.75,0,0,0,5,3.88h10.79Z"
+          />
+        </svg>
+      </span>
       <span
         class="relative z-10"
       >
