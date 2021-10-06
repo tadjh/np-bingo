@@ -6,6 +6,5 @@ export * from './usePlayListenersHost';
 export * from './usePlayListenersRoom';
 export * from './usePlaySounds';
 
-export * from './useSolo';
 export * from './useSoloButton';
 export * from './useSoloDisplay';
