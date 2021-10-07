@@ -11,6 +11,7 @@ import { apiDeleteRoom, apiDeactivateRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
 import { ApiError, Player, PlayerCard, Winner } from '@np-bingo/types';
 import { useFetch } from '../../../hooks';
+import { toast } from 'react-toastify';
 
 export function useHostButtons() {
   const { gameId, room, players } = useContext(RoomContext);
@@ -68,6 +69,17 @@ export function useHostButtons() {
   };
 
   /**
+   * Displays winners in a toast notification
+   * @param winners
+   */
+  const notifyWinners = (winners: Winner[]) => {
+    for (let i = 0; i < winners.length; i++) {
+      let name = winners[i].player.name;
+      toast.success(`${name} has BINGO!`);
+    }
+  };
+
+  /**
    * Card(s) a winner
    * @param winner
    */
@@ -75,6 +87,18 @@ export function useHostButtons() {
     dispatch({ type: CHECK_CARD_SUCCESS, payload: winners });
     emitWinners(winners);
     setBody(winners);
+    notifyWinners(winners);
+  };
+
+  /**
+   * Displays losers in a toast notification
+   * @param winners
+   */
+  const notifyLosers = (losers: Player[]) => {
+    for (let i = 0; i < losers.length; i++) {
+      let name = losers[i].name;
+      toast.warn(`${name} is not a winner`);
+    }
   };
 
   /**
@@ -84,6 +108,7 @@ export function useHostButtons() {
   const validateLosers = (losers: Player[]) => {
     dispatch({ type: CHECK_CARD_FAILURE });
     emitLosers(losers);
+    notifyLosers(losers);
   };
 
   const multipleWinners = (playerCards: PlayerCard[]) => {

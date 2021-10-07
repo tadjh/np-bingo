@@ -10,6 +10,7 @@ import {
 import { Socket } from 'socket.io-client';
 import { AppActions } from '../../../reducers/app.reducer';
 import { GameContext } from '../../../context';
+import { toast } from 'react-toastify';
 
 export function useHostListeners(
   socket: Socket,
@@ -53,6 +54,7 @@ export function useHostListeners(
     if (!split && playerCards.length > 0) return;
     logger(`${playerCard.owner.name} sent a card to you.`);
     dispatch({ type: GET_CARD, payload: playerCard });
+    toast.info(`${playerCard.owner.name} sent a card.`);
   };
 
   /**
