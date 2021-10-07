@@ -33,7 +33,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
    * @param room
    */
   const hostLeaveRoom = (room: Room) => {
-    socket.to(room).emit('host:event', 'left-room');
+    socket.to(room).emit('host:event', 'leave-room');
     emitLeaveRoom(room, 'Host');
   };
 

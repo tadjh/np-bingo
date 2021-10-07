@@ -7,7 +7,7 @@ import {
   STANDBY,
 } from '../../../config/constants';
 import { GameContext, RoomContext } from '../../../context';
-import { apiDeleteRoom } from '../api';
+import { apiDeleteRoom, apiDeactivateRoom } from '../api';
 import { useHostEmitters } from './useHostEmitters';
 import { ApiError, Player, PlayerCard, Winner } from '@np-bingo/types';
 import { useFetch } from '../../../hooks';
@@ -145,9 +145,7 @@ export function useHostButtons() {
   const handleLeaveRoom = () => {
     emitLeaveRoom();
 
-    if (players.length < 1) {
-      apiDeleteRoom(gameId, room);
-    }
+    players.length < 1 ? apiDeleteRoom(gameId, room) : apiDeactivateRoom(room);
   };
 
   const disableDraws = gamestate === 'end' && true;

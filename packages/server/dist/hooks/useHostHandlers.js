@@ -17,7 +17,7 @@ function useHostHandlers(io, socket) {
      * @param room
      */
     var hostLeaveRoom = function (room) {
-        socket.to(room).emit('host:event', 'left-room');
+        socket.to(room).emit('host:event', 'leave-room');
         emitLeaveRoom(room, 'Host');
     };
     /**

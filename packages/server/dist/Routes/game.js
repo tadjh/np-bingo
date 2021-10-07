@@ -132,6 +132,9 @@ router.put('/join/:room', function (req, res) { return __awaiter(void 0, void 0,
                         }
                     });
                 }
+                if (!activeGame) {
+                    res.status(404).json({ error: "Game room " + req.params.room + " not found" });
+                }
                 return [3 /*break*/, 4];
             case 3:
                 err_1 = _a.sent();
@@ -203,7 +206,7 @@ router.delete('/:id', function (req, res) {
         active_1.default.findOneAndDelete({ room: req.body.room })
             .then(function () {
             res.json({
-                message: "Room " + req.body + " deleted",
+                message: "Active Room " + req.body + " deleted",
             });
         })
             .catch(function (err) {
@@ -215,6 +218,23 @@ router.delete('/:id', function (req, res) {
         res
             .status(400)
             .json({ error: "Unable to find game room " + req.body + " to delete" });
+    });
+});
+/**
+ * @route DELETE api/game/done/:id
+ * @description Remove empty game by ID
+ * @access Public
+ */
+router.delete('/done/:room', function (req, res) {
+    active_1.default.findOneAndDelete({ room: req.params.room })
+        .then(function () {
+        res.json({
+            message: "Active Room " + req.body + " deleted",
+        });
+    })
+        .catch(function (err) {
+        console.log(err);
+        res.status(400).json({ error: 'Unable to delete active game room' });
     });
 });
 exports.default = router;
