@@ -12,5 +12,5 @@ exports.WinnerSchema = new mongoose_1.Schema({
     },
     player: player_1.PlayerSchema,
     card: [Number],
-});
-exports.default = mongoose_1.model('Winner', exports.WinnerSchema);
+}, { timestamps: true });
+exports.default = (0, mongoose_1.model)('Winner', exports.WinnerSchema);

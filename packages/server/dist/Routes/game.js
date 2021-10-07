@@ -41,7 +41,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
 var common_1 = require("@np-bingo/common");
-var game_1 = __importDefault(require("../Models/game"));
+var game_1 = __importDefault(require("../models/game"));
+var active_1 = __importDefault(require("../models/active"));
 var router = express_1.default.Router();
 /**
  * @route GET api/game/test/
@@ -63,99 +64,110 @@ router.get('/:id', function (req, res) {
  * @access Public
  */
 router.post('/', function (req, res) {
-    var room = common_1.makeID(4);
-    // TODO check unique ID against previous game IDs
-    game_1.default.create({ host: req.body, room: room })
-        .then(function (doc) { return res.json({ game: doc, msg: "Created game room " + room }); })
+    // TODO Check active room ids first ?
+    var room = (0, common_1.makeID)(4);
+    var document = { host: req.body, room: room };
+    game_1.default.create(document)
+        .then(function (doc) {
+        active_1.default.create({
+            gameId: doc._id,
+            room: doc.room,
+            name: doc.host.name,
+            joinable: true,
+        })
+            .then(function () {
+            res.json({
+                id: doc._id,
+                room: doc.room,
+                host: doc.host,
+                message: "Created game room " + room,
+            });
+        })
+            .catch(function (err) {
+            console.log(err);
+            res.status(400).json({ error: 'Unable to add active game room' });
+        });
+    })
         .catch(function (err) {
-        return res.status(400).json({ error: 'Unable to create a game room' });
+        console.log(err);
+        res.status(400).json({ error: 'Unable to create a game room' });
     });
 });
+/**
+ * @route PUT api/game/join/:room
+ * @description Join game by room ID
+ * @access Public
+ */
+router.put('/join/:room', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
+    var filter, update, activeGame, err_1;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                filter = { room: req.params.room };
+                update = { $addToSet: { players: req.body } };
+                _a.label = 1;
+            case 1:
+                _a.trys.push([1, 3, , 4]);
+                return [4 /*yield*/, active_1.default.findOne(filter)];
+            case 2:
+                activeGame = _a.sent();
+                if (activeGame) {
+                    game_1.default.findByIdAndUpdate(activeGame.gameId, update, {}, function (err, doc) {
+                        if (err) {
+                            res
+                                .status(400)
+                                .json({ error: "Unable to update game room " + req.params.room });
+                        }
+                        if (doc) {
+                            res.json({
+                                room: doc.room,
+                                host: doc.host,
+                                message: "Joined game room " + req.params.room,
+                            });
+                        }
+                        if (!doc) {
+                            res
+                                .status(404)
+                                .json({ error: "Game room " + req.params.room + " does not exist" });
+                        }
+                    });
+                }
+                return [3 /*break*/, 4];
+            case 3:
+                err_1 = _a.sent();
+                res
+                    .status(404)
+                    .json({ error: "Unable to find active game room " + req.params.room });
+                return [3 /*break*/, 4];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); });
 /**
  * @route PUT api/game/:id
  * @description Update game winner by room ID
  * @access Public
  */
-router.put('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var err_1;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, game_1.default.findOneAndUpdate({ room: req.params.id }, { $addToSet: { winners: req.body } }, {}, function (err, doc) {
-                        if (err) {
-                            res
-                                .status(400)
-                                .json({ error: "Error while finding game room " + req.params.id });
-                        }
-                        if (doc) {
-                            res.json({
-                                msg: "Game room " + req.params.id + " saved",
-                            });
-                        }
-                        if (!doc) {
-                            res
-                                .status(404)
-                                .json({ error: "Game room " + req.params.id + " does not exist" });
-                        }
-                    })];
-            case 1:
-                _a.sent();
-                return [3 /*break*/, 3];
-            case 2:
-                err_1 = _a.sent();
-                res
-                    .status(400)
-                    .json({ error: "Unable to update game room " + req.params.id + " " });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
+router.put('/:id', function (req, res) {
+    var update = { $addToSet: { winners: req.body } };
+    game_1.default.findByIdAndUpdate(req.params.id, update, function (err, doc) {
+        if (err) {
+            res
+                .status(400)
+                .json({ error: "Error while finding game room " + req.params.id });
+        }
+        if (doc) {
+            res.json({
+                message: "Game room " + req.params.id + " saved",
+            });
+        }
+        if (!doc) {
+            res
+                .status(404)
+                .json({ error: "Game room " + req.params.id + " does not exist" });
         }
     });
-}); });
-// TODO hinges on ID being unique, otherwise grabs first document with this ID
-// TODO Will add a subdoc every time user exits and rejoins...
-/**
- * @route PUT api/game/join/:id
- * @description Join game by room ID
- * @access Public
- */
-router.put('/join/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var err_2;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, game_1.default.findOneAndUpdate({ room: req.params.id }, { $addToSet: { players: req.body } }, {}, function (err, doc) {
-                        if (err) {
-                            res
-                                .status(400)
-                                .json({ error: "Unable to find game room " + req.params.id });
-                        }
-                        if (doc) {
-                            res.json({
-                                host: doc.host,
-                                msg: "Joined game room " + req.params.id,
-                            });
-                        }
-                        if (!doc) {
-                            res
-                                .status(404)
-                                .json({ error: "Game room " + req.params.id + " does not exist" });
-                        }
-                    })];
-            case 1:
-                _a.sent();
-                return [3 /*break*/, 3];
-            case 2:
-                err_2 = _a.sent();
-                res
-                    .status(400)
-                    .json({ error: "Unable to join game room " + req.params.id + " " });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
-    });
-}); });
+});
 // router.put('/leave/:id', async (req, res) => {
 //   try {
 //     await Game.findByIdAndUpdate(
@@ -182,39 +194,27 @@ router.put('/join/:id', function (req, res) { return __awaiter(void 0, void 0, v
 // });
 /**
  * @route DELETE api/game/:id
- * @description End game by ID
+ * @description Remove empty game by ID
  * @access Public
  */
-router.delete('/:id', function (req, res) { return __awaiter(void 0, void 0, void 0, function () {
-    var game_2, err_3;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0:
-                _a.trys.push([0, 2, , 3]);
-                return [4 /*yield*/, game_1.default.findOne({ room: req.params.id }).exec()];
-            case 1:
-                game_2 = _a.sent();
-                if (game_2 && game_2.players.length < 1) {
-                    game_1.default.deleteOne({ _id: game_2._id }, {}, function (err) {
-                        if (err) {
-                            res
-                                .status(400)
-                                .json({ error: "Unable to delete game room " + game_2.room });
-                        }
-                        else {
-                            res.json({ msg: "Game room " + game_2.room + " deleted" });
-                        }
-                    });
-                }
-                return [3 /*break*/, 3];
-            case 2:
-                err_3 = _a.sent();
-                res
-                    .status(400)
-                    .json({ error: "Unable to find game room " + req.params.id + " to delete" });
-                return [3 /*break*/, 3];
-            case 3: return [2 /*return*/];
-        }
+router.delete('/:id', function (req, res) {
+    game_1.default.findByIdAndDelete(req.params.id)
+        .then(function () {
+        active_1.default.findOneAndDelete({ room: req.body.room })
+            .then(function () {
+            res.json({
+                message: "Room " + req.body + " deleted",
+            });
+        })
+            .catch(function (err) {
+            console.log(err);
+            res.status(400).json({ error: 'Unable to delete active game room' });
+        });
+    })
+        .catch(function (err) {
+        res
+            .status(400)
+            .json({ error: "Unable to find game room " + req.body + " to delete" });
     });
-}); });
+});
 exports.default = router;
