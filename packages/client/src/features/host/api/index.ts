@@ -36,3 +36,20 @@ export async function apiDeleteRoom(id: string, room: Room) {
       handleError(err);
     });
 }
+
+/**
+ * Delete room from server (if no players have joined)
+ * @param id
+ * @param room
+ */
+export async function apiDeactivateRoom(room: Room) {
+  await axios
+    .delete(`/api/game/done/${room}`)
+    .then(() => {
+      logger('Deactivating room');
+    })
+    .catch((err) => {
+      logger('Error in Deactivating Room');
+      handleError(err);
+    });
+}
