@@ -108,58 +108,58 @@ module.exports = {
             opacity: 0,
           },
         },
-        'slide-top': {
-          from: {
-            bottom: '75%',
-            opacity: 0,
-          },
-          to: {
-            bottom: '100%',
-            opacity: 1,
-            zIndex: 10,
-          },
-        },
-        'slide-right': {
-          from: {
-            left: '75%',
-            opacity: 0,
-          },
-          to: {
-            left: '100%',
-            opacity: 1,
-            zIndex: 10,
-          },
-        },
-        'slide-bottom': {
-          from: {
-            top: '75%',
-            opacity: 0,
-          },
-          to: {
-            top: '100%',
-            opacity: 1,
-            zIndex: 10,
-          },
-        },
-        'slide-left': {
-          from: {
-            right: '75%',
-            opacity: 0,
-          },
-          to: {
-            right: '100%',
-            opacity: 1,
-            zIndex: 10,
-          },
-        },
+        // 'slide-top': {
+        //   from: {
+        //     bottom: '75%',
+        //     opacity: 0,
+        //   },
+        //   to: {
+        //     bottom: '100%',
+        //     opacity: 1,
+        //     zIndex: 10,
+        //   },
+        // },
+        // 'slide-right': {
+        //   from: {
+        //     left: '75%',
+        //     opacity: 0,
+        //   },
+        //   to: {
+        //     left: '100%',
+        //     opacity: 1,
+        //     zIndex: 10,
+        //   },
+        // },
+        // 'slide-bottom': {
+        //   from: {
+        //     top: '75%',
+        //     opacity: 0,
+        //   },
+        //   to: {
+        //     top: '100%',
+        //     opacity: 1,
+        //     zIndex: 10,
+        //   },
+        // },
+        // 'slide-left': {
+        //   from: {
+        //     right: '75%',
+        //     opacity: 0,
+        //   },
+        //   to: {
+        //     right: '100%',
+        //     opacity: 1,
+        //     zIndex: 10,
+        //   },
+        // },
       },
       animation: {
         bounce: 'bounce 1500ms infinite',
         ripple: 'ripple 750ms ease forwards',
-        'slide-top': 'slide-top 300ms ease-out 500ms forwards',
-        'slide-right': 'slide-right 300ms ease-out 500ms forwards',
-        'slide-bottom': 'slide-bottom 300ms ease-out 500ms forwards',
-        'slide-left': 'slide-left 300ms ease-out 500ms forwards',
+        // 'slide-top': 'slide-top 300ms ease-out 500ms forwards',
+        // 'slide-right': 'slide-right 300ms ease-out 500ms forwards',
+        // 'slide-bottom': 'slide-bottom 300ms ease-out 500ms forwards',
+        // 'slide-left': 'slide-left 300ms ease-out 500ms forwards',
       },
     },
   },

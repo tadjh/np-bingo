@@ -12,7 +12,7 @@ exports[`Storyshots Display/Badge Base 1`] = `
       class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow"
     />
     <span
-      class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+      class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
     >
       <span
         class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -52,7 +52,7 @@ exports[`Storyshots Display/Badge Gradient 1`] = `
       class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-400 text-black"
     />
     <span
-      class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+      class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
     >
       <span
         class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -76,7 +76,7 @@ exports[`Storyshots Display/Badge Tooltip 1`] = `
       class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow"
     />
     <span
-      class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible"
+      class="top-2/4 -translate-y-2/4 left-full ml-1.5 absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
     >
       <span
         class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -103,7 +103,7 @@ exports[`Storyshots Display/Badge Variants 1`] = `
         class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow"
       />
       <span
-        class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+        class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
       >
         <span
           class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -124,7 +124,7 @@ exports[`Storyshots Display/Badge Variants 1`] = `
         class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow"
       />
       <span
-        class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+        class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
       >
         <span
           class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -160,7 +160,7 @@ exports[`Storyshots Display/Ball Base 1`] = `
         class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow"
       />
       <span
-        class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+        class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
       >
         <span
           class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -238,7 +238,7 @@ exports[`Storyshots Display/Ball Progress 1`] = `
         class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow bg-green-500 hover:bg-green-600 active:bg-green-400 text-white"
       />
       <span
-        class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+        class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
       >
         <span
           class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -309,7 +309,7 @@ exports[`Storyshots Display/Ball Variants 1`] = `
           class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow bg-green-500 hover:bg-green-600 active:bg-green-400 text-white"
         />
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -353,7 +353,7 @@ exports[`Storyshots Display/Ball Variants 1`] = `
           class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow bg-green-500 hover:bg-green-600 active:bg-green-400 text-white"
         />
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -397,7 +397,7 @@ exports[`Storyshots Display/Ball Variants 1`] = `
           class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow bg-yellow-500 hover:bg-yellow-600 active:bg-yellow-400 text-black"
         />
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -441,7 +441,7 @@ exports[`Storyshots Display/Ball Variants 1`] = `
           class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow bg-red-500 hover:bg-red-600 active:bg-red-400 text-white"
         />
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -485,7 +485,7 @@ exports[`Storyshots Display/Ball Variants 1`] = `
           class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow bg-green-500 hover:bg-green-600 active:bg-green-400 text-white"
         />
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -716,7 +716,7 @@ exports[`Storyshots Display/Tooltip Variants 1`] = `
   class="relative group"
 >
   <span
-    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible"
+    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -724,7 +724,7 @@ exports[`Storyshots Display/Tooltip Variants 1`] = `
     Tooltip Top
   </span>
   <span
-    class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible"
+    class="top-2/4 -translate-y-2/4 left-full ml-1.5 absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -732,7 +732,7 @@ exports[`Storyshots Display/Tooltip Variants 1`] = `
     Tooltip Right
   </span>
   <span
-    class="left-2/4 -translate-x-2/4 top-full mt-1.5 group-hover:animate-slide-bottom absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible"
+    class="left-2/4 -translate-x-2/4 top-full mt-1.5 absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="left-2/4 -translate-x-2/4 bottom-full translate-y-1.5 border-l border-t rounded-tl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -740,7 +740,7 @@ exports[`Storyshots Display/Tooltip Variants 1`] = `
     Tooltip Bottom
   </span>
   <span
-    class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible"
+    class="top-2/4 -translate-y-2/4 right-full mr-1.5 absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -755,7 +755,7 @@ exports[`Storyshots Elements/Code Base 1`] = `
   class="relative group"
 >
   <span
-    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -794,7 +794,7 @@ exports[`Storyshots Elements/Code Blank 1`] = `
   class="relative group"
 >
   <span
-    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -833,7 +833,7 @@ exports[`Storyshots Elements/Code Hovered 1`] = `
   class="relative group"
 >
   <span
-    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible"
+    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1133,7 +1133,7 @@ exports[`Storyshots Elements/Share Blank 1`] = `
   class="relative group"
 >
   <span
-    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1163,7 +1163,7 @@ exports[`Storyshots Elements/Share Default 1`] = `
   class="relative group"
 >
   <span
-    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1199,7 +1199,7 @@ exports[`Storyshots Elements/Widgets Base 1`] = `
       class="relative group"
     >
       <span
-        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
       >
         <span
           class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1230,7 +1230,7 @@ exports[`Storyshots Elements/Widgets Base 1`] = `
       class="relative group"
     >
       <span
-        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
       >
         <span
           class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1277,7 +1277,7 @@ exports[`Storyshots Elements/Widgets Base 1`] = `
             class="relative group"
           >
             <span
-              class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1309,7 +1309,7 @@ exports[`Storyshots Elements/Widgets Base 1`] = `
             class="relative group"
           >
             <span
-              class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1339,7 +1339,7 @@ exports[`Storyshots Elements/Widgets Base 1`] = `
             class="relative group"
           >
             <span
-              class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1381,7 +1381,7 @@ exports[`Storyshots Elements/Widgets Blank 1`] = `
       class="relative group"
     >
       <span
-        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
       >
         <span
           class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1412,7 +1412,7 @@ exports[`Storyshots Elements/Widgets Blank 1`] = `
       class="relative group"
     >
       <span
-        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
       >
         <span
           class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1459,7 +1459,7 @@ exports[`Storyshots Elements/Widgets Blank 1`] = `
             class="relative group"
           >
             <span
-              class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1491,7 +1491,7 @@ exports[`Storyshots Elements/Widgets Blank 1`] = `
             class="relative group"
           >
             <span
-              class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1521,7 +1521,7 @@ exports[`Storyshots Elements/Widgets Blank 1`] = `
             class="relative group"
           >
             <span
-              class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1566,7 +1566,7 @@ exports[`Storyshots Elements/Widgets Share Disabled 1`] = `
       class="relative group"
     >
       <span
-        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+        class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
       >
         <span
           class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1613,7 +1613,7 @@ exports[`Storyshots Elements/Widgets Share Disabled 1`] = `
             class="relative group"
           >
             <span
-              class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1645,7 +1645,7 @@ exports[`Storyshots Elements/Widgets Share Disabled 1`] = `
             class="relative group"
           >
             <span
-              class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1675,7 +1675,7 @@ exports[`Storyshots Elements/Widgets Share Disabled 1`] = `
             class="relative group"
           >
             <span
-              class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1807,7 +1807,7 @@ exports[`Storyshots Inputs/Icon Button Base 1`] = `
   class="relative group"
 >
   <span
-    class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+    class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1862,7 +1862,7 @@ exports[`Storyshots Inputs/Icon Button Tooltip 1`] = `
   class="relative group"
 >
   <span
-    class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible"
+    class="top-2/4 -translate-y-2/4 left-full ml-1.5 absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1903,7 +1903,7 @@ exports[`Storyshots Inputs/Icon Menu Down 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1933,7 +1933,7 @@ exports[`Storyshots Inputs/Icon Menu Down 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -1963,7 +1963,7 @@ exports[`Storyshots Inputs/Icon Menu Down 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2008,7 +2008,7 @@ exports[`Storyshots Inputs/Icon Menu Left 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2038,7 +2038,7 @@ exports[`Storyshots Inputs/Icon Menu Left 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2068,7 +2068,7 @@ exports[`Storyshots Inputs/Icon Menu Left 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2113,7 +2113,7 @@ exports[`Storyshots Inputs/Icon Menu Right 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2143,7 +2143,7 @@ exports[`Storyshots Inputs/Icon Menu Right 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2173,7 +2173,7 @@ exports[`Storyshots Inputs/Icon Menu Right 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2218,7 +2218,7 @@ exports[`Storyshots Inputs/Icon Menu Up 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2248,7 +2248,7 @@ exports[`Storyshots Inputs/Icon Menu Up 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2278,7 +2278,7 @@ exports[`Storyshots Inputs/Icon Menu Up 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2316,7 +2316,7 @@ exports[`Storyshots Inputs/Icon Menu/Theme Toggle Base 1`] = `
     class="relative group"
   >
     <span
-      class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+      class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
     >
       <span
         class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -2348,7 +2348,7 @@ exports[`Storyshots Inputs/Icon Menu/Volume Toggle Base 1`] = `
   class="relative group"
 >
   <span
-    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+    class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
   >
     <span
       class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -4141,7 +4141,7 @@ exports[`Storyshots Pages/Home Base 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -4173,7 +4173,7 @@ exports[`Storyshots Pages/Home Base 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -4203,7 +4203,7 @@ exports[`Storyshots Pages/Home Base 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -4320,7 +4320,7 @@ exports[`Storyshots Pages/Host Base 1`] = `
         class="relative group"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -4857,7 +4857,7 @@ exports[`Storyshots Pages/Host Base 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -4888,7 +4888,7 @@ exports[`Storyshots Pages/Host Base 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -4935,7 +4935,7 @@ exports[`Storyshots Pages/Host Base 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -4967,7 +4967,7 @@ exports[`Storyshots Pages/Host Base 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -4997,7 +4997,7 @@ exports[`Storyshots Pages/Host Base 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -5095,7 +5095,7 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
         class="relative group"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -5632,7 +5632,7 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -5663,7 +5663,7 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -5710,7 +5710,7 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -5742,7 +5742,7 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -5772,7 +5772,7 @@ exports[`Storyshots Pages/Host Game Over 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -5870,7 +5870,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
         class="relative group"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -5944,7 +5944,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
           class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-green-200 group-hover:bg-green-300 dark:bg-green-800 dark:group-hover:bg-green-700"
         >
           <span
-            class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6009,7 +6009,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
           class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700"
         >
           <span
-            class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6074,7 +6074,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
           class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700"
         >
           <span
-            class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6139,7 +6139,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
           class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700"
         >
           <span
-            class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6210,7 +6210,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6241,7 +6241,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6288,7 +6288,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6320,7 +6320,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6350,7 +6350,7 @@ exports[`Storyshots Pages/Host Ready List 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6448,7 +6448,7 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
         class="relative group"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6529,7 +6529,7 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6560,7 +6560,7 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
           class="relative group"
         >
           <span
-            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6607,7 +6607,7 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6639,7 +6639,7 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -6669,7 +6669,7 @@ exports[`Storyshots Pages/Host Waiting 1`] = `
                 class="relative group"
               >
                 <span
-                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                  class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                 >
                   <span
                     class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -7981,7 +7981,7 @@ exports[`Storyshots Pages/Host/Player List Many Items 1`] = `
         class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-green-200 group-hover:bg-green-300 dark:bg-green-800 dark:group-hover:bg-green-700"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8046,7 +8046,7 @@ exports[`Storyshots Pages/Host/Player List Many Items 1`] = `
         class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8111,7 +8111,7 @@ exports[`Storyshots Pages/Host/Player List Many Items 1`] = `
         class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8176,7 +8176,7 @@ exports[`Storyshots Pages/Host/Player List Many Items 1`] = `
         class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8252,7 +8252,7 @@ exports[`Storyshots Pages/Host/Player List Single Item 1`] = `
         class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-gray-200 group-hover:bg-gray-300 dark:bg-gray-800 dark:group-hover:bg-gray-700"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8328,7 +8328,7 @@ exports[`Storyshots Pages/Host/Player List Single Item Ready 1`] = `
         class="relative group flex justify-center items-center w-10 h-10 rounded-full text-black dark:text-white text-opacity-60 dark:text-opacity-60 group-hover:text-opacity-90 dark:group-hover:text-opacity-90 shadow-sm bg-green-200 group-hover:bg-green-300 dark:bg-green-800 dark:group-hover:bg-green-700"
       >
         <span
-          class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+          class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
         >
           <span
             class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8418,7 +8418,7 @@ exports[`Storyshots Pages/Join Base 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8496,7 +8496,7 @@ exports[`Storyshots Pages/Join Base 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8528,7 +8528,7 @@ exports[`Storyshots Pages/Join Base 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8558,7 +8558,7 @@ exports[`Storyshots Pages/Join Base 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8665,7 +8665,7 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8743,7 +8743,7 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8775,7 +8775,7 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8805,7 +8805,7 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -8912,7 +8912,7 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9004,7 +9004,7 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9036,7 +9036,7 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9066,7 +9066,7 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
               class="relative group"
             >
               <span
-                class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
               >
                 <span
                   class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9208,7 +9208,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9294,7 +9294,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
               class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow bg-green-500 hover:bg-green-600 active:bg-green-400 text-white"
             />
             <span
-              class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9654,7 +9654,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
             class="relative group"
           >
             <span
-              class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9685,7 +9685,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
             class="relative group"
           >
             <span
-              class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9732,7 +9732,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
                   class="relative group"
                 >
                   <span
-                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                   >
                     <span
                       class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9764,7 +9764,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
                   class="relative group"
                 >
                   <span
-                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                   >
                     <span
                       class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9794,7 +9794,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
                   class="relative group"
                 >
                   <span
-                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                   >
                     <span
                       class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9903,7 +9903,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
           class="relative group"
         >
           <span
-            class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+            class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
           >
             <span
               class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -9989,7 +9989,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
               class="absolute top-0 right-[-3px] rounded-full w-2 h-2 shadow bg-green-500 hover:bg-green-600 active:bg-green-400 text-white"
             />
             <span
-              class="top-2/4 -translate-y-2/4 left-full ml-1.5 group-hover:animate-slide-right absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="top-2/4 -translate-y-2/4 left-full ml-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="top-2/4 -translate-y-2/4 right-full translate-x-1.5 border-b border-l rounded-bl-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -10349,7 +10349,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
             class="relative group"
           >
             <span
-              class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -10380,7 +10380,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
             class="relative group"
           >
             <span
-              class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 group-hover:animate-slide-top absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+              class="left-2/4 -translate-x-2/4 bottom-full mb-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
             >
               <span
                 class="left-2/4 -translate-x-2/4 top-full -translate-y-1.5 border-r border-b rounded-br-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -10427,7 +10427,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
                   class="relative group"
                 >
                   <span
-                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                   >
                     <span
                       class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -10459,7 +10459,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
                   class="relative group"
                 >
                   <span
-                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                   >
                     <span
                       class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
@@ -10489,7 +10489,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
                   class="relative group"
                 >
                   <span
-                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 group-hover:animate-slide-left absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content group-hover:visible opacity-0 invisible"
+                    class="top-2/4 -translate-y-2/4 right-full mr-1.5 opacity-0 invisible absolute px-2.5 py-2 transform rounded-sm shadow-md bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-70 border-gray-300 dark:border-gray-600 border text-xs font-mono font-bold leading-normal whitespace-nowrap box-content z-10 group-hover:visible group-hover:opacity-100 group-hover:delay-500"
                   >
                     <span
                       class="top-2/4 -translate-y-2/4 left-full -translate-x-1.5 border-t border-r rounded-tr-sm absolute box-content h-3 w-3 transform rotate-45 bg-gray-100 dark:bg-gray-700 border-gray-300 dark:border-gray-600"
