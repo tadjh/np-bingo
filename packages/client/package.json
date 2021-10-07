@@ -1,7 +1,6 @@
 {
   "name": "@np-bingo/client",
   "version": "1.4.3",
-  "homepage": ".",
   "private": true,
   "author": "Tadjh Brooks",
   "dependencies": {

@@ -40,9 +40,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var mongoose_1 = __importDefault(require("mongoose"));
-var db = "mongodb+srv://" + process.env.DB_USER + ":" + process.env.DB_PASS + "@" + process.env.DB_URL + "/" + process.env.DB_NAME + "?retryWrites=true&w=majority";
+var _1 = require(".");
+var db = "mongodb+srv://" + _1.DB_USER + ":" + _1.DB_PASS + "@" + _1.DB_URL + "/" + _1.DB_NAME + "?retryWrites=true&w=majority";
 var connectDB = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var err_1;
+    var error_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
@@ -56,8 +57,8 @@ var connectDB = function () { return __awaiter(void 0, void 0, void 0, function 
                 console.log('MongoDB is Connected...');
                 return [3 /*break*/, 3];
             case 2:
-                err_1 = _a.sent();
-                console.error(err_1.message);
+                error_1 = _a.sent();
+                console.error(error_1.message);
                 process.exit(1);
                 return [3 /*break*/, 3];
             case 3: return [2 /*return*/];

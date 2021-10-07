@@ -8,5 +8,7 @@ var GameSchema = new mongoose_1.Schema({
     host: player_1.PlayerSchema,
     players: [player_1.PlayerSchema],
     winners: [winner_1.WinnerSchema],
-});
-exports.default = mongoose_1.model('Game', GameSchema);
+    private: Boolean,
+    joinable: Boolean,
+}, { timestamps: true });
+exports.default = (0, mongoose_1.model)('Game', GameSchema);
