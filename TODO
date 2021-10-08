@@ -2,6 +2,7 @@ Known Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
 // TODO active games only gets updated when host clicks back button
 // TODO sticky options menu
+// TODO Host Listener SFX don't seem to play
 
 Vulnerbilities
 // TODO Prevent kicked player from rejoining (API & Socket)
