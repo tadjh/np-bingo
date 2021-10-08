@@ -71,6 +71,9 @@ export function playReducer(state: PlayState, action: PlayActions): PlayState {
     case NOT_WINNER:
       return {
         ...state,
+        card: new Array(25),
+        serial: '',
+        crossmarks: {},
         isWinner: false,
       };
     default:

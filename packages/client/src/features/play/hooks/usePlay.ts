@@ -13,6 +13,7 @@ import {
   CHECK_CARD_SUCCESS,
   CLEAR_CROSSMARKS,
   NEW_CARD,
+  NOT_WINNER,
   WINNER_CROSSMARKS,
 } from '../../../config/constants';
 import { winningCells } from '../../../utils/bingo.validate';
@@ -120,7 +121,6 @@ export function usePlay() {
 
     const handleWinCleanUp = () => {
       playDispatch({ type: CLEAR_CROSSMARKS });
-
       playWinSfxData.stop();
     };
 
@@ -149,13 +149,14 @@ export function usePlay() {
   }, [gamestate, gamemode, socketId, winners, dispatch, playWinSfx]);
 
   /**
-   * Multiplayer Lose
+   * Multiplayer Loser
    */
   useEffect(() => {
     if (gamemode === 'solo') return;
     if (gamestate !== 'failure') return;
 
     const handleLose = () => {
+      playDispatch({ type: NOT_WINNER });
       playLoseSfx();
     };
 
