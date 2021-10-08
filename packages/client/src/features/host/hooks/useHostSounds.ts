@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import useSound from 'use-sound';
-import { dispenseSfx } from '../../../config/sounds';
+import { dispenseSfx, connectionSfx } from '../../../config/sounds';
 import { SoundContext } from '../../../context';
 import { randomNumber } from '../../../utils';
 
@@ -22,5 +22,32 @@ export function useHostSounds() {
     playSfx({ id: `dispenseBall${randomNumber(4)}` });
   };
 
-  return [playRandomSfx];
+  const [connectSfx] = useSound(connectionSfx, {
+    volume: volume,
+    sprite: {
+      join: [0, 1000],
+      leave: [1000, 1000],
+      ready: [250, 750],
+      send: [1250, 750],
+    },
+    soundEnabled: sounds,
+  });
+
+  const joinSfx = () => {
+    connectSfx({ id: 'join' });
+  };
+
+  const leaveSfx = () => {
+    connectSfx({ id: 'leave' });
+  };
+
+  const readySfx = () => {
+    connectSfx({ id: 'ready' });
+  };
+
+  const sendSfx = () => {
+    connectSfx({ id: 'send' });
+  };
+
+  return { playRandomSfx, joinSfx, leaveSfx, readySfx, sendSfx };
 }

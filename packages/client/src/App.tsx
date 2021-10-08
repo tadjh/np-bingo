@@ -20,6 +20,8 @@ import './App.css';
 import features from './config/features';
 import { useState } from 'react';
 import { Wrapper } from './components/Layout/Wrapper';
+import { ToastContainer, Zoom } from 'react-toastify';
+
 export default function App() {
   const [{ user, isSocketLoading }, userDispatch] = useUser();
   const { socket, connect } = useSocket(userDispatch);
@@ -99,6 +101,17 @@ export default function App() {
                         <Play />
                       </Route>
                     </Switch>
+                    <ToastContainer
+                      position="bottom-left"
+                      newestOnTop={true}
+                      transition={Zoom}
+                      theme={theme}
+                      limit={3}
+                      className="m-2"
+                      toastClassName={() =>
+                        'bg-gray-100 dark:bg-gray-700 text-black dark:text-white text-opacity-90 dark:text-opacity-90 leading-none relative flex p-2 mb-4 box-border min-h-[64px] max-h-[800px] rounded shadow-xl justify-between overflow-hidden cursor-pointer'
+                      }
+                    />
                   </Wrapper>
                 </BallContext.Provider>
               </GameContext.Provider>

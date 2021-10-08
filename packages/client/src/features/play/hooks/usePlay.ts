@@ -134,6 +134,20 @@ export function usePlay() {
   }, [gamestate, gamemode, socketId, winners, dispatch, playWinSfx]);
 
   /**
+   * Multiplayer Lose
+   */
+  useEffect(() => {
+    if (gamemode === 'solo') return;
+    if (gamestate !== 'failure') return;
+
+    const handleLose = () => {
+      playLoseSfx();
+    };
+
+    handleLose();
+  }, [gamemode, gamestate, playLoseSfx]);
+
+  /**
    * Solo: On Validation
    */
   useEffect(() => {

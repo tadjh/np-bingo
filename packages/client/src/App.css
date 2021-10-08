@@ -1,3 +1,7 @@
 #App.dark {
   background-color: #000;
 }
+
+.Toastify .Toastify__toast-container {
+  position: absolute;
+}

@@ -24,7 +24,7 @@ export function usePlaySounds() {
   });
 
   const [playLoseSfx] = useSound(deniedSfx, {
-    volume: volume,
+    volume: volume / 4,
     soundEnabled: sounds,
   });
 

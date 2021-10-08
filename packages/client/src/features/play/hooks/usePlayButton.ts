@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { BallContext, FeaturesContext, GameContext } from '../../../context';
 import { useProgress } from '../../../hooks';
 import { usePlaySounds, useSoloButton, usePlayEmitters } from '.';
@@ -27,6 +27,18 @@ export function usePlayButton(card: Card) {
   );
 
   /**
+   * Multiplayer progress on new ball.
+   * // TODO useProgress being in usePlayButton means this can't be moved to usePlay without a larger refactor
+   */
+  useEffect(() => {
+    if (gamemode === 'solo') return;
+
+    if (ball.number > 0) {
+      enableProgress();
+    }
+  }, [gamemode, ball.number, enableProgress]);
+
+  /**
    * New ball side effects
    */
   const triggerBallEffects = () => {
@@ -34,8 +46,11 @@ export function usePlayButton(card: Card) {
     enableProgress();
   };
 
-  const { soloOnProgressDone, soloHandlePrimaryButton, soloHandleSendCard } =
-    useSoloButton(triggerBallEffects, enableProgress, pauseProgress, card);
+  const {
+    soloOnProgressDone,
+    soloHandlePrimaryButton,
+    soloHandleSendCard,
+  } = useSoloButton(triggerBallEffects, enableProgress, pauseProgress, card);
 
   /**
    * Sets gamestate based on current gamestate
@@ -76,8 +91,6 @@ export function usePlayButton(card: Card) {
   return {
     progress,
     inProgress,
-    enableProgress,
-    pauseProgress,
     handlePrimaryButton,
     handleSendCard,
     handleLeaveRoom,

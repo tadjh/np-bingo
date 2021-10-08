@@ -55,7 +55,7 @@ export default function Host({ draws = [[], [], [], [], []] }: HostProps) {
     setDisabled,
     handleLeaveRoom,
   } = useHostButtons();
-  const [playRandomSfx] = useHostSounds();
+  const { playRandomSfx } = useHostSounds();
   return (
     <Fragment>
       <header className="justify-between">
