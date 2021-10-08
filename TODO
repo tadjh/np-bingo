@@ -37,6 +37,7 @@ heroku restart --remote heroku-api
 heroku logs -t --remote heroku-web-client
 
 QOL
+// TODO Write App.tsx Test
 // TODO Persist Solo Mode?
 // TODO Game in progress try again later on disconnect
 // TODO React ARIA for screen readers?
