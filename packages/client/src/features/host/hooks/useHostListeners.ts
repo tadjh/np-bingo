@@ -11,12 +11,15 @@ import { Socket } from 'socket.io-client';
 import { AppActions } from '../../../reducers/app.reducer';
 import { GameContext } from '../../../context';
 import { toast } from 'react-toastify';
+import { useHostSounds } from '.';
 
 export function useHostListeners(
   socket: Socket,
   dispatch: Dispatch<AppActions>
 ) {
   const { split, playerCards } = useContext(GameContext);
+  const { joinSfx, leaveSfx, readySfx, sendSfx } = useHostSounds();
+
   /**
    * From Player: Player Join Room
    * @param player
@@ -24,6 +27,7 @@ export function useHostListeners(
   const playerJoinRoom = (player: Player) => {
     logger(`${player.name} joined`);
     dispatch({ type: PLAYER_JOIN, payload: player });
+    joinSfx();
   };
 
   /**
@@ -33,6 +37,7 @@ export function useHostListeners(
   const playerLeaveRoom = (player: Player) => {
     logger(`${player.name} left`);
     dispatch({ type: PLAYER_LEAVE, payload: player });
+    leaveSfx();
   };
 
   /**
@@ -42,6 +47,7 @@ export function useHostListeners(
   const playerReadyUp = (player: Player) => {
     logger(`${player.name} ready`);
     dispatch({ type: PLAYER_READY, payload: player });
+    readySfx();
   };
 
   /**
@@ -55,6 +61,7 @@ export function useHostListeners(
     logger(`${playerCard.owner.name} sent a card to you.`);
     dispatch({ type: GET_CARD, payload: playerCard });
     toast.info(`${playerCard.owner.name} sent a card.`);
+    sendSfx();
   };
 
   /**
