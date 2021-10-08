@@ -1,7 +1,8 @@
-Bugs
+Known Bugs
 // TODO Player doesn't leave room on browser back button (socket.close? or window.onpopstate)
 // TODO active games only gets updated when host clicks back button
 // TODO sticky options menu
+// TODO sometimes player will join twice (socket connection twice?)
 
 Vulnerbilities
 // TODO Prevent kicked player from rejoining (API & Socket)
@@ -10,11 +11,13 @@ Vulnerbilities
 // TODO Max active Games
 // TODO Max room size 
 // TODO mongodB Atlas IP needs strict whitelist
-// TODO Timeout socket.io connection with reconnect popup
 
-Development
+Performance
+// TODO Timeout socket.io connection with reconnect popup
 // TODO Remove material-ui from Create view ?
 // TODO Implement unsubscribe listeners
+
+Development
 // TODO Config Husky
 // TODO Add GitHub Actions for cypress
 // TODO add @socket.io/admin-ui
@@ -36,13 +39,9 @@ heroku logs -t --remote heroku-web-client
 QOL
 // TODO Persist Solo Mode?
 // TODO Game in progress try again later on disconnect
-// TODO Add: Player join sound for host
-// TODO Add: Sound for send card
-// TODO Add: Sound for player joined
 // TODO React ARIA for screen readers?
 // TODO Create users?
 // TODO Implement useTitle
-// TODO Popup when user submits card for host and user
 // TODO Show winner name on win?
 
 Future Features
