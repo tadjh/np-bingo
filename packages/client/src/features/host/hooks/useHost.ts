@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { Player } from '@np-bingo/types';
 import {
   BallContext,
@@ -17,9 +17,11 @@ export function useHost(socket: Socket) {
   const { players } = useContext(RoomContext);
   const { dispatch } = useContext(GameContext);
   const { ball, newBall } = useContext(BallContext);
-  const [isNewGame, setIsNewGame] = useState(true);
   const { emitKickPlayer, emitSendBall } = useHostEmitters();
-  const { subscribeToPlayerEvents } = useHostListeners(socket, dispatch);
+  const {
+    subscribeToPlayerEvents,
+    unsubscribeFromPlayerEvents,
+  } = useHostListeners(socket, dispatch);
   /**
    * Kick player from room
    * @param player
@@ -64,15 +66,14 @@ export function useHost(socket: Socket) {
     .length;
 
   /**
-   * Set new game
+   * Socket.io subscription events
    */
   useEffect(() => {
-    if (!isNewGame) return;
-    setIsNewGame(false);
     subscribeToPlayerEvents();
-  }, [isNewGame, subscribeToPlayerEvents]);
 
-  // TODO deafenPlayerAction
+    return () => unsubscribeFromPlayerEvents();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return {
     progress,

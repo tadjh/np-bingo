@@ -1,6 +1,6 @@
 {
   "name": "@np-bingo/server",
-  "version": "1.4.6",
+  "version": "1.4.7",
   "description": "nopixel bingo server",
   "main": "dist/server.js",
   "private": true,

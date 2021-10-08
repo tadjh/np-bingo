@@ -13,6 +13,7 @@ import {
   CHECK_CARD_SUCCESS,
   CLEAR_CROSSMARKS,
   NEW_CARD,
+  NOT_WINNER,
   WINNER_CROSSMARKS,
 } from '../../../config/constants';
 import { winningCells } from '../../../utils/bingo.validate';
@@ -45,12 +46,15 @@ export function usePlay() {
   );
 
   const { playWinSfxData, playWinSfx, playLoseSfx } = usePlaySounds();
-  const [subscribeToHost] = usePlayListenersHost(
+  const [subscribeToHost, unsubscribeFromHost] = usePlayListenersHost(
     socket,
     playDispatch,
     dispatch
   );
-  const [subscribeToRoom] = usePlayListenersRoom(socket, dispatch);
+  const [subscribeToRoom, unsubscribeFromRoom] = usePlayListenersRoom(
+    socket,
+    dispatch
+  );
 
   /**
    * Creates a new card and stores it in state
@@ -76,11 +80,23 @@ export function usePlay() {
     if (!isNewGame) return;
     const [card, serial] = newCard(BINGO);
     setNewCard(card, serial);
-    if (gamemode !== 'solo') {
-      subscribeToHost();
-      subscribeToRoom();
-    }
   }, [isNewGame, gamemode, subscribeToHost, subscribeToRoom]);
+
+  /**
+   * Multiplayer Socket.io subscription events
+   */
+  useEffect(() => {
+    if (gamemode === 'solo') return;
+
+    subscribeToHost();
+    subscribeToRoom();
+
+    return () => {
+      unsubscribeFromHost();
+      unsubscribeFromRoom();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   /**
    * If current user is a winner
@@ -105,7 +121,6 @@ export function usePlay() {
 
     const handleWinCleanUp = () => {
       playDispatch({ type: CLEAR_CROSSMARKS });
-
       playWinSfxData.stop();
     };
 
@@ -134,13 +149,14 @@ export function usePlay() {
   }, [gamestate, gamemode, socketId, winners, dispatch, playWinSfx]);
 
   /**
-   * Multiplayer Lose
+   * Multiplayer Loser
    */
   useEffect(() => {
     if (gamemode === 'solo') return;
     if (gamestate !== 'failure') return;
 
     const handleLose = () => {
+      playDispatch({ type: NOT_WINNER });
       playLoseSfx();
     };
 
