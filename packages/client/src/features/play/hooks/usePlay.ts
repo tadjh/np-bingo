@@ -12,8 +12,8 @@ import {
   CHECK_CARD_FAILURE,
   CHECK_CARD_SUCCESS,
   CLEAR_CROSSMARKS,
+  LOSE_GAME,
   NEW_CARD,
-  NOT_WINNER,
   WINNER_CROSSMARKS,
 } from '../../../config/constants';
 import { winningCells } from '../../../utils/bingo.validate';
@@ -112,7 +112,7 @@ export function usePlay() {
   };
 
   /**
-   * Game board reset for Solo and Multiplayer
+   * Game board reset for Solo and Multiplayer Winner
    */
   useEffect(() => {
     if (gamestate !== 'ready') return;
@@ -153,10 +153,10 @@ export function usePlay() {
    */
   useEffect(() => {
     if (gamemode === 'solo') return;
-    if (gamestate !== 'failure') return;
+    if (gamestate !== 'lose') return;
 
     const handleLose = () => {
-      playDispatch({ type: NOT_WINNER });
+      playDispatch({ type: LOSE_GAME });
       playLoseSfx();
     };
 

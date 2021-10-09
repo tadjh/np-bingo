@@ -45,6 +45,7 @@ export type Gamestate =
   | 'pause'
   | 'failure'
   | 'win'
+  | 'lose'
   | 'end';
 /**
  * Game Mode

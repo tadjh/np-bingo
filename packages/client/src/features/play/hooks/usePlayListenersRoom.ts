@@ -4,6 +4,7 @@ import { Ball, Gamestate, Player, RoomEvent, Winner } from '@np-bingo/types';
 import {
   CHECK_CARD_FAILURE,
   GAME_OVER,
+  LOSE_GAME,
   PAUSE,
   READY_CHECK,
   SET_BALL,
@@ -71,7 +72,7 @@ export function usePlayListenersRoom(
       logger(`${winningPlayers[i].name} won the game!`);
     }
     if (sender) return;
-    dispatch({ type: GAME_OVER });
+    dispatch({ type: LOSE_GAME });
   };
 
   /**

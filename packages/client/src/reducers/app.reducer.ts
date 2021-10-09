@@ -32,6 +32,7 @@ import {
   CHECK_CARD_FAILURE,
   CHANGE_GAMEMODE,
   PLAYER_KICK,
+  LOSE_GAME,
 } from '../config/constants';
 import { initialPlayer } from '../context';
 import { BINGO } from '../utils/bingo';
@@ -71,6 +72,7 @@ export type AppActions =
   | { type: typeof START }
   | { type: typeof CHECK_CARD }
   | { type: typeof PAUSE }
+  | { type: typeof LOSE_GAME }
   | { type: typeof GAME_OVER }
   | {
       type: typeof CREATE_ROOM;
@@ -153,6 +155,8 @@ export function appReducer(state: AppState, action: AppActions): AppState {
       };
     case PAUSE:
       return { ...state, gamestate: 'pause' };
+    case LOSE_GAME:
+      return { ...state, gamestate: 'lose' };
     case GAME_OVER:
       return { ...state, gamestate: 'end' };
     case CREATE_ROOM:
