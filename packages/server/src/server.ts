@@ -39,6 +39,20 @@ app.get('/api/', (req, res) => {
 
 app.use('/api/game/', game);
 
+// export const getCurrentRoom = (
+//   socketId: string,
+//   rooms: Set<string>
+// ): string => {
+//   let currentRoom = '';
+//   for (const room of rooms) {
+//     if (room !== socketId) {
+//       currentRoom = room;
+//       break;
+//     }
+//   }
+//   return currentRoom;
+// };
+
 io.on('connection', (socket: Socket) => {
   const { hostEventsListener } = useHostHandlers(io, socket);
   const { playerEventsListener } = usePlayerHandlers(io, socket);
