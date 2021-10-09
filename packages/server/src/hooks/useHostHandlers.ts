@@ -88,14 +88,26 @@ export function useHostHandlers(io: Server, socket: Socket) {
   };
 
   const winningCards = (room: Room, winners: Winner[]) => {
-    const winnerNames = winners.map((winner) => {
-      if (!winner.player.socketId)
-        return { name: winner.player.name, socketId: '' };
+    const privateWinnerNames: Winner[] = winners.map((winner) => {
+      const privatePlayer: Pick<Player, 'name' | 'socketId'> = {
+        name: winner.player.name,
+        socketId: winner.player.socketId,
+      };
+
+      const privateWinner = { ...winner, player: privatePlayer };
+
+      if (winner.player.socketId)
+        io.to(winner.player.socketId).emit(
+          'host:event',
+          'winning-cards',
+          winner
+        );
+
       console.log(`Room ${room}: ${winner.player.name} has BINGO!`);
-      io.to(winner.player.socketId).emit('host:event', 'winning-cards', winner);
-      return { name: winner.player.name, socketId: winner.player.socketId };
+
+      return privateWinner;
     });
-    emitRoomWinners(room, winnerNames);
+    emitRoomWinners(room, privateWinnerNames);
   };
 
   const losingCards = (room: Room, losers: Player[]) => {

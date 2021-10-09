@@ -72,7 +72,7 @@ export type AppActions =
   | { type: typeof START }
   | { type: typeof CHECK_CARD }
   | { type: typeof PAUSE }
-  | { type: typeof LOSE_GAME }
+  | { type: typeof LOSE_GAME; payload: Winner[] }
   | { type: typeof GAME_OVER }
   | {
       type: typeof CREATE_ROOM;
@@ -156,7 +156,11 @@ export function appReducer(state: AppState, action: AppActions): AppState {
     case PAUSE:
       return { ...state, gamestate: 'pause' };
     case LOSE_GAME:
-      return { ...state, gamestate: 'lose' };
+      return {
+        ...state,
+        gamestate: 'lose',
+        winners: [...state.winners, ...action.payload],
+      };
     case GAME_OVER:
       return { ...state, gamestate: 'end' };
     case CREATE_ROOM:

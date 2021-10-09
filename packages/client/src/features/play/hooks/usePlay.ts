@@ -26,6 +26,7 @@ import {
 } from '../../../reducers/play.reducer';
 import { NODE_ENV } from '../../../config';
 import { ReducerLogger } from '../../../hooks/useReducerLogger';
+import { toast } from 'react-toastify';
 
 export function usePlay() {
   const {
@@ -155,13 +156,20 @@ export function usePlay() {
     if (gamemode === 'solo') return;
     if (gamestate !== 'lose') return;
 
+    const notifyWinners = () => {
+      for (let i = 0; i < winners.length; i++) {
+        toast.info(`${winners[i].player.name} has BINGO!`);
+      }
+    };
+
     const handleLose = () => {
       playDispatch({ type: LOSE_GAME });
       playLoseSfx();
+      notifyWinners();
     };
 
     handleLose();
-  }, [gamemode, gamestate, playLoseSfx]);
+  }, [gamemode, gamestate, winners, playLoseSfx]);
 
   /**
    * Solo: On Validation

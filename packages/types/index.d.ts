@@ -32,7 +32,7 @@ export type Results = {
 export type Winner = {
   methods: Method[];
   results: Results;
-  player: Player;
+  player: Player | Pick<Player, 'name' | 'socketId'>;
   card: Card;
 };
 export type CurrentBall = { ball: Ball; draws: Draws; pool: Pool };
