@@ -53,7 +53,11 @@ app.use('/api/game/', game);
 //   return currentRoom;
 // };
 
-io.on('connection', (socket: Socket) => {
+/**
+ * Connection handler
+ * @param socket Socket
+ */
+const onConnection = (socket: Socket) => {
   const { hostEventsListener } = useHostHandlers(io, socket);
   const { playerEventsListener } = usePlayerHandlers(io, socket);
 
@@ -72,16 +76,9 @@ io.on('connection', (socket: Socket) => {
    * From Player: Player event
    */
   socket.on('player:event', playerEventsListener);
+};
 
-  /**
-   * From Player: Won
-   * @param room Room
-   * @param name Winner name
-   */
-  // socket.on('win', (room: Room, name: string) => {
-  //   socket.to(room).emit('game-win', name);
-  // });
-});
+io.on('connection', onConnection);
 
 const port = PORT || 8082;
 
