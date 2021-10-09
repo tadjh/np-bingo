@@ -8,8 +8,7 @@ import {
   Winner,
 } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
-import { Room, SocketId } from 'socket.io-adapter';
-import { WinnerSchema } from '../models/winner';
+import { Room } from 'socket.io-adapter';
 
 export function useHostHandlers(io: Server, socket: Socket) {
   const {
