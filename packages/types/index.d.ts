@@ -68,7 +68,7 @@ export type Kicked = {
   reason: Reason;
 };
 export type Reason = 'none' | 'banned' | 'abandoned';
-export type PlayerEvent = 'join-room' | 'leave-room' | 'ready-up' | 'send-card';
+export type PlayerEvent = 'join-room' | 'ready-up' | HostEvent;
 export type HostEvent =
   | 'create-room'
   | 'leave-room'

@@ -35,6 +35,15 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
   };
 
   /**
+   * Kick player from room
+   * @param room Room
+   * @param player Player
+   */
+  const playerKicked = (room: Room) => {
+    socket.leave(room);
+  };
+
+  /**
    * To Host: Player is Ready
    * @param room
    * @param hostSocketId
@@ -82,6 +91,9 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
         break;
       case 'leave-room':
         playerLeaveRoom(room, hostSocketId, payload as Player);
+        break;
+      case 'kick-player':
+        playerKicked(room);
         break;
       case 'ready-up':
         readyUp(room, hostSocketId, payload as Player);
