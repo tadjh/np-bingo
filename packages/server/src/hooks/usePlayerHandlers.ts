@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io';
 import { Room, SocketId } from 'socket.io-adapter';
-import { Card, Player, PlayerCard, PlayerEvent } from '@np-bingo/types';
+import { Player, PlayerCard, PlayerEvent } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
 
 export function usePlayerHandlers(io: Server, socket: Socket) {
@@ -14,6 +14,7 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
    */
   const joinRoom = (room: Room, hostSocketId: SocketId, player: Player) => {
     socket.join(room);
+    socket.data = { room, player, host: hostSocketId };
     console.log(`Room ${room}: ${player.name} joined`);
     io.to(hostSocketId).emit('host:player-event', 'join-room', player);
   };
@@ -93,5 +94,5 @@ export function usePlayerHandlers(io: Server, socket: Socket) {
     }
   };
 
-  return { playerEventsListener };
+  return { playerEventsListener, playerLeaveRoom };
 }

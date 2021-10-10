@@ -25,6 +25,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
   const createRoom = (room: Room, username: Host['name']) => {
     console.log(`Room ${room}: ${username} created room`);
     socket.join(room);
+    socket.data = { room, player: { name: username } };
   };
 
   /**

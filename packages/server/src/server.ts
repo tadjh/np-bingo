@@ -59,13 +59,21 @@ app.use('/api/game/', game);
  */
 const onConnection = (socket: Socket) => {
   const { hostEventsListener } = useHostHandlers(io, socket);
-  const { playerEventsListener } = usePlayerHandlers(io, socket);
+  const { playerEventsListener, playerLeaveRoom } = usePlayerHandlers(
+    io,
+    socket
+  );
 
-  console.log('User connected');
+  console.log('User connected', socket.id);
 
-  socket.on('disconnect', () => {
-    console.log('User disconnected');
-  });
+  const onDisconnect = (reason: string) => {
+    if (socket.data.room && socket.data.host && socket.data.player) {
+      playerLeaveRoom(socket.data.room, socket.data.host, socket.data.player);
+    }
+    console.log('User disconnected', socket.id);
+  };
+
+  socket.on('disconnect', onDisconnect);
 
   /**
    * From Host: Host event
