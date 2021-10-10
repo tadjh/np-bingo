@@ -14,6 +14,7 @@ var db_1 = __importDefault(require("./config/db"));
 var hooks_1 = require("./hooks");
 // routes
 var game_1 = __importDefault(require("./routes/game"));
+var admin_ui_1 = require("@socket.io/admin-ui");
 var app = (0, express_1.default)();
 var httpServer = (0, http_1.createServer)(app);
 /**
@@ -21,11 +22,21 @@ var httpServer = (0, http_1.createServer)(app);
  */
 var io = new socket_io_1.Server(httpServer, {
     cors: {
-        origin: config_1.ORIGIN,
+        origin: [config_1.ORIGIN, 'https://admin.socket.io'],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         credentials: true,
     },
 });
+if (config_1.NODE_ENV === 'development') {
+    // {
+    //   type: 'basic',
+    //   username: SOCKET_ADMIN_USERNAME,
+    //   password: SOCKET_ADMIN_PASSWORD,
+    // },
+    (0, admin_ui_1.instrument)(io, {
+        auth: false,
+    });
+}
 (0, db_1.default)();
 // middleware
 app.use((0, serve_favicon_1.default)(path_1.default.join(__dirname, 'public', 'favicon.ico')));
@@ -39,13 +50,34 @@ app.get('/api/', function (req, res) {
     res.send('Hello World!');
 });
 app.use('/api/game/', game_1.default);
-io.on('connection', function (socket) {
+// export const getCurrentRoom = (
+//   socketId: string,
+//   rooms: Set<string>
+// ): string => {
+//   let currentRoom = '';
+//   for (const room of rooms) {
+//     if (room !== socketId) {
+//       currentRoom = room;
+//       break;
+//     }
+//   }
+//   return currentRoom;
+// };
+/**
+ * Connection handler
+ * @param socket Socket
+ */
+var onConnection = function (socket) {
     var hostEventsListener = (0, hooks_1.useHostHandlers)(io, socket).hostEventsListener;
-    var playerEventsListener = (0, hooks_1.usePlayerHandlers)(io, socket).playerEventsListener;
-    console.log('User connected');
-    socket.on('disconnect', function () {
-        console.log('User disconnected');
-    });
+    var _a = (0, hooks_1.usePlayerHandlers)(io, socket), playerEventsListener = _a.playerEventsListener, playerLeaveRoom = _a.playerLeaveRoom;
+    console.log('User connected', socket.id);
+    var onDisconnect = function (reason) {
+        if (socket.data.room && socket.data.host && socket.data.player) {
+            playerLeaveRoom(socket.data.room, socket.data.host, socket.data.player);
+        }
+        console.log('User disconnected', socket.id);
+    };
+    socket.on('disconnect', onDisconnect);
     /**
      * From Host: Host event
      */
@@ -54,15 +86,8 @@ io.on('connection', function (socket) {
      * From Player: Player event
      */
     socket.on('player:event', playerEventsListener);
-    /**
-     * From Player: Won
-     * @param room Room
-     * @param name Winner name
-     */
-    // socket.on('win', (room: Room, name: string) => {
-    //   socket.to(room).emit('game-win', name);
-    // });
-});
+};
+io.on('connection', onConnection);
 var port = config_1.PORT || 8082;
 httpServer.listen(port, function () {
     console.log("Listening on port " + port);

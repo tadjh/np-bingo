@@ -1,7 +1,7 @@
 {
   "name": "np-bingo",
   "private": true,
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "http://dev.tadjhbrooks.com/np-bingo/",
   "main": "index.js",
   "scripts": {

@@ -12,6 +12,7 @@ function usePlayerHandlers(io, socket) {
      */
     var joinRoom = function (room, hostSocketId, player) {
         socket.join(room);
+        socket.data = { room: room, player: player, host: hostSocketId };
         console.log("Room " + room + ": " + player.name + " joined");
         io.to(hostSocketId).emit('host:player-event', 'join-room', player);
     };
@@ -24,6 +25,14 @@ function usePlayerHandlers(io, socket) {
     var playerLeaveRoom = function (room, hostSocketId, player) {
         io.to(hostSocketId).emit('host:player-event', 'leave-room', player);
         emitLeaveRoom(room, player.name);
+    };
+    /**
+     * Kick player from room
+     * @param room Room
+     * @param player Player
+     */
+    var playerKicked = function (room) {
+        socket.leave(room);
     };
     /**
      * To Host: Player is Ready
@@ -63,6 +72,9 @@ function usePlayerHandlers(io, socket) {
             case 'leave-room':
                 playerLeaveRoom(room, hostSocketId, payload);
                 break;
+            case 'kick-player':
+                playerKicked(room);
+                break;
             case 'ready-up':
                 readyUp(room, hostSocketId, payload);
                 break;
@@ -73,6 +85,6 @@ function usePlayerHandlers(io, socket) {
                 throw new Error('Invalid player event');
         }
     };
-    return { playerEventsListener: playerEventsListener };
+    return { playerEventsListener: playerEventsListener, playerLeaveRoom: playerLeaveRoom };
 }
 exports.usePlayerHandlers = usePlayerHandlers;
