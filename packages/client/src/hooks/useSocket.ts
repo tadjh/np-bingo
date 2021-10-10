@@ -3,10 +3,21 @@ import { Socket } from 'socket.io-client';
 import socketInit from '../lib/socket.io';
 import { logger } from '../utils';
 import { UserActions } from '../reducers/user.reducer';
-import { SOCKET_SUCCESS } from '../config/constants';
+import { SOCKET_INIT, SOCKET_SUCCESS } from '../config/constants';
 
-export function useSocket(userDispatch: Dispatch<UserActions>) {
-  const socket = useMemo(socketInit, [socketInit]);
+export function useSocket(
+  isSocketLoading: boolean,
+  userDispatch: Dispatch<UserActions>
+) {
+  const socket = useMemo(() => socketInit, []);
+
+  /**
+   * Connect to socket.io
+   */
+  useEffect(() => {
+    if (socket.connected === true || isSocketLoading) return;
+    userDispatch({ type: SOCKET_INIT });
+  }, [socket.connected, isSocketLoading, userDispatch]);
 
   /**
    * Connect
@@ -27,6 +38,7 @@ export function useSocket(userDispatch: Dispatch<UserActions>) {
    */
   useEffect(() => {
     /**
+     *
      * On Connect event
      */
     const onConnect = () => {
@@ -44,7 +56,9 @@ export function useSocket(userDispatch: Dispatch<UserActions>) {
           logger('You have been forcefully disconnected from the server.');
           break;
         case 'io client disconnect':
-          logger('You have been manually disconnected from the server.');
+          logger(
+            'You have disconnected from the server. Attempting reconnect...'
+          );
           break;
         case 'ping timeout':
           logger('Server timeout. You have been disconnected.');
