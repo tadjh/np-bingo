@@ -4,11 +4,12 @@ import path from 'path';
 import cors from 'cors';
 import { createServer } from 'http';
 import { Server, Socket } from 'socket.io';
-import { ORIGIN, PORT } from './config';
+import { NODE_ENV, ORIGIN, PORT } from './config';
 import connectDB from './config/db';
 import { usePlayerHandlers, useHostHandlers } from './hooks';
 // routes
 import game from './routes/game';
+import { instrument } from '@socket.io/admin-ui';
 
 const app = express();
 const httpServer = createServer(app);
@@ -17,11 +18,22 @@ const httpServer = createServer(app);
  */
 const io = new Server(httpServer, {
   cors: {
-    origin: ORIGIN,
+    origin: [ORIGIN, 'https://admin.socket.io'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   },
 });
+
+if (NODE_ENV === 'development') {
+  // {
+  //   type: 'basic',
+  //   username: SOCKET_ADMIN_USERNAME,
+  //   password: SOCKET_ADMIN_PASSWORD,
+  // },
+  instrument(io, {
+    auth: false,
+  });
+}
 
 connectDB();
 
