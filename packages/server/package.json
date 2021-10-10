@@ -1,6 +1,6 @@
 {
   "name": "@np-bingo/server",
-  "version": "1.4.7",
+  "version": "1.4.8",
   "description": "nopixel bingo server",
   "main": "dist/server.js",
   "private": true,
@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@np-bingo/common": "^1.4.3",
+    "@socket.io/admin-ui": "^0.2.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

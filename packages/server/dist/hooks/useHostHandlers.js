@@ -1,4 +1,15 @@
 "use strict";
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.useHostHandlers = void 0;
 var useCommonHandlers_1 = require("./useCommonHandlers");
@@ -11,6 +22,7 @@ function useHostHandlers(io, socket) {
     var createRoom = function (room, username) {
         console.log("Room " + room + ": " + username + " created room");
         socket.join(room);
+        socket.data = { room: room, player: { name: username } };
     };
     /**
      * To Room: Host leaving room
@@ -27,7 +39,7 @@ function useHostHandlers(io, socket) {
     var kickPlayer = function (room, player) {
         if (player.socketId === null)
             return console.log("Room " + room + ": " + player.name + " could not be kicked. Invalid socket.");
-        io.to(player.socketId).emit('host:event', 'kick-player');
+        io.to(player.socketId).emit('host:event', 'kick-player', room);
         console.log("Room " + room + ": " + player.name + " kicked");
     };
     /**
@@ -64,14 +76,18 @@ function useHostHandlers(io, socket) {
         emitRoomNewBall(room, ball);
     };
     var winningCards = function (room, winners) {
-        var winnerNames = winners.map(function (winner) {
-            if (!winner.player.socketId)
-                return { name: winner.player.name, socketId: '' };
+        var privateWinnerNames = winners.map(function (winner) {
+            var privatePlayer = {
+                name: winner.player.name,
+                socketId: winner.player.socketId,
+            };
+            var privateWinner = __assign(__assign({}, winner), { player: privatePlayer });
+            if (winner.player.socketId)
+                io.to(winner.player.socketId).emit('host:event', 'winning-cards', winner);
             console.log("Room " + room + ": " + winner.player.name + " has BINGO!");
-            io.to(winner.player.socketId).emit('host:event', 'winning-cards', winner);
-            return { name: winner.player.name, socketId: winner.player.socketId };
+            return privateWinner;
         });
-        emitRoomWinners(room, winnerNames);
+        emitRoomWinners(room, privateWinnerNames);
     };
     var losingCards = function (room, losers) {
         var loserNames = losers.map(function (loser) {

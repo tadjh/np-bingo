@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io';
-import { Room, SocketId } from 'socket.io-adapter';
-import { Ball, Card, Gamestate, Player } from '@np-bingo/types';
+import { Room } from 'socket.io-adapter';
+import { Ball, Gamestate, Player, Winner } from '@np-bingo/types';
 
 export function useCommonHandlers(io: Server, socket: Socket) {
   /**
@@ -44,10 +44,7 @@ export function useCommonHandlers(io: Server, socket: Socket) {
    * @param room
    * @param playerName
    */
-  const emitRoomWinners = (
-    room: Room,
-    winningPlayers: Pick<Player, 'name' | 'socketId'>[]
-  ) => {
+  const emitRoomWinners = (room: Room, winningPlayers: Winner[]) => {
     socket.to(room).emit('room:event', 'winning-cards', winningPlayers);
   };
 

@@ -35,6 +35,8 @@ export function usePlayStatus(gamestate: Gamestate, mode: Gamemode) {
         return 'A card is being checked for BINGO!';
       case 'win':
         return 'BINGO!';
+      case 'lose':
+        return 'You lose! Better luck next time...';
       case 'failure':
         // let failureText = [
         //   'Jumping the gun. No Bingo...',

@@ -2,8 +2,8 @@ import { Card, Kicked, Reason, Serial } from '@np-bingo/types';
 import {
   CLEAR_CROSSMARKS,
   INIT,
+  LOSE_GAME,
   NEW_CARD,
-  NOT_WINNER,
   PLAYER_KICK,
   WINNER_CROSSMARKS,
 } from '../config/constants';
@@ -40,7 +40,7 @@ export type PlayActions =
       type: typeof PLAYER_KICK;
       payload: Reason;
     }
-  | { type: typeof NOT_WINNER };
+  | { type: typeof LOSE_GAME };
 
 export function playReducer(state: PlayState, action: PlayActions): PlayState {
   switch (action.type) {
@@ -68,7 +68,7 @@ export function playReducer(state: PlayState, action: PlayActions): PlayState {
         ...state,
         kicked: { ...state.kicked, status: true, reason: action.payload },
       };
-    case NOT_WINNER:
+    case LOSE_GAME:
       return {
         ...state,
         card: new Array(25),

@@ -3,6 +3,7 @@ Known Bugs
 // TODO active games only gets updated when host clicks back button
 // TODO sticky options menu
 // TODO Host Listener SFX don't seem to play
+// TODO Solo Widgets unmount no-op
 
 Vulnerbilities
 // TODO Prevent kicked player from rejoining (API & Socket)
@@ -17,6 +18,7 @@ Performance
 // TODO Remove material-ui from Create view ?
 
 Development
+// TODO Socket.io Tests https://socket.io/docs/v4/testing/#Example-with-jest
 // TODO Config Husky
 // TODO Add GitHub Actions for cypress
 // TODO add @socket.io/admin-ui
@@ -24,7 +26,6 @@ Development
 // TODO Error Boundaries
 // TODO Migrate to React Router v6
 // TODO Add profiler tracing?
-// TODO Socket.io Tests https://socket.io/docs/v4/testing/#Example-with-jest
 
 Environment
 // TODO Use copyfiles or webpack(?) to move server favicon from 'Public' to 'dist/Public' or something
@@ -36,6 +37,7 @@ heroku restart --remote heroku-api
 heroku logs -t --remote heroku-web-client
 
 QOL
+// TODO Consider moving socket room to socket attribute?
 // TODO Write App.tsx Test
 // TODO Persist Solo Mode?
 // TODO Game in progress try again later on disconnect

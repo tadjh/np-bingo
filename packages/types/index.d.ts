@@ -32,7 +32,7 @@ export type Results = {
 export type Winner = {
   methods: Method[];
   results: Results;
-  player: Player;
+  player: Player | Pick<Player, 'name' | 'socketId'>;
   card: Card;
 };
 export type CurrentBall = { ball: Ball; draws: Draws; pool: Pool };
@@ -45,6 +45,7 @@ export type Gamestate =
   | 'pause'
   | 'failure'
   | 'win'
+  | 'lose'
   | 'end';
 /**
  * Game Mode
@@ -67,7 +68,7 @@ export type Kicked = {
   reason: Reason;
 };
 export type Reason = 'none' | 'banned' | 'abandoned';
-export type PlayerEvent = 'join-room' | 'leave-room' | 'ready-up' | 'send-card';
+export type PlayerEvent = 'join-room' | 'ready-up' | HostEvent;
 export type HostEvent =
   | 'create-room'
   | 'leave-room'

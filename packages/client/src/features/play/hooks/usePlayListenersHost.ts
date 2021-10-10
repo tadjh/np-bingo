@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 import { logger } from '../../../utils';
-import { HostEvent, Winner } from '@np-bingo/types';
+import { HostEvent, Room, Winner } from '@np-bingo/types';
 import {
   CHECK_CARD_FAILURE,
   CHECK_CARD_SUCCESS,
@@ -18,9 +18,10 @@ export function usePlayListenersHost(
   /**
    * To Player: Removed from game room
    */
-  const playerKicked = () => {
+  const playerKicked = (room: Room) => {
     logger(`You have been kicked from the room`);
     playDispatch({ type: PLAYER_KICK, payload: 'banned' });
+    socket.emit('player:event', 'kick-player', room);
   };
 
   /**
@@ -52,10 +53,10 @@ export function usePlayListenersHost(
    * Host Actions Handler
    * @param event
    */
-  const hostEventListener = (event: HostEvent, payload?: Winner) => {
+  const hostEventListener = (event: HostEvent, payload?: Room | Winner) => {
     switch (event) {
       case 'kick-player':
-        playerKicked();
+        playerKicked(payload as Room);
         break;
       case 'leave-room':
         roomAbandoned();

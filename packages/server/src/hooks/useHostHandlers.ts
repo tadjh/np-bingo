@@ -8,8 +8,7 @@ import {
   Winner,
 } from '@np-bingo/types';
 import { useCommonHandlers } from './useCommonHandlers';
-import { Room, SocketId } from 'socket.io-adapter';
-import { WinnerSchema } from '../models/winner';
+import { Room } from 'socket.io-adapter';
 
 export function useHostHandlers(io: Server, socket: Socket) {
   const {
@@ -26,6 +25,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
   const createRoom = (room: Room, username: Host['name']) => {
     console.log(`Room ${room}: ${username} created room`);
     socket.join(room);
+    socket.data = { room, player: { name: username } };
   };
 
   /**
@@ -46,7 +46,7 @@ export function useHostHandlers(io: Server, socket: Socket) {
       return console.log(
         `Room ${room}: ${player.name} could not be kicked. Invalid socket.`
       );
-    io.to(player.socketId).emit('host:event', 'kick-player');
+    io.to(player.socketId).emit('host:event', 'kick-player', room);
     console.log(`Room ${room}: ${player.name} kicked`);
   };
 
@@ -88,14 +88,26 @@ export function useHostHandlers(io: Server, socket: Socket) {
   };
 
   const winningCards = (room: Room, winners: Winner[]) => {
-    const winnerNames = winners.map((winner) => {
-      if (!winner.player.socketId)
-        return { name: winner.player.name, socketId: '' };
+    const privateWinnerNames: Winner[] = winners.map((winner) => {
+      const privatePlayer: Pick<Player, 'name' | 'socketId'> = {
+        name: winner.player.name,
+        socketId: winner.player.socketId,
+      };
+
+      const privateWinner = { ...winner, player: privatePlayer };
+
+      if (winner.player.socketId)
+        io.to(winner.player.socketId).emit(
+          'host:event',
+          'winning-cards',
+          winner
+        );
+
       console.log(`Room ${room}: ${winner.player.name} has BINGO!`);
-      io.to(winner.player.socketId).emit('host:event', 'winning-cards', winner);
-      return { name: winner.player.name, socketId: winner.player.socketId };
+
+      return privateWinner;
     });
-    emitRoomWinners(room, winnerNames);
+    emitRoomWinners(room, privateWinnerNames);
   };
 
   const losingCards = (room: Room, losers: Player[]) => {

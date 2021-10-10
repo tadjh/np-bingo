@@ -4,6 +4,7 @@ import { Ball, Gamestate, Player, RoomEvent, Winner } from '@np-bingo/types';
 import {
   CHECK_CARD_FAILURE,
   GAME_OVER,
+  LOSE_GAME,
   PAUSE,
   READY_CHECK,
   SET_BALL,
@@ -59,19 +60,17 @@ export function usePlayListenersRoom(
    * To Room Winner: Win Game
    * @param winner
    */
-  const winningCards = (
-    winningPlayers: Pick<Player, 'name' | 'socketId'>[]
-  ) => {
+  const winningCards = (winningPlayers: Winner[]) => {
     let sender = false;
     for (let i = 0; i < winningPlayers.length; i++) {
-      if (winningPlayers[i].socketId === socket.id) {
+      if (winningPlayers[i].player.socketId === socket.id) {
         sender = true;
         break;
       }
-      logger(`${winningPlayers[i].name} won the game!`);
+      logger(`${winningPlayers[i].player.name} won the game!`);
     }
     if (sender) return;
-    dispatch({ type: GAME_OVER });
+    dispatch({ type: LOSE_GAME, payload: winningPlayers });
   };
 
   /**
@@ -88,12 +87,7 @@ export function usePlayListenersRoom(
    */
   const roomEventsListener = (
     event: RoomEvent,
-    payload:
-      | Ball
-      | Gamestate
-      | Winner
-      | Player['name']
-      | Pick<Player, 'name' | 'socketId'>[]
+    payload: Ball | Gamestate | Winner | Player['name'] | Winner[]
   ) => {
     switch (event) {
       case 'sync-gamestate':
@@ -106,7 +100,7 @@ export function usePlayListenersRoom(
         sendCard(payload as Player['name']);
         break;
       case 'winning-cards':
-        winningCards(payload as Pick<Player, 'name' | 'socketId'>[]);
+        winningCards(payload as Winner[]);
         break;
       case 'losing-cards':
         losingCards();

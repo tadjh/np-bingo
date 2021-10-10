@@ -24,7 +24,7 @@ import { ToastContainer, Zoom } from 'react-toastify';
 
 export default function App() {
   const [{ user, isSocketLoading }, userDispatch] = useUser();
-  const { socket, connect } = useSocket(userDispatch);
+  const { socket, connect } = useSocket(isSocketLoading, userDispatch);
   const {
     state: {
       gamestate,

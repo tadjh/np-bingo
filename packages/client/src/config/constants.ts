@@ -9,6 +9,7 @@ export const CHECK_CARD_FAILURE = 'CHECK CARD FAILURE';
 export const PAUSE = 'PAUSE';
 export const FAILURE = 'FAILURE';
 export const WIN_GAME = 'WIN GAME';
+export const LOSE_GAME = 'LOSE GAME';
 export const GAME_OVER = 'GAME OVER';
 export const NEW_GAME = 'NEW GAME';
 
@@ -27,7 +28,6 @@ export const GET_CARD = 'GET CARD';
 export const SET_BALL = 'SET BALL';
 export const NEW_BALL = 'NEW BALL';
 export const WINNER_CROSSMARKS = 'WINNER CROSSMARKS';
-export const NOT_WINNER = 'NOT WINNER';
 export const CLEAR_CROSSMARKS = 'CLEAR CROSSMARKS';
 
 // Fetch

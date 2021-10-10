@@ -9,3 +9,8 @@ export const PORT = process.env.PORT || '80';
 export const ORIGIN = process.env.ORIGIN || 'http://localhost:3000';
 export const SERVER = process.env.SERVER || 'http://localhost:8082';
 export const API_SECRET = process.env.API_SECRET || 'secret';
+export const SOCKET_ADMIN_USERNAME =
+  process.env.SOCKET_ADMIN_USERNAME || 'admin';
+export const SOCKET_ADMIN_PASSWORD =
+  process.env.SOCKET_ADMIN_PASSWORD || 'password';
+export const NODE_ENV = process.env.NODE_ENV || 'production';

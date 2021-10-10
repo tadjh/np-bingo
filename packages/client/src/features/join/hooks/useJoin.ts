@@ -6,7 +6,7 @@ import { useFetch, useQuery } from '../../../hooks';
 import { JOIN_ROOM, CHANGE_GAMEMODE, INIT } from '../../../config/constants';
 
 export function useJoin() {
-  const { user, socket, connect } = useContext(UserContext);
+  const { user, socket } = useContext(UserContext);
   const { gamestate, dispatch } = useContext(GameContext);
   let query = useQuery();
   let history = useHistory();
@@ -34,17 +34,11 @@ export function useJoin() {
    * Player: Connect to socket.io and store room input in state
    * @param room Room code
    */
-  const joinRoom = useCallback(
-    (room: Room) => {
-      // if (isUpdatingUser) return;
-      setJoiningRoom(true);
-      setCurrentRoom(room);
-
-      if (socket.connected === true) return;
-      connect();
-    },
-    [socket, connect]
-  );
+  const joinRoom = useCallback((room: Room) => {
+    // if (isUpdatingUser) return;
+    setJoiningRoom(true);
+    setCurrentRoom(room);
+  }, []);
 
   /**
    * Trigger Fetch once socket is loaded
