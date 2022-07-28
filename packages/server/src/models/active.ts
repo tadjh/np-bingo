@@ -5,8 +5,6 @@ export interface IActive extends Document {
   gameId: string;
   room: Room;
   name: string;
-  // count: number;
-  // private: boolean;
   joinable: boolean;
 }
 const ActiveSchema = new Schema(
@@ -14,8 +12,6 @@ const ActiveSchema = new Schema(
     gameId: String,
     room: String,
     name: String,
-    // count: Number,
-    // private: Boolean,
     joinable: Boolean,
   },
   { timestamps: true }

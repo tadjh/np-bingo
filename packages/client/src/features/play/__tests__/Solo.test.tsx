@@ -30,7 +30,7 @@ describe('Solo unit tests', () => {
       dispatch({ type: READY_CHECK });
     }, [gamestate, dispatch]);
     return (
-      <UserContext.Provider value={{ ...initialUserContext, socket: socket() }}>
+      <UserContext.Provider value={{ ...initialUserContext, socket: socket }}>
         <GameContext.Provider
           value={{
             ...initialGameContext,

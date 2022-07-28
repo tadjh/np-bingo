@@ -7,15 +7,11 @@ import { Server, Socket } from 'socket.io';
 import { NODE_ENV, ORIGIN, PORT } from './config';
 import connectDB from './config/db';
 import { usePlayerHandlers, useHostHandlers } from './hooks';
-// routes
 import game from './routes/game';
 import { instrument } from '@socket.io/admin-ui';
 
 const app = express();
 const httpServer = createServer(app);
-/**
- * Socket.io CORS
- */
 const io = new Server(httpServer, {
   cors: {
     origin: [ORIGIN, 'https://admin.socket.io'],
@@ -37,38 +33,11 @@ if (NODE_ENV === 'development') {
 
 connectDB();
 
-// middleware
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-/**
- * REST Api CORS
- */
 app.use(cors({ origin: ORIGIN, credentials: true }));
 app.use(express.json());
-// use Routes
-app.get('/api/', (req, res) => {
-  res.send('Hello World!');
-});
-
 app.use('/api/game/', game);
 
-// export const getCurrentRoom = (
-//   socketId: string,
-//   rooms: Set<string>
-// ): string => {
-//   let currentRoom = '';
-//   for (const room of rooms) {
-//     if (room !== socketId) {
-//       currentRoom = room;
-//       break;
-//     }
-//   }
-//   return currentRoom;
-// };
-
-/**
- * Connection handler
- * @param socket Socket
- */
 const onConnection = (socket: Socket) => {
   const { hostEventsListener } = useHostHandlers(io, socket);
   const { playerEventsListener, playerLeaveRoom } = usePlayerHandlers(

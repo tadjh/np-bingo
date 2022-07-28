@@ -4002,7 +4002,7 @@ exports[`Storyshots Pages/Home Base 1`] = `
       class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
     />
     <div
-      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
+      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute left-0 sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
     />
     <header
       class="flex-auto items-center justify-center"
@@ -8406,7 +8406,7 @@ exports[`Storyshots Pages/Join Base 1`] = `
       class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
     />
     <div
-      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
+      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute left-0 sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
     />
     <header
       class="flex-auto justify-between"
@@ -8653,7 +8653,7 @@ exports[`Storyshots Pages/Join No Solo Mode 1`] = `
       class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
     />
     <div
-      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
+      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute left-0 sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
     />
     <header
       class="flex-auto justify-between"
@@ -8900,7 +8900,7 @@ exports[`Storyshots Pages/Join Public Rooms 1`] = `
       class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
     />
     <div
-      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
+      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute left-0 sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
     />
     <header
       class="flex-auto justify-between"
@@ -9196,7 +9196,7 @@ exports[`Storyshots Pages/Play Base 1`] = `
       class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
     />
     <div
-      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
+      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute left-0 sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
     />
     <header
       class="justify-between"
@@ -9314,6 +9314,27 @@ exports[`Storyshots Pages/Play Base 1`] = `
           >
             24
           </div>
+        </div>
+        <div
+          class="transform top-2/4 -translate-y-2/4 left-2/4 -translate-x-2/4 -rotate-90 text-gray-300 dark:text-gray-600 absolute"
+        >
+          <svg
+            class="h-23.5 w-23.5"
+            fill="currentColor"
+            viewBox="22 22 44 44"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              class="stroke-current"
+              cx="44"
+              cy="44"
+              fill="none"
+              r="20.2"
+              stroke-dasharray="126.92"
+              stroke-dashoffset="126.92px"
+              stroke-width="3.6"
+            />
+          </svg>
         </div>
       </div>
       <div
@@ -9891,7 +9912,7 @@ exports[`Storyshots Pages/Play Win 1`] = `
       class="background bg-bingo-light dark:bg-bingo-dark bg-cover bg-no-repeat bg-bottom absolute left-0 top-0 h-full w-full sm:rounded-[38px]"
     />
     <div
-      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
+      class="background bg-iphone-top bg-contain bg-no-repeat bg-center absolute left-0 sm:w-[430px] sm:h-[32px] z-20 transform translate-x-[-28px] translate-y-[-1px] invisible sm:visible"
     />
     <header
       class="justify-between"
@@ -10009,6 +10030,27 @@ exports[`Storyshots Pages/Play Win 1`] = `
           >
             24
           </div>
+        </div>
+        <div
+          class="transform top-2/4 -translate-y-2/4 left-2/4 -translate-x-2/4 -rotate-90 text-gray-300 dark:text-gray-600 absolute"
+        >
+          <svg
+            class="h-23.5 w-23.5"
+            fill="currentColor"
+            viewBox="22 22 44 44"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle
+              class="stroke-current"
+              cx="44"
+              cy="44"
+              fill="none"
+              r="20.2"
+              stroke-dasharray="126.92"
+              stroke-dashoffset="126.92px"
+              stroke-width="3.6"
+            />
+          </svg>
         </div>
       </div>
       <div

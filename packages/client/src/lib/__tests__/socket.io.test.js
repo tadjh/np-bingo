@@ -1,11 +1,11 @@
 import { createServer } from 'http';
-import { Server, Socket as ServerSocket } from 'socket.io';
-import Client, { Socket as ClientSocket } from 'socket.io-client';
+import { Server } from 'socket.io';
+import Client from 'socket.io-client';
 
 // TODO Implement socket.io tests
 
 describe('Basic Socket.io Tests', () => {
-  let io: Server, serverSocket: ServerSocket, clientSocket: ClientSocket;
+  let io, serverSocket, clientSocket;
 
   beforeAll((done) => {
     const httpServer = createServer();

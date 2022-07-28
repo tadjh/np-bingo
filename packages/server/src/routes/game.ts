@@ -126,31 +126,6 @@ router.put('/:id', (req, res) => {
   });
 });
 
-// router.put('/leave/:id', async (req, res) => {
-//   try {
-//     await Game.findByIdAndUpdate(
-//       { room: req.params.id },
-//       { $pull: { 'players.uid': req.body.uid } },
-//       function (err, result) {
-//         if (err) {
-//           res
-//             .status(400)
-//             .json({ error: `Unable to leave game room ${req.params.id}` });
-//         } else {
-//           res.json({
-//             host: result.host,
-//             msg: `Left game room ${req.params.id}`,
-//           });
-//         }
-//       }
-//     );
-//   } catch (err) {
-//     res
-//       .status(400)
-//       .json({ error: `Unable to leave game room ${req.params.id} ` });
-//   }
-// });
-
 /**
  * @route DELETE api/game/:id
  * @description Remove empty game by ID

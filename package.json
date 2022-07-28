@@ -46,8 +46,8 @@
     "babel-loader": "8.1.0"
   },
   "engines": {
-    "node": "14.16.1",
-    "npm": "6.14.12"
+    "node": "14.19.1",
+    "npm": "6.14.16"
   },
   "dependencies": {
     "cypress": "8.4.0"

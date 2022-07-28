@@ -1,11 +1,10 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Cell from '..';
 
 it('Handles basic cell interaction', () => {
   render(
-    <Cell key="cell-1" winner={false}>
+    <Cell index={0} key="cell-1" winner={false}>
       5
     </Cell>
   );
@@ -23,7 +22,7 @@ it('Handles basic cell interaction', () => {
 
 it('handles double clicks', () => {
   render(
-    <Cell key="cell-1" winner={false}>
+    <Cell index={0} key="cell-1" winner={false}>
       5
     </Cell>
   );
@@ -35,7 +34,7 @@ it('handles double clicks', () => {
 
 it('handles double clicks after a single click', () => {
   render(
-    <Cell key="cell-1" winner={false}>
+    <Cell index={0} key="cell-1" winner={false}>
       5
     </Cell>
   );

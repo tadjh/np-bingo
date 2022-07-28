@@ -4,8 +4,7 @@ import React from 'react';
  * Generates array of elements
  * @param array Data to put into element
  * @param element Component
- * @param key Custom key name
- * @param override Override children
+ * @param options { key: Custom key name, override: Override children }
  * @returns React Element Array
  */
 

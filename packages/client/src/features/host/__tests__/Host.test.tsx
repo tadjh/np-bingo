@@ -50,7 +50,7 @@ function HostWithContext({
     }
   }, [gamestateOverride, dispatch]);
   return (
-    <UserContext.Provider value={{ ...initialUserContext, socket: socket() }}>
+    <UserContext.Provider value={{ ...initialUserContext, socket: socket }}>
       <RoomContext.Provider value={{ ...initialRoomContext, room }}>
         <GameContext.Provider
           value={{

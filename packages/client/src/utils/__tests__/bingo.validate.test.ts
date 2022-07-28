@@ -12,41 +12,15 @@ import {
 } from '../bingo.validate';
 
 const mockCard = [
-  9,
-  24,
-  42,
-  55,
-  73,
-  5,
-  16,
-  35,
-  46,
-  70,
-  10,
-  29,
-  45,
-  54,
-  63,
-  6,
-  19,
-  43,
-  57,
-  62,
-  7,
-  28,
-  41,
-  50,
-  72,
+  9, 24, 42, 55, 73, 5, 16, 35, 46, 70, 10, 29, 45, 54, 63, 6, 19, 43, 57, 62,
+  7, 28, 41, 50, 72,
 ];
 
 describe('validate card', () => {
   it('winning card', () => {
-    expect(
-      validateCard(mockCard, [[9], [24], [42], [55], [73]])
-    ).toStrictEqual([
-      { column: [], diagonal: [], row: [0, 1, 2, 3, 4] },
-      ['row'],
-    ]);
+    expect(validateCard(mockCard, [[9], [24], [42], [55], [73]])).toStrictEqual(
+      [{ column: [], diagonal: [], row: [0, 1, 2, 3, 4] }, ['row']]
+    );
   });
   it('losing card', () => {
     expect(validateCard(mockCard, [[], [], [], [], []])).toStrictEqual([
@@ -86,20 +60,12 @@ describe('check card', () => {
 describe('check rows', () => {
   it('winning draws for row 1', () => {
     expect(checkRows(mockCard, [[9], [24], [42], [55], [73]])).toStrictEqual([
-      0,
-      1,
-      2,
-      3,
-      4,
+      0, 1, 2, 3, 4,
     ]);
   });
   it('winning draws for row 3', () => {
     expect(checkRows(mockCard, [[10], [29], [], [54], [63]])).toStrictEqual([
-      10,
-      11,
-      12,
-      13,
-      14,
+      10, 11, 12, 13, 14,
     ]);
   });
   it('no winning rows', () => {
@@ -264,22 +230,3 @@ describe('winning methods', () => {
     );
   });
 });
-
-// describe('winning cells', () => {
-//   it('cells based on winning results', () => {
-//     expect(
-//       winningCells({ column: [], diagonal: [], row: [0, 1, 2, 3, 4] })
-//     ).toStrictEqual({
-//       cell1: true,
-//       cell2: true,
-//       cell3: true,
-//       cell4: true,
-//       cell5: true,
-//     });
-//   });
-//   it('cells based on losing results', () => {
-//     expect(winningCells({ column: [], diagonal: [], row: [] })).toStrictEqual(
-//       {}
-//     );
-//   });
-// });
